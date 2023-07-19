@@ -1,6 +1,6 @@
 # Advent Of Code - QSL's Mod
 
-This mod adds randomized challenge modifiers for the [Advent Of Code](https://adventofcode.com/) puzzle series. It also tracks your progress
+This mod adds randomized challenge modifiers for the [Advent Of Code](https://adventofcode.com/) puzzle series. It will also track your progress
 
 Each day you will get to roll for a randomized challenge modifier such as "Complete this puzzle in a language you've never used before" or "Complete this puzzle without reassigning any variables."
 
