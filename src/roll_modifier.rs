@@ -10,9 +10,6 @@ pub fn roll_modifier() -> String {
     let modifiers_parsed: serde_json::Value =
         serde_json::from_str(&modifiers_raw).expect("JSON was not well-formatted");
 
-    // let modifiers_parsed: JsonValue::Object =
-    //     json::parse(&modifiers_raw).expect("Should have been able to parse the JSON");
-
     let prompt: String = modifiers_parsed.get("prompt").unwrap().to_string();
 
     let random_modifier: String = modifiers_parsed
