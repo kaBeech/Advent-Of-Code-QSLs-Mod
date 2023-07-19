@@ -42,10 +42,10 @@
   "language-box-2": ["C++", "Rust", "LISP", "Haskell", "Scala", "Prolog", "C#"],
   "language-box-3": [
     "WebAssembly",
-    "LOLCODE",
-    "JSFuck",
-    "COBOL",
     "ALGOL",
-    "FORTRAN"
+    "COBOL",
+    "FORTRAN",
+    "LOLCODE",
+    "JSFuck"
   ]
 }
