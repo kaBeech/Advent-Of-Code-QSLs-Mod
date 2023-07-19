@@ -13,12 +13,14 @@ pub fn roll_modifier() -> String {
     let prompt: String = modifiers_parsed.get("prompt").unwrap().to_string();
 
     let random_modifier: String = modifiers_parsed
-        .get("modifiers")
+        .get("modifiers-with-secondary-rolls")
         .unwrap()
         .as_array()
         .expect("modifiers should be an array")
         .choose(&mut rng)
         .unwrap()
+        .get("modifier")
+        .expect("test")
         .to_string();
 
     let modifier_prompt: String = format!("{} {}", prompt, random_modifier);
