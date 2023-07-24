@@ -1,3 +1,7 @@
+# Resources for later
+
+- https://docs.rs/markdown/latest/markdown/
+
 # Pseudocode
 
 ## Start Game (args: name of the save_game file)
