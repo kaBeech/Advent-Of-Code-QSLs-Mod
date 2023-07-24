@@ -12,4 +12,26 @@
    - If the modifier for that day is set and the player has at least 2 re-roll tokens, give the option to re-roll the modifier
    - If the modifier for that day is set, the modifier has a secondary roll, and the player has at least 1 re-roll token, give the option to re-roll the secondary roll
    - If part-1-complete is set to false, give the option to set it to true
+   - If part-1-complete is set to true and the player has at least one re-roll token, give the option to set it to false
    - If part-1-complete is set to true, give the option to set part-2-complete to true
+
+## Set part-1-complete to true
+
+1. Set part-1-complete to true
+2. Add one to current-re-roll-tokens and re-roll-tokens gained
+3. Save Game
+4. Start Game
+
+## Set part-1-complete to false
+
+1. Set part-1-complete to false
+2. Remove one from current-re-roll-tokens and re-roll-tokens gained
+3. Save Game
+4. Start Game
+
+## Set part-2-complete to true
+
+1. Set part-2-complete to true
+2. Add one to current-re-roll-tokens and re-roll-tokens gained
+3. Save Game
+4. Start Game
