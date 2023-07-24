@@ -2,7 +2,7 @@
 
 ## Start Game (args: name of the save_game file)
 
-1. If no save_game by the requested name exists, ask for and store initial input (name of player, name of run, repository name)
+1. If no save_game by the requested name exists, ask for and store initial input (name of player, name of run, repository name?)
    - Set initial sav_game data as shown in example_game.json
    - Save Game
 2. If a save_game exists, read current save_game info
@@ -17,6 +17,7 @@
 4. If all days in save_game have part-2-complete set to true, display a congratulations message
 5. Give the option to show/download progress sheet
 6. Give the option to start a new game
+7. If the repository name is set, give a link to the repo
 
 ## Save Game (args: name of the save_game file)
 
