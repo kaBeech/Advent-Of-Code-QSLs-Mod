@@ -1,0 +1,212 @@
+{
+  "name": "Example Game",
+  "http-friendly-name": "example-game",
+  "player-name": "Me",
+  "current-re-roll-tokens": 7,
+  "re-roll-tokens-gained": 7,
+  "re-roll-tokens-used": 0,
+  "repository-link": "https://github.com/kaBeech/Advent-Of-Code-2022",
+  "progress-sheet-link": "https://www.kabeech.com/advent-of-code/users/me/progress-sheets/example-game",
+  "days": [
+    {
+      "day": "1",
+      "part-1-complete": false,
+      "part-2-complete": false,
+      "modifier": null,
+      "main-re-rolls-used": 0,
+      "secondary-re-rolls-used": 0
+    },
+    {
+      "day": "2",
+      "part-1-complete": false,
+      "part-2-complete": false,
+      "modifier": null,
+      "main-re-rolls-used": 0,
+      "secondary-re-rolls-used": 0
+    },
+    {
+      "day": "3",
+      "part-1-complete": false,
+      "part-2-complete": false,
+      "modifier": null,
+      "main-re-rolls-used": 0,
+      "secondary-re-rolls-used": 0
+    },
+    {
+      "day": "4",
+      "part-1-complete": false,
+      "part-2-complete": false,
+      "modifier": null,
+      "main-re-rolls-used": 0,
+      "secondary-re-rolls-used": 0
+    },
+    {
+      "day": "5",
+      "part-1-complete": false,
+      "part-2-complete": false,
+      "modifier": null,
+      "main-re-rolls-used": 0,
+      "secondary-re-rolls-used": 0
+    },
+    {
+      "day": "6",
+      "part-1-complete": false,
+      "part-2-complete": false,
+      "modifier": null,
+      "main-re-rolls-used": 0,
+      "secondary-re-rolls-used": 0
+    },
+    {
+      "day": "7",
+      "part-1-complete": false,
+      "part-2-complete": false,
+      "modifier": null,
+      "main-re-rolls-used": 0,
+      "secondary-re-rolls-used": 0
+    },
+    {
+      "day": "8",
+      "part-1-complete": false,
+      "part-2-complete": false,
+      "modifier": null,
+      "main-re-rolls-used": 0,
+      "secondary-re-rolls-used": 0
+    },
+    {
+      "day": "9",
+      "part-1-complete": false,
+      "part-2-complete": false,
+      "modifier": null,
+      "main-re-rolls-used": 0,
+      "secondary-re-rolls-used": 0
+    },
+    {
+      "day": "10",
+      "part-1-complete": false,
+      "part-2-complete": false,
+      "modifier": null,
+      "main-re-rolls-used": 0,
+      "secondary-re-rolls-used": 0
+    },
+    {
+      "day": "11",
+      "part-1-complete": false,
+      "part-2-complete": false,
+      "modifier": null,
+      "main-re-rolls-used": 0,
+      "secondary-re-rolls-used": 0
+    },
+    {
+      "day": "12",
+      "part-1-complete": false,
+      "part-2-complete": false,
+      "modifier": null,
+      "main-re-rolls-used": 0,
+      "secondary-re-rolls-used": 0
+    },
+    {
+      "day": "13",
+      "part-1-complete": false,
+      "part-2-complete": false,
+      "modifier": null,
+      "main-re-rolls-used": 0,
+      "secondary-re-rolls-used": 0
+    },
+    {
+      "day": "14",
+      "part-1-complete": false,
+      "part-2-complete": false,
+      "modifier": null,
+      "main-re-rolls-used": 0,
+      "secondary-re-rolls-used": 0
+    },
+    {
+      "day": "15",
+      "part-1-complete": false,
+      "part-2-complete": false,
+      "modifier": null,
+      "main-re-rolls-used": 0,
+      "secondary-re-rolls-used": 0
+    },
+    {
+      "day": "16",
+      "part-1-complete": false,
+      "part-2-complete": false,
+      "modifier": null,
+      "main-re-rolls-used": 0,
+      "secondary-re-rolls-used": 0
+    },
+    {
+      "day": "17",
+      "part-1-complete": false,
+      "part-2-complete": false,
+      "modifier": null,
+      "main-re-rolls-used": 0,
+      "secondary-re-rolls-used": 0
+    },
+    {
+      "day": "18",
+      "part-1-complete": false,
+      "part-2-complete": false,
+      "modifier": null,
+      "main-re-rolls-used": 0,
+      "secondary-re-rolls-used": 0
+    },
+    {
+      "day": "19",
+      "part-1-complete": false,
+      "part-2-complete": false,
+      "modifier": null,
+      "main-re-rolls-used": 0,
+      "secondary-re-rolls-used": 0
+    },
+    {
+      "day": "20",
+      "part-1-complete": false,
+      "part-2-complete": false,
+      "modifier": null,
+      "main-re-rolls-used": 0,
+      "secondary-re-rolls-used": 0
+    },
+    {
+      "day": "21",
+      "part-1-complete": false,
+      "part-2-complete": false,
+      "modifier": null,
+      "main-re-rolls-used": 0,
+      "secondary-re-rolls-used": 0
+    },
+    {
+      "day": "22",
+      "part-1-complete": false,
+      "part-2-complete": false,
+      "modifier": null,
+      "main-re-rolls-used": 0,
+      "secondary-re-rolls-used": 0
+    },
+    {
+      "day": "23",
+      "part-1-complete": false,
+      "part-2-complete": false,
+      "modifier": null,
+      "main-re-rolls-used": 0,
+      "secondary-re-rolls-used": 0
+    },
+    {
+      "day": "24",
+      "part-1-complete": false,
+      "part-2-complete": false,
+      "modifier": null,
+      "main-re-rolls-used": 0,
+      "secondary-re-rolls-used": 0
+    },
+    {
+      "day": "25",
+      "part-1-complete": false,
+      "part-2-complete": false,
+      "modifier": null,
+      "main-re-rolls-used": 0,
+      "secondary-re-rolls-used": 0
+    }
+  ]
+}

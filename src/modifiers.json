@@ -1,33 +1,88 @@
 {
   "prompt": "Complete this challenge...",
-  "modifiers": [
-    "...in a programming language not yet used in this codebase",
-    "...in a programming language you've never used before",
-    "...using a random programming language from Language Box 1",
-    "...using a random programming language from Language Box 2",
-    "...using a random programming language from Language Box 3",
-    "...as quickly as you can",
-    "...with thorough testing",
-    "...in the most performant way you can",
-    "...in the most readable way you can",
-    "...using as few lines of code as you can",
-    "...in a single file",
-    "...using as small of functions (in separate modules) as you can",
-    "...with the smallest application size you can",
-    "...using as few characters as you can",
-    "...without reassigning any variables",
-    "...declaring as few variables as you can",
-    "...making declarations in a natural language not yet used in this codebase (e.g. Spanish)",
-    "...making declarations in a natural language using a non-Latin-based writing system (e.g. Arabic)",
-    "...using ChatGPT exclusively (no editing Chat's responses - you must edit your prompts!)",
-    "...using no loops",
-    "...using no conditionals",
-    "...using no comments",
-    "...using no whitespace",
-    "...using no numbers (you may convert any numbers in your challengeInput)",
-    "...using no strings",
-    "...using no arrays",
-    "...using no objects (that aren't another basic data type)"
+  "modifiers-with-secondary-rolls": [
+    {
+      "modifier": "...in a programming language not yet used in this codebase",
+      "secondary-roll": null
+    },
+    {
+      "modifier": "...in a programming language you've never used before",
+      "secondary-roll": null
+    },
+    {
+      "modifier": "...using a random programming language from Language Box 1",
+      "secondary-roll": "language-box-1"
+    },
+    {
+      "modifier": "...using a random programming language from Language Box 2",
+      "secondary-roll": "language-box-2"
+    },
+    {
+      "modifier": "...using a random programming language from Language Box 3",
+      "secondary-roll": "language-box-3"
+    },
+    { "modifier": "...as quickly as you can", "secondary-roll": null },
+    { "modifier": "...with thorough testing", "secondary-roll": null },
+    { "modifier": "...with thorough error handling", "secondary-roll": null },
+    {
+      "modifier": "...in the most performant way you can",
+      "secondary-roll": null
+    },
+    {
+      "modifier": "...in the most readable way you can",
+      "secondary-roll": null
+    },
+    {
+      "modifier": "...using as few lines of code as you can",
+      "secondary-roll": null
+    },
+    { "modifier": "...in a single file", "secondary-roll": null },
+    {
+      "modifier": "...using as small of functions (in separate modules) as you can",
+      "secondary-roll": null
+    },
+    {
+      "modifier": "...with the smallest application size you can",
+      "secondary-roll": null
+    },
+    {
+      "modifier": "...using as few characters as you can (code golf)",
+      "secondary-roll": null
+    },
+    {
+      "modifier": "...without reassigning any variables",
+      "secondary-roll": null
+    },
+    {
+      "modifier": "...declaring as few variables as you can",
+      "secondary-roll": null
+    },
+    {
+      "modifier": "...making declarations in a natural language not yet used in this codebase (e.g. Spanish)",
+      "secondary-roll": null
+    },
+    {
+      "modifier": "...making declarations in a natural language using a non-Latin-based writing system (e.g. Arabic)",
+      "secondary-roll": null
+    },
+    {
+      "modifier": "...using ChatGPT exclusively (no editing Chat's responses - you must edit your prompts!)",
+      "secondary-roll": null
+    },
+    { "modifier": "...using no loops", "secondary-roll": null },
+    { "modifier": "...using no conditionals", "secondary-roll": null },
+    { "modifier": "...using no comments", "secondary-roll": null },
+    { "modifier": "...using no whitespace", "secondary-roll": null },
+    {
+      "modifier": "...using no numbers (you may convert any numbers in your challengeInput)",
+      "secondary-roll": null
+    },
+    { "modifier": "...using no strings", "secondary-roll": null },
+    { "modifier": "...using no arrays", "secondary-roll": null },
+    {
+      "modifier": "...using no objects (that aren't another basic data type)",
+      "secondary-roll": null
+    }
   ],
   "language-box-1": [
     "JavaScript",
