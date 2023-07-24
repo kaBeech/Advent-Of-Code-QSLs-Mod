@@ -15,6 +15,33 @@
    - If part-1-complete is set to true and the player has at least one re-roll token, give the option to set it to false
    - If part-1-complete is set to true, give the option to set part-2-complete to true
 
+## Roll modifier
+
+1. Randomly select a modifier
+2. If the selected modifier has a secondary roll, roll it and add it to the modifier
+3. Store the result as the current day's modifier
+4. Save Game
+5. Start Game
+
+## Re-roll modifier
+
+1. Remove 1 from current-re-roll tokens
+2. Add 2 to re-roll tokens used
+3. Add 1 to current day's main re-rolls used
+4. Roll modifier
+5. Save Game
+6. Start Game
+
+## Re-roll secondary roll
+
+1. Remove one from current-re-roll-tokens
+2. Add 1 to re-roll tokens used
+3. Add 1 to current day's secondary re-rolls used
+4. Roll a new secondary modifier
+5. Replace the previous secondary modifier with this new one
+6. Save Game
+7. Start Game
+
 ## Set part-1-complete to true
 
 1. Set part-1-complete to true
@@ -35,3 +62,7 @@
 2. Add one to current-re-roll-tokens and re-roll-tokens gained
 3. Save Game
 4. Start Game
+
+## Save Game
+
+1. Write save_game data in a file named {http-friendly-name}.{extension}
