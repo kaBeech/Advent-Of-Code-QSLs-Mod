@@ -23,6 +23,7 @@
     },
     { "modifier": "...as quickly as you can", "secondary-roll": null },
     { "modifier": "...with thorough testing", "secondary-roll": null },
+    { "modifier": "...with thorough error handling", "secondary-roll": null },
     {
       "modifier": "...in the most performant way you can",
       "secondary-roll": null
