@@ -18,7 +18,7 @@
 5. Give the option to show/download progress sheet
 6. Give the option to start a new game
 
-## Save Game
+## Save Game (args: name of the save_game file)
 
 1. Write save_game data in a file named {http-friendly-name}.{extension}
 
