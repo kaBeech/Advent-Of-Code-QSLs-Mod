@@ -12,6 +12,6 @@ You are awarded an additional re-roll token whenever you are awarded a gold star
 
 At any point you will be able to download your current progress sheet (to include in your git repository, hang on your fridge, etc.)
 
-If you're interested, [my repository for my own Advent Of Code solutions can be found here](https://github.com/kaBeech/Advent-Of-Code-2022/)
+If you're interested, [my repository for my own Advent Of Code solutions can be found here](https://github.com/kaBeech/Advent-Of-Code/)
 
 Have fun!
