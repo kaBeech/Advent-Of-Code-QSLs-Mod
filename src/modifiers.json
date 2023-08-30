@@ -1,13 +1,13 @@
 {
   "prompt": "Complete this challenge...",
-  "modifiers-with-secondary-rolls": [
+  "modifiers": [
     {
       "modifier": "...in a programming language not yet used in this codebase",
-      "secondary-roll": null
+      "secondary-roll": false
     },
     {
       "modifier": "...in a programming language you've never used before",
-      "secondary-roll": null
+      "secondary-roll": false
     },
     {
       "modifier": "...using a random programming language from Language Box 1",
@@ -21,67 +21,67 @@
       "modifier": "...using a random programming language from Language Box 3",
       "secondary-roll": "language-box-3"
     },
-    { "modifier": "...as quickly as you can", "secondary-roll": null },
-    { "modifier": "...with thorough testing", "secondary-roll": null },
-    { "modifier": "...with thorough error handling", "secondary-roll": null },
+    { "modifier": "...as quickly as you can", "secondary-roll": false },
+    { "modifier": "...with thorough testing", "secondary-roll": false },
+    { "modifier": "...with thorough error handling", "secondary-roll": false },
     {
       "modifier": "...in the most performant way you can",
-      "secondary-roll": null
+      "secondary-roll": false
     },
     {
       "modifier": "...in the most readable way you can",
-      "secondary-roll": null
+      "secondary-roll": false
     },
     {
       "modifier": "...using as few lines of code as you can",
-      "secondary-roll": null
+      "secondary-roll": false
     },
-    { "modifier": "...in a single file", "secondary-roll": null },
+    { "modifier": "...in a single file", "secondary-roll": false },
     {
       "modifier": "...using as small of functions (in separate modules) as you can",
-      "secondary-roll": null
+      "secondary-roll": false
     },
     {
       "modifier": "...with the smallest application size you can",
-      "secondary-roll": null
+      "secondary-roll": false
     },
     {
       "modifier": "...using as few characters as you can (code golf)",
-      "secondary-roll": null
+      "secondary-roll": false
     },
     {
       "modifier": "...without reassigning any variables",
-      "secondary-roll": null
+      "secondary-roll": false
     },
     {
       "modifier": "...declaring as few variables as you can",
-      "secondary-roll": null
+      "secondary-roll": false
     },
     {
       "modifier": "...making declarations in a natural language not yet used in this codebase (e.g. Spanish)",
-      "secondary-roll": null
+      "secondary-roll": false
     },
     {
       "modifier": "...making declarations in a natural language using a non-Latin-based writing system (e.g. Arabic)",
-      "secondary-roll": null
+      "secondary-roll": false
     },
     {
       "modifier": "...using ChatGPT exclusively (no editing Chat's responses - you must edit your prompts!)",
-      "secondary-roll": null
+      "secondary-roll": false
     },
-    { "modifier": "...using no loops", "secondary-roll": null },
-    { "modifier": "...using no conditionals", "secondary-roll": null },
-    { "modifier": "...using no comments", "secondary-roll": null },
-    { "modifier": "...using no whitespace", "secondary-roll": null },
+    { "modifier": "...using no loops", "secondary-roll": false },
+    { "modifier": "...using no conditionals", "secondary-roll": false },
+    { "modifier": "...using no comments", "secondary-roll": false },
+    { "modifier": "...using no whitespace", "secondary-roll": false },
     {
       "modifier": "...using no numbers (you may convert any numbers in your challengeInput)",
-      "secondary-roll": null
+      "secondary-roll": false
     },
-    { "modifier": "...using no strings", "secondary-roll": null },
-    { "modifier": "...using no arrays", "secondary-roll": null },
+    { "modifier": "...using no strings", "secondary-roll": false },
+    { "modifier": "...using no arrays", "secondary-roll": false },
     {
       "modifier": "...using no objects (that aren't another basic data type)",
-      "secondary-roll": null
+      "secondary-roll": false
     }
   ],
   "language-box-1": [
