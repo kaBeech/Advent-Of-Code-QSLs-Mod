@@ -23,7 +23,7 @@ router
     const challengeModifiers = await prisma.challengeModifier.findMany();
     context.response.body = challengeModifiers;
   })
-  .get("/challengeModifier/:id", async (context) => {
+  .get("/challenge_modifier/:id", async (context) => {
     const { id } = context.params;
     const challengeModifier = await prisma.challengeModifier.findUnique({
       where: {
@@ -32,7 +32,7 @@ router
     });
     context.response.body = challengeModifier;
   })
-  .post("/challengeModifier", async (context) => {
+  .post("/challenge_modifier", async (context) => {
     const { name, text } = await context.request.body({ type: "json" }).value;
     const result = await prisma.challengeModifier.create({
       data: {
@@ -42,7 +42,7 @@ router
     });
     context.response.body = result;
   })
-  .delete("/challengeModifier/:id", async (context) => {
+  .delete("/challenge_modifier/:id", async (context) => {
     const { id } = context.params;
     const challengeModifier = await prisma.challengeModifier.delete({
       where: {
@@ -54,5 +54,7 @@ router
 
 app.use(router.routes());
 app.use(router.allowedMethods());
+
+console.log(`Server running on http://localhost:8000`);
 
 await app.listen({ port: 8000 });
