@@ -112,6 +112,28 @@ exports.Prisma.ChallengeModifierScalarFieldEnum = {
   options: 'options'
 };
 
+exports.Prisma.GameScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  player_name: 'player_name',
+  current_reroll_tokens: 'current_reroll_tokens',
+  reroll_tokens_gained: 'reroll_tokens_gained',
+  reroll_tokens_spent: 'reroll_tokens_spent',
+  repository_link: 'repository_link',
+  progress_sheet_link: 'progress_sheet_link'
+};
+
+exports.Prisma.DayScalarFieldEnum = {
+  id: 'id',
+  number: 'number',
+  part_1_completed: 'part_1_completed',
+  part_2_completed: 'part_2_completed',
+  main_rerolls_used: 'main_rerolls_used',
+  secondary_rerolls_used: 'secondary_rerolls_used',
+  challengeModifierId: 'challengeModifierId',
+  gameId: 'gameId'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -122,9 +144,16 @@ exports.Prisma.QueryMode = {
   insensitive: 'insensitive'
 };
 
+exports.Prisma.NullsOrder = {
+  first: 'first',
+  last: 'last'
+};
+
 
 exports.Prisma.ModelName = {
-  ChallengeModifier: 'ChallengeModifier'
+  ChallengeModifier: 'ChallengeModifier',
+  Game: 'Game',
+  Day: 'Day'
 };
 
 /**
