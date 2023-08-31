@@ -1,5 +1,8 @@
 {
   "tasks": {
-    "dev": "deno run --allow-env --allow-read --allow-net --watch main.ts"
+    "dev": "deno run --allow-env --allow-read --allow-net --watch main.ts",
+    "pushDB": "deno run --allow-run --allow-read --allow-write --allow-env --allow-sys npm:prisma@^4.5 db push",
+    "generatePrisma": "deno run --allow-run --allow-read --allow-write --allow-env --allow-sys npm:prisma@^4.5 generate",
+    "seedPrisma": "deno run --allow-read --allow-env --allow-net prisma/seed.ts"
   }
 }
