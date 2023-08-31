@@ -13,16 +13,8 @@ datasource db {
 }
 
 model ChallengeModifier {
-  id                  Int                @id @default(autoincrement())
-  name                String             @unique
-  text                String
-  secondaryModifier   SecondaryModifier? @relation(fields: [secondaryModifierId], references: [id])
-  secondaryModifierId Int?
-}
-
-model SecondaryModifier {
-  id                Int                 @id @default(autoincrement())
-  name              String              @unique
-  values            String[]
-  ChallengeModifier ChallengeModifier[]
+  id      Int      @id @default(autoincrement())
+  name    String   @unique
+  text    String
+  options String[]
 }

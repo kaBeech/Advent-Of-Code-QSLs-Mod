@@ -109,13 +109,7 @@ exports.Prisma.ChallengeModifierScalarFieldEnum = {
   id: 'id',
   name: 'name',
   text: 'text',
-  secondaryModifierId: 'secondaryModifierId'
-};
-
-exports.Prisma.SecondaryModifierScalarFieldEnum = {
-  id: 'id',
-  name: 'name',
-  values: 'values'
+  options: 'options'
 };
 
 exports.Prisma.SortOrder = {
@@ -128,15 +122,9 @@ exports.Prisma.QueryMode = {
   insensitive: 'insensitive'
 };
 
-exports.Prisma.NullsOrder = {
-  first: 'first',
-  last: 'last'
-};
-
 
 exports.Prisma.ModelName = {
-  ChallengeModifier: 'ChallengeModifier',
-  SecondaryModifier: 'SecondaryModifier'
+  ChallengeModifier: 'ChallengeModifier'
 };
 
 /**

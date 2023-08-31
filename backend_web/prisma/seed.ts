@@ -26,15 +26,34 @@ const challengeModifierData: Prisma.ChallengeModifierCreateInput[] = [
   },
   {
     name: "language_box_1",
-    text: "using a random programming language from Language Box 1",
+    text: "using a random programming language from Language Box 1: ",
+    options: [
+      "JavaScript",
+      "TypeScript",
+      "Python",
+      "R",
+      "Ruby",
+      "Java",
+      "C",
+      "Go",
+    ],
   },
   {
     name: "language_box_2",
-    text: "using a random programming language from Language Box 2",
+    text: "using a random programming language from Language Box 2: ",
+    options: ["C++", "Rust", "LISP", "Haskell", "Scala", "Prolog", "C#"],
   },
   {
     name: "language_box_3",
-    text: "using a random programming language from Language Box 3",
+    text: "using a random programming language from Language Box 3: ",
+    options: [
+      "WebAssembly",
+      "ALGOL",
+      "COBOL",
+      "FORTRAN",
+      "LOLCODE",
+      "JSFuck",
+    ],
   },
   {
     name: "testing",

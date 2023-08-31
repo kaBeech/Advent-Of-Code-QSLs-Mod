@@ -1,9 +1,13 @@
 import { ChallengeModifier } from "../generated/client/deno/index.d.ts";
+import { pickRandomly } from "../util/pickRandomly.ts";
 
 const rollChallengeModifier = (challengeModifiers: ChallengeModifier[]) => {
-  const randomIndex = Math.floor(Math.random() * challengeModifiers.length);
-  const selectedChallengeModifier = challengeModifiers[randomIndex];
-  return `Complete this challenge ${selectedChallengeModifier.text}`;
+  const selectedChallengeModifier = pickRandomly(challengeModifiers);
+  let text = selectedChallengeModifier.text;
+  if (selectedChallengeModifier.options.length > 0) {
+    text += `${pickRandomly(selectedChallengeModifier.options)}`;
+  }
+  return `Complete this challenge ${text}`;
 };
 
 export { rollChallengeModifier };
