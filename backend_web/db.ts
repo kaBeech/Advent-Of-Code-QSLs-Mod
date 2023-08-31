@@ -1,7 +1,5 @@
 import { PrismaClient } from "./generated/client/deno/edge.ts";
-import { Application, Router } from "https://deno.land/x/oak@v11.1.0/mod.ts";
 import { config } from "https://deno.land/std@0.163.0/dotenv/mod.ts";
-import { rollChallengeModifier } from "./components/rollChallengeModifier.ts";
 
 const envVars = await config();
 
