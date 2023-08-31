@@ -29,11 +29,16 @@ export async function getGameById(id: number) {
   return game;
 }
 
-export async function createGame(name: string, playerName: string) {
+export async function createGame(
+  name: string,
+  playerName: string,
+  year: number,
+) {
   const result = await prisma.game.create({
     data: {
       name,
       player_name: playerName,
+      year,
     },
   });
   return result;
