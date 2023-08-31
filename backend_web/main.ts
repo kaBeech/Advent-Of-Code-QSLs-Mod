@@ -16,45 +16,52 @@ const app = new Application();
 const router = new Router();
 
 router
-  // Hello World!
+  /**
+   * Hello World!
+   */
   .get("/", (context) => {
     context.response.body =
       "You have successfully pinged the Advent Of Code QSL's Mod API!";
   })
-  // Basic CRUD
-  .get("/challenge_modifier", async (context) => {
-    const challengeModifiers = await prisma.challengeModifier.findMany();
-    context.response.body = challengeModifiers;
+  /**
+   * Game CRUD
+   */
+  .get("/game", async (context) => {
+    const games = await prisma.game.findMany();
+    context.response.body = games;
   })
-  .get("/challenge_modifier/:id", async (context) => {
+  .get("/game/:id", async (context) => {
     const { id } = context.params;
-    const challengeModifier = await prisma.challengeModifier.findUnique({
+    const game = await prisma.game.findUnique({
       where: {
         id: Number(id),
       },
     });
-    context.response.body = challengeModifier;
+    context.response.body = game;
   })
-  .post("/challenge_modifier", async (context) => {
-    const { name, text } = await context.request.body({ type: "json" }).value;
-    const result = await prisma.challengeModifier.create({
+  .post("/game", async (context) => {
+    const { name, playerName } = await context.request.body({ type: "json" })
+      .value;
+    const result = await prisma.game.create({
       data: {
         name,
-        text,
+        player_name: playerName,
       },
     });
     context.response.body = result;
   })
-  .delete("/challenge_modifier/:id", async (context) => {
+  .delete("/game/:id", async (context) => {
     const { id } = context.params;
-    const challengeModifier = await prisma.challengeModifier.delete({
+    const game = await prisma.game.delete({
       where: {
         id: Number(id),
       },
     });
-    context.response.body = challengeModifier;
+    context.response.body = game;
   })
-  // Rolls
+  /**
+   * Roll
+   */
   .get("/roll/challenge_modifier", async (context) => {
     const challengeModifiers = await prisma.challengeModifier.findMany();
     context.response.body = rollChallengeModifier(challengeModifiers);
