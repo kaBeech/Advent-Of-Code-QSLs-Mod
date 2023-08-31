@@ -115,21 +115,21 @@ exports.Prisma.ChallengeModifierScalarFieldEnum = {
 exports.Prisma.GameScalarFieldEnum = {
   id: 'id',
   name: 'name',
-  player_name: 'player_name',
-  current_reroll_tokens: 'current_reroll_tokens',
-  reroll_tokens_gained: 'reroll_tokens_gained',
-  reroll_tokens_spent: 'reroll_tokens_spent',
-  repository_link: 'repository_link',
-  progress_sheet_link: 'progress_sheet_link'
+  playerName: 'playerName',
+  currentRerollTokens: 'currentRerollTokens',
+  rerollTokensGained: 'rerollTokensGained',
+  rerollTokensSpent: 'rerollTokensSpent',
+  repositoryLink: 'repositoryLink',
+  progressSheetLink: 'progressSheetLink'
 };
 
 exports.Prisma.DayScalarFieldEnum = {
   id: 'id',
   number: 'number',
-  part_1_completed: 'part_1_completed',
-  part_2_completed: 'part_2_completed',
-  main_rerolls_used: 'main_rerolls_used',
-  secondary_rerolls_used: 'secondary_rerolls_used',
+  part1Completed: 'part1Completed',
+  part2Completed: 'part2Completed',
+  mainRerollsUsed: 'mainRerollsUsed',
+  secondaryRerollsUsed: 'secondaryRerollsUsed',
   challengeModifierId: 'challengeModifierId',
   gameId: 'gameId'
 };

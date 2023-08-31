@@ -3,7 +3,7 @@
  * Client
 **/
 
-import * as runtime from './runtime/data-proxy';
+import * as runtime from './runtime/library';
 import $Types = runtime.Types // general types
 import $Public = runtime.Types.Public
 import $Utils = runtime.Types.Utils
@@ -39,12 +39,12 @@ export type GamePayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultAr
   scalars: $Extensions.GetResult<{
     id: number
     name: string
-    player_name: string
-    current_reroll_tokens: number
-    reroll_tokens_gained: number
-    reroll_tokens_spent: number
-    repository_link: string | null
-    progress_sheet_link: string | null
+    playerName: string
+    currentRerollTokens: number
+    rerollTokensGained: number
+    rerollTokensSpent: number
+    repositoryLink: string | null
+    progressSheetLink: string | null
   }, ExtArgs["result"]["game"]>
   composites: {}
 }
@@ -63,10 +63,10 @@ export type DayPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArg
   scalars: $Extensions.GetResult<{
     id: number
     number: number
-    part_1_completed: boolean
-    part_2_completed: boolean
-    main_rerolls_used: number
-    secondary_rerolls_used: number
+    part1Completed: boolean
+    part2Completed: boolean
+    mainRerollsUsed: number
+    secondaryRerollsUsed: number
     challengeModifierId: number | null
     gameId: number
   }, ExtArgs["result"]["day"]>
@@ -2167,98 +2167,98 @@ export namespace Prisma {
 
   export type GameAvgAggregateOutputType = {
     id: number | null
-    current_reroll_tokens: number | null
-    reroll_tokens_gained: number | null
-    reroll_tokens_spent: number | null
+    currentRerollTokens: number | null
+    rerollTokensGained: number | null
+    rerollTokensSpent: number | null
   }
 
   export type GameSumAggregateOutputType = {
     id: number | null
-    current_reroll_tokens: number | null
-    reroll_tokens_gained: number | null
-    reroll_tokens_spent: number | null
+    currentRerollTokens: number | null
+    rerollTokensGained: number | null
+    rerollTokensSpent: number | null
   }
 
   export type GameMinAggregateOutputType = {
     id: number | null
     name: string | null
-    player_name: string | null
-    current_reroll_tokens: number | null
-    reroll_tokens_gained: number | null
-    reroll_tokens_spent: number | null
-    repository_link: string | null
-    progress_sheet_link: string | null
+    playerName: string | null
+    currentRerollTokens: number | null
+    rerollTokensGained: number | null
+    rerollTokensSpent: number | null
+    repositoryLink: string | null
+    progressSheetLink: string | null
   }
 
   export type GameMaxAggregateOutputType = {
     id: number | null
     name: string | null
-    player_name: string | null
-    current_reroll_tokens: number | null
-    reroll_tokens_gained: number | null
-    reroll_tokens_spent: number | null
-    repository_link: string | null
-    progress_sheet_link: string | null
+    playerName: string | null
+    currentRerollTokens: number | null
+    rerollTokensGained: number | null
+    rerollTokensSpent: number | null
+    repositoryLink: string | null
+    progressSheetLink: string | null
   }
 
   export type GameCountAggregateOutputType = {
     id: number
     name: number
-    player_name: number
-    current_reroll_tokens: number
-    reroll_tokens_gained: number
-    reroll_tokens_spent: number
-    repository_link: number
-    progress_sheet_link: number
+    playerName: number
+    currentRerollTokens: number
+    rerollTokensGained: number
+    rerollTokensSpent: number
+    repositoryLink: number
+    progressSheetLink: number
     _all: number
   }
 
 
   export type GameAvgAggregateInputType = {
     id?: true
-    current_reroll_tokens?: true
-    reroll_tokens_gained?: true
-    reroll_tokens_spent?: true
+    currentRerollTokens?: true
+    rerollTokensGained?: true
+    rerollTokensSpent?: true
   }
 
   export type GameSumAggregateInputType = {
     id?: true
-    current_reroll_tokens?: true
-    reroll_tokens_gained?: true
-    reroll_tokens_spent?: true
+    currentRerollTokens?: true
+    rerollTokensGained?: true
+    rerollTokensSpent?: true
   }
 
   export type GameMinAggregateInputType = {
     id?: true
     name?: true
-    player_name?: true
-    current_reroll_tokens?: true
-    reroll_tokens_gained?: true
-    reroll_tokens_spent?: true
-    repository_link?: true
-    progress_sheet_link?: true
+    playerName?: true
+    currentRerollTokens?: true
+    rerollTokensGained?: true
+    rerollTokensSpent?: true
+    repositoryLink?: true
+    progressSheetLink?: true
   }
 
   export type GameMaxAggregateInputType = {
     id?: true
     name?: true
-    player_name?: true
-    current_reroll_tokens?: true
-    reroll_tokens_gained?: true
-    reroll_tokens_spent?: true
-    repository_link?: true
-    progress_sheet_link?: true
+    playerName?: true
+    currentRerollTokens?: true
+    rerollTokensGained?: true
+    rerollTokensSpent?: true
+    repositoryLink?: true
+    progressSheetLink?: true
   }
 
   export type GameCountAggregateInputType = {
     id?: true
     name?: true
-    player_name?: true
-    current_reroll_tokens?: true
-    reroll_tokens_gained?: true
-    reroll_tokens_spent?: true
-    repository_link?: true
-    progress_sheet_link?: true
+    playerName?: true
+    currentRerollTokens?: true
+    rerollTokensGained?: true
+    rerollTokensSpent?: true
+    repositoryLink?: true
+    progressSheetLink?: true
     _all?: true
   }
 
@@ -2352,12 +2352,12 @@ export namespace Prisma {
   export type GameGroupByOutputType = {
     id: number
     name: string
-    player_name: string
-    current_reroll_tokens: number
-    reroll_tokens_gained: number
-    reroll_tokens_spent: number
-    repository_link: string | null
-    progress_sheet_link: string | null
+    playerName: string
+    currentRerollTokens: number
+    rerollTokensGained: number
+    rerollTokensSpent: number
+    repositoryLink: string | null
+    progressSheetLink: string | null
     _count: GameCountAggregateOutputType | null
     _avg: GameAvgAggregateOutputType | null
     _sum: GameSumAggregateOutputType | null
@@ -2382,12 +2382,12 @@ export namespace Prisma {
   export type GameSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
-    player_name?: boolean
-    current_reroll_tokens?: boolean
-    reroll_tokens_gained?: boolean
-    reroll_tokens_spent?: boolean
-    repository_link?: boolean
-    progress_sheet_link?: boolean
+    playerName?: boolean
+    currentRerollTokens?: boolean
+    rerollTokensGained?: boolean
+    rerollTokensSpent?: boolean
+    repositoryLink?: boolean
+    progressSheetLink?: boolean
     days?: boolean | Game$daysArgs<ExtArgs>
     _count?: boolean | GameCountOutputTypeArgs<ExtArgs>
   }, ExtArgs["result"]["game"]>
@@ -2395,12 +2395,12 @@ export namespace Prisma {
   export type GameSelectScalar = {
     id?: boolean
     name?: boolean
-    player_name?: boolean
-    current_reroll_tokens?: boolean
-    reroll_tokens_gained?: boolean
-    reroll_tokens_spent?: boolean
-    repository_link?: boolean
-    progress_sheet_link?: boolean
+    playerName?: boolean
+    currentRerollTokens?: boolean
+    rerollTokensGained?: boolean
+    rerollTokensSpent?: boolean
+    repositoryLink?: boolean
+    progressSheetLink?: boolean
   }
 
   export type GameInclude<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
@@ -3188,8 +3188,8 @@ export namespace Prisma {
   export type DayAvgAggregateOutputType = {
     id: number | null
     number: number | null
-    main_rerolls_used: number | null
-    secondary_rerolls_used: number | null
+    mainRerollsUsed: number | null
+    secondaryRerollsUsed: number | null
     challengeModifierId: number | null
     gameId: number | null
   }
@@ -3197,8 +3197,8 @@ export namespace Prisma {
   export type DaySumAggregateOutputType = {
     id: number | null
     number: number | null
-    main_rerolls_used: number | null
-    secondary_rerolls_used: number | null
+    mainRerollsUsed: number | null
+    secondaryRerollsUsed: number | null
     challengeModifierId: number | null
     gameId: number | null
   }
@@ -3206,10 +3206,10 @@ export namespace Prisma {
   export type DayMinAggregateOutputType = {
     id: number | null
     number: number | null
-    part_1_completed: boolean | null
-    part_2_completed: boolean | null
-    main_rerolls_used: number | null
-    secondary_rerolls_used: number | null
+    part1Completed: boolean | null
+    part2Completed: boolean | null
+    mainRerollsUsed: number | null
+    secondaryRerollsUsed: number | null
     challengeModifierId: number | null
     gameId: number | null
   }
@@ -3217,10 +3217,10 @@ export namespace Prisma {
   export type DayMaxAggregateOutputType = {
     id: number | null
     number: number | null
-    part_1_completed: boolean | null
-    part_2_completed: boolean | null
-    main_rerolls_used: number | null
-    secondary_rerolls_used: number | null
+    part1Completed: boolean | null
+    part2Completed: boolean | null
+    mainRerollsUsed: number | null
+    secondaryRerollsUsed: number | null
     challengeModifierId: number | null
     gameId: number | null
   }
@@ -3228,10 +3228,10 @@ export namespace Prisma {
   export type DayCountAggregateOutputType = {
     id: number
     number: number
-    part_1_completed: number
-    part_2_completed: number
-    main_rerolls_used: number
-    secondary_rerolls_used: number
+    part1Completed: number
+    part2Completed: number
+    mainRerollsUsed: number
+    secondaryRerollsUsed: number
     challengeModifierId: number
     gameId: number
     _all: number
@@ -3241,8 +3241,8 @@ export namespace Prisma {
   export type DayAvgAggregateInputType = {
     id?: true
     number?: true
-    main_rerolls_used?: true
-    secondary_rerolls_used?: true
+    mainRerollsUsed?: true
+    secondaryRerollsUsed?: true
     challengeModifierId?: true
     gameId?: true
   }
@@ -3250,8 +3250,8 @@ export namespace Prisma {
   export type DaySumAggregateInputType = {
     id?: true
     number?: true
-    main_rerolls_used?: true
-    secondary_rerolls_used?: true
+    mainRerollsUsed?: true
+    secondaryRerollsUsed?: true
     challengeModifierId?: true
     gameId?: true
   }
@@ -3259,10 +3259,10 @@ export namespace Prisma {
   export type DayMinAggregateInputType = {
     id?: true
     number?: true
-    part_1_completed?: true
-    part_2_completed?: true
-    main_rerolls_used?: true
-    secondary_rerolls_used?: true
+    part1Completed?: true
+    part2Completed?: true
+    mainRerollsUsed?: true
+    secondaryRerollsUsed?: true
     challengeModifierId?: true
     gameId?: true
   }
@@ -3270,10 +3270,10 @@ export namespace Prisma {
   export type DayMaxAggregateInputType = {
     id?: true
     number?: true
-    part_1_completed?: true
-    part_2_completed?: true
-    main_rerolls_used?: true
-    secondary_rerolls_used?: true
+    part1Completed?: true
+    part2Completed?: true
+    mainRerollsUsed?: true
+    secondaryRerollsUsed?: true
     challengeModifierId?: true
     gameId?: true
   }
@@ -3281,10 +3281,10 @@ export namespace Prisma {
   export type DayCountAggregateInputType = {
     id?: true
     number?: true
-    part_1_completed?: true
-    part_2_completed?: true
-    main_rerolls_used?: true
-    secondary_rerolls_used?: true
+    part1Completed?: true
+    part2Completed?: true
+    mainRerollsUsed?: true
+    secondaryRerollsUsed?: true
     challengeModifierId?: true
     gameId?: true
     _all?: true
@@ -3380,10 +3380,10 @@ export namespace Prisma {
   export type DayGroupByOutputType = {
     id: number
     number: number
-    part_1_completed: boolean
-    part_2_completed: boolean
-    main_rerolls_used: number
-    secondary_rerolls_used: number
+    part1Completed: boolean
+    part2Completed: boolean
+    mainRerollsUsed: number
+    secondaryRerollsUsed: number
     challengeModifierId: number | null
     gameId: number
     _count: DayCountAggregateOutputType | null
@@ -3410,10 +3410,10 @@ export namespace Prisma {
   export type DaySelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     number?: boolean
-    part_1_completed?: boolean
-    part_2_completed?: boolean
-    main_rerolls_used?: boolean
-    secondary_rerolls_used?: boolean
+    part1Completed?: boolean
+    part2Completed?: boolean
+    mainRerollsUsed?: boolean
+    secondaryRerollsUsed?: boolean
     challengeModifierId?: boolean
     gameId?: boolean
     game?: boolean | GameArgs<ExtArgs>
@@ -3423,10 +3423,10 @@ export namespace Prisma {
   export type DaySelectScalar = {
     id?: boolean
     number?: boolean
-    part_1_completed?: boolean
-    part_2_completed?: boolean
-    main_rerolls_used?: boolean
-    secondary_rerolls_used?: boolean
+    part1Completed?: boolean
+    part2Completed?: boolean
+    mainRerollsUsed?: boolean
+    secondaryRerollsUsed?: boolean
     challengeModifierId?: boolean
     gameId?: boolean
   }
@@ -4208,12 +4208,12 @@ export namespace Prisma {
   export const GameScalarFieldEnum: {
     id: 'id',
     name: 'name',
-    player_name: 'player_name',
-    current_reroll_tokens: 'current_reroll_tokens',
-    reroll_tokens_gained: 'reroll_tokens_gained',
-    reroll_tokens_spent: 'reroll_tokens_spent',
-    repository_link: 'repository_link',
-    progress_sheet_link: 'progress_sheet_link'
+    playerName: 'playerName',
+    currentRerollTokens: 'currentRerollTokens',
+    rerollTokensGained: 'rerollTokensGained',
+    rerollTokensSpent: 'rerollTokensSpent',
+    repositoryLink: 'repositoryLink',
+    progressSheetLink: 'progressSheetLink'
   };
 
   export type GameScalarFieldEnum = (typeof GameScalarFieldEnum)[keyof typeof GameScalarFieldEnum]
@@ -4222,10 +4222,10 @@ export namespace Prisma {
   export const DayScalarFieldEnum: {
     id: 'id',
     number: 'number',
-    part_1_completed: 'part_1_completed',
-    part_2_completed: 'part_2_completed',
-    main_rerolls_used: 'main_rerolls_used',
-    secondary_rerolls_used: 'secondary_rerolls_used',
+    part1Completed: 'part1Completed',
+    part2Completed: 'part2Completed',
+    mainRerollsUsed: 'mainRerollsUsed',
+    secondaryRerollsUsed: 'secondaryRerollsUsed',
     challengeModifierId: 'challengeModifierId',
     gameId: 'gameId'
   };
@@ -4314,24 +4314,24 @@ export namespace Prisma {
     NOT?: Enumerable<GameWhereInput>
     id?: IntFilter | number
     name?: StringFilter | string
-    player_name?: StringFilter | string
-    current_reroll_tokens?: IntFilter | number
-    reroll_tokens_gained?: IntFilter | number
-    reroll_tokens_spent?: IntFilter | number
-    repository_link?: StringNullableFilter | string | null
-    progress_sheet_link?: StringNullableFilter | string | null
+    playerName?: StringFilter | string
+    currentRerollTokens?: IntFilter | number
+    rerollTokensGained?: IntFilter | number
+    rerollTokensSpent?: IntFilter | number
+    repositoryLink?: StringNullableFilter | string | null
+    progressSheetLink?: StringNullableFilter | string | null
     days?: DayListRelationFilter
   }
 
   export type GameOrderByWithRelationInput = {
     id?: SortOrder
     name?: SortOrder
-    player_name?: SortOrder
-    current_reroll_tokens?: SortOrder
-    reroll_tokens_gained?: SortOrder
-    reroll_tokens_spent?: SortOrder
-    repository_link?: SortOrderInput | SortOrder
-    progress_sheet_link?: SortOrderInput | SortOrder
+    playerName?: SortOrder
+    currentRerollTokens?: SortOrder
+    rerollTokensGained?: SortOrder
+    rerollTokensSpent?: SortOrder
+    repositoryLink?: SortOrderInput | SortOrder
+    progressSheetLink?: SortOrderInput | SortOrder
     days?: DayOrderByRelationAggregateInput
   }
 
@@ -4343,12 +4343,12 @@ export namespace Prisma {
   export type GameOrderByWithAggregationInput = {
     id?: SortOrder
     name?: SortOrder
-    player_name?: SortOrder
-    current_reroll_tokens?: SortOrder
-    reroll_tokens_gained?: SortOrder
-    reroll_tokens_spent?: SortOrder
-    repository_link?: SortOrderInput | SortOrder
-    progress_sheet_link?: SortOrderInput | SortOrder
+    playerName?: SortOrder
+    currentRerollTokens?: SortOrder
+    rerollTokensGained?: SortOrder
+    rerollTokensSpent?: SortOrder
+    repositoryLink?: SortOrderInput | SortOrder
+    progressSheetLink?: SortOrderInput | SortOrder
     _count?: GameCountOrderByAggregateInput
     _avg?: GameAvgOrderByAggregateInput
     _max?: GameMaxOrderByAggregateInput
@@ -4362,12 +4362,12 @@ export namespace Prisma {
     NOT?: Enumerable<GameScalarWhereWithAggregatesInput>
     id?: IntWithAggregatesFilter | number
     name?: StringWithAggregatesFilter | string
-    player_name?: StringWithAggregatesFilter | string
-    current_reroll_tokens?: IntWithAggregatesFilter | number
-    reroll_tokens_gained?: IntWithAggregatesFilter | number
-    reroll_tokens_spent?: IntWithAggregatesFilter | number
-    repository_link?: StringNullableWithAggregatesFilter | string | null
-    progress_sheet_link?: StringNullableWithAggregatesFilter | string | null
+    playerName?: StringWithAggregatesFilter | string
+    currentRerollTokens?: IntWithAggregatesFilter | number
+    rerollTokensGained?: IntWithAggregatesFilter | number
+    rerollTokensSpent?: IntWithAggregatesFilter | number
+    repositoryLink?: StringNullableWithAggregatesFilter | string | null
+    progressSheetLink?: StringNullableWithAggregatesFilter | string | null
   }
 
   export type DayWhereInput = {
@@ -4376,10 +4376,10 @@ export namespace Prisma {
     NOT?: Enumerable<DayWhereInput>
     id?: IntFilter | number
     number?: IntFilter | number
-    part_1_completed?: BoolFilter | boolean
-    part_2_completed?: BoolFilter | boolean
-    main_rerolls_used?: IntFilter | number
-    secondary_rerolls_used?: IntFilter | number
+    part1Completed?: BoolFilter | boolean
+    part2Completed?: BoolFilter | boolean
+    mainRerollsUsed?: IntFilter | number
+    secondaryRerollsUsed?: IntFilter | number
     challengeModifierId?: IntNullableFilter | number | null
     gameId?: IntFilter | number
     game?: XOR<GameRelationFilter, GameWhereInput>
@@ -4389,10 +4389,10 @@ export namespace Prisma {
   export type DayOrderByWithRelationInput = {
     id?: SortOrder
     number?: SortOrder
-    part_1_completed?: SortOrder
-    part_2_completed?: SortOrder
-    main_rerolls_used?: SortOrder
-    secondary_rerolls_used?: SortOrder
+    part1Completed?: SortOrder
+    part2Completed?: SortOrder
+    mainRerollsUsed?: SortOrder
+    secondaryRerollsUsed?: SortOrder
     challengeModifierId?: SortOrderInput | SortOrder
     gameId?: SortOrder
     game?: GameOrderByWithRelationInput
@@ -4406,10 +4406,10 @@ export namespace Prisma {
   export type DayOrderByWithAggregationInput = {
     id?: SortOrder
     number?: SortOrder
-    part_1_completed?: SortOrder
-    part_2_completed?: SortOrder
-    main_rerolls_used?: SortOrder
-    secondary_rerolls_used?: SortOrder
+    part1Completed?: SortOrder
+    part2Completed?: SortOrder
+    mainRerollsUsed?: SortOrder
+    secondaryRerollsUsed?: SortOrder
     challengeModifierId?: SortOrderInput | SortOrder
     gameId?: SortOrder
     _count?: DayCountOrderByAggregateInput
@@ -4425,10 +4425,10 @@ export namespace Prisma {
     NOT?: Enumerable<DayScalarWhereWithAggregatesInput>
     id?: IntWithAggregatesFilter | number
     number?: IntWithAggregatesFilter | number
-    part_1_completed?: BoolWithAggregatesFilter | boolean
-    part_2_completed?: BoolWithAggregatesFilter | boolean
-    main_rerolls_used?: IntWithAggregatesFilter | number
-    secondary_rerolls_used?: IntWithAggregatesFilter | number
+    part1Completed?: BoolWithAggregatesFilter | boolean
+    part2Completed?: BoolWithAggregatesFilter | boolean
+    mainRerollsUsed?: IntWithAggregatesFilter | number
+    secondaryRerollsUsed?: IntWithAggregatesFilter | number
     challengeModifierId?: IntNullableWithAggregatesFilter | number | null
     gameId?: IntWithAggregatesFilter | number
   }
@@ -4485,88 +4485,88 @@ export namespace Prisma {
 
   export type GameCreateInput = {
     name: string
-    player_name: string
-    current_reroll_tokens?: number
-    reroll_tokens_gained?: number
-    reroll_tokens_spent?: number
-    repository_link?: string | null
-    progress_sheet_link?: string | null
+    playerName: string
+    currentRerollTokens?: number
+    rerollTokensGained?: number
+    rerollTokensSpent?: number
+    repositoryLink?: string | null
+    progressSheetLink?: string | null
     days?: DayCreateNestedManyWithoutGameInput
   }
 
   export type GameUncheckedCreateInput = {
     id?: number
     name: string
-    player_name: string
-    current_reroll_tokens?: number
-    reroll_tokens_gained?: number
-    reroll_tokens_spent?: number
-    repository_link?: string | null
-    progress_sheet_link?: string | null
+    playerName: string
+    currentRerollTokens?: number
+    rerollTokensGained?: number
+    rerollTokensSpent?: number
+    repositoryLink?: string | null
+    progressSheetLink?: string | null
     days?: DayUncheckedCreateNestedManyWithoutGameInput
   }
 
   export type GameUpdateInput = {
     name?: StringFieldUpdateOperationsInput | string
-    player_name?: StringFieldUpdateOperationsInput | string
-    current_reroll_tokens?: IntFieldUpdateOperationsInput | number
-    reroll_tokens_gained?: IntFieldUpdateOperationsInput | number
-    reroll_tokens_spent?: IntFieldUpdateOperationsInput | number
-    repository_link?: NullableStringFieldUpdateOperationsInput | string | null
-    progress_sheet_link?: NullableStringFieldUpdateOperationsInput | string | null
+    playerName?: StringFieldUpdateOperationsInput | string
+    currentRerollTokens?: IntFieldUpdateOperationsInput | number
+    rerollTokensGained?: IntFieldUpdateOperationsInput | number
+    rerollTokensSpent?: IntFieldUpdateOperationsInput | number
+    repositoryLink?: NullableStringFieldUpdateOperationsInput | string | null
+    progressSheetLink?: NullableStringFieldUpdateOperationsInput | string | null
     days?: DayUpdateManyWithoutGameNestedInput
   }
 
   export type GameUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
-    player_name?: StringFieldUpdateOperationsInput | string
-    current_reroll_tokens?: IntFieldUpdateOperationsInput | number
-    reroll_tokens_gained?: IntFieldUpdateOperationsInput | number
-    reroll_tokens_spent?: IntFieldUpdateOperationsInput | number
-    repository_link?: NullableStringFieldUpdateOperationsInput | string | null
-    progress_sheet_link?: NullableStringFieldUpdateOperationsInput | string | null
+    playerName?: StringFieldUpdateOperationsInput | string
+    currentRerollTokens?: IntFieldUpdateOperationsInput | number
+    rerollTokensGained?: IntFieldUpdateOperationsInput | number
+    rerollTokensSpent?: IntFieldUpdateOperationsInput | number
+    repositoryLink?: NullableStringFieldUpdateOperationsInput | string | null
+    progressSheetLink?: NullableStringFieldUpdateOperationsInput | string | null
     days?: DayUncheckedUpdateManyWithoutGameNestedInput
   }
 
   export type GameCreateManyInput = {
     id?: number
     name: string
-    player_name: string
-    current_reroll_tokens?: number
-    reroll_tokens_gained?: number
-    reroll_tokens_spent?: number
-    repository_link?: string | null
-    progress_sheet_link?: string | null
+    playerName: string
+    currentRerollTokens?: number
+    rerollTokensGained?: number
+    rerollTokensSpent?: number
+    repositoryLink?: string | null
+    progressSheetLink?: string | null
   }
 
   export type GameUpdateManyMutationInput = {
     name?: StringFieldUpdateOperationsInput | string
-    player_name?: StringFieldUpdateOperationsInput | string
-    current_reroll_tokens?: IntFieldUpdateOperationsInput | number
-    reroll_tokens_gained?: IntFieldUpdateOperationsInput | number
-    reroll_tokens_spent?: IntFieldUpdateOperationsInput | number
-    repository_link?: NullableStringFieldUpdateOperationsInput | string | null
-    progress_sheet_link?: NullableStringFieldUpdateOperationsInput | string | null
+    playerName?: StringFieldUpdateOperationsInput | string
+    currentRerollTokens?: IntFieldUpdateOperationsInput | number
+    rerollTokensGained?: IntFieldUpdateOperationsInput | number
+    rerollTokensSpent?: IntFieldUpdateOperationsInput | number
+    repositoryLink?: NullableStringFieldUpdateOperationsInput | string | null
+    progressSheetLink?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type GameUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
-    player_name?: StringFieldUpdateOperationsInput | string
-    current_reroll_tokens?: IntFieldUpdateOperationsInput | number
-    reroll_tokens_gained?: IntFieldUpdateOperationsInput | number
-    reroll_tokens_spent?: IntFieldUpdateOperationsInput | number
-    repository_link?: NullableStringFieldUpdateOperationsInput | string | null
-    progress_sheet_link?: NullableStringFieldUpdateOperationsInput | string | null
+    playerName?: StringFieldUpdateOperationsInput | string
+    currentRerollTokens?: IntFieldUpdateOperationsInput | number
+    rerollTokensGained?: IntFieldUpdateOperationsInput | number
+    rerollTokensSpent?: IntFieldUpdateOperationsInput | number
+    repositoryLink?: NullableStringFieldUpdateOperationsInput | string | null
+    progressSheetLink?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type DayCreateInput = {
     number: number
-    part_1_completed?: boolean
-    part_2_completed?: boolean
-    main_rerolls_used?: number
-    secondary_rerolls_used?: number
+    part1Completed?: boolean
+    part2Completed?: boolean
+    mainRerollsUsed?: number
+    secondaryRerollsUsed?: number
     game: GameCreateNestedOneWithoutDaysInput
     modifier?: ChallengeModifierCreateNestedOneWithoutDayInput
   }
@@ -4574,20 +4574,20 @@ export namespace Prisma {
   export type DayUncheckedCreateInput = {
     id?: number
     number: number
-    part_1_completed?: boolean
-    part_2_completed?: boolean
-    main_rerolls_used?: number
-    secondary_rerolls_used?: number
+    part1Completed?: boolean
+    part2Completed?: boolean
+    mainRerollsUsed?: number
+    secondaryRerollsUsed?: number
     challengeModifierId?: number | null
     gameId: number
   }
 
   export type DayUpdateInput = {
     number?: IntFieldUpdateOperationsInput | number
-    part_1_completed?: BoolFieldUpdateOperationsInput | boolean
-    part_2_completed?: BoolFieldUpdateOperationsInput | boolean
-    main_rerolls_used?: IntFieldUpdateOperationsInput | number
-    secondary_rerolls_used?: IntFieldUpdateOperationsInput | number
+    part1Completed?: BoolFieldUpdateOperationsInput | boolean
+    part2Completed?: BoolFieldUpdateOperationsInput | boolean
+    mainRerollsUsed?: IntFieldUpdateOperationsInput | number
+    secondaryRerollsUsed?: IntFieldUpdateOperationsInput | number
     game?: GameUpdateOneRequiredWithoutDaysNestedInput
     modifier?: ChallengeModifierUpdateOneWithoutDayNestedInput
   }
@@ -4595,10 +4595,10 @@ export namespace Prisma {
   export type DayUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     number?: IntFieldUpdateOperationsInput | number
-    part_1_completed?: BoolFieldUpdateOperationsInput | boolean
-    part_2_completed?: BoolFieldUpdateOperationsInput | boolean
-    main_rerolls_used?: IntFieldUpdateOperationsInput | number
-    secondary_rerolls_used?: IntFieldUpdateOperationsInput | number
+    part1Completed?: BoolFieldUpdateOperationsInput | boolean
+    part2Completed?: BoolFieldUpdateOperationsInput | boolean
+    mainRerollsUsed?: IntFieldUpdateOperationsInput | number
+    secondaryRerollsUsed?: IntFieldUpdateOperationsInput | number
     challengeModifierId?: NullableIntFieldUpdateOperationsInput | number | null
     gameId?: IntFieldUpdateOperationsInput | number
   }
@@ -4606,29 +4606,29 @@ export namespace Prisma {
   export type DayCreateManyInput = {
     id?: number
     number: number
-    part_1_completed?: boolean
-    part_2_completed?: boolean
-    main_rerolls_used?: number
-    secondary_rerolls_used?: number
+    part1Completed?: boolean
+    part2Completed?: boolean
+    mainRerollsUsed?: number
+    secondaryRerollsUsed?: number
     challengeModifierId?: number | null
     gameId: number
   }
 
   export type DayUpdateManyMutationInput = {
     number?: IntFieldUpdateOperationsInput | number
-    part_1_completed?: BoolFieldUpdateOperationsInput | boolean
-    part_2_completed?: BoolFieldUpdateOperationsInput | boolean
-    main_rerolls_used?: IntFieldUpdateOperationsInput | number
-    secondary_rerolls_used?: IntFieldUpdateOperationsInput | number
+    part1Completed?: BoolFieldUpdateOperationsInput | boolean
+    part2Completed?: BoolFieldUpdateOperationsInput | boolean
+    mainRerollsUsed?: IntFieldUpdateOperationsInput | number
+    secondaryRerollsUsed?: IntFieldUpdateOperationsInput | number
   }
 
   export type DayUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     number?: IntFieldUpdateOperationsInput | number
-    part_1_completed?: BoolFieldUpdateOperationsInput | boolean
-    part_2_completed?: BoolFieldUpdateOperationsInput | boolean
-    main_rerolls_used?: IntFieldUpdateOperationsInput | number
-    secondary_rerolls_used?: IntFieldUpdateOperationsInput | number
+    part1Completed?: BoolFieldUpdateOperationsInput | boolean
+    part2Completed?: BoolFieldUpdateOperationsInput | boolean
+    mainRerollsUsed?: IntFieldUpdateOperationsInput | number
+    secondaryRerollsUsed?: IntFieldUpdateOperationsInput | number
     challengeModifierId?: NullableIntFieldUpdateOperationsInput | number | null
     gameId?: IntFieldUpdateOperationsInput | number
   }
@@ -4761,48 +4761,48 @@ export namespace Prisma {
   export type GameCountOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
-    player_name?: SortOrder
-    current_reroll_tokens?: SortOrder
-    reroll_tokens_gained?: SortOrder
-    reroll_tokens_spent?: SortOrder
-    repository_link?: SortOrder
-    progress_sheet_link?: SortOrder
+    playerName?: SortOrder
+    currentRerollTokens?: SortOrder
+    rerollTokensGained?: SortOrder
+    rerollTokensSpent?: SortOrder
+    repositoryLink?: SortOrder
+    progressSheetLink?: SortOrder
   }
 
   export type GameAvgOrderByAggregateInput = {
     id?: SortOrder
-    current_reroll_tokens?: SortOrder
-    reroll_tokens_gained?: SortOrder
-    reroll_tokens_spent?: SortOrder
+    currentRerollTokens?: SortOrder
+    rerollTokensGained?: SortOrder
+    rerollTokensSpent?: SortOrder
   }
 
   export type GameMaxOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
-    player_name?: SortOrder
-    current_reroll_tokens?: SortOrder
-    reroll_tokens_gained?: SortOrder
-    reroll_tokens_spent?: SortOrder
-    repository_link?: SortOrder
-    progress_sheet_link?: SortOrder
+    playerName?: SortOrder
+    currentRerollTokens?: SortOrder
+    rerollTokensGained?: SortOrder
+    rerollTokensSpent?: SortOrder
+    repositoryLink?: SortOrder
+    progressSheetLink?: SortOrder
   }
 
   export type GameMinOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
-    player_name?: SortOrder
-    current_reroll_tokens?: SortOrder
-    reroll_tokens_gained?: SortOrder
-    reroll_tokens_spent?: SortOrder
-    repository_link?: SortOrder
-    progress_sheet_link?: SortOrder
+    playerName?: SortOrder
+    currentRerollTokens?: SortOrder
+    rerollTokensGained?: SortOrder
+    rerollTokensSpent?: SortOrder
+    repositoryLink?: SortOrder
+    progressSheetLink?: SortOrder
   }
 
   export type GameSumOrderByAggregateInput = {
     id?: SortOrder
-    current_reroll_tokens?: SortOrder
-    reroll_tokens_gained?: SortOrder
-    reroll_tokens_spent?: SortOrder
+    currentRerollTokens?: SortOrder
+    rerollTokensGained?: SortOrder
+    rerollTokensSpent?: SortOrder
   }
 
   export type StringNullableWithAggregatesFilter = {
@@ -4852,10 +4852,10 @@ export namespace Prisma {
   export type DayCountOrderByAggregateInput = {
     id?: SortOrder
     number?: SortOrder
-    part_1_completed?: SortOrder
-    part_2_completed?: SortOrder
-    main_rerolls_used?: SortOrder
-    secondary_rerolls_used?: SortOrder
+    part1Completed?: SortOrder
+    part2Completed?: SortOrder
+    mainRerollsUsed?: SortOrder
+    secondaryRerollsUsed?: SortOrder
     challengeModifierId?: SortOrder
     gameId?: SortOrder
   }
@@ -4863,8 +4863,8 @@ export namespace Prisma {
   export type DayAvgOrderByAggregateInput = {
     id?: SortOrder
     number?: SortOrder
-    main_rerolls_used?: SortOrder
-    secondary_rerolls_used?: SortOrder
+    mainRerollsUsed?: SortOrder
+    secondaryRerollsUsed?: SortOrder
     challengeModifierId?: SortOrder
     gameId?: SortOrder
   }
@@ -4872,10 +4872,10 @@ export namespace Prisma {
   export type DayMaxOrderByAggregateInput = {
     id?: SortOrder
     number?: SortOrder
-    part_1_completed?: SortOrder
-    part_2_completed?: SortOrder
-    main_rerolls_used?: SortOrder
-    secondary_rerolls_used?: SortOrder
+    part1Completed?: SortOrder
+    part2Completed?: SortOrder
+    mainRerollsUsed?: SortOrder
+    secondaryRerollsUsed?: SortOrder
     challengeModifierId?: SortOrder
     gameId?: SortOrder
   }
@@ -4883,10 +4883,10 @@ export namespace Prisma {
   export type DayMinOrderByAggregateInput = {
     id?: SortOrder
     number?: SortOrder
-    part_1_completed?: SortOrder
-    part_2_completed?: SortOrder
-    main_rerolls_used?: SortOrder
-    secondary_rerolls_used?: SortOrder
+    part1Completed?: SortOrder
+    part2Completed?: SortOrder
+    mainRerollsUsed?: SortOrder
+    secondaryRerollsUsed?: SortOrder
     challengeModifierId?: SortOrder
     gameId?: SortOrder
   }
@@ -4894,8 +4894,8 @@ export namespace Prisma {
   export type DaySumOrderByAggregateInput = {
     id?: SortOrder
     number?: SortOrder
-    main_rerolls_used?: SortOrder
-    secondary_rerolls_used?: SortOrder
+    mainRerollsUsed?: SortOrder
+    secondaryRerollsUsed?: SortOrder
     challengeModifierId?: SortOrder
     gameId?: SortOrder
   }
@@ -5228,20 +5228,20 @@ export namespace Prisma {
 
   export type DayCreateWithoutModifierInput = {
     number: number
-    part_1_completed?: boolean
-    part_2_completed?: boolean
-    main_rerolls_used?: number
-    secondary_rerolls_used?: number
+    part1Completed?: boolean
+    part2Completed?: boolean
+    mainRerollsUsed?: number
+    secondaryRerollsUsed?: number
     game: GameCreateNestedOneWithoutDaysInput
   }
 
   export type DayUncheckedCreateWithoutModifierInput = {
     id?: number
     number: number
-    part_1_completed?: boolean
-    part_2_completed?: boolean
-    main_rerolls_used?: number
-    secondary_rerolls_used?: number
+    part1Completed?: boolean
+    part2Completed?: boolean
+    mainRerollsUsed?: number
+    secondaryRerollsUsed?: number
     gameId: number
   }
 
@@ -5277,30 +5277,30 @@ export namespace Prisma {
     NOT?: Enumerable<DayScalarWhereInput>
     id?: IntFilter | number
     number?: IntFilter | number
-    part_1_completed?: BoolFilter | boolean
-    part_2_completed?: BoolFilter | boolean
-    main_rerolls_used?: IntFilter | number
-    secondary_rerolls_used?: IntFilter | number
+    part1Completed?: BoolFilter | boolean
+    part2Completed?: BoolFilter | boolean
+    mainRerollsUsed?: IntFilter | number
+    secondaryRerollsUsed?: IntFilter | number
     challengeModifierId?: IntNullableFilter | number | null
     gameId?: IntFilter | number
   }
 
   export type DayCreateWithoutGameInput = {
     number: number
-    part_1_completed?: boolean
-    part_2_completed?: boolean
-    main_rerolls_used?: number
-    secondary_rerolls_used?: number
+    part1Completed?: boolean
+    part2Completed?: boolean
+    mainRerollsUsed?: number
+    secondaryRerollsUsed?: number
     modifier?: ChallengeModifierCreateNestedOneWithoutDayInput
   }
 
   export type DayUncheckedCreateWithoutGameInput = {
     id?: number
     number: number
-    part_1_completed?: boolean
-    part_2_completed?: boolean
-    main_rerolls_used?: number
-    secondary_rerolls_used?: number
+    part1Completed?: boolean
+    part2Completed?: boolean
+    mainRerollsUsed?: number
+    secondaryRerollsUsed?: number
     challengeModifierId?: number | null
   }
 
@@ -5332,23 +5332,23 @@ export namespace Prisma {
 
   export type GameCreateWithoutDaysInput = {
     name: string
-    player_name: string
-    current_reroll_tokens?: number
-    reroll_tokens_gained?: number
-    reroll_tokens_spent?: number
-    repository_link?: string | null
-    progress_sheet_link?: string | null
+    playerName: string
+    currentRerollTokens?: number
+    rerollTokensGained?: number
+    rerollTokensSpent?: number
+    repositoryLink?: string | null
+    progressSheetLink?: string | null
   }
 
   export type GameUncheckedCreateWithoutDaysInput = {
     id?: number
     name: string
-    player_name: string
-    current_reroll_tokens?: number
-    reroll_tokens_gained?: number
-    reroll_tokens_spent?: number
-    repository_link?: string | null
-    progress_sheet_link?: string | null
+    playerName: string
+    currentRerollTokens?: number
+    rerollTokensGained?: number
+    rerollTokensSpent?: number
+    repositoryLink?: string | null
+    progressSheetLink?: string | null
   }
 
   export type GameCreateOrConnectWithoutDaysInput = {
@@ -5381,23 +5381,23 @@ export namespace Prisma {
 
   export type GameUpdateWithoutDaysInput = {
     name?: StringFieldUpdateOperationsInput | string
-    player_name?: StringFieldUpdateOperationsInput | string
-    current_reroll_tokens?: IntFieldUpdateOperationsInput | number
-    reroll_tokens_gained?: IntFieldUpdateOperationsInput | number
-    reroll_tokens_spent?: IntFieldUpdateOperationsInput | number
-    repository_link?: NullableStringFieldUpdateOperationsInput | string | null
-    progress_sheet_link?: NullableStringFieldUpdateOperationsInput | string | null
+    playerName?: StringFieldUpdateOperationsInput | string
+    currentRerollTokens?: IntFieldUpdateOperationsInput | number
+    rerollTokensGained?: IntFieldUpdateOperationsInput | number
+    rerollTokensSpent?: IntFieldUpdateOperationsInput | number
+    repositoryLink?: NullableStringFieldUpdateOperationsInput | string | null
+    progressSheetLink?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type GameUncheckedUpdateWithoutDaysInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
-    player_name?: StringFieldUpdateOperationsInput | string
-    current_reroll_tokens?: IntFieldUpdateOperationsInput | number
-    reroll_tokens_gained?: IntFieldUpdateOperationsInput | number
-    reroll_tokens_spent?: IntFieldUpdateOperationsInput | number
-    repository_link?: NullableStringFieldUpdateOperationsInput | string | null
-    progress_sheet_link?: NullableStringFieldUpdateOperationsInput | string | null
+    playerName?: StringFieldUpdateOperationsInput | string
+    currentRerollTokens?: IntFieldUpdateOperationsInput | number
+    rerollTokensGained?: IntFieldUpdateOperationsInput | number
+    rerollTokensSpent?: IntFieldUpdateOperationsInput | number
+    repositoryLink?: NullableStringFieldUpdateOperationsInput | string | null
+    progressSheetLink?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type ChallengeModifierUpsertWithoutDayInput = {
@@ -5421,78 +5421,78 @@ export namespace Prisma {
   export type DayCreateManyModifierInput = {
     id?: number
     number: number
-    part_1_completed?: boolean
-    part_2_completed?: boolean
-    main_rerolls_used?: number
-    secondary_rerolls_used?: number
+    part1Completed?: boolean
+    part2Completed?: boolean
+    mainRerollsUsed?: number
+    secondaryRerollsUsed?: number
     gameId: number
   }
 
   export type DayUpdateWithoutModifierInput = {
     number?: IntFieldUpdateOperationsInput | number
-    part_1_completed?: BoolFieldUpdateOperationsInput | boolean
-    part_2_completed?: BoolFieldUpdateOperationsInput | boolean
-    main_rerolls_used?: IntFieldUpdateOperationsInput | number
-    secondary_rerolls_used?: IntFieldUpdateOperationsInput | number
+    part1Completed?: BoolFieldUpdateOperationsInput | boolean
+    part2Completed?: BoolFieldUpdateOperationsInput | boolean
+    mainRerollsUsed?: IntFieldUpdateOperationsInput | number
+    secondaryRerollsUsed?: IntFieldUpdateOperationsInput | number
     game?: GameUpdateOneRequiredWithoutDaysNestedInput
   }
 
   export type DayUncheckedUpdateWithoutModifierInput = {
     id?: IntFieldUpdateOperationsInput | number
     number?: IntFieldUpdateOperationsInput | number
-    part_1_completed?: BoolFieldUpdateOperationsInput | boolean
-    part_2_completed?: BoolFieldUpdateOperationsInput | boolean
-    main_rerolls_used?: IntFieldUpdateOperationsInput | number
-    secondary_rerolls_used?: IntFieldUpdateOperationsInput | number
+    part1Completed?: BoolFieldUpdateOperationsInput | boolean
+    part2Completed?: BoolFieldUpdateOperationsInput | boolean
+    mainRerollsUsed?: IntFieldUpdateOperationsInput | number
+    secondaryRerollsUsed?: IntFieldUpdateOperationsInput | number
     gameId?: IntFieldUpdateOperationsInput | number
   }
 
   export type DayUncheckedUpdateManyWithoutDayInput = {
     id?: IntFieldUpdateOperationsInput | number
     number?: IntFieldUpdateOperationsInput | number
-    part_1_completed?: BoolFieldUpdateOperationsInput | boolean
-    part_2_completed?: BoolFieldUpdateOperationsInput | boolean
-    main_rerolls_used?: IntFieldUpdateOperationsInput | number
-    secondary_rerolls_used?: IntFieldUpdateOperationsInput | number
+    part1Completed?: BoolFieldUpdateOperationsInput | boolean
+    part2Completed?: BoolFieldUpdateOperationsInput | boolean
+    mainRerollsUsed?: IntFieldUpdateOperationsInput | number
+    secondaryRerollsUsed?: IntFieldUpdateOperationsInput | number
     gameId?: IntFieldUpdateOperationsInput | number
   }
 
   export type DayCreateManyGameInput = {
     id?: number
     number: number
-    part_1_completed?: boolean
-    part_2_completed?: boolean
-    main_rerolls_used?: number
-    secondary_rerolls_used?: number
+    part1Completed?: boolean
+    part2Completed?: boolean
+    mainRerollsUsed?: number
+    secondaryRerollsUsed?: number
     challengeModifierId?: number | null
   }
 
   export type DayUpdateWithoutGameInput = {
     number?: IntFieldUpdateOperationsInput | number
-    part_1_completed?: BoolFieldUpdateOperationsInput | boolean
-    part_2_completed?: BoolFieldUpdateOperationsInput | boolean
-    main_rerolls_used?: IntFieldUpdateOperationsInput | number
-    secondary_rerolls_used?: IntFieldUpdateOperationsInput | number
+    part1Completed?: BoolFieldUpdateOperationsInput | boolean
+    part2Completed?: BoolFieldUpdateOperationsInput | boolean
+    mainRerollsUsed?: IntFieldUpdateOperationsInput | number
+    secondaryRerollsUsed?: IntFieldUpdateOperationsInput | number
     modifier?: ChallengeModifierUpdateOneWithoutDayNestedInput
   }
 
   export type DayUncheckedUpdateWithoutGameInput = {
     id?: IntFieldUpdateOperationsInput | number
     number?: IntFieldUpdateOperationsInput | number
-    part_1_completed?: BoolFieldUpdateOperationsInput | boolean
-    part_2_completed?: BoolFieldUpdateOperationsInput | boolean
-    main_rerolls_used?: IntFieldUpdateOperationsInput | number
-    secondary_rerolls_used?: IntFieldUpdateOperationsInput | number
+    part1Completed?: BoolFieldUpdateOperationsInput | boolean
+    part2Completed?: BoolFieldUpdateOperationsInput | boolean
+    mainRerollsUsed?: IntFieldUpdateOperationsInput | number
+    secondaryRerollsUsed?: IntFieldUpdateOperationsInput | number
     challengeModifierId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type DayUncheckedUpdateManyWithoutDaysInput = {
     id?: IntFieldUpdateOperationsInput | number
     number?: IntFieldUpdateOperationsInput | number
-    part_1_completed?: BoolFieldUpdateOperationsInput | boolean
-    part_2_completed?: BoolFieldUpdateOperationsInput | boolean
-    main_rerolls_used?: IntFieldUpdateOperationsInput | number
-    secondary_rerolls_used?: IntFieldUpdateOperationsInput | number
+    part1Completed?: BoolFieldUpdateOperationsInput | boolean
+    part2Completed?: BoolFieldUpdateOperationsInput | boolean
+    mainRerollsUsed?: IntFieldUpdateOperationsInput | number
+    secondaryRerollsUsed?: IntFieldUpdateOperationsInput | number
     challengeModifierId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 

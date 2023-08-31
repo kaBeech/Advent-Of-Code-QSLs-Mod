@@ -21,26 +21,26 @@ model ChallengeModifier {
 }
 
 model Game {
-  id                    Int     @id @default(autoincrement())
-  name                  String  @unique
-  player_name           String
-  current_reroll_tokens Int     @default(7)
-  reroll_tokens_gained  Int     @default(7)
-  reroll_tokens_spent   Int     @default(0)
-  repository_link       String?
-  progress_sheet_link   String?
-  days                  Day[]
+  id                  Int     @id @default(autoincrement())
+  name                String  @unique
+  playerName          String
+  currentRerollTokens Int     @default(7)
+  rerollTokensGained  Int     @default(7)
+  rerollTokensSpent   Int     @default(0)
+  repositoryLink      String?
+  progressSheetLink   String?
+  days                Day[]
 }
 
 model Day {
-  id                     Int                @id @default(autoincrement())
-  game                   Game               @relation(fields: [gameId], references: [id])
-  number                 Int
-  part_1_completed       Boolean            @default(false)
-  part_2_completed       Boolean            @default(false)
-  modifier               ChallengeModifier? @relation(fields: [challengeModifierId], references: [id])
-  main_rerolls_used      Int                @default(0)
-  secondary_rerolls_used Int                @default(0)
-  challengeModifierId    Int?
-  gameId                 Int
+  id                   Int                @id @default(autoincrement())
+  game                 Game               @relation(fields: [gameId], references: [id])
+  number               Int
+  part1Completed       Boolean            @default(false)
+  part2Completed       Boolean            @default(false)
+  modifier             ChallengeModifier? @relation(fields: [challengeModifierId], references: [id])
+  mainRerollsUsed      Int                @default(0)
+  secondaryRerollsUsed Int                @default(0)
+  challengeModifierId  Int?
+  gameId               Int
 }
