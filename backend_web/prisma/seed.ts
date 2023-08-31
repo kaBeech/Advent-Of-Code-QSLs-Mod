@@ -133,8 +133,10 @@ const challengeModifierData: Prisma.ChallengeModifierCreateInput[] = [
 ];
 
 for (const u of challengeModifierData) {
-  const challengeModifier = await prisma.challengeModifier.create({
-    data: u,
+  const challengeModifier = await prisma.challengeModifier.upsert({
+    where: { name: u.name },
+    update: {},
+    create: u,
   });
   console.log(`Created challenge modifier with id: ${challengeModifier.id}`);
 }
