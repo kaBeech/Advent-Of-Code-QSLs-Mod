@@ -20,7 +20,7 @@ router
       "You have successfully pinged the Advent Of Code QSL's Mod API!";
   })
   /**
-   * See All Games
+   * See All Games (eventually will be Continue Game)
    */
   .get("/game", (context) => {
     context.response.body = getAllGames();
@@ -36,9 +36,11 @@ router
    * Start New Game
    */
   .post("/game", async (context) => {
-    const { name, playerName } = await context.request.body({ type: "json" })
+    const { name, playerName, year } = await context.request.body({
+      type: "json",
+    })
       .value;
-    context.response.body = createGame(name, playerName);
+    context.response.body = createGame(name, playerName, year);
   })
   /**
    * Delete Game

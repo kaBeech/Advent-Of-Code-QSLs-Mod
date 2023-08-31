@@ -116,6 +116,7 @@ exports.Prisma.GameScalarFieldEnum = {
   id: 'id',
   name: 'name',
   playerName: 'playerName',
+  year: 'year',
   currentRerollTokens: 'currentRerollTokens',
   rerollTokensGained: 'rerollTokensGained',
   rerollTokensSpent: 'rerollTokensSpent',
