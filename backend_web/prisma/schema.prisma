@@ -13,16 +13,34 @@ datasource db {
 }
 
 model ChallengeModifier {
-  id                  Int                @id @default(autoincrement())
-  name                String             @unique
-  text                String
-  secondaryModifier   SecondaryModifier? @relation(fields: [secondaryModifierId], references: [id])
-  secondaryModifierId Int?
+  id      Int      @id @default(autoincrement())
+  name    String   @unique
+  text    String
+  options String[]
+  Day     Day[]
 }
 
-model SecondaryModifier {
-  id                Int                 @id @default(autoincrement())
-  name              String              @unique
-  values            String[]
-  ChallengeModifier ChallengeModifier[]
+model Game {
+  id                    Int     @id @default(autoincrement())
+  name                  String  @unique
+  player_name           String
+  current_reroll_tokens Int     @default(7)
+  reroll_tokens_gained  Int     @default(7)
+  reroll_tokens_spent   Int     @default(0)
+  repository_link       String?
+  progress_sheet_link   String?
+  days                  Day[]
+}
+
+model Day {
+  id                     Int                @id @default(autoincrement())
+  game                   Game               @relation(fields: [gameId], references: [id])
+  number                 Int
+  part_1_completed       Boolean            @default(false)
+  part_2_completed       Boolean            @default(false)
+  modifier               ChallengeModifier? @relation(fields: [challengeModifierId], references: [id])
+  main_rerolls_used      Int                @default(0)
+  secondary_rerolls_used Int                @default(0)
+  challengeModifierId    Int?
+  gameId                 Int
 }
