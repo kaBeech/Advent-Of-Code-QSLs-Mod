@@ -1,13 +1,16 @@
 import {
   getAllChallengeModifiers,
+  getGameById,
   getModifierOptionByChallengeModifierId,
   updateDayChallengeModifier,
   updateDayModifierOption,
   updateDayPart1CompletionStatus,
   updateDayPart2CompletionStatus,
+  updateGameRerollTokensGained,
 } from "../db.ts";
 import { Day } from "../generated/client/deno/index.d.ts";
 import { pickRandomly } from "../util/pickRandomly.ts";
+import { GameController } from "./GameController.ts";
 import { rollChallengeModifier } from "./rollChallengeModifier.ts";
 import { rollModifierOption } from "./rollModifierOption.ts";
 
@@ -40,18 +43,29 @@ const initialModifierOptionRoller = (state: DayControllerState) => ({
   },
 });
 
+const getGame = async (gameId: number) => {
+  const game = await getGameById(gameId);
+  return game;
+};
+
 const part1Completer = (state: DayControllerState) => ({
-  completePart1: () => {
+  completePart1: async () => {
     state.day.part1Completed = true;
     updateDayPart1CompletionStatus(state.day.id, true);
+    const game = await getGameById(state.day.gameId);
+    GameController(game!).adjustRerollTokensGained(1);
+    GameController(game!).adjustCurrentRerollTokens(1);
     return state.day;
   },
 });
 
 const part2Completer = (state: DayControllerState) => ({
-  completePart2: () => {
+  completePart2: async () => {
     state.day.part2Completed = true;
     updateDayPart2CompletionStatus(state.day.id, true);
+    const game = await getGame(state.day.gameId);
+    GameController(game!).adjustRerollTokensGained(1);
+    GameController(game!).adjustCurrentRerollTokens(1);
     return state.day;
   },
 });
