@@ -131,7 +131,7 @@ const modifierOptionReroller = (state: DayControllerState) => ({
 
 const part1Completer = (state: DayControllerState) => ({
   completePart1: async () => {
-    verifyDayIsCurrent(state);
+    await verifyDayIsCurrent(state);
     if (state.day.part1Completed) {
       throw new Error("Part 1 already completed");
     }
