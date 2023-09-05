@@ -133,7 +133,6 @@ const DayController = (
 
   return {
     ...initialChallengeModifierRoller(state),
-    ...initialModifierOptionRoller(state),
     ...challengeModifierReroller(state),
     ...modifierOptionReroller(state),
     ...part1Completer(state),
