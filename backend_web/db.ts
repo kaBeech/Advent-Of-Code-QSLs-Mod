@@ -188,6 +188,15 @@ export async function getDayById(id: number) {
   return day;
 }
 
+export async function getDaysByGameId(gameId: number) {
+  const days = await prisma.day.findMany({
+    where: {
+      gameId,
+    },
+  });
+  return days;
+}
+
 export async function createDay(
   gameId: number,
   dayNumber: number,
@@ -304,7 +313,7 @@ export async function getAllChallengeModifiers() {
  * Modifier Option CRUD
  */
 
-export async function getModifierOptionByChallengeModifierId(
+export async function getModifierOptionsByChallengeModifierId(
   challengeModifierId: number,
 ) {
   const modifierOptions = await prisma.modifierOption.findMany({
