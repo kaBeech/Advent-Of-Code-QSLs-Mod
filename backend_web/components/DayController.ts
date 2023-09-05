@@ -43,11 +43,6 @@ const initialModifierOptionRoller = (state: DayControllerState) => ({
   },
 });
 
-const getGame = async (gameId: number) => {
-  const game = await getGameById(gameId);
-  return game;
-};
-
 const part1Completer = (state: DayControllerState) => ({
   completePart1: async () => {
     state.day.part1Completed = true;
@@ -63,7 +58,7 @@ const part2Completer = (state: DayControllerState) => ({
   completePart2: async () => {
     state.day.part2Completed = true;
     updateDayPart2CompletionStatus(state.day.id, true);
-    const game = await getGame(state.day.gameId);
+    const game = await getGameById(state.day.gameId);
     GameController(game!).adjustRerollTokensGained(1);
     GameController(game!).adjustCurrentRerollTokens(1);
     return state.day;
