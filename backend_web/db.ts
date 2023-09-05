@@ -91,6 +91,36 @@ export async function updateGamePlayerName(
   return result;
 }
 
+export async function updateGameCurrentDay(
+  id: number,
+  currentDay: number,
+) {
+  const result = await prisma.game.update({
+    where: {
+      id,
+    },
+    data: {
+      currentDay,
+    },
+  });
+  return result;
+}
+
+export async function updateGameCurrentDayCompletionStatus(
+  id: number,
+  currentDayCompleted: boolean,
+) {
+  const result = await prisma.game.update({
+    where: {
+      id,
+    },
+    data: {
+      currentDayCompleted,
+    },
+  });
+  return result;
+}
+
 export async function updateGameCurrentRerollTokens(
   id: number,
   currentRerollTokens: number,

@@ -68,6 +68,7 @@ const part2Completer = (state: DayControllerState) => ({
     const game = await getGameById(state.day.gameId);
     GameController(game!).adjustRerollTokensGained(1);
     GameController(game!).adjustCurrentRerollTokens(1);
+    GameController(game!).completeCurrentDay();
     return state.day;
   },
 });

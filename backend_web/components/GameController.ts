@@ -1,4 +1,7 @@
 import {
+  createDay,
+  updateGameCurrentDay,
+  updateGameCurrentDayCompletionStatus,
   updateGameCurrentRerollTokens,
   updateGameName,
   updateGamePlayerName,
@@ -70,6 +73,39 @@ const progressSheetLinkSetter = (state: GameControllerState) => ({
   },
 });
 
+const nextDayStarter = (state: GameControllerState) => ({
+  startNextDay: () => {
+    if (state.game.currentDay === 25) {
+      throw new Error("It's already Christmas (Day 25)!!!");
+    }
+    if (!state.game.currentDayCompleted) {
+      throw new Error(
+        `Day ${state.game.currentDay} has not been completed yet`,
+      );
+    }
+    state.game.currentDay += 1;
+    updateGameCurrentDay(state.game.id, state.game.currentDay);
+    createDay(state.game.id, state.game.currentDay);
+    return state.game;
+  },
+});
+
+const currentDayCompleter = (state: GameControllerState) => ({
+  completeCurrentDay: () => {
+    if (state.game.currentDayCompleted === true) {
+      throw new Error(
+        `Current day (${state.game.currentDay}) already completed`,
+      );
+    }
+    state.game.currentDayCompleted = true;
+    updateGameCurrentDayCompletionStatus(
+      state.game.id,
+      true,
+    );
+    return state.game;
+  },
+});
+
 const GameController = (
   game: Game,
 ) => {
@@ -85,6 +121,8 @@ const GameController = (
     ...rerollTokensSpentAdjuster(state),
     ...repositoryLinkSetter(state),
     ...progressSheetLinkSetter(state),
+    ...nextDayStarter(state),
+    ...currentDayCompleter(state),
   };
 };
 
