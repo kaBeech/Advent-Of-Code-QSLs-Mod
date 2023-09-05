@@ -1,6 +1,7 @@
 import { PrismaClient } from "./generated/client/deno/edge.ts";
 import { config } from "https://deno.land/std@0.163.0/dotenv/mod.ts";
 import { ChallengeModifier, Day } from "./generated/client/deno/index.d.ts";
+import { ModifierOption } from "./generated/client/index.d.ts";
 
 const envVars = await config();
 
@@ -171,6 +172,21 @@ export async function updateDayChallengeModifier(
   return result;
 }
 
+export async function updateDayModifierOption(
+  id: number,
+  modifierOption: ModifierOption,
+) {
+  const result = await prisma.day.update({
+    where: {
+      id,
+    },
+    data: {
+      modifierOptionId: modifierOption.id,
+    },
+  });
+  return result;
+}
+
 export async function updateDayMainRerollsUsed(
   id: number,
   mainRerollsUsed: number,
@@ -208,4 +224,19 @@ export async function updateDaySecondaryRerollsUsed(
 export async function getAllChallengeModifiers() {
   const challengeModifiers = await prisma.challengeModifier.findMany();
   return challengeModifiers;
+}
+
+/**
+ * Modifier Option CRUD
+ */
+
+export async function getModifierOptionByChallengeModifier(
+  challengeModifier: ChallengeModifier,
+) {
+  const modifierOptions = await prisma.modifierOption.findMany({
+    where: {
+      challengeModifierId: challengeModifier.id,
+    },
+  });
+  return modifierOptions;
 }
