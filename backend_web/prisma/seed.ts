@@ -27,33 +27,14 @@ const challengeModifierData: Prisma.ChallengeModifierCreateInput[] = [
   {
     name: "language_box_1",
     text: "using a random programming language from Language Box 1: ",
-    options: [
-      "JavaScript",
-      "TypeScript",
-      "Python",
-      "R",
-      "Ruby",
-      "Java",
-      "C",
-      "Go",
-    ],
   },
   {
     name: "language_box_2",
     text: "using a random programming language from Language Box 2: ",
-    options: ["C++", "Rust", "LISP", "Haskell", "Scala", "Prolog", "C#"],
   },
   {
     name: "language_box_3",
     text: "using a random programming language from Language Box 3: ",
-    options: [
-      "WebAssembly",
-      "ALGOL",
-      "COBOL",
-      "FORTRAN",
-      "LOLCODE",
-      "JSFuck",
-    ],
   },
   {
     name: "testing",
@@ -140,6 +121,198 @@ for (const u of challengeModifierData) {
   });
   console.log(`Created challenge modifier with id: ${challengeModifier.id}`);
 }
+
+const modifierOptionData: Prisma.ModifierOptionCreateInput[] = [
+  {
+    name: "language_box_1_javascript",
+    text: "JavaScript",
+    challengeModifier: {
+      connect: {
+        name: "language_box_1",
+      },
+    },
+  },
+  {
+    name: "language_box_1_typescript",
+    text: "TypeScript",
+    challengeModifier: {
+      connect: {
+        name: "language_box_1",
+      },
+    },
+  },
+  {
+    name: "language_box_1_python",
+    text: "Python",
+    challengeModifier: {
+      connect: {
+        name: "language_box_1",
+      },
+    },
+  },
+  {
+    name: "language_box_1_r",
+    text: "R",
+    challengeModifier: {
+      connect: {
+        name: "language_box_1",
+      },
+    },
+  },
+  {
+    name: "language_box_1_ruby",
+    text: "Ruby",
+    challengeModifier: {
+      connect: {
+        name: "language_box_1",
+      },
+    },
+  },
+  {
+    name: "language_box_1_java",
+    text: "Java",
+    challengeModifier: {
+      connect: {
+        name: "language_box_1",
+      },
+    },
+  },
+  {
+    name: "language_box_1_c",
+    text: "C",
+    challengeModifier: {
+      connect: {
+        name: "language_box_1",
+      },
+    },
+  },
+  {
+    name: "language_box_1_go",
+    text: "Go",
+    challengeModifier: {
+      connect: {
+        name: "language_box_1",
+      },
+    },
+  },
+  {
+    name: "language_box_2_cpp",
+    text: "C++",
+    challengeModifier: {
+      connect: {
+        name: "language_box_2",
+      },
+    },
+  },
+  {
+    name: "language_box_2_rust",
+    text: "Rust",
+    challengeModifier: {
+      connect: {
+        name: "language_box_2",
+      },
+    },
+  },
+  {
+    name: "language_box_2_lisp",
+    text: "LISP",
+    challengeModifier: {
+      connect: {
+        name: "language_box_2",
+      },
+    },
+  },
+  {
+    name: "language_box_2_haskell",
+    text: "Haskell",
+    challengeModifier: {
+      connect: {
+        name: "language_box_2",
+      },
+    },
+  },
+  {
+    name: "language_box_2_scala",
+    text: "Scala",
+    challengeModifier: {
+      connect: {
+        name: "language_box_2",
+      },
+    },
+  },
+  {
+    name: "language_box_2_prolog",
+    text: "Prolog",
+    challengeModifier: {
+      connect: {
+        name: "language_box_2",
+      },
+    },
+  },
+  {
+    name: "language_box_2_csharp",
+    text: "C#",
+    challengeModifier: {
+      connect: {
+        name: "language_box_2",
+      },
+    },
+  },
+  {
+    name: "language_box_3_webassembly",
+    text: "WebAssembly",
+    challengeModifier: {
+      connect: {
+        name: "language_box_3",
+      },
+    },
+  },
+  {
+    name: "language_box_3_algol",
+    text: "ALGOL",
+    challengeModifier: {
+      connect: {
+        name: "language_box_3",
+      },
+    },
+  },
+  {
+    name: "language_box_3_cobol",
+    text: "COBOL",
+    challengeModifier: {
+      connect: {
+        name: "language_box_3",
+      },
+    },
+  },
+  {
+    name: "language_box_3_fortran",
+    text: "FORTRAN",
+    challengeModifier: {
+      connect: {
+        name: "language_box_3",
+      },
+    },
+  },
+  {
+    name: "language_box_3_lolcode",
+    text: "LOLCODE",
+    challengeModifier: {
+      connect: {
+        name: "language_box_3",
+      },
+    },
+  },
+  {
+    name: "language_box_3_jsfuck",
+    text: "JSFuck",
+    challengeModifier: {
+      connect: {
+        name: "language_box_3",
+      },
+    },
+  },
+];
 
 console.log(`Seeding finished.`);
 

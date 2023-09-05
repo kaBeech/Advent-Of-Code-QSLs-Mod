@@ -13,11 +13,20 @@ datasource db {
 }
 
 model ChallengeModifier {
-  id      Int      @id @default(autoincrement())
-  name    String   @unique
-  text    String
-  options String[]
-  Day     Day[]
+  id             Int              @id @default(autoincrement())
+  name           String           @unique
+  text           String
+  ModifierOption ModifierOption[]
+  Day            Day[]
+}
+
+model ModifierOption {
+  id                  Int                @id @default(autoincrement())
+  name                String             @unique
+  text                String
+  Day                 Day[]
+  ChallengeModifier   ChallengeModifier? @relation(fields: [challengeModifierId], references: [id])
+  challengeModifierId Int?
 }
 
 model Game {
@@ -30,7 +39,7 @@ model Game {
   rerollTokensSpent   Int     @default(0)
   repositoryLink      String?
   progressSheetLink   String?
-  days                Day[]
+  Day                 Day[]
 }
 
 model Day {
@@ -40,8 +49,10 @@ model Day {
   part1Completed       Boolean            @default(false)
   part2Completed       Boolean            @default(false)
   modifier             ChallengeModifier? @relation(fields: [challengeModifierId], references: [id])
+  modifierOption       ModifierOption?    @relation(fields: [modifierOptionId], references: [id])
   mainRerollsUsed      Int                @default(0)
   secondaryRerollsUsed Int                @default(0)
   challengeModifierId  Int?
+  modifierOptionId     Int?
   gameId               Int
 }

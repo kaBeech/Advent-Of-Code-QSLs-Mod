@@ -15,13 +15,13 @@ export type PrismaPromise<T> = $Public.PrismaPromise<T>
 export type ChallengeModifierPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
   name: "ChallengeModifier"
   objects: {
+    ModifierOption: ModifierOptionPayload<ExtArgs>[]
     Day: DayPayload<ExtArgs>[]
   }
   scalars: $Extensions.GetResult<{
     id: number
     name: string
     text: string
-    options: string[]
   }, ExtArgs["result"]["challengeModifier"]>
   composites: {}
 }
@@ -31,10 +31,30 @@ export type ChallengeModifierPayload<ExtArgs extends $Extensions.Args = $Extensi
  * 
  */
 export type ChallengeModifier = runtime.Types.DefaultSelection<ChallengeModifierPayload>
+export type ModifierOptionPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  name: "ModifierOption"
+  objects: {
+    Day: DayPayload<ExtArgs>[]
+    ChallengeModifier: ChallengeModifierPayload<ExtArgs> | null
+  }
+  scalars: $Extensions.GetResult<{
+    id: number
+    name: string
+    text: string
+    challengeModifierId: number | null
+  }, ExtArgs["result"]["modifierOption"]>
+  composites: {}
+}
+
+/**
+ * Model ModifierOption
+ * 
+ */
+export type ModifierOption = runtime.Types.DefaultSelection<ModifierOptionPayload>
 export type GamePayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
   name: "Game"
   objects: {
-    days: DayPayload<ExtArgs>[]
+    Day: DayPayload<ExtArgs>[]
   }
   scalars: $Extensions.GetResult<{
     id: number
@@ -60,6 +80,7 @@ export type DayPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArg
   objects: {
     game: GamePayload<ExtArgs>
     modifier: ChallengeModifierPayload<ExtArgs> | null
+    modifierOption: ModifierOptionPayload<ExtArgs> | null
   }
   scalars: $Extensions.GetResult<{
     id: number
@@ -69,6 +90,7 @@ export type DayPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArg
     mainRerollsUsed: number
     secondaryRerollsUsed: number
     challengeModifierId: number | null
+    modifierOptionId: number | null
     gameId: number
   }, ExtArgs["result"]["day"]>
   composites: {}
@@ -214,6 +236,16 @@ export class PrismaClient<
     * ```
     */
   get challengeModifier(): Prisma.ChallengeModifierDelegate<GlobalReject, ExtArgs>;
+
+  /**
+   * `prisma.modifierOption`: Exposes CRUD operations for the **ModifierOption** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more ModifierOptions
+    * const modifierOptions = await prisma.modifierOption.findMany()
+    * ```
+    */
+  get modifierOption(): Prisma.ModifierOptionDelegate<GlobalReject, ExtArgs>;
 
   /**
    * `prisma.game`: Exposes CRUD operations for the **Game** model.
@@ -718,6 +750,7 @@ export namespace Prisma {
 
   export const ModelName: {
     ChallengeModifier: 'ChallengeModifier',
+    ModifierOption: 'ModifierOption',
     Game: 'Game',
     Day: 'Day'
   };
@@ -736,7 +769,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     meta: {
-      modelProps: 'challengeModifier' | 'game' | 'day'
+      modelProps: 'challengeModifier' | 'modifierOption' | 'game' | 'day'
       txIsolationLevel: Prisma.TransactionIsolationLevel
     },
     model: {
@@ -802,6 +835,71 @@ export namespace Prisma {
           count: {
             args: Prisma.ChallengeModifierCountArgs<ExtArgs>,
             result: $Utils.Optional<ChallengeModifierCountAggregateOutputType> | number
+          }
+        }
+      }
+      ModifierOption: {
+        payload: ModifierOptionPayload<ExtArgs>
+        operations: {
+          findUnique: {
+            args: Prisma.ModifierOptionFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<ModifierOptionPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ModifierOptionFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<ModifierOptionPayload>
+          }
+          findFirst: {
+            args: Prisma.ModifierOptionFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<ModifierOptionPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ModifierOptionFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<ModifierOptionPayload>
+          }
+          findMany: {
+            args: Prisma.ModifierOptionFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<ModifierOptionPayload>[]
+          }
+          create: {
+            args: Prisma.ModifierOptionCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<ModifierOptionPayload>
+          }
+          createMany: {
+            args: Prisma.ModifierOptionCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          delete: {
+            args: Prisma.ModifierOptionDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<ModifierOptionPayload>
+          }
+          update: {
+            args: Prisma.ModifierOptionUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<ModifierOptionPayload>
+          }
+          deleteMany: {
+            args: Prisma.ModifierOptionDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ModifierOptionUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          upsert: {
+            args: Prisma.ModifierOptionUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<ModifierOptionPayload>
+          }
+          aggregate: {
+            args: Prisma.ModifierOptionAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateModifierOption>
+          }
+          groupBy: {
+            args: Prisma.ModifierOptionGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<ModifierOptionGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ModifierOptionCountArgs<ExtArgs>,
+            result: $Utils.Optional<ModifierOptionCountAggregateOutputType> | number
           }
         }
       }
@@ -1117,10 +1215,12 @@ export namespace Prisma {
 
 
   export type ChallengeModifierCountOutputType = {
+    ModifierOption: number
     Day: number
   }
 
   export type ChallengeModifierCountOutputTypeSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    ModifierOption?: boolean | ChallengeModifierCountOutputTypeCountModifierOptionArgs
     Day?: boolean | ChallengeModifierCountOutputTypeCountDayArgs
   }
 
@@ -1140,7 +1240,50 @@ export namespace Prisma {
   /**
    * ChallengeModifierCountOutputType without action
    */
+  export type ChallengeModifierCountOutputTypeCountModifierOptionArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    where?: ModifierOptionWhereInput
+  }
+
+
+  /**
+   * ChallengeModifierCountOutputType without action
+   */
   export type ChallengeModifierCountOutputTypeCountDayArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    where?: DayWhereInput
+  }
+
+
+
+  /**
+   * Count Type ModifierOptionCountOutputType
+   */
+
+
+  export type ModifierOptionCountOutputType = {
+    Day: number
+  }
+
+  export type ModifierOptionCountOutputTypeSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    Day?: boolean | ModifierOptionCountOutputTypeCountDayArgs
+  }
+
+  // Custom InputTypes
+
+  /**
+   * ModifierOptionCountOutputType without action
+   */
+  export type ModifierOptionCountOutputTypeArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ModifierOptionCountOutputType
+     */
+    select?: ModifierOptionCountOutputTypeSelect<ExtArgs> | null
+  }
+
+
+  /**
+   * ModifierOptionCountOutputType without action
+   */
+  export type ModifierOptionCountOutputTypeCountDayArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     where?: DayWhereInput
   }
 
@@ -1152,11 +1295,11 @@ export namespace Prisma {
 
 
   export type GameCountOutputType = {
-    days: number
+    Day: number
   }
 
   export type GameCountOutputTypeSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    days?: boolean | GameCountOutputTypeCountDaysArgs
+    Day?: boolean | GameCountOutputTypeCountDayArgs
   }
 
   // Custom InputTypes
@@ -1175,7 +1318,7 @@ export namespace Prisma {
   /**
    * GameCountOutputType without action
    */
-  export type GameCountOutputTypeCountDaysArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type GameCountOutputTypeCountDayArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     where?: DayWhereInput
   }
 
@@ -1222,7 +1365,6 @@ export namespace Prisma {
     id: number
     name: number
     text: number
-    options: number
     _all: number
   }
 
@@ -1251,7 +1393,6 @@ export namespace Prisma {
     id?: true
     name?: true
     text?: true
-    options?: true
     _all?: true
   }
 
@@ -1346,7 +1487,6 @@ export namespace Prisma {
     id: number
     name: string
     text: string
-    options: string[]
     _count: ChallengeModifierCountAggregateOutputType | null
     _avg: ChallengeModifierAvgAggregateOutputType | null
     _sum: ChallengeModifierSumAggregateOutputType | null
@@ -1372,7 +1512,7 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     text?: boolean
-    options?: boolean
+    ModifierOption?: boolean | ChallengeModifier$ModifierOptionArgs<ExtArgs>
     Day?: boolean | ChallengeModifier$DayArgs<ExtArgs>
     _count?: boolean | ChallengeModifierCountOutputTypeArgs<ExtArgs>
   }, ExtArgs["result"]["challengeModifier"]>
@@ -1381,10 +1521,10 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     text?: boolean
-    options?: boolean
   }
 
   export type ChallengeModifierInclude<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    ModifierOption?: boolean | ChallengeModifier$ModifierOptionArgs<ExtArgs>
     Day?: boolean | ChallengeModifier$DayArgs<ExtArgs>
     _count?: boolean | ChallengeModifierCountOutputTypeArgs<ExtArgs>
   }
@@ -1759,6 +1899,8 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
     constructor(_dmmf: runtime.DMMFClass, _queryType: 'query' | 'mutation', _rootField: string, _clientMethod: string, _args: any, _dataPath: string[], _errorFormat: ErrorFormat, _measurePerformance?: boolean | undefined, _isList?: boolean);
 
+    ModifierOption<T extends ChallengeModifier$ModifierOptionArgs<ExtArgs> = {}>(args?: Subset<T, ChallengeModifier$ModifierOptionArgs<ExtArgs>>): Prisma.PrismaPromise<$Types.GetResult<ModifierOptionPayload<ExtArgs>, T, 'findMany', never>| Null>;
+
     Day<T extends ChallengeModifier$DayArgs<ExtArgs> = {}>(args?: Subset<T, ChallengeModifier$DayArgs<ExtArgs>>): Prisma.PrismaPromise<$Types.GetResult<DayPayload<ExtArgs>, T, 'findMany', never>| Null>;
 
     private get _document();
@@ -2117,6 +2259,27 @@ export namespace Prisma {
 
 
   /**
+   * ChallengeModifier.ModifierOption
+   */
+  export type ChallengeModifier$ModifierOptionArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ModifierOption
+     */
+    select?: ModifierOptionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: ModifierOptionInclude<ExtArgs> | null
+    where?: ModifierOptionWhereInput
+    orderBy?: Enumerable<ModifierOptionOrderByWithRelationInput>
+    cursor?: ModifierOptionWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: Enumerable<ModifierOptionScalarFieldEnum>
+  }
+
+
+  /**
    * ChallengeModifier.Day
    */
   export type ChallengeModifier$DayArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
@@ -2149,6 +2312,986 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well.
      */
     include?: ChallengeModifierInclude<ExtArgs> | null
+  }
+
+
+
+  /**
+   * Model ModifierOption
+   */
+
+
+  export type AggregateModifierOption = {
+    _count: ModifierOptionCountAggregateOutputType | null
+    _avg: ModifierOptionAvgAggregateOutputType | null
+    _sum: ModifierOptionSumAggregateOutputType | null
+    _min: ModifierOptionMinAggregateOutputType | null
+    _max: ModifierOptionMaxAggregateOutputType | null
+  }
+
+  export type ModifierOptionAvgAggregateOutputType = {
+    id: number | null
+    challengeModifierId: number | null
+  }
+
+  export type ModifierOptionSumAggregateOutputType = {
+    id: number | null
+    challengeModifierId: number | null
+  }
+
+  export type ModifierOptionMinAggregateOutputType = {
+    id: number | null
+    name: string | null
+    text: string | null
+    challengeModifierId: number | null
+  }
+
+  export type ModifierOptionMaxAggregateOutputType = {
+    id: number | null
+    name: string | null
+    text: string | null
+    challengeModifierId: number | null
+  }
+
+  export type ModifierOptionCountAggregateOutputType = {
+    id: number
+    name: number
+    text: number
+    challengeModifierId: number
+    _all: number
+  }
+
+
+  export type ModifierOptionAvgAggregateInputType = {
+    id?: true
+    challengeModifierId?: true
+  }
+
+  export type ModifierOptionSumAggregateInputType = {
+    id?: true
+    challengeModifierId?: true
+  }
+
+  export type ModifierOptionMinAggregateInputType = {
+    id?: true
+    name?: true
+    text?: true
+    challengeModifierId?: true
+  }
+
+  export type ModifierOptionMaxAggregateInputType = {
+    id?: true
+    name?: true
+    text?: true
+    challengeModifierId?: true
+  }
+
+  export type ModifierOptionCountAggregateInputType = {
+    id?: true
+    name?: true
+    text?: true
+    challengeModifierId?: true
+    _all?: true
+  }
+
+  export type ModifierOptionAggregateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ModifierOption to aggregate.
+     */
+    where?: ModifierOptionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ModifierOptions to fetch.
+     */
+    orderBy?: Enumerable<ModifierOptionOrderByWithRelationInput>
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ModifierOptionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ModifierOptions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ModifierOptions.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned ModifierOptions
+    **/
+    _count?: true | ModifierOptionCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: ModifierOptionAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: ModifierOptionSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ModifierOptionMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ModifierOptionMaxAggregateInputType
+  }
+
+  export type GetModifierOptionAggregateType<T extends ModifierOptionAggregateArgs> = {
+        [P in keyof T & keyof AggregateModifierOption]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateModifierOption[P]>
+      : GetScalarType<T[P], AggregateModifierOption[P]>
+  }
+
+
+
+
+  export type ModifierOptionGroupByArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    where?: ModifierOptionWhereInput
+    orderBy?: Enumerable<ModifierOptionOrderByWithAggregationInput>
+    by: ModifierOptionScalarFieldEnum[]
+    having?: ModifierOptionScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ModifierOptionCountAggregateInputType | true
+    _avg?: ModifierOptionAvgAggregateInputType
+    _sum?: ModifierOptionSumAggregateInputType
+    _min?: ModifierOptionMinAggregateInputType
+    _max?: ModifierOptionMaxAggregateInputType
+  }
+
+
+  export type ModifierOptionGroupByOutputType = {
+    id: number
+    name: string
+    text: string
+    challengeModifierId: number | null
+    _count: ModifierOptionCountAggregateOutputType | null
+    _avg: ModifierOptionAvgAggregateOutputType | null
+    _sum: ModifierOptionSumAggregateOutputType | null
+    _min: ModifierOptionMinAggregateOutputType | null
+    _max: ModifierOptionMaxAggregateOutputType | null
+  }
+
+  type GetModifierOptionGroupByPayload<T extends ModifierOptionGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickArray<ModifierOptionGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ModifierOptionGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ModifierOptionGroupByOutputType[P]>
+            : GetScalarType<T[P], ModifierOptionGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ModifierOptionSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    text?: boolean
+    challengeModifierId?: boolean
+    Day?: boolean | ModifierOption$DayArgs<ExtArgs>
+    ChallengeModifier?: boolean | ChallengeModifierArgs<ExtArgs>
+    _count?: boolean | ModifierOptionCountOutputTypeArgs<ExtArgs>
+  }, ExtArgs["result"]["modifierOption"]>
+
+  export type ModifierOptionSelectScalar = {
+    id?: boolean
+    name?: boolean
+    text?: boolean
+    challengeModifierId?: boolean
+  }
+
+  export type ModifierOptionInclude<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    Day?: boolean | ModifierOption$DayArgs<ExtArgs>
+    ChallengeModifier?: boolean | ChallengeModifierArgs<ExtArgs>
+    _count?: boolean | ModifierOptionCountOutputTypeArgs<ExtArgs>
+  }
+
+
+  type ModifierOptionGetPayload<S extends boolean | null | undefined | ModifierOptionArgs> = $Types.GetResult<ModifierOptionPayload, S>
+
+  type ModifierOptionCountArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = 
+    Omit<ModifierOptionFindManyArgs, 'select' | 'include'> & {
+      select?: ModifierOptionCountAggregateInputType | true
+    }
+
+  export interface ModifierOptionDelegate<GlobalRejectSettings extends Prisma.RejectOnNotFound | Prisma.RejectPerOperation | false | undefined, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['ModifierOption'], meta: { name: 'ModifierOption' } }
+    /**
+     * Find zero or one ModifierOption that matches the filter.
+     * @param {ModifierOptionFindUniqueArgs} args - Arguments to find a ModifierOption
+     * @example
+     * // Get one ModifierOption
+     * const modifierOption = await prisma.modifierOption.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends ModifierOptionFindUniqueArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args: SelectSubset<T, ModifierOptionFindUniqueArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findUnique', 'ModifierOption'> extends True ? Prisma__ModifierOptionClient<$Types.GetResult<ModifierOptionPayload<ExtArgs>, T, 'findUnique', never>, never, ExtArgs> : Prisma__ModifierOptionClient<$Types.GetResult<ModifierOptionPayload<ExtArgs>, T, 'findUnique', never> | null, null, ExtArgs>
+
+    /**
+     * Find one ModifierOption that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {ModifierOptionFindUniqueOrThrowArgs} args - Arguments to find a ModifierOption
+     * @example
+     * // Get one ModifierOption
+     * const modifierOption = await prisma.modifierOption.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends ModifierOptionFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, ModifierOptionFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__ModifierOptionClient<$Types.GetResult<ModifierOptionPayload<ExtArgs>, T, 'findUniqueOrThrow', never>, never, ExtArgs>
+
+    /**
+     * Find the first ModifierOption that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ModifierOptionFindFirstArgs} args - Arguments to find a ModifierOption
+     * @example
+     * // Get one ModifierOption
+     * const modifierOption = await prisma.modifierOption.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends ModifierOptionFindFirstArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args?: SelectSubset<T, ModifierOptionFindFirstArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findFirst', 'ModifierOption'> extends True ? Prisma__ModifierOptionClient<$Types.GetResult<ModifierOptionPayload<ExtArgs>, T, 'findFirst', never>, never, ExtArgs> : Prisma__ModifierOptionClient<$Types.GetResult<ModifierOptionPayload<ExtArgs>, T, 'findFirst', never> | null, null, ExtArgs>
+
+    /**
+     * Find the first ModifierOption that matches the filter or
+     * throw `NotFoundError` if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ModifierOptionFindFirstOrThrowArgs} args - Arguments to find a ModifierOption
+     * @example
+     * // Get one ModifierOption
+     * const modifierOption = await prisma.modifierOption.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends ModifierOptionFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, ModifierOptionFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__ModifierOptionClient<$Types.GetResult<ModifierOptionPayload<ExtArgs>, T, 'findFirstOrThrow', never>, never, ExtArgs>
+
+    /**
+     * Find zero or more ModifierOptions that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ModifierOptionFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all ModifierOptions
+     * const modifierOptions = await prisma.modifierOption.findMany()
+     * 
+     * // Get first 10 ModifierOptions
+     * const modifierOptions = await prisma.modifierOption.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const modifierOptionWithIdOnly = await prisma.modifierOption.findMany({ select: { id: true } })
+     * 
+    **/
+    findMany<T extends ModifierOptionFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, ModifierOptionFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Types.GetResult<ModifierOptionPayload<ExtArgs>, T, 'findMany', never>>
+
+    /**
+     * Create a ModifierOption.
+     * @param {ModifierOptionCreateArgs} args - Arguments to create a ModifierOption.
+     * @example
+     * // Create one ModifierOption
+     * const ModifierOption = await prisma.modifierOption.create({
+     *   data: {
+     *     // ... data to create a ModifierOption
+     *   }
+     * })
+     * 
+    **/
+    create<T extends ModifierOptionCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, ModifierOptionCreateArgs<ExtArgs>>
+    ): Prisma__ModifierOptionClient<$Types.GetResult<ModifierOptionPayload<ExtArgs>, T, 'create', never>, never, ExtArgs>
+
+    /**
+     * Create many ModifierOptions.
+     *     @param {ModifierOptionCreateManyArgs} args - Arguments to create many ModifierOptions.
+     *     @example
+     *     // Create many ModifierOptions
+     *     const modifierOption = await prisma.modifierOption.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends ModifierOptionCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, ModifierOptionCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a ModifierOption.
+     * @param {ModifierOptionDeleteArgs} args - Arguments to delete one ModifierOption.
+     * @example
+     * // Delete one ModifierOption
+     * const ModifierOption = await prisma.modifierOption.delete({
+     *   where: {
+     *     // ... filter to delete one ModifierOption
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends ModifierOptionDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, ModifierOptionDeleteArgs<ExtArgs>>
+    ): Prisma__ModifierOptionClient<$Types.GetResult<ModifierOptionPayload<ExtArgs>, T, 'delete', never>, never, ExtArgs>
+
+    /**
+     * Update one ModifierOption.
+     * @param {ModifierOptionUpdateArgs} args - Arguments to update one ModifierOption.
+     * @example
+     * // Update one ModifierOption
+     * const modifierOption = await prisma.modifierOption.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends ModifierOptionUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, ModifierOptionUpdateArgs<ExtArgs>>
+    ): Prisma__ModifierOptionClient<$Types.GetResult<ModifierOptionPayload<ExtArgs>, T, 'update', never>, never, ExtArgs>
+
+    /**
+     * Delete zero or more ModifierOptions.
+     * @param {ModifierOptionDeleteManyArgs} args - Arguments to filter ModifierOptions to delete.
+     * @example
+     * // Delete a few ModifierOptions
+     * const { count } = await prisma.modifierOption.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends ModifierOptionDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, ModifierOptionDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ModifierOptions.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ModifierOptionUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many ModifierOptions
+     * const modifierOption = await prisma.modifierOption.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends ModifierOptionUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, ModifierOptionUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one ModifierOption.
+     * @param {ModifierOptionUpsertArgs} args - Arguments to update or create a ModifierOption.
+     * @example
+     * // Update or create a ModifierOption
+     * const modifierOption = await prisma.modifierOption.upsert({
+     *   create: {
+     *     // ... data to create a ModifierOption
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the ModifierOption we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends ModifierOptionUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, ModifierOptionUpsertArgs<ExtArgs>>
+    ): Prisma__ModifierOptionClient<$Types.GetResult<ModifierOptionPayload<ExtArgs>, T, 'upsert', never>, never, ExtArgs>
+
+    /**
+     * Count the number of ModifierOptions.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ModifierOptionCountArgs} args - Arguments to filter ModifierOptions to count.
+     * @example
+     * // Count the number of ModifierOptions
+     * const count = await prisma.modifierOption.count({
+     *   where: {
+     *     // ... the filter for the ModifierOptions we want to count
+     *   }
+     * })
+    **/
+    count<T extends ModifierOptionCountArgs>(
+      args?: Subset<T, ModifierOptionCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ModifierOptionCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a ModifierOption.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ModifierOptionAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ModifierOptionAggregateArgs>(args: Subset<T, ModifierOptionAggregateArgs>): Prisma.PrismaPromise<GetModifierOptionAggregateType<T>>
+
+    /**
+     * Group by ModifierOption.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ModifierOptionGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ModifierOptionGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ModifierOptionGroupByArgs['orderBy'] }
+        : { orderBy?: ModifierOptionGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends TupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ModifierOptionGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetModifierOptionGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for ModifierOption.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export class Prisma__ModifierOptionClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> implements Prisma.PrismaPromise<T> {
+    private readonly _dmmf;
+    private readonly _queryType;
+    private readonly _rootField;
+    private readonly _clientMethod;
+    private readonly _args;
+    private readonly _dataPath;
+    private readonly _errorFormat;
+    private readonly _measurePerformance?;
+    private _isList;
+    private _callsite;
+    private _requestPromise?;
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+    constructor(_dmmf: runtime.DMMFClass, _queryType: 'query' | 'mutation', _rootField: string, _clientMethod: string, _args: any, _dataPath: string[], _errorFormat: ErrorFormat, _measurePerformance?: boolean | undefined, _isList?: boolean);
+
+    Day<T extends ModifierOption$DayArgs<ExtArgs> = {}>(args?: Subset<T, ModifierOption$DayArgs<ExtArgs>>): Prisma.PrismaPromise<$Types.GetResult<DayPayload<ExtArgs>, T, 'findMany', never>| Null>;
+
+    ChallengeModifier<T extends ChallengeModifierArgs<ExtArgs> = {}>(args?: Subset<T, ChallengeModifierArgs<ExtArgs>>): Prisma__ChallengeModifierClient<$Types.GetResult<ChallengeModifierPayload<ExtArgs>, T, 'findUnique', never> | Null, never, ExtArgs>;
+
+    private get _document();
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): Promise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): Promise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): Promise<T>;
+  }
+
+
+
+  // Custom InputTypes
+
+  /**
+   * ModifierOption base type for findUnique actions
+   */
+  export type ModifierOptionFindUniqueArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ModifierOption
+     */
+    select?: ModifierOptionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: ModifierOptionInclude<ExtArgs> | null
+    /**
+     * Filter, which ModifierOption to fetch.
+     */
+    where: ModifierOptionWhereUniqueInput
+  }
+
+  /**
+   * ModifierOption findUnique
+   */
+  export interface ModifierOptionFindUniqueArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends ModifierOptionFindUniqueArgsBase<ExtArgs> {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findUniqueOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * ModifierOption findUniqueOrThrow
+   */
+  export type ModifierOptionFindUniqueOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ModifierOption
+     */
+    select?: ModifierOptionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: ModifierOptionInclude<ExtArgs> | null
+    /**
+     * Filter, which ModifierOption to fetch.
+     */
+    where: ModifierOptionWhereUniqueInput
+  }
+
+
+  /**
+   * ModifierOption base type for findFirst actions
+   */
+  export type ModifierOptionFindFirstArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ModifierOption
+     */
+    select?: ModifierOptionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: ModifierOptionInclude<ExtArgs> | null
+    /**
+     * Filter, which ModifierOption to fetch.
+     */
+    where?: ModifierOptionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ModifierOptions to fetch.
+     */
+    orderBy?: Enumerable<ModifierOptionOrderByWithRelationInput>
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ModifierOptions.
+     */
+    cursor?: ModifierOptionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ModifierOptions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ModifierOptions.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ModifierOptions.
+     */
+    distinct?: Enumerable<ModifierOptionScalarFieldEnum>
+  }
+
+  /**
+   * ModifierOption findFirst
+   */
+  export interface ModifierOptionFindFirstArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends ModifierOptionFindFirstArgsBase<ExtArgs> {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findFirstOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * ModifierOption findFirstOrThrow
+   */
+  export type ModifierOptionFindFirstOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ModifierOption
+     */
+    select?: ModifierOptionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: ModifierOptionInclude<ExtArgs> | null
+    /**
+     * Filter, which ModifierOption to fetch.
+     */
+    where?: ModifierOptionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ModifierOptions to fetch.
+     */
+    orderBy?: Enumerable<ModifierOptionOrderByWithRelationInput>
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ModifierOptions.
+     */
+    cursor?: ModifierOptionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ModifierOptions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ModifierOptions.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ModifierOptions.
+     */
+    distinct?: Enumerable<ModifierOptionScalarFieldEnum>
+  }
+
+
+  /**
+   * ModifierOption findMany
+   */
+  export type ModifierOptionFindManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ModifierOption
+     */
+    select?: ModifierOptionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: ModifierOptionInclude<ExtArgs> | null
+    /**
+     * Filter, which ModifierOptions to fetch.
+     */
+    where?: ModifierOptionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ModifierOptions to fetch.
+     */
+    orderBy?: Enumerable<ModifierOptionOrderByWithRelationInput>
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing ModifierOptions.
+     */
+    cursor?: ModifierOptionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ModifierOptions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ModifierOptions.
+     */
+    skip?: number
+    distinct?: Enumerable<ModifierOptionScalarFieldEnum>
+  }
+
+
+  /**
+   * ModifierOption create
+   */
+  export type ModifierOptionCreateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ModifierOption
+     */
+    select?: ModifierOptionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: ModifierOptionInclude<ExtArgs> | null
+    /**
+     * The data needed to create a ModifierOption.
+     */
+    data: XOR<ModifierOptionCreateInput, ModifierOptionUncheckedCreateInput>
+  }
+
+
+  /**
+   * ModifierOption createMany
+   */
+  export type ModifierOptionCreateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many ModifierOptions.
+     */
+    data: Enumerable<ModifierOptionCreateManyInput>
+    skipDuplicates?: boolean
+  }
+
+
+  /**
+   * ModifierOption update
+   */
+  export type ModifierOptionUpdateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ModifierOption
+     */
+    select?: ModifierOptionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: ModifierOptionInclude<ExtArgs> | null
+    /**
+     * The data needed to update a ModifierOption.
+     */
+    data: XOR<ModifierOptionUpdateInput, ModifierOptionUncheckedUpdateInput>
+    /**
+     * Choose, which ModifierOption to update.
+     */
+    where: ModifierOptionWhereUniqueInput
+  }
+
+
+  /**
+   * ModifierOption updateMany
+   */
+  export type ModifierOptionUpdateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update ModifierOptions.
+     */
+    data: XOR<ModifierOptionUpdateManyMutationInput, ModifierOptionUncheckedUpdateManyInput>
+    /**
+     * Filter which ModifierOptions to update
+     */
+    where?: ModifierOptionWhereInput
+  }
+
+
+  /**
+   * ModifierOption upsert
+   */
+  export type ModifierOptionUpsertArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ModifierOption
+     */
+    select?: ModifierOptionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: ModifierOptionInclude<ExtArgs> | null
+    /**
+     * The filter to search for the ModifierOption to update in case it exists.
+     */
+    where: ModifierOptionWhereUniqueInput
+    /**
+     * In case the ModifierOption found by the `where` argument doesn't exist, create a new ModifierOption with this data.
+     */
+    create: XOR<ModifierOptionCreateInput, ModifierOptionUncheckedCreateInput>
+    /**
+     * In case the ModifierOption was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ModifierOptionUpdateInput, ModifierOptionUncheckedUpdateInput>
+  }
+
+
+  /**
+   * ModifierOption delete
+   */
+  export type ModifierOptionDeleteArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ModifierOption
+     */
+    select?: ModifierOptionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: ModifierOptionInclude<ExtArgs> | null
+    /**
+     * Filter which ModifierOption to delete.
+     */
+    where: ModifierOptionWhereUniqueInput
+  }
+
+
+  /**
+   * ModifierOption deleteMany
+   */
+  export type ModifierOptionDeleteManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ModifierOptions to delete
+     */
+    where?: ModifierOptionWhereInput
+  }
+
+
+  /**
+   * ModifierOption.Day
+   */
+  export type ModifierOption$DayArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Day
+     */
+    select?: DaySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: DayInclude<ExtArgs> | null
+    where?: DayWhereInput
+    orderBy?: Enumerable<DayOrderByWithRelationInput>
+    cursor?: DayWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: Enumerable<DayScalarFieldEnum>
+  }
+
+
+  /**
+   * ModifierOption without action
+   */
+  export type ModifierOptionArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ModifierOption
+     */
+    select?: ModifierOptionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: ModifierOptionInclude<ExtArgs> | null
   }
 
 
@@ -2401,7 +3544,7 @@ export namespace Prisma {
     rerollTokensSpent?: boolean
     repositoryLink?: boolean
     progressSheetLink?: boolean
-    days?: boolean | Game$daysArgs<ExtArgs>
+    Day?: boolean | Game$DayArgs<ExtArgs>
     _count?: boolean | GameCountOutputTypeArgs<ExtArgs>
   }, ExtArgs["result"]["game"]>
 
@@ -2418,7 +3561,7 @@ export namespace Prisma {
   }
 
   export type GameInclude<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    days?: boolean | Game$daysArgs<ExtArgs>
+    Day?: boolean | Game$DayArgs<ExtArgs>
     _count?: boolean | GameCountOutputTypeArgs<ExtArgs>
   }
 
@@ -2792,7 +3935,7 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
     constructor(_dmmf: runtime.DMMFClass, _queryType: 'query' | 'mutation', _rootField: string, _clientMethod: string, _args: any, _dataPath: string[], _errorFormat: ErrorFormat, _measurePerformance?: boolean | undefined, _isList?: boolean);
 
-    days<T extends Game$daysArgs<ExtArgs> = {}>(args?: Subset<T, Game$daysArgs<ExtArgs>>): Prisma.PrismaPromise<$Types.GetResult<DayPayload<ExtArgs>, T, 'findMany', never>| Null>;
+    Day<T extends Game$DayArgs<ExtArgs> = {}>(args?: Subset<T, Game$DayArgs<ExtArgs>>): Prisma.PrismaPromise<$Types.GetResult<DayPayload<ExtArgs>, T, 'findMany', never>| Null>;
 
     private get _document();
     /**
@@ -3150,9 +4293,9 @@ export namespace Prisma {
 
 
   /**
-   * Game.days
+   * Game.Day
    */
-  export type Game$daysArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type Game$DayArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Day
      */
@@ -3205,6 +4348,7 @@ export namespace Prisma {
     mainRerollsUsed: number | null
     secondaryRerollsUsed: number | null
     challengeModifierId: number | null
+    modifierOptionId: number | null
     gameId: number | null
   }
 
@@ -3214,6 +4358,7 @@ export namespace Prisma {
     mainRerollsUsed: number | null
     secondaryRerollsUsed: number | null
     challengeModifierId: number | null
+    modifierOptionId: number | null
     gameId: number | null
   }
 
@@ -3225,6 +4370,7 @@ export namespace Prisma {
     mainRerollsUsed: number | null
     secondaryRerollsUsed: number | null
     challengeModifierId: number | null
+    modifierOptionId: number | null
     gameId: number | null
   }
 
@@ -3236,6 +4382,7 @@ export namespace Prisma {
     mainRerollsUsed: number | null
     secondaryRerollsUsed: number | null
     challengeModifierId: number | null
+    modifierOptionId: number | null
     gameId: number | null
   }
 
@@ -3247,6 +4394,7 @@ export namespace Prisma {
     mainRerollsUsed: number
     secondaryRerollsUsed: number
     challengeModifierId: number
+    modifierOptionId: number
     gameId: number
     _all: number
   }
@@ -3258,6 +4406,7 @@ export namespace Prisma {
     mainRerollsUsed?: true
     secondaryRerollsUsed?: true
     challengeModifierId?: true
+    modifierOptionId?: true
     gameId?: true
   }
 
@@ -3267,6 +4416,7 @@ export namespace Prisma {
     mainRerollsUsed?: true
     secondaryRerollsUsed?: true
     challengeModifierId?: true
+    modifierOptionId?: true
     gameId?: true
   }
 
@@ -3278,6 +4428,7 @@ export namespace Prisma {
     mainRerollsUsed?: true
     secondaryRerollsUsed?: true
     challengeModifierId?: true
+    modifierOptionId?: true
     gameId?: true
   }
 
@@ -3289,6 +4440,7 @@ export namespace Prisma {
     mainRerollsUsed?: true
     secondaryRerollsUsed?: true
     challengeModifierId?: true
+    modifierOptionId?: true
     gameId?: true
   }
 
@@ -3300,6 +4452,7 @@ export namespace Prisma {
     mainRerollsUsed?: true
     secondaryRerollsUsed?: true
     challengeModifierId?: true
+    modifierOptionId?: true
     gameId?: true
     _all?: true
   }
@@ -3399,6 +4552,7 @@ export namespace Prisma {
     mainRerollsUsed: number
     secondaryRerollsUsed: number
     challengeModifierId: number | null
+    modifierOptionId: number | null
     gameId: number
     _count: DayCountAggregateOutputType | null
     _avg: DayAvgAggregateOutputType | null
@@ -3429,9 +4583,11 @@ export namespace Prisma {
     mainRerollsUsed?: boolean
     secondaryRerollsUsed?: boolean
     challengeModifierId?: boolean
+    modifierOptionId?: boolean
     gameId?: boolean
     game?: boolean | GameArgs<ExtArgs>
     modifier?: boolean | ChallengeModifierArgs<ExtArgs>
+    modifierOption?: boolean | ModifierOptionArgs<ExtArgs>
   }, ExtArgs["result"]["day"]>
 
   export type DaySelectScalar = {
@@ -3442,12 +4598,14 @@ export namespace Prisma {
     mainRerollsUsed?: boolean
     secondaryRerollsUsed?: boolean
     challengeModifierId?: boolean
+    modifierOptionId?: boolean
     gameId?: boolean
   }
 
   export type DayInclude<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     game?: boolean | GameArgs<ExtArgs>
     modifier?: boolean | ChallengeModifierArgs<ExtArgs>
+    modifierOption?: boolean | ModifierOptionArgs<ExtArgs>
   }
 
 
@@ -3823,6 +4981,8 @@ export namespace Prisma {
     game<T extends GameArgs<ExtArgs> = {}>(args?: Subset<T, GameArgs<ExtArgs>>): Prisma__GameClient<$Types.GetResult<GamePayload<ExtArgs>, T, 'findUnique', never> | Null, never, ExtArgs>;
 
     modifier<T extends ChallengeModifierArgs<ExtArgs> = {}>(args?: Subset<T, ChallengeModifierArgs<ExtArgs>>): Prisma__ChallengeModifierClient<$Types.GetResult<ChallengeModifierPayload<ExtArgs>, T, 'findUnique', never> | Null, never, ExtArgs>;
+
+    modifierOption<T extends ModifierOptionArgs<ExtArgs> = {}>(args?: Subset<T, ModifierOptionArgs<ExtArgs>>): Prisma__ModifierOptionClient<$Types.GetResult<ModifierOptionPayload<ExtArgs>, T, 'findUnique', never> | Null, never, ExtArgs>;
 
     private get _document();
     /**
@@ -4212,11 +5372,20 @@ export namespace Prisma {
   export const ChallengeModifierScalarFieldEnum: {
     id: 'id',
     name: 'name',
-    text: 'text',
-    options: 'options'
+    text: 'text'
   };
 
   export type ChallengeModifierScalarFieldEnum = (typeof ChallengeModifierScalarFieldEnum)[keyof typeof ChallengeModifierScalarFieldEnum]
+
+
+  export const ModifierOptionScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    text: 'text',
+    challengeModifierId: 'challengeModifierId'
+  };
+
+  export type ModifierOptionScalarFieldEnum = (typeof ModifierOptionScalarFieldEnum)[keyof typeof ModifierOptionScalarFieldEnum]
 
 
   export const GameScalarFieldEnum: {
@@ -4242,6 +5411,7 @@ export namespace Prisma {
     mainRerollsUsed: 'mainRerollsUsed',
     secondaryRerollsUsed: 'secondaryRerollsUsed',
     challengeModifierId: 'challengeModifierId',
+    modifierOptionId: 'modifierOptionId',
     gameId: 'gameId'
   };
 
@@ -4284,7 +5454,7 @@ export namespace Prisma {
     id?: IntFilter | number
     name?: StringFilter | string
     text?: StringFilter | string
-    options?: StringNullableListFilter
+    ModifierOption?: ModifierOptionListRelationFilter
     Day?: DayListRelationFilter
   }
 
@@ -4292,7 +5462,7 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     text?: SortOrder
-    options?: SortOrder
+    ModifierOption?: ModifierOptionOrderByRelationAggregateInput
     Day?: DayOrderByRelationAggregateInput
   }
 
@@ -4305,7 +5475,6 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     text?: SortOrder
-    options?: SortOrder
     _count?: ChallengeModifierCountOrderByAggregateInput
     _avg?: ChallengeModifierAvgOrderByAggregateInput
     _max?: ChallengeModifierMaxOrderByAggregateInput
@@ -4320,7 +5489,54 @@ export namespace Prisma {
     id?: IntWithAggregatesFilter | number
     name?: StringWithAggregatesFilter | string
     text?: StringWithAggregatesFilter | string
-    options?: StringNullableListFilter
+  }
+
+  export type ModifierOptionWhereInput = {
+    AND?: Enumerable<ModifierOptionWhereInput>
+    OR?: Enumerable<ModifierOptionWhereInput>
+    NOT?: Enumerable<ModifierOptionWhereInput>
+    id?: IntFilter | number
+    name?: StringFilter | string
+    text?: StringFilter | string
+    challengeModifierId?: IntNullableFilter | number | null
+    Day?: DayListRelationFilter
+    ChallengeModifier?: XOR<ChallengeModifierRelationFilter, ChallengeModifierWhereInput> | null
+  }
+
+  export type ModifierOptionOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    text?: SortOrder
+    challengeModifierId?: SortOrderInput | SortOrder
+    Day?: DayOrderByRelationAggregateInput
+    ChallengeModifier?: ChallengeModifierOrderByWithRelationInput
+  }
+
+  export type ModifierOptionWhereUniqueInput = {
+    id?: number
+    name?: string
+  }
+
+  export type ModifierOptionOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    text?: SortOrder
+    challengeModifierId?: SortOrderInput | SortOrder
+    _count?: ModifierOptionCountOrderByAggregateInput
+    _avg?: ModifierOptionAvgOrderByAggregateInput
+    _max?: ModifierOptionMaxOrderByAggregateInput
+    _min?: ModifierOptionMinOrderByAggregateInput
+    _sum?: ModifierOptionSumOrderByAggregateInput
+  }
+
+  export type ModifierOptionScalarWhereWithAggregatesInput = {
+    AND?: Enumerable<ModifierOptionScalarWhereWithAggregatesInput>
+    OR?: Enumerable<ModifierOptionScalarWhereWithAggregatesInput>
+    NOT?: Enumerable<ModifierOptionScalarWhereWithAggregatesInput>
+    id?: IntWithAggregatesFilter | number
+    name?: StringWithAggregatesFilter | string
+    text?: StringWithAggregatesFilter | string
+    challengeModifierId?: IntNullableWithAggregatesFilter | number | null
   }
 
   export type GameWhereInput = {
@@ -4336,7 +5552,7 @@ export namespace Prisma {
     rerollTokensSpent?: IntFilter | number
     repositoryLink?: StringNullableFilter | string | null
     progressSheetLink?: StringNullableFilter | string | null
-    days?: DayListRelationFilter
+    Day?: DayListRelationFilter
   }
 
   export type GameOrderByWithRelationInput = {
@@ -4349,7 +5565,7 @@ export namespace Prisma {
     rerollTokensSpent?: SortOrder
     repositoryLink?: SortOrderInput | SortOrder
     progressSheetLink?: SortOrderInput | SortOrder
-    days?: DayOrderByRelationAggregateInput
+    Day?: DayOrderByRelationAggregateInput
   }
 
   export type GameWhereUniqueInput = {
@@ -4400,9 +5616,11 @@ export namespace Prisma {
     mainRerollsUsed?: IntFilter | number
     secondaryRerollsUsed?: IntFilter | number
     challengeModifierId?: IntNullableFilter | number | null
+    modifierOptionId?: IntNullableFilter | number | null
     gameId?: IntFilter | number
     game?: XOR<GameRelationFilter, GameWhereInput>
     modifier?: XOR<ChallengeModifierRelationFilter, ChallengeModifierWhereInput> | null
+    modifierOption?: XOR<ModifierOptionRelationFilter, ModifierOptionWhereInput> | null
   }
 
   export type DayOrderByWithRelationInput = {
@@ -4413,9 +5631,11 @@ export namespace Prisma {
     mainRerollsUsed?: SortOrder
     secondaryRerollsUsed?: SortOrder
     challengeModifierId?: SortOrderInput | SortOrder
+    modifierOptionId?: SortOrderInput | SortOrder
     gameId?: SortOrder
     game?: GameOrderByWithRelationInput
     modifier?: ChallengeModifierOrderByWithRelationInput
+    modifierOption?: ModifierOptionOrderByWithRelationInput
   }
 
   export type DayWhereUniqueInput = {
@@ -4430,6 +5650,7 @@ export namespace Prisma {
     mainRerollsUsed?: SortOrder
     secondaryRerollsUsed?: SortOrder
     challengeModifierId?: SortOrderInput | SortOrder
+    modifierOptionId?: SortOrderInput | SortOrder
     gameId?: SortOrder
     _count?: DayCountOrderByAggregateInput
     _avg?: DayAvgOrderByAggregateInput
@@ -4449,13 +5670,14 @@ export namespace Prisma {
     mainRerollsUsed?: IntWithAggregatesFilter | number
     secondaryRerollsUsed?: IntWithAggregatesFilter | number
     challengeModifierId?: IntNullableWithAggregatesFilter | number | null
+    modifierOptionId?: IntNullableWithAggregatesFilter | number | null
     gameId?: IntWithAggregatesFilter | number
   }
 
   export type ChallengeModifierCreateInput = {
     name: string
     text: string
-    options?: ChallengeModifierCreateoptionsInput | Enumerable<string>
+    ModifierOption?: ModifierOptionCreateNestedManyWithoutChallengeModifierInput
     Day?: DayCreateNestedManyWithoutModifierInput
   }
 
@@ -4463,14 +5685,14 @@ export namespace Prisma {
     id?: number
     name: string
     text: string
-    options?: ChallengeModifierCreateoptionsInput | Enumerable<string>
+    ModifierOption?: ModifierOptionUncheckedCreateNestedManyWithoutChallengeModifierInput
     Day?: DayUncheckedCreateNestedManyWithoutModifierInput
   }
 
   export type ChallengeModifierUpdateInput = {
     name?: StringFieldUpdateOperationsInput | string
     text?: StringFieldUpdateOperationsInput | string
-    options?: ChallengeModifierUpdateoptionsInput | Enumerable<string>
+    ModifierOption?: ModifierOptionUpdateManyWithoutChallengeModifierNestedInput
     Day?: DayUpdateManyWithoutModifierNestedInput
   }
 
@@ -4478,7 +5700,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     text?: StringFieldUpdateOperationsInput | string
-    options?: ChallengeModifierUpdateoptionsInput | Enumerable<string>
+    ModifierOption?: ModifierOptionUncheckedUpdateManyWithoutChallengeModifierNestedInput
     Day?: DayUncheckedUpdateManyWithoutModifierNestedInput
   }
 
@@ -4486,20 +5708,66 @@ export namespace Prisma {
     id?: number
     name: string
     text: string
-    options?: ChallengeModifierCreateoptionsInput | Enumerable<string>
   }
 
   export type ChallengeModifierUpdateManyMutationInput = {
     name?: StringFieldUpdateOperationsInput | string
     text?: StringFieldUpdateOperationsInput | string
-    options?: ChallengeModifierUpdateoptionsInput | Enumerable<string>
   }
 
   export type ChallengeModifierUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     text?: StringFieldUpdateOperationsInput | string
-    options?: ChallengeModifierUpdateoptionsInput | Enumerable<string>
+  }
+
+  export type ModifierOptionCreateInput = {
+    name: string
+    text: string
+    Day?: DayCreateNestedManyWithoutModifierOptionInput
+    ChallengeModifier?: ChallengeModifierCreateNestedOneWithoutModifierOptionInput
+  }
+
+  export type ModifierOptionUncheckedCreateInput = {
+    id?: number
+    name: string
+    text: string
+    challengeModifierId?: number | null
+    Day?: DayUncheckedCreateNestedManyWithoutModifierOptionInput
+  }
+
+  export type ModifierOptionUpdateInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    text?: StringFieldUpdateOperationsInput | string
+    Day?: DayUpdateManyWithoutModifierOptionNestedInput
+    ChallengeModifier?: ChallengeModifierUpdateOneWithoutModifierOptionNestedInput
+  }
+
+  export type ModifierOptionUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    text?: StringFieldUpdateOperationsInput | string
+    challengeModifierId?: NullableIntFieldUpdateOperationsInput | number | null
+    Day?: DayUncheckedUpdateManyWithoutModifierOptionNestedInput
+  }
+
+  export type ModifierOptionCreateManyInput = {
+    id?: number
+    name: string
+    text: string
+    challengeModifierId?: number | null
+  }
+
+  export type ModifierOptionUpdateManyMutationInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    text?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type ModifierOptionUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    text?: StringFieldUpdateOperationsInput | string
+    challengeModifierId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type GameCreateInput = {
@@ -4511,7 +5779,7 @@ export namespace Prisma {
     rerollTokensSpent?: number
     repositoryLink?: string | null
     progressSheetLink?: string | null
-    days?: DayCreateNestedManyWithoutGameInput
+    Day?: DayCreateNestedManyWithoutGameInput
   }
 
   export type GameUncheckedCreateInput = {
@@ -4524,7 +5792,7 @@ export namespace Prisma {
     rerollTokensSpent?: number
     repositoryLink?: string | null
     progressSheetLink?: string | null
-    days?: DayUncheckedCreateNestedManyWithoutGameInput
+    Day?: DayUncheckedCreateNestedManyWithoutGameInput
   }
 
   export type GameUpdateInput = {
@@ -4536,7 +5804,7 @@ export namespace Prisma {
     rerollTokensSpent?: IntFieldUpdateOperationsInput | number
     repositoryLink?: NullableStringFieldUpdateOperationsInput | string | null
     progressSheetLink?: NullableStringFieldUpdateOperationsInput | string | null
-    days?: DayUpdateManyWithoutGameNestedInput
+    Day?: DayUpdateManyWithoutGameNestedInput
   }
 
   export type GameUncheckedUpdateInput = {
@@ -4549,7 +5817,7 @@ export namespace Prisma {
     rerollTokensSpent?: IntFieldUpdateOperationsInput | number
     repositoryLink?: NullableStringFieldUpdateOperationsInput | string | null
     progressSheetLink?: NullableStringFieldUpdateOperationsInput | string | null
-    days?: DayUncheckedUpdateManyWithoutGameNestedInput
+    Day?: DayUncheckedUpdateManyWithoutGameNestedInput
   }
 
   export type GameCreateManyInput = {
@@ -4593,8 +5861,9 @@ export namespace Prisma {
     part2Completed?: boolean
     mainRerollsUsed?: number
     secondaryRerollsUsed?: number
-    game: GameCreateNestedOneWithoutDaysInput
+    game: GameCreateNestedOneWithoutDayInput
     modifier?: ChallengeModifierCreateNestedOneWithoutDayInput
+    modifierOption?: ModifierOptionCreateNestedOneWithoutDayInput
   }
 
   export type DayUncheckedCreateInput = {
@@ -4605,6 +5874,7 @@ export namespace Prisma {
     mainRerollsUsed?: number
     secondaryRerollsUsed?: number
     challengeModifierId?: number | null
+    modifierOptionId?: number | null
     gameId: number
   }
 
@@ -4614,8 +5884,9 @@ export namespace Prisma {
     part2Completed?: BoolFieldUpdateOperationsInput | boolean
     mainRerollsUsed?: IntFieldUpdateOperationsInput | number
     secondaryRerollsUsed?: IntFieldUpdateOperationsInput | number
-    game?: GameUpdateOneRequiredWithoutDaysNestedInput
+    game?: GameUpdateOneRequiredWithoutDayNestedInput
     modifier?: ChallengeModifierUpdateOneWithoutDayNestedInput
+    modifierOption?: ModifierOptionUpdateOneWithoutDayNestedInput
   }
 
   export type DayUncheckedUpdateInput = {
@@ -4626,6 +5897,7 @@ export namespace Prisma {
     mainRerollsUsed?: IntFieldUpdateOperationsInput | number
     secondaryRerollsUsed?: IntFieldUpdateOperationsInput | number
     challengeModifierId?: NullableIntFieldUpdateOperationsInput | number | null
+    modifierOptionId?: NullableIntFieldUpdateOperationsInput | number | null
     gameId?: IntFieldUpdateOperationsInput | number
   }
 
@@ -4637,6 +5909,7 @@ export namespace Prisma {
     mainRerollsUsed?: number
     secondaryRerollsUsed?: number
     challengeModifierId?: number | null
+    modifierOptionId?: number | null
     gameId: number
   }
 
@@ -4656,6 +5929,7 @@ export namespace Prisma {
     mainRerollsUsed?: IntFieldUpdateOperationsInput | number
     secondaryRerollsUsed?: IntFieldUpdateOperationsInput | number
     challengeModifierId?: NullableIntFieldUpdateOperationsInput | number | null
+    modifierOptionId?: NullableIntFieldUpdateOperationsInput | number | null
     gameId?: IntFieldUpdateOperationsInput | number
   }
 
@@ -4685,18 +5959,20 @@ export namespace Prisma {
     not?: NestedStringFilter | string
   }
 
-  export type StringNullableListFilter = {
-    equals?: Enumerable<string> | null
-    has?: string | null
-    hasEvery?: Enumerable<string>
-    hasSome?: Enumerable<string>
-    isEmpty?: boolean
+  export type ModifierOptionListRelationFilter = {
+    every?: ModifierOptionWhereInput
+    some?: ModifierOptionWhereInput
+    none?: ModifierOptionWhereInput
   }
 
   export type DayListRelationFilter = {
     every?: DayWhereInput
     some?: DayWhereInput
     none?: DayWhereInput
+  }
+
+  export type ModifierOptionOrderByRelationAggregateInput = {
+    _count?: SortOrder
   }
 
   export type DayOrderByRelationAggregateInput = {
@@ -4707,7 +5983,6 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     text?: SortOrder
-    options?: SortOrder
   }
 
   export type ChallengeModifierAvgOrderByAggregateInput = {
@@ -4764,6 +6039,74 @@ export namespace Prisma {
     _max?: NestedStringFilter
   }
 
+  export type IntNullableFilter = {
+    equals?: number | null
+    in?: Enumerable<number> | number | null
+    notIn?: Enumerable<number> | number | null
+    lt?: number
+    lte?: number
+    gt?: number
+    gte?: number
+    not?: NestedIntNullableFilter | number | null
+  }
+
+  export type ChallengeModifierRelationFilter = {
+    is?: ChallengeModifierWhereInput | null
+    isNot?: ChallengeModifierWhereInput | null
+  }
+
+  export type SortOrderInput = {
+    sort: SortOrder
+    nulls?: NullsOrder
+  }
+
+  export type ModifierOptionCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    text?: SortOrder
+    challengeModifierId?: SortOrder
+  }
+
+  export type ModifierOptionAvgOrderByAggregateInput = {
+    id?: SortOrder
+    challengeModifierId?: SortOrder
+  }
+
+  export type ModifierOptionMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    text?: SortOrder
+    challengeModifierId?: SortOrder
+  }
+
+  export type ModifierOptionMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    text?: SortOrder
+    challengeModifierId?: SortOrder
+  }
+
+  export type ModifierOptionSumOrderByAggregateInput = {
+    id?: SortOrder
+    challengeModifierId?: SortOrder
+  }
+
+  export type IntNullableWithAggregatesFilter = {
+    equals?: number | null
+    in?: Enumerable<number> | number | null
+    notIn?: Enumerable<number> | number | null
+    lt?: number
+    lte?: number
+    gt?: number
+    gte?: number
+    not?: NestedIntNullableWithAggregatesFilter | number | null
+    _count?: NestedIntNullableFilter
+    _avg?: NestedFloatNullableFilter
+    _sum?: NestedIntNullableFilter
+    _min?: NestedIntNullableFilter
+    _max?: NestedIntNullableFilter
+  }
+
   export type StringNullableFilter = {
     equals?: string | null
     in?: Enumerable<string> | string | null
@@ -4777,11 +6120,6 @@ export namespace Prisma {
     endsWith?: string
     mode?: QueryMode
     not?: NestedStringNullableFilter | string | null
-  }
-
-  export type SortOrderInput = {
-    sort: SortOrder
-    nulls?: NullsOrder
   }
 
   export type GameCountOrderByAggregateInput = {
@@ -4859,25 +6197,14 @@ export namespace Prisma {
     not?: NestedBoolFilter | boolean
   }
 
-  export type IntNullableFilter = {
-    equals?: number | null
-    in?: Enumerable<number> | number | null
-    notIn?: Enumerable<number> | number | null
-    lt?: number
-    lte?: number
-    gt?: number
-    gte?: number
-    not?: NestedIntNullableFilter | number | null
-  }
-
   export type GameRelationFilter = {
     is?: GameWhereInput | null
     isNot?: GameWhereInput | null
   }
 
-  export type ChallengeModifierRelationFilter = {
-    is?: ChallengeModifierWhereInput | null
-    isNot?: ChallengeModifierWhereInput | null
+  export type ModifierOptionRelationFilter = {
+    is?: ModifierOptionWhereInput | null
+    isNot?: ModifierOptionWhereInput | null
   }
 
   export type DayCountOrderByAggregateInput = {
@@ -4888,6 +6215,7 @@ export namespace Prisma {
     mainRerollsUsed?: SortOrder
     secondaryRerollsUsed?: SortOrder
     challengeModifierId?: SortOrder
+    modifierOptionId?: SortOrder
     gameId?: SortOrder
   }
 
@@ -4897,6 +6225,7 @@ export namespace Prisma {
     mainRerollsUsed?: SortOrder
     secondaryRerollsUsed?: SortOrder
     challengeModifierId?: SortOrder
+    modifierOptionId?: SortOrder
     gameId?: SortOrder
   }
 
@@ -4908,6 +6237,7 @@ export namespace Prisma {
     mainRerollsUsed?: SortOrder
     secondaryRerollsUsed?: SortOrder
     challengeModifierId?: SortOrder
+    modifierOptionId?: SortOrder
     gameId?: SortOrder
   }
 
@@ -4919,6 +6249,7 @@ export namespace Prisma {
     mainRerollsUsed?: SortOrder
     secondaryRerollsUsed?: SortOrder
     challengeModifierId?: SortOrder
+    modifierOptionId?: SortOrder
     gameId?: SortOrder
   }
 
@@ -4928,6 +6259,7 @@ export namespace Prisma {
     mainRerollsUsed?: SortOrder
     secondaryRerollsUsed?: SortOrder
     challengeModifierId?: SortOrder
+    modifierOptionId?: SortOrder
     gameId?: SortOrder
   }
 
@@ -4939,24 +6271,11 @@ export namespace Prisma {
     _max?: NestedBoolFilter
   }
 
-  export type IntNullableWithAggregatesFilter = {
-    equals?: number | null
-    in?: Enumerable<number> | number | null
-    notIn?: Enumerable<number> | number | null
-    lt?: number
-    lte?: number
-    gt?: number
-    gte?: number
-    not?: NestedIntNullableWithAggregatesFilter | number | null
-    _count?: NestedIntNullableFilter
-    _avg?: NestedFloatNullableFilter
-    _sum?: NestedIntNullableFilter
-    _min?: NestedIntNullableFilter
-    _max?: NestedIntNullableFilter
-  }
-
-  export type ChallengeModifierCreateoptionsInput = {
-    set: Enumerable<string>
+  export type ModifierOptionCreateNestedManyWithoutChallengeModifierInput = {
+    create?: XOR<Enumerable<ModifierOptionCreateWithoutChallengeModifierInput>, Enumerable<ModifierOptionUncheckedCreateWithoutChallengeModifierInput>>
+    connectOrCreate?: Enumerable<ModifierOptionCreateOrConnectWithoutChallengeModifierInput>
+    createMany?: ModifierOptionCreateManyChallengeModifierInputEnvelope
+    connect?: Enumerable<ModifierOptionWhereUniqueInput>
   }
 
   export type DayCreateNestedManyWithoutModifierInput = {
@@ -4964,6 +6283,13 @@ export namespace Prisma {
     connectOrCreate?: Enumerable<DayCreateOrConnectWithoutModifierInput>
     createMany?: DayCreateManyModifierInputEnvelope
     connect?: Enumerable<DayWhereUniqueInput>
+  }
+
+  export type ModifierOptionUncheckedCreateNestedManyWithoutChallengeModifierInput = {
+    create?: XOR<Enumerable<ModifierOptionCreateWithoutChallengeModifierInput>, Enumerable<ModifierOptionUncheckedCreateWithoutChallengeModifierInput>>
+    connectOrCreate?: Enumerable<ModifierOptionCreateOrConnectWithoutChallengeModifierInput>
+    createMany?: ModifierOptionCreateManyChallengeModifierInputEnvelope
+    connect?: Enumerable<ModifierOptionWhereUniqueInput>
   }
 
   export type DayUncheckedCreateNestedManyWithoutModifierInput = {
@@ -4977,9 +6303,18 @@ export namespace Prisma {
     set?: string
   }
 
-  export type ChallengeModifierUpdateoptionsInput = {
-    set?: Enumerable<string>
-    push?: string | Enumerable<string>
+  export type ModifierOptionUpdateManyWithoutChallengeModifierNestedInput = {
+    create?: XOR<Enumerable<ModifierOptionCreateWithoutChallengeModifierInput>, Enumerable<ModifierOptionUncheckedCreateWithoutChallengeModifierInput>>
+    connectOrCreate?: Enumerable<ModifierOptionCreateOrConnectWithoutChallengeModifierInput>
+    upsert?: Enumerable<ModifierOptionUpsertWithWhereUniqueWithoutChallengeModifierInput>
+    createMany?: ModifierOptionCreateManyChallengeModifierInputEnvelope
+    set?: Enumerable<ModifierOptionWhereUniqueInput>
+    disconnect?: Enumerable<ModifierOptionWhereUniqueInput>
+    delete?: Enumerable<ModifierOptionWhereUniqueInput>
+    connect?: Enumerable<ModifierOptionWhereUniqueInput>
+    update?: Enumerable<ModifierOptionUpdateWithWhereUniqueWithoutChallengeModifierInput>
+    updateMany?: Enumerable<ModifierOptionUpdateManyWithWhereWithoutChallengeModifierInput>
+    deleteMany?: Enumerable<ModifierOptionScalarWhereInput>
   }
 
   export type DayUpdateManyWithoutModifierNestedInput = {
@@ -5004,6 +6339,20 @@ export namespace Prisma {
     divide?: number
   }
 
+  export type ModifierOptionUncheckedUpdateManyWithoutChallengeModifierNestedInput = {
+    create?: XOR<Enumerable<ModifierOptionCreateWithoutChallengeModifierInput>, Enumerable<ModifierOptionUncheckedCreateWithoutChallengeModifierInput>>
+    connectOrCreate?: Enumerable<ModifierOptionCreateOrConnectWithoutChallengeModifierInput>
+    upsert?: Enumerable<ModifierOptionUpsertWithWhereUniqueWithoutChallengeModifierInput>
+    createMany?: ModifierOptionCreateManyChallengeModifierInputEnvelope
+    set?: Enumerable<ModifierOptionWhereUniqueInput>
+    disconnect?: Enumerable<ModifierOptionWhereUniqueInput>
+    delete?: Enumerable<ModifierOptionWhereUniqueInput>
+    connect?: Enumerable<ModifierOptionWhereUniqueInput>
+    update?: Enumerable<ModifierOptionUpdateWithWhereUniqueWithoutChallengeModifierInput>
+    updateMany?: Enumerable<ModifierOptionUpdateManyWithWhereWithoutChallengeModifierInput>
+    deleteMany?: Enumerable<ModifierOptionScalarWhereInput>
+  }
+
   export type DayUncheckedUpdateManyWithoutModifierNestedInput = {
     create?: XOR<Enumerable<DayCreateWithoutModifierInput>, Enumerable<DayUncheckedCreateWithoutModifierInput>>
     connectOrCreate?: Enumerable<DayCreateOrConnectWithoutModifierInput>
@@ -5015,6 +6364,72 @@ export namespace Prisma {
     connect?: Enumerable<DayWhereUniqueInput>
     update?: Enumerable<DayUpdateWithWhereUniqueWithoutModifierInput>
     updateMany?: Enumerable<DayUpdateManyWithWhereWithoutModifierInput>
+    deleteMany?: Enumerable<DayScalarWhereInput>
+  }
+
+  export type DayCreateNestedManyWithoutModifierOptionInput = {
+    create?: XOR<Enumerable<DayCreateWithoutModifierOptionInput>, Enumerable<DayUncheckedCreateWithoutModifierOptionInput>>
+    connectOrCreate?: Enumerable<DayCreateOrConnectWithoutModifierOptionInput>
+    createMany?: DayCreateManyModifierOptionInputEnvelope
+    connect?: Enumerable<DayWhereUniqueInput>
+  }
+
+  export type ChallengeModifierCreateNestedOneWithoutModifierOptionInput = {
+    create?: XOR<ChallengeModifierCreateWithoutModifierOptionInput, ChallengeModifierUncheckedCreateWithoutModifierOptionInput>
+    connectOrCreate?: ChallengeModifierCreateOrConnectWithoutModifierOptionInput
+    connect?: ChallengeModifierWhereUniqueInput
+  }
+
+  export type DayUncheckedCreateNestedManyWithoutModifierOptionInput = {
+    create?: XOR<Enumerable<DayCreateWithoutModifierOptionInput>, Enumerable<DayUncheckedCreateWithoutModifierOptionInput>>
+    connectOrCreate?: Enumerable<DayCreateOrConnectWithoutModifierOptionInput>
+    createMany?: DayCreateManyModifierOptionInputEnvelope
+    connect?: Enumerable<DayWhereUniqueInput>
+  }
+
+  export type DayUpdateManyWithoutModifierOptionNestedInput = {
+    create?: XOR<Enumerable<DayCreateWithoutModifierOptionInput>, Enumerable<DayUncheckedCreateWithoutModifierOptionInput>>
+    connectOrCreate?: Enumerable<DayCreateOrConnectWithoutModifierOptionInput>
+    upsert?: Enumerable<DayUpsertWithWhereUniqueWithoutModifierOptionInput>
+    createMany?: DayCreateManyModifierOptionInputEnvelope
+    set?: Enumerable<DayWhereUniqueInput>
+    disconnect?: Enumerable<DayWhereUniqueInput>
+    delete?: Enumerable<DayWhereUniqueInput>
+    connect?: Enumerable<DayWhereUniqueInput>
+    update?: Enumerable<DayUpdateWithWhereUniqueWithoutModifierOptionInput>
+    updateMany?: Enumerable<DayUpdateManyWithWhereWithoutModifierOptionInput>
+    deleteMany?: Enumerable<DayScalarWhereInput>
+  }
+
+  export type ChallengeModifierUpdateOneWithoutModifierOptionNestedInput = {
+    create?: XOR<ChallengeModifierCreateWithoutModifierOptionInput, ChallengeModifierUncheckedCreateWithoutModifierOptionInput>
+    connectOrCreate?: ChallengeModifierCreateOrConnectWithoutModifierOptionInput
+    upsert?: ChallengeModifierUpsertWithoutModifierOptionInput
+    disconnect?: boolean
+    delete?: boolean
+    connect?: ChallengeModifierWhereUniqueInput
+    update?: XOR<ChallengeModifierUpdateWithoutModifierOptionInput, ChallengeModifierUncheckedUpdateWithoutModifierOptionInput>
+  }
+
+  export type NullableIntFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
+  export type DayUncheckedUpdateManyWithoutModifierOptionNestedInput = {
+    create?: XOR<Enumerable<DayCreateWithoutModifierOptionInput>, Enumerable<DayUncheckedCreateWithoutModifierOptionInput>>
+    connectOrCreate?: Enumerable<DayCreateOrConnectWithoutModifierOptionInput>
+    upsert?: Enumerable<DayUpsertWithWhereUniqueWithoutModifierOptionInput>
+    createMany?: DayCreateManyModifierOptionInputEnvelope
+    set?: Enumerable<DayWhereUniqueInput>
+    disconnect?: Enumerable<DayWhereUniqueInput>
+    delete?: Enumerable<DayWhereUniqueInput>
+    connect?: Enumerable<DayWhereUniqueInput>
+    update?: Enumerable<DayUpdateWithWhereUniqueWithoutModifierOptionInput>
+    updateMany?: Enumerable<DayUpdateManyWithWhereWithoutModifierOptionInput>
     deleteMany?: Enumerable<DayScalarWhereInput>
   }
 
@@ -5064,9 +6479,9 @@ export namespace Prisma {
     deleteMany?: Enumerable<DayScalarWhereInput>
   }
 
-  export type GameCreateNestedOneWithoutDaysInput = {
-    create?: XOR<GameCreateWithoutDaysInput, GameUncheckedCreateWithoutDaysInput>
-    connectOrCreate?: GameCreateOrConnectWithoutDaysInput
+  export type GameCreateNestedOneWithoutDayInput = {
+    create?: XOR<GameCreateWithoutDayInput, GameUncheckedCreateWithoutDayInput>
+    connectOrCreate?: GameCreateOrConnectWithoutDayInput
     connect?: GameWhereUniqueInput
   }
 
@@ -5076,16 +6491,22 @@ export namespace Prisma {
     connect?: ChallengeModifierWhereUniqueInput
   }
 
+  export type ModifierOptionCreateNestedOneWithoutDayInput = {
+    create?: XOR<ModifierOptionCreateWithoutDayInput, ModifierOptionUncheckedCreateWithoutDayInput>
+    connectOrCreate?: ModifierOptionCreateOrConnectWithoutDayInput
+    connect?: ModifierOptionWhereUniqueInput
+  }
+
   export type BoolFieldUpdateOperationsInput = {
     set?: boolean
   }
 
-  export type GameUpdateOneRequiredWithoutDaysNestedInput = {
-    create?: XOR<GameCreateWithoutDaysInput, GameUncheckedCreateWithoutDaysInput>
-    connectOrCreate?: GameCreateOrConnectWithoutDaysInput
-    upsert?: GameUpsertWithoutDaysInput
+  export type GameUpdateOneRequiredWithoutDayNestedInput = {
+    create?: XOR<GameCreateWithoutDayInput, GameUncheckedCreateWithoutDayInput>
+    connectOrCreate?: GameCreateOrConnectWithoutDayInput
+    upsert?: GameUpsertWithoutDayInput
     connect?: GameWhereUniqueInput
-    update?: XOR<GameUpdateWithoutDaysInput, GameUncheckedUpdateWithoutDaysInput>
+    update?: XOR<GameUpdateWithoutDayInput, GameUncheckedUpdateWithoutDayInput>
   }
 
   export type ChallengeModifierUpdateOneWithoutDayNestedInput = {
@@ -5098,12 +6519,14 @@ export namespace Prisma {
     update?: XOR<ChallengeModifierUpdateWithoutDayInput, ChallengeModifierUncheckedUpdateWithoutDayInput>
   }
 
-  export type NullableIntFieldUpdateOperationsInput = {
-    set?: number | null
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
+  export type ModifierOptionUpdateOneWithoutDayNestedInput = {
+    create?: XOR<ModifierOptionCreateWithoutDayInput, ModifierOptionUncheckedCreateWithoutDayInput>
+    connectOrCreate?: ModifierOptionCreateOrConnectWithoutDayInput
+    upsert?: ModifierOptionUpsertWithoutDayInput
+    disconnect?: boolean
+    delete?: boolean
+    connect?: ModifierOptionWhereUniqueInput
+    update?: XOR<ModifierOptionUpdateWithoutDayInput, ModifierOptionUncheckedUpdateWithoutDayInput>
   }
 
   export type NestedIntFilter = {
@@ -5175,6 +6598,44 @@ export namespace Prisma {
     _max?: NestedStringFilter
   }
 
+  export type NestedIntNullableFilter = {
+    equals?: number | null
+    in?: Enumerable<number> | number | null
+    notIn?: Enumerable<number> | number | null
+    lt?: number
+    lte?: number
+    gt?: number
+    gte?: number
+    not?: NestedIntNullableFilter | number | null
+  }
+
+  export type NestedIntNullableWithAggregatesFilter = {
+    equals?: number | null
+    in?: Enumerable<number> | number | null
+    notIn?: Enumerable<number> | number | null
+    lt?: number
+    lte?: number
+    gt?: number
+    gte?: number
+    not?: NestedIntNullableWithAggregatesFilter | number | null
+    _count?: NestedIntNullableFilter
+    _avg?: NestedFloatNullableFilter
+    _sum?: NestedIntNullableFilter
+    _min?: NestedIntNullableFilter
+    _max?: NestedIntNullableFilter
+  }
+
+  export type NestedFloatNullableFilter = {
+    equals?: number | null
+    in?: Enumerable<number> | number | null
+    notIn?: Enumerable<number> | number | null
+    lt?: number
+    lte?: number
+    gt?: number
+    gte?: number
+    not?: NestedFloatNullableFilter | number | null
+  }
+
   export type NestedStringNullableFilter = {
     equals?: string | null
     in?: Enumerable<string> | string | null
@@ -5206,17 +6667,6 @@ export namespace Prisma {
     _max?: NestedStringNullableFilter
   }
 
-  export type NestedIntNullableFilter = {
-    equals?: number | null
-    in?: Enumerable<number> | number | null
-    notIn?: Enumerable<number> | number | null
-    lt?: number
-    lte?: number
-    gt?: number
-    gte?: number
-    not?: NestedIntNullableFilter | number | null
-  }
-
   export type NestedBoolFilter = {
     equals?: boolean
     not?: NestedBoolFilter | boolean
@@ -5230,31 +6680,27 @@ export namespace Prisma {
     _max?: NestedBoolFilter
   }
 
-  export type NestedIntNullableWithAggregatesFilter = {
-    equals?: number | null
-    in?: Enumerable<number> | number | null
-    notIn?: Enumerable<number> | number | null
-    lt?: number
-    lte?: number
-    gt?: number
-    gte?: number
-    not?: NestedIntNullableWithAggregatesFilter | number | null
-    _count?: NestedIntNullableFilter
-    _avg?: NestedFloatNullableFilter
-    _sum?: NestedIntNullableFilter
-    _min?: NestedIntNullableFilter
-    _max?: NestedIntNullableFilter
+  export type ModifierOptionCreateWithoutChallengeModifierInput = {
+    name: string
+    text: string
+    Day?: DayCreateNestedManyWithoutModifierOptionInput
   }
 
-  export type NestedFloatNullableFilter = {
-    equals?: number | null
-    in?: Enumerable<number> | number | null
-    notIn?: Enumerable<number> | number | null
-    lt?: number
-    lte?: number
-    gt?: number
-    gte?: number
-    not?: NestedFloatNullableFilter | number | null
+  export type ModifierOptionUncheckedCreateWithoutChallengeModifierInput = {
+    id?: number
+    name: string
+    text: string
+    Day?: DayUncheckedCreateNestedManyWithoutModifierOptionInput
+  }
+
+  export type ModifierOptionCreateOrConnectWithoutChallengeModifierInput = {
+    where: ModifierOptionWhereUniqueInput
+    create: XOR<ModifierOptionCreateWithoutChallengeModifierInput, ModifierOptionUncheckedCreateWithoutChallengeModifierInput>
+  }
+
+  export type ModifierOptionCreateManyChallengeModifierInputEnvelope = {
+    data: Enumerable<ModifierOptionCreateManyChallengeModifierInput>
+    skipDuplicates?: boolean
   }
 
   export type DayCreateWithoutModifierInput = {
@@ -5263,7 +6709,8 @@ export namespace Prisma {
     part2Completed?: boolean
     mainRerollsUsed?: number
     secondaryRerollsUsed?: number
-    game: GameCreateNestedOneWithoutDaysInput
+    game: GameCreateNestedOneWithoutDayInput
+    modifierOption?: ModifierOptionCreateNestedOneWithoutDayInput
   }
 
   export type DayUncheckedCreateWithoutModifierInput = {
@@ -5273,6 +6720,7 @@ export namespace Prisma {
     part2Completed?: boolean
     mainRerollsUsed?: number
     secondaryRerollsUsed?: number
+    modifierOptionId?: number | null
     gameId: number
   }
 
@@ -5284,6 +6732,32 @@ export namespace Prisma {
   export type DayCreateManyModifierInputEnvelope = {
     data: Enumerable<DayCreateManyModifierInput>
     skipDuplicates?: boolean
+  }
+
+  export type ModifierOptionUpsertWithWhereUniqueWithoutChallengeModifierInput = {
+    where: ModifierOptionWhereUniqueInput
+    update: XOR<ModifierOptionUpdateWithoutChallengeModifierInput, ModifierOptionUncheckedUpdateWithoutChallengeModifierInput>
+    create: XOR<ModifierOptionCreateWithoutChallengeModifierInput, ModifierOptionUncheckedCreateWithoutChallengeModifierInput>
+  }
+
+  export type ModifierOptionUpdateWithWhereUniqueWithoutChallengeModifierInput = {
+    where: ModifierOptionWhereUniqueInput
+    data: XOR<ModifierOptionUpdateWithoutChallengeModifierInput, ModifierOptionUncheckedUpdateWithoutChallengeModifierInput>
+  }
+
+  export type ModifierOptionUpdateManyWithWhereWithoutChallengeModifierInput = {
+    where: ModifierOptionScalarWhereInput
+    data: XOR<ModifierOptionUpdateManyMutationInput, ModifierOptionUncheckedUpdateManyWithoutModifierOptionInput>
+  }
+
+  export type ModifierOptionScalarWhereInput = {
+    AND?: Enumerable<ModifierOptionScalarWhereInput>
+    OR?: Enumerable<ModifierOptionScalarWhereInput>
+    NOT?: Enumerable<ModifierOptionScalarWhereInput>
+    id?: IntFilter | number
+    name?: StringFilter | string
+    text?: StringFilter | string
+    challengeModifierId?: IntNullableFilter | number | null
   }
 
   export type DayUpsertWithWhereUniqueWithoutModifierInput = {
@@ -5313,7 +6787,91 @@ export namespace Prisma {
     mainRerollsUsed?: IntFilter | number
     secondaryRerollsUsed?: IntFilter | number
     challengeModifierId?: IntNullableFilter | number | null
+    modifierOptionId?: IntNullableFilter | number | null
     gameId?: IntFilter | number
+  }
+
+  export type DayCreateWithoutModifierOptionInput = {
+    number: number
+    part1Completed?: boolean
+    part2Completed?: boolean
+    mainRerollsUsed?: number
+    secondaryRerollsUsed?: number
+    game: GameCreateNestedOneWithoutDayInput
+    modifier?: ChallengeModifierCreateNestedOneWithoutDayInput
+  }
+
+  export type DayUncheckedCreateWithoutModifierOptionInput = {
+    id?: number
+    number: number
+    part1Completed?: boolean
+    part2Completed?: boolean
+    mainRerollsUsed?: number
+    secondaryRerollsUsed?: number
+    challengeModifierId?: number | null
+    gameId: number
+  }
+
+  export type DayCreateOrConnectWithoutModifierOptionInput = {
+    where: DayWhereUniqueInput
+    create: XOR<DayCreateWithoutModifierOptionInput, DayUncheckedCreateWithoutModifierOptionInput>
+  }
+
+  export type DayCreateManyModifierOptionInputEnvelope = {
+    data: Enumerable<DayCreateManyModifierOptionInput>
+    skipDuplicates?: boolean
+  }
+
+  export type ChallengeModifierCreateWithoutModifierOptionInput = {
+    name: string
+    text: string
+    Day?: DayCreateNestedManyWithoutModifierInput
+  }
+
+  export type ChallengeModifierUncheckedCreateWithoutModifierOptionInput = {
+    id?: number
+    name: string
+    text: string
+    Day?: DayUncheckedCreateNestedManyWithoutModifierInput
+  }
+
+  export type ChallengeModifierCreateOrConnectWithoutModifierOptionInput = {
+    where: ChallengeModifierWhereUniqueInput
+    create: XOR<ChallengeModifierCreateWithoutModifierOptionInput, ChallengeModifierUncheckedCreateWithoutModifierOptionInput>
+  }
+
+  export type DayUpsertWithWhereUniqueWithoutModifierOptionInput = {
+    where: DayWhereUniqueInput
+    update: XOR<DayUpdateWithoutModifierOptionInput, DayUncheckedUpdateWithoutModifierOptionInput>
+    create: XOR<DayCreateWithoutModifierOptionInput, DayUncheckedCreateWithoutModifierOptionInput>
+  }
+
+  export type DayUpdateWithWhereUniqueWithoutModifierOptionInput = {
+    where: DayWhereUniqueInput
+    data: XOR<DayUpdateWithoutModifierOptionInput, DayUncheckedUpdateWithoutModifierOptionInput>
+  }
+
+  export type DayUpdateManyWithWhereWithoutModifierOptionInput = {
+    where: DayScalarWhereInput
+    data: XOR<DayUpdateManyMutationInput, DayUncheckedUpdateManyWithoutDayInput>
+  }
+
+  export type ChallengeModifierUpsertWithoutModifierOptionInput = {
+    update: XOR<ChallengeModifierUpdateWithoutModifierOptionInput, ChallengeModifierUncheckedUpdateWithoutModifierOptionInput>
+    create: XOR<ChallengeModifierCreateWithoutModifierOptionInput, ChallengeModifierUncheckedCreateWithoutModifierOptionInput>
+  }
+
+  export type ChallengeModifierUpdateWithoutModifierOptionInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    text?: StringFieldUpdateOperationsInput | string
+    Day?: DayUpdateManyWithoutModifierNestedInput
+  }
+
+  export type ChallengeModifierUncheckedUpdateWithoutModifierOptionInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    text?: StringFieldUpdateOperationsInput | string
+    Day?: DayUncheckedUpdateManyWithoutModifierNestedInput
   }
 
   export type DayCreateWithoutGameInput = {
@@ -5323,6 +6881,7 @@ export namespace Prisma {
     mainRerollsUsed?: number
     secondaryRerollsUsed?: number
     modifier?: ChallengeModifierCreateNestedOneWithoutDayInput
+    modifierOption?: ModifierOptionCreateNestedOneWithoutDayInput
   }
 
   export type DayUncheckedCreateWithoutGameInput = {
@@ -5333,6 +6892,7 @@ export namespace Prisma {
     mainRerollsUsed?: number
     secondaryRerollsUsed?: number
     challengeModifierId?: number | null
+    modifierOptionId?: number | null
   }
 
   export type DayCreateOrConnectWithoutGameInput = {
@@ -5358,10 +6918,10 @@ export namespace Prisma {
 
   export type DayUpdateManyWithWhereWithoutGameInput = {
     where: DayScalarWhereInput
-    data: XOR<DayUpdateManyMutationInput, DayUncheckedUpdateManyWithoutDaysInput>
+    data: XOR<DayUpdateManyMutationInput, DayUncheckedUpdateManyWithoutDayInput>
   }
 
-  export type GameCreateWithoutDaysInput = {
+  export type GameCreateWithoutDayInput = {
     name: string
     playerName: string
     year: number
@@ -5372,7 +6932,7 @@ export namespace Prisma {
     progressSheetLink?: string | null
   }
 
-  export type GameUncheckedCreateWithoutDaysInput = {
+  export type GameUncheckedCreateWithoutDayInput = {
     id?: number
     name: string
     playerName: string
@@ -5384,22 +6944,22 @@ export namespace Prisma {
     progressSheetLink?: string | null
   }
 
-  export type GameCreateOrConnectWithoutDaysInput = {
+  export type GameCreateOrConnectWithoutDayInput = {
     where: GameWhereUniqueInput
-    create: XOR<GameCreateWithoutDaysInput, GameUncheckedCreateWithoutDaysInput>
+    create: XOR<GameCreateWithoutDayInput, GameUncheckedCreateWithoutDayInput>
   }
 
   export type ChallengeModifierCreateWithoutDayInput = {
     name: string
     text: string
-    options?: ChallengeModifierCreateoptionsInput | Enumerable<string>
+    ModifierOption?: ModifierOptionCreateNestedManyWithoutChallengeModifierInput
   }
 
   export type ChallengeModifierUncheckedCreateWithoutDayInput = {
     id?: number
     name: string
     text: string
-    options?: ChallengeModifierCreateoptionsInput | Enumerable<string>
+    ModifierOption?: ModifierOptionUncheckedCreateNestedManyWithoutChallengeModifierInput
   }
 
   export type ChallengeModifierCreateOrConnectWithoutDayInput = {
@@ -5407,12 +6967,30 @@ export namespace Prisma {
     create: XOR<ChallengeModifierCreateWithoutDayInput, ChallengeModifierUncheckedCreateWithoutDayInput>
   }
 
-  export type GameUpsertWithoutDaysInput = {
-    update: XOR<GameUpdateWithoutDaysInput, GameUncheckedUpdateWithoutDaysInput>
-    create: XOR<GameCreateWithoutDaysInput, GameUncheckedCreateWithoutDaysInput>
+  export type ModifierOptionCreateWithoutDayInput = {
+    name: string
+    text: string
+    ChallengeModifier?: ChallengeModifierCreateNestedOneWithoutModifierOptionInput
   }
 
-  export type GameUpdateWithoutDaysInput = {
+  export type ModifierOptionUncheckedCreateWithoutDayInput = {
+    id?: number
+    name: string
+    text: string
+    challengeModifierId?: number | null
+  }
+
+  export type ModifierOptionCreateOrConnectWithoutDayInput = {
+    where: ModifierOptionWhereUniqueInput
+    create: XOR<ModifierOptionCreateWithoutDayInput, ModifierOptionUncheckedCreateWithoutDayInput>
+  }
+
+  export type GameUpsertWithoutDayInput = {
+    update: XOR<GameUpdateWithoutDayInput, GameUncheckedUpdateWithoutDayInput>
+    create: XOR<GameCreateWithoutDayInput, GameUncheckedCreateWithoutDayInput>
+  }
+
+  export type GameUpdateWithoutDayInput = {
     name?: StringFieldUpdateOperationsInput | string
     playerName?: StringFieldUpdateOperationsInput | string
     year?: IntFieldUpdateOperationsInput | number
@@ -5423,7 +7001,7 @@ export namespace Prisma {
     progressSheetLink?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
-  export type GameUncheckedUpdateWithoutDaysInput = {
+  export type GameUncheckedUpdateWithoutDayInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     playerName?: StringFieldUpdateOperationsInput | string
@@ -5443,14 +7021,38 @@ export namespace Prisma {
   export type ChallengeModifierUpdateWithoutDayInput = {
     name?: StringFieldUpdateOperationsInput | string
     text?: StringFieldUpdateOperationsInput | string
-    options?: ChallengeModifierUpdateoptionsInput | Enumerable<string>
+    ModifierOption?: ModifierOptionUpdateManyWithoutChallengeModifierNestedInput
   }
 
   export type ChallengeModifierUncheckedUpdateWithoutDayInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     text?: StringFieldUpdateOperationsInput | string
-    options?: ChallengeModifierUpdateoptionsInput | Enumerable<string>
+    ModifierOption?: ModifierOptionUncheckedUpdateManyWithoutChallengeModifierNestedInput
+  }
+
+  export type ModifierOptionUpsertWithoutDayInput = {
+    update: XOR<ModifierOptionUpdateWithoutDayInput, ModifierOptionUncheckedUpdateWithoutDayInput>
+    create: XOR<ModifierOptionCreateWithoutDayInput, ModifierOptionUncheckedCreateWithoutDayInput>
+  }
+
+  export type ModifierOptionUpdateWithoutDayInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    text?: StringFieldUpdateOperationsInput | string
+    ChallengeModifier?: ChallengeModifierUpdateOneWithoutModifierOptionNestedInput
+  }
+
+  export type ModifierOptionUncheckedUpdateWithoutDayInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    text?: StringFieldUpdateOperationsInput | string
+    challengeModifierId?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type ModifierOptionCreateManyChallengeModifierInput = {
+    id?: number
+    name: string
+    text: string
   }
 
   export type DayCreateManyModifierInput = {
@@ -5460,7 +7062,27 @@ export namespace Prisma {
     part2Completed?: boolean
     mainRerollsUsed?: number
     secondaryRerollsUsed?: number
+    modifierOptionId?: number | null
     gameId: number
+  }
+
+  export type ModifierOptionUpdateWithoutChallengeModifierInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    text?: StringFieldUpdateOperationsInput | string
+    Day?: DayUpdateManyWithoutModifierOptionNestedInput
+  }
+
+  export type ModifierOptionUncheckedUpdateWithoutChallengeModifierInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    text?: StringFieldUpdateOperationsInput | string
+    Day?: DayUncheckedUpdateManyWithoutModifierOptionNestedInput
+  }
+
+  export type ModifierOptionUncheckedUpdateManyWithoutModifierOptionInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    text?: StringFieldUpdateOperationsInput | string
   }
 
   export type DayUpdateWithoutModifierInput = {
@@ -5469,7 +7091,8 @@ export namespace Prisma {
     part2Completed?: BoolFieldUpdateOperationsInput | boolean
     mainRerollsUsed?: IntFieldUpdateOperationsInput | number
     secondaryRerollsUsed?: IntFieldUpdateOperationsInput | number
-    game?: GameUpdateOneRequiredWithoutDaysNestedInput
+    game?: GameUpdateOneRequiredWithoutDayNestedInput
+    modifierOption?: ModifierOptionUpdateOneWithoutDayNestedInput
   }
 
   export type DayUncheckedUpdateWithoutModifierInput = {
@@ -5479,6 +7102,7 @@ export namespace Prisma {
     part2Completed?: BoolFieldUpdateOperationsInput | boolean
     mainRerollsUsed?: IntFieldUpdateOperationsInput | number
     secondaryRerollsUsed?: IntFieldUpdateOperationsInput | number
+    modifierOptionId?: NullableIntFieldUpdateOperationsInput | number | null
     gameId?: IntFieldUpdateOperationsInput | number
   }
 
@@ -5489,6 +7113,39 @@ export namespace Prisma {
     part2Completed?: BoolFieldUpdateOperationsInput | boolean
     mainRerollsUsed?: IntFieldUpdateOperationsInput | number
     secondaryRerollsUsed?: IntFieldUpdateOperationsInput | number
+    modifierOptionId?: NullableIntFieldUpdateOperationsInput | number | null
+    gameId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type DayCreateManyModifierOptionInput = {
+    id?: number
+    number: number
+    part1Completed?: boolean
+    part2Completed?: boolean
+    mainRerollsUsed?: number
+    secondaryRerollsUsed?: number
+    challengeModifierId?: number | null
+    gameId: number
+  }
+
+  export type DayUpdateWithoutModifierOptionInput = {
+    number?: IntFieldUpdateOperationsInput | number
+    part1Completed?: BoolFieldUpdateOperationsInput | boolean
+    part2Completed?: BoolFieldUpdateOperationsInput | boolean
+    mainRerollsUsed?: IntFieldUpdateOperationsInput | number
+    secondaryRerollsUsed?: IntFieldUpdateOperationsInput | number
+    game?: GameUpdateOneRequiredWithoutDayNestedInput
+    modifier?: ChallengeModifierUpdateOneWithoutDayNestedInput
+  }
+
+  export type DayUncheckedUpdateWithoutModifierOptionInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    number?: IntFieldUpdateOperationsInput | number
+    part1Completed?: BoolFieldUpdateOperationsInput | boolean
+    part2Completed?: BoolFieldUpdateOperationsInput | boolean
+    mainRerollsUsed?: IntFieldUpdateOperationsInput | number
+    secondaryRerollsUsed?: IntFieldUpdateOperationsInput | number
+    challengeModifierId?: NullableIntFieldUpdateOperationsInput | number | null
     gameId?: IntFieldUpdateOperationsInput | number
   }
 
@@ -5500,6 +7157,7 @@ export namespace Prisma {
     mainRerollsUsed?: number
     secondaryRerollsUsed?: number
     challengeModifierId?: number | null
+    modifierOptionId?: number | null
   }
 
   export type DayUpdateWithoutGameInput = {
@@ -5509,6 +7167,7 @@ export namespace Prisma {
     mainRerollsUsed?: IntFieldUpdateOperationsInput | number
     secondaryRerollsUsed?: IntFieldUpdateOperationsInput | number
     modifier?: ChallengeModifierUpdateOneWithoutDayNestedInput
+    modifierOption?: ModifierOptionUpdateOneWithoutDayNestedInput
   }
 
   export type DayUncheckedUpdateWithoutGameInput = {
@@ -5519,16 +7178,7 @@ export namespace Prisma {
     mainRerollsUsed?: IntFieldUpdateOperationsInput | number
     secondaryRerollsUsed?: IntFieldUpdateOperationsInput | number
     challengeModifierId?: NullableIntFieldUpdateOperationsInput | number | null
-  }
-
-  export type DayUncheckedUpdateManyWithoutDaysInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    number?: IntFieldUpdateOperationsInput | number
-    part1Completed?: BoolFieldUpdateOperationsInput | boolean
-    part2Completed?: BoolFieldUpdateOperationsInput | boolean
-    mainRerollsUsed?: IntFieldUpdateOperationsInput | number
-    secondaryRerollsUsed?: IntFieldUpdateOperationsInput | number
-    challengeModifierId?: NullableIntFieldUpdateOperationsInput | number | null
+    modifierOptionId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
 
