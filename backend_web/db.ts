@@ -33,19 +33,23 @@ export async function getGameById(id: number) {
 export async function createGame(
   name: string,
   playerName: string,
-  year: string,
+  year: number,
 ) {
   const result = await prisma.game.create({
     data: {
       name,
-      player_name: playerName,
+      playerName,
       year,
     },
   });
   return result;
 }
 
-export async function upsertGame(name: string, playerName: string) {
+export async function upsertGame(
+  name: string,
+  playerName: string,
+  year: number,
+) {
   const result = await prisma.game.upsert({
     where: {
       name,
@@ -53,7 +57,8 @@ export async function upsertGame(name: string, playerName: string) {
     update: {},
     create: {
       name,
-      player_name: playerName,
+      playerName,
+      year,
     },
   });
   return result;
@@ -64,7 +69,7 @@ export async function updateGame(
   name: string,
   playerName: string,
   currentRerollTokens: number,
-  rerollTokensGaines: number,
+  rerollTokensGained: number,
   rerollTokensSpent: number,
   repositoryLink: string,
   progressSheetLink: string,
@@ -75,12 +80,12 @@ export async function updateGame(
     },
     data: {
       name,
-      player_name: playerName,
-      current_reroll_tokens: currentRerollTokens,
-      reroll_tokens_gained: rerollTokensGaines,
-      reroll_tokens_spent: rerollTokensSpent,
-      repository_link: repositoryLink,
-      progress_sheet_link: progressSheetLink,
+      playerName,
+      currentRerollTokens,
+      rerollTokensGained,
+      rerollTokensSpent,
+      repositoryLink,
+      progressSheetLink,
     },
   });
   return result;
@@ -130,7 +135,7 @@ export async function updateDayPart1CompletionStatus(
       id,
     },
     data: {
-      part_1_completed: part1Completed,
+      part1Completed,
     },
   });
   return result;
@@ -145,7 +150,7 @@ export async function updateDayPart2CompletionStatus(
       id,
     },
     data: {
-      part_2_completed: part2Completed,
+      part2Completed,
     },
   });
   return result;
@@ -175,7 +180,7 @@ export async function updateDayMainRerollsUsed(
       id,
     },
     data: {
-      main_rerolls_used: mainRerollsUsed,
+      mainRerollsUsed,
     },
   });
   return result;
@@ -190,7 +195,7 @@ export async function updateDaySecondaryRerollsUsed(
       id,
     },
     data: {
-      secondary_rerolls_used: secondaryRerollsUsed,
+      secondaryRerollsUsed,
     },
   });
   return result;
