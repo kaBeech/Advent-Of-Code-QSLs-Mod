@@ -11,17 +11,11 @@ import { Day, Game } from "../generated/client/deno/index.d.ts";
 import { GameController } from "./GameController.ts";
 import { rollChallengeModifier } from "./rollChallengeModifier.ts";
 import { rollModifierOption } from "./rollModifierOption.ts";
+import { verifyDayIsCurrent } from "./verifyDayIsCurrent.ts";
 
 interface DayControllerState {
   day: Day;
 }
-
-const verifyDayIsCurrent = async (state: DayControllerState) => {
-  const game = await getGameById(state.day.gameId);
-  if (game!.currentDay !== state.day.number) {
-    throw new Error("This method only permitted on current day");
-  }
-};
 
 const initialChallengeModifierRoller = (state: DayControllerState) => ({
   rollInitialChallengeModifier: async () => {
