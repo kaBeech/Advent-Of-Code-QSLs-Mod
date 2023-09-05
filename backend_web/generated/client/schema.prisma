@@ -33,7 +33,7 @@ model Game {
   id                  Int     @id @default(autoincrement())
   name                String  @unique
   playerName          String
-  year                String
+  year                Int
   currentRerollTokens Int     @default(7)
   rerollTokensGained  Int     @default(7)
   rerollTokensSpent   Int     @default(0)
