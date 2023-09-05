@@ -40,7 +40,7 @@ const nextDayStarter = (state: GameControllerState) => ({
     if (state.game.currentDay === 25) {
       throw new Error("It's already Christmas (Day 25)!!!");
     }
-    if (state.game.currentDay !== 0 || !state.game.currentDayCompleted) {
+    if (state.game.currentDay !== 0 && !state.game.currentDayCompleted) {
       throw new Error(
         `Day ${state.game.currentDay} has not been completed yet`,
       );
