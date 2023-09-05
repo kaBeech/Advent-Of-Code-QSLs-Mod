@@ -84,9 +84,6 @@ const challengeModifierReroller = (state: DayControllerState) => ({
         true,
         game!,
       );
-    } else {
-      state.day.modifierOptionId = null;
-      await updateDayModifierOption(state.day.id, 0);
     }
     return selectedChallengeModifier;
   },
