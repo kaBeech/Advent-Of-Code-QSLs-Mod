@@ -272,14 +272,14 @@ export async function updateDayPart2CompletionStatus(
 
 export async function updateDayChallengeModifier(
   id: number,
-  modifier: ChallengeModifier,
+  challengeModifierId: number,
 ) {
   const result = await prisma.day.update({
     where: {
       id,
     },
     data: {
-      challengeModifierId: modifier.id,
+      challengeModifierId,
     },
   });
   return result;
