@@ -108,7 +108,8 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
 exports.Prisma.ChallengeModifierScalarFieldEnum = {
   id: 'id',
   name: 'name',
-  text: 'text'
+  text: 'text',
+  hasOptions: 'hasOptions'
 };
 
 exports.Prisma.ModifierOptionScalarFieldEnum = {
@@ -123,6 +124,8 @@ exports.Prisma.GameScalarFieldEnum = {
   name: 'name',
   playerName: 'playerName',
   year: 'year',
+  currentDay: 'currentDay',
+  currentDayCompleted: 'currentDayCompleted',
   currentRerollTokens: 'currentRerollTokens',
   rerollTokensGained: 'rerollTokensGained',
   rerollTokensSpent: 'rerollTokensSpent',
@@ -135,8 +138,8 @@ exports.Prisma.DayScalarFieldEnum = {
   number: 'number',
   part1Completed: 'part1Completed',
   part2Completed: 'part2Completed',
-  mainRerollsUsed: 'mainRerollsUsed',
-  secondaryRerollsUsed: 'secondaryRerollsUsed',
+  challengeModifierRerollsUsed: 'challengeModifierRerollsUsed',
+  modifierOptionRerollsUsed: 'modifierOptionRerollsUsed',
   challengeModifierId: 'challengeModifierId',
   modifierOptionId: 'modifierOptionId',
   gameId: 'gameId'

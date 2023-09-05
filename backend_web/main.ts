@@ -1,12 +1,14 @@
 import { Application, Router } from "https://deno.land/x/oak@v11.1.0/mod.ts";
-import { rollChallengeModifier } from "./components/rollChallengeModifier.ts";
 import {
   createGame,
   deleteGame,
-  getAllChallengeModifiers,
   getAllGames,
+  getDayById,
+  getDaysByGameId,
   getGameById,
 } from "./db.ts";
+import { DayController } from "./components/DayController.ts";
+import { GameController } from "./components/GameController.ts";
 
 const app = new Application();
 const router = new Router();
@@ -20,7 +22,7 @@ router
       "You have successfully pinged the Advent Of Code QSL's Mod API!";
   })
   /**
-   * See All Games (eventually will be Continue Game)
+   * Get All Games (eventually will be Continue Game)
    */
   .get("/game", (context) => {
     context.response.body = getAllGames();
@@ -50,12 +52,72 @@ router
     context.response.body = deleteGame(+id);
   })
   /**
-   * Roll a Challenge Modifier
+   * Get All Days for a Game
    */
-  .get("/roll/challenge_modifier", async (context) => {
-    context.response.body = rollChallengeModifier(
-      await getAllChallengeModifiers(),
-    );
+  .get("/game/:id/day", (context) => {
+    const { id } = context.params;
+    context.response.body = getDaysByGameId(+id);
+  })
+  /**
+   * Get a Day
+   */
+  .get("/day/:id", (context) => {
+    const { id } = context.params;
+    context.response.body = getDayById(+id);
+  })
+  /**
+   * Start the next Day
+   */
+  .post("/game/:id/start_next_day", async (context) => {
+    const { id } = context.params;
+    const game = await getGameById(+id);
+    const day = GameController(game!).startNextDay();
+    context.response.body = day;
+  })
+  /**
+   * Roll a Day's initial Challenge Modifier
+   */
+  .put("day/:id/roll/initial", async (context) => {
+    const { id } = context.params;
+    const day = await getDayById(+id);
+    DayController(day!).rollInitialChallengeModifier();
+    context.response.body = day;
+  })
+  /**
+   * Reroll a Day's Challenge Modifier
+   */
+  .put("day/:id/roll/reroll_challenge_modifier", async (context) => {
+    const { id } = context.params;
+    const day = await getDayById(+id);
+    DayController(day!).rerollChallengeModifier();
+    context.response.body = day;
+  })
+  /**
+   * Reroll a Day's Modifier Option
+   */
+  .put("day/:id/roll/reroll_modifier_option", async (context) => {
+    const { id } = context.params;
+    const day = await getDayById(+id);
+    DayController(day!).rerollModifierOption();
+    context.response.body = day;
+  })
+  /**
+   * Complete Part 1 for a Day
+   */
+  .put("day/:id/complete_part_1", async (context) => {
+    const { id } = context.params;
+    const day = await getDayById(+id);
+    DayController(day!).completePart1();
+    context.response.body = day;
+  })
+  /**
+   * Complete Part 2 for a Day
+   */
+  .put("day/:id/complete_part_2", async (context) => {
+    const { id } = context.params;
+    const day = await getDayById(+id);
+    DayController(day!).completePart2();
+    context.response.body = day;
   });
 
 app.use(router.routes());

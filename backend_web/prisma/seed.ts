@@ -27,14 +27,17 @@ const challengeModifierData: Prisma.ChallengeModifierCreateInput[] = [
   {
     name: "language_box_1",
     text: "using a random programming language from Language Box 1: ",
+    hasOptions: true,
   },
   {
     name: "language_box_2",
     text: "using a random programming language from Language Box 2: ",
+    hasOptions: true,
   },
   {
     name: "language_box_3",
     text: "using a random programming language from Language Box 3: ",
+    hasOptions: true,
   },
   {
     name: "testing",
@@ -126,7 +129,7 @@ const modifierOptionData: Prisma.ModifierOptionCreateInput[] = [
   {
     name: "language_box_1_javascript",
     text: "JavaScript",
-    challengeModifier: {
+    ChallengeModifier: {
       connect: {
         name: "language_box_1",
       },
@@ -135,7 +138,7 @@ const modifierOptionData: Prisma.ModifierOptionCreateInput[] = [
   {
     name: "language_box_1_typescript",
     text: "TypeScript",
-    challengeModifier: {
+    ChallengeModifier: {
       connect: {
         name: "language_box_1",
       },
@@ -144,7 +147,7 @@ const modifierOptionData: Prisma.ModifierOptionCreateInput[] = [
   {
     name: "language_box_1_python",
     text: "Python",
-    challengeModifier: {
+    ChallengeModifier: {
       connect: {
         name: "language_box_1",
       },
@@ -153,7 +156,7 @@ const modifierOptionData: Prisma.ModifierOptionCreateInput[] = [
   {
     name: "language_box_1_r",
     text: "R",
-    challengeModifier: {
+    ChallengeModifier: {
       connect: {
         name: "language_box_1",
       },
@@ -162,7 +165,7 @@ const modifierOptionData: Prisma.ModifierOptionCreateInput[] = [
   {
     name: "language_box_1_ruby",
     text: "Ruby",
-    challengeModifier: {
+    ChallengeModifier: {
       connect: {
         name: "language_box_1",
       },
@@ -171,7 +174,7 @@ const modifierOptionData: Prisma.ModifierOptionCreateInput[] = [
   {
     name: "language_box_1_java",
     text: "Java",
-    challengeModifier: {
+    ChallengeModifier: {
       connect: {
         name: "language_box_1",
       },
@@ -180,7 +183,7 @@ const modifierOptionData: Prisma.ModifierOptionCreateInput[] = [
   {
     name: "language_box_1_c",
     text: "C",
-    challengeModifier: {
+    ChallengeModifier: {
       connect: {
         name: "language_box_1",
       },
@@ -189,7 +192,7 @@ const modifierOptionData: Prisma.ModifierOptionCreateInput[] = [
   {
     name: "language_box_1_go",
     text: "Go",
-    challengeModifier: {
+    ChallengeModifier: {
       connect: {
         name: "language_box_1",
       },
@@ -198,7 +201,7 @@ const modifierOptionData: Prisma.ModifierOptionCreateInput[] = [
   {
     name: "language_box_2_cpp",
     text: "C++",
-    challengeModifier: {
+    ChallengeModifier: {
       connect: {
         name: "language_box_2",
       },
@@ -207,7 +210,7 @@ const modifierOptionData: Prisma.ModifierOptionCreateInput[] = [
   {
     name: "language_box_2_rust",
     text: "Rust",
-    challengeModifier: {
+    ChallengeModifier: {
       connect: {
         name: "language_box_2",
       },
@@ -216,7 +219,7 @@ const modifierOptionData: Prisma.ModifierOptionCreateInput[] = [
   {
     name: "language_box_2_lisp",
     text: "LISP",
-    challengeModifier: {
+    ChallengeModifier: {
       connect: {
         name: "language_box_2",
       },
@@ -225,7 +228,7 @@ const modifierOptionData: Prisma.ModifierOptionCreateInput[] = [
   {
     name: "language_box_2_haskell",
     text: "Haskell",
-    challengeModifier: {
+    ChallengeModifier: {
       connect: {
         name: "language_box_2",
       },
@@ -234,7 +237,7 @@ const modifierOptionData: Prisma.ModifierOptionCreateInput[] = [
   {
     name: "language_box_2_scala",
     text: "Scala",
-    challengeModifier: {
+    ChallengeModifier: {
       connect: {
         name: "language_box_2",
       },
@@ -243,7 +246,7 @@ const modifierOptionData: Prisma.ModifierOptionCreateInput[] = [
   {
     name: "language_box_2_prolog",
     text: "Prolog",
-    challengeModifier: {
+    ChallengeModifier: {
       connect: {
         name: "language_box_2",
       },
@@ -252,7 +255,7 @@ const modifierOptionData: Prisma.ModifierOptionCreateInput[] = [
   {
     name: "language_box_2_csharp",
     text: "C#",
-    challengeModifier: {
+    ChallengeModifier: {
       connect: {
         name: "language_box_2",
       },
@@ -261,7 +264,7 @@ const modifierOptionData: Prisma.ModifierOptionCreateInput[] = [
   {
     name: "language_box_3_webassembly",
     text: "WebAssembly",
-    challengeModifier: {
+    ChallengeModifier: {
       connect: {
         name: "language_box_3",
       },
@@ -270,7 +273,7 @@ const modifierOptionData: Prisma.ModifierOptionCreateInput[] = [
   {
     name: "language_box_3_algol",
     text: "ALGOL",
-    challengeModifier: {
+    ChallengeModifier: {
       connect: {
         name: "language_box_3",
       },
@@ -279,7 +282,7 @@ const modifierOptionData: Prisma.ModifierOptionCreateInput[] = [
   {
     name: "language_box_3_cobol",
     text: "COBOL",
-    challengeModifier: {
+    ChallengeModifier: {
       connect: {
         name: "language_box_3",
       },
@@ -288,7 +291,7 @@ const modifierOptionData: Prisma.ModifierOptionCreateInput[] = [
   {
     name: "language_box_3_fortran",
     text: "FORTRAN",
-    challengeModifier: {
+    ChallengeModifier: {
       connect: {
         name: "language_box_3",
       },
@@ -297,7 +300,7 @@ const modifierOptionData: Prisma.ModifierOptionCreateInput[] = [
   {
     name: "language_box_3_lolcode",
     text: "LOLCODE",
-    challengeModifier: {
+    ChallengeModifier: {
       connect: {
         name: "language_box_3",
       },
@@ -306,13 +309,22 @@ const modifierOptionData: Prisma.ModifierOptionCreateInput[] = [
   {
     name: "language_box_3_jsfuck",
     text: "JSFuck",
-    challengeModifier: {
+    ChallengeModifier: {
       connect: {
         name: "language_box_3",
       },
     },
   },
 ];
+
+for (const u of modifierOptionData) {
+  const modifierOption = await prisma.modifierOption.upsert({
+    where: { name: u.name },
+    update: {},
+    create: u,
+  });
+  console.log(`Created modifier option with id: ${modifierOption.id}`);
+}
 
 console.log(`Seeding finished.`);
 

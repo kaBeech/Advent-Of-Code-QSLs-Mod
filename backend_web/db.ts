@@ -1,6 +1,6 @@
 import { PrismaClient } from "./generated/client/deno/edge.ts";
 import { config } from "https://deno.land/std@0.163.0/dotenv/mod.ts";
-import { ChallengeModifier, Day } from "./generated/client/deno/index.d.ts";
+import { ChallengeModifier } from "./generated/client/deno/index.d.ts";
 
 const envVars = await config();
 
@@ -16,6 +16,21 @@ const prisma = new PrismaClient({
  * Game CRUD
  */
 
+export async function createGame(
+  name: string,
+  playerName: string,
+  year: number,
+) {
+  const result = await prisma.game.create({
+    data: {
+      name,
+      playerName,
+      year,
+    },
+  });
+  return result;
+}
+
 export async function getAllGames() {
   const games = await prisma.game.findMany();
   return games;
@@ -30,22 +45,11 @@ export async function getGameById(id: number) {
   return game;
 }
 
-export async function createGame(
+export async function upsertGame(
   name: string,
   playerName: string,
   year: number,
 ) {
-  const result = await prisma.game.create({
-    data: {
-      name,
-      player_name: playerName,
-      year,
-    },
-  });
-  return result;
-}
-
-export async function upsertGame(name: string, playerName: string) {
   const result = await prisma.game.upsert({
     where: {
       name,
@@ -53,36 +57,140 @@ export async function upsertGame(name: string, playerName: string) {
     update: {},
     create: {
       name,
-      player_name: playerName,
+      playerName,
+      year,
     },
   });
   return result;
 }
 
-export async function updateGame(
-  id: number,
-  name: string,
-  playerName: string,
-  currentRerollTokens: number,
-  rerollTokensGaines: number,
-  rerollTokensSpent: number,
-  repositoryLink: string,
-  progressSheetLink: string,
-  days: Day[],
-) {
+export async function updateGameName(id: number, name: string) {
   const result = await prisma.game.update({
     where: {
       id,
     },
     data: {
       name,
-      player_name: playerName,
-      current_reroll_tokens: currentRerollTokens,
-      reroll_tokens_gained: rerollTokensGaines,
-      reroll_tokens_spent: rerollTokensSpent,
-      repository_link: repositoryLink,
-      progress_sheet_link: progressSheetLink,
-      days,
+    },
+  });
+  return result;
+}
+
+export async function updateGamePlayerName(
+  id: number,
+  playerName: string,
+) {
+  const result = await prisma.game.update({
+    where: {
+      id,
+    },
+    data: {
+      playerName,
+    },
+  });
+  return result;
+}
+
+export async function updateGameCurrentDay(
+  id: number,
+  currentDay: number,
+) {
+  const result = await prisma.game.update({
+    where: {
+      id,
+    },
+    data: {
+      currentDay,
+    },
+  });
+  return result;
+}
+
+export async function updateGameCurrentDayCompletionStatus(
+  id: number,
+  currentDayCompleted: boolean,
+) {
+  const result = await prisma.game.update({
+    where: {
+      id,
+    },
+    data: {
+      currentDayCompleted,
+    },
+  });
+  return result;
+}
+
+export async function updateGameCurrentRerollTokens(
+  id: number,
+  currentRerollTokens: number,
+) {
+  const result = await prisma.game.update({
+    where: {
+      id,
+    },
+    data: {
+      currentRerollTokens,
+    },
+  });
+  return result;
+}
+
+export async function updateGameRerollTokensGained(
+  id: number,
+  rerollTokensGained: number,
+) {
+  const result = await prisma.game.update({
+    where: {
+      id,
+    },
+    data: {
+      rerollTokensGained,
+    },
+  });
+  return result;
+}
+
+export async function updateGameRerollTokensSpent(
+  id: number,
+  rerollTokensSpent: number,
+) {
+  const result = await prisma.game.update({
+    where: {
+      id,
+    },
+    data: {
+      rerollTokensSpent,
+    },
+  });
+  return result;
+}
+
+export async function updateGameRepositoryLink(
+  id: number,
+  repositoryLink: string,
+) {
+  const result = await prisma.game.update({
+    where: {
+      id,
+    },
+    data: {
+      repositoryLink,
+    },
+  });
+  return result;
+}
+
+export async function updateGameProgressSheetLink(
+  id: number,
+  progressSheetLink: string,
+) {
+  const result = await prisma.game.update({
+    where: {
+      id,
+    },
+    data: {
+      progressSheetLink,
     },
   });
   return result;
@@ -101,15 +209,6 @@ export async function deleteGame(id: number) {
  * Day CRUD
  */
 
-export async function getDayById(id: number) {
-  const day = await prisma.day.findUnique({
-    where: {
-      id,
-    },
-  });
-  return day;
-}
-
 export async function createDay(
   gameId: number,
   dayNumber: number,
@@ -123,6 +222,24 @@ export async function createDay(
   return result;
 }
 
+export async function getDayById(id: number) {
+  const day = await prisma.day.findUnique({
+    where: {
+      id,
+    },
+  });
+  return day;
+}
+
+export async function getDaysByGameId(gameId: number) {
+  const days = await prisma.day.findMany({
+    where: {
+      gameId,
+    },
+  });
+  return days;
+}
+
 export async function updateDayPart1CompletionStatus(
   id: number,
   part1Completed: boolean,
@@ -132,7 +249,7 @@ export async function updateDayPart1CompletionStatus(
       id,
     },
     data: {
-      part_1_completed: part1Completed,
+      part1Completed,
     },
   });
   return result;
@@ -147,7 +264,7 @@ export async function updateDayPart2CompletionStatus(
       id,
     },
     data: {
-      part_2_completed: part2Completed,
+      part2Completed,
     },
   });
   return result;
@@ -162,37 +279,52 @@ export async function updateDayChallengeModifier(
       id,
     },
     data: {
-      modifier,
+      challengeModifierId: modifier.id,
     },
   });
   return result;
 }
 
-export async function updateDayMainRerollsUsed(
+export async function updateDayModifierOption(
   id: number,
-  mainRerollsUsed: number,
+  modifierOptionId: number,
 ) {
   const result = await prisma.day.update({
     where: {
       id,
     },
     data: {
-      main_rerolls_used: mainRerollsUsed,
+      modifierOptionId,
     },
   });
   return result;
 }
 
-export async function updateDaySecondaryRerollsUsed(
+export async function updateDayChallengeModifierRerollsUsed(
   id: number,
-  secondaryRerollsUsed: number,
+  challengeModifierRerollsUsed: number,
 ) {
   const result = await prisma.day.update({
     where: {
       id,
     },
     data: {
-      secondary_rerolls_used: secondaryRerollsUsed,
+      challengeModifierRerollsUsed,
+    },
+  });
+  return result;
+}
+
+export async function updateDayModifierOptionRerollsUsed(
+  id: number,
+  modifierOptionRerollsUsed: number,
+) {
+  const result = await prisma.day.update({
+    where: {
+      id,
+    },
+    data: {
+      modifierOptionRerollsUsed,
     },
   });
   return result;
@@ -205,4 +337,19 @@ export async function updateDaySecondaryRerollsUsed(
 export async function getAllChallengeModifiers() {
   const challengeModifiers = await prisma.challengeModifier.findMany();
   return challengeModifiers;
+}
+
+/**
+ * Modifier Option CRUD
+ */
+
+export async function getModifierOptionsByChallengeModifierId(
+  challengeModifierId: number,
+) {
+  const modifierOptions = await prisma.modifierOption.findMany({
+    where: {
+      challengeModifierId,
+    },
+  });
+  return modifierOptions;
 }
