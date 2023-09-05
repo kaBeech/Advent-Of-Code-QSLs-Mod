@@ -7,7 +7,10 @@ const rollChallengeModifier = (challengeModifiers: ChallengeModifier[]) => {
   if (selectedChallengeModifier.options.length > 0) {
     text += `${pickRandomly(selectedChallengeModifier.options)}`;
   }
-  return `Complete this challenge ${text}`;
+  return {
+    id: selectedChallengeModifier.id,
+    text: `Complete this challenge ${text}!`,
+  };
 };
 
 export { rollChallengeModifier };

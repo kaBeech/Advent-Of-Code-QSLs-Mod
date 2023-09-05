@@ -3,7 +3,7 @@
  * Client
 **/
 
-import * as runtime from './runtime/data-proxy';
+import * as runtime from './runtime/library';
 import $Types = runtime.Types // general types
 import $Public = runtime.Types.Public
 import $Utils = runtime.Types.Utils
@@ -14,12 +14,14 @@ export type PrismaPromise<T> = $Public.PrismaPromise<T>
 
 export type ChallengeModifierPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
   name: "ChallengeModifier"
-  objects: {}
+  objects: {
+    ModifierOption: ModifierOptionPayload<ExtArgs>[]
+    Day: DayPayload<ExtArgs>[]
+  }
   scalars: $Extensions.GetResult<{
     id: number
     name: string
     text: string
-    options: string[]
   }, ExtArgs["result"]["challengeModifier"]>
   composites: {}
 }
@@ -29,6 +31,76 @@ export type ChallengeModifierPayload<ExtArgs extends $Extensions.Args = $Extensi
  * 
  */
 export type ChallengeModifier = runtime.Types.DefaultSelection<ChallengeModifierPayload>
+export type ModifierOptionPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  name: "ModifierOption"
+  objects: {
+    Day: DayPayload<ExtArgs>[]
+    ChallengeModifier: ChallengeModifierPayload<ExtArgs> | null
+  }
+  scalars: $Extensions.GetResult<{
+    id: number
+    name: string
+    text: string
+    challengeModifierId: number | null
+  }, ExtArgs["result"]["modifierOption"]>
+  composites: {}
+}
+
+/**
+ * Model ModifierOption
+ * 
+ */
+export type ModifierOption = runtime.Types.DefaultSelection<ModifierOptionPayload>
+export type GamePayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  name: "Game"
+  objects: {
+    Day: DayPayload<ExtArgs>[]
+  }
+  scalars: $Extensions.GetResult<{
+    id: number
+    name: string
+    playerName: string
+    year: number
+    currentRerollTokens: number
+    rerollTokensGained: number
+    rerollTokensSpent: number
+    repositoryLink: string | null
+    progressSheetLink: string | null
+  }, ExtArgs["result"]["game"]>
+  composites: {}
+}
+
+/**
+ * Model Game
+ * 
+ */
+export type Game = runtime.Types.DefaultSelection<GamePayload>
+export type DayPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  name: "Day"
+  objects: {
+    game: GamePayload<ExtArgs>
+    modifier: ChallengeModifierPayload<ExtArgs> | null
+    modifierOption: ModifierOptionPayload<ExtArgs> | null
+  }
+  scalars: $Extensions.GetResult<{
+    id: number
+    number: number
+    part1Completed: boolean
+    part2Completed: boolean
+    mainRerollsUsed: number
+    secondaryRerollsUsed: number
+    challengeModifierId: number | null
+    modifierOptionId: number | null
+    gameId: number
+  }, ExtArgs["result"]["day"]>
+  composites: {}
+}
+
+/**
+ * Model Day
+ * 
+ */
+export type Day = runtime.Types.DefaultSelection<DayPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -164,6 +236,36 @@ export class PrismaClient<
     * ```
     */
   get challengeModifier(): Prisma.ChallengeModifierDelegate<GlobalReject, ExtArgs>;
+
+  /**
+   * `prisma.modifierOption`: Exposes CRUD operations for the **ModifierOption** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more ModifierOptions
+    * const modifierOptions = await prisma.modifierOption.findMany()
+    * ```
+    */
+  get modifierOption(): Prisma.ModifierOptionDelegate<GlobalReject, ExtArgs>;
+
+  /**
+   * `prisma.game`: Exposes CRUD operations for the **Game** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Games
+    * const games = await prisma.game.findMany()
+    * ```
+    */
+  get game(): Prisma.GameDelegate<GlobalReject, ExtArgs>;
+
+  /**
+   * `prisma.day`: Exposes CRUD operations for the **Day** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Days
+    * const days = await prisma.day.findMany()
+    * ```
+    */
+  get day(): Prisma.DayDelegate<GlobalReject, ExtArgs>;
 }
 
 export namespace Prisma {
@@ -647,7 +749,10 @@ export namespace Prisma {
 
 
   export const ModelName: {
-    ChallengeModifier: 'ChallengeModifier'
+    ChallengeModifier: 'ChallengeModifier',
+    ModifierOption: 'ModifierOption',
+    Game: 'Game',
+    Day: 'Day'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -664,7 +769,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     meta: {
-      modelProps: 'challengeModifier'
+      modelProps: 'challengeModifier' | 'modifierOption' | 'game' | 'day'
       txIsolationLevel: Prisma.TransactionIsolationLevel
     },
     model: {
@@ -730,6 +835,201 @@ export namespace Prisma {
           count: {
             args: Prisma.ChallengeModifierCountArgs<ExtArgs>,
             result: $Utils.Optional<ChallengeModifierCountAggregateOutputType> | number
+          }
+        }
+      }
+      ModifierOption: {
+        payload: ModifierOptionPayload<ExtArgs>
+        operations: {
+          findUnique: {
+            args: Prisma.ModifierOptionFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<ModifierOptionPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ModifierOptionFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<ModifierOptionPayload>
+          }
+          findFirst: {
+            args: Prisma.ModifierOptionFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<ModifierOptionPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ModifierOptionFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<ModifierOptionPayload>
+          }
+          findMany: {
+            args: Prisma.ModifierOptionFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<ModifierOptionPayload>[]
+          }
+          create: {
+            args: Prisma.ModifierOptionCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<ModifierOptionPayload>
+          }
+          createMany: {
+            args: Prisma.ModifierOptionCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          delete: {
+            args: Prisma.ModifierOptionDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<ModifierOptionPayload>
+          }
+          update: {
+            args: Prisma.ModifierOptionUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<ModifierOptionPayload>
+          }
+          deleteMany: {
+            args: Prisma.ModifierOptionDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ModifierOptionUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          upsert: {
+            args: Prisma.ModifierOptionUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<ModifierOptionPayload>
+          }
+          aggregate: {
+            args: Prisma.ModifierOptionAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateModifierOption>
+          }
+          groupBy: {
+            args: Prisma.ModifierOptionGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<ModifierOptionGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ModifierOptionCountArgs<ExtArgs>,
+            result: $Utils.Optional<ModifierOptionCountAggregateOutputType> | number
+          }
+        }
+      }
+      Game: {
+        payload: GamePayload<ExtArgs>
+        operations: {
+          findUnique: {
+            args: Prisma.GameFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<GamePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.GameFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<GamePayload>
+          }
+          findFirst: {
+            args: Prisma.GameFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<GamePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.GameFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<GamePayload>
+          }
+          findMany: {
+            args: Prisma.GameFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<GamePayload>[]
+          }
+          create: {
+            args: Prisma.GameCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<GamePayload>
+          }
+          createMany: {
+            args: Prisma.GameCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          delete: {
+            args: Prisma.GameDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<GamePayload>
+          }
+          update: {
+            args: Prisma.GameUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<GamePayload>
+          }
+          deleteMany: {
+            args: Prisma.GameDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          updateMany: {
+            args: Prisma.GameUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          upsert: {
+            args: Prisma.GameUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<GamePayload>
+          }
+          aggregate: {
+            args: Prisma.GameAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateGame>
+          }
+          groupBy: {
+            args: Prisma.GameGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<GameGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.GameCountArgs<ExtArgs>,
+            result: $Utils.Optional<GameCountAggregateOutputType> | number
+          }
+        }
+      }
+      Day: {
+        payload: DayPayload<ExtArgs>
+        operations: {
+          findUnique: {
+            args: Prisma.DayFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<DayPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.DayFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<DayPayload>
+          }
+          findFirst: {
+            args: Prisma.DayFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<DayPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.DayFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<DayPayload>
+          }
+          findMany: {
+            args: Prisma.DayFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<DayPayload>[]
+          }
+          create: {
+            args: Prisma.DayCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<DayPayload>
+          }
+          createMany: {
+            args: Prisma.DayCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          delete: {
+            args: Prisma.DayDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<DayPayload>
+          }
+          update: {
+            args: Prisma.DayUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<DayPayload>
+          }
+          deleteMany: {
+            args: Prisma.DayDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          updateMany: {
+            args: Prisma.DayUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          upsert: {
+            args: Prisma.DayUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<DayPayload>
+          }
+          aggregate: {
+            args: Prisma.DayAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateDay>
+          }
+          groupBy: {
+            args: Prisma.DayGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<DayGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.DayCountArgs<ExtArgs>,
+            result: $Utils.Optional<DayCountAggregateOutputType> | number
           }
         }
       }
@@ -909,6 +1209,120 @@ export namespace Prisma {
    */
 
 
+  /**
+   * Count Type ChallengeModifierCountOutputType
+   */
+
+
+  export type ChallengeModifierCountOutputType = {
+    ModifierOption: number
+    Day: number
+  }
+
+  export type ChallengeModifierCountOutputTypeSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    ModifierOption?: boolean | ChallengeModifierCountOutputTypeCountModifierOptionArgs
+    Day?: boolean | ChallengeModifierCountOutputTypeCountDayArgs
+  }
+
+  // Custom InputTypes
+
+  /**
+   * ChallengeModifierCountOutputType without action
+   */
+  export type ChallengeModifierCountOutputTypeArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ChallengeModifierCountOutputType
+     */
+    select?: ChallengeModifierCountOutputTypeSelect<ExtArgs> | null
+  }
+
+
+  /**
+   * ChallengeModifierCountOutputType without action
+   */
+  export type ChallengeModifierCountOutputTypeCountModifierOptionArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    where?: ModifierOptionWhereInput
+  }
+
+
+  /**
+   * ChallengeModifierCountOutputType without action
+   */
+  export type ChallengeModifierCountOutputTypeCountDayArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    where?: DayWhereInput
+  }
+
+
+
+  /**
+   * Count Type ModifierOptionCountOutputType
+   */
+
+
+  export type ModifierOptionCountOutputType = {
+    Day: number
+  }
+
+  export type ModifierOptionCountOutputTypeSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    Day?: boolean | ModifierOptionCountOutputTypeCountDayArgs
+  }
+
+  // Custom InputTypes
+
+  /**
+   * ModifierOptionCountOutputType without action
+   */
+  export type ModifierOptionCountOutputTypeArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ModifierOptionCountOutputType
+     */
+    select?: ModifierOptionCountOutputTypeSelect<ExtArgs> | null
+  }
+
+
+  /**
+   * ModifierOptionCountOutputType without action
+   */
+  export type ModifierOptionCountOutputTypeCountDayArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    where?: DayWhereInput
+  }
+
+
+
+  /**
+   * Count Type GameCountOutputType
+   */
+
+
+  export type GameCountOutputType = {
+    Day: number
+  }
+
+  export type GameCountOutputTypeSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    Day?: boolean | GameCountOutputTypeCountDayArgs
+  }
+
+  // Custom InputTypes
+
+  /**
+   * GameCountOutputType without action
+   */
+  export type GameCountOutputTypeArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GameCountOutputType
+     */
+    select?: GameCountOutputTypeSelect<ExtArgs> | null
+  }
+
+
+  /**
+   * GameCountOutputType without action
+   */
+  export type GameCountOutputTypeCountDayArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    where?: DayWhereInput
+  }
+
+
 
   /**
    * Models
@@ -951,7 +1365,6 @@ export namespace Prisma {
     id: number
     name: number
     text: number
-    options: number
     _all: number
   }
 
@@ -980,7 +1393,6 @@ export namespace Prisma {
     id?: true
     name?: true
     text?: true
-    options?: true
     _all?: true
   }
 
@@ -1075,7 +1487,6 @@ export namespace Prisma {
     id: number
     name: string
     text: string
-    options: string[]
     _count: ChallengeModifierCountAggregateOutputType | null
     _avg: ChallengeModifierAvgAggregateOutputType | null
     _sum: ChallengeModifierSumAggregateOutputType | null
@@ -1101,14 +1512,21 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     text?: boolean
-    options?: boolean
+    ModifierOption?: boolean | ChallengeModifier$ModifierOptionArgs<ExtArgs>
+    Day?: boolean | ChallengeModifier$DayArgs<ExtArgs>
+    _count?: boolean | ChallengeModifierCountOutputTypeArgs<ExtArgs>
   }, ExtArgs["result"]["challengeModifier"]>
 
   export type ChallengeModifierSelectScalar = {
     id?: boolean
     name?: boolean
     text?: boolean
-    options?: boolean
+  }
+
+  export type ChallengeModifierInclude<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    ModifierOption?: boolean | ChallengeModifier$ModifierOptionArgs<ExtArgs>
+    Day?: boolean | ChallengeModifier$DayArgs<ExtArgs>
+    _count?: boolean | ChallengeModifierCountOutputTypeArgs<ExtArgs>
   }
 
 
@@ -1481,6 +1899,9 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
     constructor(_dmmf: runtime.DMMFClass, _queryType: 'query' | 'mutation', _rootField: string, _clientMethod: string, _args: any, _dataPath: string[], _errorFormat: ErrorFormat, _measurePerformance?: boolean | undefined, _isList?: boolean);
 
+    ModifierOption<T extends ChallengeModifier$ModifierOptionArgs<ExtArgs> = {}>(args?: Subset<T, ChallengeModifier$ModifierOptionArgs<ExtArgs>>): Prisma.PrismaPromise<$Types.GetResult<ModifierOptionPayload<ExtArgs>, T, 'findMany', never>| Null>;
+
+    Day<T extends ChallengeModifier$DayArgs<ExtArgs> = {}>(args?: Subset<T, ChallengeModifier$DayArgs<ExtArgs>>): Prisma.PrismaPromise<$Types.GetResult<DayPayload<ExtArgs>, T, 'findMany', never>| Null>;
 
     private get _document();
     /**
@@ -1518,6 +1939,10 @@ export namespace Prisma {
      */
     select?: ChallengeModifierSelect<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: ChallengeModifierInclude<ExtArgs> | null
+    /**
      * Filter, which ChallengeModifier to fetch.
      */
     where: ChallengeModifierWhereUniqueInput
@@ -1544,6 +1969,10 @@ export namespace Prisma {
      */
     select?: ChallengeModifierSelect<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: ChallengeModifierInclude<ExtArgs> | null
+    /**
      * Filter, which ChallengeModifier to fetch.
      */
     where: ChallengeModifierWhereUniqueInput
@@ -1558,6 +1987,10 @@ export namespace Prisma {
      * Select specific fields to fetch from the ChallengeModifier
      */
     select?: ChallengeModifierSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: ChallengeModifierInclude<ExtArgs> | null
     /**
      * Filter, which ChallengeModifier to fetch.
      */
@@ -1615,6 +2048,10 @@ export namespace Prisma {
      */
     select?: ChallengeModifierSelect<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: ChallengeModifierInclude<ExtArgs> | null
+    /**
      * Filter, which ChallengeModifier to fetch.
      */
     where?: ChallengeModifierWhereInput
@@ -1660,6 +2097,10 @@ export namespace Prisma {
      */
     select?: ChallengeModifierSelect<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: ChallengeModifierInclude<ExtArgs> | null
+    /**
      * Filter, which ChallengeModifiers to fetch.
      */
     where?: ChallengeModifierWhereInput
@@ -1700,6 +2141,10 @@ export namespace Prisma {
      */
     select?: ChallengeModifierSelect<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: ChallengeModifierInclude<ExtArgs> | null
+    /**
      * The data needed to create a ChallengeModifier.
      */
     data: XOR<ChallengeModifierCreateInput, ChallengeModifierUncheckedCreateInput>
@@ -1726,6 +2171,10 @@ export namespace Prisma {
      * Select specific fields to fetch from the ChallengeModifier
      */
     select?: ChallengeModifierSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: ChallengeModifierInclude<ExtArgs> | null
     /**
      * The data needed to update a ChallengeModifier.
      */
@@ -1761,6 +2210,10 @@ export namespace Prisma {
      */
     select?: ChallengeModifierSelect<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: ChallengeModifierInclude<ExtArgs> | null
+    /**
      * The filter to search for the ChallengeModifier to update in case it exists.
      */
     where: ChallengeModifierWhereUniqueInput
@@ -1784,6 +2237,10 @@ export namespace Prisma {
      */
     select?: ChallengeModifierSelect<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: ChallengeModifierInclude<ExtArgs> | null
+    /**
      * Filter which ChallengeModifier to delete.
      */
     where: ChallengeModifierWhereUniqueInput
@@ -1802,6 +2259,48 @@ export namespace Prisma {
 
 
   /**
+   * ChallengeModifier.ModifierOption
+   */
+  export type ChallengeModifier$ModifierOptionArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ModifierOption
+     */
+    select?: ModifierOptionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: ModifierOptionInclude<ExtArgs> | null
+    where?: ModifierOptionWhereInput
+    orderBy?: Enumerable<ModifierOptionOrderByWithRelationInput>
+    cursor?: ModifierOptionWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: Enumerable<ModifierOptionScalarFieldEnum>
+  }
+
+
+  /**
+   * ChallengeModifier.Day
+   */
+  export type ChallengeModifier$DayArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Day
+     */
+    select?: DaySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: DayInclude<ExtArgs> | null
+    where?: DayWhereInput
+    orderBy?: Enumerable<DayOrderByWithRelationInput>
+    cursor?: DayWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: Enumerable<DayScalarFieldEnum>
+  }
+
+
+  /**
    * ChallengeModifier without action
    */
   export type ChallengeModifierArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
@@ -1809,6 +2308,3049 @@ export namespace Prisma {
      * Select specific fields to fetch from the ChallengeModifier
      */
     select?: ChallengeModifierSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: ChallengeModifierInclude<ExtArgs> | null
+  }
+
+
+
+  /**
+   * Model ModifierOption
+   */
+
+
+  export type AggregateModifierOption = {
+    _count: ModifierOptionCountAggregateOutputType | null
+    _avg: ModifierOptionAvgAggregateOutputType | null
+    _sum: ModifierOptionSumAggregateOutputType | null
+    _min: ModifierOptionMinAggregateOutputType | null
+    _max: ModifierOptionMaxAggregateOutputType | null
+  }
+
+  export type ModifierOptionAvgAggregateOutputType = {
+    id: number | null
+    challengeModifierId: number | null
+  }
+
+  export type ModifierOptionSumAggregateOutputType = {
+    id: number | null
+    challengeModifierId: number | null
+  }
+
+  export type ModifierOptionMinAggregateOutputType = {
+    id: number | null
+    name: string | null
+    text: string | null
+    challengeModifierId: number | null
+  }
+
+  export type ModifierOptionMaxAggregateOutputType = {
+    id: number | null
+    name: string | null
+    text: string | null
+    challengeModifierId: number | null
+  }
+
+  export type ModifierOptionCountAggregateOutputType = {
+    id: number
+    name: number
+    text: number
+    challengeModifierId: number
+    _all: number
+  }
+
+
+  export type ModifierOptionAvgAggregateInputType = {
+    id?: true
+    challengeModifierId?: true
+  }
+
+  export type ModifierOptionSumAggregateInputType = {
+    id?: true
+    challengeModifierId?: true
+  }
+
+  export type ModifierOptionMinAggregateInputType = {
+    id?: true
+    name?: true
+    text?: true
+    challengeModifierId?: true
+  }
+
+  export type ModifierOptionMaxAggregateInputType = {
+    id?: true
+    name?: true
+    text?: true
+    challengeModifierId?: true
+  }
+
+  export type ModifierOptionCountAggregateInputType = {
+    id?: true
+    name?: true
+    text?: true
+    challengeModifierId?: true
+    _all?: true
+  }
+
+  export type ModifierOptionAggregateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ModifierOption to aggregate.
+     */
+    where?: ModifierOptionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ModifierOptions to fetch.
+     */
+    orderBy?: Enumerable<ModifierOptionOrderByWithRelationInput>
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ModifierOptionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ModifierOptions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ModifierOptions.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned ModifierOptions
+    **/
+    _count?: true | ModifierOptionCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: ModifierOptionAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: ModifierOptionSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ModifierOptionMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ModifierOptionMaxAggregateInputType
+  }
+
+  export type GetModifierOptionAggregateType<T extends ModifierOptionAggregateArgs> = {
+        [P in keyof T & keyof AggregateModifierOption]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateModifierOption[P]>
+      : GetScalarType<T[P], AggregateModifierOption[P]>
+  }
+
+
+
+
+  export type ModifierOptionGroupByArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    where?: ModifierOptionWhereInput
+    orderBy?: Enumerable<ModifierOptionOrderByWithAggregationInput>
+    by: ModifierOptionScalarFieldEnum[]
+    having?: ModifierOptionScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ModifierOptionCountAggregateInputType | true
+    _avg?: ModifierOptionAvgAggregateInputType
+    _sum?: ModifierOptionSumAggregateInputType
+    _min?: ModifierOptionMinAggregateInputType
+    _max?: ModifierOptionMaxAggregateInputType
+  }
+
+
+  export type ModifierOptionGroupByOutputType = {
+    id: number
+    name: string
+    text: string
+    challengeModifierId: number | null
+    _count: ModifierOptionCountAggregateOutputType | null
+    _avg: ModifierOptionAvgAggregateOutputType | null
+    _sum: ModifierOptionSumAggregateOutputType | null
+    _min: ModifierOptionMinAggregateOutputType | null
+    _max: ModifierOptionMaxAggregateOutputType | null
+  }
+
+  type GetModifierOptionGroupByPayload<T extends ModifierOptionGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickArray<ModifierOptionGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ModifierOptionGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ModifierOptionGroupByOutputType[P]>
+            : GetScalarType<T[P], ModifierOptionGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ModifierOptionSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    text?: boolean
+    challengeModifierId?: boolean
+    Day?: boolean | ModifierOption$DayArgs<ExtArgs>
+    ChallengeModifier?: boolean | ChallengeModifierArgs<ExtArgs>
+    _count?: boolean | ModifierOptionCountOutputTypeArgs<ExtArgs>
+  }, ExtArgs["result"]["modifierOption"]>
+
+  export type ModifierOptionSelectScalar = {
+    id?: boolean
+    name?: boolean
+    text?: boolean
+    challengeModifierId?: boolean
+  }
+
+  export type ModifierOptionInclude<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    Day?: boolean | ModifierOption$DayArgs<ExtArgs>
+    ChallengeModifier?: boolean | ChallengeModifierArgs<ExtArgs>
+    _count?: boolean | ModifierOptionCountOutputTypeArgs<ExtArgs>
+  }
+
+
+  type ModifierOptionGetPayload<S extends boolean | null | undefined | ModifierOptionArgs> = $Types.GetResult<ModifierOptionPayload, S>
+
+  type ModifierOptionCountArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = 
+    Omit<ModifierOptionFindManyArgs, 'select' | 'include'> & {
+      select?: ModifierOptionCountAggregateInputType | true
+    }
+
+  export interface ModifierOptionDelegate<GlobalRejectSettings extends Prisma.RejectOnNotFound | Prisma.RejectPerOperation | false | undefined, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['ModifierOption'], meta: { name: 'ModifierOption' } }
+    /**
+     * Find zero or one ModifierOption that matches the filter.
+     * @param {ModifierOptionFindUniqueArgs} args - Arguments to find a ModifierOption
+     * @example
+     * // Get one ModifierOption
+     * const modifierOption = await prisma.modifierOption.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends ModifierOptionFindUniqueArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args: SelectSubset<T, ModifierOptionFindUniqueArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findUnique', 'ModifierOption'> extends True ? Prisma__ModifierOptionClient<$Types.GetResult<ModifierOptionPayload<ExtArgs>, T, 'findUnique', never>, never, ExtArgs> : Prisma__ModifierOptionClient<$Types.GetResult<ModifierOptionPayload<ExtArgs>, T, 'findUnique', never> | null, null, ExtArgs>
+
+    /**
+     * Find one ModifierOption that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {ModifierOptionFindUniqueOrThrowArgs} args - Arguments to find a ModifierOption
+     * @example
+     * // Get one ModifierOption
+     * const modifierOption = await prisma.modifierOption.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends ModifierOptionFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, ModifierOptionFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__ModifierOptionClient<$Types.GetResult<ModifierOptionPayload<ExtArgs>, T, 'findUniqueOrThrow', never>, never, ExtArgs>
+
+    /**
+     * Find the first ModifierOption that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ModifierOptionFindFirstArgs} args - Arguments to find a ModifierOption
+     * @example
+     * // Get one ModifierOption
+     * const modifierOption = await prisma.modifierOption.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends ModifierOptionFindFirstArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args?: SelectSubset<T, ModifierOptionFindFirstArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findFirst', 'ModifierOption'> extends True ? Prisma__ModifierOptionClient<$Types.GetResult<ModifierOptionPayload<ExtArgs>, T, 'findFirst', never>, never, ExtArgs> : Prisma__ModifierOptionClient<$Types.GetResult<ModifierOptionPayload<ExtArgs>, T, 'findFirst', never> | null, null, ExtArgs>
+
+    /**
+     * Find the first ModifierOption that matches the filter or
+     * throw `NotFoundError` if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ModifierOptionFindFirstOrThrowArgs} args - Arguments to find a ModifierOption
+     * @example
+     * // Get one ModifierOption
+     * const modifierOption = await prisma.modifierOption.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends ModifierOptionFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, ModifierOptionFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__ModifierOptionClient<$Types.GetResult<ModifierOptionPayload<ExtArgs>, T, 'findFirstOrThrow', never>, never, ExtArgs>
+
+    /**
+     * Find zero or more ModifierOptions that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ModifierOptionFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all ModifierOptions
+     * const modifierOptions = await prisma.modifierOption.findMany()
+     * 
+     * // Get first 10 ModifierOptions
+     * const modifierOptions = await prisma.modifierOption.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const modifierOptionWithIdOnly = await prisma.modifierOption.findMany({ select: { id: true } })
+     * 
+    **/
+    findMany<T extends ModifierOptionFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, ModifierOptionFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Types.GetResult<ModifierOptionPayload<ExtArgs>, T, 'findMany', never>>
+
+    /**
+     * Create a ModifierOption.
+     * @param {ModifierOptionCreateArgs} args - Arguments to create a ModifierOption.
+     * @example
+     * // Create one ModifierOption
+     * const ModifierOption = await prisma.modifierOption.create({
+     *   data: {
+     *     // ... data to create a ModifierOption
+     *   }
+     * })
+     * 
+    **/
+    create<T extends ModifierOptionCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, ModifierOptionCreateArgs<ExtArgs>>
+    ): Prisma__ModifierOptionClient<$Types.GetResult<ModifierOptionPayload<ExtArgs>, T, 'create', never>, never, ExtArgs>
+
+    /**
+     * Create many ModifierOptions.
+     *     @param {ModifierOptionCreateManyArgs} args - Arguments to create many ModifierOptions.
+     *     @example
+     *     // Create many ModifierOptions
+     *     const modifierOption = await prisma.modifierOption.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends ModifierOptionCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, ModifierOptionCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a ModifierOption.
+     * @param {ModifierOptionDeleteArgs} args - Arguments to delete one ModifierOption.
+     * @example
+     * // Delete one ModifierOption
+     * const ModifierOption = await prisma.modifierOption.delete({
+     *   where: {
+     *     // ... filter to delete one ModifierOption
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends ModifierOptionDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, ModifierOptionDeleteArgs<ExtArgs>>
+    ): Prisma__ModifierOptionClient<$Types.GetResult<ModifierOptionPayload<ExtArgs>, T, 'delete', never>, never, ExtArgs>
+
+    /**
+     * Update one ModifierOption.
+     * @param {ModifierOptionUpdateArgs} args - Arguments to update one ModifierOption.
+     * @example
+     * // Update one ModifierOption
+     * const modifierOption = await prisma.modifierOption.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends ModifierOptionUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, ModifierOptionUpdateArgs<ExtArgs>>
+    ): Prisma__ModifierOptionClient<$Types.GetResult<ModifierOptionPayload<ExtArgs>, T, 'update', never>, never, ExtArgs>
+
+    /**
+     * Delete zero or more ModifierOptions.
+     * @param {ModifierOptionDeleteManyArgs} args - Arguments to filter ModifierOptions to delete.
+     * @example
+     * // Delete a few ModifierOptions
+     * const { count } = await prisma.modifierOption.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends ModifierOptionDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, ModifierOptionDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ModifierOptions.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ModifierOptionUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many ModifierOptions
+     * const modifierOption = await prisma.modifierOption.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends ModifierOptionUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, ModifierOptionUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one ModifierOption.
+     * @param {ModifierOptionUpsertArgs} args - Arguments to update or create a ModifierOption.
+     * @example
+     * // Update or create a ModifierOption
+     * const modifierOption = await prisma.modifierOption.upsert({
+     *   create: {
+     *     // ... data to create a ModifierOption
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the ModifierOption we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends ModifierOptionUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, ModifierOptionUpsertArgs<ExtArgs>>
+    ): Prisma__ModifierOptionClient<$Types.GetResult<ModifierOptionPayload<ExtArgs>, T, 'upsert', never>, never, ExtArgs>
+
+    /**
+     * Count the number of ModifierOptions.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ModifierOptionCountArgs} args - Arguments to filter ModifierOptions to count.
+     * @example
+     * // Count the number of ModifierOptions
+     * const count = await prisma.modifierOption.count({
+     *   where: {
+     *     // ... the filter for the ModifierOptions we want to count
+     *   }
+     * })
+    **/
+    count<T extends ModifierOptionCountArgs>(
+      args?: Subset<T, ModifierOptionCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ModifierOptionCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a ModifierOption.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ModifierOptionAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ModifierOptionAggregateArgs>(args: Subset<T, ModifierOptionAggregateArgs>): Prisma.PrismaPromise<GetModifierOptionAggregateType<T>>
+
+    /**
+     * Group by ModifierOption.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ModifierOptionGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ModifierOptionGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ModifierOptionGroupByArgs['orderBy'] }
+        : { orderBy?: ModifierOptionGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends TupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ModifierOptionGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetModifierOptionGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for ModifierOption.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export class Prisma__ModifierOptionClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> implements Prisma.PrismaPromise<T> {
+    private readonly _dmmf;
+    private readonly _queryType;
+    private readonly _rootField;
+    private readonly _clientMethod;
+    private readonly _args;
+    private readonly _dataPath;
+    private readonly _errorFormat;
+    private readonly _measurePerformance?;
+    private _isList;
+    private _callsite;
+    private _requestPromise?;
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+    constructor(_dmmf: runtime.DMMFClass, _queryType: 'query' | 'mutation', _rootField: string, _clientMethod: string, _args: any, _dataPath: string[], _errorFormat: ErrorFormat, _measurePerformance?: boolean | undefined, _isList?: boolean);
+
+    Day<T extends ModifierOption$DayArgs<ExtArgs> = {}>(args?: Subset<T, ModifierOption$DayArgs<ExtArgs>>): Prisma.PrismaPromise<$Types.GetResult<DayPayload<ExtArgs>, T, 'findMany', never>| Null>;
+
+    ChallengeModifier<T extends ChallengeModifierArgs<ExtArgs> = {}>(args?: Subset<T, ChallengeModifierArgs<ExtArgs>>): Prisma__ChallengeModifierClient<$Types.GetResult<ChallengeModifierPayload<ExtArgs>, T, 'findUnique', never> | Null, never, ExtArgs>;
+
+    private get _document();
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): Promise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): Promise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): Promise<T>;
+  }
+
+
+
+  // Custom InputTypes
+
+  /**
+   * ModifierOption base type for findUnique actions
+   */
+  export type ModifierOptionFindUniqueArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ModifierOption
+     */
+    select?: ModifierOptionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: ModifierOptionInclude<ExtArgs> | null
+    /**
+     * Filter, which ModifierOption to fetch.
+     */
+    where: ModifierOptionWhereUniqueInput
+  }
+
+  /**
+   * ModifierOption findUnique
+   */
+  export interface ModifierOptionFindUniqueArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends ModifierOptionFindUniqueArgsBase<ExtArgs> {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findUniqueOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * ModifierOption findUniqueOrThrow
+   */
+  export type ModifierOptionFindUniqueOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ModifierOption
+     */
+    select?: ModifierOptionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: ModifierOptionInclude<ExtArgs> | null
+    /**
+     * Filter, which ModifierOption to fetch.
+     */
+    where: ModifierOptionWhereUniqueInput
+  }
+
+
+  /**
+   * ModifierOption base type for findFirst actions
+   */
+  export type ModifierOptionFindFirstArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ModifierOption
+     */
+    select?: ModifierOptionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: ModifierOptionInclude<ExtArgs> | null
+    /**
+     * Filter, which ModifierOption to fetch.
+     */
+    where?: ModifierOptionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ModifierOptions to fetch.
+     */
+    orderBy?: Enumerable<ModifierOptionOrderByWithRelationInput>
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ModifierOptions.
+     */
+    cursor?: ModifierOptionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ModifierOptions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ModifierOptions.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ModifierOptions.
+     */
+    distinct?: Enumerable<ModifierOptionScalarFieldEnum>
+  }
+
+  /**
+   * ModifierOption findFirst
+   */
+  export interface ModifierOptionFindFirstArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends ModifierOptionFindFirstArgsBase<ExtArgs> {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findFirstOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * ModifierOption findFirstOrThrow
+   */
+  export type ModifierOptionFindFirstOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ModifierOption
+     */
+    select?: ModifierOptionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: ModifierOptionInclude<ExtArgs> | null
+    /**
+     * Filter, which ModifierOption to fetch.
+     */
+    where?: ModifierOptionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ModifierOptions to fetch.
+     */
+    orderBy?: Enumerable<ModifierOptionOrderByWithRelationInput>
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ModifierOptions.
+     */
+    cursor?: ModifierOptionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ModifierOptions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ModifierOptions.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ModifierOptions.
+     */
+    distinct?: Enumerable<ModifierOptionScalarFieldEnum>
+  }
+
+
+  /**
+   * ModifierOption findMany
+   */
+  export type ModifierOptionFindManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ModifierOption
+     */
+    select?: ModifierOptionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: ModifierOptionInclude<ExtArgs> | null
+    /**
+     * Filter, which ModifierOptions to fetch.
+     */
+    where?: ModifierOptionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ModifierOptions to fetch.
+     */
+    orderBy?: Enumerable<ModifierOptionOrderByWithRelationInput>
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing ModifierOptions.
+     */
+    cursor?: ModifierOptionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ModifierOptions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ModifierOptions.
+     */
+    skip?: number
+    distinct?: Enumerable<ModifierOptionScalarFieldEnum>
+  }
+
+
+  /**
+   * ModifierOption create
+   */
+  export type ModifierOptionCreateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ModifierOption
+     */
+    select?: ModifierOptionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: ModifierOptionInclude<ExtArgs> | null
+    /**
+     * The data needed to create a ModifierOption.
+     */
+    data: XOR<ModifierOptionCreateInput, ModifierOptionUncheckedCreateInput>
+  }
+
+
+  /**
+   * ModifierOption createMany
+   */
+  export type ModifierOptionCreateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many ModifierOptions.
+     */
+    data: Enumerable<ModifierOptionCreateManyInput>
+    skipDuplicates?: boolean
+  }
+
+
+  /**
+   * ModifierOption update
+   */
+  export type ModifierOptionUpdateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ModifierOption
+     */
+    select?: ModifierOptionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: ModifierOptionInclude<ExtArgs> | null
+    /**
+     * The data needed to update a ModifierOption.
+     */
+    data: XOR<ModifierOptionUpdateInput, ModifierOptionUncheckedUpdateInput>
+    /**
+     * Choose, which ModifierOption to update.
+     */
+    where: ModifierOptionWhereUniqueInput
+  }
+
+
+  /**
+   * ModifierOption updateMany
+   */
+  export type ModifierOptionUpdateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update ModifierOptions.
+     */
+    data: XOR<ModifierOptionUpdateManyMutationInput, ModifierOptionUncheckedUpdateManyInput>
+    /**
+     * Filter which ModifierOptions to update
+     */
+    where?: ModifierOptionWhereInput
+  }
+
+
+  /**
+   * ModifierOption upsert
+   */
+  export type ModifierOptionUpsertArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ModifierOption
+     */
+    select?: ModifierOptionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: ModifierOptionInclude<ExtArgs> | null
+    /**
+     * The filter to search for the ModifierOption to update in case it exists.
+     */
+    where: ModifierOptionWhereUniqueInput
+    /**
+     * In case the ModifierOption found by the `where` argument doesn't exist, create a new ModifierOption with this data.
+     */
+    create: XOR<ModifierOptionCreateInput, ModifierOptionUncheckedCreateInput>
+    /**
+     * In case the ModifierOption was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ModifierOptionUpdateInput, ModifierOptionUncheckedUpdateInput>
+  }
+
+
+  /**
+   * ModifierOption delete
+   */
+  export type ModifierOptionDeleteArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ModifierOption
+     */
+    select?: ModifierOptionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: ModifierOptionInclude<ExtArgs> | null
+    /**
+     * Filter which ModifierOption to delete.
+     */
+    where: ModifierOptionWhereUniqueInput
+  }
+
+
+  /**
+   * ModifierOption deleteMany
+   */
+  export type ModifierOptionDeleteManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ModifierOptions to delete
+     */
+    where?: ModifierOptionWhereInput
+  }
+
+
+  /**
+   * ModifierOption.Day
+   */
+  export type ModifierOption$DayArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Day
+     */
+    select?: DaySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: DayInclude<ExtArgs> | null
+    where?: DayWhereInput
+    orderBy?: Enumerable<DayOrderByWithRelationInput>
+    cursor?: DayWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: Enumerable<DayScalarFieldEnum>
+  }
+
+
+  /**
+   * ModifierOption without action
+   */
+  export type ModifierOptionArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ModifierOption
+     */
+    select?: ModifierOptionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: ModifierOptionInclude<ExtArgs> | null
+  }
+
+
+
+  /**
+   * Model Game
+   */
+
+
+  export type AggregateGame = {
+    _count: GameCountAggregateOutputType | null
+    _avg: GameAvgAggregateOutputType | null
+    _sum: GameSumAggregateOutputType | null
+    _min: GameMinAggregateOutputType | null
+    _max: GameMaxAggregateOutputType | null
+  }
+
+  export type GameAvgAggregateOutputType = {
+    id: number | null
+    year: number | null
+    currentRerollTokens: number | null
+    rerollTokensGained: number | null
+    rerollTokensSpent: number | null
+  }
+
+  export type GameSumAggregateOutputType = {
+    id: number | null
+    year: number | null
+    currentRerollTokens: number | null
+    rerollTokensGained: number | null
+    rerollTokensSpent: number | null
+  }
+
+  export type GameMinAggregateOutputType = {
+    id: number | null
+    name: string | null
+    playerName: string | null
+    year: number | null
+    currentRerollTokens: number | null
+    rerollTokensGained: number | null
+    rerollTokensSpent: number | null
+    repositoryLink: string | null
+    progressSheetLink: string | null
+  }
+
+  export type GameMaxAggregateOutputType = {
+    id: number | null
+    name: string | null
+    playerName: string | null
+    year: number | null
+    currentRerollTokens: number | null
+    rerollTokensGained: number | null
+    rerollTokensSpent: number | null
+    repositoryLink: string | null
+    progressSheetLink: string | null
+  }
+
+  export type GameCountAggregateOutputType = {
+    id: number
+    name: number
+    playerName: number
+    year: number
+    currentRerollTokens: number
+    rerollTokensGained: number
+    rerollTokensSpent: number
+    repositoryLink: number
+    progressSheetLink: number
+    _all: number
+  }
+
+
+  export type GameAvgAggregateInputType = {
+    id?: true
+    year?: true
+    currentRerollTokens?: true
+    rerollTokensGained?: true
+    rerollTokensSpent?: true
+  }
+
+  export type GameSumAggregateInputType = {
+    id?: true
+    year?: true
+    currentRerollTokens?: true
+    rerollTokensGained?: true
+    rerollTokensSpent?: true
+  }
+
+  export type GameMinAggregateInputType = {
+    id?: true
+    name?: true
+    playerName?: true
+    year?: true
+    currentRerollTokens?: true
+    rerollTokensGained?: true
+    rerollTokensSpent?: true
+    repositoryLink?: true
+    progressSheetLink?: true
+  }
+
+  export type GameMaxAggregateInputType = {
+    id?: true
+    name?: true
+    playerName?: true
+    year?: true
+    currentRerollTokens?: true
+    rerollTokensGained?: true
+    rerollTokensSpent?: true
+    repositoryLink?: true
+    progressSheetLink?: true
+  }
+
+  export type GameCountAggregateInputType = {
+    id?: true
+    name?: true
+    playerName?: true
+    year?: true
+    currentRerollTokens?: true
+    rerollTokensGained?: true
+    rerollTokensSpent?: true
+    repositoryLink?: true
+    progressSheetLink?: true
+    _all?: true
+  }
+
+  export type GameAggregateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Game to aggregate.
+     */
+    where?: GameWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Games to fetch.
+     */
+    orderBy?: Enumerable<GameOrderByWithRelationInput>
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: GameWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Games from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Games.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Games
+    **/
+    _count?: true | GameCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: GameAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: GameSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: GameMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: GameMaxAggregateInputType
+  }
+
+  export type GetGameAggregateType<T extends GameAggregateArgs> = {
+        [P in keyof T & keyof AggregateGame]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateGame[P]>
+      : GetScalarType<T[P], AggregateGame[P]>
+  }
+
+
+
+
+  export type GameGroupByArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    where?: GameWhereInput
+    orderBy?: Enumerable<GameOrderByWithAggregationInput>
+    by: GameScalarFieldEnum[]
+    having?: GameScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: GameCountAggregateInputType | true
+    _avg?: GameAvgAggregateInputType
+    _sum?: GameSumAggregateInputType
+    _min?: GameMinAggregateInputType
+    _max?: GameMaxAggregateInputType
+  }
+
+
+  export type GameGroupByOutputType = {
+    id: number
+    name: string
+    playerName: string
+    year: number
+    currentRerollTokens: number
+    rerollTokensGained: number
+    rerollTokensSpent: number
+    repositoryLink: string | null
+    progressSheetLink: string | null
+    _count: GameCountAggregateOutputType | null
+    _avg: GameAvgAggregateOutputType | null
+    _sum: GameSumAggregateOutputType | null
+    _min: GameMinAggregateOutputType | null
+    _max: GameMaxAggregateOutputType | null
+  }
+
+  type GetGameGroupByPayload<T extends GameGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickArray<GameGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof GameGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], GameGroupByOutputType[P]>
+            : GetScalarType<T[P], GameGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type GameSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    playerName?: boolean
+    year?: boolean
+    currentRerollTokens?: boolean
+    rerollTokensGained?: boolean
+    rerollTokensSpent?: boolean
+    repositoryLink?: boolean
+    progressSheetLink?: boolean
+    Day?: boolean | Game$DayArgs<ExtArgs>
+    _count?: boolean | GameCountOutputTypeArgs<ExtArgs>
+  }, ExtArgs["result"]["game"]>
+
+  export type GameSelectScalar = {
+    id?: boolean
+    name?: boolean
+    playerName?: boolean
+    year?: boolean
+    currentRerollTokens?: boolean
+    rerollTokensGained?: boolean
+    rerollTokensSpent?: boolean
+    repositoryLink?: boolean
+    progressSheetLink?: boolean
+  }
+
+  export type GameInclude<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    Day?: boolean | Game$DayArgs<ExtArgs>
+    _count?: boolean | GameCountOutputTypeArgs<ExtArgs>
+  }
+
+
+  type GameGetPayload<S extends boolean | null | undefined | GameArgs> = $Types.GetResult<GamePayload, S>
+
+  type GameCountArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = 
+    Omit<GameFindManyArgs, 'select' | 'include'> & {
+      select?: GameCountAggregateInputType | true
+    }
+
+  export interface GameDelegate<GlobalRejectSettings extends Prisma.RejectOnNotFound | Prisma.RejectPerOperation | false | undefined, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Game'], meta: { name: 'Game' } }
+    /**
+     * Find zero or one Game that matches the filter.
+     * @param {GameFindUniqueArgs} args - Arguments to find a Game
+     * @example
+     * // Get one Game
+     * const game = await prisma.game.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends GameFindUniqueArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args: SelectSubset<T, GameFindUniqueArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findUnique', 'Game'> extends True ? Prisma__GameClient<$Types.GetResult<GamePayload<ExtArgs>, T, 'findUnique', never>, never, ExtArgs> : Prisma__GameClient<$Types.GetResult<GamePayload<ExtArgs>, T, 'findUnique', never> | null, null, ExtArgs>
+
+    /**
+     * Find one Game that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {GameFindUniqueOrThrowArgs} args - Arguments to find a Game
+     * @example
+     * // Get one Game
+     * const game = await prisma.game.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends GameFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, GameFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__GameClient<$Types.GetResult<GamePayload<ExtArgs>, T, 'findUniqueOrThrow', never>, never, ExtArgs>
+
+    /**
+     * Find the first Game that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GameFindFirstArgs} args - Arguments to find a Game
+     * @example
+     * // Get one Game
+     * const game = await prisma.game.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends GameFindFirstArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args?: SelectSubset<T, GameFindFirstArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findFirst', 'Game'> extends True ? Prisma__GameClient<$Types.GetResult<GamePayload<ExtArgs>, T, 'findFirst', never>, never, ExtArgs> : Prisma__GameClient<$Types.GetResult<GamePayload<ExtArgs>, T, 'findFirst', never> | null, null, ExtArgs>
+
+    /**
+     * Find the first Game that matches the filter or
+     * throw `NotFoundError` if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GameFindFirstOrThrowArgs} args - Arguments to find a Game
+     * @example
+     * // Get one Game
+     * const game = await prisma.game.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends GameFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, GameFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__GameClient<$Types.GetResult<GamePayload<ExtArgs>, T, 'findFirstOrThrow', never>, never, ExtArgs>
+
+    /**
+     * Find zero or more Games that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GameFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Games
+     * const games = await prisma.game.findMany()
+     * 
+     * // Get first 10 Games
+     * const games = await prisma.game.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const gameWithIdOnly = await prisma.game.findMany({ select: { id: true } })
+     * 
+    **/
+    findMany<T extends GameFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, GameFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Types.GetResult<GamePayload<ExtArgs>, T, 'findMany', never>>
+
+    /**
+     * Create a Game.
+     * @param {GameCreateArgs} args - Arguments to create a Game.
+     * @example
+     * // Create one Game
+     * const Game = await prisma.game.create({
+     *   data: {
+     *     // ... data to create a Game
+     *   }
+     * })
+     * 
+    **/
+    create<T extends GameCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, GameCreateArgs<ExtArgs>>
+    ): Prisma__GameClient<$Types.GetResult<GamePayload<ExtArgs>, T, 'create', never>, never, ExtArgs>
+
+    /**
+     * Create many Games.
+     *     @param {GameCreateManyArgs} args - Arguments to create many Games.
+     *     @example
+     *     // Create many Games
+     *     const game = await prisma.game.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends GameCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, GameCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Game.
+     * @param {GameDeleteArgs} args - Arguments to delete one Game.
+     * @example
+     * // Delete one Game
+     * const Game = await prisma.game.delete({
+     *   where: {
+     *     // ... filter to delete one Game
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends GameDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, GameDeleteArgs<ExtArgs>>
+    ): Prisma__GameClient<$Types.GetResult<GamePayload<ExtArgs>, T, 'delete', never>, never, ExtArgs>
+
+    /**
+     * Update one Game.
+     * @param {GameUpdateArgs} args - Arguments to update one Game.
+     * @example
+     * // Update one Game
+     * const game = await prisma.game.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends GameUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, GameUpdateArgs<ExtArgs>>
+    ): Prisma__GameClient<$Types.GetResult<GamePayload<ExtArgs>, T, 'update', never>, never, ExtArgs>
+
+    /**
+     * Delete zero or more Games.
+     * @param {GameDeleteManyArgs} args - Arguments to filter Games to delete.
+     * @example
+     * // Delete a few Games
+     * const { count } = await prisma.game.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends GameDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, GameDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Games.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GameUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Games
+     * const game = await prisma.game.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends GameUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, GameUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Game.
+     * @param {GameUpsertArgs} args - Arguments to update or create a Game.
+     * @example
+     * // Update or create a Game
+     * const game = await prisma.game.upsert({
+     *   create: {
+     *     // ... data to create a Game
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Game we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends GameUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, GameUpsertArgs<ExtArgs>>
+    ): Prisma__GameClient<$Types.GetResult<GamePayload<ExtArgs>, T, 'upsert', never>, never, ExtArgs>
+
+    /**
+     * Count the number of Games.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GameCountArgs} args - Arguments to filter Games to count.
+     * @example
+     * // Count the number of Games
+     * const count = await prisma.game.count({
+     *   where: {
+     *     // ... the filter for the Games we want to count
+     *   }
+     * })
+    **/
+    count<T extends GameCountArgs>(
+      args?: Subset<T, GameCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], GameCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Game.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GameAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends GameAggregateArgs>(args: Subset<T, GameAggregateArgs>): Prisma.PrismaPromise<GetGameAggregateType<T>>
+
+    /**
+     * Group by Game.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GameGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends GameGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: GameGroupByArgs['orderBy'] }
+        : { orderBy?: GameGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends TupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, GameGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetGameGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Game.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export class Prisma__GameClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> implements Prisma.PrismaPromise<T> {
+    private readonly _dmmf;
+    private readonly _queryType;
+    private readonly _rootField;
+    private readonly _clientMethod;
+    private readonly _args;
+    private readonly _dataPath;
+    private readonly _errorFormat;
+    private readonly _measurePerformance?;
+    private _isList;
+    private _callsite;
+    private _requestPromise?;
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+    constructor(_dmmf: runtime.DMMFClass, _queryType: 'query' | 'mutation', _rootField: string, _clientMethod: string, _args: any, _dataPath: string[], _errorFormat: ErrorFormat, _measurePerformance?: boolean | undefined, _isList?: boolean);
+
+    Day<T extends Game$DayArgs<ExtArgs> = {}>(args?: Subset<T, Game$DayArgs<ExtArgs>>): Prisma.PrismaPromise<$Types.GetResult<DayPayload<ExtArgs>, T, 'findMany', never>| Null>;
+
+    private get _document();
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): Promise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): Promise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): Promise<T>;
+  }
+
+
+
+  // Custom InputTypes
+
+  /**
+   * Game base type for findUnique actions
+   */
+  export type GameFindUniqueArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Game
+     */
+    select?: GameSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: GameInclude<ExtArgs> | null
+    /**
+     * Filter, which Game to fetch.
+     */
+    where: GameWhereUniqueInput
+  }
+
+  /**
+   * Game findUnique
+   */
+  export interface GameFindUniqueArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends GameFindUniqueArgsBase<ExtArgs> {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findUniqueOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * Game findUniqueOrThrow
+   */
+  export type GameFindUniqueOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Game
+     */
+    select?: GameSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: GameInclude<ExtArgs> | null
+    /**
+     * Filter, which Game to fetch.
+     */
+    where: GameWhereUniqueInput
+  }
+
+
+  /**
+   * Game base type for findFirst actions
+   */
+  export type GameFindFirstArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Game
+     */
+    select?: GameSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: GameInclude<ExtArgs> | null
+    /**
+     * Filter, which Game to fetch.
+     */
+    where?: GameWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Games to fetch.
+     */
+    orderBy?: Enumerable<GameOrderByWithRelationInput>
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Games.
+     */
+    cursor?: GameWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Games from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Games.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Games.
+     */
+    distinct?: Enumerable<GameScalarFieldEnum>
+  }
+
+  /**
+   * Game findFirst
+   */
+  export interface GameFindFirstArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends GameFindFirstArgsBase<ExtArgs> {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findFirstOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * Game findFirstOrThrow
+   */
+  export type GameFindFirstOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Game
+     */
+    select?: GameSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: GameInclude<ExtArgs> | null
+    /**
+     * Filter, which Game to fetch.
+     */
+    where?: GameWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Games to fetch.
+     */
+    orderBy?: Enumerable<GameOrderByWithRelationInput>
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Games.
+     */
+    cursor?: GameWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Games from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Games.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Games.
+     */
+    distinct?: Enumerable<GameScalarFieldEnum>
+  }
+
+
+  /**
+   * Game findMany
+   */
+  export type GameFindManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Game
+     */
+    select?: GameSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: GameInclude<ExtArgs> | null
+    /**
+     * Filter, which Games to fetch.
+     */
+    where?: GameWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Games to fetch.
+     */
+    orderBy?: Enumerable<GameOrderByWithRelationInput>
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Games.
+     */
+    cursor?: GameWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Games from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Games.
+     */
+    skip?: number
+    distinct?: Enumerable<GameScalarFieldEnum>
+  }
+
+
+  /**
+   * Game create
+   */
+  export type GameCreateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Game
+     */
+    select?: GameSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: GameInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Game.
+     */
+    data: XOR<GameCreateInput, GameUncheckedCreateInput>
+  }
+
+
+  /**
+   * Game createMany
+   */
+  export type GameCreateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Games.
+     */
+    data: Enumerable<GameCreateManyInput>
+    skipDuplicates?: boolean
+  }
+
+
+  /**
+   * Game update
+   */
+  export type GameUpdateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Game
+     */
+    select?: GameSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: GameInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Game.
+     */
+    data: XOR<GameUpdateInput, GameUncheckedUpdateInput>
+    /**
+     * Choose, which Game to update.
+     */
+    where: GameWhereUniqueInput
+  }
+
+
+  /**
+   * Game updateMany
+   */
+  export type GameUpdateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Games.
+     */
+    data: XOR<GameUpdateManyMutationInput, GameUncheckedUpdateManyInput>
+    /**
+     * Filter which Games to update
+     */
+    where?: GameWhereInput
+  }
+
+
+  /**
+   * Game upsert
+   */
+  export type GameUpsertArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Game
+     */
+    select?: GameSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: GameInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Game to update in case it exists.
+     */
+    where: GameWhereUniqueInput
+    /**
+     * In case the Game found by the `where` argument doesn't exist, create a new Game with this data.
+     */
+    create: XOR<GameCreateInput, GameUncheckedCreateInput>
+    /**
+     * In case the Game was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<GameUpdateInput, GameUncheckedUpdateInput>
+  }
+
+
+  /**
+   * Game delete
+   */
+  export type GameDeleteArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Game
+     */
+    select?: GameSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: GameInclude<ExtArgs> | null
+    /**
+     * Filter which Game to delete.
+     */
+    where: GameWhereUniqueInput
+  }
+
+
+  /**
+   * Game deleteMany
+   */
+  export type GameDeleteManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Games to delete
+     */
+    where?: GameWhereInput
+  }
+
+
+  /**
+   * Game.Day
+   */
+  export type Game$DayArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Day
+     */
+    select?: DaySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: DayInclude<ExtArgs> | null
+    where?: DayWhereInput
+    orderBy?: Enumerable<DayOrderByWithRelationInput>
+    cursor?: DayWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: Enumerable<DayScalarFieldEnum>
+  }
+
+
+  /**
+   * Game without action
+   */
+  export type GameArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Game
+     */
+    select?: GameSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: GameInclude<ExtArgs> | null
+  }
+
+
+
+  /**
+   * Model Day
+   */
+
+
+  export type AggregateDay = {
+    _count: DayCountAggregateOutputType | null
+    _avg: DayAvgAggregateOutputType | null
+    _sum: DaySumAggregateOutputType | null
+    _min: DayMinAggregateOutputType | null
+    _max: DayMaxAggregateOutputType | null
+  }
+
+  export type DayAvgAggregateOutputType = {
+    id: number | null
+    number: number | null
+    mainRerollsUsed: number | null
+    secondaryRerollsUsed: number | null
+    challengeModifierId: number | null
+    modifierOptionId: number | null
+    gameId: number | null
+  }
+
+  export type DaySumAggregateOutputType = {
+    id: number | null
+    number: number | null
+    mainRerollsUsed: number | null
+    secondaryRerollsUsed: number | null
+    challengeModifierId: number | null
+    modifierOptionId: number | null
+    gameId: number | null
+  }
+
+  export type DayMinAggregateOutputType = {
+    id: number | null
+    number: number | null
+    part1Completed: boolean | null
+    part2Completed: boolean | null
+    mainRerollsUsed: number | null
+    secondaryRerollsUsed: number | null
+    challengeModifierId: number | null
+    modifierOptionId: number | null
+    gameId: number | null
+  }
+
+  export type DayMaxAggregateOutputType = {
+    id: number | null
+    number: number | null
+    part1Completed: boolean | null
+    part2Completed: boolean | null
+    mainRerollsUsed: number | null
+    secondaryRerollsUsed: number | null
+    challengeModifierId: number | null
+    modifierOptionId: number | null
+    gameId: number | null
+  }
+
+  export type DayCountAggregateOutputType = {
+    id: number
+    number: number
+    part1Completed: number
+    part2Completed: number
+    mainRerollsUsed: number
+    secondaryRerollsUsed: number
+    challengeModifierId: number
+    modifierOptionId: number
+    gameId: number
+    _all: number
+  }
+
+
+  export type DayAvgAggregateInputType = {
+    id?: true
+    number?: true
+    mainRerollsUsed?: true
+    secondaryRerollsUsed?: true
+    challengeModifierId?: true
+    modifierOptionId?: true
+    gameId?: true
+  }
+
+  export type DaySumAggregateInputType = {
+    id?: true
+    number?: true
+    mainRerollsUsed?: true
+    secondaryRerollsUsed?: true
+    challengeModifierId?: true
+    modifierOptionId?: true
+    gameId?: true
+  }
+
+  export type DayMinAggregateInputType = {
+    id?: true
+    number?: true
+    part1Completed?: true
+    part2Completed?: true
+    mainRerollsUsed?: true
+    secondaryRerollsUsed?: true
+    challengeModifierId?: true
+    modifierOptionId?: true
+    gameId?: true
+  }
+
+  export type DayMaxAggregateInputType = {
+    id?: true
+    number?: true
+    part1Completed?: true
+    part2Completed?: true
+    mainRerollsUsed?: true
+    secondaryRerollsUsed?: true
+    challengeModifierId?: true
+    modifierOptionId?: true
+    gameId?: true
+  }
+
+  export type DayCountAggregateInputType = {
+    id?: true
+    number?: true
+    part1Completed?: true
+    part2Completed?: true
+    mainRerollsUsed?: true
+    secondaryRerollsUsed?: true
+    challengeModifierId?: true
+    modifierOptionId?: true
+    gameId?: true
+    _all?: true
+  }
+
+  export type DayAggregateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Day to aggregate.
+     */
+    where?: DayWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Days to fetch.
+     */
+    orderBy?: Enumerable<DayOrderByWithRelationInput>
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: DayWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Days from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Days.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Days
+    **/
+    _count?: true | DayCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: DayAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: DaySumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: DayMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: DayMaxAggregateInputType
+  }
+
+  export type GetDayAggregateType<T extends DayAggregateArgs> = {
+        [P in keyof T & keyof AggregateDay]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateDay[P]>
+      : GetScalarType<T[P], AggregateDay[P]>
+  }
+
+
+
+
+  export type DayGroupByArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    where?: DayWhereInput
+    orderBy?: Enumerable<DayOrderByWithAggregationInput>
+    by: DayScalarFieldEnum[]
+    having?: DayScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: DayCountAggregateInputType | true
+    _avg?: DayAvgAggregateInputType
+    _sum?: DaySumAggregateInputType
+    _min?: DayMinAggregateInputType
+    _max?: DayMaxAggregateInputType
+  }
+
+
+  export type DayGroupByOutputType = {
+    id: number
+    number: number
+    part1Completed: boolean
+    part2Completed: boolean
+    mainRerollsUsed: number
+    secondaryRerollsUsed: number
+    challengeModifierId: number | null
+    modifierOptionId: number | null
+    gameId: number
+    _count: DayCountAggregateOutputType | null
+    _avg: DayAvgAggregateOutputType | null
+    _sum: DaySumAggregateOutputType | null
+    _min: DayMinAggregateOutputType | null
+    _max: DayMaxAggregateOutputType | null
+  }
+
+  type GetDayGroupByPayload<T extends DayGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickArray<DayGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof DayGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], DayGroupByOutputType[P]>
+            : GetScalarType<T[P], DayGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type DaySelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    number?: boolean
+    part1Completed?: boolean
+    part2Completed?: boolean
+    mainRerollsUsed?: boolean
+    secondaryRerollsUsed?: boolean
+    challengeModifierId?: boolean
+    modifierOptionId?: boolean
+    gameId?: boolean
+    game?: boolean | GameArgs<ExtArgs>
+    modifier?: boolean | ChallengeModifierArgs<ExtArgs>
+    modifierOption?: boolean | ModifierOptionArgs<ExtArgs>
+  }, ExtArgs["result"]["day"]>
+
+  export type DaySelectScalar = {
+    id?: boolean
+    number?: boolean
+    part1Completed?: boolean
+    part2Completed?: boolean
+    mainRerollsUsed?: boolean
+    secondaryRerollsUsed?: boolean
+    challengeModifierId?: boolean
+    modifierOptionId?: boolean
+    gameId?: boolean
+  }
+
+  export type DayInclude<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    game?: boolean | GameArgs<ExtArgs>
+    modifier?: boolean | ChallengeModifierArgs<ExtArgs>
+    modifierOption?: boolean | ModifierOptionArgs<ExtArgs>
+  }
+
+
+  type DayGetPayload<S extends boolean | null | undefined | DayArgs> = $Types.GetResult<DayPayload, S>
+
+  type DayCountArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = 
+    Omit<DayFindManyArgs, 'select' | 'include'> & {
+      select?: DayCountAggregateInputType | true
+    }
+
+  export interface DayDelegate<GlobalRejectSettings extends Prisma.RejectOnNotFound | Prisma.RejectPerOperation | false | undefined, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Day'], meta: { name: 'Day' } }
+    /**
+     * Find zero or one Day that matches the filter.
+     * @param {DayFindUniqueArgs} args - Arguments to find a Day
+     * @example
+     * // Get one Day
+     * const day = await prisma.day.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends DayFindUniqueArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args: SelectSubset<T, DayFindUniqueArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findUnique', 'Day'> extends True ? Prisma__DayClient<$Types.GetResult<DayPayload<ExtArgs>, T, 'findUnique', never>, never, ExtArgs> : Prisma__DayClient<$Types.GetResult<DayPayload<ExtArgs>, T, 'findUnique', never> | null, null, ExtArgs>
+
+    /**
+     * Find one Day that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {DayFindUniqueOrThrowArgs} args - Arguments to find a Day
+     * @example
+     * // Get one Day
+     * const day = await prisma.day.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends DayFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, DayFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__DayClient<$Types.GetResult<DayPayload<ExtArgs>, T, 'findUniqueOrThrow', never>, never, ExtArgs>
+
+    /**
+     * Find the first Day that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DayFindFirstArgs} args - Arguments to find a Day
+     * @example
+     * // Get one Day
+     * const day = await prisma.day.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends DayFindFirstArgs<ExtArgs>, LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args?: SelectSubset<T, DayFindFirstArgs<ExtArgs>>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findFirst', 'Day'> extends True ? Prisma__DayClient<$Types.GetResult<DayPayload<ExtArgs>, T, 'findFirst', never>, never, ExtArgs> : Prisma__DayClient<$Types.GetResult<DayPayload<ExtArgs>, T, 'findFirst', never> | null, null, ExtArgs>
+
+    /**
+     * Find the first Day that matches the filter or
+     * throw `NotFoundError` if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DayFindFirstOrThrowArgs} args - Arguments to find a Day
+     * @example
+     * // Get one Day
+     * const day = await prisma.day.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends DayFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, DayFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__DayClient<$Types.GetResult<DayPayload<ExtArgs>, T, 'findFirstOrThrow', never>, never, ExtArgs>
+
+    /**
+     * Find zero or more Days that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DayFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Days
+     * const days = await prisma.day.findMany()
+     * 
+     * // Get first 10 Days
+     * const days = await prisma.day.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const dayWithIdOnly = await prisma.day.findMany({ select: { id: true } })
+     * 
+    **/
+    findMany<T extends DayFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, DayFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Types.GetResult<DayPayload<ExtArgs>, T, 'findMany', never>>
+
+    /**
+     * Create a Day.
+     * @param {DayCreateArgs} args - Arguments to create a Day.
+     * @example
+     * // Create one Day
+     * const Day = await prisma.day.create({
+     *   data: {
+     *     // ... data to create a Day
+     *   }
+     * })
+     * 
+    **/
+    create<T extends DayCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, DayCreateArgs<ExtArgs>>
+    ): Prisma__DayClient<$Types.GetResult<DayPayload<ExtArgs>, T, 'create', never>, never, ExtArgs>
+
+    /**
+     * Create many Days.
+     *     @param {DayCreateManyArgs} args - Arguments to create many Days.
+     *     @example
+     *     // Create many Days
+     *     const day = await prisma.day.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends DayCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, DayCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Day.
+     * @param {DayDeleteArgs} args - Arguments to delete one Day.
+     * @example
+     * // Delete one Day
+     * const Day = await prisma.day.delete({
+     *   where: {
+     *     // ... filter to delete one Day
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends DayDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, DayDeleteArgs<ExtArgs>>
+    ): Prisma__DayClient<$Types.GetResult<DayPayload<ExtArgs>, T, 'delete', never>, never, ExtArgs>
+
+    /**
+     * Update one Day.
+     * @param {DayUpdateArgs} args - Arguments to update one Day.
+     * @example
+     * // Update one Day
+     * const day = await prisma.day.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends DayUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, DayUpdateArgs<ExtArgs>>
+    ): Prisma__DayClient<$Types.GetResult<DayPayload<ExtArgs>, T, 'update', never>, never, ExtArgs>
+
+    /**
+     * Delete zero or more Days.
+     * @param {DayDeleteManyArgs} args - Arguments to filter Days to delete.
+     * @example
+     * // Delete a few Days
+     * const { count } = await prisma.day.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends DayDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, DayDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Days.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DayUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Days
+     * const day = await prisma.day.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends DayUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, DayUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Day.
+     * @param {DayUpsertArgs} args - Arguments to update or create a Day.
+     * @example
+     * // Update or create a Day
+     * const day = await prisma.day.upsert({
+     *   create: {
+     *     // ... data to create a Day
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Day we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends DayUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, DayUpsertArgs<ExtArgs>>
+    ): Prisma__DayClient<$Types.GetResult<DayPayload<ExtArgs>, T, 'upsert', never>, never, ExtArgs>
+
+    /**
+     * Count the number of Days.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DayCountArgs} args - Arguments to filter Days to count.
+     * @example
+     * // Count the number of Days
+     * const count = await prisma.day.count({
+     *   where: {
+     *     // ... the filter for the Days we want to count
+     *   }
+     * })
+    **/
+    count<T extends DayCountArgs>(
+      args?: Subset<T, DayCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], DayCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Day.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DayAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends DayAggregateArgs>(args: Subset<T, DayAggregateArgs>): Prisma.PrismaPromise<GetDayAggregateType<T>>
+
+    /**
+     * Group by Day.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DayGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends DayGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: DayGroupByArgs['orderBy'] }
+        : { orderBy?: DayGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends TupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, DayGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetDayGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Day.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export class Prisma__DayClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> implements Prisma.PrismaPromise<T> {
+    private readonly _dmmf;
+    private readonly _queryType;
+    private readonly _rootField;
+    private readonly _clientMethod;
+    private readonly _args;
+    private readonly _dataPath;
+    private readonly _errorFormat;
+    private readonly _measurePerformance?;
+    private _isList;
+    private _callsite;
+    private _requestPromise?;
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+    constructor(_dmmf: runtime.DMMFClass, _queryType: 'query' | 'mutation', _rootField: string, _clientMethod: string, _args: any, _dataPath: string[], _errorFormat: ErrorFormat, _measurePerformance?: boolean | undefined, _isList?: boolean);
+
+    game<T extends GameArgs<ExtArgs> = {}>(args?: Subset<T, GameArgs<ExtArgs>>): Prisma__GameClient<$Types.GetResult<GamePayload<ExtArgs>, T, 'findUnique', never> | Null, never, ExtArgs>;
+
+    modifier<T extends ChallengeModifierArgs<ExtArgs> = {}>(args?: Subset<T, ChallengeModifierArgs<ExtArgs>>): Prisma__ChallengeModifierClient<$Types.GetResult<ChallengeModifierPayload<ExtArgs>, T, 'findUnique', never> | Null, never, ExtArgs>;
+
+    modifierOption<T extends ModifierOptionArgs<ExtArgs> = {}>(args?: Subset<T, ModifierOptionArgs<ExtArgs>>): Prisma__ModifierOptionClient<$Types.GetResult<ModifierOptionPayload<ExtArgs>, T, 'findUnique', never> | Null, never, ExtArgs>;
+
+    private get _document();
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): Promise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): Promise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): Promise<T>;
+  }
+
+
+
+  // Custom InputTypes
+
+  /**
+   * Day base type for findUnique actions
+   */
+  export type DayFindUniqueArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Day
+     */
+    select?: DaySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: DayInclude<ExtArgs> | null
+    /**
+     * Filter, which Day to fetch.
+     */
+    where: DayWhereUniqueInput
+  }
+
+  /**
+   * Day findUnique
+   */
+  export interface DayFindUniqueArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends DayFindUniqueArgsBase<ExtArgs> {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findUniqueOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * Day findUniqueOrThrow
+   */
+  export type DayFindUniqueOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Day
+     */
+    select?: DaySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: DayInclude<ExtArgs> | null
+    /**
+     * Filter, which Day to fetch.
+     */
+    where: DayWhereUniqueInput
+  }
+
+
+  /**
+   * Day base type for findFirst actions
+   */
+  export type DayFindFirstArgsBase<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Day
+     */
+    select?: DaySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: DayInclude<ExtArgs> | null
+    /**
+     * Filter, which Day to fetch.
+     */
+    where?: DayWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Days to fetch.
+     */
+    orderBy?: Enumerable<DayOrderByWithRelationInput>
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Days.
+     */
+    cursor?: DayWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Days from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Days.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Days.
+     */
+    distinct?: Enumerable<DayScalarFieldEnum>
+  }
+
+  /**
+   * Day findFirst
+   */
+  export interface DayFindFirstArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends DayFindFirstArgsBase<ExtArgs> {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findFirstOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * Day findFirstOrThrow
+   */
+  export type DayFindFirstOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Day
+     */
+    select?: DaySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: DayInclude<ExtArgs> | null
+    /**
+     * Filter, which Day to fetch.
+     */
+    where?: DayWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Days to fetch.
+     */
+    orderBy?: Enumerable<DayOrderByWithRelationInput>
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Days.
+     */
+    cursor?: DayWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Days from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Days.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Days.
+     */
+    distinct?: Enumerable<DayScalarFieldEnum>
+  }
+
+
+  /**
+   * Day findMany
+   */
+  export type DayFindManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Day
+     */
+    select?: DaySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: DayInclude<ExtArgs> | null
+    /**
+     * Filter, which Days to fetch.
+     */
+    where?: DayWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Days to fetch.
+     */
+    orderBy?: Enumerable<DayOrderByWithRelationInput>
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Days.
+     */
+    cursor?: DayWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Days from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Days.
+     */
+    skip?: number
+    distinct?: Enumerable<DayScalarFieldEnum>
+  }
+
+
+  /**
+   * Day create
+   */
+  export type DayCreateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Day
+     */
+    select?: DaySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: DayInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Day.
+     */
+    data: XOR<DayCreateInput, DayUncheckedCreateInput>
+  }
+
+
+  /**
+   * Day createMany
+   */
+  export type DayCreateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Days.
+     */
+    data: Enumerable<DayCreateManyInput>
+    skipDuplicates?: boolean
+  }
+
+
+  /**
+   * Day update
+   */
+  export type DayUpdateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Day
+     */
+    select?: DaySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: DayInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Day.
+     */
+    data: XOR<DayUpdateInput, DayUncheckedUpdateInput>
+    /**
+     * Choose, which Day to update.
+     */
+    where: DayWhereUniqueInput
+  }
+
+
+  /**
+   * Day updateMany
+   */
+  export type DayUpdateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Days.
+     */
+    data: XOR<DayUpdateManyMutationInput, DayUncheckedUpdateManyInput>
+    /**
+     * Filter which Days to update
+     */
+    where?: DayWhereInput
+  }
+
+
+  /**
+   * Day upsert
+   */
+  export type DayUpsertArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Day
+     */
+    select?: DaySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: DayInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Day to update in case it exists.
+     */
+    where: DayWhereUniqueInput
+    /**
+     * In case the Day found by the `where` argument doesn't exist, create a new Day with this data.
+     */
+    create: XOR<DayCreateInput, DayUncheckedCreateInput>
+    /**
+     * In case the Day was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<DayUpdateInput, DayUncheckedUpdateInput>
+  }
+
+
+  /**
+   * Day delete
+   */
+  export type DayDeleteArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Day
+     */
+    select?: DaySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: DayInclude<ExtArgs> | null
+    /**
+     * Filter which Day to delete.
+     */
+    where: DayWhereUniqueInput
+  }
+
+
+  /**
+   * Day deleteMany
+   */
+  export type DayDeleteManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Days to delete
+     */
+    where?: DayWhereInput
+  }
+
+
+  /**
+   * Day without action
+   */
+  export type DayArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Day
+     */
+    select?: DaySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: DayInclude<ExtArgs> | null
   }
 
 
@@ -1830,11 +5372,50 @@ export namespace Prisma {
   export const ChallengeModifierScalarFieldEnum: {
     id: 'id',
     name: 'name',
-    text: 'text',
-    options: 'options'
+    text: 'text'
   };
 
   export type ChallengeModifierScalarFieldEnum = (typeof ChallengeModifierScalarFieldEnum)[keyof typeof ChallengeModifierScalarFieldEnum]
+
+
+  export const ModifierOptionScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    text: 'text',
+    challengeModifierId: 'challengeModifierId'
+  };
+
+  export type ModifierOptionScalarFieldEnum = (typeof ModifierOptionScalarFieldEnum)[keyof typeof ModifierOptionScalarFieldEnum]
+
+
+  export const GameScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    playerName: 'playerName',
+    year: 'year',
+    currentRerollTokens: 'currentRerollTokens',
+    rerollTokensGained: 'rerollTokensGained',
+    rerollTokensSpent: 'rerollTokensSpent',
+    repositoryLink: 'repositoryLink',
+    progressSheetLink: 'progressSheetLink'
+  };
+
+  export type GameScalarFieldEnum = (typeof GameScalarFieldEnum)[keyof typeof GameScalarFieldEnum]
+
+
+  export const DayScalarFieldEnum: {
+    id: 'id',
+    number: 'number',
+    part1Completed: 'part1Completed',
+    part2Completed: 'part2Completed',
+    mainRerollsUsed: 'mainRerollsUsed',
+    secondaryRerollsUsed: 'secondaryRerollsUsed',
+    challengeModifierId: 'challengeModifierId',
+    modifierOptionId: 'modifierOptionId',
+    gameId: 'gameId'
+  };
+
+  export type DayScalarFieldEnum = (typeof DayScalarFieldEnum)[keyof typeof DayScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -1853,6 +5434,14 @@ export namespace Prisma {
   export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
 
 
+  export const NullsOrder: {
+    first: 'first',
+    last: 'last'
+  };
+
+  export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
+
+
   /**
    * Deep Input Types
    */
@@ -1865,14 +5454,16 @@ export namespace Prisma {
     id?: IntFilter | number
     name?: StringFilter | string
     text?: StringFilter | string
-    options?: StringNullableListFilter
+    ModifierOption?: ModifierOptionListRelationFilter
+    Day?: DayListRelationFilter
   }
 
   export type ChallengeModifierOrderByWithRelationInput = {
     id?: SortOrder
     name?: SortOrder
     text?: SortOrder
-    options?: SortOrder
+    ModifierOption?: ModifierOptionOrderByRelationAggregateInput
+    Day?: DayOrderByRelationAggregateInput
   }
 
   export type ChallengeModifierWhereUniqueInput = {
@@ -1884,7 +5475,6 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     text?: SortOrder
-    options?: SortOrder
     _count?: ChallengeModifierCountOrderByAggregateInput
     _avg?: ChallengeModifierAvgOrderByAggregateInput
     _max?: ChallengeModifierMaxOrderByAggregateInput
@@ -1899,53 +5489,448 @@ export namespace Prisma {
     id?: IntWithAggregatesFilter | number
     name?: StringWithAggregatesFilter | string
     text?: StringWithAggregatesFilter | string
-    options?: StringNullableListFilter
+  }
+
+  export type ModifierOptionWhereInput = {
+    AND?: Enumerable<ModifierOptionWhereInput>
+    OR?: Enumerable<ModifierOptionWhereInput>
+    NOT?: Enumerable<ModifierOptionWhereInput>
+    id?: IntFilter | number
+    name?: StringFilter | string
+    text?: StringFilter | string
+    challengeModifierId?: IntNullableFilter | number | null
+    Day?: DayListRelationFilter
+    ChallengeModifier?: XOR<ChallengeModifierRelationFilter, ChallengeModifierWhereInput> | null
+  }
+
+  export type ModifierOptionOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    text?: SortOrder
+    challengeModifierId?: SortOrderInput | SortOrder
+    Day?: DayOrderByRelationAggregateInput
+    ChallengeModifier?: ChallengeModifierOrderByWithRelationInput
+  }
+
+  export type ModifierOptionWhereUniqueInput = {
+    id?: number
+    name?: string
+  }
+
+  export type ModifierOptionOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    text?: SortOrder
+    challengeModifierId?: SortOrderInput | SortOrder
+    _count?: ModifierOptionCountOrderByAggregateInput
+    _avg?: ModifierOptionAvgOrderByAggregateInput
+    _max?: ModifierOptionMaxOrderByAggregateInput
+    _min?: ModifierOptionMinOrderByAggregateInput
+    _sum?: ModifierOptionSumOrderByAggregateInput
+  }
+
+  export type ModifierOptionScalarWhereWithAggregatesInput = {
+    AND?: Enumerable<ModifierOptionScalarWhereWithAggregatesInput>
+    OR?: Enumerable<ModifierOptionScalarWhereWithAggregatesInput>
+    NOT?: Enumerable<ModifierOptionScalarWhereWithAggregatesInput>
+    id?: IntWithAggregatesFilter | number
+    name?: StringWithAggregatesFilter | string
+    text?: StringWithAggregatesFilter | string
+    challengeModifierId?: IntNullableWithAggregatesFilter | number | null
+  }
+
+  export type GameWhereInput = {
+    AND?: Enumerable<GameWhereInput>
+    OR?: Enumerable<GameWhereInput>
+    NOT?: Enumerable<GameWhereInput>
+    id?: IntFilter | number
+    name?: StringFilter | string
+    playerName?: StringFilter | string
+    year?: IntFilter | number
+    currentRerollTokens?: IntFilter | number
+    rerollTokensGained?: IntFilter | number
+    rerollTokensSpent?: IntFilter | number
+    repositoryLink?: StringNullableFilter | string | null
+    progressSheetLink?: StringNullableFilter | string | null
+    Day?: DayListRelationFilter
+  }
+
+  export type GameOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    playerName?: SortOrder
+    year?: SortOrder
+    currentRerollTokens?: SortOrder
+    rerollTokensGained?: SortOrder
+    rerollTokensSpent?: SortOrder
+    repositoryLink?: SortOrderInput | SortOrder
+    progressSheetLink?: SortOrderInput | SortOrder
+    Day?: DayOrderByRelationAggregateInput
+  }
+
+  export type GameWhereUniqueInput = {
+    id?: number
+    name?: string
+  }
+
+  export type GameOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    playerName?: SortOrder
+    year?: SortOrder
+    currentRerollTokens?: SortOrder
+    rerollTokensGained?: SortOrder
+    rerollTokensSpent?: SortOrder
+    repositoryLink?: SortOrderInput | SortOrder
+    progressSheetLink?: SortOrderInput | SortOrder
+    _count?: GameCountOrderByAggregateInput
+    _avg?: GameAvgOrderByAggregateInput
+    _max?: GameMaxOrderByAggregateInput
+    _min?: GameMinOrderByAggregateInput
+    _sum?: GameSumOrderByAggregateInput
+  }
+
+  export type GameScalarWhereWithAggregatesInput = {
+    AND?: Enumerable<GameScalarWhereWithAggregatesInput>
+    OR?: Enumerable<GameScalarWhereWithAggregatesInput>
+    NOT?: Enumerable<GameScalarWhereWithAggregatesInput>
+    id?: IntWithAggregatesFilter | number
+    name?: StringWithAggregatesFilter | string
+    playerName?: StringWithAggregatesFilter | string
+    year?: IntWithAggregatesFilter | number
+    currentRerollTokens?: IntWithAggregatesFilter | number
+    rerollTokensGained?: IntWithAggregatesFilter | number
+    rerollTokensSpent?: IntWithAggregatesFilter | number
+    repositoryLink?: StringNullableWithAggregatesFilter | string | null
+    progressSheetLink?: StringNullableWithAggregatesFilter | string | null
+  }
+
+  export type DayWhereInput = {
+    AND?: Enumerable<DayWhereInput>
+    OR?: Enumerable<DayWhereInput>
+    NOT?: Enumerable<DayWhereInput>
+    id?: IntFilter | number
+    number?: IntFilter | number
+    part1Completed?: BoolFilter | boolean
+    part2Completed?: BoolFilter | boolean
+    mainRerollsUsed?: IntFilter | number
+    secondaryRerollsUsed?: IntFilter | number
+    challengeModifierId?: IntNullableFilter | number | null
+    modifierOptionId?: IntNullableFilter | number | null
+    gameId?: IntFilter | number
+    game?: XOR<GameRelationFilter, GameWhereInput>
+    modifier?: XOR<ChallengeModifierRelationFilter, ChallengeModifierWhereInput> | null
+    modifierOption?: XOR<ModifierOptionRelationFilter, ModifierOptionWhereInput> | null
+  }
+
+  export type DayOrderByWithRelationInput = {
+    id?: SortOrder
+    number?: SortOrder
+    part1Completed?: SortOrder
+    part2Completed?: SortOrder
+    mainRerollsUsed?: SortOrder
+    secondaryRerollsUsed?: SortOrder
+    challengeModifierId?: SortOrderInput | SortOrder
+    modifierOptionId?: SortOrderInput | SortOrder
+    gameId?: SortOrder
+    game?: GameOrderByWithRelationInput
+    modifier?: ChallengeModifierOrderByWithRelationInput
+    modifierOption?: ModifierOptionOrderByWithRelationInput
+  }
+
+  export type DayWhereUniqueInput = {
+    id?: number
+  }
+
+  export type DayOrderByWithAggregationInput = {
+    id?: SortOrder
+    number?: SortOrder
+    part1Completed?: SortOrder
+    part2Completed?: SortOrder
+    mainRerollsUsed?: SortOrder
+    secondaryRerollsUsed?: SortOrder
+    challengeModifierId?: SortOrderInput | SortOrder
+    modifierOptionId?: SortOrderInput | SortOrder
+    gameId?: SortOrder
+    _count?: DayCountOrderByAggregateInput
+    _avg?: DayAvgOrderByAggregateInput
+    _max?: DayMaxOrderByAggregateInput
+    _min?: DayMinOrderByAggregateInput
+    _sum?: DaySumOrderByAggregateInput
+  }
+
+  export type DayScalarWhereWithAggregatesInput = {
+    AND?: Enumerable<DayScalarWhereWithAggregatesInput>
+    OR?: Enumerable<DayScalarWhereWithAggregatesInput>
+    NOT?: Enumerable<DayScalarWhereWithAggregatesInput>
+    id?: IntWithAggregatesFilter | number
+    number?: IntWithAggregatesFilter | number
+    part1Completed?: BoolWithAggregatesFilter | boolean
+    part2Completed?: BoolWithAggregatesFilter | boolean
+    mainRerollsUsed?: IntWithAggregatesFilter | number
+    secondaryRerollsUsed?: IntWithAggregatesFilter | number
+    challengeModifierId?: IntNullableWithAggregatesFilter | number | null
+    modifierOptionId?: IntNullableWithAggregatesFilter | number | null
+    gameId?: IntWithAggregatesFilter | number
   }
 
   export type ChallengeModifierCreateInput = {
     name: string
     text: string
-    options?: ChallengeModifierCreateoptionsInput | Enumerable<string>
+    ModifierOption?: ModifierOptionCreateNestedManyWithoutChallengeModifierInput
+    Day?: DayCreateNestedManyWithoutModifierInput
   }
 
   export type ChallengeModifierUncheckedCreateInput = {
     id?: number
     name: string
     text: string
-    options?: ChallengeModifierCreateoptionsInput | Enumerable<string>
+    ModifierOption?: ModifierOptionUncheckedCreateNestedManyWithoutChallengeModifierInput
+    Day?: DayUncheckedCreateNestedManyWithoutModifierInput
   }
 
   export type ChallengeModifierUpdateInput = {
     name?: StringFieldUpdateOperationsInput | string
     text?: StringFieldUpdateOperationsInput | string
-    options?: ChallengeModifierUpdateoptionsInput | Enumerable<string>
+    ModifierOption?: ModifierOptionUpdateManyWithoutChallengeModifierNestedInput
+    Day?: DayUpdateManyWithoutModifierNestedInput
   }
 
   export type ChallengeModifierUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     text?: StringFieldUpdateOperationsInput | string
-    options?: ChallengeModifierUpdateoptionsInput | Enumerable<string>
+    ModifierOption?: ModifierOptionUncheckedUpdateManyWithoutChallengeModifierNestedInput
+    Day?: DayUncheckedUpdateManyWithoutModifierNestedInput
   }
 
   export type ChallengeModifierCreateManyInput = {
     id?: number
     name: string
     text: string
-    options?: ChallengeModifierCreateoptionsInput | Enumerable<string>
   }
 
   export type ChallengeModifierUpdateManyMutationInput = {
     name?: StringFieldUpdateOperationsInput | string
     text?: StringFieldUpdateOperationsInput | string
-    options?: ChallengeModifierUpdateoptionsInput | Enumerable<string>
   }
 
   export type ChallengeModifierUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     text?: StringFieldUpdateOperationsInput | string
-    options?: ChallengeModifierUpdateoptionsInput | Enumerable<string>
+  }
+
+  export type ModifierOptionCreateInput = {
+    name: string
+    text: string
+    Day?: DayCreateNestedManyWithoutModifierOptionInput
+    ChallengeModifier?: ChallengeModifierCreateNestedOneWithoutModifierOptionInput
+  }
+
+  export type ModifierOptionUncheckedCreateInput = {
+    id?: number
+    name: string
+    text: string
+    challengeModifierId?: number | null
+    Day?: DayUncheckedCreateNestedManyWithoutModifierOptionInput
+  }
+
+  export type ModifierOptionUpdateInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    text?: StringFieldUpdateOperationsInput | string
+    Day?: DayUpdateManyWithoutModifierOptionNestedInput
+    ChallengeModifier?: ChallengeModifierUpdateOneWithoutModifierOptionNestedInput
+  }
+
+  export type ModifierOptionUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    text?: StringFieldUpdateOperationsInput | string
+    challengeModifierId?: NullableIntFieldUpdateOperationsInput | number | null
+    Day?: DayUncheckedUpdateManyWithoutModifierOptionNestedInput
+  }
+
+  export type ModifierOptionCreateManyInput = {
+    id?: number
+    name: string
+    text: string
+    challengeModifierId?: number | null
+  }
+
+  export type ModifierOptionUpdateManyMutationInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    text?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type ModifierOptionUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    text?: StringFieldUpdateOperationsInput | string
+    challengeModifierId?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type GameCreateInput = {
+    name: string
+    playerName: string
+    year: number
+    currentRerollTokens?: number
+    rerollTokensGained?: number
+    rerollTokensSpent?: number
+    repositoryLink?: string | null
+    progressSheetLink?: string | null
+    Day?: DayCreateNestedManyWithoutGameInput
+  }
+
+  export type GameUncheckedCreateInput = {
+    id?: number
+    name: string
+    playerName: string
+    year: number
+    currentRerollTokens?: number
+    rerollTokensGained?: number
+    rerollTokensSpent?: number
+    repositoryLink?: string | null
+    progressSheetLink?: string | null
+    Day?: DayUncheckedCreateNestedManyWithoutGameInput
+  }
+
+  export type GameUpdateInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    playerName?: StringFieldUpdateOperationsInput | string
+    year?: IntFieldUpdateOperationsInput | number
+    currentRerollTokens?: IntFieldUpdateOperationsInput | number
+    rerollTokensGained?: IntFieldUpdateOperationsInput | number
+    rerollTokensSpent?: IntFieldUpdateOperationsInput | number
+    repositoryLink?: NullableStringFieldUpdateOperationsInput | string | null
+    progressSheetLink?: NullableStringFieldUpdateOperationsInput | string | null
+    Day?: DayUpdateManyWithoutGameNestedInput
+  }
+
+  export type GameUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    playerName?: StringFieldUpdateOperationsInput | string
+    year?: IntFieldUpdateOperationsInput | number
+    currentRerollTokens?: IntFieldUpdateOperationsInput | number
+    rerollTokensGained?: IntFieldUpdateOperationsInput | number
+    rerollTokensSpent?: IntFieldUpdateOperationsInput | number
+    repositoryLink?: NullableStringFieldUpdateOperationsInput | string | null
+    progressSheetLink?: NullableStringFieldUpdateOperationsInput | string | null
+    Day?: DayUncheckedUpdateManyWithoutGameNestedInput
+  }
+
+  export type GameCreateManyInput = {
+    id?: number
+    name: string
+    playerName: string
+    year: number
+    currentRerollTokens?: number
+    rerollTokensGained?: number
+    rerollTokensSpent?: number
+    repositoryLink?: string | null
+    progressSheetLink?: string | null
+  }
+
+  export type GameUpdateManyMutationInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    playerName?: StringFieldUpdateOperationsInput | string
+    year?: IntFieldUpdateOperationsInput | number
+    currentRerollTokens?: IntFieldUpdateOperationsInput | number
+    rerollTokensGained?: IntFieldUpdateOperationsInput | number
+    rerollTokensSpent?: IntFieldUpdateOperationsInput | number
+    repositoryLink?: NullableStringFieldUpdateOperationsInput | string | null
+    progressSheetLink?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type GameUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    playerName?: StringFieldUpdateOperationsInput | string
+    year?: IntFieldUpdateOperationsInput | number
+    currentRerollTokens?: IntFieldUpdateOperationsInput | number
+    rerollTokensGained?: IntFieldUpdateOperationsInput | number
+    rerollTokensSpent?: IntFieldUpdateOperationsInput | number
+    repositoryLink?: NullableStringFieldUpdateOperationsInput | string | null
+    progressSheetLink?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type DayCreateInput = {
+    number: number
+    part1Completed?: boolean
+    part2Completed?: boolean
+    mainRerollsUsed?: number
+    secondaryRerollsUsed?: number
+    game: GameCreateNestedOneWithoutDayInput
+    modifier?: ChallengeModifierCreateNestedOneWithoutDayInput
+    modifierOption?: ModifierOptionCreateNestedOneWithoutDayInput
+  }
+
+  export type DayUncheckedCreateInput = {
+    id?: number
+    number: number
+    part1Completed?: boolean
+    part2Completed?: boolean
+    mainRerollsUsed?: number
+    secondaryRerollsUsed?: number
+    challengeModifierId?: number | null
+    modifierOptionId?: number | null
+    gameId: number
+  }
+
+  export type DayUpdateInput = {
+    number?: IntFieldUpdateOperationsInput | number
+    part1Completed?: BoolFieldUpdateOperationsInput | boolean
+    part2Completed?: BoolFieldUpdateOperationsInput | boolean
+    mainRerollsUsed?: IntFieldUpdateOperationsInput | number
+    secondaryRerollsUsed?: IntFieldUpdateOperationsInput | number
+    game?: GameUpdateOneRequiredWithoutDayNestedInput
+    modifier?: ChallengeModifierUpdateOneWithoutDayNestedInput
+    modifierOption?: ModifierOptionUpdateOneWithoutDayNestedInput
+  }
+
+  export type DayUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    number?: IntFieldUpdateOperationsInput | number
+    part1Completed?: BoolFieldUpdateOperationsInput | boolean
+    part2Completed?: BoolFieldUpdateOperationsInput | boolean
+    mainRerollsUsed?: IntFieldUpdateOperationsInput | number
+    secondaryRerollsUsed?: IntFieldUpdateOperationsInput | number
+    challengeModifierId?: NullableIntFieldUpdateOperationsInput | number | null
+    modifierOptionId?: NullableIntFieldUpdateOperationsInput | number | null
+    gameId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type DayCreateManyInput = {
+    id?: number
+    number: number
+    part1Completed?: boolean
+    part2Completed?: boolean
+    mainRerollsUsed?: number
+    secondaryRerollsUsed?: number
+    challengeModifierId?: number | null
+    modifierOptionId?: number | null
+    gameId: number
+  }
+
+  export type DayUpdateManyMutationInput = {
+    number?: IntFieldUpdateOperationsInput | number
+    part1Completed?: BoolFieldUpdateOperationsInput | boolean
+    part2Completed?: BoolFieldUpdateOperationsInput | boolean
+    mainRerollsUsed?: IntFieldUpdateOperationsInput | number
+    secondaryRerollsUsed?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type DayUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    number?: IntFieldUpdateOperationsInput | number
+    part1Completed?: BoolFieldUpdateOperationsInput | boolean
+    part2Completed?: BoolFieldUpdateOperationsInput | boolean
+    mainRerollsUsed?: IntFieldUpdateOperationsInput | number
+    secondaryRerollsUsed?: IntFieldUpdateOperationsInput | number
+    challengeModifierId?: NullableIntFieldUpdateOperationsInput | number | null
+    modifierOptionId?: NullableIntFieldUpdateOperationsInput | number | null
+    gameId?: IntFieldUpdateOperationsInput | number
   }
 
   export type IntFilter = {
@@ -1974,19 +5959,30 @@ export namespace Prisma {
     not?: NestedStringFilter | string
   }
 
-  export type StringNullableListFilter = {
-    equals?: Enumerable<string> | null
-    has?: string | null
-    hasEvery?: Enumerable<string>
-    hasSome?: Enumerable<string>
-    isEmpty?: boolean
+  export type ModifierOptionListRelationFilter = {
+    every?: ModifierOptionWhereInput
+    some?: ModifierOptionWhereInput
+    none?: ModifierOptionWhereInput
+  }
+
+  export type DayListRelationFilter = {
+    every?: DayWhereInput
+    some?: DayWhereInput
+    none?: DayWhereInput
+  }
+
+  export type ModifierOptionOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type DayOrderByRelationAggregateInput = {
+    _count?: SortOrder
   }
 
   export type ChallengeModifierCountOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
     text?: SortOrder
-    options?: SortOrder
   }
 
   export type ChallengeModifierAvgOrderByAggregateInput = {
@@ -2043,17 +6039,296 @@ export namespace Prisma {
     _max?: NestedStringFilter
   }
 
-  export type ChallengeModifierCreateoptionsInput = {
-    set: Enumerable<string>
+  export type IntNullableFilter = {
+    equals?: number | null
+    in?: Enumerable<number> | number | null
+    notIn?: Enumerable<number> | number | null
+    lt?: number
+    lte?: number
+    gt?: number
+    gte?: number
+    not?: NestedIntNullableFilter | number | null
+  }
+
+  export type ChallengeModifierRelationFilter = {
+    is?: ChallengeModifierWhereInput | null
+    isNot?: ChallengeModifierWhereInput | null
+  }
+
+  export type SortOrderInput = {
+    sort: SortOrder
+    nulls?: NullsOrder
+  }
+
+  export type ModifierOptionCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    text?: SortOrder
+    challengeModifierId?: SortOrder
+  }
+
+  export type ModifierOptionAvgOrderByAggregateInput = {
+    id?: SortOrder
+    challengeModifierId?: SortOrder
+  }
+
+  export type ModifierOptionMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    text?: SortOrder
+    challengeModifierId?: SortOrder
+  }
+
+  export type ModifierOptionMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    text?: SortOrder
+    challengeModifierId?: SortOrder
+  }
+
+  export type ModifierOptionSumOrderByAggregateInput = {
+    id?: SortOrder
+    challengeModifierId?: SortOrder
+  }
+
+  export type IntNullableWithAggregatesFilter = {
+    equals?: number | null
+    in?: Enumerable<number> | number | null
+    notIn?: Enumerable<number> | number | null
+    lt?: number
+    lte?: number
+    gt?: number
+    gte?: number
+    not?: NestedIntNullableWithAggregatesFilter | number | null
+    _count?: NestedIntNullableFilter
+    _avg?: NestedFloatNullableFilter
+    _sum?: NestedIntNullableFilter
+    _min?: NestedIntNullableFilter
+    _max?: NestedIntNullableFilter
+  }
+
+  export type StringNullableFilter = {
+    equals?: string | null
+    in?: Enumerable<string> | string | null
+    notIn?: Enumerable<string> | string | null
+    lt?: string
+    lte?: string
+    gt?: string
+    gte?: string
+    contains?: string
+    startsWith?: string
+    endsWith?: string
+    mode?: QueryMode
+    not?: NestedStringNullableFilter | string | null
+  }
+
+  export type GameCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    playerName?: SortOrder
+    year?: SortOrder
+    currentRerollTokens?: SortOrder
+    rerollTokensGained?: SortOrder
+    rerollTokensSpent?: SortOrder
+    repositoryLink?: SortOrder
+    progressSheetLink?: SortOrder
+  }
+
+  export type GameAvgOrderByAggregateInput = {
+    id?: SortOrder
+    year?: SortOrder
+    currentRerollTokens?: SortOrder
+    rerollTokensGained?: SortOrder
+    rerollTokensSpent?: SortOrder
+  }
+
+  export type GameMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    playerName?: SortOrder
+    year?: SortOrder
+    currentRerollTokens?: SortOrder
+    rerollTokensGained?: SortOrder
+    rerollTokensSpent?: SortOrder
+    repositoryLink?: SortOrder
+    progressSheetLink?: SortOrder
+  }
+
+  export type GameMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    playerName?: SortOrder
+    year?: SortOrder
+    currentRerollTokens?: SortOrder
+    rerollTokensGained?: SortOrder
+    rerollTokensSpent?: SortOrder
+    repositoryLink?: SortOrder
+    progressSheetLink?: SortOrder
+  }
+
+  export type GameSumOrderByAggregateInput = {
+    id?: SortOrder
+    year?: SortOrder
+    currentRerollTokens?: SortOrder
+    rerollTokensGained?: SortOrder
+    rerollTokensSpent?: SortOrder
+  }
+
+  export type StringNullableWithAggregatesFilter = {
+    equals?: string | null
+    in?: Enumerable<string> | string | null
+    notIn?: Enumerable<string> | string | null
+    lt?: string
+    lte?: string
+    gt?: string
+    gte?: string
+    contains?: string
+    startsWith?: string
+    endsWith?: string
+    mode?: QueryMode
+    not?: NestedStringNullableWithAggregatesFilter | string | null
+    _count?: NestedIntNullableFilter
+    _min?: NestedStringNullableFilter
+    _max?: NestedStringNullableFilter
+  }
+
+  export type BoolFilter = {
+    equals?: boolean
+    not?: NestedBoolFilter | boolean
+  }
+
+  export type GameRelationFilter = {
+    is?: GameWhereInput | null
+    isNot?: GameWhereInput | null
+  }
+
+  export type ModifierOptionRelationFilter = {
+    is?: ModifierOptionWhereInput | null
+    isNot?: ModifierOptionWhereInput | null
+  }
+
+  export type DayCountOrderByAggregateInput = {
+    id?: SortOrder
+    number?: SortOrder
+    part1Completed?: SortOrder
+    part2Completed?: SortOrder
+    mainRerollsUsed?: SortOrder
+    secondaryRerollsUsed?: SortOrder
+    challengeModifierId?: SortOrder
+    modifierOptionId?: SortOrder
+    gameId?: SortOrder
+  }
+
+  export type DayAvgOrderByAggregateInput = {
+    id?: SortOrder
+    number?: SortOrder
+    mainRerollsUsed?: SortOrder
+    secondaryRerollsUsed?: SortOrder
+    challengeModifierId?: SortOrder
+    modifierOptionId?: SortOrder
+    gameId?: SortOrder
+  }
+
+  export type DayMaxOrderByAggregateInput = {
+    id?: SortOrder
+    number?: SortOrder
+    part1Completed?: SortOrder
+    part2Completed?: SortOrder
+    mainRerollsUsed?: SortOrder
+    secondaryRerollsUsed?: SortOrder
+    challengeModifierId?: SortOrder
+    modifierOptionId?: SortOrder
+    gameId?: SortOrder
+  }
+
+  export type DayMinOrderByAggregateInput = {
+    id?: SortOrder
+    number?: SortOrder
+    part1Completed?: SortOrder
+    part2Completed?: SortOrder
+    mainRerollsUsed?: SortOrder
+    secondaryRerollsUsed?: SortOrder
+    challengeModifierId?: SortOrder
+    modifierOptionId?: SortOrder
+    gameId?: SortOrder
+  }
+
+  export type DaySumOrderByAggregateInput = {
+    id?: SortOrder
+    number?: SortOrder
+    mainRerollsUsed?: SortOrder
+    secondaryRerollsUsed?: SortOrder
+    challengeModifierId?: SortOrder
+    modifierOptionId?: SortOrder
+    gameId?: SortOrder
+  }
+
+  export type BoolWithAggregatesFilter = {
+    equals?: boolean
+    not?: NestedBoolWithAggregatesFilter | boolean
+    _count?: NestedIntFilter
+    _min?: NestedBoolFilter
+    _max?: NestedBoolFilter
+  }
+
+  export type ModifierOptionCreateNestedManyWithoutChallengeModifierInput = {
+    create?: XOR<Enumerable<ModifierOptionCreateWithoutChallengeModifierInput>, Enumerable<ModifierOptionUncheckedCreateWithoutChallengeModifierInput>>
+    connectOrCreate?: Enumerable<ModifierOptionCreateOrConnectWithoutChallengeModifierInput>
+    createMany?: ModifierOptionCreateManyChallengeModifierInputEnvelope
+    connect?: Enumerable<ModifierOptionWhereUniqueInput>
+  }
+
+  export type DayCreateNestedManyWithoutModifierInput = {
+    create?: XOR<Enumerable<DayCreateWithoutModifierInput>, Enumerable<DayUncheckedCreateWithoutModifierInput>>
+    connectOrCreate?: Enumerable<DayCreateOrConnectWithoutModifierInput>
+    createMany?: DayCreateManyModifierInputEnvelope
+    connect?: Enumerable<DayWhereUniqueInput>
+  }
+
+  export type ModifierOptionUncheckedCreateNestedManyWithoutChallengeModifierInput = {
+    create?: XOR<Enumerable<ModifierOptionCreateWithoutChallengeModifierInput>, Enumerable<ModifierOptionUncheckedCreateWithoutChallengeModifierInput>>
+    connectOrCreate?: Enumerable<ModifierOptionCreateOrConnectWithoutChallengeModifierInput>
+    createMany?: ModifierOptionCreateManyChallengeModifierInputEnvelope
+    connect?: Enumerable<ModifierOptionWhereUniqueInput>
+  }
+
+  export type DayUncheckedCreateNestedManyWithoutModifierInput = {
+    create?: XOR<Enumerable<DayCreateWithoutModifierInput>, Enumerable<DayUncheckedCreateWithoutModifierInput>>
+    connectOrCreate?: Enumerable<DayCreateOrConnectWithoutModifierInput>
+    createMany?: DayCreateManyModifierInputEnvelope
+    connect?: Enumerable<DayWhereUniqueInput>
   }
 
   export type StringFieldUpdateOperationsInput = {
     set?: string
   }
 
-  export type ChallengeModifierUpdateoptionsInput = {
-    set?: Enumerable<string>
-    push?: string | Enumerable<string>
+  export type ModifierOptionUpdateManyWithoutChallengeModifierNestedInput = {
+    create?: XOR<Enumerable<ModifierOptionCreateWithoutChallengeModifierInput>, Enumerable<ModifierOptionUncheckedCreateWithoutChallengeModifierInput>>
+    connectOrCreate?: Enumerable<ModifierOptionCreateOrConnectWithoutChallengeModifierInput>
+    upsert?: Enumerable<ModifierOptionUpsertWithWhereUniqueWithoutChallengeModifierInput>
+    createMany?: ModifierOptionCreateManyChallengeModifierInputEnvelope
+    set?: Enumerable<ModifierOptionWhereUniqueInput>
+    disconnect?: Enumerable<ModifierOptionWhereUniqueInput>
+    delete?: Enumerable<ModifierOptionWhereUniqueInput>
+    connect?: Enumerable<ModifierOptionWhereUniqueInput>
+    update?: Enumerable<ModifierOptionUpdateWithWhereUniqueWithoutChallengeModifierInput>
+    updateMany?: Enumerable<ModifierOptionUpdateManyWithWhereWithoutChallengeModifierInput>
+    deleteMany?: Enumerable<ModifierOptionScalarWhereInput>
+  }
+
+  export type DayUpdateManyWithoutModifierNestedInput = {
+    create?: XOR<Enumerable<DayCreateWithoutModifierInput>, Enumerable<DayUncheckedCreateWithoutModifierInput>>
+    connectOrCreate?: Enumerable<DayCreateOrConnectWithoutModifierInput>
+    upsert?: Enumerable<DayUpsertWithWhereUniqueWithoutModifierInput>
+    createMany?: DayCreateManyModifierInputEnvelope
+    set?: Enumerable<DayWhereUniqueInput>
+    disconnect?: Enumerable<DayWhereUniqueInput>
+    delete?: Enumerable<DayWhereUniqueInput>
+    connect?: Enumerable<DayWhereUniqueInput>
+    update?: Enumerable<DayUpdateWithWhereUniqueWithoutModifierInput>
+    updateMany?: Enumerable<DayUpdateManyWithWhereWithoutModifierInput>
+    deleteMany?: Enumerable<DayScalarWhereInput>
   }
 
   export type IntFieldUpdateOperationsInput = {
@@ -2062,6 +6337,196 @@ export namespace Prisma {
     decrement?: number
     multiply?: number
     divide?: number
+  }
+
+  export type ModifierOptionUncheckedUpdateManyWithoutChallengeModifierNestedInput = {
+    create?: XOR<Enumerable<ModifierOptionCreateWithoutChallengeModifierInput>, Enumerable<ModifierOptionUncheckedCreateWithoutChallengeModifierInput>>
+    connectOrCreate?: Enumerable<ModifierOptionCreateOrConnectWithoutChallengeModifierInput>
+    upsert?: Enumerable<ModifierOptionUpsertWithWhereUniqueWithoutChallengeModifierInput>
+    createMany?: ModifierOptionCreateManyChallengeModifierInputEnvelope
+    set?: Enumerable<ModifierOptionWhereUniqueInput>
+    disconnect?: Enumerable<ModifierOptionWhereUniqueInput>
+    delete?: Enumerable<ModifierOptionWhereUniqueInput>
+    connect?: Enumerable<ModifierOptionWhereUniqueInput>
+    update?: Enumerable<ModifierOptionUpdateWithWhereUniqueWithoutChallengeModifierInput>
+    updateMany?: Enumerable<ModifierOptionUpdateManyWithWhereWithoutChallengeModifierInput>
+    deleteMany?: Enumerable<ModifierOptionScalarWhereInput>
+  }
+
+  export type DayUncheckedUpdateManyWithoutModifierNestedInput = {
+    create?: XOR<Enumerable<DayCreateWithoutModifierInput>, Enumerable<DayUncheckedCreateWithoutModifierInput>>
+    connectOrCreate?: Enumerable<DayCreateOrConnectWithoutModifierInput>
+    upsert?: Enumerable<DayUpsertWithWhereUniqueWithoutModifierInput>
+    createMany?: DayCreateManyModifierInputEnvelope
+    set?: Enumerable<DayWhereUniqueInput>
+    disconnect?: Enumerable<DayWhereUniqueInput>
+    delete?: Enumerable<DayWhereUniqueInput>
+    connect?: Enumerable<DayWhereUniqueInput>
+    update?: Enumerable<DayUpdateWithWhereUniqueWithoutModifierInput>
+    updateMany?: Enumerable<DayUpdateManyWithWhereWithoutModifierInput>
+    deleteMany?: Enumerable<DayScalarWhereInput>
+  }
+
+  export type DayCreateNestedManyWithoutModifierOptionInput = {
+    create?: XOR<Enumerable<DayCreateWithoutModifierOptionInput>, Enumerable<DayUncheckedCreateWithoutModifierOptionInput>>
+    connectOrCreate?: Enumerable<DayCreateOrConnectWithoutModifierOptionInput>
+    createMany?: DayCreateManyModifierOptionInputEnvelope
+    connect?: Enumerable<DayWhereUniqueInput>
+  }
+
+  export type ChallengeModifierCreateNestedOneWithoutModifierOptionInput = {
+    create?: XOR<ChallengeModifierCreateWithoutModifierOptionInput, ChallengeModifierUncheckedCreateWithoutModifierOptionInput>
+    connectOrCreate?: ChallengeModifierCreateOrConnectWithoutModifierOptionInput
+    connect?: ChallengeModifierWhereUniqueInput
+  }
+
+  export type DayUncheckedCreateNestedManyWithoutModifierOptionInput = {
+    create?: XOR<Enumerable<DayCreateWithoutModifierOptionInput>, Enumerable<DayUncheckedCreateWithoutModifierOptionInput>>
+    connectOrCreate?: Enumerable<DayCreateOrConnectWithoutModifierOptionInput>
+    createMany?: DayCreateManyModifierOptionInputEnvelope
+    connect?: Enumerable<DayWhereUniqueInput>
+  }
+
+  export type DayUpdateManyWithoutModifierOptionNestedInput = {
+    create?: XOR<Enumerable<DayCreateWithoutModifierOptionInput>, Enumerable<DayUncheckedCreateWithoutModifierOptionInput>>
+    connectOrCreate?: Enumerable<DayCreateOrConnectWithoutModifierOptionInput>
+    upsert?: Enumerable<DayUpsertWithWhereUniqueWithoutModifierOptionInput>
+    createMany?: DayCreateManyModifierOptionInputEnvelope
+    set?: Enumerable<DayWhereUniqueInput>
+    disconnect?: Enumerable<DayWhereUniqueInput>
+    delete?: Enumerable<DayWhereUniqueInput>
+    connect?: Enumerable<DayWhereUniqueInput>
+    update?: Enumerable<DayUpdateWithWhereUniqueWithoutModifierOptionInput>
+    updateMany?: Enumerable<DayUpdateManyWithWhereWithoutModifierOptionInput>
+    deleteMany?: Enumerable<DayScalarWhereInput>
+  }
+
+  export type ChallengeModifierUpdateOneWithoutModifierOptionNestedInput = {
+    create?: XOR<ChallengeModifierCreateWithoutModifierOptionInput, ChallengeModifierUncheckedCreateWithoutModifierOptionInput>
+    connectOrCreate?: ChallengeModifierCreateOrConnectWithoutModifierOptionInput
+    upsert?: ChallengeModifierUpsertWithoutModifierOptionInput
+    disconnect?: boolean
+    delete?: boolean
+    connect?: ChallengeModifierWhereUniqueInput
+    update?: XOR<ChallengeModifierUpdateWithoutModifierOptionInput, ChallengeModifierUncheckedUpdateWithoutModifierOptionInput>
+  }
+
+  export type NullableIntFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
+  export type DayUncheckedUpdateManyWithoutModifierOptionNestedInput = {
+    create?: XOR<Enumerable<DayCreateWithoutModifierOptionInput>, Enumerable<DayUncheckedCreateWithoutModifierOptionInput>>
+    connectOrCreate?: Enumerable<DayCreateOrConnectWithoutModifierOptionInput>
+    upsert?: Enumerable<DayUpsertWithWhereUniqueWithoutModifierOptionInput>
+    createMany?: DayCreateManyModifierOptionInputEnvelope
+    set?: Enumerable<DayWhereUniqueInput>
+    disconnect?: Enumerable<DayWhereUniqueInput>
+    delete?: Enumerable<DayWhereUniqueInput>
+    connect?: Enumerable<DayWhereUniqueInput>
+    update?: Enumerable<DayUpdateWithWhereUniqueWithoutModifierOptionInput>
+    updateMany?: Enumerable<DayUpdateManyWithWhereWithoutModifierOptionInput>
+    deleteMany?: Enumerable<DayScalarWhereInput>
+  }
+
+  export type DayCreateNestedManyWithoutGameInput = {
+    create?: XOR<Enumerable<DayCreateWithoutGameInput>, Enumerable<DayUncheckedCreateWithoutGameInput>>
+    connectOrCreate?: Enumerable<DayCreateOrConnectWithoutGameInput>
+    createMany?: DayCreateManyGameInputEnvelope
+    connect?: Enumerable<DayWhereUniqueInput>
+  }
+
+  export type DayUncheckedCreateNestedManyWithoutGameInput = {
+    create?: XOR<Enumerable<DayCreateWithoutGameInput>, Enumerable<DayUncheckedCreateWithoutGameInput>>
+    connectOrCreate?: Enumerable<DayCreateOrConnectWithoutGameInput>
+    createMany?: DayCreateManyGameInputEnvelope
+    connect?: Enumerable<DayWhereUniqueInput>
+  }
+
+  export type NullableStringFieldUpdateOperationsInput = {
+    set?: string | null
+  }
+
+  export type DayUpdateManyWithoutGameNestedInput = {
+    create?: XOR<Enumerable<DayCreateWithoutGameInput>, Enumerable<DayUncheckedCreateWithoutGameInput>>
+    connectOrCreate?: Enumerable<DayCreateOrConnectWithoutGameInput>
+    upsert?: Enumerable<DayUpsertWithWhereUniqueWithoutGameInput>
+    createMany?: DayCreateManyGameInputEnvelope
+    set?: Enumerable<DayWhereUniqueInput>
+    disconnect?: Enumerable<DayWhereUniqueInput>
+    delete?: Enumerable<DayWhereUniqueInput>
+    connect?: Enumerable<DayWhereUniqueInput>
+    update?: Enumerable<DayUpdateWithWhereUniqueWithoutGameInput>
+    updateMany?: Enumerable<DayUpdateManyWithWhereWithoutGameInput>
+    deleteMany?: Enumerable<DayScalarWhereInput>
+  }
+
+  export type DayUncheckedUpdateManyWithoutGameNestedInput = {
+    create?: XOR<Enumerable<DayCreateWithoutGameInput>, Enumerable<DayUncheckedCreateWithoutGameInput>>
+    connectOrCreate?: Enumerable<DayCreateOrConnectWithoutGameInput>
+    upsert?: Enumerable<DayUpsertWithWhereUniqueWithoutGameInput>
+    createMany?: DayCreateManyGameInputEnvelope
+    set?: Enumerable<DayWhereUniqueInput>
+    disconnect?: Enumerable<DayWhereUniqueInput>
+    delete?: Enumerable<DayWhereUniqueInput>
+    connect?: Enumerable<DayWhereUniqueInput>
+    update?: Enumerable<DayUpdateWithWhereUniqueWithoutGameInput>
+    updateMany?: Enumerable<DayUpdateManyWithWhereWithoutGameInput>
+    deleteMany?: Enumerable<DayScalarWhereInput>
+  }
+
+  export type GameCreateNestedOneWithoutDayInput = {
+    create?: XOR<GameCreateWithoutDayInput, GameUncheckedCreateWithoutDayInput>
+    connectOrCreate?: GameCreateOrConnectWithoutDayInput
+    connect?: GameWhereUniqueInput
+  }
+
+  export type ChallengeModifierCreateNestedOneWithoutDayInput = {
+    create?: XOR<ChallengeModifierCreateWithoutDayInput, ChallengeModifierUncheckedCreateWithoutDayInput>
+    connectOrCreate?: ChallengeModifierCreateOrConnectWithoutDayInput
+    connect?: ChallengeModifierWhereUniqueInput
+  }
+
+  export type ModifierOptionCreateNestedOneWithoutDayInput = {
+    create?: XOR<ModifierOptionCreateWithoutDayInput, ModifierOptionUncheckedCreateWithoutDayInput>
+    connectOrCreate?: ModifierOptionCreateOrConnectWithoutDayInput
+    connect?: ModifierOptionWhereUniqueInput
+  }
+
+  export type BoolFieldUpdateOperationsInput = {
+    set?: boolean
+  }
+
+  export type GameUpdateOneRequiredWithoutDayNestedInput = {
+    create?: XOR<GameCreateWithoutDayInput, GameUncheckedCreateWithoutDayInput>
+    connectOrCreate?: GameCreateOrConnectWithoutDayInput
+    upsert?: GameUpsertWithoutDayInput
+    connect?: GameWhereUniqueInput
+    update?: XOR<GameUpdateWithoutDayInput, GameUncheckedUpdateWithoutDayInput>
+  }
+
+  export type ChallengeModifierUpdateOneWithoutDayNestedInput = {
+    create?: XOR<ChallengeModifierCreateWithoutDayInput, ChallengeModifierUncheckedCreateWithoutDayInput>
+    connectOrCreate?: ChallengeModifierCreateOrConnectWithoutDayInput
+    upsert?: ChallengeModifierUpsertWithoutDayInput
+    disconnect?: boolean
+    delete?: boolean
+    connect?: ChallengeModifierWhereUniqueInput
+    update?: XOR<ChallengeModifierUpdateWithoutDayInput, ChallengeModifierUncheckedUpdateWithoutDayInput>
+  }
+
+  export type ModifierOptionUpdateOneWithoutDayNestedInput = {
+    create?: XOR<ModifierOptionCreateWithoutDayInput, ModifierOptionUncheckedCreateWithoutDayInput>
+    connectOrCreate?: ModifierOptionCreateOrConnectWithoutDayInput
+    upsert?: ModifierOptionUpsertWithoutDayInput
+    disconnect?: boolean
+    delete?: boolean
+    connect?: ModifierOptionWhereUniqueInput
+    update?: XOR<ModifierOptionUpdateWithoutDayInput, ModifierOptionUncheckedUpdateWithoutDayInput>
   }
 
   export type NestedIntFilter = {
@@ -2131,6 +6596,589 @@ export namespace Prisma {
     _count?: NestedIntFilter
     _min?: NestedStringFilter
     _max?: NestedStringFilter
+  }
+
+  export type NestedIntNullableFilter = {
+    equals?: number | null
+    in?: Enumerable<number> | number | null
+    notIn?: Enumerable<number> | number | null
+    lt?: number
+    lte?: number
+    gt?: number
+    gte?: number
+    not?: NestedIntNullableFilter | number | null
+  }
+
+  export type NestedIntNullableWithAggregatesFilter = {
+    equals?: number | null
+    in?: Enumerable<number> | number | null
+    notIn?: Enumerable<number> | number | null
+    lt?: number
+    lte?: number
+    gt?: number
+    gte?: number
+    not?: NestedIntNullableWithAggregatesFilter | number | null
+    _count?: NestedIntNullableFilter
+    _avg?: NestedFloatNullableFilter
+    _sum?: NestedIntNullableFilter
+    _min?: NestedIntNullableFilter
+    _max?: NestedIntNullableFilter
+  }
+
+  export type NestedFloatNullableFilter = {
+    equals?: number | null
+    in?: Enumerable<number> | number | null
+    notIn?: Enumerable<number> | number | null
+    lt?: number
+    lte?: number
+    gt?: number
+    gte?: number
+    not?: NestedFloatNullableFilter | number | null
+  }
+
+  export type NestedStringNullableFilter = {
+    equals?: string | null
+    in?: Enumerable<string> | string | null
+    notIn?: Enumerable<string> | string | null
+    lt?: string
+    lte?: string
+    gt?: string
+    gte?: string
+    contains?: string
+    startsWith?: string
+    endsWith?: string
+    not?: NestedStringNullableFilter | string | null
+  }
+
+  export type NestedStringNullableWithAggregatesFilter = {
+    equals?: string | null
+    in?: Enumerable<string> | string | null
+    notIn?: Enumerable<string> | string | null
+    lt?: string
+    lte?: string
+    gt?: string
+    gte?: string
+    contains?: string
+    startsWith?: string
+    endsWith?: string
+    not?: NestedStringNullableWithAggregatesFilter | string | null
+    _count?: NestedIntNullableFilter
+    _min?: NestedStringNullableFilter
+    _max?: NestedStringNullableFilter
+  }
+
+  export type NestedBoolFilter = {
+    equals?: boolean
+    not?: NestedBoolFilter | boolean
+  }
+
+  export type NestedBoolWithAggregatesFilter = {
+    equals?: boolean
+    not?: NestedBoolWithAggregatesFilter | boolean
+    _count?: NestedIntFilter
+    _min?: NestedBoolFilter
+    _max?: NestedBoolFilter
+  }
+
+  export type ModifierOptionCreateWithoutChallengeModifierInput = {
+    name: string
+    text: string
+    Day?: DayCreateNestedManyWithoutModifierOptionInput
+  }
+
+  export type ModifierOptionUncheckedCreateWithoutChallengeModifierInput = {
+    id?: number
+    name: string
+    text: string
+    Day?: DayUncheckedCreateNestedManyWithoutModifierOptionInput
+  }
+
+  export type ModifierOptionCreateOrConnectWithoutChallengeModifierInput = {
+    where: ModifierOptionWhereUniqueInput
+    create: XOR<ModifierOptionCreateWithoutChallengeModifierInput, ModifierOptionUncheckedCreateWithoutChallengeModifierInput>
+  }
+
+  export type ModifierOptionCreateManyChallengeModifierInputEnvelope = {
+    data: Enumerable<ModifierOptionCreateManyChallengeModifierInput>
+    skipDuplicates?: boolean
+  }
+
+  export type DayCreateWithoutModifierInput = {
+    number: number
+    part1Completed?: boolean
+    part2Completed?: boolean
+    mainRerollsUsed?: number
+    secondaryRerollsUsed?: number
+    game: GameCreateNestedOneWithoutDayInput
+    modifierOption?: ModifierOptionCreateNestedOneWithoutDayInput
+  }
+
+  export type DayUncheckedCreateWithoutModifierInput = {
+    id?: number
+    number: number
+    part1Completed?: boolean
+    part2Completed?: boolean
+    mainRerollsUsed?: number
+    secondaryRerollsUsed?: number
+    modifierOptionId?: number | null
+    gameId: number
+  }
+
+  export type DayCreateOrConnectWithoutModifierInput = {
+    where: DayWhereUniqueInput
+    create: XOR<DayCreateWithoutModifierInput, DayUncheckedCreateWithoutModifierInput>
+  }
+
+  export type DayCreateManyModifierInputEnvelope = {
+    data: Enumerable<DayCreateManyModifierInput>
+    skipDuplicates?: boolean
+  }
+
+  export type ModifierOptionUpsertWithWhereUniqueWithoutChallengeModifierInput = {
+    where: ModifierOptionWhereUniqueInput
+    update: XOR<ModifierOptionUpdateWithoutChallengeModifierInput, ModifierOptionUncheckedUpdateWithoutChallengeModifierInput>
+    create: XOR<ModifierOptionCreateWithoutChallengeModifierInput, ModifierOptionUncheckedCreateWithoutChallengeModifierInput>
+  }
+
+  export type ModifierOptionUpdateWithWhereUniqueWithoutChallengeModifierInput = {
+    where: ModifierOptionWhereUniqueInput
+    data: XOR<ModifierOptionUpdateWithoutChallengeModifierInput, ModifierOptionUncheckedUpdateWithoutChallengeModifierInput>
+  }
+
+  export type ModifierOptionUpdateManyWithWhereWithoutChallengeModifierInput = {
+    where: ModifierOptionScalarWhereInput
+    data: XOR<ModifierOptionUpdateManyMutationInput, ModifierOptionUncheckedUpdateManyWithoutModifierOptionInput>
+  }
+
+  export type ModifierOptionScalarWhereInput = {
+    AND?: Enumerable<ModifierOptionScalarWhereInput>
+    OR?: Enumerable<ModifierOptionScalarWhereInput>
+    NOT?: Enumerable<ModifierOptionScalarWhereInput>
+    id?: IntFilter | number
+    name?: StringFilter | string
+    text?: StringFilter | string
+    challengeModifierId?: IntNullableFilter | number | null
+  }
+
+  export type DayUpsertWithWhereUniqueWithoutModifierInput = {
+    where: DayWhereUniqueInput
+    update: XOR<DayUpdateWithoutModifierInput, DayUncheckedUpdateWithoutModifierInput>
+    create: XOR<DayCreateWithoutModifierInput, DayUncheckedCreateWithoutModifierInput>
+  }
+
+  export type DayUpdateWithWhereUniqueWithoutModifierInput = {
+    where: DayWhereUniqueInput
+    data: XOR<DayUpdateWithoutModifierInput, DayUncheckedUpdateWithoutModifierInput>
+  }
+
+  export type DayUpdateManyWithWhereWithoutModifierInput = {
+    where: DayScalarWhereInput
+    data: XOR<DayUpdateManyMutationInput, DayUncheckedUpdateManyWithoutDayInput>
+  }
+
+  export type DayScalarWhereInput = {
+    AND?: Enumerable<DayScalarWhereInput>
+    OR?: Enumerable<DayScalarWhereInput>
+    NOT?: Enumerable<DayScalarWhereInput>
+    id?: IntFilter | number
+    number?: IntFilter | number
+    part1Completed?: BoolFilter | boolean
+    part2Completed?: BoolFilter | boolean
+    mainRerollsUsed?: IntFilter | number
+    secondaryRerollsUsed?: IntFilter | number
+    challengeModifierId?: IntNullableFilter | number | null
+    modifierOptionId?: IntNullableFilter | number | null
+    gameId?: IntFilter | number
+  }
+
+  export type DayCreateWithoutModifierOptionInput = {
+    number: number
+    part1Completed?: boolean
+    part2Completed?: boolean
+    mainRerollsUsed?: number
+    secondaryRerollsUsed?: number
+    game: GameCreateNestedOneWithoutDayInput
+    modifier?: ChallengeModifierCreateNestedOneWithoutDayInput
+  }
+
+  export type DayUncheckedCreateWithoutModifierOptionInput = {
+    id?: number
+    number: number
+    part1Completed?: boolean
+    part2Completed?: boolean
+    mainRerollsUsed?: number
+    secondaryRerollsUsed?: number
+    challengeModifierId?: number | null
+    gameId: number
+  }
+
+  export type DayCreateOrConnectWithoutModifierOptionInput = {
+    where: DayWhereUniqueInput
+    create: XOR<DayCreateWithoutModifierOptionInput, DayUncheckedCreateWithoutModifierOptionInput>
+  }
+
+  export type DayCreateManyModifierOptionInputEnvelope = {
+    data: Enumerable<DayCreateManyModifierOptionInput>
+    skipDuplicates?: boolean
+  }
+
+  export type ChallengeModifierCreateWithoutModifierOptionInput = {
+    name: string
+    text: string
+    Day?: DayCreateNestedManyWithoutModifierInput
+  }
+
+  export type ChallengeModifierUncheckedCreateWithoutModifierOptionInput = {
+    id?: number
+    name: string
+    text: string
+    Day?: DayUncheckedCreateNestedManyWithoutModifierInput
+  }
+
+  export type ChallengeModifierCreateOrConnectWithoutModifierOptionInput = {
+    where: ChallengeModifierWhereUniqueInput
+    create: XOR<ChallengeModifierCreateWithoutModifierOptionInput, ChallengeModifierUncheckedCreateWithoutModifierOptionInput>
+  }
+
+  export type DayUpsertWithWhereUniqueWithoutModifierOptionInput = {
+    where: DayWhereUniqueInput
+    update: XOR<DayUpdateWithoutModifierOptionInput, DayUncheckedUpdateWithoutModifierOptionInput>
+    create: XOR<DayCreateWithoutModifierOptionInput, DayUncheckedCreateWithoutModifierOptionInput>
+  }
+
+  export type DayUpdateWithWhereUniqueWithoutModifierOptionInput = {
+    where: DayWhereUniqueInput
+    data: XOR<DayUpdateWithoutModifierOptionInput, DayUncheckedUpdateWithoutModifierOptionInput>
+  }
+
+  export type DayUpdateManyWithWhereWithoutModifierOptionInput = {
+    where: DayScalarWhereInput
+    data: XOR<DayUpdateManyMutationInput, DayUncheckedUpdateManyWithoutDayInput>
+  }
+
+  export type ChallengeModifierUpsertWithoutModifierOptionInput = {
+    update: XOR<ChallengeModifierUpdateWithoutModifierOptionInput, ChallengeModifierUncheckedUpdateWithoutModifierOptionInput>
+    create: XOR<ChallengeModifierCreateWithoutModifierOptionInput, ChallengeModifierUncheckedCreateWithoutModifierOptionInput>
+  }
+
+  export type ChallengeModifierUpdateWithoutModifierOptionInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    text?: StringFieldUpdateOperationsInput | string
+    Day?: DayUpdateManyWithoutModifierNestedInput
+  }
+
+  export type ChallengeModifierUncheckedUpdateWithoutModifierOptionInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    text?: StringFieldUpdateOperationsInput | string
+    Day?: DayUncheckedUpdateManyWithoutModifierNestedInput
+  }
+
+  export type DayCreateWithoutGameInput = {
+    number: number
+    part1Completed?: boolean
+    part2Completed?: boolean
+    mainRerollsUsed?: number
+    secondaryRerollsUsed?: number
+    modifier?: ChallengeModifierCreateNestedOneWithoutDayInput
+    modifierOption?: ModifierOptionCreateNestedOneWithoutDayInput
+  }
+
+  export type DayUncheckedCreateWithoutGameInput = {
+    id?: number
+    number: number
+    part1Completed?: boolean
+    part2Completed?: boolean
+    mainRerollsUsed?: number
+    secondaryRerollsUsed?: number
+    challengeModifierId?: number | null
+    modifierOptionId?: number | null
+  }
+
+  export type DayCreateOrConnectWithoutGameInput = {
+    where: DayWhereUniqueInput
+    create: XOR<DayCreateWithoutGameInput, DayUncheckedCreateWithoutGameInput>
+  }
+
+  export type DayCreateManyGameInputEnvelope = {
+    data: Enumerable<DayCreateManyGameInput>
+    skipDuplicates?: boolean
+  }
+
+  export type DayUpsertWithWhereUniqueWithoutGameInput = {
+    where: DayWhereUniqueInput
+    update: XOR<DayUpdateWithoutGameInput, DayUncheckedUpdateWithoutGameInput>
+    create: XOR<DayCreateWithoutGameInput, DayUncheckedCreateWithoutGameInput>
+  }
+
+  export type DayUpdateWithWhereUniqueWithoutGameInput = {
+    where: DayWhereUniqueInput
+    data: XOR<DayUpdateWithoutGameInput, DayUncheckedUpdateWithoutGameInput>
+  }
+
+  export type DayUpdateManyWithWhereWithoutGameInput = {
+    where: DayScalarWhereInput
+    data: XOR<DayUpdateManyMutationInput, DayUncheckedUpdateManyWithoutDayInput>
+  }
+
+  export type GameCreateWithoutDayInput = {
+    name: string
+    playerName: string
+    year: number
+    currentRerollTokens?: number
+    rerollTokensGained?: number
+    rerollTokensSpent?: number
+    repositoryLink?: string | null
+    progressSheetLink?: string | null
+  }
+
+  export type GameUncheckedCreateWithoutDayInput = {
+    id?: number
+    name: string
+    playerName: string
+    year: number
+    currentRerollTokens?: number
+    rerollTokensGained?: number
+    rerollTokensSpent?: number
+    repositoryLink?: string | null
+    progressSheetLink?: string | null
+  }
+
+  export type GameCreateOrConnectWithoutDayInput = {
+    where: GameWhereUniqueInput
+    create: XOR<GameCreateWithoutDayInput, GameUncheckedCreateWithoutDayInput>
+  }
+
+  export type ChallengeModifierCreateWithoutDayInput = {
+    name: string
+    text: string
+    ModifierOption?: ModifierOptionCreateNestedManyWithoutChallengeModifierInput
+  }
+
+  export type ChallengeModifierUncheckedCreateWithoutDayInput = {
+    id?: number
+    name: string
+    text: string
+    ModifierOption?: ModifierOptionUncheckedCreateNestedManyWithoutChallengeModifierInput
+  }
+
+  export type ChallengeModifierCreateOrConnectWithoutDayInput = {
+    where: ChallengeModifierWhereUniqueInput
+    create: XOR<ChallengeModifierCreateWithoutDayInput, ChallengeModifierUncheckedCreateWithoutDayInput>
+  }
+
+  export type ModifierOptionCreateWithoutDayInput = {
+    name: string
+    text: string
+    ChallengeModifier?: ChallengeModifierCreateNestedOneWithoutModifierOptionInput
+  }
+
+  export type ModifierOptionUncheckedCreateWithoutDayInput = {
+    id?: number
+    name: string
+    text: string
+    challengeModifierId?: number | null
+  }
+
+  export type ModifierOptionCreateOrConnectWithoutDayInput = {
+    where: ModifierOptionWhereUniqueInput
+    create: XOR<ModifierOptionCreateWithoutDayInput, ModifierOptionUncheckedCreateWithoutDayInput>
+  }
+
+  export type GameUpsertWithoutDayInput = {
+    update: XOR<GameUpdateWithoutDayInput, GameUncheckedUpdateWithoutDayInput>
+    create: XOR<GameCreateWithoutDayInput, GameUncheckedCreateWithoutDayInput>
+  }
+
+  export type GameUpdateWithoutDayInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    playerName?: StringFieldUpdateOperationsInput | string
+    year?: IntFieldUpdateOperationsInput | number
+    currentRerollTokens?: IntFieldUpdateOperationsInput | number
+    rerollTokensGained?: IntFieldUpdateOperationsInput | number
+    rerollTokensSpent?: IntFieldUpdateOperationsInput | number
+    repositoryLink?: NullableStringFieldUpdateOperationsInput | string | null
+    progressSheetLink?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type GameUncheckedUpdateWithoutDayInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    playerName?: StringFieldUpdateOperationsInput | string
+    year?: IntFieldUpdateOperationsInput | number
+    currentRerollTokens?: IntFieldUpdateOperationsInput | number
+    rerollTokensGained?: IntFieldUpdateOperationsInput | number
+    rerollTokensSpent?: IntFieldUpdateOperationsInput | number
+    repositoryLink?: NullableStringFieldUpdateOperationsInput | string | null
+    progressSheetLink?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type ChallengeModifierUpsertWithoutDayInput = {
+    update: XOR<ChallengeModifierUpdateWithoutDayInput, ChallengeModifierUncheckedUpdateWithoutDayInput>
+    create: XOR<ChallengeModifierCreateWithoutDayInput, ChallengeModifierUncheckedCreateWithoutDayInput>
+  }
+
+  export type ChallengeModifierUpdateWithoutDayInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    text?: StringFieldUpdateOperationsInput | string
+    ModifierOption?: ModifierOptionUpdateManyWithoutChallengeModifierNestedInput
+  }
+
+  export type ChallengeModifierUncheckedUpdateWithoutDayInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    text?: StringFieldUpdateOperationsInput | string
+    ModifierOption?: ModifierOptionUncheckedUpdateManyWithoutChallengeModifierNestedInput
+  }
+
+  export type ModifierOptionUpsertWithoutDayInput = {
+    update: XOR<ModifierOptionUpdateWithoutDayInput, ModifierOptionUncheckedUpdateWithoutDayInput>
+    create: XOR<ModifierOptionCreateWithoutDayInput, ModifierOptionUncheckedCreateWithoutDayInput>
+  }
+
+  export type ModifierOptionUpdateWithoutDayInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    text?: StringFieldUpdateOperationsInput | string
+    ChallengeModifier?: ChallengeModifierUpdateOneWithoutModifierOptionNestedInput
+  }
+
+  export type ModifierOptionUncheckedUpdateWithoutDayInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    text?: StringFieldUpdateOperationsInput | string
+    challengeModifierId?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type ModifierOptionCreateManyChallengeModifierInput = {
+    id?: number
+    name: string
+    text: string
+  }
+
+  export type DayCreateManyModifierInput = {
+    id?: number
+    number: number
+    part1Completed?: boolean
+    part2Completed?: boolean
+    mainRerollsUsed?: number
+    secondaryRerollsUsed?: number
+    modifierOptionId?: number | null
+    gameId: number
+  }
+
+  export type ModifierOptionUpdateWithoutChallengeModifierInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    text?: StringFieldUpdateOperationsInput | string
+    Day?: DayUpdateManyWithoutModifierOptionNestedInput
+  }
+
+  export type ModifierOptionUncheckedUpdateWithoutChallengeModifierInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    text?: StringFieldUpdateOperationsInput | string
+    Day?: DayUncheckedUpdateManyWithoutModifierOptionNestedInput
+  }
+
+  export type ModifierOptionUncheckedUpdateManyWithoutModifierOptionInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    text?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type DayUpdateWithoutModifierInput = {
+    number?: IntFieldUpdateOperationsInput | number
+    part1Completed?: BoolFieldUpdateOperationsInput | boolean
+    part2Completed?: BoolFieldUpdateOperationsInput | boolean
+    mainRerollsUsed?: IntFieldUpdateOperationsInput | number
+    secondaryRerollsUsed?: IntFieldUpdateOperationsInput | number
+    game?: GameUpdateOneRequiredWithoutDayNestedInput
+    modifierOption?: ModifierOptionUpdateOneWithoutDayNestedInput
+  }
+
+  export type DayUncheckedUpdateWithoutModifierInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    number?: IntFieldUpdateOperationsInput | number
+    part1Completed?: BoolFieldUpdateOperationsInput | boolean
+    part2Completed?: BoolFieldUpdateOperationsInput | boolean
+    mainRerollsUsed?: IntFieldUpdateOperationsInput | number
+    secondaryRerollsUsed?: IntFieldUpdateOperationsInput | number
+    modifierOptionId?: NullableIntFieldUpdateOperationsInput | number | null
+    gameId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type DayUncheckedUpdateManyWithoutDayInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    number?: IntFieldUpdateOperationsInput | number
+    part1Completed?: BoolFieldUpdateOperationsInput | boolean
+    part2Completed?: BoolFieldUpdateOperationsInput | boolean
+    mainRerollsUsed?: IntFieldUpdateOperationsInput | number
+    secondaryRerollsUsed?: IntFieldUpdateOperationsInput | number
+    modifierOptionId?: NullableIntFieldUpdateOperationsInput | number | null
+    gameId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type DayCreateManyModifierOptionInput = {
+    id?: number
+    number: number
+    part1Completed?: boolean
+    part2Completed?: boolean
+    mainRerollsUsed?: number
+    secondaryRerollsUsed?: number
+    challengeModifierId?: number | null
+    gameId: number
+  }
+
+  export type DayUpdateWithoutModifierOptionInput = {
+    number?: IntFieldUpdateOperationsInput | number
+    part1Completed?: BoolFieldUpdateOperationsInput | boolean
+    part2Completed?: BoolFieldUpdateOperationsInput | boolean
+    mainRerollsUsed?: IntFieldUpdateOperationsInput | number
+    secondaryRerollsUsed?: IntFieldUpdateOperationsInput | number
+    game?: GameUpdateOneRequiredWithoutDayNestedInput
+    modifier?: ChallengeModifierUpdateOneWithoutDayNestedInput
+  }
+
+  export type DayUncheckedUpdateWithoutModifierOptionInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    number?: IntFieldUpdateOperationsInput | number
+    part1Completed?: BoolFieldUpdateOperationsInput | boolean
+    part2Completed?: BoolFieldUpdateOperationsInput | boolean
+    mainRerollsUsed?: IntFieldUpdateOperationsInput | number
+    secondaryRerollsUsed?: IntFieldUpdateOperationsInput | number
+    challengeModifierId?: NullableIntFieldUpdateOperationsInput | number | null
+    gameId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type DayCreateManyGameInput = {
+    id?: number
+    number: number
+    part1Completed?: boolean
+    part2Completed?: boolean
+    mainRerollsUsed?: number
+    secondaryRerollsUsed?: number
+    challengeModifierId?: number | null
+    modifierOptionId?: number | null
+  }
+
+  export type DayUpdateWithoutGameInput = {
+    number?: IntFieldUpdateOperationsInput | number
+    part1Completed?: BoolFieldUpdateOperationsInput | boolean
+    part2Completed?: BoolFieldUpdateOperationsInput | boolean
+    mainRerollsUsed?: IntFieldUpdateOperationsInput | number
+    secondaryRerollsUsed?: IntFieldUpdateOperationsInput | number
+    modifier?: ChallengeModifierUpdateOneWithoutDayNestedInput
+    modifierOption?: ModifierOptionUpdateOneWithoutDayNestedInput
+  }
+
+  export type DayUncheckedUpdateWithoutGameInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    number?: IntFieldUpdateOperationsInput | number
+    part1Completed?: BoolFieldUpdateOperationsInput | boolean
+    part2Completed?: BoolFieldUpdateOperationsInput | boolean
+    mainRerollsUsed?: IntFieldUpdateOperationsInput | number
+    secondaryRerollsUsed?: IntFieldUpdateOperationsInput | number
+    challengeModifierId?: NullableIntFieldUpdateOperationsInput | number | null
+    modifierOptionId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
 

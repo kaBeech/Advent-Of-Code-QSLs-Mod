@@ -108,8 +108,38 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
 exports.Prisma.ChallengeModifierScalarFieldEnum = {
   id: 'id',
   name: 'name',
+  text: 'text'
+};
+
+exports.Prisma.ModifierOptionScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
   text: 'text',
-  options: 'options'
+  challengeModifierId: 'challengeModifierId'
+};
+
+exports.Prisma.GameScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  playerName: 'playerName',
+  year: 'year',
+  currentRerollTokens: 'currentRerollTokens',
+  rerollTokensGained: 'rerollTokensGained',
+  rerollTokensSpent: 'rerollTokensSpent',
+  repositoryLink: 'repositoryLink',
+  progressSheetLink: 'progressSheetLink'
+};
+
+exports.Prisma.DayScalarFieldEnum = {
+  id: 'id',
+  number: 'number',
+  part1Completed: 'part1Completed',
+  part2Completed: 'part2Completed',
+  mainRerollsUsed: 'mainRerollsUsed',
+  secondaryRerollsUsed: 'secondaryRerollsUsed',
+  challengeModifierId: 'challengeModifierId',
+  modifierOptionId: 'modifierOptionId',
+  gameId: 'gameId'
 };
 
 exports.Prisma.SortOrder = {
@@ -122,9 +152,17 @@ exports.Prisma.QueryMode = {
   insensitive: 'insensitive'
 };
 
+exports.Prisma.NullsOrder = {
+  first: 'first',
+  last: 'last'
+};
+
 
 exports.Prisma.ModelName = {
-  ChallengeModifier: 'ChallengeModifier'
+  ChallengeModifier: 'ChallengeModifier',
+  ModifierOption: 'ModifierOption',
+  Game: 'Game',
+  Day: 'Day'
 };
 
 /**
