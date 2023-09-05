@@ -75,45 +75,45 @@ router
     context.response.body = day;
   })
   /**
-   * Roll initial Challenge Modifier
+   * Roll a Day's initial Challenge Modifier
    */
-  .get("day/:id/roll/initial", async (context) => {
+  .put("day/:id/roll/initial", async (context) => {
     const { id } = context.params;
     const day = await getDayById(+id);
     DayController(day!).rollInitialChallengeModifier();
     context.response.body = day;
   })
   /**
-   * Reroll Challenge Modifier
+   * Reroll a Day's Challenge Modifier
    */
-  .get("day/:id/roll/reroll_challenge_modifier", async (context) => {
+  .put("day/:id/roll/reroll_challenge_modifier", async (context) => {
     const { id } = context.params;
     const day = await getDayById(+id);
     DayController(day!).rerollChallengeModifier();
     context.response.body = day;
   })
   /**
-   * Reroll Modifier Option
+   * Reroll a Day's Modifier Option
    */
-  .get("day/:id/roll/reroll_modifier_option", async (context) => {
+  .put("day/:id/roll/reroll_modifier_option", async (context) => {
     const { id } = context.params;
     const day = await getDayById(+id);
     DayController(day!).rerollModifierOption();
     context.response.body = day;
   })
   /**
-   * Complete Part 1
+   * Complete Part 1 for a Day
    */
-  .get("day/:id/complete_part_1", async (context) => {
+  .put("day/:id/complete_part_1", async (context) => {
     const { id } = context.params;
     const day = await getDayById(+id);
     DayController(day!).completePart1();
     context.response.body = day;
   })
   /**
-   * Complete Part 2
+   * Complete Part 2 for a Day
    */
-  .get("day/:id/complete_part_2", async (context) => {
+  .put("day/:id/complete_part_2", async (context) => {
     const { id } = context.params;
     const day = await getDayById(+id);
     DayController(day!).completePart2();
