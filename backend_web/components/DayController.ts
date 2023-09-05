@@ -8,7 +8,7 @@ import {
   updateDayPart2CompletionStatus,
   updateGameRerollTokensGained,
 } from "../db.ts";
-import { Day } from "../generated/client/deno/index.d.ts";
+import { Day, Game } from "../generated/client/deno/index.d.ts";
 import { pickRandomly } from "../util/pickRandomly.ts";
 import { GameController } from "./GameController.ts";
 import { rollChallengeModifier } from "./rollChallengeModifier.ts";
@@ -65,6 +65,59 @@ const part2Completer = (state: DayControllerState) => ({
   },
 });
 
+const challengeModifierReroller = (state: DayControllerState) => ({
+  rerollChallengeModifier: async () => {
+    const game = await getGameById(state.day.gameId);
+    if (game!.currentRerollTokens < 2) {
+      throw new Error("Not enough reroll tokens");
+    }
+    GameController(game!).adjustCurrentRerollTokens(-2);
+    GameController(game!).adjustRerollTokensSpent(2);
+    state.day.mainRerollsUsed += 1;
+    const selectedChallengeModifier = await rollChallengeModifier();
+    state.day.challengeModifierId = selectedChallengeModifier.id;
+    updateDayChallengeModifier(state.day.id, selectedChallengeModifier.id);
+    if (selectedChallengeModifier.hasOptions) {
+      modifierOptionReroller(state).rerollModifierOption(
+        selectedChallengeModifier.id,
+        true,
+        game!,
+      );
+    }
+    return selectedChallengeModifier;
+  },
+});
+
+const modifierOptionReroller = (state: DayControllerState) => ({
+  rerollModifierOption: async (
+    challengeModifierId: number,
+    gratis: boolean,
+    gameProp?: Game,
+  ) => {
+    let game: Game;
+    if (gameProp) {
+      game = gameProp;
+    } else {
+      const gameFetched = await getGameById(state.day.gameId);
+      game = gameFetched!;
+    }
+    if (!gratis && game!.currentRerollTokens < 1) {
+      throw new Error("Not enough reroll tokens");
+    }
+    if (!gratis) {
+      GameController(game!).adjustCurrentRerollTokens(-1);
+      GameController(game!).adjustRerollTokensSpent(1);
+    }
+    state.day.secondaryRerollsUsed += 1;
+    const selectedModifierOption = await rollModifierOption(
+      challengeModifierId,
+    );
+    state.day.modifierOptionId = selectedModifierOption.id;
+    updateDayModifierOption(state.day.id, selectedModifierOption.id);
+    return selectedModifierOption;
+  },
+});
+
 const DayController = (
   day: Day,
 ) => {
@@ -76,7 +129,7 @@ const DayController = (
     ...initialChallengeModifierRoller(state),
     ...initialModifierOptionRoller(state),
     ...challengeModifierReroller(state),
-    ...challengeModifierOptionReroller(state),
+    ...modifierOptionReroller(state),
     ...part1Completer(state),
     ...part2Completer(state),
   };
