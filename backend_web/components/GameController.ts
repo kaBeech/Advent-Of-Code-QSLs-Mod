@@ -86,6 +86,7 @@ const nextDayStarter = (state: GameControllerState) => ({
     state.game.currentDay += 1;
     updateGameCurrentDay(state.game.id, state.game.currentDay);
     createDay(state.game.id, state.game.currentDay);
+    state.game.currentDayCompleted = false;
     return state.game;
   },
 });
