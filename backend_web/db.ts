@@ -1,6 +1,6 @@
 import { PrismaClient } from "./generated/client/deno/edge.ts";
 import { config } from "https://deno.land/std@0.163.0/dotenv/mod.ts";
-import { ChallengeModifier, Day } from "./generated/client/deno/index.d.ts";
+import { ChallengeModifier } from "./generated/client/deno/index.d.ts";
 
 const envVars = await config();
 

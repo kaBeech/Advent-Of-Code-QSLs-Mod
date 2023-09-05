@@ -1,15 +1,11 @@
 import {
-  getAllChallengeModifiers,
   getGameById,
-  getModifierOptionByChallengeModifierId,
   updateDayChallengeModifier,
   updateDayModifierOption,
   updateDayPart1CompletionStatus,
   updateDayPart2CompletionStatus,
-  updateGameRerollTokensGained,
 } from "../db.ts";
 import { Day, Game } from "../generated/client/deno/index.d.ts";
-import { pickRandomly } from "../util/pickRandomly.ts";
 import { GameController } from "./GameController.ts";
 import { rollChallengeModifier } from "./rollChallengeModifier.ts";
 import { rollModifierOption } from "./rollModifierOption.ts";
@@ -73,7 +69,7 @@ const challengeModifierReroller = (state: DayControllerState) => ({
     }
     GameController(game!).adjustCurrentRerollTokens(-2);
     GameController(game!).adjustRerollTokensSpent(2);
-    state.day.challengModifierRerollsUsed += 1;
+    state.day.challengeModifierRerollsUsed += 1;
     const selectedChallengeModifier = await rollChallengeModifier();
     state.day.challengeModifierId = selectedChallengeModifier.id;
     updateDayChallengeModifier(state.day.id, selectedChallengeModifier.id);
