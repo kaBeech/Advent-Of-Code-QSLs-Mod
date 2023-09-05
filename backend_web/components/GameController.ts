@@ -5,6 +5,7 @@ import {
   updateGameCurrentRerollTokens,
   updateGameName,
   updateGamePlayerName,
+  updateGameProgressSheetLink,
   updateGameRepositoryLink,
   updateGameRerollTokensGained,
   updateGameRerollTokensSpent,
@@ -142,13 +143,14 @@ const repositoryLinkSetter = (state: GameControllerState) => ({
 });
 
 const progressSheetLinkSetter = (state: GameControllerState) => ({
-  setProgressSheetLink: (newProgressSheetLink: string) => {
+  setProgressSheetLink: async (newProgressSheetLink: string) => {
     if (newProgressSheetLink.length > 255) {
       throw new Error(
         "Progress sheet link cannot be longer than 255 characters",
       );
     }
     state.game.progressSheetLink = newProgressSheetLink;
+    await updateGameProgressSheetLink(state.game.id, newProgressSheetLink);
     return state.game;
   },
 });
