@@ -102,7 +102,7 @@ const challengeModifierReroller = (state: DayControllerState) => ({
 const modifierOptionReroller = (state: DayControllerState) => ({
   rerollModifierOption: async (
     challengeModifierId: number,
-    gratis: boolean,
+    gratis?: boolean,
     gameProp?: Game,
   ) => {
     if (!state.day.modifierOptionId) {
