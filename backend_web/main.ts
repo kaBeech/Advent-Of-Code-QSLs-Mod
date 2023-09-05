@@ -52,6 +52,20 @@ router
     context.response.body = deleteGame(+id);
   })
   /**
+   * Get All Days for a Game
+   */
+  .get("/game/:id/day", (context) => {
+    const { id } = context.params;
+    context.response.body = getDaysByGameId(+id);
+  })
+  /**
+   * Get a Day
+   */
+  .get("/day/:id", (context) => {
+    const { id } = context.params;
+    context.response.body = getDayById(+id);
+  })
+  /**
    * Roll initial Challenge Modifier
    */
   .get("day/:id/roll/initial", async (context) => {
