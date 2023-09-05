@@ -16,20 +16,6 @@ const prisma = new PrismaClient({
  * Game CRUD
  */
 
-export async function getAllGames() {
-  const games = await prisma.game.findMany();
-  return games;
-}
-
-export async function getGameById(id: number) {
-  const game = await prisma.game.findUnique({
-    where: {
-      id,
-    },
-  });
-  return game;
-}
-
 export async function createGame(
   name: string,
   playerName: string,
@@ -43,6 +29,20 @@ export async function createGame(
     },
   });
   return result;
+}
+
+export async function getAllGames() {
+  const games = await prisma.game.findMany();
+  return games;
+}
+
+export async function getGameById(id: number) {
+  const game = await prisma.game.findUnique({
+    where: {
+      id,
+    },
+  });
+  return game;
 }
 
 export async function upsertGame(
@@ -179,6 +179,19 @@ export async function deleteGame(id: number) {
  * Day CRUD
  */
 
+export async function createDay(
+  gameId: number,
+  dayNumber: number,
+) {
+  const result = await prisma.day.create({
+    data: {
+      number: dayNumber,
+      gameId,
+    },
+  });
+  return result;
+}
+
 export async function getDayById(id: number) {
   const day = await prisma.day.findUnique({
     where: {
@@ -195,19 +208,6 @@ export async function getDaysByGameId(gameId: number) {
     },
   });
   return days;
-}
-
-export async function createDay(
-  gameId: number,
-  dayNumber: number,
-) {
-  const result = await prisma.day.create({
-    data: {
-      number: dayNumber,
-      gameId,
-    },
-  });
-  return result;
 }
 
 export async function updateDayPart1CompletionStatus(
