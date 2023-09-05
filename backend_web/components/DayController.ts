@@ -14,10 +14,18 @@ import { rollModifierOption } from "./rollModifierOption.ts";
 
 interface DayControllerState {
   day: Day;
+  game: Game;
 }
+
+const verifyDayIsCurrent = (state: DayControllerState) => {
+  if (state.game.currentDay !== state.day.number) {
+    throw new Error("This method only permitted on current day");
+  }
+};
 
 const initialChallengeModifierRoller = (state: DayControllerState) => ({
   rollInitialChallengeModifier: async () => {
+    verifyDayIsCurrent(state);
     if (state.day.challengeModifierId) {
       throw new Error("Challenge modifier already rolled");
     }
@@ -46,6 +54,7 @@ const initialModifierOptionRoller = (state: DayControllerState) => ({
 
 const part1Completer = (state: DayControllerState) => ({
   completePart1: async () => {
+    verifyDayIsCurrent(state);
     if (state.day.part1Completed) {
       throw new Error("Part 1 already completed");
     }
@@ -60,6 +69,7 @@ const part1Completer = (state: DayControllerState) => ({
 
 const part2Completer = (state: DayControllerState) => ({
   completePart2: async () => {
+    verifyDayIsCurrent(state);
     if (!state.day.part1Completed) {
       throw new Error("Part 1 not yet completed");
     }
@@ -78,6 +88,7 @@ const part2Completer = (state: DayControllerState) => ({
 
 const challengeModifierReroller = (state: DayControllerState) => ({
   rerollChallengeModifier: async () => {
+    verifyDayIsCurrent(state);
     if (!state.day.challengeModifierId) {
       throw new Error("Roll initial challenge modifier first");
     }
@@ -110,6 +121,7 @@ const modifierOptionReroller = (state: DayControllerState) => ({
     gratis?: boolean,
     gameProp?: Game,
   ) => {
+    verifyDayIsCurrent(state);
     if (!state.day.challengeModifierId) {
       throw new Error("Roll initial challenge modifier first");
     }
@@ -144,11 +156,13 @@ const modifierOptionReroller = (state: DayControllerState) => ({
   },
 });
 
-const DayController = (
+const DayController = async (
   day: Day,
 ) => {
+  const game = await getGameById(day.gameId);
   const state = {
     day,
+    game: game!,
   };
 
   return {
