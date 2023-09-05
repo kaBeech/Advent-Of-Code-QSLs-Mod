@@ -1,12 +1,6 @@
 import { Application, Router } from "https://deno.land/x/oak@v11.1.0/mod.ts";
 import { rollChallengeModifier } from "./components/rollChallengeModifier.ts";
-import {
-  createGame,
-  deleteGame,
-  getAllChallengeModifiers,
-  getAllGames,
-  getGameById,
-} from "./db.ts";
+import { createGame, deleteGame, getAllGames, getGameById } from "./db.ts";
 
 const app = new Application();
 const router = new Router();
@@ -52,10 +46,8 @@ router
   /**
    * Roll a Challenge Modifier
    */
-  .get("/roll/challenge_modifier", async (context) => {
-    context.response.body = rollChallengeModifier(
-      await getAllChallengeModifiers(),
-    );
+  .get("/roll/challenge_modifier", (context) => {
+    context.response.body = rollChallengeModifier();
   });
 
 app.use(router.routes());
