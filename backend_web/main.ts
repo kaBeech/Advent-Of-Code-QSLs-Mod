@@ -1,4 +1,8 @@
-import { Application, Router } from "https://deno.land/x/oak@v11.1.0/mod.ts";
+import {
+  Application,
+  Context,
+  Router,
+} from "https://deno.land/x/oak@v11.1.0/mod.ts";
 import {
   createGame,
   deleteGame,
@@ -122,6 +126,11 @@ router
 
 app.use(router.routes());
 app.use(router.allowedMethods());
+
+app.use((context: Context) => {
+  context.response.status = 404;
+  context.response.body = "404 | Page not found!";
+});
 
 console.log(`Server running on http://localhost:8000`);
 
