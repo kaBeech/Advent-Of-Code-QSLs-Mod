@@ -60,6 +60,9 @@ const part1Completer = (state: DayControllerState) => ({
 
 const part2Completer = (state: DayControllerState) => ({
   completePart2: async () => {
+    if (!state.day.part1Completed) {
+      throw new Error("Part 1 not yet completed");
+    }
     if (state.day.part2Completed) {
       throw new Error("Part 2 already completed");
     }
