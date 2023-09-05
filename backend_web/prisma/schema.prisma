@@ -35,6 +35,7 @@ model Game {
   name                String  @unique
   playerName          String
   year                Int
+  currentDay          Int     @default(1)
   currentRerollTokens Int     @default(7)
   rerollTokensGained  Int     @default(7)
   rerollTokensSpent   Int     @default(0)
