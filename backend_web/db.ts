@@ -33,7 +33,7 @@ export async function getGameById(id: number) {
 export async function createGame(
   name: string,
   playerName: string,
-  year: number,
+  year: string,
 ) {
   const result = await prisma.game.create({
     data: {
@@ -68,7 +68,6 @@ export async function updateGame(
   rerollTokensSpent: number,
   repositoryLink: string,
   progressSheetLink: string,
-  days: Day[],
 ) {
   const result = await prisma.game.update({
     where: {
@@ -82,7 +81,6 @@ export async function updateGame(
       reroll_tokens_spent: rerollTokensSpent,
       repository_link: repositoryLink,
       progress_sheet_link: progressSheetLink,
-      days,
     },
   });
   return result;
@@ -162,7 +160,7 @@ export async function updateDayChallengeModifier(
       id,
     },
     data: {
-      modifier,
+      challengeModifierId: modifier.id,
     },
   });
   return result;
