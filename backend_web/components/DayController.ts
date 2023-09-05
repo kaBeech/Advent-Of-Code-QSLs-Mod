@@ -1,7 +1,9 @@
 import {
   getGameById,
   updateDayChallengeModifier,
+  updateDayChallengeModifierRerollsUsed,
   updateDayModifierOption,
+  updateDayModifierOptionRerollsUsed,
   updateDayPart1CompletionStatus,
   updateDayPart2CompletionStatus,
 } from "../db.ts";
@@ -70,6 +72,10 @@ const challengeModifierReroller = (state: DayControllerState) => ({
     GameController(game!).adjustCurrentRerollTokens(-2);
     GameController(game!).adjustRerollTokensSpent(2);
     state.day.challengeModifierRerollsUsed += 1;
+    updateDayChallengeModifierRerollsUsed(
+      state.day.id,
+      state.day.challengeModifierRerollsUsed,
+    );
     const selectedChallengeModifier = await rollChallengeModifier();
     state.day.challengeModifierId = selectedChallengeModifier.id;
     updateDayChallengeModifier(state.day.id, selectedChallengeModifier.id);
@@ -105,6 +111,10 @@ const modifierOptionReroller = (state: DayControllerState) => ({
       GameController(game!).adjustRerollTokensSpent(1);
     }
     state.day.modifierOptionRerollsUsed += 1;
+    updateDayModifierOptionRerollsUsed(
+      state.day.id,
+      state.day.modifierOptionRerollsUsed,
+    );
     const selectedModifierOption = await rollModifierOption(
       challengeModifierId,
     );
