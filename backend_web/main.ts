@@ -28,15 +28,15 @@ router
   /**
    * Get All Games (eventually will be Continue Game)
    */
-  .get("/game", (context) => {
-    context.response.body = getAllGames();
+  .get("/game", async (context) => {
+    context.response.body = await getAllGames();
   })
   /**
    * Resume Game
    */
-  .get("/game/:id", (context) => {
+  .get("/game/:id", async (context) => {
     const { id } = context.params;
-    context.response.body = getGameById(+id);
+    context.response.body = await getGameById(+id);
   })
   /**
    * Start New Game
@@ -46,28 +46,28 @@ router
       type: "json",
     })
       .value;
-    context.response.body = createGame(name, playerName, year);
+    context.response.body = await createGame(name, playerName, year);
   })
   /**
    * Delete Game
    */
-  .delete("/game/:id", (context) => {
+  .delete("/game/:id", async (context) => {
     const { id } = context.params;
-    context.response.body = deleteGame(+id);
+    context.response.body = await deleteGame(+id);
   })
   /**
    * Get All Days for a Game
    */
-  .get("/game/:id/day", (context) => {
+  .get("/game/:id/day", async (context) => {
     const { id } = context.params;
-    context.response.body = getDaysByGameId(+id);
+    context.response.body = await getDaysByGameId(+id);
   })
   /**
    * Get a Day
    */
-  .get("/day/:id", (context) => {
+  .get("/day/:id", async (context) => {
     const { id } = context.params;
-    context.response.body = getDayById(+id);
+    context.response.body = await getDayById(+id);
   })
   /**
    * Start the next Day
