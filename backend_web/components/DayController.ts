@@ -73,7 +73,7 @@ const challengeModifierReroller = (state: DayControllerState) => ({
     }
     GameController(game!).adjustCurrentRerollTokens(-2);
     GameController(game!).adjustRerollTokensSpent(2);
-    state.day.mainRerollsUsed += 1;
+    state.day.challengModifierRerollsUsed += 1;
     const selectedChallengeModifier = await rollChallengeModifier();
     state.day.challengeModifierId = selectedChallengeModifier.id;
     updateDayChallengeModifier(state.day.id, selectedChallengeModifier.id);
@@ -108,7 +108,7 @@ const modifierOptionReroller = (state: DayControllerState) => ({
       GameController(game!).adjustCurrentRerollTokens(-1);
       GameController(game!).adjustRerollTokensSpent(1);
     }
-    state.day.secondaryRerollsUsed += 1;
+    state.day.modifierOptionRerollsUsed += 1;
     const selectedModifierOption = await rollModifierOption(
       challengeModifierId,
     );

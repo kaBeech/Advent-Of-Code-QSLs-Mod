@@ -261,31 +261,31 @@ export async function updateDayModifierOption(
   return result;
 }
 
-export async function updateDayMainRerollsUsed(
+export async function updateDayChallengeModifierRerollsUsed(
   id: number,
-  mainRerollsUsed: number,
+  challengeModifierRerollsUsed: number,
 ) {
   const result = await prisma.day.update({
     where: {
       id,
     },
     data: {
-      mainRerollsUsed,
+      challengeModifierRerollsUsed,
     },
   });
   return result;
 }
 
-export async function updateDaySecondaryRerollsUsed(
+export async function updateDayModifierOptionRerollsUsed(
   id: number,
-  secondaryRerollsUsed: number,
+  modifierOptionRerollsUsed: number,
 ) {
   const result = await prisma.day.update({
     where: {
       id,
     },
     data: {
-      secondaryRerollsUsed,
+      modifierOptionRerollsUsed,
     },
   });
   return result;
