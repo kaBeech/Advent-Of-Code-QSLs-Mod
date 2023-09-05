@@ -14,11 +14,11 @@ import { rollModifierOption } from "./rollModifierOption.ts";
 
 interface DayControllerState {
   day: Day;
-  game: Game;
 }
 
-const verifyDayIsCurrent = (state: DayControllerState) => {
-  if (state.game.currentDay !== state.day.number) {
+const verifyDayIsCurrent = async (state: DayControllerState) => {
+  const game = await getGameById(state.day.gameId);
+  if (game!.currentDay !== state.day.number) {
     throw new Error("This method only permitted on current day");
   }
 };
@@ -156,13 +156,11 @@ const modifierOptionReroller = (state: DayControllerState) => ({
   },
 });
 
-const DayController = async (
+const DayController = (
   day: Day,
 ) => {
-  const game = await getGameById(day.gameId);
   const state = {
     day,
-    game: game!,
   };
 
   return {
