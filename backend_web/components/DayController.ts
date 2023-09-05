@@ -19,15 +19,18 @@ interface DayControllerState {
 
 const initialChallengeModifierRoller = (state: DayControllerState) => ({
   rollInitialChallengeModifier: async () => {
-    verifyDayIsCurrent(state);
+    await verifyDayIsCurrent(state);
     if (state.day.challengeModifierId) {
       throw new Error("Challenge modifier already rolled");
     }
     const selectedChallengeModifier = await rollChallengeModifier();
     state.day.challengeModifierId = selectedChallengeModifier.id;
-    updateDayChallengeModifier(state.day.id, selectedChallengeModifier.id);
+    await updateDayChallengeModifier(
+      state.day.id,
+      selectedChallengeModifier.id,
+    );
     if (selectedChallengeModifier.hasOptions) {
-      initialModifierOptionRoller(state).rollInitialModifierOption(
+      await initialModifierOptionRoller(state).rollInitialModifierOption(
         selectedChallengeModifier.id,
       );
     }
