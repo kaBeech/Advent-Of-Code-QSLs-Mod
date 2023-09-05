@@ -1,7 +1,3 @@
-# Resources for later
-
-- https://docs.rs/markdown/latest/markdown/
-
 # Roadmap
 
 1. Implement simple single-user API with Deno/Prisma
@@ -13,7 +9,7 @@
 7. (optional) Add Node backend (for comparison)
 8. (optional) Add Next.js frontend (for comparison)
 
-# Pseudocode
+# Pseudocode (old)
 
 ## Start Game (args: name of the save_game file)
 
