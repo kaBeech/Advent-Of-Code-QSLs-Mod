@@ -75,7 +75,7 @@ const part2Completer = (state: DayControllerState) => ({
 const challengeModifierReroller = (state: DayControllerState) => ({
   rerollChallengeModifier: async () => {
     if (!state.day.challengeModifierId) {
-      throw new Error("Make initial roll first");
+      throw new Error("Roll initial challenge modifier first");
     }
     const game = await getGameById(state.day.gameId);
     if (game!.currentRerollTokens < 2) {
@@ -107,7 +107,7 @@ const modifierOptionReroller = (state: DayControllerState) => ({
     gameProp?: Game,
   ) => {
     if (!state.day.challengeModifierId) {
-      throw new Error("Make initial roll first");
+      throw new Error("Roll initial challenge modifier first");
     }
     if (!state.day.modifierOptionId) {
       throw new Error("No modifier option to reroll");
