@@ -103,6 +103,9 @@ const modifierOptionReroller = (state: DayControllerState) => ({
       const gameFetched = await getGameById(state.day.gameId);
       game = gameFetched!;
     }
+    if (!state.day.modifierOptionId) {
+      throw new Error("No modifier option to reroll");
+    }
     if (!gratis && game!.currentRerollTokens < 1) {
       throw new Error("Not enough reroll tokens");
     }
