@@ -10,6 +10,7 @@ import {
 import { Day, Game } from "../generated/client/deno/index.d.ts";
 import { GameController } from "./GameController.ts";
 import { rollChallengeModifier } from "./rollChallengeModifier.ts";
+import { rollInitialModifierOption } from "./rollInitialModifierOption.ts";
 import { rollModifierOption } from "./rollModifierOption.ts";
 import { verifyDayIsCurrent } from "./verifyDayIsCurrent.ts";
 
@@ -46,22 +47,12 @@ const initialChallengeModifierRoller = (state: DayControllerState) => ({
       selectedChallengeModifier.id,
     );
     if (selectedChallengeModifier.hasOptions) {
-      await initialModifierOptionRoller(state).rollInitialModifierOption(
+      await rollInitialModifierOption(
+        state,
         selectedChallengeModifier.id,
       );
     }
     return selectedChallengeModifier;
-  },
-});
-
-const initialModifierOptionRoller = (state: DayControllerState) => ({
-  rollInitialModifierOption: async (challengeModifierId: number) => {
-    const selectedModifierOption = await rollModifierOption(
-      challengeModifierId,
-    );
-    state.day.modifierOptionId = selectedModifierOption.id;
-    await updateDayModifierOption(state.day.id, selectedModifierOption.id);
-    return selectedModifierOption;
   },
 });
 
