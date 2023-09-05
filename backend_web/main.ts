@@ -8,6 +8,7 @@ import {
   getGameById,
 } from "./db.ts";
 import { DayController } from "./components/DayController.ts";
+import { GameController } from "./components/GameController.ts";
 
 const app = new Application();
 const router = new Router();
@@ -63,6 +64,15 @@ router
   .get("/day/:id", (context) => {
     const { id } = context.params;
     context.response.body = getDayById(+id);
+  })
+  /**
+   * Start the next Day
+   */
+  .post("/game/:id/start_next_day", async (context) => {
+    const { id } = context.params;
+    const game = await getGameById(+id);
+    const day = GameController(game!).startNextDay();
+    context.response.body = day;
   })
   /**
    * Roll initial Challenge Modifier
