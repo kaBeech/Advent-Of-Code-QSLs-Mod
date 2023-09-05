@@ -129,7 +129,8 @@ app.use(router.allowedMethods());
 
 app.use((context: Context) => {
   context.response.status = 404;
-  context.response.body = "404 | Page not found!";
+  context.response.body =
+    `404 | Page not found! Requested ${context.request.method} on ${context.request.url}`;
 });
 
 console.log(`Server running on http://localhost:8000`);
