@@ -109,12 +109,6 @@ router
     const day = await getDayById(+id);
     DayController(day!).completePart2();
     context.response.body = day;
-  })
-  /**
-   * Roll a Challenge Modifier
-   */
-  .get("/roll/challenge_modifier", (context) => {
-    context.response.body = rollChallengeModifier();
   });
 
 app.use(router.routes());
