@@ -46,6 +46,9 @@ const initialModifierOptionRoller = (state: DayControllerState) => ({
 
 const part1Completer = (state: DayControllerState) => ({
   completePart1: async () => {
+    if (state.day.part1Completed) {
+      throw new Error("Part 1 already completed");
+    }
     state.day.part1Completed = true;
     updateDayPart1CompletionStatus(state.day.id, true);
     const game = await getGameById(state.day.gameId);
@@ -57,6 +60,9 @@ const part1Completer = (state: DayControllerState) => ({
 
 const part2Completer = (state: DayControllerState) => ({
   completePart2: async () => {
+    if (state.day.part2Completed) {
+      throw new Error("Part 2 already completed");
+    }
     state.day.part2Completed = true;
     updateDayPart2CompletionStatus(state.day.id, true);
     const game = await getGameById(state.day.gameId);
