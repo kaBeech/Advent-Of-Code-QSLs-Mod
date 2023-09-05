@@ -84,6 +84,9 @@ const challengeModifierReroller = (state: DayControllerState) => ({
         true,
         game!,
       );
+    } else {
+      state.day.modifierOptionId = null;
+      await updateDayModifierOption(state.day.id, 0);
     }
     return selectedChallengeModifier;
   },
@@ -98,7 +101,7 @@ const modifierOptionReroller = (state: DayControllerState) => ({
     if (!state.day.challengeModifierId) {
       throw new Error("Roll initial challenge modifier first");
     }
-    if (!state.day.modifierOptionId) {
+    if (!state.day.modifierOptionId || state.day.modifierOptionId === 0) {
       throw new Error("No modifier option to reroll");
     }
     let game: Game;
