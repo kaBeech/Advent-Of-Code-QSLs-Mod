@@ -31,18 +31,18 @@ model ModifierOption {
 }
 
 model Game {
-  id                    Int     @id @default(autoincrement())
-  name                  String  @unique
-  playerName            String
-  year                  Int
-  currentDay            Int     @default(1)
-  isCurrentDayCompleted Boolean @default(false)
-  currentRerollTokens   Int     @default(7)
-  rerollTokensGained    Int     @default(7)
-  rerollTokensSpent     Int     @default(0)
-  repositoryLink        String?
-  progressSheetLink     String?
-  Day                   Day[]
+  id                  Int     @id @default(autoincrement())
+  name                String  @unique
+  playerName          String
+  year                Int
+  currentDay          Int     @default(1)
+  currentDayCompleted Boolean @default(false)
+  currentRerollTokens Int     @default(7)
+  rerollTokensGained  Int     @default(7)
+  rerollTokensSpent   Int     @default(0)
+  repositoryLink      String?
+  progressSheetLink   String?
+  Day                 Day[]
 }
 
 model Day {

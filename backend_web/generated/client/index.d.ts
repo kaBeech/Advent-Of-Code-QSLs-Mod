@@ -63,7 +63,7 @@ export type GamePayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultAr
     playerName: string
     year: number
     currentDay: number
-    isCurrentDayCompleted: boolean
+    currentDayCompleted: boolean
     currentRerollTokens: number
     rerollTokensGained: number
     rerollTokensSpent: number
@@ -3345,7 +3345,7 @@ export namespace Prisma {
     playerName: string | null
     year: number | null
     currentDay: number | null
-    isCurrentDayCompleted: boolean | null
+    currentDayCompleted: boolean | null
     currentRerollTokens: number | null
     rerollTokensGained: number | null
     rerollTokensSpent: number | null
@@ -3359,7 +3359,7 @@ export namespace Prisma {
     playerName: string | null
     year: number | null
     currentDay: number | null
-    isCurrentDayCompleted: boolean | null
+    currentDayCompleted: boolean | null
     currentRerollTokens: number | null
     rerollTokensGained: number | null
     rerollTokensSpent: number | null
@@ -3373,7 +3373,7 @@ export namespace Prisma {
     playerName: number
     year: number
     currentDay: number
-    isCurrentDayCompleted: number
+    currentDayCompleted: number
     currentRerollTokens: number
     rerollTokensGained: number
     rerollTokensSpent: number
@@ -3407,7 +3407,7 @@ export namespace Prisma {
     playerName?: true
     year?: true
     currentDay?: true
-    isCurrentDayCompleted?: true
+    currentDayCompleted?: true
     currentRerollTokens?: true
     rerollTokensGained?: true
     rerollTokensSpent?: true
@@ -3421,7 +3421,7 @@ export namespace Prisma {
     playerName?: true
     year?: true
     currentDay?: true
-    isCurrentDayCompleted?: true
+    currentDayCompleted?: true
     currentRerollTokens?: true
     rerollTokensGained?: true
     rerollTokensSpent?: true
@@ -3435,7 +3435,7 @@ export namespace Prisma {
     playerName?: true
     year?: true
     currentDay?: true
-    isCurrentDayCompleted?: true
+    currentDayCompleted?: true
     currentRerollTokens?: true
     rerollTokensGained?: true
     rerollTokensSpent?: true
@@ -3537,7 +3537,7 @@ export namespace Prisma {
     playerName: string
     year: number
     currentDay: number
-    isCurrentDayCompleted: boolean
+    currentDayCompleted: boolean
     currentRerollTokens: number
     rerollTokensGained: number
     rerollTokensSpent: number
@@ -3570,7 +3570,7 @@ export namespace Prisma {
     playerName?: boolean
     year?: boolean
     currentDay?: boolean
-    isCurrentDayCompleted?: boolean
+    currentDayCompleted?: boolean
     currentRerollTokens?: boolean
     rerollTokensGained?: boolean
     rerollTokensSpent?: boolean
@@ -3586,7 +3586,7 @@ export namespace Prisma {
     playerName?: boolean
     year?: boolean
     currentDay?: boolean
-    isCurrentDayCompleted?: boolean
+    currentDayCompleted?: boolean
     currentRerollTokens?: boolean
     rerollTokensGained?: boolean
     rerollTokensSpent?: boolean
@@ -5429,7 +5429,7 @@ export namespace Prisma {
     playerName: 'playerName',
     year: 'year',
     currentDay: 'currentDay',
-    isCurrentDayCompleted: 'isCurrentDayCompleted',
+    currentDayCompleted: 'currentDayCompleted',
     currentRerollTokens: 'currentRerollTokens',
     rerollTokensGained: 'rerollTokensGained',
     rerollTokensSpent: 'rerollTokensSpent',
@@ -5589,7 +5589,7 @@ export namespace Prisma {
     playerName?: StringFilter | string
     year?: IntFilter | number
     currentDay?: IntFilter | number
-    isCurrentDayCompleted?: BoolFilter | boolean
+    currentDayCompleted?: BoolFilter | boolean
     currentRerollTokens?: IntFilter | number
     rerollTokensGained?: IntFilter | number
     rerollTokensSpent?: IntFilter | number
@@ -5604,7 +5604,7 @@ export namespace Prisma {
     playerName?: SortOrder
     year?: SortOrder
     currentDay?: SortOrder
-    isCurrentDayCompleted?: SortOrder
+    currentDayCompleted?: SortOrder
     currentRerollTokens?: SortOrder
     rerollTokensGained?: SortOrder
     rerollTokensSpent?: SortOrder
@@ -5624,7 +5624,7 @@ export namespace Prisma {
     playerName?: SortOrder
     year?: SortOrder
     currentDay?: SortOrder
-    isCurrentDayCompleted?: SortOrder
+    currentDayCompleted?: SortOrder
     currentRerollTokens?: SortOrder
     rerollTokensGained?: SortOrder
     rerollTokensSpent?: SortOrder
@@ -5646,7 +5646,7 @@ export namespace Prisma {
     playerName?: StringWithAggregatesFilter | string
     year?: IntWithAggregatesFilter | number
     currentDay?: IntWithAggregatesFilter | number
-    isCurrentDayCompleted?: BoolWithAggregatesFilter | boolean
+    currentDayCompleted?: BoolWithAggregatesFilter | boolean
     currentRerollTokens?: IntWithAggregatesFilter | number
     rerollTokensGained?: IntWithAggregatesFilter | number
     rerollTokensSpent?: IntWithAggregatesFilter | number
@@ -5831,7 +5831,7 @@ export namespace Prisma {
     playerName: string
     year: number
     currentDay?: number
-    isCurrentDayCompleted?: boolean
+    currentDayCompleted?: boolean
     currentRerollTokens?: number
     rerollTokensGained?: number
     rerollTokensSpent?: number
@@ -5846,7 +5846,7 @@ export namespace Prisma {
     playerName: string
     year: number
     currentDay?: number
-    isCurrentDayCompleted?: boolean
+    currentDayCompleted?: boolean
     currentRerollTokens?: number
     rerollTokensGained?: number
     rerollTokensSpent?: number
@@ -5860,7 +5860,7 @@ export namespace Prisma {
     playerName?: StringFieldUpdateOperationsInput | string
     year?: IntFieldUpdateOperationsInput | number
     currentDay?: IntFieldUpdateOperationsInput | number
-    isCurrentDayCompleted?: BoolFieldUpdateOperationsInput | boolean
+    currentDayCompleted?: BoolFieldUpdateOperationsInput | boolean
     currentRerollTokens?: IntFieldUpdateOperationsInput | number
     rerollTokensGained?: IntFieldUpdateOperationsInput | number
     rerollTokensSpent?: IntFieldUpdateOperationsInput | number
@@ -5875,7 +5875,7 @@ export namespace Prisma {
     playerName?: StringFieldUpdateOperationsInput | string
     year?: IntFieldUpdateOperationsInput | number
     currentDay?: IntFieldUpdateOperationsInput | number
-    isCurrentDayCompleted?: BoolFieldUpdateOperationsInput | boolean
+    currentDayCompleted?: BoolFieldUpdateOperationsInput | boolean
     currentRerollTokens?: IntFieldUpdateOperationsInput | number
     rerollTokensGained?: IntFieldUpdateOperationsInput | number
     rerollTokensSpent?: IntFieldUpdateOperationsInput | number
@@ -5890,7 +5890,7 @@ export namespace Prisma {
     playerName: string
     year: number
     currentDay?: number
-    isCurrentDayCompleted?: boolean
+    currentDayCompleted?: boolean
     currentRerollTokens?: number
     rerollTokensGained?: number
     rerollTokensSpent?: number
@@ -5903,7 +5903,7 @@ export namespace Prisma {
     playerName?: StringFieldUpdateOperationsInput | string
     year?: IntFieldUpdateOperationsInput | number
     currentDay?: IntFieldUpdateOperationsInput | number
-    isCurrentDayCompleted?: BoolFieldUpdateOperationsInput | boolean
+    currentDayCompleted?: BoolFieldUpdateOperationsInput | boolean
     currentRerollTokens?: IntFieldUpdateOperationsInput | number
     rerollTokensGained?: IntFieldUpdateOperationsInput | number
     rerollTokensSpent?: IntFieldUpdateOperationsInput | number
@@ -5917,7 +5917,7 @@ export namespace Prisma {
     playerName?: StringFieldUpdateOperationsInput | string
     year?: IntFieldUpdateOperationsInput | number
     currentDay?: IntFieldUpdateOperationsInput | number
-    isCurrentDayCompleted?: BoolFieldUpdateOperationsInput | boolean
+    currentDayCompleted?: BoolFieldUpdateOperationsInput | boolean
     currentRerollTokens?: IntFieldUpdateOperationsInput | number
     rerollTokensGained?: IntFieldUpdateOperationsInput | number
     rerollTokensSpent?: IntFieldUpdateOperationsInput | number
@@ -6214,7 +6214,7 @@ export namespace Prisma {
     playerName?: SortOrder
     year?: SortOrder
     currentDay?: SortOrder
-    isCurrentDayCompleted?: SortOrder
+    currentDayCompleted?: SortOrder
     currentRerollTokens?: SortOrder
     rerollTokensGained?: SortOrder
     rerollTokensSpent?: SortOrder
@@ -6237,7 +6237,7 @@ export namespace Prisma {
     playerName?: SortOrder
     year?: SortOrder
     currentDay?: SortOrder
-    isCurrentDayCompleted?: SortOrder
+    currentDayCompleted?: SortOrder
     currentRerollTokens?: SortOrder
     rerollTokensGained?: SortOrder
     rerollTokensSpent?: SortOrder
@@ -6251,7 +6251,7 @@ export namespace Prisma {
     playerName?: SortOrder
     year?: SortOrder
     currentDay?: SortOrder
-    isCurrentDayCompleted?: SortOrder
+    currentDayCompleted?: SortOrder
     currentRerollTokens?: SortOrder
     rerollTokensGained?: SortOrder
     rerollTokensSpent?: SortOrder
@@ -7011,7 +7011,7 @@ export namespace Prisma {
     playerName: string
     year: number
     currentDay?: number
-    isCurrentDayCompleted?: boolean
+    currentDayCompleted?: boolean
     currentRerollTokens?: number
     rerollTokensGained?: number
     rerollTokensSpent?: number
@@ -7025,7 +7025,7 @@ export namespace Prisma {
     playerName: string
     year: number
     currentDay?: number
-    isCurrentDayCompleted?: boolean
+    currentDayCompleted?: boolean
     currentRerollTokens?: number
     rerollTokensGained?: number
     rerollTokensSpent?: number
@@ -7086,7 +7086,7 @@ export namespace Prisma {
     playerName?: StringFieldUpdateOperationsInput | string
     year?: IntFieldUpdateOperationsInput | number
     currentDay?: IntFieldUpdateOperationsInput | number
-    isCurrentDayCompleted?: BoolFieldUpdateOperationsInput | boolean
+    currentDayCompleted?: BoolFieldUpdateOperationsInput | boolean
     currentRerollTokens?: IntFieldUpdateOperationsInput | number
     rerollTokensGained?: IntFieldUpdateOperationsInput | number
     rerollTokensSpent?: IntFieldUpdateOperationsInput | number
@@ -7100,7 +7100,7 @@ export namespace Prisma {
     playerName?: StringFieldUpdateOperationsInput | string
     year?: IntFieldUpdateOperationsInput | number
     currentDay?: IntFieldUpdateOperationsInput | number
-    isCurrentDayCompleted?: BoolFieldUpdateOperationsInput | boolean
+    currentDayCompleted?: BoolFieldUpdateOperationsInput | boolean
     currentRerollTokens?: IntFieldUpdateOperationsInput | number
     rerollTokensGained?: IntFieldUpdateOperationsInput | number
     rerollTokensSpent?: IntFieldUpdateOperationsInput | number
