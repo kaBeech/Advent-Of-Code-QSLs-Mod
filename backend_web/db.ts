@@ -64,14 +64,95 @@ export async function upsertGame(
   return result;
 }
 
-export async function updateGame(
+export async function updateGameName(id: number, name: string) {
+  const result = await prisma.game.update({
+    where: {
+      id,
+    },
+    data: {
+      name,
+    },
+  });
+  return result;
+}
+
+export async function updateGamePlayerName(
   id: number,
-  name: string,
   playerName: string,
+) {
+  const result = await prisma.game.update({
+    where: {
+      id,
+    },
+    data: {
+      playerName,
+    },
+  });
+  return result;
+}
+
+export async function updateGameCurrentRerollTokens(
+  id: number,
   currentRerollTokens: number,
+) {
+  const result = await prisma.game.update({
+    where: {
+      id,
+    },
+    data: {
+      currentRerollTokens,
+    },
+  });
+  return result;
+}
+
+export async function updateGameRerollTokensGained(
+  id: number,
   rerollTokensGained: number,
+) {
+  const result = await prisma.game.update({
+    where: {
+      id,
+    },
+    data: {
+      rerollTokensGained,
+    },
+  });
+  return result;
+}
+
+export async function updateGameRerollTokensSpent(
+  id: number,
   rerollTokensSpent: number,
+) {
+  const result = await prisma.game.update({
+    where: {
+      id,
+    },
+    data: {
+      rerollTokensSpent,
+    },
+  });
+  return result;
+}
+
+export async function updateGameRepositoryLink(
+  id: number,
   repositoryLink: string,
+) {
+  const result = await prisma.game.update({
+    where: {
+      id,
+    },
+    data: {
+      repositoryLink,
+    },
+  });
+  return result;
+}
+
+export async function updateGameProgressSheetLink(
+  id: number,
   progressSheetLink: string,
 ) {
   const result = await prisma.game.update({
@@ -79,12 +160,6 @@ export async function updateGame(
       id,
     },
     data: {
-      name,
-      playerName,
-      currentRerollTokens,
-      rerollTokensGained,
-      rerollTokensSpent,
-      repositoryLink,
       progressSheetLink,
     },
   });
