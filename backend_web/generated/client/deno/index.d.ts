@@ -62,6 +62,7 @@ export type GamePayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultAr
     name: string
     playerName: string
     year: number
+    currentDay: number
     currentRerollTokens: number
     rerollTokensGained: number
     rerollTokensSpent: number
@@ -3322,6 +3323,7 @@ export namespace Prisma {
   export type GameAvgAggregateOutputType = {
     id: number | null
     year: number | null
+    currentDay: number | null
     currentRerollTokens: number | null
     rerollTokensGained: number | null
     rerollTokensSpent: number | null
@@ -3330,6 +3332,7 @@ export namespace Prisma {
   export type GameSumAggregateOutputType = {
     id: number | null
     year: number | null
+    currentDay: number | null
     currentRerollTokens: number | null
     rerollTokensGained: number | null
     rerollTokensSpent: number | null
@@ -3340,6 +3343,7 @@ export namespace Prisma {
     name: string | null
     playerName: string | null
     year: number | null
+    currentDay: number | null
     currentRerollTokens: number | null
     rerollTokensGained: number | null
     rerollTokensSpent: number | null
@@ -3352,6 +3356,7 @@ export namespace Prisma {
     name: string | null
     playerName: string | null
     year: number | null
+    currentDay: number | null
     currentRerollTokens: number | null
     rerollTokensGained: number | null
     rerollTokensSpent: number | null
@@ -3364,6 +3369,7 @@ export namespace Prisma {
     name: number
     playerName: number
     year: number
+    currentDay: number
     currentRerollTokens: number
     rerollTokensGained: number
     rerollTokensSpent: number
@@ -3376,6 +3382,7 @@ export namespace Prisma {
   export type GameAvgAggregateInputType = {
     id?: true
     year?: true
+    currentDay?: true
     currentRerollTokens?: true
     rerollTokensGained?: true
     rerollTokensSpent?: true
@@ -3384,6 +3391,7 @@ export namespace Prisma {
   export type GameSumAggregateInputType = {
     id?: true
     year?: true
+    currentDay?: true
     currentRerollTokens?: true
     rerollTokensGained?: true
     rerollTokensSpent?: true
@@ -3394,6 +3402,7 @@ export namespace Prisma {
     name?: true
     playerName?: true
     year?: true
+    currentDay?: true
     currentRerollTokens?: true
     rerollTokensGained?: true
     rerollTokensSpent?: true
@@ -3406,6 +3415,7 @@ export namespace Prisma {
     name?: true
     playerName?: true
     year?: true
+    currentDay?: true
     currentRerollTokens?: true
     rerollTokensGained?: true
     rerollTokensSpent?: true
@@ -3418,6 +3428,7 @@ export namespace Prisma {
     name?: true
     playerName?: true
     year?: true
+    currentDay?: true
     currentRerollTokens?: true
     rerollTokensGained?: true
     rerollTokensSpent?: true
@@ -3518,6 +3529,7 @@ export namespace Prisma {
     name: string
     playerName: string
     year: number
+    currentDay: number
     currentRerollTokens: number
     rerollTokensGained: number
     rerollTokensSpent: number
@@ -3549,6 +3561,7 @@ export namespace Prisma {
     name?: boolean
     playerName?: boolean
     year?: boolean
+    currentDay?: boolean
     currentRerollTokens?: boolean
     rerollTokensGained?: boolean
     rerollTokensSpent?: boolean
@@ -3563,6 +3576,7 @@ export namespace Prisma {
     name?: boolean
     playerName?: boolean
     year?: boolean
+    currentDay?: boolean
     currentRerollTokens?: boolean
     rerollTokensGained?: boolean
     rerollTokensSpent?: boolean
@@ -5404,6 +5418,7 @@ export namespace Prisma {
     name: 'name',
     playerName: 'playerName',
     year: 'year',
+    currentDay: 'currentDay',
     currentRerollTokens: 'currentRerollTokens',
     rerollTokensGained: 'rerollTokensGained',
     rerollTokensSpent: 'rerollTokensSpent',
@@ -5562,6 +5577,7 @@ export namespace Prisma {
     name?: StringFilter | string
     playerName?: StringFilter | string
     year?: IntFilter | number
+    currentDay?: IntFilter | number
     currentRerollTokens?: IntFilter | number
     rerollTokensGained?: IntFilter | number
     rerollTokensSpent?: IntFilter | number
@@ -5575,6 +5591,7 @@ export namespace Prisma {
     name?: SortOrder
     playerName?: SortOrder
     year?: SortOrder
+    currentDay?: SortOrder
     currentRerollTokens?: SortOrder
     rerollTokensGained?: SortOrder
     rerollTokensSpent?: SortOrder
@@ -5593,6 +5610,7 @@ export namespace Prisma {
     name?: SortOrder
     playerName?: SortOrder
     year?: SortOrder
+    currentDay?: SortOrder
     currentRerollTokens?: SortOrder
     rerollTokensGained?: SortOrder
     rerollTokensSpent?: SortOrder
@@ -5613,6 +5631,7 @@ export namespace Prisma {
     name?: StringWithAggregatesFilter | string
     playerName?: StringWithAggregatesFilter | string
     year?: IntWithAggregatesFilter | number
+    currentDay?: IntWithAggregatesFilter | number
     currentRerollTokens?: IntWithAggregatesFilter | number
     rerollTokensGained?: IntWithAggregatesFilter | number
     rerollTokensSpent?: IntWithAggregatesFilter | number
@@ -5796,6 +5815,7 @@ export namespace Prisma {
     name: string
     playerName: string
     year: number
+    currentDay?: number
     currentRerollTokens?: number
     rerollTokensGained?: number
     rerollTokensSpent?: number
@@ -5809,6 +5829,7 @@ export namespace Prisma {
     name: string
     playerName: string
     year: number
+    currentDay?: number
     currentRerollTokens?: number
     rerollTokensGained?: number
     rerollTokensSpent?: number
@@ -5821,6 +5842,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     playerName?: StringFieldUpdateOperationsInput | string
     year?: IntFieldUpdateOperationsInput | number
+    currentDay?: IntFieldUpdateOperationsInput | number
     currentRerollTokens?: IntFieldUpdateOperationsInput | number
     rerollTokensGained?: IntFieldUpdateOperationsInput | number
     rerollTokensSpent?: IntFieldUpdateOperationsInput | number
@@ -5834,6 +5856,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     playerName?: StringFieldUpdateOperationsInput | string
     year?: IntFieldUpdateOperationsInput | number
+    currentDay?: IntFieldUpdateOperationsInput | number
     currentRerollTokens?: IntFieldUpdateOperationsInput | number
     rerollTokensGained?: IntFieldUpdateOperationsInput | number
     rerollTokensSpent?: IntFieldUpdateOperationsInput | number
@@ -5847,6 +5870,7 @@ export namespace Prisma {
     name: string
     playerName: string
     year: number
+    currentDay?: number
     currentRerollTokens?: number
     rerollTokensGained?: number
     rerollTokensSpent?: number
@@ -5858,6 +5882,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     playerName?: StringFieldUpdateOperationsInput | string
     year?: IntFieldUpdateOperationsInput | number
+    currentDay?: IntFieldUpdateOperationsInput | number
     currentRerollTokens?: IntFieldUpdateOperationsInput | number
     rerollTokensGained?: IntFieldUpdateOperationsInput | number
     rerollTokensSpent?: IntFieldUpdateOperationsInput | number
@@ -5870,6 +5895,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     playerName?: StringFieldUpdateOperationsInput | string
     year?: IntFieldUpdateOperationsInput | number
+    currentDay?: IntFieldUpdateOperationsInput | number
     currentRerollTokens?: IntFieldUpdateOperationsInput | number
     rerollTokensGained?: IntFieldUpdateOperationsInput | number
     rerollTokensSpent?: IntFieldUpdateOperationsInput | number
@@ -6165,6 +6191,7 @@ export namespace Prisma {
     name?: SortOrder
     playerName?: SortOrder
     year?: SortOrder
+    currentDay?: SortOrder
     currentRerollTokens?: SortOrder
     rerollTokensGained?: SortOrder
     rerollTokensSpent?: SortOrder
@@ -6175,6 +6202,7 @@ export namespace Prisma {
   export type GameAvgOrderByAggregateInput = {
     id?: SortOrder
     year?: SortOrder
+    currentDay?: SortOrder
     currentRerollTokens?: SortOrder
     rerollTokensGained?: SortOrder
     rerollTokensSpent?: SortOrder
@@ -6185,6 +6213,7 @@ export namespace Prisma {
     name?: SortOrder
     playerName?: SortOrder
     year?: SortOrder
+    currentDay?: SortOrder
     currentRerollTokens?: SortOrder
     rerollTokensGained?: SortOrder
     rerollTokensSpent?: SortOrder
@@ -6197,6 +6226,7 @@ export namespace Prisma {
     name?: SortOrder
     playerName?: SortOrder
     year?: SortOrder
+    currentDay?: SortOrder
     currentRerollTokens?: SortOrder
     rerollTokensGained?: SortOrder
     rerollTokensSpent?: SortOrder
@@ -6207,6 +6237,7 @@ export namespace Prisma {
   export type GameSumOrderByAggregateInput = {
     id?: SortOrder
     year?: SortOrder
+    currentDay?: SortOrder
     currentRerollTokens?: SortOrder
     rerollTokensGained?: SortOrder
     rerollTokensSpent?: SortOrder
@@ -6954,6 +6985,7 @@ export namespace Prisma {
     name: string
     playerName: string
     year: number
+    currentDay?: number
     currentRerollTokens?: number
     rerollTokensGained?: number
     rerollTokensSpent?: number
@@ -6966,6 +6998,7 @@ export namespace Prisma {
     name: string
     playerName: string
     year: number
+    currentDay?: number
     currentRerollTokens?: number
     rerollTokensGained?: number
     rerollTokensSpent?: number
@@ -7025,6 +7058,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     playerName?: StringFieldUpdateOperationsInput | string
     year?: IntFieldUpdateOperationsInput | number
+    currentDay?: IntFieldUpdateOperationsInput | number
     currentRerollTokens?: IntFieldUpdateOperationsInput | number
     rerollTokensGained?: IntFieldUpdateOperationsInput | number
     rerollTokensSpent?: IntFieldUpdateOperationsInput | number
@@ -7037,6 +7071,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     playerName?: StringFieldUpdateOperationsInput | string
     year?: IntFieldUpdateOperationsInput | number
+    currentDay?: IntFieldUpdateOperationsInput | number
     currentRerollTokens?: IntFieldUpdateOperationsInput | number
     rerollTokensGained?: IntFieldUpdateOperationsInput | number
     rerollTokensSpent?: IntFieldUpdateOperationsInput | number
