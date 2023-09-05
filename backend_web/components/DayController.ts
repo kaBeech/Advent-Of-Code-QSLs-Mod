@@ -74,6 +74,9 @@ const part2Completer = (state: DayControllerState) => ({
 
 const challengeModifierReroller = (state: DayControllerState) => ({
   rerollChallengeModifier: async () => {
+    if (!state.day.challengeModifierId) {
+      throw new Error("Make initial roll first");
+    }
     const game = await getGameById(state.day.gameId);
     if (game!.currentRerollTokens < 2) {
       throw new Error("Not enough reroll tokens");
@@ -90,7 +93,6 @@ const challengeModifierReroller = (state: DayControllerState) => ({
     updateDayChallengeModifier(state.day.id, selectedChallengeModifier.id);
     if (selectedChallengeModifier.hasOptions) {
       modifierOptionReroller(state).rerollModifierOption(
-        selectedChallengeModifier.id,
         true,
         game!,
       );
@@ -101,10 +103,12 @@ const challengeModifierReroller = (state: DayControllerState) => ({
 
 const modifierOptionReroller = (state: DayControllerState) => ({
   rerollModifierOption: async (
-    challengeModifierId: number,
     gratis?: boolean,
     gameProp?: Game,
   ) => {
+    if (!state.day.challengeModifierId) {
+      throw new Error("Make initial roll first");
+    }
     if (!state.day.modifierOptionId) {
       throw new Error("No modifier option to reroll");
     }
@@ -128,7 +132,7 @@ const modifierOptionReroller = (state: DayControllerState) => ({
       state.day.modifierOptionRerollsUsed,
     );
     const selectedModifierOption = await rollModifierOption(
-      challengeModifierId,
+      state.day.challengeModifierId,
     );
     state.day.modifierOptionId = selectedModifierOption.id;
     updateDayModifierOption(state.day.id, selectedModifierOption.id);
