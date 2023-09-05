@@ -136,8 +136,8 @@ exports.Prisma.DayScalarFieldEnum = {
   number: 'number',
   part1Completed: 'part1Completed',
   part2Completed: 'part2Completed',
-  mainRerollsUsed: 'mainRerollsUsed',
-  secondaryRerollsUsed: 'secondaryRerollsUsed',
+  challengeModifierRerollsUsed: 'challengeModifierRerollsUsed',
+  modifierOptionRerollsUsed: 'modifierOptionRerollsUsed',
   challengeModifierId: 'challengeModifierId',
   modifierOptionId: 'modifierOptionId',
   gameId: 'gameId'

@@ -44,16 +44,16 @@ model Game {
 }
 
 model Day {
-  id                   Int                @id @default(autoincrement())
-  game                 Game               @relation(fields: [gameId], references: [id])
-  number               Int
-  part1Completed       Boolean            @default(false)
-  part2Completed       Boolean            @default(false)
-  modifier             ChallengeModifier? @relation(fields: [challengeModifierId], references: [id])
-  modifierOption       ModifierOption?    @relation(fields: [modifierOptionId], references: [id])
-  mainRerollsUsed      Int                @default(0)
-  secondaryRerollsUsed Int                @default(0)
-  challengeModifierId  Int?
-  modifierOptionId     Int?
-  gameId               Int
+  id                           Int                @id @default(autoincrement())
+  game                         Game               @relation(fields: [gameId], references: [id])
+  number                       Int
+  part1Completed               Boolean            @default(false)
+  part2Completed               Boolean            @default(false)
+  modifier                     ChallengeModifier? @relation(fields: [challengeModifierId], references: [id])
+  modifierOption               ModifierOption?    @relation(fields: [modifierOptionId], references: [id])
+  challengeModifierRerollsUsed Int                @default(0)
+  modifierOptionRerollsUsed    Int                @default(0)
+  challengeModifierId          Int?
+  modifierOptionId             Int?
+  gameId                       Int
 }

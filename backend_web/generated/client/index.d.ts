@@ -88,8 +88,8 @@ export type DayPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArg
     number: number
     part1Completed: boolean
     part2Completed: boolean
-    mainRerollsUsed: number
-    secondaryRerollsUsed: number
+    challengeModifierRerollsUsed: number
+    modifierOptionRerollsUsed: number
     challengeModifierId: number | null
     modifierOptionId: number | null
     gameId: number
@@ -4355,8 +4355,8 @@ export namespace Prisma {
   export type DayAvgAggregateOutputType = {
     id: number | null
     number: number | null
-    mainRerollsUsed: number | null
-    secondaryRerollsUsed: number | null
+    challengeModifierRerollsUsed: number | null
+    modifierOptionRerollsUsed: number | null
     challengeModifierId: number | null
     modifierOptionId: number | null
     gameId: number | null
@@ -4365,8 +4365,8 @@ export namespace Prisma {
   export type DaySumAggregateOutputType = {
     id: number | null
     number: number | null
-    mainRerollsUsed: number | null
-    secondaryRerollsUsed: number | null
+    challengeModifierRerollsUsed: number | null
+    modifierOptionRerollsUsed: number | null
     challengeModifierId: number | null
     modifierOptionId: number | null
     gameId: number | null
@@ -4377,8 +4377,8 @@ export namespace Prisma {
     number: number | null
     part1Completed: boolean | null
     part2Completed: boolean | null
-    mainRerollsUsed: number | null
-    secondaryRerollsUsed: number | null
+    challengeModifierRerollsUsed: number | null
+    modifierOptionRerollsUsed: number | null
     challengeModifierId: number | null
     modifierOptionId: number | null
     gameId: number | null
@@ -4389,8 +4389,8 @@ export namespace Prisma {
     number: number | null
     part1Completed: boolean | null
     part2Completed: boolean | null
-    mainRerollsUsed: number | null
-    secondaryRerollsUsed: number | null
+    challengeModifierRerollsUsed: number | null
+    modifierOptionRerollsUsed: number | null
     challengeModifierId: number | null
     modifierOptionId: number | null
     gameId: number | null
@@ -4401,8 +4401,8 @@ export namespace Prisma {
     number: number
     part1Completed: number
     part2Completed: number
-    mainRerollsUsed: number
-    secondaryRerollsUsed: number
+    challengeModifierRerollsUsed: number
+    modifierOptionRerollsUsed: number
     challengeModifierId: number
     modifierOptionId: number
     gameId: number
@@ -4413,8 +4413,8 @@ export namespace Prisma {
   export type DayAvgAggregateInputType = {
     id?: true
     number?: true
-    mainRerollsUsed?: true
-    secondaryRerollsUsed?: true
+    challengeModifierRerollsUsed?: true
+    modifierOptionRerollsUsed?: true
     challengeModifierId?: true
     modifierOptionId?: true
     gameId?: true
@@ -4423,8 +4423,8 @@ export namespace Prisma {
   export type DaySumAggregateInputType = {
     id?: true
     number?: true
-    mainRerollsUsed?: true
-    secondaryRerollsUsed?: true
+    challengeModifierRerollsUsed?: true
+    modifierOptionRerollsUsed?: true
     challengeModifierId?: true
     modifierOptionId?: true
     gameId?: true
@@ -4435,8 +4435,8 @@ export namespace Prisma {
     number?: true
     part1Completed?: true
     part2Completed?: true
-    mainRerollsUsed?: true
-    secondaryRerollsUsed?: true
+    challengeModifierRerollsUsed?: true
+    modifierOptionRerollsUsed?: true
     challengeModifierId?: true
     modifierOptionId?: true
     gameId?: true
@@ -4447,8 +4447,8 @@ export namespace Prisma {
     number?: true
     part1Completed?: true
     part2Completed?: true
-    mainRerollsUsed?: true
-    secondaryRerollsUsed?: true
+    challengeModifierRerollsUsed?: true
+    modifierOptionRerollsUsed?: true
     challengeModifierId?: true
     modifierOptionId?: true
     gameId?: true
@@ -4459,8 +4459,8 @@ export namespace Prisma {
     number?: true
     part1Completed?: true
     part2Completed?: true
-    mainRerollsUsed?: true
-    secondaryRerollsUsed?: true
+    challengeModifierRerollsUsed?: true
+    modifierOptionRerollsUsed?: true
     challengeModifierId?: true
     modifierOptionId?: true
     gameId?: true
@@ -4559,8 +4559,8 @@ export namespace Prisma {
     number: number
     part1Completed: boolean
     part2Completed: boolean
-    mainRerollsUsed: number
-    secondaryRerollsUsed: number
+    challengeModifierRerollsUsed: number
+    modifierOptionRerollsUsed: number
     challengeModifierId: number | null
     modifierOptionId: number | null
     gameId: number
@@ -4590,8 +4590,8 @@ export namespace Prisma {
     number?: boolean
     part1Completed?: boolean
     part2Completed?: boolean
-    mainRerollsUsed?: boolean
-    secondaryRerollsUsed?: boolean
+    challengeModifierRerollsUsed?: boolean
+    modifierOptionRerollsUsed?: boolean
     challengeModifierId?: boolean
     modifierOptionId?: boolean
     gameId?: boolean
@@ -4605,8 +4605,8 @@ export namespace Prisma {
     number?: boolean
     part1Completed?: boolean
     part2Completed?: boolean
-    mainRerollsUsed?: boolean
-    secondaryRerollsUsed?: boolean
+    challengeModifierRerollsUsed?: boolean
+    modifierOptionRerollsUsed?: boolean
     challengeModifierId?: boolean
     modifierOptionId?: boolean
     gameId?: boolean
@@ -5419,8 +5419,8 @@ export namespace Prisma {
     number: 'number',
     part1Completed: 'part1Completed',
     part2Completed: 'part2Completed',
-    mainRerollsUsed: 'mainRerollsUsed',
-    secondaryRerollsUsed: 'secondaryRerollsUsed',
+    challengeModifierRerollsUsed: 'challengeModifierRerollsUsed',
+    modifierOptionRerollsUsed: 'modifierOptionRerollsUsed',
     challengeModifierId: 'challengeModifierId',
     modifierOptionId: 'modifierOptionId',
     gameId: 'gameId'
@@ -5628,8 +5628,8 @@ export namespace Prisma {
     number?: IntFilter | number
     part1Completed?: BoolFilter | boolean
     part2Completed?: BoolFilter | boolean
-    mainRerollsUsed?: IntFilter | number
-    secondaryRerollsUsed?: IntFilter | number
+    challengeModifierRerollsUsed?: IntFilter | number
+    modifierOptionRerollsUsed?: IntFilter | number
     challengeModifierId?: IntNullableFilter | number | null
     modifierOptionId?: IntNullableFilter | number | null
     gameId?: IntFilter | number
@@ -5643,8 +5643,8 @@ export namespace Prisma {
     number?: SortOrder
     part1Completed?: SortOrder
     part2Completed?: SortOrder
-    mainRerollsUsed?: SortOrder
-    secondaryRerollsUsed?: SortOrder
+    challengeModifierRerollsUsed?: SortOrder
+    modifierOptionRerollsUsed?: SortOrder
     challengeModifierId?: SortOrderInput | SortOrder
     modifierOptionId?: SortOrderInput | SortOrder
     gameId?: SortOrder
@@ -5662,8 +5662,8 @@ export namespace Prisma {
     number?: SortOrder
     part1Completed?: SortOrder
     part2Completed?: SortOrder
-    mainRerollsUsed?: SortOrder
-    secondaryRerollsUsed?: SortOrder
+    challengeModifierRerollsUsed?: SortOrder
+    modifierOptionRerollsUsed?: SortOrder
     challengeModifierId?: SortOrderInput | SortOrder
     modifierOptionId?: SortOrderInput | SortOrder
     gameId?: SortOrder
@@ -5682,8 +5682,8 @@ export namespace Prisma {
     number?: IntWithAggregatesFilter | number
     part1Completed?: BoolWithAggregatesFilter | boolean
     part2Completed?: BoolWithAggregatesFilter | boolean
-    mainRerollsUsed?: IntWithAggregatesFilter | number
-    secondaryRerollsUsed?: IntWithAggregatesFilter | number
+    challengeModifierRerollsUsed?: IntWithAggregatesFilter | number
+    modifierOptionRerollsUsed?: IntWithAggregatesFilter | number
     challengeModifierId?: IntNullableWithAggregatesFilter | number | null
     modifierOptionId?: IntNullableWithAggregatesFilter | number | null
     gameId?: IntWithAggregatesFilter | number
@@ -5881,8 +5881,8 @@ export namespace Prisma {
     number: number
     part1Completed?: boolean
     part2Completed?: boolean
-    mainRerollsUsed?: number
-    secondaryRerollsUsed?: number
+    challengeModifierRerollsUsed?: number
+    modifierOptionRerollsUsed?: number
     game: GameCreateNestedOneWithoutDayInput
     modifier?: ChallengeModifierCreateNestedOneWithoutDayInput
     modifierOption?: ModifierOptionCreateNestedOneWithoutDayInput
@@ -5893,8 +5893,8 @@ export namespace Prisma {
     number: number
     part1Completed?: boolean
     part2Completed?: boolean
-    mainRerollsUsed?: number
-    secondaryRerollsUsed?: number
+    challengeModifierRerollsUsed?: number
+    modifierOptionRerollsUsed?: number
     challengeModifierId?: number | null
     modifierOptionId?: number | null
     gameId: number
@@ -5904,8 +5904,8 @@ export namespace Prisma {
     number?: IntFieldUpdateOperationsInput | number
     part1Completed?: BoolFieldUpdateOperationsInput | boolean
     part2Completed?: BoolFieldUpdateOperationsInput | boolean
-    mainRerollsUsed?: IntFieldUpdateOperationsInput | number
-    secondaryRerollsUsed?: IntFieldUpdateOperationsInput | number
+    challengeModifierRerollsUsed?: IntFieldUpdateOperationsInput | number
+    modifierOptionRerollsUsed?: IntFieldUpdateOperationsInput | number
     game?: GameUpdateOneRequiredWithoutDayNestedInput
     modifier?: ChallengeModifierUpdateOneWithoutDayNestedInput
     modifierOption?: ModifierOptionUpdateOneWithoutDayNestedInput
@@ -5916,8 +5916,8 @@ export namespace Prisma {
     number?: IntFieldUpdateOperationsInput | number
     part1Completed?: BoolFieldUpdateOperationsInput | boolean
     part2Completed?: BoolFieldUpdateOperationsInput | boolean
-    mainRerollsUsed?: IntFieldUpdateOperationsInput | number
-    secondaryRerollsUsed?: IntFieldUpdateOperationsInput | number
+    challengeModifierRerollsUsed?: IntFieldUpdateOperationsInput | number
+    modifierOptionRerollsUsed?: IntFieldUpdateOperationsInput | number
     challengeModifierId?: NullableIntFieldUpdateOperationsInput | number | null
     modifierOptionId?: NullableIntFieldUpdateOperationsInput | number | null
     gameId?: IntFieldUpdateOperationsInput | number
@@ -5928,8 +5928,8 @@ export namespace Prisma {
     number: number
     part1Completed?: boolean
     part2Completed?: boolean
-    mainRerollsUsed?: number
-    secondaryRerollsUsed?: number
+    challengeModifierRerollsUsed?: number
+    modifierOptionRerollsUsed?: number
     challengeModifierId?: number | null
     modifierOptionId?: number | null
     gameId: number
@@ -5939,8 +5939,8 @@ export namespace Prisma {
     number?: IntFieldUpdateOperationsInput | number
     part1Completed?: BoolFieldUpdateOperationsInput | boolean
     part2Completed?: BoolFieldUpdateOperationsInput | boolean
-    mainRerollsUsed?: IntFieldUpdateOperationsInput | number
-    secondaryRerollsUsed?: IntFieldUpdateOperationsInput | number
+    challengeModifierRerollsUsed?: IntFieldUpdateOperationsInput | number
+    modifierOptionRerollsUsed?: IntFieldUpdateOperationsInput | number
   }
 
   export type DayUncheckedUpdateManyInput = {
@@ -5948,8 +5948,8 @@ export namespace Prisma {
     number?: IntFieldUpdateOperationsInput | number
     part1Completed?: BoolFieldUpdateOperationsInput | boolean
     part2Completed?: BoolFieldUpdateOperationsInput | boolean
-    mainRerollsUsed?: IntFieldUpdateOperationsInput | number
-    secondaryRerollsUsed?: IntFieldUpdateOperationsInput | number
+    challengeModifierRerollsUsed?: IntFieldUpdateOperationsInput | number
+    modifierOptionRerollsUsed?: IntFieldUpdateOperationsInput | number
     challengeModifierId?: NullableIntFieldUpdateOperationsInput | number | null
     modifierOptionId?: NullableIntFieldUpdateOperationsInput | number | null
     gameId?: IntFieldUpdateOperationsInput | number
@@ -6245,8 +6245,8 @@ export namespace Prisma {
     number?: SortOrder
     part1Completed?: SortOrder
     part2Completed?: SortOrder
-    mainRerollsUsed?: SortOrder
-    secondaryRerollsUsed?: SortOrder
+    challengeModifierRerollsUsed?: SortOrder
+    modifierOptionRerollsUsed?: SortOrder
     challengeModifierId?: SortOrder
     modifierOptionId?: SortOrder
     gameId?: SortOrder
@@ -6255,8 +6255,8 @@ export namespace Prisma {
   export type DayAvgOrderByAggregateInput = {
     id?: SortOrder
     number?: SortOrder
-    mainRerollsUsed?: SortOrder
-    secondaryRerollsUsed?: SortOrder
+    challengeModifierRerollsUsed?: SortOrder
+    modifierOptionRerollsUsed?: SortOrder
     challengeModifierId?: SortOrder
     modifierOptionId?: SortOrder
     gameId?: SortOrder
@@ -6267,8 +6267,8 @@ export namespace Prisma {
     number?: SortOrder
     part1Completed?: SortOrder
     part2Completed?: SortOrder
-    mainRerollsUsed?: SortOrder
-    secondaryRerollsUsed?: SortOrder
+    challengeModifierRerollsUsed?: SortOrder
+    modifierOptionRerollsUsed?: SortOrder
     challengeModifierId?: SortOrder
     modifierOptionId?: SortOrder
     gameId?: SortOrder
@@ -6279,8 +6279,8 @@ export namespace Prisma {
     number?: SortOrder
     part1Completed?: SortOrder
     part2Completed?: SortOrder
-    mainRerollsUsed?: SortOrder
-    secondaryRerollsUsed?: SortOrder
+    challengeModifierRerollsUsed?: SortOrder
+    modifierOptionRerollsUsed?: SortOrder
     challengeModifierId?: SortOrder
     modifierOptionId?: SortOrder
     gameId?: SortOrder
@@ -6289,8 +6289,8 @@ export namespace Prisma {
   export type DaySumOrderByAggregateInput = {
     id?: SortOrder
     number?: SortOrder
-    mainRerollsUsed?: SortOrder
-    secondaryRerollsUsed?: SortOrder
+    challengeModifierRerollsUsed?: SortOrder
+    modifierOptionRerollsUsed?: SortOrder
     challengeModifierId?: SortOrder
     modifierOptionId?: SortOrder
     gameId?: SortOrder
@@ -6732,8 +6732,8 @@ export namespace Prisma {
     number: number
     part1Completed?: boolean
     part2Completed?: boolean
-    mainRerollsUsed?: number
-    secondaryRerollsUsed?: number
+    challengeModifierRerollsUsed?: number
+    modifierOptionRerollsUsed?: number
     game: GameCreateNestedOneWithoutDayInput
     modifierOption?: ModifierOptionCreateNestedOneWithoutDayInput
   }
@@ -6743,8 +6743,8 @@ export namespace Prisma {
     number: number
     part1Completed?: boolean
     part2Completed?: boolean
-    mainRerollsUsed?: number
-    secondaryRerollsUsed?: number
+    challengeModifierRerollsUsed?: number
+    modifierOptionRerollsUsed?: number
     modifierOptionId?: number | null
     gameId: number
   }
@@ -6809,8 +6809,8 @@ export namespace Prisma {
     number?: IntFilter | number
     part1Completed?: BoolFilter | boolean
     part2Completed?: BoolFilter | boolean
-    mainRerollsUsed?: IntFilter | number
-    secondaryRerollsUsed?: IntFilter | number
+    challengeModifierRerollsUsed?: IntFilter | number
+    modifierOptionRerollsUsed?: IntFilter | number
     challengeModifierId?: IntNullableFilter | number | null
     modifierOptionId?: IntNullableFilter | number | null
     gameId?: IntFilter | number
@@ -6820,8 +6820,8 @@ export namespace Prisma {
     number: number
     part1Completed?: boolean
     part2Completed?: boolean
-    mainRerollsUsed?: number
-    secondaryRerollsUsed?: number
+    challengeModifierRerollsUsed?: number
+    modifierOptionRerollsUsed?: number
     game: GameCreateNestedOneWithoutDayInput
     modifier?: ChallengeModifierCreateNestedOneWithoutDayInput
   }
@@ -6831,8 +6831,8 @@ export namespace Prisma {
     number: number
     part1Completed?: boolean
     part2Completed?: boolean
-    mainRerollsUsed?: number
-    secondaryRerollsUsed?: number
+    challengeModifierRerollsUsed?: number
+    modifierOptionRerollsUsed?: number
     challengeModifierId?: number | null
     gameId: number
   }
@@ -6907,8 +6907,8 @@ export namespace Prisma {
     number: number
     part1Completed?: boolean
     part2Completed?: boolean
-    mainRerollsUsed?: number
-    secondaryRerollsUsed?: number
+    challengeModifierRerollsUsed?: number
+    modifierOptionRerollsUsed?: number
     modifier?: ChallengeModifierCreateNestedOneWithoutDayInput
     modifierOption?: ModifierOptionCreateNestedOneWithoutDayInput
   }
@@ -6918,8 +6918,8 @@ export namespace Prisma {
     number: number
     part1Completed?: boolean
     part2Completed?: boolean
-    mainRerollsUsed?: number
-    secondaryRerollsUsed?: number
+    challengeModifierRerollsUsed?: number
+    modifierOptionRerollsUsed?: number
     challengeModifierId?: number | null
     modifierOptionId?: number | null
   }
@@ -7093,8 +7093,8 @@ export namespace Prisma {
     number: number
     part1Completed?: boolean
     part2Completed?: boolean
-    mainRerollsUsed?: number
-    secondaryRerollsUsed?: number
+    challengeModifierRerollsUsed?: number
+    modifierOptionRerollsUsed?: number
     modifierOptionId?: number | null
     gameId: number
   }
@@ -7122,8 +7122,8 @@ export namespace Prisma {
     number?: IntFieldUpdateOperationsInput | number
     part1Completed?: BoolFieldUpdateOperationsInput | boolean
     part2Completed?: BoolFieldUpdateOperationsInput | boolean
-    mainRerollsUsed?: IntFieldUpdateOperationsInput | number
-    secondaryRerollsUsed?: IntFieldUpdateOperationsInput | number
+    challengeModifierRerollsUsed?: IntFieldUpdateOperationsInput | number
+    modifierOptionRerollsUsed?: IntFieldUpdateOperationsInput | number
     game?: GameUpdateOneRequiredWithoutDayNestedInput
     modifierOption?: ModifierOptionUpdateOneWithoutDayNestedInput
   }
@@ -7133,8 +7133,8 @@ export namespace Prisma {
     number?: IntFieldUpdateOperationsInput | number
     part1Completed?: BoolFieldUpdateOperationsInput | boolean
     part2Completed?: BoolFieldUpdateOperationsInput | boolean
-    mainRerollsUsed?: IntFieldUpdateOperationsInput | number
-    secondaryRerollsUsed?: IntFieldUpdateOperationsInput | number
+    challengeModifierRerollsUsed?: IntFieldUpdateOperationsInput | number
+    modifierOptionRerollsUsed?: IntFieldUpdateOperationsInput | number
     modifierOptionId?: NullableIntFieldUpdateOperationsInput | number | null
     gameId?: IntFieldUpdateOperationsInput | number
   }
@@ -7144,8 +7144,8 @@ export namespace Prisma {
     number?: IntFieldUpdateOperationsInput | number
     part1Completed?: BoolFieldUpdateOperationsInput | boolean
     part2Completed?: BoolFieldUpdateOperationsInput | boolean
-    mainRerollsUsed?: IntFieldUpdateOperationsInput | number
-    secondaryRerollsUsed?: IntFieldUpdateOperationsInput | number
+    challengeModifierRerollsUsed?: IntFieldUpdateOperationsInput | number
+    modifierOptionRerollsUsed?: IntFieldUpdateOperationsInput | number
     modifierOptionId?: NullableIntFieldUpdateOperationsInput | number | null
     gameId?: IntFieldUpdateOperationsInput | number
   }
@@ -7155,8 +7155,8 @@ export namespace Prisma {
     number: number
     part1Completed?: boolean
     part2Completed?: boolean
-    mainRerollsUsed?: number
-    secondaryRerollsUsed?: number
+    challengeModifierRerollsUsed?: number
+    modifierOptionRerollsUsed?: number
     challengeModifierId?: number | null
     gameId: number
   }
@@ -7165,8 +7165,8 @@ export namespace Prisma {
     number?: IntFieldUpdateOperationsInput | number
     part1Completed?: BoolFieldUpdateOperationsInput | boolean
     part2Completed?: BoolFieldUpdateOperationsInput | boolean
-    mainRerollsUsed?: IntFieldUpdateOperationsInput | number
-    secondaryRerollsUsed?: IntFieldUpdateOperationsInput | number
+    challengeModifierRerollsUsed?: IntFieldUpdateOperationsInput | number
+    modifierOptionRerollsUsed?: IntFieldUpdateOperationsInput | number
     game?: GameUpdateOneRequiredWithoutDayNestedInput
     modifier?: ChallengeModifierUpdateOneWithoutDayNestedInput
   }
@@ -7176,8 +7176,8 @@ export namespace Prisma {
     number?: IntFieldUpdateOperationsInput | number
     part1Completed?: BoolFieldUpdateOperationsInput | boolean
     part2Completed?: BoolFieldUpdateOperationsInput | boolean
-    mainRerollsUsed?: IntFieldUpdateOperationsInput | number
-    secondaryRerollsUsed?: IntFieldUpdateOperationsInput | number
+    challengeModifierRerollsUsed?: IntFieldUpdateOperationsInput | number
+    modifierOptionRerollsUsed?: IntFieldUpdateOperationsInput | number
     challengeModifierId?: NullableIntFieldUpdateOperationsInput | number | null
     gameId?: IntFieldUpdateOperationsInput | number
   }
@@ -7187,8 +7187,8 @@ export namespace Prisma {
     number: number
     part1Completed?: boolean
     part2Completed?: boolean
-    mainRerollsUsed?: number
-    secondaryRerollsUsed?: number
+    challengeModifierRerollsUsed?: number
+    modifierOptionRerollsUsed?: number
     challengeModifierId?: number | null
     modifierOptionId?: number | null
   }
@@ -7197,8 +7197,8 @@ export namespace Prisma {
     number?: IntFieldUpdateOperationsInput | number
     part1Completed?: BoolFieldUpdateOperationsInput | boolean
     part2Completed?: BoolFieldUpdateOperationsInput | boolean
-    mainRerollsUsed?: IntFieldUpdateOperationsInput | number
-    secondaryRerollsUsed?: IntFieldUpdateOperationsInput | number
+    challengeModifierRerollsUsed?: IntFieldUpdateOperationsInput | number
+    modifierOptionRerollsUsed?: IntFieldUpdateOperationsInput | number
     modifier?: ChallengeModifierUpdateOneWithoutDayNestedInput
     modifierOption?: ModifierOptionUpdateOneWithoutDayNestedInput
   }
@@ -7208,8 +7208,8 @@ export namespace Prisma {
     number?: IntFieldUpdateOperationsInput | number
     part1Completed?: BoolFieldUpdateOperationsInput | boolean
     part2Completed?: BoolFieldUpdateOperationsInput | boolean
-    mainRerollsUsed?: IntFieldUpdateOperationsInput | number
-    secondaryRerollsUsed?: IntFieldUpdateOperationsInput | number
+    challengeModifierRerollsUsed?: IntFieldUpdateOperationsInput | number
+    modifierOptionRerollsUsed?: IntFieldUpdateOperationsInput | number
     challengeModifierId?: NullableIntFieldUpdateOperationsInput | number | null
     modifierOptionId?: NullableIntFieldUpdateOperationsInput | number | null
   }
