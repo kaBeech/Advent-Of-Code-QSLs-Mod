@@ -1,4 +1,8 @@
-import { Application, Router } from "https://deno.land/x/oak@v11.1.0/mod.ts";
+import {
+  Application,
+  Context,
+  Router,
+} from "https://deno.land/x/oak@v11.1.0/mod.ts";
 import {
   createGame,
   deleteGame,
@@ -24,15 +28,15 @@ router
   /**
    * Get All Games (eventually will be Continue Game)
    */
-  .get("/game", (context) => {
-    context.response.body = getAllGames();
+  .get("/game", async (context) => {
+    context.response.body = await getAllGames();
   })
   /**
    * Resume Game
    */
-  .get("/game/:id", (context) => {
+  .get("/game/:id", async (context) => {
     const { id } = context.params;
-    context.response.body = getGameById(+id);
+    context.response.body = await getGameById(+id);
   })
   /**
    * Start New Game
@@ -42,28 +46,28 @@ router
       type: "json",
     })
       .value;
-    context.response.body = createGame(name, playerName, year);
+    context.response.body = await createGame(name, playerName, year);
   })
   /**
    * Delete Game
    */
-  .delete("/game/:id", (context) => {
+  .delete("/game/:id", async (context) => {
     const { id } = context.params;
-    context.response.body = deleteGame(+id);
+    context.response.body = await deleteGame(+id);
   })
   /**
    * Get All Days for a Game
    */
-  .get("/game/:id/day", (context) => {
+  .get("/game/:id/day", async (context) => {
     const { id } = context.params;
-    context.response.body = getDaysByGameId(+id);
+    context.response.body = await getDaysByGameId(+id);
   })
   /**
    * Get a Day
    */
-  .get("/day/:id", (context) => {
+  .get("/day/:id", async (context) => {
     const { id } = context.params;
-    context.response.body = getDayById(+id);
+    context.response.body = await getDayById(+id);
   })
   /**
    * Start the next Day
@@ -77,51 +81,57 @@ router
   /**
    * Roll a Day's initial Challenge Modifier
    */
-  .put("day/:id/roll/initial", async (context) => {
+  .put("/day/:id/roll/initial", async (context) => {
     const { id } = context.params;
     const day = await getDayById(+id);
-    DayController(day!).rollInitialChallengeModifier();
+    await DayController(day!).rollInitialChallengeModifier();
     context.response.body = day;
   })
   /**
    * Reroll a Day's Challenge Modifier
    */
-  .put("day/:id/roll/reroll_challenge_modifier", async (context) => {
+  .put("/day/:id/roll/reroll_challenge_modifier", async (context) => {
     const { id } = context.params;
     const day = await getDayById(+id);
-    DayController(day!).rerollChallengeModifier();
+    await DayController(day!).rerollChallengeModifier();
     context.response.body = day;
   })
   /**
    * Reroll a Day's Modifier Option
    */
-  .put("day/:id/roll/reroll_modifier_option", async (context) => {
+  .put("/day/:id/roll/reroll_modifier_option", async (context) => {
     const { id } = context.params;
     const day = await getDayById(+id);
-    DayController(day!).rerollModifierOption();
+    await DayController(day!).rerollModifierOption();
     context.response.body = day;
   })
   /**
    * Complete Part 1 for a Day
    */
-  .put("day/:id/complete_part_1", async (context) => {
+  .put("/day/:id/complete_part_1", async (context) => {
     const { id } = context.params;
     const day = await getDayById(+id);
-    DayController(day!).completePart1();
+    await DayController(day!).completePart1();
     context.response.body = day;
   })
   /**
    * Complete Part 2 for a Day
    */
-  .put("day/:id/complete_part_2", async (context) => {
+  .put("/day/:id/complete_part_2", async (context) => {
     const { id } = context.params;
     const day = await getDayById(+id);
-    DayController(day!).completePart2();
+    await DayController(day!).completePart2();
     context.response.body = day;
   });
 
 app.use(router.routes());
 app.use(router.allowedMethods());
+
+app.use((context: Context) => {
+  context.response.status = 404;
+  context.response.body =
+    `404 | Page not found! Requested ${context.request.method} on ${context.request.url}`;
+});
 
 console.log(`Server running on http://localhost:8000`);
 

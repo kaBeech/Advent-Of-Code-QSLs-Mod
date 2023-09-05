@@ -36,7 +36,7 @@ model Game {
   playerName          String
   year                Int
   currentDay          Int     @default(0)
-  currentDayCompleted Boolean @default(true)
+  currentDayCompleted Boolean @default(false)
   currentRerollTokens Int     @default(7)
   rerollTokensGained  Int     @default(7)
   rerollTokensSpent   Int     @default(0)
