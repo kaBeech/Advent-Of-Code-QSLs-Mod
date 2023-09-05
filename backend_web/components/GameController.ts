@@ -15,18 +15,56 @@ interface GameControllerState {
   game: Game;
 }
 
-const nameSetter = (state: GameControllerState) => ({
-  setName: async (name: string) => {
-    state.game.name = name;
-    await updateGameName(state.game.id, name);
+export const GameController = (
+  game: Game,
+) => {
+  const state = {
+    game,
+  };
+
+  return {
+    ...nextDayStarter(state),
+    ...currentDayCompleter(state),
+    ...currentRerollTokensAdjuster(state),
+    ...rerollTokensGainedAdjuster(state),
+    ...rerollTokensSpentAdjuster(state),
+    ...nameSetter(state),
+    ...playerNameSetter(state),
+    ...repositoryLinkSetter(state),
+    ...progressSheetLinkSetter(state),
+  };
+};
+
+const nextDayStarter = (state: GameControllerState) => ({
+  startNextDay: async () => {
+    if (state.game.currentDay === 25) {
+      throw new Error("It's already Christmas (Day 25)!!!");
+    }
+    if (state.game.currentDay !== 0 || !state.game.currentDayCompleted) {
+      throw new Error(
+        `Day ${state.game.currentDay} has not been completed yet`,
+      );
+    }
+    state.game.currentDay += 1;
+    await updateGameCurrentDay(state.game.id, state.game.currentDay);
+    await createDay(state.game.id, state.game.currentDay);
+    state.game.currentDayCompleted = false;
     return state.game;
   },
 });
 
-const playerNameSetter = (state: GameControllerState) => ({
-  setPlayerName: async (playerName: string) => {
-    state.game.playerName = playerName;
-    await updateGamePlayerName(state.game.id, playerName);
+const currentDayCompleter = (state: GameControllerState) => ({
+  completeCurrentDay: async () => {
+    if (state.game.currentDayCompleted === true) {
+      throw new Error(
+        `Current day (${state.game.currentDay}) already completed`,
+      );
+    }
+    state.game.currentDayCompleted = true;
+    await updateGameCurrentDayCompletionStatus(
+      state.game.id,
+      true,
+    );
     return state.game;
   },
 });
@@ -64,6 +102,22 @@ const rerollTokensSpentAdjuster = (state: GameControllerState) => ({
   },
 });
 
+const nameSetter = (state: GameControllerState) => ({
+  setName: async (name: string) => {
+    state.game.name = name;
+    await updateGameName(state.game.id, name);
+    return state.game;
+  },
+});
+
+const playerNameSetter = (state: GameControllerState) => ({
+  setPlayerName: async (playerName: string) => {
+    state.game.playerName = playerName;
+    await updateGamePlayerName(state.game.id, playerName);
+    return state.game;
+  },
+});
+
 const repositoryLinkSetter = (state: GameControllerState) => ({
   setRepositoryLink: async (repositoryLink: string) => {
     state.game.repositoryLink = repositoryLink;
@@ -78,59 +132,3 @@ const progressSheetLinkSetter = (state: GameControllerState) => ({
     return state.game;
   },
 });
-
-const nextDayStarter = (state: GameControllerState) => ({
-  startNextDay: async () => {
-    if (state.game.currentDay === 25) {
-      throw new Error("It's already Christmas (Day 25)!!!");
-    }
-    if (state.game.currentDay !== 0 || !state.game.currentDayCompleted) {
-      throw new Error(
-        `Day ${state.game.currentDay} has not been completed yet`,
-      );
-    }
-    state.game.currentDay += 1;
-    await updateGameCurrentDay(state.game.id, state.game.currentDay);
-    await createDay(state.game.id, state.game.currentDay);
-    state.game.currentDayCompleted = false;
-    return state.game;
-  },
-});
-
-const currentDayCompleter = (state: GameControllerState) => ({
-  completeCurrentDay: async () => {
-    if (state.game.currentDayCompleted === true) {
-      throw new Error(
-        `Current day (${state.game.currentDay}) already completed`,
-      );
-    }
-    state.game.currentDayCompleted = true;
-    await updateGameCurrentDayCompletionStatus(
-      state.game.id,
-      true,
-    );
-    return state.game;
-  },
-});
-
-const GameController = (
-  game: Game,
-) => {
-  const state = {
-    game,
-  };
-
-  return {
-    ...nameSetter(state),
-    ...playerNameSetter(state),
-    ...currentRerollTokensAdjuster(state),
-    ...rerollTokensGainedAdjuster(state),
-    ...rerollTokensSpentAdjuster(state),
-    ...repositoryLinkSetter(state),
-    ...progressSheetLinkSetter(state),
-    ...nextDayStarter(state),
-    ...currentDayCompleter(state),
-  };
-};
-
-export { GameController };

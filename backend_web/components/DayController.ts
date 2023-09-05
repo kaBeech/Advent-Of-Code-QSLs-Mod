@@ -17,6 +17,22 @@ interface DayControllerState {
   day: Day;
 }
 
+export const DayController = (
+  day: Day,
+) => {
+  const state = {
+    day,
+  };
+
+  return {
+    ...initialChallengeModifierRoller(state),
+    ...challengeModifierReroller(state),
+    ...modifierOptionReroller(state),
+    ...part1Completer(state),
+    ...part2Completer(state),
+  };
+};
+
 const initialChallengeModifierRoller = (state: DayControllerState) => ({
   rollInitialChallengeModifier: async () => {
     await verifyDayIsCurrent(state);
@@ -46,40 +62,6 @@ const initialModifierOptionRoller = (state: DayControllerState) => ({
     state.day.modifierOptionId = selectedModifierOption.id;
     await updateDayModifierOption(state.day.id, selectedModifierOption.id);
     return selectedModifierOption;
-  },
-});
-
-const part1Completer = (state: DayControllerState) => ({
-  completePart1: async () => {
-    verifyDayIsCurrent(state);
-    if (state.day.part1Completed) {
-      throw new Error("Part 1 already completed");
-    }
-    state.day.part1Completed = true;
-    await updateDayPart1CompletionStatus(state.day.id, true);
-    const game = await getGameById(state.day.gameId);
-    await GameController(game!).adjustRerollTokensGained(1);
-    await GameController(game!).adjustCurrentRerollTokens(1);
-    return state.day;
-  },
-});
-
-const part2Completer = (state: DayControllerState) => ({
-  completePart2: async () => {
-    await verifyDayIsCurrent(state);
-    if (!state.day.part1Completed) {
-      throw new Error("Part 1 not yet completed");
-    }
-    if (state.day.part2Completed) {
-      throw new Error("Part 2 already completed");
-    }
-    state.day.part2Completed = true;
-    await updateDayPart2CompletionStatus(state.day.id, true);
-    const game = await getGameById(state.day.gameId);
-    await GameController(game!).adjustRerollTokensGained(1);
-    await GameController(game!).adjustCurrentRerollTokens(1);
-    await GameController(game!).completeCurrentDay();
-    return state.day;
   },
 });
 
@@ -156,20 +138,36 @@ const modifierOptionReroller = (state: DayControllerState) => ({
   },
 });
 
-const DayController = (
-  day: Day,
-) => {
-  const state = {
-    day,
-  };
+const part1Completer = (state: DayControllerState) => ({
+  completePart1: async () => {
+    verifyDayIsCurrent(state);
+    if (state.day.part1Completed) {
+      throw new Error("Part 1 already completed");
+    }
+    state.day.part1Completed = true;
+    await updateDayPart1CompletionStatus(state.day.id, true);
+    const game = await getGameById(state.day.gameId);
+    await GameController(game!).adjustRerollTokensGained(1);
+    await GameController(game!).adjustCurrentRerollTokens(1);
+    return state.day;
+  },
+});
 
-  return {
-    ...initialChallengeModifierRoller(state),
-    ...challengeModifierReroller(state),
-    ...modifierOptionReroller(state),
-    ...part1Completer(state),
-    ...part2Completer(state),
-  };
-};
-
-export { DayController };
+const part2Completer = (state: DayControllerState) => ({
+  completePart2: async () => {
+    await verifyDayIsCurrent(state);
+    if (!state.day.part1Completed) {
+      throw new Error("Part 1 not yet completed");
+    }
+    if (state.day.part2Completed) {
+      throw new Error("Part 2 already completed");
+    }
+    state.day.part2Completed = true;
+    await updateDayPart2CompletionStatus(state.day.id, true);
+    const game = await getGameById(state.day.gameId);
+    await GameController(game!).adjustRerollTokensGained(1);
+    await GameController(game!).adjustCurrentRerollTokens(1);
+    await GameController(game!).completeCurrentDay();
+    return state.day;
+  },
+});
