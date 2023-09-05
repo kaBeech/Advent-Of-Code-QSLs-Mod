@@ -22,6 +22,7 @@ export type ChallengeModifierPayload<ExtArgs extends $Extensions.Args = $Extensi
     id: number
     name: string
     text: string
+    hasOptions: boolean
   }, ExtArgs["result"]["challengeModifier"]>
   composites: {}
 }
@@ -1353,18 +1354,21 @@ export namespace Prisma {
     id: number | null
     name: string | null
     text: string | null
+    hasOptions: boolean | null
   }
 
   export type ChallengeModifierMaxAggregateOutputType = {
     id: number | null
     name: string | null
     text: string | null
+    hasOptions: boolean | null
   }
 
   export type ChallengeModifierCountAggregateOutputType = {
     id: number
     name: number
     text: number
+    hasOptions: number
     _all: number
   }
 
@@ -1381,18 +1385,21 @@ export namespace Prisma {
     id?: true
     name?: true
     text?: true
+    hasOptions?: true
   }
 
   export type ChallengeModifierMaxAggregateInputType = {
     id?: true
     name?: true
     text?: true
+    hasOptions?: true
   }
 
   export type ChallengeModifierCountAggregateInputType = {
     id?: true
     name?: true
     text?: true
+    hasOptions?: true
     _all?: true
   }
 
@@ -1487,6 +1494,7 @@ export namespace Prisma {
     id: number
     name: string
     text: string
+    hasOptions: boolean
     _count: ChallengeModifierCountAggregateOutputType | null
     _avg: ChallengeModifierAvgAggregateOutputType | null
     _sum: ChallengeModifierSumAggregateOutputType | null
@@ -1512,6 +1520,7 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     text?: boolean
+    hasOptions?: boolean
     ModifierOption?: boolean | ChallengeModifier$ModifierOptionArgs<ExtArgs>
     Day?: boolean | ChallengeModifier$DayArgs<ExtArgs>
     _count?: boolean | ChallengeModifierCountOutputTypeArgs<ExtArgs>
@@ -1521,6 +1530,7 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     text?: boolean
+    hasOptions?: boolean
   }
 
   export type ChallengeModifierInclude<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
@@ -5372,7 +5382,8 @@ export namespace Prisma {
   export const ChallengeModifierScalarFieldEnum: {
     id: 'id',
     name: 'name',
-    text: 'text'
+    text: 'text',
+    hasOptions: 'hasOptions'
   };
 
   export type ChallengeModifierScalarFieldEnum = (typeof ChallengeModifierScalarFieldEnum)[keyof typeof ChallengeModifierScalarFieldEnum]
@@ -5454,6 +5465,7 @@ export namespace Prisma {
     id?: IntFilter | number
     name?: StringFilter | string
     text?: StringFilter | string
+    hasOptions?: BoolFilter | boolean
     ModifierOption?: ModifierOptionListRelationFilter
     Day?: DayListRelationFilter
   }
@@ -5462,6 +5474,7 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     text?: SortOrder
+    hasOptions?: SortOrder
     ModifierOption?: ModifierOptionOrderByRelationAggregateInput
     Day?: DayOrderByRelationAggregateInput
   }
@@ -5475,6 +5488,7 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     text?: SortOrder
+    hasOptions?: SortOrder
     _count?: ChallengeModifierCountOrderByAggregateInput
     _avg?: ChallengeModifierAvgOrderByAggregateInput
     _max?: ChallengeModifierMaxOrderByAggregateInput
@@ -5489,6 +5503,7 @@ export namespace Prisma {
     id?: IntWithAggregatesFilter | number
     name?: StringWithAggregatesFilter | string
     text?: StringWithAggregatesFilter | string
+    hasOptions?: BoolWithAggregatesFilter | boolean
   }
 
   export type ModifierOptionWhereInput = {
@@ -5677,6 +5692,7 @@ export namespace Prisma {
   export type ChallengeModifierCreateInput = {
     name: string
     text: string
+    hasOptions?: boolean
     ModifierOption?: ModifierOptionCreateNestedManyWithoutChallengeModifierInput
     Day?: DayCreateNestedManyWithoutModifierInput
   }
@@ -5685,6 +5701,7 @@ export namespace Prisma {
     id?: number
     name: string
     text: string
+    hasOptions?: boolean
     ModifierOption?: ModifierOptionUncheckedCreateNestedManyWithoutChallengeModifierInput
     Day?: DayUncheckedCreateNestedManyWithoutModifierInput
   }
@@ -5692,6 +5709,7 @@ export namespace Prisma {
   export type ChallengeModifierUpdateInput = {
     name?: StringFieldUpdateOperationsInput | string
     text?: StringFieldUpdateOperationsInput | string
+    hasOptions?: BoolFieldUpdateOperationsInput | boolean
     ModifierOption?: ModifierOptionUpdateManyWithoutChallengeModifierNestedInput
     Day?: DayUpdateManyWithoutModifierNestedInput
   }
@@ -5700,6 +5718,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     text?: StringFieldUpdateOperationsInput | string
+    hasOptions?: BoolFieldUpdateOperationsInput | boolean
     ModifierOption?: ModifierOptionUncheckedUpdateManyWithoutChallengeModifierNestedInput
     Day?: DayUncheckedUpdateManyWithoutModifierNestedInput
   }
@@ -5708,17 +5727,20 @@ export namespace Prisma {
     id?: number
     name: string
     text: string
+    hasOptions?: boolean
   }
 
   export type ChallengeModifierUpdateManyMutationInput = {
     name?: StringFieldUpdateOperationsInput | string
     text?: StringFieldUpdateOperationsInput | string
+    hasOptions?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type ChallengeModifierUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     text?: StringFieldUpdateOperationsInput | string
+    hasOptions?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type ModifierOptionCreateInput = {
@@ -5959,6 +5981,11 @@ export namespace Prisma {
     not?: NestedStringFilter | string
   }
 
+  export type BoolFilter = {
+    equals?: boolean
+    not?: NestedBoolFilter | boolean
+  }
+
   export type ModifierOptionListRelationFilter = {
     every?: ModifierOptionWhereInput
     some?: ModifierOptionWhereInput
@@ -5983,6 +6010,7 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     text?: SortOrder
+    hasOptions?: SortOrder
   }
 
   export type ChallengeModifierAvgOrderByAggregateInput = {
@@ -5993,12 +6021,14 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     text?: SortOrder
+    hasOptions?: SortOrder
   }
 
   export type ChallengeModifierMinOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
     text?: SortOrder
+    hasOptions?: SortOrder
   }
 
   export type ChallengeModifierSumOrderByAggregateInput = {
@@ -6037,6 +6067,14 @@ export namespace Prisma {
     _count?: NestedIntFilter
     _min?: NestedStringFilter
     _max?: NestedStringFilter
+  }
+
+  export type BoolWithAggregatesFilter = {
+    equals?: boolean
+    not?: NestedBoolWithAggregatesFilter | boolean
+    _count?: NestedIntFilter
+    _min?: NestedBoolFilter
+    _max?: NestedBoolFilter
   }
 
   export type IntNullableFilter = {
@@ -6192,11 +6230,6 @@ export namespace Prisma {
     _max?: NestedStringNullableFilter
   }
 
-  export type BoolFilter = {
-    equals?: boolean
-    not?: NestedBoolFilter | boolean
-  }
-
   export type GameRelationFilter = {
     is?: GameWhereInput | null
     isNot?: GameWhereInput | null
@@ -6263,14 +6296,6 @@ export namespace Prisma {
     gameId?: SortOrder
   }
 
-  export type BoolWithAggregatesFilter = {
-    equals?: boolean
-    not?: NestedBoolWithAggregatesFilter | boolean
-    _count?: NestedIntFilter
-    _min?: NestedBoolFilter
-    _max?: NestedBoolFilter
-  }
-
   export type ModifierOptionCreateNestedManyWithoutChallengeModifierInput = {
     create?: XOR<Enumerable<ModifierOptionCreateWithoutChallengeModifierInput>, Enumerable<ModifierOptionUncheckedCreateWithoutChallengeModifierInput>>
     connectOrCreate?: Enumerable<ModifierOptionCreateOrConnectWithoutChallengeModifierInput>
@@ -6301,6 +6326,10 @@ export namespace Prisma {
 
   export type StringFieldUpdateOperationsInput = {
     set?: string
+  }
+
+  export type BoolFieldUpdateOperationsInput = {
+    set?: boolean
   }
 
   export type ModifierOptionUpdateManyWithoutChallengeModifierNestedInput = {
@@ -6497,10 +6526,6 @@ export namespace Prisma {
     connect?: ModifierOptionWhereUniqueInput
   }
 
-  export type BoolFieldUpdateOperationsInput = {
-    set?: boolean
-  }
-
   export type GameUpdateOneRequiredWithoutDayNestedInput = {
     create?: XOR<GameCreateWithoutDayInput, GameUncheckedCreateWithoutDayInput>
     connectOrCreate?: GameCreateOrConnectWithoutDayInput
@@ -6554,6 +6579,11 @@ export namespace Prisma {
     not?: NestedStringFilter | string
   }
 
+  export type NestedBoolFilter = {
+    equals?: boolean
+    not?: NestedBoolFilter | boolean
+  }
+
   export type NestedIntWithAggregatesFilter = {
     equals?: number
     in?: Enumerable<number> | number
@@ -6596,6 +6626,14 @@ export namespace Prisma {
     _count?: NestedIntFilter
     _min?: NestedStringFilter
     _max?: NestedStringFilter
+  }
+
+  export type NestedBoolWithAggregatesFilter = {
+    equals?: boolean
+    not?: NestedBoolWithAggregatesFilter | boolean
+    _count?: NestedIntFilter
+    _min?: NestedBoolFilter
+    _max?: NestedBoolFilter
   }
 
   export type NestedIntNullableFilter = {
@@ -6665,19 +6703,6 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter
     _min?: NestedStringNullableFilter
     _max?: NestedStringNullableFilter
-  }
-
-  export type NestedBoolFilter = {
-    equals?: boolean
-    not?: NestedBoolFilter | boolean
-  }
-
-  export type NestedBoolWithAggregatesFilter = {
-    equals?: boolean
-    not?: NestedBoolWithAggregatesFilter | boolean
-    _count?: NestedIntFilter
-    _min?: NestedBoolFilter
-    _max?: NestedBoolFilter
   }
 
   export type ModifierOptionCreateWithoutChallengeModifierInput = {
@@ -6825,6 +6850,7 @@ export namespace Prisma {
   export type ChallengeModifierCreateWithoutModifierOptionInput = {
     name: string
     text: string
+    hasOptions?: boolean
     Day?: DayCreateNestedManyWithoutModifierInput
   }
 
@@ -6832,6 +6858,7 @@ export namespace Prisma {
     id?: number
     name: string
     text: string
+    hasOptions?: boolean
     Day?: DayUncheckedCreateNestedManyWithoutModifierInput
   }
 
@@ -6864,6 +6891,7 @@ export namespace Prisma {
   export type ChallengeModifierUpdateWithoutModifierOptionInput = {
     name?: StringFieldUpdateOperationsInput | string
     text?: StringFieldUpdateOperationsInput | string
+    hasOptions?: BoolFieldUpdateOperationsInput | boolean
     Day?: DayUpdateManyWithoutModifierNestedInput
   }
 
@@ -6871,6 +6899,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     text?: StringFieldUpdateOperationsInput | string
+    hasOptions?: BoolFieldUpdateOperationsInput | boolean
     Day?: DayUncheckedUpdateManyWithoutModifierNestedInput
   }
 
@@ -6952,6 +6981,7 @@ export namespace Prisma {
   export type ChallengeModifierCreateWithoutDayInput = {
     name: string
     text: string
+    hasOptions?: boolean
     ModifierOption?: ModifierOptionCreateNestedManyWithoutChallengeModifierInput
   }
 
@@ -6959,6 +6989,7 @@ export namespace Prisma {
     id?: number
     name: string
     text: string
+    hasOptions?: boolean
     ModifierOption?: ModifierOptionUncheckedCreateNestedManyWithoutChallengeModifierInput
   }
 
@@ -7021,6 +7052,7 @@ export namespace Prisma {
   export type ChallengeModifierUpdateWithoutDayInput = {
     name?: StringFieldUpdateOperationsInput | string
     text?: StringFieldUpdateOperationsInput | string
+    hasOptions?: BoolFieldUpdateOperationsInput | boolean
     ModifierOption?: ModifierOptionUpdateManyWithoutChallengeModifierNestedInput
   }
 
@@ -7028,6 +7060,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     text?: StringFieldUpdateOperationsInput | string
+    hasOptions?: BoolFieldUpdateOperationsInput | boolean
     ModifierOption?: ModifierOptionUncheckedUpdateManyWithoutChallengeModifierNestedInput
   }
 

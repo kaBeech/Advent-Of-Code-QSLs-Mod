@@ -108,7 +108,8 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
 exports.Prisma.ChallengeModifierScalarFieldEnum = {
   id: 'id',
   name: 'name',
-  text: 'text'
+  text: 'text',
+  hasOptions: 'hasOptions'
 };
 
 exports.Prisma.ModifierOptionScalarFieldEnum = {

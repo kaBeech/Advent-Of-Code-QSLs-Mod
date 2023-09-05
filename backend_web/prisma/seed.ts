@@ -27,14 +27,17 @@ const challengeModifierData: Prisma.ChallengeModifierCreateInput[] = [
   {
     name: "language_box_1",
     text: "using a random programming language from Language Box 1: ",
+    hasOptions: true,
   },
   {
     name: "language_box_2",
     text: "using a random programming language from Language Box 2: ",
+    hasOptions: true,
   },
   {
     name: "language_box_3",
     text: "using a random programming language from Language Box 3: ",
+    hasOptions: true,
   },
   {
     name: "testing",
