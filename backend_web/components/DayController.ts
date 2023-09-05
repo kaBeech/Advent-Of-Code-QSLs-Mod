@@ -40,6 +40,22 @@ const initialModifierOptionRoller = (state: DayControllerState) => ({
   },
 });
 
+const part1Completer = (state: DayControllerState) => ({
+  completePart1: () => {
+    state.day.part1Completed = true;
+    updateDayPart1CompletionStatus(state.day.id, true);
+    return state.day;
+  },
+});
+
+const part2Completer = (state: DayControllerState) => ({
+  completePart2: () => {
+    state.day.part2Completed = true;
+    updateDayPart2CompletionStatus(state.day.id, true);
+    return state.day;
+  },
+});
+
 const DayController = (
   day: Day,
 ) => {
