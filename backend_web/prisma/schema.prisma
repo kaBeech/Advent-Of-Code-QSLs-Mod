@@ -16,6 +16,7 @@ model ChallengeModifier {
   id             Int              @id @default(autoincrement())
   name           String           @unique
   text           String
+  hasOptions     Boolean          @default(false)
   ModifierOption ModifierOption[]
   Day            Day[]
 }
