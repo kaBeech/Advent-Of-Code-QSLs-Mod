@@ -123,23 +123,75 @@ export async function createDay(
   return result;
 }
 
-export async function updateDay(
+export async function updateDayPart1CompletionStatus(
   id: number,
-  part1Completed?: boolean,
-  part2Completed?: boolean,
-  modifier?: ChallengeModifier,
-  mainRerollsUsed?: number,
-  secondaryRerollsUsed?: number,
+  part1Completed: boolean,
 ) {
   const result = await prisma.day.update({
     where: {
       id,
     },
     data: {
-      part1_completed: part1Completed,
-      part2_completed: part2Completed,
+      part_1_completed: part1Completed,
+    },
+  });
+  return result;
+}
+
+export async function updateDayPart2CompletionStatus(
+  id: number,
+  part2Completed: boolean,
+) {
+  const result = await prisma.day.update({
+    where: {
+      id,
+    },
+    data: {
+      part_2_completed: part2Completed,
+    },
+  });
+  return result;
+}
+
+export async function updateDayChallengeModifier(
+  id: number,
+  modifier: ChallengeModifier,
+) {
+  const result = await prisma.day.update({
+    where: {
+      id,
+    },
+    data: {
       modifier,
+    },
+  });
+  return result;
+}
+
+export async function updateDayMainRerollsUsed(
+  id: number,
+  mainRerollsUsed: number,
+) {
+  const result = await prisma.day.update({
+    where: {
+      id,
+    },
+    data: {
       main_rerolls_used: mainRerollsUsed,
+    },
+  });
+  return result;
+}
+
+export async function updateDaySecondaryRerollsUsed(
+  id: number,
+  secondaryRerollsUsed: number,
+) {
+  const result = await prisma.day.update({
+    where: {
+      id,
+    },
+    data: {
       secondary_rerolls_used: secondaryRerollsUsed,
     },
   });
