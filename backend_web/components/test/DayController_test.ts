@@ -11,3 +11,8 @@ Deno.test("Initial roll returns a ChallengeModifier", async () => {
   assertEquals(typeof result.text, "string");
   assertEquals(typeof result.hasOptions, "boolean");
 });
+
+Deno.test("Completes Part 1", async () => {
+  const result = await dayController.completePart1();
+  assertEquals(result.part1Completed, true);
+});
