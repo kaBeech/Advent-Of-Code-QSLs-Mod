@@ -103,32 +103,52 @@ const rerollTokensSpentAdjuster = (state: GameControllerState) => ({
 });
 
 const nameSetter = (state: GameControllerState) => ({
-  setName: async (name: string) => {
-    state.game.name = name;
-    await updateGameName(state.game.id, name);
+  setName: async (newName: string) => {
+    if (newName.length > 24) {
+      throw new Error("Name cannot be longer than 24 characters");
+    }
+    if (newName.length < 1) {
+      throw new Error("Name cannot be empty");
+    }
+    state.game.name = newName;
+    await updateGameName(state.game.id, newName);
     return state.game;
   },
 });
 
 const playerNameSetter = (state: GameControllerState) => ({
-  setPlayerName: async (playerName: string) => {
-    state.game.playerName = playerName;
-    await updateGamePlayerName(state.game.id, playerName);
+  setPlayerName: async (newPlayerName: string) => {
+    if (newPlayerName.length > 24) {
+      throw new Error("Player name cannot be longer than 24 characters");
+    }
+    if (newPlayerName.length < 1) {
+      throw new Error("Player name cannot be empty");
+    }
+    state.game.playerName = newPlayerName;
+    await updateGamePlayerName(state.game.id, newPlayerName);
     return state.game;
   },
 });
 
 const repositoryLinkSetter = (state: GameControllerState) => ({
-  setRepositoryLink: async (repositoryLink: string) => {
-    state.game.repositoryLink = repositoryLink;
-    await updateGameRepositoryLink(state.game.id, repositoryLink);
+  setRepositoryLink: async (newRepositoryLink: string) => {
+    if (newRepositoryLink.length > 255) {
+      throw new Error("Repository link cannot be longer than 255 characters");
+    }
+    state.game.repositoryLink = newRepositoryLink;
+    await updateGameRepositoryLink(state.game.id, newRepositoryLink);
     return state.game;
   },
 });
 
 const progressSheetLinkSetter = (state: GameControllerState) => ({
-  setProgressSheetLink: (progressSheetLink: string) => {
-    state.game.progressSheetLink = progressSheetLink;
+  setProgressSheetLink: (newProgressSheetLink: string) => {
+    if (newProgressSheetLink.length > 255) {
+      throw new Error(
+        "Progress sheet link cannot be longer than 255 characters",
+      );
+    }
+    state.game.progressSheetLink = newProgressSheetLink;
     return state.game;
   },
 });
