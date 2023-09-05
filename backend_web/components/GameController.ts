@@ -16,25 +16,25 @@ interface GameControllerState {
 }
 
 const nameSetter = (state: GameControllerState) => ({
-  setName: (name: string) => {
+  setName: async (name: string) => {
     state.game.name = name;
-    updateGameName(state.game.id, name);
+    await updateGameName(state.game.id, name);
     return state.game;
   },
 });
 
 const playerNameSetter = (state: GameControllerState) => ({
-  setPlayerName: (playerName: string) => {
+  setPlayerName: async (playerName: string) => {
     state.game.playerName = playerName;
-    updateGamePlayerName(state.game.id, playerName);
+    await updateGamePlayerName(state.game.id, playerName);
     return state.game;
   },
 });
 
 const currentRerollTokensAdjuster = (state: GameControllerState) => ({
-  adjustCurrentRerollTokens: (amount: number) => {
+  adjustCurrentRerollTokens: async (amount: number) => {
     state.game.currentRerollTokens += amount;
-    updateGameCurrentRerollTokens(
+    await updateGameCurrentRerollTokens(
       state.game.id,
       state.game.currentRerollTokens,
     );
@@ -43,25 +43,31 @@ const currentRerollTokensAdjuster = (state: GameControllerState) => ({
 });
 
 const rerollTokensGainedAdjuster = (state: GameControllerState) => ({
-  adjustRerollTokensGained: (amount: number) => {
+  adjustRerollTokensGained: async (amount: number) => {
     state.game.rerollTokensGained += amount;
-    updateGameRerollTokensGained(state.game.id, state.game.rerollTokensGained);
+    await updateGameRerollTokensGained(
+      state.game.id,
+      state.game.rerollTokensGained,
+    );
     return state.game;
   },
 });
 
 const rerollTokensSpentAdjuster = (state: GameControllerState) => ({
-  adjustRerollTokensSpent: (amount: number) => {
+  adjustRerollTokensSpent: async (amount: number) => {
     state.game.rerollTokensSpent += amount;
-    updateGameRerollTokensSpent(state.game.id, state.game.rerollTokensSpent);
+    await updateGameRerollTokensSpent(
+      state.game.id,
+      state.game.rerollTokensSpent,
+    );
     return state.game;
   },
 });
 
 const repositoryLinkSetter = (state: GameControllerState) => ({
-  setRepositoryLink: (repositoryLink: string) => {
+  setRepositoryLink: async (repositoryLink: string) => {
     state.game.repositoryLink = repositoryLink;
-    updateGameRepositoryLink(state.game.id, repositoryLink);
+    await updateGameRepositoryLink(state.game.id, repositoryLink);
     return state.game;
   },
 });
@@ -74,7 +80,7 @@ const progressSheetLinkSetter = (state: GameControllerState) => ({
 });
 
 const nextDayStarter = (state: GameControllerState) => ({
-  startNextDay: () => {
+  startNextDay: async () => {
     if (state.game.currentDay === 25) {
       throw new Error("It's already Christmas (Day 25)!!!");
     }
@@ -84,22 +90,22 @@ const nextDayStarter = (state: GameControllerState) => ({
       );
     }
     state.game.currentDay += 1;
-    updateGameCurrentDay(state.game.id, state.game.currentDay);
-    createDay(state.game.id, state.game.currentDay);
+    await updateGameCurrentDay(state.game.id, state.game.currentDay);
+    await createDay(state.game.id, state.game.currentDay);
     state.game.currentDayCompleted = false;
     return state.game;
   },
 });
 
 const currentDayCompleter = (state: GameControllerState) => ({
-  completeCurrentDay: () => {
+  completeCurrentDay: async () => {
     if (state.game.currentDayCompleted === true) {
       throw new Error(
         `Current day (${state.game.currentDay}) already completed`,
       );
     }
     state.game.currentDayCompleted = true;
-    updateGameCurrentDayCompletionStatus(
+    await updateGameCurrentDayCompletionStatus(
       state.game.id,
       true,
     );

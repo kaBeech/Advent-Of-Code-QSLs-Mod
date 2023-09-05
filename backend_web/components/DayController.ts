@@ -44,7 +44,7 @@ const initialModifierOptionRoller = (state: DayControllerState) => ({
       challengeModifierId,
     );
     state.day.modifierOptionId = selectedModifierOption.id;
-    updateDayModifierOption(state.day.id, selectedModifierOption.id);
+    await updateDayModifierOption(state.day.id, selectedModifierOption.id);
     return selectedModifierOption;
   },
 });
@@ -56,17 +56,17 @@ const part1Completer = (state: DayControllerState) => ({
       throw new Error("Part 1 already completed");
     }
     state.day.part1Completed = true;
-    updateDayPart1CompletionStatus(state.day.id, true);
+    await updateDayPart1CompletionStatus(state.day.id, true);
     const game = await getGameById(state.day.gameId);
-    GameController(game!).adjustRerollTokensGained(1);
-    GameController(game!).adjustCurrentRerollTokens(1);
+    await GameController(game!).adjustRerollTokensGained(1);
+    await GameController(game!).adjustCurrentRerollTokens(1);
     return state.day;
   },
 });
 
 const part2Completer = (state: DayControllerState) => ({
   completePart2: async () => {
-    verifyDayIsCurrent(state);
+    await verifyDayIsCurrent(state);
     if (!state.day.part1Completed) {
       throw new Error("Part 1 not yet completed");
     }
@@ -74,18 +74,18 @@ const part2Completer = (state: DayControllerState) => ({
       throw new Error("Part 2 already completed");
     }
     state.day.part2Completed = true;
-    updateDayPart2CompletionStatus(state.day.id, true);
+    await updateDayPart2CompletionStatus(state.day.id, true);
     const game = await getGameById(state.day.gameId);
-    GameController(game!).adjustRerollTokensGained(1);
-    GameController(game!).adjustCurrentRerollTokens(1);
-    GameController(game!).completeCurrentDay();
+    await GameController(game!).adjustRerollTokensGained(1);
+    await GameController(game!).adjustCurrentRerollTokens(1);
+    await GameController(game!).completeCurrentDay();
     return state.day;
   },
 });
 
 const challengeModifierReroller = (state: DayControllerState) => ({
   rerollChallengeModifier: async () => {
-    verifyDayIsCurrent(state);
+    await verifyDayIsCurrent(state);
     if (!state.day.challengeModifierId) {
       throw new Error("Roll initial challenge modifier first");
     }
@@ -93,18 +93,21 @@ const challengeModifierReroller = (state: DayControllerState) => ({
     if (game!.currentRerollTokens < 2) {
       throw new Error("Not enough reroll tokens");
     }
-    GameController(game!).adjustCurrentRerollTokens(-2);
-    GameController(game!).adjustRerollTokensSpent(2);
+    await GameController(game!).adjustCurrentRerollTokens(-2);
+    await GameController(game!).adjustRerollTokensSpent(2);
     state.day.challengeModifierRerollsUsed += 1;
-    updateDayChallengeModifierRerollsUsed(
+    await updateDayChallengeModifierRerollsUsed(
       state.day.id,
       state.day.challengeModifierRerollsUsed,
     );
     const selectedChallengeModifier = await rollChallengeModifier();
     state.day.challengeModifierId = selectedChallengeModifier.id;
-    updateDayChallengeModifier(state.day.id, selectedChallengeModifier.id);
+    await updateDayChallengeModifier(
+      state.day.id,
+      selectedChallengeModifier.id,
+    );
     if (selectedChallengeModifier.hasOptions) {
-      modifierOptionReroller(state).rerollModifierOption(
+      await modifierOptionReroller(state).rerollModifierOption(
         true,
         game!,
       );
@@ -118,7 +121,7 @@ const modifierOptionReroller = (state: DayControllerState) => ({
     gratis?: boolean,
     gameProp?: Game,
   ) => {
-    verifyDayIsCurrent(state);
+    await verifyDayIsCurrent(state);
     if (!state.day.challengeModifierId) {
       throw new Error("Roll initial challenge modifier first");
     }
@@ -136,11 +139,11 @@ const modifierOptionReroller = (state: DayControllerState) => ({
       throw new Error("Not enough reroll tokens");
     }
     if (!gratis) {
-      GameController(game!).adjustCurrentRerollTokens(-1);
-      GameController(game!).adjustRerollTokensSpent(1);
+      await GameController(game!).adjustCurrentRerollTokens(-1);
+      await GameController(game!).adjustRerollTokensSpent(1);
     }
     state.day.modifierOptionRerollsUsed += 1;
-    updateDayModifierOptionRerollsUsed(
+    await updateDayModifierOptionRerollsUsed(
       state.day.id,
       state.day.modifierOptionRerollsUsed,
     );
@@ -148,7 +151,7 @@ const modifierOptionReroller = (state: DayControllerState) => ({
       state.day.challengeModifierId,
     );
     state.day.modifierOptionId = selectedModifierOption.id;
-    updateDayModifierOption(state.day.id, selectedModifierOption.id);
+    await updateDayModifierOption(state.day.id, selectedModifierOption.id);
     return selectedModifierOption;
   },
 });
