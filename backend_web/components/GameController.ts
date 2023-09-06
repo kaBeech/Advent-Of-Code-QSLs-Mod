@@ -65,17 +65,6 @@ const currentDayCompleter = (state: GameControllerState) => ({
   },
 });
 
-const currentRerollTokensAdjuster = (state: GameControllerState) => ({
-  adjustCurrentRerollTokens: async (amount: number) => {
-    state.game.currentRerollTokens += amount;
-    await updateGameCurrentRerollTokens(
-      state.game.id,
-      state.game.currentRerollTokens,
-    );
-    return state.game;
-  },
-});
-
 const rerollTokenGainer = (state: GameControllerState) => ({
   gainRerollTokens: (amount: number) => {
     state.game.currentRerollTokens += amount;
@@ -89,13 +78,13 @@ const rerollTokenGainer = (state: GameControllerState) => ({
 });
 
 const rerollTokenSpender = (state: GameControllerState) => ({
-  spendRerollTokens: async (amount: number) => {
+  spendRerollTokens: (amount: number) => {
     state.game.currentRerollTokens -= amount;
     state.game.rerollTokensSpent += amount;
-    await updateGameRerollTokensSpent(
-      state.game.id,
-      state.game.rerollTokensSpent,
-    );
+    // await updateGameRerollTokensSpent(
+    //   state.game.id,
+    //   state.game.rerollTokensSpent,
+    // );
     return state.game;
   },
 });
