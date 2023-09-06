@@ -10,12 +10,7 @@ import {
   getDayById,
   getDaysByGameId,
   getGameById,
-  updateDayChallengeModifier,
-  updateDayChallengeModifierRerollsUsed,
-  updateDayModifierOption,
-  updateDayModifierOptionRerollsUsed,
-  updateDayPart1CompletionStatus,
-  updateDayPart2CompletionStatus,
+  updateDay,
 } from "./db.ts";
 import { DayController } from "./components/DayController.ts";
 import { GameController } from "./components/GameController.ts";
@@ -91,14 +86,7 @@ router
     const { id } = context.params;
     const day = await getDayById(+id);
     const updatedDay = await DayController(day!).rollInitialChallengeModifier();
-    await updateDayChallengeModifier(
-      updatedDay.id,
-      updatedDay.challengeModifierId!,
-    );
-    await updateDayModifierOption(
-      updatedDay.id,
-      updatedDay.modifierOptionId!,
-    );
+    await updateDay(updatedDay);
     context.response.body = updatedDay;
   })
   /**
@@ -110,14 +98,7 @@ router
     const updatedDay = await DayController(day!).rerollChallengeModifier();
     // await GameController(game!).adjustCurrentRerollTokens(-2);
     // await GameController(game!).adjustRerollTokensSpent(2);
-    await updateDayChallengeModifierRerollsUsed(
-      updatedDay.id,
-      updatedDay.challengeModifierRerollsUsed,
-    );
-    await updateDayChallengeModifier(
-      updatedDay.id,
-      updatedDay.challengeModifierId!,
-    );
+    await updateDay(updatedDay);
     context.response.body = updatedDay;
   })
   /**
@@ -129,11 +110,7 @@ router
     const updatedDay = await DayController(day!).rerollModifierOption();
     // await GameController(game!).adjustCurrentRerollTokens(-1);
     // await GameController(game!).adjustRerollTokensSpent(1);
-    await updateDayModifierOptionRerollsUsed(
-      updatedDay.id,
-      updatedDay.modifierOptionRerollsUsed,
-    );
-    await updateDayModifierOption(updatedDay.id, updatedDay.modifierOptionId!);
+    await updateDay(updatedDay);
     context.response.body = updatedDay;
   })
   /**
@@ -146,7 +123,7 @@ router
     // const game = await getGameById(state.day.gameId);
     // await GameController(game!).adjustRerollTokensGained(1);
     // await GameController(game!).adjustCurrentRerollTokens(1);
-    await updateDayPart1CompletionStatus(updatedDay.id, true);
+    await updateDay(updatedDay);
     context.response.body = updatedDay;
   })
   /**
@@ -160,7 +137,7 @@ router
     // await GameController(game!).adjustRerollTokensGained(1);
     // await GameController(game!).adjustCurrentRerollTokens(1);
     // await GameController(game!).completeCurrentDay();
-    await updateDayPart2CompletionStatus(updatedDay.id, true);
+    await updateDay(updatedDay);
     context.response.body = updatedDay;
   });
 
