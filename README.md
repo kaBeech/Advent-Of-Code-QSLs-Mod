@@ -1,12 +1,13 @@
-# Advent Of Code - XXXMas Mod
+# Advent Of Code: XXXMas Mod
 
 [UNDER CONSTRUCTION]
+[CURRENT STATUS: Basic single-user game logic works, API (and testing) needs cleaning up]
 
 Have you ever been savoring your [Advent Of Code](https://adventofcode.com/) calendar, keyboard dusted with sugar cookie crumbles, reindeer curled at your feet, and found yourself wishing the puzzles were wilder? More challenging? MORE XTREME??
 
 Well ho-ho-hold that thought because this is the mod for you!
 
-Advent Of Code - XXXMas Mod adds randomized challenge modifiers for the Advent Of Code puzzle series. It will also track your progress
+Advent Of Code: XXXMas Mod adds randomized challenge modifiers for the Advent Of Code puzzle series. It will also track your progress
 
 This mod does make Advent Of Code more challenging, but it doesn't contain NSFW content (beyond one instance of adult language)
 
