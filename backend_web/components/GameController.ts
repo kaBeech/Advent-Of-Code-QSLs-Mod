@@ -1,6 +1,4 @@
 import {
-  createDay,
-  updateGameCurrentDay,
   updateGameCurrentDayCompletionStatus,
   updateGameCurrentRerollTokens,
   updateGameName,
@@ -26,9 +24,8 @@ export const GameController = (
   return {
     ...nextDayStarter(state),
     ...currentDayCompleter(state),
-    ...currentRerollTokensAdjuster(state),
-    ...rerollTokensGainedAdjuster(state),
-    ...rerollTokensSpentAdjuster(state),
+    ...rerollTokenGainer(state),
+    ...rerollTokenSpender(state),
     ...nameSetter(state),
     ...playerNameSetter(state),
     ...repositoryLinkSetter(state),
@@ -37,7 +34,7 @@ export const GameController = (
 };
 
 const nextDayStarter = (state: GameControllerState) => ({
-  startNextDay: async () => {
+  startNextDay: () => {
     if (state.game.currentDay === 25) {
       throw new Error("It's already Christmas (Day 25)!!!");
     }
@@ -47,8 +44,6 @@ const nextDayStarter = (state: GameControllerState) => ({
       );
     }
     state.game.currentDay += 1;
-    await updateGameCurrentDay(state.game.id, state.game.currentDay);
-    await createDay(state.game.id, state.game.currentDay);
     state.game.currentDayCompleted = false;
     return state.game;
   },
@@ -81,19 +76,21 @@ const currentRerollTokensAdjuster = (state: GameControllerState) => ({
   },
 });
 
-const rerollTokensGainedAdjuster = (state: GameControllerState) => ({
-  adjustRerollTokensGained: async (amount: number) => {
+const rerollTokenGainer = (state: GameControllerState) => ({
+  gainRerollTokens: (amount: number) => {
+    state.game.currentRerollTokens += amount;
     state.game.rerollTokensGained += amount;
-    await updateGameRerollTokensGained(
-      state.game.id,
-      state.game.rerollTokensGained,
-    );
+    // await updateGameRerollTokensGained(
+    //   state.game.id,
+    //   state.game.rerollTokensGained,
+    // );
     return state.game;
   },
 });
 
-const rerollTokensSpentAdjuster = (state: GameControllerState) => ({
-  adjustRerollTokensSpent: async (amount: number) => {
+const rerollTokenSpender = (state: GameControllerState) => ({
+  spendRerollTokens: async (amount: number) => {
+    state.game.currentRerollTokens -= amount;
     state.game.rerollTokensSpent += amount;
     await updateGameRerollTokensSpent(
       state.game.id,
