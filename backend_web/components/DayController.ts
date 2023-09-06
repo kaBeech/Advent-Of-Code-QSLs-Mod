@@ -36,7 +36,7 @@ export const DayController = (
 
 const initialChallengeModifierRoller = (state: DayControllerState) => ({
   rollInitialChallengeModifier: async () => {
-    await verifyDayIsCurrent(state);
+    await verifyDayIsCurrent(state.day);
     if (state.day.challengeModifierId) {
       throw new Error("Challenge modifier already rolled");
     }
@@ -58,7 +58,7 @@ const initialChallengeModifierRoller = (state: DayControllerState) => ({
 
 const challengeModifierReroller = (state: DayControllerState) => ({
   rerollChallengeModifier: async () => {
-    await verifyDayIsCurrent(state);
+    await verifyDayIsCurrent(state.day);
     if (!state.day.challengeModifierId) {
       throw new Error("Roll initial challenge modifier first");
     }
@@ -94,7 +94,7 @@ const modifierOptionReroller = (state: DayControllerState) => ({
     gratis?: boolean,
     gameProp?: Game,
   ) => {
-    await verifyDayIsCurrent(state);
+    await verifyDayIsCurrent(state.day);
     if (!state.day.challengeModifierId) {
       throw new Error("Roll initial challenge modifier first");
     }
@@ -131,7 +131,7 @@ const modifierOptionReroller = (state: DayControllerState) => ({
 
 const part1Completer = (state: DayControllerState) => ({
   completePart1: async () => {
-    await verifyDayIsCurrent(state);
+    await verifyDayIsCurrent(state.day);
     if (state.day.part1Completed) {
       throw new Error("Part 1 already completed");
     }
@@ -146,7 +146,7 @@ const part1Completer = (state: DayControllerState) => ({
 
 const part2Completer = (state: DayControllerState) => ({
   completePart2: async () => {
-    await verifyDayIsCurrent(state);
+    await verifyDayIsCurrent(state.day);
     if (!state.day.part1Completed) {
       throw new Error("Part 1 not yet completed");
     }
