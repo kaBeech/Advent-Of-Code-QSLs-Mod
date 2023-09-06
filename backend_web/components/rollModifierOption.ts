@@ -1,10 +1,8 @@
-import { getModifierOptionsByChallengeModifierId } from "../db.ts";
+import { ModifierOption } from "../generated/client/index.d.ts";
 import { pickRandomly } from "../util/pickRandomly.ts";
 
-const rollModifierOption = async (challengeModifierId: number) => {
-  const selectedModifierOption = pickRandomly(
-    await getModifierOptionsByChallengeModifierId(challengeModifierId),
-  );
+const rollModifierOption = (modifierOptions: ModifierOption[]) => {
+  const selectedModifierOption = pickRandomly(modifierOptions);
   return selectedModifierOption;
 };
 

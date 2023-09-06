@@ -144,6 +144,11 @@ export async function getAllChallengeModifiers() {
  * Modifier Option CRUD
  */
 
+export async function getAllModifierOptions() {
+  const modifierOptions = await prisma.modifierOption.findMany();
+  return modifierOptions;
+}
+
 export async function getModifierOptionsByChallengeModifierId(
   challengeModifierId: number,
 ) {

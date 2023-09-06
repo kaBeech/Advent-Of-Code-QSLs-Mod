@@ -7,10 +7,13 @@ import {
   createDay,
   createGame,
   deleteGame,
+  getAllChallengeModifiers,
   getAllGames,
+  getAllModifierOptions,
   getDayById,
   getDaysByGameId,
   getGameById,
+  getModifierOptionsByChallengeModifierId,
   updateDay,
   updateGame,
 } from "./db.ts";
@@ -89,7 +92,14 @@ router
   .put("/game/:id/day/:id/roll", async (context) => {
     const { id } = context.params;
     const day = await getDayById(+id);
-    const updatedDay = await DayController(day!).rollInitialChallengeModifier();
+    const game = await getGameById(day!.gameId);
+    const challengeModifiers = await getAllChallengeModifiers();
+    const modifierOptions = await getAllModifierOptions();
+    const updatedDay = await DayController(day!).rollInitialChallengeModifier(
+      game!,
+      challengeModifiers,
+      modifierOptions,
+    );
     await updateDay(updatedDay);
     context.response.body = updatedDay;
   })
@@ -99,8 +109,14 @@ router
   .put("/game/:id/day/:id/reroll/modifier", async (context) => {
     const { id } = context.params;
     const day = await getDayById(+id);
-    const updatedDay = await DayController(day!).rerollChallengeModifier();
-    const game = await getGameById(updatedDay.gameId);
+    const game = await getGameById(day!.gameId);
+    const challengeModifiers = await getAllChallengeModifiers();
+    const modifierOptions = await getAllModifierOptions();
+    const updatedDay = await DayController(day!).rerollChallengeModifier(
+      game!,
+      challengeModifiers,
+      modifierOptions,
+    );
     const updatedGame = GameController(game!).spendRerollTokens(2);
     await updateDay(updatedDay);
     await updateGame(updatedGame);
@@ -112,8 +128,16 @@ router
   .put("/game/:id/day/:id/reroll/option", async (context) => {
     const { id } = context.params;
     const day = await getDayById(+id);
-    const updatedDay = await DayController(day!).rerollModifierOption();
-    const game = await getGameById(updatedDay.gameId);
+    const game = await getGameById(day!.gameId);
+    const modifierOptions = await getModifierOptionsByChallengeModifierId(
+      day!.challengeModifierId!,
+    );
+    const updatedDay = await DayController(day!).rerollModifierOption(
+      game!.currentDay,
+      modifierOptions,
+      false,
+      game!,
+    );
     const updatedGame = GameController(game!).spendRerollTokens(1);
     await updateDay(updatedDay);
     await updateGame(updatedGame);
@@ -125,8 +149,8 @@ router
   .put("/game/:id/day/:id/complete/part1", async (context) => {
     const { id } = context.params;
     const day = await getDayById(+id);
-    const updatedDay = await DayController(day!).completePart1();
-    const game = await getGameById(updatedDay.gameId);
+    const game = await getGameById(day!.gameId);
+    const updatedDay = DayController(day!).completePart1(game!.currentDay);
     const updatedGame = GameController(game!).gainRerollTokens(1);
     await updateDay(updatedDay);
     await updateGame(updatedGame);
@@ -138,8 +162,10 @@ router
   .put("/game/:id/day/:id/complete/part2", async (context) => {
     const { id } = context.params;
     const day = await getDayById(+id);
-    const updatedDay = await DayController(day!).completePart2();
-    const game = await getGameById(updatedDay.gameId);
+    const game = await getGameById(day!.gameId);
+    const updatedDay = await DayController(day!).completePart2(
+      game!.currentDay,
+    );
     const updatedGame = GameController(game!).gainRerollTokens(1);
     await updateDay(updatedDay);
     await updateGame(updatedGame);
