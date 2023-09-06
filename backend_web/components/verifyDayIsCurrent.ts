@@ -1,14 +1,12 @@
-import { getGameById } from "../db.ts";
+import { Game } from "../generated/client/deno/index.d.ts";
 
-export const verifyDayIsCurrent = async (
-  state: { number: number; gameId: number },
+export const verifyDayIsCurrent = (
+  dayNumber: number,
+  currentDay: number,
 ) => {
-  const game = await getGameById(state.gameId);
-  if (game!.currentDay !== state.number) {
+  if (dayNumber !== currentDay) {
     throw new Error(
-      `This method only permitted on current day. Current day is ${
-        game!.currentDay
-      }, but day ${state.number} was requested.`,
+      `This method only permitted on current day. Current day is ${currentDay}, but day ${dayNumber} was requested.`,
     );
   }
   return true;

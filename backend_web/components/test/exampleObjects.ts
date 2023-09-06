@@ -1,3 +1,5 @@
+import { getAllChallengeModifiers, getAllModifierOptions } from "../../db.ts";
+
 export const exampleDay = {
   "id": 1,
   "number": 1,
@@ -23,3 +25,7 @@ export const exampleGame = {
   "repositoryLink": null,
   "progressSheetLink": null,
 };
+
+export const exampleChallengeModifiers = await getAllChallengeModifiers();
+
+export const exampleModifierOptions = await getAllModifierOptions();

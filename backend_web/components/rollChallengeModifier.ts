@@ -1,10 +1,10 @@
-import { getAllChallengeModifiers } from "../db.ts";
+import { ChallengeModifier } from "../generated/client/index.d.ts";
 import { pickRandomly } from "../util/pickRandomly.ts";
 
-const rollChallengeModifier = async () => {
-  const selectedChallengeModifier = pickRandomly(
-    await getAllChallengeModifiers(),
-  );
+const rollChallengeModifier = (
+  challengeModifiers: ChallengeModifier[],
+) => {
+  const selectedChallengeModifier = pickRandomly(challengeModifiers);
   return selectedChallengeModifier;
 };
 
