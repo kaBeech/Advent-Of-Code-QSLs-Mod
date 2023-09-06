@@ -1,6 +1,6 @@
 # Advent Of Code: XXXMas Mod
 
-[UNDER CONSTRUCTION - CURRENT STATUS: Basic single-user game logic works, API (and testing) needs cleaning up]
+\*\*UNDER CONSTRUCTION - CURRENT STATUS: Basic single-user game logic works, API/testing needs cleaning up\*\*
 
 Have you ever been savoring your [Advent Of Code](https://adventofcode.com/) calendar, keyboard dusted with sugar cookie crumbles, reindeer curled at your feet, and found yourself wishing the puzzles were wilder? More challenging? MORE XTREME??
 
