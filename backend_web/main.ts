@@ -4,6 +4,7 @@ import {
   Router,
 } from "https://deno.land/x/oak@v11.1.0/mod.ts";
 import {
+  createDay,
   createGame,
   deleteGame,
   getAllGames,
@@ -11,6 +12,7 @@ import {
   getDaysByGameId,
   getGameById,
   updateDay,
+  updateGame,
 } from "./db.ts";
 import { DayController } from "./components/DayController.ts";
 import { GameController } from "./components/GameController.ts";
@@ -73,10 +75,12 @@ router
   /**
    * Start the next Day
    */
-  .post("/game/:id/start_next_day", async (context) => {
+  .post("/game/:id/day", async (context) => {
     const { id } = context.params;
     const game = await getGameById(+id);
-    const nextDay = GameController(game!).startNextDay();
+    const updatedGame = GameController(game!).startNextDay();
+    const nextDay = await createDay(updatedGame.id, updatedGame.currentDay);
+    await updateGame(updatedGame);
     context.response.body = nextDay;
   })
   /**
@@ -96,9 +100,10 @@ router
     const { id } = context.params;
     const day = await getDayById(+id);
     const updatedDay = await DayController(day!).rerollChallengeModifier();
-    // await GameController(game!).adjustCurrentRerollTokens(-2);
-    // await GameController(game!).adjustRerollTokensSpent(2);
+    const game = await getGameById(updatedDay.gameId);
+    const updatedGame = GameController(game!).spendRerollTokens(2);
     await updateDay(updatedDay);
+    await updateGame(updatedGame);
     context.response.body = updatedDay;
   })
   /**
@@ -108,9 +113,10 @@ router
     const { id } = context.params;
     const day = await getDayById(+id);
     const updatedDay = await DayController(day!).rerollModifierOption();
-    // await GameController(game!).adjustCurrentRerollTokens(-1);
-    // await GameController(game!).adjustRerollTokensSpent(1);
+    const game = await getGameById(updatedDay.gameId);
+    const updatedGame = GameController(game!).spendRerollTokens(1);
     await updateDay(updatedDay);
+    await updateGame(updatedGame);
     context.response.body = updatedDay;
   })
   /**
@@ -120,10 +126,10 @@ router
     const { id } = context.params;
     const day = await getDayById(+id);
     const updatedDay = await DayController(day!).completePart1();
-    // const game = await getGameById(state.day.gameId);
-    // await GameController(game!).adjustRerollTokensGained(1);
-    // await GameController(game!).adjustCurrentRerollTokens(1);
+    const game = await getGameById(updatedDay.gameId);
+    const updatedGame = GameController(game!).gainRerollTokens(1);
     await updateDay(updatedDay);
+    await updateGame(updatedGame);
     context.response.body = updatedDay;
   })
   /**
@@ -133,11 +139,10 @@ router
     const { id } = context.params;
     const day = await getDayById(+id);
     const updatedDay = await DayController(day!).completePart2();
-    // const game = await getGameById(state.day.gameId);
-    // await GameController(game!).adjustRerollTokensGained(1);
-    // await GameController(game!).adjustCurrentRerollTokens(1);
-    // await GameController(game!).completeCurrentDay();
+    const game = await getGameById(updatedDay.gameId);
+    const updatedGame = GameController(game!).gainRerollTokens(1);
     await updateDay(updatedDay);
+    await updateGame(updatedGame);
     context.response.body = updatedDay;
   });
 
