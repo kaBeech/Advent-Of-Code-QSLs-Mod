@@ -1,8 +1,8 @@
 # Roadmap
 
 1. Implement simple single-user API with Deno/Prisma
-2. Implement simple multi-user API
-3. Add Qwik frontend (with progress sheet)
+2. Add Qwik frontend (with progress sheet)
+3. Implement simple multi-user API
 4. Add functionality for user-customized Challenge Modifiers
 5. Implement Deno KV (for performance, but still in Beta) in addition to Prisma (for reliability)
 6. Add React frontend (for comparison)
