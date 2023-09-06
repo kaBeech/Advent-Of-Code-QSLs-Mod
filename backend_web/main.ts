@@ -59,7 +59,7 @@ router
     context.response.body = await deleteGame(+id);
   })
   /**
-   * Get All Days for a Game
+   * Get all Days for a Game
    */
   .get("/game/:id/day", async (context) => {
     const { id } = context.params;
@@ -68,7 +68,7 @@ router
   /**
    * Get a Day
    */
-  .get("/day/:id", async (context) => {
+  .get("/game/:id/day/:id", async (context) => {
     const { id } = context.params;
     context.response.body = await getDayById(+id);
   })
@@ -86,7 +86,7 @@ router
   /**
    * Roll a Day's initial Challenge Modifier
    */
-  .put("/day/:id/roll/initial", async (context) => {
+  .put("/game/:id/day/:id/roll", async (context) => {
     const { id } = context.params;
     const day = await getDayById(+id);
     const updatedDay = await DayController(day!).rollInitialChallengeModifier();
@@ -96,7 +96,7 @@ router
   /**
    * Reroll a Day's Challenge Modifier
    */
-  .put("/day/:id/roll/reroll_challenge_modifier", async (context) => {
+  .put("/game/:id/day/:id/reroll/modifier", async (context) => {
     const { id } = context.params;
     const day = await getDayById(+id);
     const updatedDay = await DayController(day!).rerollChallengeModifier();
@@ -109,7 +109,7 @@ router
   /**
    * Reroll a Day's Modifier Option
    */
-  .put("/day/:id/roll/reroll_modifier_option", async (context) => {
+  .put("/game/:id/day/:id/reroll/option", async (context) => {
     const { id } = context.params;
     const day = await getDayById(+id);
     const updatedDay = await DayController(day!).rerollModifierOption();
@@ -122,7 +122,7 @@ router
   /**
    * Complete Part 1 for a Day
    */
-  .put("/day/:id/complete_part_1", async (context) => {
+  .put("/game/:id/day/:id/complete/part1", async (context) => {
     const { id } = context.params;
     const day = await getDayById(+id);
     const updatedDay = await DayController(day!).completePart1();
@@ -135,7 +135,7 @@ router
   /**
    * Complete Part 2 for a Day
    */
-  .put("/day/:id/complete_part_2", async (context) => {
+  .put("/game/:id/day/:id/complete/part2", async (context) => {
     const { id } = context.params;
     const day = await getDayById(+id);
     const updatedDay = await DayController(day!).completePart2();
