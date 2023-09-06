@@ -1,7 +1,7 @@
 import { assertEquals } from "https://deno.land/std@0.197.0/assert/mod.ts";
 import { exampleGame } from "./exampleObjects.ts";
-import { assertRejects } from "https://deno.land/std@0.197.0/assert/assert_rejects.ts";
 import { GameController } from "../GameController.ts";
+import { assertThrows } from "https://deno.land/std@0.152.0/testing/asserts.ts";
 
 const gameController = GameController(exampleGame);
 
@@ -10,13 +10,13 @@ Deno.test("Starts first day", async () => {
   assertEquals(result.currentDay, 1);
 });
 
-Deno.test("Starting next day throws error if current day is not completed", async () => {
+Deno.test("Starting next day throws error if current day is not completed", () => {
   const gameController = GameController({
     ...exampleGame,
     currentDay: 1,
     currentDayCompleted: false,
   });
-  await assertRejects(
+  assertThrows(
     () => {
       return gameController.startNextDay();
     },
@@ -35,13 +35,13 @@ Deno.test("Starts next day", async () => {
   assertEquals(result.currentDay, 2);
 });
 
-Deno.test("Starting next day throws error if current day is already Christmas", async () => {
+Deno.test("Starting next day throws error if current day is already Christmas", () => {
   const gameController = GameController({
     ...exampleGame,
     currentDay: 25,
     currentDayCompleted: true,
   });
-  await assertRejects(
+  assertThrows(
     () => {
       return gameController.startNextDay();
     },
@@ -56,8 +56,8 @@ Deno.test("Completes current day", async () => {
   assertEquals(result.currentDayCompleted, true);
 });
 
-Deno.test("Starting next day throws error if current day is already completed", async () => {
-  await assertRejects(
+Deno.test("Starting next day throws error if current day is already completed", () => {
+  assertThrows(
     () => {
       return gameController.completeCurrentDay();
     },
@@ -66,34 +66,15 @@ Deno.test("Starting next day throws error if current day is already completed", 
   );
 });
 
-Deno.test("Adjusts current reroll tokens by positive amount", async () => {
-  const result = await gameController.adjustCurrentRerollTokens(1);
+Deno.test("Gains reroll tokens", () => {
+  const result = gameController.gainRerollTokens(1);
   assertEquals(result.currentRerollTokens, 8);
-});
-
-Deno.test("Adjusts current reroll tokens by negative amount", async () => {
-  const result = await gameController.adjustCurrentRerollTokens(-1);
-  assertEquals(result.currentRerollTokens, 7);
-});
-
-Deno.test("Adjusts reroll tokens gained by positive amount", async () => {
-  const result = await gameController.adjustRerollTokensGained(1);
   assertEquals(result.rerollTokensGained, 8);
 });
 
-Deno.test("Adjusts reroll tokens gained by negative amount", async () => {
-  const result = await gameController.adjustRerollTokensGained(-1);
-  assertEquals(result.rerollTokensGained, 7);
-});
-
-Deno.test("Adjusts reroll tokens spent by positive amount", async () => {
-  const result = await gameController.adjustRerollTokensSpent(1);
+Deno.test("Spends reroll tokens", () => {
+  const result = gameController.spendRerollTokens(1);
   assertEquals(result.rerollTokensSpent, 1);
-});
-
-Deno.test("Adjusts reroll tokens spent by negative amount", async () => {
-  const result = await gameController.adjustRerollTokensSpent(-1);
-  assertEquals(result.rerollTokensSpent, 0);
 });
 
 Deno.test("Sets name", async () => {
@@ -101,8 +82,8 @@ Deno.test("Sets name", async () => {
   assertEquals(result.name, "New Name");
 });
 
-Deno.test("Setting name to empty string throws error", async () => {
-  await assertRejects(
+Deno.test("Setting name to empty string throws error", () => {
+  assertThrows(
     () => {
       return gameController.setName("");
     },
@@ -111,8 +92,8 @@ Deno.test("Setting name to empty string throws error", async () => {
   );
 });
 
-Deno.test("Setting name to string longer than 24 characters throws error", async () => {
-  await assertRejects(
+Deno.test("Setting name to string longer than 24 characters throws error", () => {
+  assertThrows(
     () => {
       return gameController.setName("This game name is too long");
     },
@@ -126,8 +107,8 @@ Deno.test("Sets player name", async () => {
   assertEquals(result.playerName, "New Player Name");
 });
 
-Deno.test("Setting player name to empty string throws error", async () => {
-  await assertRejects(
+Deno.test("Setting player name to empty string throws error", () => {
+  assertThrows(
     () => {
       return gameController.setPlayerName("");
     },
@@ -136,8 +117,8 @@ Deno.test("Setting player name to empty string throws error", async () => {
   );
 });
 
-Deno.test("Setting player name to string longer than 24 characters throws error", async () => {
-  await assertRejects(
+Deno.test("Setting player name to string longer than 24 characters throws error", () => {
+  assertThrows(
     () => {
       return gameController.setPlayerName("This player name is too long");
     },
@@ -156,8 +137,8 @@ Deno.test("Sets repository link", async () => {
   );
 });
 
-Deno.test("Setting repository link to string longer than 255 characters throws error", async () => {
-  await assertRejects(
+Deno.test("Setting repository link to string longer than 255 characters throws error", () => {
+  assertThrows(
     () => {
       return gameController.setRepositoryLink(
         "https://github.com/kaBeech/Advent-Of-Code#but-with-a-name-so-long-it-is-amazing-Krungthepmahanakhon-Amonrattanakosin-Mahintharayutthaya-Mahadilokphop-Noppharatratchathaniburirom-Udomratchaniwetmahasathan-Amonphimanawatansathit-Sakkathattiyawitsanukamprasit",
@@ -178,8 +159,8 @@ Deno.test("Sets progress sheet link", async () => {
   );
 });
 
-Deno.test("Setting progress sheet link to string longer than 255 characters throws error", async () => {
-  await assertRejects(
+Deno.test("Setting progress sheet link to string longer than 255 characters throws error", () => {
+  assertThrows(
     () => {
       return gameController.setProgressSheetLink(
         "https://www.kabeech.com/contact#Hey-did-you-know-you-can-hire-me?-At-least-you-can-right-now-if-youre-quick-But-dont-wait-too-long-because-someones-gonna-see-this-amazing-project-and-give-me-an-incredible-job-offer-soon!-So-get-on-it-now-and-send-me-an-email!",
