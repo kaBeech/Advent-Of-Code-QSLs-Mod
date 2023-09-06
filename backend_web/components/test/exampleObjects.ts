@@ -1,25 +1,10 @@
-export const exampleDay = {
-  "id": 1,
-  "number": 1,
-  "part1Completed": false,
-  "part2Completed": false,
-  "challengeModifierRerollsUsed": 0,
-  "modifierOptionRerollsUsed": 0,
-  "challengeModifierId": null,
-  "modifierOptionId": null,
-  "gameId": 1,
-};
+import { createGame } from "../../db.ts";
+import { GameController } from "../GameController.ts";
 
-export const exampleGame = {
-  "id": 1,
-  "name": "test game 2",
-  "playerName": "Me!",
-  "year": 1925,
-  "currentDay": 0,
-  "currentDayCompleted": false,
-  "currentRerollTokens": 7,
-  "rerollTokensGained": 7,
-  "rerollTokensSpent": 0,
-  "repositoryLink": null,
-  "progressSheetLink": null,
-};
+export const exampleGame = await createGame(
+  "Example Game",
+  "Example Player",
+  2021,
+);
+
+export const exampleDay = GameController(exampleGame).startNextDay();
