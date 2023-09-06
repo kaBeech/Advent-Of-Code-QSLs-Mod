@@ -3,7 +3,7 @@ import { DayController } from "../DayController.ts";
 import { exampleDay } from "./exampleObjects.ts";
 import { assertRejects } from "https://deno.land/std@0.197.0/assert/assert_rejects.ts";
 
-const dayController = DayController(exampleDay);
+const dayController = DayController({ ...exampleDay, number: 2 });
 
 Deno.test("Initial roll returns a ChallengeModifier", async () => {
   const result = await dayController.rollInitialChallengeModifier();
@@ -31,6 +31,7 @@ Deno.test("Initial roll throws error if day already has a ChallengeModifier", as
   const dayController = DayController({
     ...exampleDay,
     challengeModifierId: 1,
+    number: 2,
   });
   await assertRejects(
     () => {
@@ -67,6 +68,7 @@ Deno.test("ChallengeModifier reroll throws error if day does not have a Challeng
   const dayController = DayController({
     ...exampleDay,
     challengeModifierId: null,
+    number: 2,
   });
   await assertRejects(
     () => {
@@ -81,6 +83,7 @@ Deno.test("ModifierOption reroll returns a ModifierOption if ChallengeModifier h
   const dayController = DayController({
     ...exampleDay,
     challengeModifierId: 5,
+    number: 2,
   });
   const result = await dayController.rerollModifierOption();
   assertEquals(typeof result.id, "number");
@@ -107,6 +110,7 @@ Deno.test("ModifierOption reroll throws error if day does not have a ChallengeMo
   const dayController = DayController({
     ...exampleDay,
     challengeModifierId: null,
+    number: 2,
   });
   await assertRejects(
     () => {
@@ -121,6 +125,7 @@ Deno.test("ModifierOption reroll throws error if ChallengeModifier does not have
   const dayController = DayController({
     ...exampleDay,
     challengeModifierId: 1,
+    number: 2,
   });
   await assertRejects(
     () => {
@@ -135,6 +140,7 @@ Deno.test("ModifierOption reroll throws error if day does not have a ModifierOpt
   const dayController = DayController({
     ...exampleDay,
     modifierOptionId: 0,
+    number: 2,
   });
   await assertRejects(
     () => {
@@ -149,6 +155,7 @@ Deno.test("ModifierOption reroll throws error if day does not have a ModifierOpt
   const dayController = DayController({
     ...exampleDay,
     modifierOptionId: null,
+    number: 2,
   });
   await assertRejects(
     () => {
@@ -182,6 +189,7 @@ Deno.test("Completing Part 1 throws error if day is already completed", async ()
   const dayController = DayController({
     ...exampleDay,
     part1Completed: true,
+    number: 2,
   });
   await assertRejects(
     () => {
@@ -215,6 +223,7 @@ Deno.test("Completing Part 2 throws error if day is already completed", async ()
   const dayController = DayController({
     ...exampleDay,
     part2Completed: true,
+    number: 2,
   });
   await assertRejects(
     () => {
