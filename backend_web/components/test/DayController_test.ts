@@ -1,16 +1,17 @@
-import { assertEquals } from "https://deno.land/std@0.197.0/assert/mod.ts";
+import {
+  assertEquals,
+  assertNotEquals,
+} from "https://deno.land/std@0.197.0/assert/mod.ts";
 import { DayController } from "../DayController.ts";
 import { exampleDay } from "./exampleObjects.ts";
 import { assertRejects } from "https://deno.land/std@0.197.0/assert/assert_rejects.ts";
 
 const dayController = DayController(exampleDay);
 
-Deno.test("Initial roll returns a ChallengeModifier", async () => {
+Deno.test("Initial roll sets a ChallengeModifier", async () => {
+  assertEquals(typeof exampleDay.challengeModifierId, "number");
   const result = await dayController.rollInitialChallengeModifier();
-  assertEquals(typeof result.id, "number");
-  assertEquals(typeof result.name, "string");
-  assertEquals(typeof result.text, "string");
-  assertEquals(typeof result.hasOptions, "boolean");
+  assertEquals(typeof result.challengeModifierId, "number");
 });
 
 Deno.test("Initial roll throws error if day is not current", async () => {
@@ -41,12 +42,10 @@ Deno.test("Initial roll throws error if day already has a ChallengeModifier", as
   );
 });
 
-Deno.test("ChallengeModifier reroll returns a ChallengeModifier", async () => {
+Deno.test("ChallengeModifier reroll sets a new ChallengeModifier", async () => {
   const result = await dayController.rerollChallengeModifier();
-  assertEquals(typeof result.id, "number");
-  assertEquals(typeof result.name, "string");
-  assertEquals(typeof result.text, "string");
-  assertEquals(typeof result.hasOptions, "boolean");
+  assertEquals(typeof result.challengeModifierId, "number");
+  assertNotEquals(result.challengeModifierId, exampleDay.challengeModifierId);
 });
 
 Deno.test("ChallengeModifier reroll throws error if day is not current", async () => {
@@ -67,6 +66,7 @@ Deno.test("ChallengeModifier reroll throws error if day does not have a Challeng
   const dayController = DayController({
     ...exampleDay,
     challengeModifierId: null,
+    number: 2,
   });
   await assertRejects(
     () => {
@@ -77,16 +77,10 @@ Deno.test("ChallengeModifier reroll throws error if day does not have a Challeng
   );
 });
 
-Deno.test("ModifierOption reroll returns a ModifierOption if ChallengeModifier has options", async () => {
-  const dayController = DayController({
-    ...exampleDay,
-    challengeModifierId: 5,
-  });
+Deno.test("ModifierOption reroll sets a new ModifierOption if ChallengeModifier has options", async () => {
   const result = await dayController.rerollModifierOption();
-  assertEquals(typeof result.id, "number");
-  assertEquals(typeof result.name, "string");
-  assertEquals(typeof result.text, "string");
-  assertEquals(typeof result.challengeModifierId, "number");
+  assertEquals(typeof result.modifierOptionId, "number");
+  assertNotEquals(result.modifierOptionId, exampleDay.modifierOptionId);
 });
 
 Deno.test("ModifierOption reroll throws error if day is not current", async () => {
@@ -107,6 +101,7 @@ Deno.test("ModifierOption reroll throws error if day does not have a ChallengeMo
   const dayController = DayController({
     ...exampleDay,
     challengeModifierId: null,
+    number: 2,
   });
   await assertRejects(
     () => {
@@ -121,6 +116,7 @@ Deno.test("ModifierOption reroll throws error if ChallengeModifier does not have
   const dayController = DayController({
     ...exampleDay,
     challengeModifierId: 1,
+    number: 2,
   });
   await assertRejects(
     () => {
@@ -135,6 +131,7 @@ Deno.test("ModifierOption reroll throws error if day does not have a ModifierOpt
   const dayController = DayController({
     ...exampleDay,
     modifierOptionId: 0,
+    number: 2,
   });
   await assertRejects(
     () => {
@@ -149,6 +146,7 @@ Deno.test("ModifierOption reroll throws error if day does not have a ModifierOpt
   const dayController = DayController({
     ...exampleDay,
     modifierOptionId: null,
+    number: 2,
   });
   await assertRejects(
     () => {
@@ -182,6 +180,7 @@ Deno.test("Completing Part 1 throws error if day is already completed", async ()
   const dayController = DayController({
     ...exampleDay,
     part1Completed: true,
+    number: 2,
   });
   await assertRejects(
     () => {
@@ -215,6 +214,7 @@ Deno.test("Completing Part 2 throws error if day is already completed", async ()
   const dayController = DayController({
     ...exampleDay,
     part2Completed: true,
+    number: 2,
   });
   await assertRejects(
     () => {

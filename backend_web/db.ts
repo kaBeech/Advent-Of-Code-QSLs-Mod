@@ -1,4 +1,4 @@
-import { PrismaClient } from "./generated/client/deno/edge.ts";
+import { Day, Game, PrismaClient } from "./generated/client/deno/edge.ts";
 import { config } from "https://deno.land/std@0.163.0/dotenv/mod.ts";
 
 const envVars = await config();
@@ -58,6 +58,18 @@ export async function upsertGame(
       name,
       playerName,
       year,
+    },
+  });
+  return result;
+}
+
+export async function updateGame(game: Game) {
+  const result = await prisma.game.update({
+    where: {
+      id: game.id,
+    },
+    data: {
+      ...game,
     },
   });
   return result;
@@ -239,91 +251,13 @@ export async function getDaysByGameId(gameId: number) {
   return days;
 }
 
-export async function updateDayPart1CompletionStatus(
-  id: number,
-  part1Completed: boolean,
-) {
+export async function updateDay(day: Day) {
   const result = await prisma.day.update({
     where: {
-      id,
+      id: day.id,
     },
     data: {
-      part1Completed,
-    },
-  });
-  return result;
-}
-
-export async function updateDayPart2CompletionStatus(
-  id: number,
-  part2Completed: boolean,
-) {
-  const result = await prisma.day.update({
-    where: {
-      id,
-    },
-    data: {
-      part2Completed,
-    },
-  });
-  return result;
-}
-
-export async function updateDayChallengeModifier(
-  id: number,
-  challengeModifierId: number,
-) {
-  const result = await prisma.day.update({
-    where: {
-      id,
-    },
-    data: {
-      challengeModifierId,
-    },
-  });
-  return result;
-}
-
-export async function updateDayModifierOption(
-  id: number,
-  modifierOptionId: number,
-) {
-  const result = await prisma.day.update({
-    where: {
-      id,
-    },
-    data: {
-      modifierOptionId,
-    },
-  });
-  return result;
-}
-
-export async function updateDayChallengeModifierRerollsUsed(
-  id: number,
-  challengeModifierRerollsUsed: number,
-) {
-  const result = await prisma.day.update({
-    where: {
-      id,
-    },
-    data: {
-      challengeModifierRerollsUsed,
-    },
-  });
-  return result;
-}
-
-export async function updateDayModifierOptionRerollsUsed(
-  id: number,
-  modifierOptionRerollsUsed: number,
-) {
-  const result = await prisma.day.update({
-    where: {
-      id,
-    },
-    data: {
-      modifierOptionRerollsUsed,
+      ...day,
     },
   });
   return result;

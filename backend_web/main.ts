@@ -4,12 +4,15 @@ import {
   Router,
 } from "https://deno.land/x/oak@v11.1.0/mod.ts";
 import {
+  createDay,
   createGame,
   deleteGame,
   getAllGames,
   getDayById,
   getDaysByGameId,
   getGameById,
+  updateDay,
+  updateGame,
 } from "./db.ts";
 import { DayController } from "./components/DayController.ts";
 import { GameController } from "./components/GameController.ts";
@@ -56,7 +59,7 @@ router
     context.response.body = await deleteGame(+id);
   })
   /**
-   * Get All Days for a Game
+   * Get all Days for a Game
    */
   .get("/game/:id/day", async (context) => {
     const { id } = context.params;
@@ -65,63 +68,82 @@ router
   /**
    * Get a Day
    */
-  .get("/day/:id", async (context) => {
+  .get("/game/:id/day/:id", async (context) => {
     const { id } = context.params;
     context.response.body = await getDayById(+id);
   })
   /**
    * Start the next Day
    */
-  .post("/game/:id/start_next_day", async (context) => {
+  .post("/game/:id/day", async (context) => {
     const { id } = context.params;
     const game = await getGameById(+id);
-    const day = GameController(game!).startNextDay();
-    context.response.body = day;
+    const updatedGame = GameController(game!).startNextDay();
+    const nextDay = await createDay(updatedGame.id, updatedGame.currentDay);
+    await updateGame(updatedGame);
+    context.response.body = nextDay;
   })
   /**
    * Roll a Day's initial Challenge Modifier
    */
-  .put("/day/:id/roll/initial", async (context) => {
+  .put("/game/:id/day/:id/roll", async (context) => {
     const { id } = context.params;
     const day = await getDayById(+id);
-    await DayController(day!).rollInitialChallengeModifier();
-    context.response.body = day;
+    const updatedDay = await DayController(day!).rollInitialChallengeModifier();
+    await updateDay(updatedDay);
+    context.response.body = updatedDay;
   })
   /**
    * Reroll a Day's Challenge Modifier
    */
-  .put("/day/:id/roll/reroll_challenge_modifier", async (context) => {
+  .put("/game/:id/day/:id/reroll/modifier", async (context) => {
     const { id } = context.params;
     const day = await getDayById(+id);
-    await DayController(day!).rerollChallengeModifier();
-    context.response.body = day;
+    const updatedDay = await DayController(day!).rerollChallengeModifier();
+    const game = await getGameById(updatedDay.gameId);
+    const updatedGame = GameController(game!).spendRerollTokens(2);
+    await updateDay(updatedDay);
+    await updateGame(updatedGame);
+    context.response.body = updatedDay;
   })
   /**
    * Reroll a Day's Modifier Option
    */
-  .put("/day/:id/roll/reroll_modifier_option", async (context) => {
+  .put("/game/:id/day/:id/reroll/option", async (context) => {
     const { id } = context.params;
     const day = await getDayById(+id);
-    await DayController(day!).rerollModifierOption();
-    context.response.body = day;
+    const updatedDay = await DayController(day!).rerollModifierOption();
+    const game = await getGameById(updatedDay.gameId);
+    const updatedGame = GameController(game!).spendRerollTokens(1);
+    await updateDay(updatedDay);
+    await updateGame(updatedGame);
+    context.response.body = updatedDay;
   })
   /**
    * Complete Part 1 for a Day
    */
-  .put("/day/:id/complete_part_1", async (context) => {
+  .put("/game/:id/day/:id/complete/part1", async (context) => {
     const { id } = context.params;
     const day = await getDayById(+id);
-    await DayController(day!).completePart1();
-    context.response.body = day;
+    const updatedDay = await DayController(day!).completePart1();
+    const game = await getGameById(updatedDay.gameId);
+    const updatedGame = GameController(game!).gainRerollTokens(1);
+    await updateDay(updatedDay);
+    await updateGame(updatedGame);
+    context.response.body = updatedDay;
   })
   /**
    * Complete Part 2 for a Day
    */
-  .put("/day/:id/complete_part_2", async (context) => {
+  .put("/game/:id/day/:id/complete/part2", async (context) => {
     const { id } = context.params;
     const day = await getDayById(+id);
-    await DayController(day!).completePart2();
-    context.response.body = day;
+    const updatedDay = await DayController(day!).completePart2();
+    const game = await getGameById(updatedDay.gameId);
+    const updatedGame = GameController(game!).gainRerollTokens(1);
+    await updateDay(updatedDay);
+    await updateGame(updatedGame);
+    context.response.body = updatedDay;
   });
 
 app.use(router.routes());
