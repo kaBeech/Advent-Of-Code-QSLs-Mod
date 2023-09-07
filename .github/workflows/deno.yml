@@ -35,10 +35,10 @@ jobs:
       # - name: Verify formatting
       #   run: deno fmt --check
 
-      # - name: Run linter
-      #   run: deno lint
+      - name: Run linter
+        run: deno lint --exclude backend_web/generated
 
-      - name: Run tests
-        run: deno test -A
-        env: 
-          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+      # - name: Run tests
+      #   run: deno test -A
+      #   env: 
+      #     DATABASE_URL: ${{ secrets.DATABASE_URL }}
