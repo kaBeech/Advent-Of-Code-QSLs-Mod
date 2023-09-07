@@ -1,4 +1,4 @@
-import { ModifierOption } from "../generated/client/index.d.ts";
+import { ModifierOption } from "../generated/client/deno/edge.ts";
 import { pickRandomly } from "../util/pickRandomly.ts";
 
 const rollModifierOption = (modifierOptions: ModifierOption[]) => {
