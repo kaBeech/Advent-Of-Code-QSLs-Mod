@@ -1,4 +1,4 @@
-import { ChallengeModifier } from "../generated/client/index.d.ts";
+import { ChallengeModifier } from "../generated/client/deno/edge.ts";
 import { pickRandomly } from "../util/pickRandomly.ts";
 
 const rollChallengeModifier = (

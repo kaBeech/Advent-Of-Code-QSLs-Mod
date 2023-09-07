@@ -32,7 +32,7 @@ model ModifierOption {
 
 model Game {
   id                  Int     @id @default(autoincrement())
-  name                String  @unique
+  name                String
   playerName          String
   year                Int
   currentDay          Int     @default(0)
