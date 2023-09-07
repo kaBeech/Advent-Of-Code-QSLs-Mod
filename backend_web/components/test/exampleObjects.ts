@@ -26,6 +26,20 @@ export const exampleGame = {
   "progressSheetLink": null,
 };
 
+export const exampleGameDay1 = {
+  "id": 1,
+  "name": "test game 2",
+  "playerName": "Me!",
+  "year": 1925,
+  "currentDay": 1,
+  "currentDayCompleted": false,
+  "currentRerollTokens": 7,
+  "rerollTokensGained": 7,
+  "rerollTokensSpent": 0,
+  "repositoryLink": null,
+  "progressSheetLink": null,
+};
+
 export const exampleChallengeModifiers = await getAllChallengeModifiers();
 
 export const exampleModifierOptions = await getAllModifierOptions();

@@ -7,16 +7,16 @@ import { DayController } from "../DayController.ts";
 import {
   exampleChallengeModifiers,
   exampleDay,
-  exampleGame,
+  exampleGameDay1,
   exampleModifierOptions,
 } from "./exampleObjects.ts";
 
 const dayController = DayController(exampleDay);
 
 Deno.test("Initial roll sets a ChallengeModifier", async () => {
-  assertEquals(typeof exampleDay.challengeModifierId, "number");
+  assertEquals(exampleDay.challengeModifierId, null);
   const result = await dayController.rollInitialChallengeModifier(
-    exampleGame,
+    exampleGameDay1,
     exampleChallengeModifiers,
     exampleModifierOptions,
   );
@@ -31,13 +31,13 @@ Deno.test("Initial roll throws error if day is not current", () => {
   assertThrows(
     () => {
       return dayController.rollInitialChallengeModifier(
-        exampleGame,
+        exampleGameDay1,
         exampleChallengeModifiers,
         exampleModifierOptions,
       );
     },
     Error,
-    "This method only permitted on current day",
+    `This method only permitted on current day. Current day is 1, but day 90 was requested.`,
   );
 });
 
@@ -49,7 +49,7 @@ Deno.test("Initial roll throws error if day already has a ChallengeModifier", ()
   assertThrows(
     () => {
       return dayController.rollInitialChallengeModifier(
-        exampleGame,
+        exampleGameDay1,
         exampleChallengeModifiers,
         exampleModifierOptions,
       );
@@ -60,13 +60,14 @@ Deno.test("Initial roll throws error if day already has a ChallengeModifier", ()
 });
 
 Deno.test("ChallengeModifier reroll sets a new ChallengeModifier", async () => {
+  const oldResult = exampleDay.challengeModifierId;
   const result = await dayController.rerollChallengeModifier(
-    exampleGame,
+    exampleGameDay1,
     exampleChallengeModifiers,
     exampleModifierOptions,
   );
   assertEquals(typeof result.challengeModifierId, "number");
-  assertNotEquals(result.challengeModifierId, exampleDay.challengeModifierId);
+  assertNotEquals(result.challengeModifierId, oldResult);
 });
 
 Deno.test("ChallengeModifier reroll throws error if day is not current", () => {
@@ -77,7 +78,7 @@ Deno.test("ChallengeModifier reroll throws error if day is not current", () => {
   assertThrows(
     () => {
       return dayController.rerollChallengeModifier(
-        exampleGame,
+        exampleGameDay1,
         exampleChallengeModifiers,
         exampleModifierOptions,
       );
@@ -95,7 +96,7 @@ Deno.test("ChallengeModifier reroll throws error if day does not have a Challeng
   assertThrows(
     () => {
       return dayController.rerollChallengeModifier(
-        exampleGame,
+        exampleGameDay1,
         exampleChallengeModifiers,
         exampleModifierOptions,
       );
@@ -111,7 +112,7 @@ Deno.test("ModifierOption reroll sets a new ModifierOption if ChallengeModifier 
     challengeModifierId: 5,
   });
   const result = await dayController.rerollModifierOption(
-    exampleGame.currentDay,
+    exampleGameDay1.currentDay,
     exampleModifierOptions,
     true,
   );
@@ -127,7 +128,7 @@ Deno.test("ModifierOption reroll throws error if day is not current", () => {
   assertThrows(
     () => {
       return dayController.rerollModifierOption(
-        exampleGame.currentDay,
+        exampleGameDay1.currentDay,
         exampleModifierOptions,
         true,
       );
@@ -145,7 +146,7 @@ Deno.test("ModifierOption reroll throws error if day does not have a ChallengeMo
   assertThrows(
     () => {
       return dayController.rerollModifierOption(
-        exampleGame.currentDay,
+        exampleGameDay1.currentDay,
         exampleModifierOptions,
         true,
       );
@@ -163,7 +164,7 @@ Deno.test("ModifierOption reroll throws error if ChallengeModifier does not have
   assertThrows(
     () => {
       return dayController.rerollModifierOption(
-        exampleGame.currentDay,
+        exampleGameDay1.currentDay,
         exampleModifierOptions,
         true,
       );
@@ -181,7 +182,7 @@ Deno.test("ModifierOption reroll throws error if day does not have a ModifierOpt
   assertThrows(
     () => {
       return dayController.rerollModifierOption(
-        exampleGame.currentDay,
+        exampleGameDay1.currentDay,
         exampleModifierOptions,
         true,
       );
@@ -199,7 +200,7 @@ Deno.test("ModifierOption reroll throws error if day does not have a ModifierOpt
   assertThrows(
     () => {
       return dayController.rerollModifierOption(
-        exampleGame.currentDay,
+        exampleGameDay1.currentDay,
         exampleModifierOptions,
         true,
       );
@@ -210,7 +211,7 @@ Deno.test("ModifierOption reroll throws error if day does not have a ModifierOpt
 });
 
 Deno.test("Completes Part 1", () => {
-  const result = dayController.completePart1(exampleGame.currentDay);
+  const result = dayController.completePart1(exampleGameDay1.currentDay);
   assertEquals(result.part1Completed, true);
 });
 
@@ -221,7 +222,7 @@ Deno.test("Completing Part 1 throws error if day is not current", () => {
   });
   assertThrows(
     () => {
-      return dayController.completePart1(exampleGame.currentDay);
+      return dayController.completePart1(exampleGameDay1.currentDay);
     },
     Error,
     "This method only permitted on current day",
@@ -235,7 +236,7 @@ Deno.test("Completing Part 1 throws error if day is already completed", () => {
   });
   assertThrows(
     () => {
-      return dayController.completePart1(exampleGame.currentDay);
+      return dayController.completePart1(exampleGameDay1.currentDay);
     },
     Error,
     "Part 1 already completed",
@@ -243,7 +244,7 @@ Deno.test("Completing Part 1 throws error if day is already completed", () => {
 });
 
 Deno.test("Completes Part 2", () => {
-  const result = dayController.completePart2(exampleGame.currentDay);
+  const result = dayController.completePart2(exampleGameDay1.currentDay);
   assertEquals(result.part2Completed, true);
 });
 
@@ -254,7 +255,7 @@ Deno.test("Completing Part 2 throws error if day is not current", () => {
   });
   assertThrows(
     () => {
-      return dayController.completePart2(exampleGame.currentDay);
+      return dayController.completePart2(exampleGameDay1.currentDay);
     },
     Error,
     "This method only permitted on current day",
@@ -268,7 +269,7 @@ Deno.test("Completing Part 2 throws error if day is already completed", () => {
   });
   assertThrows(
     () => {
-      return dayController.completePart2(exampleGame.currentDay);
+      return dayController.completePart2(exampleGameDay1.currentDay);
     },
     Error,
     "Part 2 already completed",
