@@ -1,4 +1,4 @@
-# Advent Of Code: XXXMas Mod
+# Advent Of Code: Xtreme Xmas
 
 \*\*UNDER CONSTRUCTION\*\*
 
@@ -8,9 +8,7 @@ Have you ever been savoring your [Advent Of Code](https://adventofcode.com/) cal
 
 Well ho-ho-hold that thought because this is the mod for you!
 
-Advent Of Code: XXXMas Mod adds randomized challenge modifiers for the Advent Of Code puzzle series. It will also track your progress
-
-This mod does make Advent Of Code more challenging, but it doesn't contain NSFW content (beyond one instance of adult language)
+Advent Of Code: Xtreme Xmas adds randomized challenge modifiers for the Advent Of Code puzzle series. It will also track your progress
 
 Each day you will get to roll for a randomized challenge modifier such as "Complete this puzzle in a language you've never used before" or "Complete this puzzle without reassigning any variables."
 
