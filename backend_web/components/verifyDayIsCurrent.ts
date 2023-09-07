@@ -1,5 +1,3 @@
-import { Game } from "../generated/client/deno/index.d.ts";
-
 export const verifyDayIsCurrent = (
   dayNumber: number,
   currentDay: number,
