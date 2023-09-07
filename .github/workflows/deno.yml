@@ -36,7 +36,8 @@ jobs:
       #   run: deno fmt --check
 
       - name: Run linter
-        run: deno lint --exclude backend_web/generated
+        run: deno lint --generated
+        working-directory: ./backend_web
 
       # - name: Run tests
       #   run: deno test -A
