@@ -44,10 +44,9 @@ const initialChallengeModifierRoller = (state: DayControllerState) => ({
       const selectedModifierOptions = modifierOptions.filter(
         (option) => option.challengeModifierId === selectedChallengeModifier.id,
       );
-      const selectedModifierOption = await rollModifierOption(
+      state.day.modifierOptionId = await rollModifierOption(
         selectedModifierOptions,
       );
-      state.day.modifierOptionId = selectedModifierOption.id;
     }
     return state.day;
   },
