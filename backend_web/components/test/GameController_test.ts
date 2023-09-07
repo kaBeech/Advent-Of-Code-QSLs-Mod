@@ -50,6 +50,18 @@ Deno.test("Starting next day throws error if current day is already Christmas", 
   );
 });
 
+Deno.test("Gains reroll tokens", () => {
+  const result = gameController.gainRerollTokens(1);
+  assertEquals(result.currentRerollTokens, 8);
+  assertEquals(result.rerollTokensGained, 8);
+});
+
+Deno.test("Spends reroll tokens", () => {
+  const result = gameController.spendRerollTokens(1);
+  assertEquals(result.rerollTokensSpent, 1);
+  assertEquals(result.currentRerollTokens, 7);
+});
+
 Deno.test("Completes current day", async () => {
   const result = await gameController.completeCurrentDay();
   assertEquals(result.currentDay, 1);
@@ -64,17 +76,6 @@ Deno.test("Starting next day throws error if current day is already completed", 
     Error,
     "Current day (1) already completed",
   );
-});
-
-Deno.test("Gains reroll tokens", () => {
-  const result = gameController.gainRerollTokens(1);
-  assertEquals(result.currentRerollTokens, 8);
-  assertEquals(result.rerollTokensGained, 8);
-});
-
-Deno.test("Spends reroll tokens", () => {
-  const result = gameController.spendRerollTokens(1);
-  assertEquals(result.rerollTokensSpent, 1);
 });
 
 Deno.test("Sets name", async () => {
