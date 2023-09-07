@@ -5615,7 +5615,6 @@ export namespace Prisma {
 
   export type GameWhereUniqueInput = {
     id?: number
-    name?: string
   }
 
   export type GameOrderByWithAggregationInput = {
