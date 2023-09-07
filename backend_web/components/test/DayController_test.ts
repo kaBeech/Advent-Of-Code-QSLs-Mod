@@ -107,19 +107,20 @@ Deno.test("ChallengeModifier reroll throws error if day does not have a Challeng
   );
 });
 
-// Deno.test("ModifierOption reroll sets a new ModifierOption if ChallengeModifier has options", async () => {
-//   const dayController = DayController({
-//     ...exampleDay,
-//     challengeModifierId: 5,
-//   });
-//   const result = await dayController.rerollModifierOption(
-//     exampleGameDay1.currentDay,
-//     exampleModifierOptions,
-//     true,
-//   );
-//   assertEquals(typeof result.modifierOptionId, "number");
-//   assertNotEquals(result.modifierOptionId, exampleDay.modifierOptionId);
-// });
+Deno.test("ModifierOption reroll sets a new ModifierOption if ChallengeModifier has options", async () => {
+  const dayController = DayController({
+    ...exampleDay,
+    challengeModifierId: 5,
+    modifierOptionId: 14,
+  });
+  const result = await dayController.rerollModifierOption(
+    exampleGameDay1.currentDay,
+    exampleModifierOptions,
+    true,
+  );
+  assertEquals(typeof result.modifierOptionId, "number");
+  assertNotEquals(result.modifierOptionId, exampleDay.modifierOptionId);
+});
 
 Deno.test("ModifierOption reroll throws error if day is not current", () => {
   const dayController = DayController({
