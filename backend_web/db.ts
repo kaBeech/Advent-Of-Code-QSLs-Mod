@@ -44,25 +44,6 @@ export async function getGameById(id: number) {
   return game;
 }
 
-export async function upsertGame(
-  name: string,
-  playerName: string,
-  year: number,
-) {
-  const result = await prisma.game.upsert({
-    where: {
-      name,
-    },
-    update: {},
-    create: {
-      name,
-      playerName,
-      year,
-    },
-  });
-  return result;
-}
-
 export async function updateGame(game: Game) {
   const result = await prisma.game.update({
     where: {
