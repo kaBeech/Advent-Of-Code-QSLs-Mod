@@ -13,11 +13,15 @@ datasource db {
 }
 
 model User {
-  id                Int                 @id @default(autoincrement())
-  Game              Game[]
-  PublicProfile     PublicProfile[]
-  ChallengeModifier ChallengeModifier[]
-  ModifierOption    ModifierOption[]
+  id                                      Int                 @id @default(autoincrement())
+  Game                                    Game[]
+  PublicProfile                           PublicProfile[]
+  ChallengeModifier                       ChallengeModifier[]
+  ModifierOption                          ModifierOption[]
+  defaultExcludedChallengeModifiers       ChallengeModifier[]
+  defaultExcludedModifierOptions          ModifierOption[]
+  defaultIncludedPublicChallengeModifiers ChallengeModifier[]
+  defaultIncludedPublicModifierOptions    ModifierOption[]
 }
 
 model PublicProfile {
@@ -96,12 +100,8 @@ model ChallengeModifier {
   standard       Boolean          @default(false)
   createdById    Int?
   public         Boolean          @default(false)
-  User           User?            @relation(fields: [createdById], references: [id])
+  CreatedBy      User?            @relation(fields: [createdById], references: [id])
   ModifierOption ModifierOption[]
-  Day            Day?             @relation(fields: [dayId], references: [id])
-  dayId          Int?
-  Day            Day?             @relation(fields: [dayId], references: [id])
-  dayId          Int?
   Day            Day[]
   Day            Day[]
 }
@@ -115,12 +115,7 @@ model ModifierOption {
   standard            Boolean           @default(false)
   createdById         Int?
   public              Boolean           @default(false)
-  User                User?             @relation(fields: [createdById], references: [id])
+  CreatedBy           User?             @relation(fields: [createdById], references: [id])
   ChallengeModifier   ChallengeModifier @relation(fields: [challengeModifierId], references: [id])
-  Day                 Day?              @relation(fields: [dayId], references: [id])
-  dayId               Int?
-  Day                 Day?              @relation(fields: [dayId], references: [id])
-  dayId               Int?
-  Day                 Day[]
   Day                 Day[]
 }
