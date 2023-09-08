@@ -158,12 +158,12 @@ Deno.test("ModifierOption reroll throws error if day does not have a ChallengeMo
   );
 });
 
-Deno.test("ModifierOption reroll throws error if ChallengeModifier does not have options", () => {
+Deno.test("ModifierOption reroll throws error if ChallengeModifier does not have options", async () => {
   const dayController = DayController({
     ...exampleDay,
     challengeModifierId: 1,
   });
-  assertRejects(
+  await assertRejects(
     () => {
       return dayController.rerollModifierOption(
         exampleGameDay1.currentDay,
@@ -214,7 +214,7 @@ Deno.test("ModifierOption reroll throws error if day does not have a ModifierOpt
 
 Deno.test("Completes Part 1", () => {
   const result = dayController.completePart1(exampleGameDay1.currentDay);
-  assertEquals(result.part1Completed, true);
+  assertEquals(result.part1Completed, new Date());
 });
 
 Deno.test("Completing Part 1 throws error if day is not current", () => {
@@ -234,7 +234,7 @@ Deno.test("Completing Part 1 throws error if day is not current", () => {
 Deno.test("Completing Part 1 throws error if day is already completed", () => {
   const dayController = DayController({
     ...exampleDay,
-    part1Completed: true,
+    part1Completed: new Date(),
   });
   assertThrows(
     () => {
@@ -247,7 +247,7 @@ Deno.test("Completing Part 1 throws error if day is already completed", () => {
 
 Deno.test("Completes Part 2", () => {
   const result = dayController.completePart2(exampleGameDay1.currentDay);
-  assertEquals(result.part2Completed, true);
+  assertEquals(result.part2Completed, new Date());
 });
 
 Deno.test("Completing Part 2 throws error if day is not current", () => {
@@ -267,7 +267,7 @@ Deno.test("Completing Part 2 throws error if day is not current", () => {
 Deno.test("Completing Part 2 throws error if day is already completed", () => {
   const dayController = DayController({
     ...exampleDay,
-    part2Completed: true,
+    part2Completed: new Date(),
   });
   assertThrows(
     () => {

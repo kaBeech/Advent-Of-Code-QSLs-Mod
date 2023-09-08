@@ -115,7 +115,7 @@ const part1Completer = (state: DayControllerState) => ({
     if (state.day.part1Completed) {
       throw new Error("Part 1 already completed");
     }
-    state.day.part1Completed = true;
+    state.day.part1Completed = new Date();
     return state.day;
   },
 });
@@ -129,7 +129,7 @@ const part2Completer = (state: DayControllerState) => ({
     if (state.day.part2Completed) {
       throw new Error("Part 2 already completed");
     }
-    state.day.part2Completed = true;
+    state.day.part2Completed = new Date();
     return state.day;
   },
 });

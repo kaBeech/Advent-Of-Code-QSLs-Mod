@@ -1,4 +1,4 @@
-import { Day, Game, PrismaClient } from "./generated/client/deno/edge.ts";
+import { Day, Game, PrismaClient, User } from "./generated/client/deno/edge.ts";
 import { config } from "https://deno.land/std@0.163.0/dotenv/mod.ts";
 
 const envVars = await config();
@@ -12,16 +12,72 @@ const prisma = new PrismaClient({
 });
 
 /**
+ * User CRUD
+ */
+
+export async function createUser() {
+  const result = await prisma.user.create({});
+  return result;
+}
+
+export async function upsertUser(id: number) {
+  const result = await prisma.user.upsert({
+    where: {
+      id,
+    },
+    update: {},
+    create: {
+      id,
+    },
+  });
+  return result;
+}
+
+export async function getUserById(id: number) {
+  const user = await prisma.user.findUnique({
+    where: {
+      id,
+    },
+  });
+  return user;
+}
+
+export async function updateUser(user: User) {
+  const result = await prisma.user.update({
+    where: {
+      id: user.id,
+    },
+    data: {
+      ...user,
+    },
+  });
+  return result;
+}
+
+export async function deleteUser(id: number) {
+  const result = await prisma.user.delete({
+    where: {
+      id,
+    },
+  });
+  return result;
+}
+
+/**
  * Game CRUD
  */
 
 export async function createGame(
+  userId: number,
+  number: number,
   name: string,
-  playerName: string,
   year: number,
+  playerName?: string,
 ) {
   const result = await prisma.game.create({
     data: {
+      userId,
+      number,
       name,
       playerName,
       year,

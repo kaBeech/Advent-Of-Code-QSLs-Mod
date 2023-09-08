@@ -18,7 +18,7 @@ permissions:
   contents: read
 
 jobs:
-  deno_lint:
+  deno_lint_and_test:
     runs-on: ubuntu-latest
 
     steps:
@@ -27,7 +27,7 @@ jobs:
 
       - name: Setup Deno
         # uses: denoland/setup-deno@v1
-        uses: denoland/setup-deno@61fe2df320078202e33d7d5ad347e7dcfa0e8f31  # v1.1.2
+        uses: denoland/setup-deno@61fe2df320078202e33d7d5ad347e7dcfa0e8f31 # v1.1.2
         with:
           deno-version: v1.x
 
@@ -39,7 +39,7 @@ jobs:
         run: deno lint --ignore=generated
         working-directory: ./backend_web
 
-      # - name: Run tests
-      #   run: deno test -A
-      #   env: 
-      #     DATABASE_URL: ${{ secrets.DATABASE_URL }}
+      - name: Run tests
+        run: deno test -A
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
