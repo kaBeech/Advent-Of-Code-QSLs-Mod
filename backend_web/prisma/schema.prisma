@@ -62,25 +62,29 @@ model Rank {
 }
 
 model Day {
-  id                           Int                @id @default(autoincrement())
-  gameId                       Int
-  number                       Int
-  challengeModifierId          Int?
-  modifierOptionId             Int?
-  dateCreated                  DateTime           @default(now())
-  dateFirstRolled              DateTime?
-  part1Completed               DateTime?
-  modifierWhenPart1CompletedId Int?
-  optionWhenPart1CompletedId   Int?
-  part2Completed               DateTime?
-  challengeModifierRerollsUsed Int                @default(0)
-  modifierOptionRerollsUsed    Int                @default(0)
-  rerollTokensSpentDuringPart2 Int                @default(0)
-  game                         Game               @relation(fields: [gameId], references: [id])
-  ModifierWhenPart1Completed   ChallengeModifier? @relation(name: "ModifierWhenPart1Completed", fields: [modifierWhenPart1CompletedId], references: [id])
-  OptionWhenPart1Completed     ModifierOption?    @relation(name: "OptionWhenPart1Completed", fields: [optionWhenPart1CompletedId], references: [id])
-  ChallengeModifier            ChallengeModifier? @relation(fields: [challengeModifierId], references: [id])
-  ModifierOption               ModifierOption?    @relation(fields: [modifierOptionId], references: [id])
+  id                               Int                 @id @default(autoincrement())
+  gameId                           Int
+  number                           Int
+  challengeModifierId              Int?
+  modifierOptionId                 Int?
+  dateCreated                      DateTime            @default(now())
+  dateFirstRolled                  DateTime?
+  part1Completed                   DateTime?
+  modifierWhenPart1CompletedId     Int?
+  optionWhenPart1CompletedId       Int?
+  part2Completed                   DateTime?
+  challengeModifierRerollsUsed     Int                 @default(0)
+  modifierOptionRerollsUsed        Int                 @default(0)
+  rerollTokensSpentDuringPart2     Int                 @default(0)
+  excludedChallengeModifiers       ChallengeModifier[]
+  excludedModifierOptions          ModifierOption[]
+  includedPublicChallengeModifiers ChallengeModifier[]
+  includedPublicModifierOptions    ModifierOption[]
+  Game                             Game                @relation(fields: [gameId], references: [id])
+  ModifierWhenPart1Completed       ChallengeModifier?  @relation(name: "ModifierWhenPart1Completed", fields: [modifierWhenPart1CompletedId], references: [id])
+  OptionWhenPart1Completed         ModifierOption?     @relation(name: "OptionWhenPart1Completed", fields: [optionWhenPart1CompletedId], references: [id])
+  ChallengeModifier                ChallengeModifier?  @relation(fields: [challengeModifierId], references: [id])
+  ModifierOption                   ModifierOption?     @relation(fields: [modifierOptionId], references: [id])
 }
 
 model ChallengeModifier {
@@ -94,6 +98,10 @@ model ChallengeModifier {
   public         Boolean          @default(false)
   User           User?            @relation(fields: [createdById], references: [id])
   ModifierOption ModifierOption[]
+  Day            Day?             @relation(fields: [dayId], references: [id])
+  dayId          Int?
+  Day            Day?             @relation(fields: [dayId], references: [id])
+  dayId          Int?
   Day            Day[]
   Day            Day[]
 }
@@ -108,7 +116,11 @@ model ModifierOption {
   createdById         Int?
   public              Boolean           @default(false)
   User                User?             @relation(fields: [createdById], references: [id])
-  Day                 Day[]
   ChallengeModifier   ChallengeModifier @relation(fields: [challengeModifierId], references: [id])
+  Day                 Day?              @relation(fields: [dayId], references: [id])
+  dayId               Int?
+  Day                 Day?              @relation(fields: [dayId], references: [id])
+  dayId               Int?
+  Day                 Day[]
   Day                 Day[]
 }
