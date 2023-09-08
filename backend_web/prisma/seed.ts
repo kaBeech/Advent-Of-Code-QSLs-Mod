@@ -476,6 +476,46 @@ for (const u of modifierOptionData) {
   console.log(`Created modifier option with id: ${modifierOption.id}`);
 }
 
+const rankData: Prisma.RankCreateInput[] = [
+  {
+    name: "Champion",
+    minimumScore: 0,
+  },
+  {
+    name: "Gnarly Champion",
+    minimumScore: 200,
+  },
+  {
+    name: "Radical Champion",
+    minimumScore: 400,
+  },
+  {
+    name: "Righteous Champion",
+    minimumScore: 600,
+  },
+  {
+    name: "Flawless Champion",
+    minimumScore: 820,
+  },
+  {
+    name: "Santanic Champion",
+    minimumScore: 1000,
+  },
+  {
+    name: "Godlike Champion",
+    minimumScore: 1140,
+  },
+];
+
+for (const u of rankData) {
+  const user = await prisma.rank.upsert({
+    where: { name: u.name },
+    update: {},
+    create: u,
+  });
+  console.log(`Created rank with id: ${user.id}`);
+}
+
 console.log(`Seeding finished.`);
 
 await prisma.$disconnect();
