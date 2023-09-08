@@ -29,7 +29,7 @@ router
    */
   .get("/", (context) => {
     context.response.body =
-      "You have successfully pinged the Advent Of Code QSL's Mod API!";
+      "You have successfully pinged the Advent Of Code: Xtreme Xmas API!";
   })
   /**
    * Get All Games (eventually will be Continue Game)
