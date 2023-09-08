@@ -50,10 +50,9 @@ Deno.test("Starting next day throws error if current day is already Christmas", 
   );
 });
 
-Deno.test("Gains reroll tokens", () => {
-  const result = gameController.gainRerollTokens(1);
+Deno.test("Adjusts reroll tokens", () => {
+  const result = gameController.adjustCurrentRerollTokens(1);
   assertEquals(result.currentRerollTokens, 8);
-  assertEquals(result.rerollTokensGained, 8);
 });
 
 Deno.test("Spends reroll tokens", () => {
