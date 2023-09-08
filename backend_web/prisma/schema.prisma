@@ -65,10 +65,14 @@ model Day {
   id                           Int                @id @default(autoincrement())
   game                         Game               @relation(fields: [gameId], references: [id])
   number                       Int
-  part1Completed               Boolean            @default(false)
-  part2Completed               Boolean            @default(false)
-  modifier                     ChallengeModifier? @relation(fields: [challengeModifierId], references: [id])
-  modifierOption               ModifierOption?    @relation(fields: [modifierOptionId], references: [id])
+  part1Completed               DateTime?
+  modifierWhenPart1CompletedId Int?
+  ModifierWhenPart1Completed   ChallengeModifier? @relation(name: "ModifierWhenPart1Completed", fields: [modifierWhenPart1CompletedId], references: [id])
+  optionWhenPart1CompletedId   Int?
+  OptionWhenPart1Completed     ModifierOption?    @relation(name: "OptionWhenPart1Completed", fields: [optionWhenPart1CompletedId], references: [id])
+  part2Completed               DateTime?
+  ChallengeModifier            ChallengeModifier? @relation(fields: [challengeModifierId], references: [id])
+  ModifierOption               ModifierOption?    @relation(fields: [modifierOptionId], references: [id])
   challengeModifierRerollsUsed Int                @default(0)
   modifierOptionRerollsUsed    Int                @default(0)
   challengeModifierId          Int?
@@ -88,6 +92,7 @@ model ChallengeModifier {
   User           User?            @relation(fields: [createdById], references: [id])
   ModifierOption ModifierOption[]
   Day            Day[]
+  Day            Day[]
 }
 
 model ModifierOption {
@@ -102,4 +107,5 @@ model ModifierOption {
   User                User?             @relation(fields: [createdById], references: [id])
   Day                 Day[]
   ChallengeModifier   ChallengeModifier @relation(fields: [challengeModifierId], references: [id])
+  Day                 Day[]
 }
