@@ -12,24 +12,6 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model ChallengeModifier {
-  id             Int              @id @default(autoincrement())
-  name           String           @unique
-  text           String
-  hasOptions     Boolean          @default(false)
-  ModifierOption ModifierOption[]
-  Day            Day[]
-}
-
-model ModifierOption {
-  id                  Int                @id @default(autoincrement())
-  name                String             @unique
-  text                String
-  Day                 Day[]
-  ChallengeModifier   ChallengeModifier? @relation(fields: [challengeModifierId], references: [id])
-  challengeModifierId Int?
-}
-
 model Game {
   id                  Int     @id @default(autoincrement())
   name                String
@@ -58,4 +40,22 @@ model Day {
   challengeModifierId          Int?
   modifierOptionId             Int?
   gameId                       Int
+}
+
+model ChallengeModifier {
+  id             Int              @id @default(autoincrement())
+  name           String           @unique
+  text           String
+  hasOptions     Boolean          @default(false)
+  ModifierOption ModifierOption[]
+  Day            Day[]
+}
+
+model ModifierOption {
+  id                  Int                @id @default(autoincrement())
+  name                String             @unique
+  text                String
+  Day                 Day[]
+  ChallengeModifier   ChallengeModifier? @relation(fields: [challengeModifierId], references: [id])
+  challengeModifierId Int?
 }
