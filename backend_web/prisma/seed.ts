@@ -516,6 +516,17 @@ for (const u of rankData) {
   console.log(`Created rank with id: ${user.id}`);
 }
 
+const userData: Prisma.UserCreateInput[] = [
+  { "numberOfGames": 0 },
+];
+
+for (const u of userData) {
+  const user = await prisma.user.create({
+    data: u,
+  });
+  console.log(`Created rank with id: ${user.id}`);
+}
+
 console.log(`Seeding finished.`);
 
 await prisma.$disconnect();
