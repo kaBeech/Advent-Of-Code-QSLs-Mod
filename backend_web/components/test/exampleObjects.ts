@@ -1,5 +1,6 @@
 export const exampleUser = {
   "id": 1,
+  "numberOfGames": 1,
 };
 
 export const exampleGame = {
@@ -19,7 +20,7 @@ export const exampleGame = {
   "publicProfileId": null,
   "score": 0,
   "rankId": null,
-  "dateCreated": "2021-05-01T00:00:00.000Z",
+  "dateCreated": new Date(),
   "dateCompleted": null,
 };
 
@@ -40,7 +41,7 @@ export const exampleGameDay1 = {
   "publicProfileId": null,
   "score": 0,
   "rankId": null,
-  "dateCreated": "2021-05-01T00:00:00.000Z",
+  "dateCreated": new Date(),
   "dateCompleted": null,
 };
 
@@ -50,7 +51,7 @@ export const exampleDay = {
   "number": 1,
   "challengeModifierId": null,
   "modifierOptionId": null,
-  "dateCreated": "2021-05-01T00:00:00.000Z",
+  "dateCreated": new Date(),
   "dateFirstRolled": null,
   "part1Completed": null,
   "modifierWhenPart1Completed": null,
@@ -109,7 +110,7 @@ export const exampleChallengeModifiersOrig = [
 export const exampleChallengeModifiers = [
   {
     "id": 1,
-    "dateCreated": "2021-05-01T00:00:00.000Z",
+    "dateCreated": new Date(),
     "name": "new_codebase_language",
     "text": "in a programming language not yet used in this codebase",
     "hasOptions": false,
@@ -120,7 +121,7 @@ export const exampleChallengeModifiers = [
   },
   {
     "id": 2,
-    "dateCreated": "2021-05-01T00:00:00.000Z",
+    "dateCreated": new Date(),
     "name": "new_language",
     "text": "in a programming language you've never used before",
     "hasOptions": false,
@@ -131,7 +132,7 @@ export const exampleChallengeModifiers = [
   },
   {
     "id": 3,
-    "dateCreated": "2021-05-01T00:00:00.000Z",
+    "dateCreated": new Date(),
     "name": "quickly",
     "text": "as quickly as you can",
     "hasOptions": false,
@@ -142,7 +143,7 @@ export const exampleChallengeModifiers = [
   },
   {
     "id": 4,
-    "dateCreated": "2021-05-01T00:00:00.000Z",
+    "dateCreated": new Date(),
     "name": "language_box_1",
     "text": "using a random programming language from Language Box 1: ",
     "hasOptions": true,
@@ -153,7 +154,7 @@ export const exampleChallengeModifiers = [
   },
   {
     "id": 5,
-    "dateCreated": "2021-05-01T00:00:00.000Z",
+    "dateCreated": new Date(),
     "name": "language_box_2",
     "text": "using a random programming language from Language Box 2: ",
     "hasOptions": true,
@@ -164,7 +165,7 @@ export const exampleChallengeModifiers = [
   },
   {
     "id": 6,
-    "dateCreated": "2021-05-01T00:00:00.000Z",
+    "dateCreated": new Date(),
     "name": "language_box_3",
     "text": "using a random programming language from Language Box 3: ",
     "hasOptions": true,
@@ -175,7 +176,7 @@ export const exampleChallengeModifiers = [
   },
   {
     "id": 7,
-    "dateCreated": "2021-05-01T00:00:00.000Z",
+    "dateCreated": new Date(),
     "name": "testing",
     "text": "with thorough testing",
     "hasOptions": false,
@@ -189,7 +190,7 @@ export const exampleChallengeModifiers = [
 export const exampleModifierOptions = [
   {
     "id": 1,
-    "dateCreated": "2021-05-01T00:00:00.000Z",
+    "dateCreated": new Date(),
     "challengeModifierId": 4,
     "name": "language_box_1_javascript",
     "text": "JavaScript",
@@ -200,7 +201,7 @@ export const exampleModifierOptions = [
   },
   {
     "id": 2,
-    "dateCreated": "2021-05-01T00:00:00.000Z",
+    "dateCreated": new Date(),
     "challengeModifierId": 4,
     "name": "language_box_1_typescript",
     "text": "TypeScript",
@@ -211,7 +212,7 @@ export const exampleModifierOptions = [
   },
   {
     "id": 3,
-    "dateCreated": "2021-05-01T00:00:00.000Z",
+    "dateCreated": new Date(),
     "challengeModifierId": 4,
     "name": "language_box_1_python",
     "text": "Python",
@@ -222,7 +223,7 @@ export const exampleModifierOptions = [
   },
   {
     "id": 4,
-    "dateCreated": "2021-05-01T00:00:00.000Z",
+    "dateCreated": new Date(),
     "challengeModifierId": 4,
     "name": "language_box_1_r",
     "text": "R",
@@ -233,7 +234,7 @@ export const exampleModifierOptions = [
   },
   {
     "id": 5,
-    "dateCreated": "2021-05-01T00:00:00.000Z",
+    "dateCreated": new Date(),
     "challengeModifierId": 4,
     "name": "language_box_1_ruby",
     "text": "Ruby",
@@ -244,7 +245,7 @@ export const exampleModifierOptions = [
   },
   {
     "id": 6,
-    "dateCreated": "2021-05-01T00:00:00.000Z",
+    "dateCreated": new Date(),
     "challengeModifierId": 4,
     "name": "language_box_1_java",
     "text": "Java",
@@ -255,7 +256,7 @@ export const exampleModifierOptions = [
   },
   {
     "id": 7,
-    "dateCreated": "2021-05-01T00:00:00.000Z",
+    "dateCreated": new Date(),
     "challengeModifierId": 4,
     "name": "language_box_1_c",
     "text": "C",
@@ -266,7 +267,7 @@ export const exampleModifierOptions = [
   },
   {
     "id": 8,
-    "dateCreated": "2021-05-01T00:00:00.000Z",
+    "dateCreated": new Date(),
     "challengeModifierId": 4,
     "name": "language_box_1_go",
     "text": "Go",
@@ -277,7 +278,7 @@ export const exampleModifierOptions = [
   },
   {
     "id": 9,
-    "dateCreated": "2021-05-01T00:00:00.000Z",
+    "dateCreated": new Date(),
     "challengeModifierId": 5,
     "name": "language_box_2_cpp",
     "text": "C++",
@@ -288,7 +289,7 @@ export const exampleModifierOptions = [
   },
   {
     "id": 10,
-    "dateCreated": "2021-05-01T00:00:00.000Z",
+    "dateCreated": new Date(),
     "challengeModifierId": 5,
     "name": "language_box_2_rust",
     "text": "Rust",
@@ -299,7 +300,7 @@ export const exampleModifierOptions = [
   },
   {
     "id": 11,
-    "dateCreated": "2021-05-01T00:00:00.000Z",
+    "dateCreated": new Date(),
     "challengeModifierId": 5,
     "name": "language_box_2_lisp",
     "text": "Lisp",
