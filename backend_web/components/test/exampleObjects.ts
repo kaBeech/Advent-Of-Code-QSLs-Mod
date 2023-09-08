@@ -1,5 +1,6 @@
 export const exampleUser = {
   "id": 1,
+  "dateCreated": new Date(),
   "numberOfGames": 1,
 };
 
