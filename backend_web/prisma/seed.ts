@@ -427,6 +427,39 @@ const modifierOptionData: Prisma.ModifierOptionCreateInput[] = [
         name: "language_box_3",
       },
     },
+    name: "language_box_3_intercal",
+    text: "INTERCAL",
+    standard: true,
+    public: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "language_box_3",
+      },
+    },
+    name: "language_box_3_befunge",
+    text: "Befunge",
+    standard: true,
+    public: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "language_box_3",
+      },
+    },
+    name: "language_box_3_brainfuck",
+    text: "Brainfuck",
+    standard: true,
+    public: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "language_box_3",
+      },
+    },
     name: "language_box_3_jsfuck",
     text: "JSFuck",
     standard: true,
