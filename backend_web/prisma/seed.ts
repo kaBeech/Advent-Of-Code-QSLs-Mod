@@ -201,193 +201,236 @@ for (const u of challengeModifierData) {
 
 const modifierOptionData: Prisma.ModifierOptionCreateInput[] = [
   {
+    ChallengeModifier: {
+      connect: {
+        name: "language_box_1",
+      },
+    },
     name: "language_box_1_javascript",
     text: "JavaScript",
+    standard: true,
+    public: true,
+  },
+  {
     ChallengeModifier: {
       connect: {
         name: "language_box_1",
       },
     },
-  },
-  {
     name: "language_box_1_typescript",
     text: "TypeScript",
+    standard: true,
+    public: true,
+  },
+  {
     ChallengeModifier: {
       connect: {
         name: "language_box_1",
       },
     },
-  },
-  {
     name: "language_box_1_python",
     text: "Python",
+    standard: true,
+    public: true,
+  },
+  {
     ChallengeModifier: {
       connect: {
         name: "language_box_1",
       },
     },
-  },
-  {
     name: "language_box_1_r",
     text: "R",
+    standard: true,
+    public: true,
+  },
+  {
     ChallengeModifier: {
       connect: {
         name: "language_box_1",
       },
     },
-  },
-  {
     name: "language_box_1_ruby",
+
     text: "Ruby",
+    standard: true,
+    public: true,
+  },
+  {
     ChallengeModifier: {
       connect: {
         name: "language_box_1",
       },
     },
-  },
-  {
     name: "language_box_1_java",
     text: "Java",
+    standard: true,
+    public: true,
+  },
+  {
     ChallengeModifier: {
       connect: {
         name: "language_box_1",
       },
     },
-  },
-  {
     name: "language_box_1_c",
     text: "C",
+    standard: true,
+    public: true,
+  },
+  {
     ChallengeModifier: {
       connect: {
         name: "language_box_1",
       },
     },
-  },
-  {
     name: "language_box_1_go",
     text: "Go",
-    ChallengeModifier: {
-      connect: {
-        name: "language_box_1",
-      },
-    },
+    standard: true,
+    public: true,
   },
   {
+    ChallengeModifier: {
+      connect: {
+        name: "language_box_2",
+      },
+    },
     name: "language_box_2_cpp",
     text: "C++",
+    standard: true,
+    public: true,
+  },
+  {
     ChallengeModifier: {
       connect: {
         name: "language_box_2",
       },
     },
-  },
-  {
     name: "language_box_2_rust",
     text: "Rust",
+    standard: true,
+    public: true,
+  },
+  {
     ChallengeModifier: {
       connect: {
         name: "language_box_2",
       },
     },
-  },
-  {
     name: "language_box_2_lisp",
     text: "LISP",
+    standard: true,
+    public: true,
+  },
+  {
     ChallengeModifier: {
       connect: {
         name: "language_box_2",
       },
     },
-  },
-  {
     name: "language_box_2_haskell",
     text: "Haskell",
+    standard: true,
+    public: true,
+  },
+  {
     ChallengeModifier: {
       connect: {
         name: "language_box_2",
       },
     },
-  },
-  {
     name: "language_box_2_scala",
     text: "Scala",
+    standard: true,
+    public: true,
+  },
+  {
     ChallengeModifier: {
       connect: {
         name: "language_box_2",
       },
     },
-  },
-  {
     name: "language_box_2_prolog",
     text: "Prolog",
+    standard: true,
+    public: true,
+  },
+  {
     ChallengeModifier: {
       connect: {
         name: "language_box_2",
       },
     },
-  },
-  {
     name: "language_box_2_csharp",
     text: "C#",
-    ChallengeModifier: {
-      connect: {
-        name: "language_box_2",
-      },
-    },
+    standard: true,
+    public: true,
   },
   {
+    ChallengeModifier: {
+      connect: {
+        name: "language_box_3",
+      },
+    },
     name: "language_box_3_webassembly",
     text: "WebAssembly",
+    standard: true,
+    public: true,
+  },
+  {
     ChallengeModifier: {
       connect: {
         name: "language_box_3",
       },
     },
-  },
-  {
     name: "language_box_3_algol",
     text: "ALGOL",
+    standard: true,
+    public: true,
+  },
+  {
     ChallengeModifier: {
       connect: {
         name: "language_box_3",
       },
     },
-  },
-  {
     name: "language_box_3_cobol",
     text: "COBOL",
+    standard: true,
+    public: true,
+  },
+  {
     ChallengeModifier: {
       connect: {
         name: "language_box_3",
       },
     },
-  },
-  {
     name: "language_box_3_fortran",
     text: "FORTRAN",
+    standard: true,
+    public: true,
+  },
+  {
     ChallengeModifier: {
       connect: {
         name: "language_box_3",
       },
     },
-  },
-  {
     name: "language_box_3_lolcode",
     text: "LOLCODE",
-    ChallengeModifier: {
-      connect: {
-        name: "language_box_3",
-      },
-    },
+    standard: true,
+    public: true,
   },
   {
-    name: "language_box_3_jsfuck",
-    text: "JSFuck",
     ChallengeModifier: {
       connect: {
         name: "language_box_3",
       },
     },
+    name: "language_box_3_jsfuck",
+    text: "JSFuck",
+    standard: true,
+    public: true,
   },
 ];
 
