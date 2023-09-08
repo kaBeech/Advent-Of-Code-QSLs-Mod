@@ -12,26 +12,41 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model user {
+model User {
   id   Int    @id @default(autoincrement())
   Game Game[]
 }
 
 model Game {
-  id                  Int     @id @default(autoincrement())
-  name                String
+  id                  Int                 @id @default(autoincrement())
   userId              Int
-  user                user    @relation(fields: [userId], references: [id])
-  playerName          String
+  user                User                @relation(fields: [userId], references: [id])
+  number              Int
   year                Int
-  currentDay          Int     @default(0)
-  currentDayCompleted Boolean @default(false)
-  currentRerollTokens Int     @default(7)
-  rerollTokensGained  Int     @default(7)
-  rerollTokensSpent   Int     @default(0)
+  name                String
+  playerName          String?
+  currentDay          Int                 @default(0)
+  currentDayCompleted Boolean             @default(false)
+  currentRerollTokens Int                 @default(7)
+  rerollTokensSpent   Int                 @default(0)
   repositoryLink      String?
   progressSheetLink   String?
+  public              Boolean             @default(false)
+  rankId              Int
+  excludedModifiers   ChallengeModifier[]
+  excludedOptions     ModifierOption[]
+  score               Int                 @default(0)
+  dateCreated         DateTime            @default(now())
+  dateCompleted       DateTime?
+  Rank                Rank                @relation(fields: [rankId], references: [id])
   Day                 Day[]
+}
+
+model Rank {
+  id           Int    @id @default(autoincrement())
+  name         String @unique
+  minimumScore Int
+  Game         Game[]
 }
 
 model Day {
@@ -56,6 +71,8 @@ model ChallengeModifier {
   hasOptions     Boolean          @default(false)
   ModifierOption ModifierOption[]
   Day            Day[]
+  Game           Game[]
+  gameId         Int?
 }
 
 model ModifierOption {
@@ -65,4 +82,6 @@ model ModifierOption {
   Day                 Day[]
   ChallengeModifier   ChallengeModifier? @relation(fields: [challengeModifierId], references: [id])
   challengeModifierId Int?
+  Game                Game[]
+  gameId              Int?
 }
