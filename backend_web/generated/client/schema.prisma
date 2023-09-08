@@ -12,50 +12,139 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model ChallengeModifier {
-  id             Int              @id @default(autoincrement())
-  name           String           @unique
-  text           String
-  hasOptions     Boolean          @default(false)
-  ModifierOption ModifierOption[]
-  Day            Day[]
+model User {
+  id                                      Int                 @id @default(autoincrement())
+  dateCreated                             DateTime            @default(now())
+  Game                                    Game[]
+  PublicProfile                           PublicProfile[]
+  ChallengeModifier                       ChallengeModifier[]
+  ModifierOption                          ModifierOption[]
+  DefaultExcludedChallengeModifiers       ChallengeModifier[] @relation(name: "DefaultExcludedChallengeModifiers")
+  DefaultExcludedModifierOptions          ModifierOption[]    @relation(name: "DefaultExcludedModifierOptions")
+  DefaultIncludedCustomChallengeModifiers ChallengeModifier[] @relation(name: "DefaultIncludedCustomChallengeModifiers")
+  DefaultIncludedCustomModifierOptions    ModifierOption[]    @relation(name: "DefaultIncludedCustomModifierOptions")
+  ModifierPack                            ModifierPack[]
 }
 
-model ModifierOption {
-  id                  Int                @id @default(autoincrement())
-  name                String             @unique
-  text                String
-  Day                 Day[]
-  ChallengeModifier   ChallengeModifier? @relation(fields: [challengeModifierId], references: [id])
-  challengeModifierId Int?
+model PublicProfile {
+  id          Int      @id @default(autoincrement())
+  dateCreated DateTime @default(now())
+  name        String
+  userId      Int
+  User        User     @relation(fields: [userId], references: [id])
+  Game        Game[]
 }
 
 model Game {
-  id                  Int     @id @default(autoincrement())
-  name                String
-  playerName          String
+  id                  Int            @id @default(autoincrement())
+  dateCreated         DateTime       @default(now())
+  userId              Int
+  number              Int
   year                Int
-  currentDay          Int     @default(0)
-  currentDayCompleted Boolean @default(false)
-  currentRerollTokens Int     @default(7)
-  rerollTokensGained  Int     @default(7)
-  rerollTokensSpent   Int     @default(0)
+  name                String
+  playerName          String?
+  currentDay          Int            @default(0)
+  currentDayCompleted Boolean        @default(false)
+  currentRerollTokens Int            @default(7)
+  rerollTokensSpent   Int            @default(0)
   repositoryLink      String?
   progressSheetLink   String?
+  public              Boolean        @default(false)
+  publicProfileId     Int?
+  score               Int            @default(0)
+  rankId              Int?
+  dateCompleted       DateTime?
+  User                User           @relation(fields: [userId], references: [id])
+  Rank                Rank?          @relation(fields: [rankId], references: [id])
   Day                 Day[]
+  PublicProfile       PublicProfile? @relation(fields: [publicProfileId], references: [id])
+}
+
+model Rank {
+  id           Int    @id @default(autoincrement())
+  name         String @unique
+  minimumScore Int
+  Game         Game[]
 }
 
 model Day {
-  id                           Int                @id @default(autoincrement())
-  game                         Game               @relation(fields: [gameId], references: [id])
-  number                       Int
-  part1Completed               Boolean            @default(false)
-  part2Completed               Boolean            @default(false)
-  modifier                     ChallengeModifier? @relation(fields: [challengeModifierId], references: [id])
-  modifierOption               ModifierOption?    @relation(fields: [modifierOptionId], references: [id])
-  challengeModifierRerollsUsed Int                @default(0)
-  modifierOptionRerollsUsed    Int                @default(0)
-  challengeModifierId          Int?
-  modifierOptionId             Int?
-  gameId                       Int
+  id                               Int                 @id @default(autoincrement())
+  dateCreated                      DateTime            @default(now())
+  gameId                           Int
+  number                           Int
+  challengeModifierId              Int?
+  modifierOptionId                 Int?
+  dateFirstRolled                  DateTime?
+  part1Completed                   DateTime?
+  modifierWhenPart1CompletedId     Int?
+  optionWhenPart1CompletedId       Int?
+  part2Completed                   DateTime?
+  challengeModifierRerollsUsed     Int                 @default(0)
+  modifierOptionRerollsUsed        Int                 @default(0)
+  rerollTokensSpentDuringPart2     Int                 @default(0)
+  ExcludedChallengeModifiers       ChallengeModifier[] @relation(name: "ExcludedChallengeModifiers")
+  ExcludedModifierOptions          ModifierOption[]    @relation(name: "ExcludedModifierOptions")
+  IncludedCustomChallengeModifiers ChallengeModifier[] @relation(name: "IncludedCustomChallengeModifiers")
+  IncludedCustomModifierOptions    ModifierOption[]    @relation(name: "IncludedCustomModifierOptions")
+  Game                             Game                @relation(fields: [gameId], references: [id])
+  ModifierWhenPart1Completed       ChallengeModifier?  @relation(name: "ModifierWhenPart1Completed", fields: [modifierWhenPart1CompletedId], references: [id])
+  OptionWhenPart1Completed         ModifierOption?     @relation(name: "OptionWhenPart1Completed", fields: [optionWhenPart1CompletedId], references: [id])
+  ChallengeModifier                ChallengeModifier?  @relation(fields: [challengeModifierId], references: [id])
+  ModifierOption                   ModifierOption?     @relation(fields: [modifierOptionId], references: [id])
+}
+
+model ChallengeModifier {
+  id                   Int              @id @default(autoincrement())
+  dateCreated          DateTime         @default(now())
+  name                 String           @unique
+  text                 String
+  hasOptions           Boolean          @default(false)
+  explanatoryUrl       String?
+  standard             Boolean          @default(false)
+  createdById          Int?
+  public               Boolean          @default(false)
+  CreatedBy            User?            @relation(fields: [createdById], references: [id])
+  ModifierOption       ModifierOption[]
+  Day                  Day[]
+  ModifierPackExcluded ModifierPack[]   @relation(name: "ExcludedChallengeModifiers")
+  ModifierPackIncluded ModifierPack[]   @relation(name: "IncludedCustomChallengeModifiers")
+  UserExcluded         User[]           @relation(name: "DefaultExcludedChallengeModifiers")
+  UserIncluded         User[]           @relation(name: "DefaultIncludedCustomChallengeModifiers")
+  ExcludedFromDay      Day[]            @relation(name: "ExcludedChallengeModifiers")
+  IncludedInDay        Day[]            @relation(name: "IncludedCustomChallengeModifiers")
+  DayCompletedInPart1  Day[]            @relation(name: "ModifierWhenPart1Completed")
+}
+
+model ModifierOption {
+  id                   Int               @id @default(autoincrement())
+  dateCreated          DateTime          @default(now())
+  challengeModifierId  Int
+  name                 String            @unique
+  text                 String
+  explanatoryUrl       String?
+  standard             Boolean           @default(false)
+  createdById          Int?
+  public               Boolean           @default(false)
+  ChallengeModifier    ChallengeModifier @relation(fields: [challengeModifierId], references: [id])
+  CreatedBy            User?             @relation(fields: [createdById], references: [id])
+  Day                  Day[]
+  ModifierPackExcluded ModifierPack[]    @relation(name: "ExcludedModifierOptions")
+  ModifierPackIncluded ModifierPack[]    @relation(name: "IncludedCustomModifierOptions")
+  UserExcluded         User[]            @relation(name: "DefaultExcludedModifierOptions")
+  UserIncluded         User[]            @relation(name: "DefaultIncludedCustomModifierOptions")
+  ExcludedFromDay      Day[]             @relation(name: "ExcludedModifierOptions")
+  IncludedInDay        Day[]             @relation(name: "IncludedCustomModifierOptions")
+  DayCompletedInPart1  Day[]             @relation(name: "OptionWhenPart1Completed")
+}
+
+model ModifierPack {
+  id                               Int                 @id @default(autoincrement())
+  dateCreated                      DateTime            @default(now())
+  createdById                      Int?
+  public                           Boolean             @default(false)
+  ExcludedChallengeModifiers       ChallengeModifier[] @relation(name: "ExcludedChallengeModifiers")
+  ExcludedModifierOptions          ModifierOption[]    @relation(name: "ExcludedModifierOptions")
+  EncludedCustomChallengeModifiers ChallengeModifier[] @relation(name: "IncludedCustomChallengeModifiers")
+  IncludedCustomModifierOptions    ModifierOption[]    @relation(name: "IncludedCustomModifierOptions")
+  CreatedBy                        User?               @relation(fields: [createdById], references: [id])
 }
