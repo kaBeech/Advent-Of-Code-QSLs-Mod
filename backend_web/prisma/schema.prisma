@@ -50,11 +50,11 @@ model Game {
   public              Boolean        @default(false)
   publicProfileId     Int?
   score               Int            @default(0)
-  rankId              Int
+  rankId              Int?
   dateCreated         DateTime       @default(now())
   dateCompleted       DateTime?
   User                User           @relation(fields: [userId], references: [id])
-  Rank                Rank           @relation(fields: [rankId], references: [id])
+  Rank                Rank?          @relation(fields: [rankId], references: [id])
   Day                 Day[]
   PublicProfile       PublicProfile? @relation(fields: [publicProfileId], references: [id])
 }
