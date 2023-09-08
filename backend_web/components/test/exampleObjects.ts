@@ -48,15 +48,15 @@ export const exampleGameDay1 = {
 
 export const exampleDay = {
   "id": 1,
+  "dateCreated": new Date(),
   "gameId": 1,
   "number": 1,
   "challengeModifierId": null,
   "modifierOptionId": null,
-  "dateCreated": new Date(),
   "dateFirstRolled": null,
   "part1Completed": null,
-  "modifierWhenPart1Completed": null,
-  "optionWhenPart1Completed": null,
+  "modifierWhenPart1CompletedId": null,
+  "optionWhenPart1CompletedId": null,
   "part2Completed": null,
   "challengeModifierRerollsUsed": 0,
   "modifierOptionRerollsUsed": 0,
