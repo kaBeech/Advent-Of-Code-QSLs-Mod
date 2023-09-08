@@ -16,12 +16,16 @@ const prisma = new PrismaClient({
  */
 
 export async function createGame(
+  userId: number,
+  number: number,
   name: string,
   playerName: string,
   year: number,
 ) {
   const result = await prisma.game.create({
     data: {
+      userId,
+      number,
       name,
       playerName,
       year,
