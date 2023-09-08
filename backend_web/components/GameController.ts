@@ -14,7 +14,7 @@ export const GameController = (
   return {
     ...nextDayStarter(state),
     ...currentDayCompleter(state),
-    ...rerollTokenGainer(state),
+    ...currentRerollTokensAdjuster(state),
     ...rerollTokenSpender(state),
     ...nameSetter(state),
     ...playerNameSetter(state),
@@ -34,7 +34,16 @@ const nextDayStarter = (state: GameControllerState) => ({
       );
     }
     state.game.currentDay += 1;
-    state.game.currentDayCompleted = false;
+    currentDayCompletionStatusSetter(state).setCurrentDayCompletionStatus(
+      false,
+    );
+    return state.game;
+  },
+});
+
+const currentDayCompletionStatusSetter = (state: GameControllerState) => ({
+  setCurrentDayCompletionStatus: (completed: boolean) => {
+    state.game.currentDayCompleted = completed;
     return state.game;
   },
 });
@@ -47,22 +56,23 @@ const currentDayCompleter = (state: GameControllerState) => ({
       );
     }
     state.game.currentDayCompleted = true;
-    state.game = rerollTokenGainer(state).gainRerollTokens(1);
+    state.game = currentRerollTokensAdjuster(state).adjustCurrentRerollTokens(
+      1,
+    );
     return state.game;
   },
 });
 
-const rerollTokenGainer = (state: GameControllerState) => ({
-  gainRerollTokens: (amount: number) => {
+const currentRerollTokensAdjuster = (state: GameControllerState) => ({
+  adjustCurrentRerollTokens: (amount: number) => {
     state.game.currentRerollTokens += amount;
-    state.game.rerollTokensGained += amount;
     return state.game;
   },
 });
 
 const rerollTokenSpender = (state: GameControllerState) => ({
   spendRerollTokens: (amount: number) => {
-    state.game.currentRerollTokens -= amount;
+    currentRerollTokensAdjuster(state).adjustCurrentRerollTokens(-amount);
     state.game.rerollTokensSpent += amount;
     return state.game;
   },

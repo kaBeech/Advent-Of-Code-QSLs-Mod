@@ -151,7 +151,7 @@ router
     const day = await getDayById(+id);
     const game = await getGameById(day!.gameId);
     const updatedDay = DayController(day!).completePart1(game!.currentDay);
-    const updatedGame = GameController(game!).gainRerollTokens(1);
+    const updatedGame = GameController(game!).adjustCurrentRerollTokens(1);
     await updateDay(updatedDay);
     await updateGame(updatedGame);
     context.response.body = updatedDay;
@@ -166,7 +166,7 @@ router
     const updatedDay = await DayController(day!).completePart2(
       game!.currentDay,
     );
-    const updatedGame = GameController(game!).gainRerollTokens(1);
+    const updatedGame = GameController(game!).adjustCurrentRerollTokens(1);
     await updateDay(updatedDay);
     await updateGame(updatedGame);
     context.response.body = updatedDay;
