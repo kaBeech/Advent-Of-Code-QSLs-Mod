@@ -13,31 +13,45 @@ datasource db {
 }
 
 model User {
-  id   Int    @id @default(autoincrement())
-  Game Game[]
+  id                Int                 @id @default(autoincrement())
+  Game              Game[]
+  PublicProfile     PublicProfile[]
+  ChallengeModifier ChallengeModifier[]
+  ModifierOption    ModifierOption[]
+}
+
+model PublicProfile {
+  id          Int      @id @default(autoincrement())
+  name        String
+  Game        Game[]
+  userId      Int
+  User        User     @relation(fields: [userId], references: [id])
+  dateCreated DateTime @default(now())
 }
 
 model Game {
-  id                  Int       @id @default(autoincrement())
+  id                  Int            @id @default(autoincrement())
   userId              Int
   number              Int
   year                Int
   name                String
   playerName          String?
-  currentDay          Int       @default(0)
-  currentDayCompleted Boolean   @default(false)
-  currentRerollTokens Int       @default(7)
-  rerollTokensSpent   Int       @default(0)
+  currentDay          Int            @default(0)
+  currentDayCompleted Boolean        @default(false)
+  currentRerollTokens Int            @default(7)
+  rerollTokensSpent   Int            @default(0)
   repositoryLink      String?
   progressSheetLink   String?
-  public              Boolean   @default(false)
-  score               Int       @default(0)
+  public              Boolean        @default(false)
+  publicProfileId     Int?
+  score               Int            @default(0)
   rankId              Int
-  dateCreated         DateTime  @default(now())
+  dateCreated         DateTime       @default(now())
   dateCompleted       DateTime?
-  User                User      @relation(fields: [userId], references: [id])
-  Rank                Rank      @relation(fields: [rankId], references: [id])
+  User                User           @relation(fields: [userId], references: [id])
+  Rank                Rank           @relation(fields: [rankId], references: [id])
   Day                 Day[]
+  publicProfile       PublicProfile? @relation(fields: [publicProfileId], references: [id])
 }
 
 model Rank {
@@ -67,16 +81,25 @@ model ChallengeModifier {
   name           String           @unique
   text           String
   hasOptions     Boolean          @default(false)
+  explanatoryURL String?
   standard       Boolean          @default(false)
+  createdById    Int?
+  public         Boolean          @default(false)
+  User           User?            @relation(fields: [createdById], references: [id])
   ModifierOption ModifierOption[]
   Day            Day[]
 }
 
 model ModifierOption {
-  id                  Int                @id @default(autoincrement())
-  name                String             @unique
+  id                  Int               @id @default(autoincrement())
+  name                String            @unique
+  challengeModifierId Int
   text                String
+  explanatoryURL      String?
+  standard            Boolean           @default(false)
+  createdById         Int?
+  public              Boolean           @default(false)
+  User                User?             @relation(fields: [createdById], references: [id])
   Day                 Day[]
-  ChallengeModifier   ChallengeModifier? @relation(fields: [challengeModifierId], references: [id])
-  challengeModifierId Int?
+  ChallengeModifier   ChallengeModifier @relation(fields: [challengeModifierId], references: [id])
 }
