@@ -28,6 +28,7 @@ export type UserPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultAr
   scalars: $Extensions.GetResult<{
     id: number
     dateCreated: Date
+    numberOfGames: number
   }, ExtArgs["result"]["user"]>
   composites: {}
 }
@@ -2238,50 +2239,60 @@ export namespace Prisma {
 
   export type UserAvgAggregateOutputType = {
     id: number | null
+    numberOfGames: number | null
   }
 
   export type UserSumAggregateOutputType = {
     id: number | null
+    numberOfGames: number | null
   }
 
   export type UserMinAggregateOutputType = {
     id: number | null
     dateCreated: Date | null
+    numberOfGames: number | null
   }
 
   export type UserMaxAggregateOutputType = {
     id: number | null
     dateCreated: Date | null
+    numberOfGames: number | null
   }
 
   export type UserCountAggregateOutputType = {
     id: number
     dateCreated: number
+    numberOfGames: number
     _all: number
   }
 
 
   export type UserAvgAggregateInputType = {
     id?: true
+    numberOfGames?: true
   }
 
   export type UserSumAggregateInputType = {
     id?: true
+    numberOfGames?: true
   }
 
   export type UserMinAggregateInputType = {
     id?: true
     dateCreated?: true
+    numberOfGames?: true
   }
 
   export type UserMaxAggregateInputType = {
     id?: true
     dateCreated?: true
+    numberOfGames?: true
   }
 
   export type UserCountAggregateInputType = {
     id?: true
     dateCreated?: true
+    numberOfGames?: true
     _all?: true
   }
 
@@ -2375,6 +2386,7 @@ export namespace Prisma {
   export type UserGroupByOutputType = {
     id: number
     dateCreated: Date
+    numberOfGames: number
     _count: UserCountAggregateOutputType | null
     _avg: UserAvgAggregateOutputType | null
     _sum: UserSumAggregateOutputType | null
@@ -2399,6 +2411,7 @@ export namespace Prisma {
   export type UserSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     dateCreated?: boolean
+    numberOfGames?: boolean
     Game?: boolean | User$GameArgs<ExtArgs>
     PublicProfile?: boolean | User$PublicProfileArgs<ExtArgs>
     ChallengeModifier?: boolean | User$ChallengeModifierArgs<ExtArgs>
@@ -2414,6 +2427,7 @@ export namespace Prisma {
   export type UserSelectScalar = {
     id?: boolean
     dateCreated?: boolean
+    numberOfGames?: boolean
   }
 
   export type UserInclude<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
@@ -11167,7 +11181,8 @@ export namespace Prisma {
 
   export const UserScalarFieldEnum: {
     id: 'id',
-    dateCreated: 'dateCreated'
+    dateCreated: 'dateCreated',
+    numberOfGames: 'numberOfGames'
   };
 
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -11311,6 +11326,7 @@ export namespace Prisma {
     NOT?: Enumerable<UserWhereInput>
     id?: IntFilter | number
     dateCreated?: DateTimeFilter | Date | string
+    numberOfGames?: IntFilter | number
     Game?: GameListRelationFilter
     PublicProfile?: PublicProfileListRelationFilter
     ChallengeModifier?: ChallengeModifierListRelationFilter
@@ -11325,6 +11341,7 @@ export namespace Prisma {
   export type UserOrderByWithRelationInput = {
     id?: SortOrder
     dateCreated?: SortOrder
+    numberOfGames?: SortOrder
     Game?: GameOrderByRelationAggregateInput
     PublicProfile?: PublicProfileOrderByRelationAggregateInput
     ChallengeModifier?: ChallengeModifierOrderByRelationAggregateInput
@@ -11343,6 +11360,7 @@ export namespace Prisma {
   export type UserOrderByWithAggregationInput = {
     id?: SortOrder
     dateCreated?: SortOrder
+    numberOfGames?: SortOrder
     _count?: UserCountOrderByAggregateInput
     _avg?: UserAvgOrderByAggregateInput
     _max?: UserMaxOrderByAggregateInput
@@ -11356,6 +11374,7 @@ export namespace Prisma {
     NOT?: Enumerable<UserScalarWhereWithAggregatesInput>
     id?: IntWithAggregatesFilter | number
     dateCreated?: DateTimeWithAggregatesFilter | Date | string
+    numberOfGames?: IntWithAggregatesFilter | number
   }
 
   export type PublicProfileWhereInput = {
@@ -11878,6 +11897,7 @@ export namespace Prisma {
 
   export type UserCreateInput = {
     dateCreated?: Date | string
+    numberOfGames?: number
     Game?: GameCreateNestedManyWithoutUserInput
     PublicProfile?: PublicProfileCreateNestedManyWithoutUserInput
     ChallengeModifier?: ChallengeModifierCreateNestedManyWithoutCreatedByInput
@@ -11892,6 +11912,7 @@ export namespace Prisma {
   export type UserUncheckedCreateInput = {
     id?: number
     dateCreated?: Date | string
+    numberOfGames?: number
     Game?: GameUncheckedCreateNestedManyWithoutUserInput
     PublicProfile?: PublicProfileUncheckedCreateNestedManyWithoutUserInput
     ChallengeModifier?: ChallengeModifierUncheckedCreateNestedManyWithoutCreatedByInput
@@ -11905,6 +11926,7 @@ export namespace Prisma {
 
   export type UserUpdateInput = {
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
+    numberOfGames?: IntFieldUpdateOperationsInput | number
     Game?: GameUpdateManyWithoutUserNestedInput
     PublicProfile?: PublicProfileUpdateManyWithoutUserNestedInput
     ChallengeModifier?: ChallengeModifierUpdateManyWithoutCreatedByNestedInput
@@ -11919,6 +11941,7 @@ export namespace Prisma {
   export type UserUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
+    numberOfGames?: IntFieldUpdateOperationsInput | number
     Game?: GameUncheckedUpdateManyWithoutUserNestedInput
     PublicProfile?: PublicProfileUncheckedUpdateManyWithoutUserNestedInput
     ChallengeModifier?: ChallengeModifierUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -11933,15 +11956,18 @@ export namespace Prisma {
   export type UserCreateManyInput = {
     id?: number
     dateCreated?: Date | string
+    numberOfGames?: number
   }
 
   export type UserUpdateManyMutationInput = {
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
+    numberOfGames?: IntFieldUpdateOperationsInput | number
   }
 
   export type UserUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
+    numberOfGames?: IntFieldUpdateOperationsInput | number
   }
 
   export type PublicProfileCreateInput = {
@@ -12671,24 +12697,29 @@ export namespace Prisma {
   export type UserCountOrderByAggregateInput = {
     id?: SortOrder
     dateCreated?: SortOrder
+    numberOfGames?: SortOrder
   }
 
   export type UserAvgOrderByAggregateInput = {
     id?: SortOrder
+    numberOfGames?: SortOrder
   }
 
   export type UserMaxOrderByAggregateInput = {
     id?: SortOrder
     dateCreated?: SortOrder
+    numberOfGames?: SortOrder
   }
 
   export type UserMinOrderByAggregateInput = {
     id?: SortOrder
     dateCreated?: SortOrder
+    numberOfGames?: SortOrder
   }
 
   export type UserSumOrderByAggregateInput = {
     id?: SortOrder
+    numberOfGames?: SortOrder
   }
 
   export type IntWithAggregatesFilter = {
@@ -13379,6 +13410,14 @@ export namespace Prisma {
     set?: Date | string
   }
 
+  export type IntFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
   export type GameUpdateManyWithoutUserNestedInput = {
     create?: XOR<Enumerable<GameCreateWithoutUserInput>, Enumerable<GameUncheckedCreateWithoutUserInput>>
     connectOrCreate?: Enumerable<GameCreateOrConnectWithoutUserInput>
@@ -13499,14 +13538,6 @@ export namespace Prisma {
     update?: Enumerable<ModifierPackUpdateWithWhereUniqueWithoutCreatedByInput>
     updateMany?: Enumerable<ModifierPackUpdateManyWithWhereWithoutCreatedByInput>
     deleteMany?: Enumerable<ModifierPackScalarWhereInput>
-  }
-
-  export type IntFieldUpdateOperationsInput = {
-    set?: number
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
   }
 
   export type GameUncheckedUpdateManyWithoutUserNestedInput = {
@@ -15743,6 +15774,7 @@ export namespace Prisma {
 
   export type UserCreateWithoutPublicProfileInput = {
     dateCreated?: Date | string
+    numberOfGames?: number
     Game?: GameCreateNestedManyWithoutUserInput
     ChallengeModifier?: ChallengeModifierCreateNestedManyWithoutCreatedByInput
     ModifierOption?: ModifierOptionCreateNestedManyWithoutCreatedByInput
@@ -15756,6 +15788,7 @@ export namespace Prisma {
   export type UserUncheckedCreateWithoutPublicProfileInput = {
     id?: number
     dateCreated?: Date | string
+    numberOfGames?: number
     Game?: GameUncheckedCreateNestedManyWithoutUserInput
     ChallengeModifier?: ChallengeModifierUncheckedCreateNestedManyWithoutCreatedByInput
     ModifierOption?: ModifierOptionUncheckedCreateNestedManyWithoutCreatedByInput
@@ -15829,6 +15862,7 @@ export namespace Prisma {
 
   export type UserUpdateWithoutPublicProfileInput = {
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
+    numberOfGames?: IntFieldUpdateOperationsInput | number
     Game?: GameUpdateManyWithoutUserNestedInput
     ChallengeModifier?: ChallengeModifierUpdateManyWithoutCreatedByNestedInput
     ModifierOption?: ModifierOptionUpdateManyWithoutCreatedByNestedInput
@@ -15842,6 +15876,7 @@ export namespace Prisma {
   export type UserUncheckedUpdateWithoutPublicProfileInput = {
     id?: IntFieldUpdateOperationsInput | number
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
+    numberOfGames?: IntFieldUpdateOperationsInput | number
     Game?: GameUncheckedUpdateManyWithoutUserNestedInput
     ChallengeModifier?: ChallengeModifierUncheckedUpdateManyWithoutCreatedByNestedInput
     ModifierOption?: ModifierOptionUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -15870,6 +15905,7 @@ export namespace Prisma {
 
   export type UserCreateWithoutGameInput = {
     dateCreated?: Date | string
+    numberOfGames?: number
     PublicProfile?: PublicProfileCreateNestedManyWithoutUserInput
     ChallengeModifier?: ChallengeModifierCreateNestedManyWithoutCreatedByInput
     ModifierOption?: ModifierOptionCreateNestedManyWithoutCreatedByInput
@@ -15883,6 +15919,7 @@ export namespace Prisma {
   export type UserUncheckedCreateWithoutGameInput = {
     id?: number
     dateCreated?: Date | string
+    numberOfGames?: number
     PublicProfile?: PublicProfileUncheckedCreateNestedManyWithoutUserInput
     ChallengeModifier?: ChallengeModifierUncheckedCreateNestedManyWithoutCreatedByInput
     ModifierOption?: ModifierOptionUncheckedCreateNestedManyWithoutCreatedByInput
@@ -15988,6 +16025,7 @@ export namespace Prisma {
 
   export type UserUpdateWithoutGameInput = {
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
+    numberOfGames?: IntFieldUpdateOperationsInput | number
     PublicProfile?: PublicProfileUpdateManyWithoutUserNestedInput
     ChallengeModifier?: ChallengeModifierUpdateManyWithoutCreatedByNestedInput
     ModifierOption?: ModifierOptionUpdateManyWithoutCreatedByNestedInput
@@ -16001,6 +16039,7 @@ export namespace Prisma {
   export type UserUncheckedUpdateWithoutGameInput = {
     id?: IntFieldUpdateOperationsInput | number
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
+    numberOfGames?: IntFieldUpdateOperationsInput | number
     PublicProfile?: PublicProfileUncheckedUpdateManyWithoutUserNestedInput
     ChallengeModifier?: ChallengeModifierUncheckedUpdateManyWithoutCreatedByNestedInput
     ModifierOption?: ModifierOptionUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -16822,6 +16861,7 @@ export namespace Prisma {
 
   export type UserCreateWithoutChallengeModifierInput = {
     dateCreated?: Date | string
+    numberOfGames?: number
     Game?: GameCreateNestedManyWithoutUserInput
     PublicProfile?: PublicProfileCreateNestedManyWithoutUserInput
     ModifierOption?: ModifierOptionCreateNestedManyWithoutCreatedByInput
@@ -16835,6 +16875,7 @@ export namespace Prisma {
   export type UserUncheckedCreateWithoutChallengeModifierInput = {
     id?: number
     dateCreated?: Date | string
+    numberOfGames?: number
     Game?: GameUncheckedCreateNestedManyWithoutUserInput
     PublicProfile?: PublicProfileUncheckedCreateNestedManyWithoutUserInput
     ModifierOption?: ModifierOptionUncheckedCreateNestedManyWithoutCreatedByInput
@@ -16996,6 +17037,7 @@ export namespace Prisma {
 
   export type UserCreateWithoutDefaultExcludedChallengeModifiersInput = {
     dateCreated?: Date | string
+    numberOfGames?: number
     Game?: GameCreateNestedManyWithoutUserInput
     PublicProfile?: PublicProfileCreateNestedManyWithoutUserInput
     ChallengeModifier?: ChallengeModifierCreateNestedManyWithoutCreatedByInput
@@ -17009,6 +17051,7 @@ export namespace Prisma {
   export type UserUncheckedCreateWithoutDefaultExcludedChallengeModifiersInput = {
     id?: number
     dateCreated?: Date | string
+    numberOfGames?: number
     Game?: GameUncheckedCreateNestedManyWithoutUserInput
     PublicProfile?: PublicProfileUncheckedCreateNestedManyWithoutUserInput
     ChallengeModifier?: ChallengeModifierUncheckedCreateNestedManyWithoutCreatedByInput
@@ -17026,6 +17069,7 @@ export namespace Prisma {
 
   export type UserCreateWithoutDefaultIncludedCustomChallengeModifiersInput = {
     dateCreated?: Date | string
+    numberOfGames?: number
     Game?: GameCreateNestedManyWithoutUserInput
     PublicProfile?: PublicProfileCreateNestedManyWithoutUserInput
     ChallengeModifier?: ChallengeModifierCreateNestedManyWithoutCreatedByInput
@@ -17039,6 +17083,7 @@ export namespace Prisma {
   export type UserUncheckedCreateWithoutDefaultIncludedCustomChallengeModifiersInput = {
     id?: number
     dateCreated?: Date | string
+    numberOfGames?: number
     Game?: GameUncheckedCreateNestedManyWithoutUserInput
     PublicProfile?: PublicProfileUncheckedCreateNestedManyWithoutUserInput
     ChallengeModifier?: ChallengeModifierUncheckedCreateNestedManyWithoutCreatedByInput
@@ -17198,6 +17243,7 @@ export namespace Prisma {
 
   export type UserUpdateWithoutChallengeModifierInput = {
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
+    numberOfGames?: IntFieldUpdateOperationsInput | number
     Game?: GameUpdateManyWithoutUserNestedInput
     PublicProfile?: PublicProfileUpdateManyWithoutUserNestedInput
     ModifierOption?: ModifierOptionUpdateManyWithoutCreatedByNestedInput
@@ -17211,6 +17257,7 @@ export namespace Prisma {
   export type UserUncheckedUpdateWithoutChallengeModifierInput = {
     id?: IntFieldUpdateOperationsInput | number
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
+    numberOfGames?: IntFieldUpdateOperationsInput | number
     Game?: GameUncheckedUpdateManyWithoutUserNestedInput
     PublicProfile?: PublicProfileUncheckedUpdateManyWithoutUserNestedInput
     ModifierOption?: ModifierOptionUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -17307,6 +17354,7 @@ export namespace Prisma {
     NOT?: Enumerable<UserScalarWhereInput>
     id?: IntFilter | number
     dateCreated?: DateTimeFilter | Date | string
+    numberOfGames?: IntFilter | number
   }
 
   export type UserUpsertWithWhereUniqueWithoutDefaultIncludedCustomChallengeModifiersInput = {
@@ -17419,6 +17467,7 @@ export namespace Prisma {
 
   export type UserCreateWithoutModifierOptionInput = {
     dateCreated?: Date | string
+    numberOfGames?: number
     Game?: GameCreateNestedManyWithoutUserInput
     PublicProfile?: PublicProfileCreateNestedManyWithoutUserInput
     ChallengeModifier?: ChallengeModifierCreateNestedManyWithoutCreatedByInput
@@ -17432,6 +17481,7 @@ export namespace Prisma {
   export type UserUncheckedCreateWithoutModifierOptionInput = {
     id?: number
     dateCreated?: Date | string
+    numberOfGames?: number
     Game?: GameUncheckedCreateNestedManyWithoutUserInput
     PublicProfile?: PublicProfileUncheckedCreateNestedManyWithoutUserInput
     ChallengeModifier?: ChallengeModifierUncheckedCreateNestedManyWithoutCreatedByInput
@@ -17546,6 +17596,7 @@ export namespace Prisma {
 
   export type UserCreateWithoutDefaultExcludedModifierOptionsInput = {
     dateCreated?: Date | string
+    numberOfGames?: number
     Game?: GameCreateNestedManyWithoutUserInput
     PublicProfile?: PublicProfileCreateNestedManyWithoutUserInput
     ChallengeModifier?: ChallengeModifierCreateNestedManyWithoutCreatedByInput
@@ -17559,6 +17610,7 @@ export namespace Prisma {
   export type UserUncheckedCreateWithoutDefaultExcludedModifierOptionsInput = {
     id?: number
     dateCreated?: Date | string
+    numberOfGames?: number
     Game?: GameUncheckedCreateNestedManyWithoutUserInput
     PublicProfile?: PublicProfileUncheckedCreateNestedManyWithoutUserInput
     ChallengeModifier?: ChallengeModifierUncheckedCreateNestedManyWithoutCreatedByInput
@@ -17576,6 +17628,7 @@ export namespace Prisma {
 
   export type UserCreateWithoutDefaultIncludedCustomModifierOptionsInput = {
     dateCreated?: Date | string
+    numberOfGames?: number
     Game?: GameCreateNestedManyWithoutUserInput
     PublicProfile?: PublicProfileCreateNestedManyWithoutUserInput
     ChallengeModifier?: ChallengeModifierCreateNestedManyWithoutCreatedByInput
@@ -17589,6 +17642,7 @@ export namespace Prisma {
   export type UserUncheckedCreateWithoutDefaultIncludedCustomModifierOptionsInput = {
     id?: number
     dateCreated?: Date | string
+    numberOfGames?: number
     Game?: GameUncheckedCreateNestedManyWithoutUserInput
     PublicProfile?: PublicProfileUncheckedCreateNestedManyWithoutUserInput
     ChallengeModifier?: ChallengeModifierUncheckedCreateNestedManyWithoutCreatedByInput
@@ -17792,6 +17846,7 @@ export namespace Prisma {
 
   export type UserUpdateWithoutModifierOptionInput = {
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
+    numberOfGames?: IntFieldUpdateOperationsInput | number
     Game?: GameUpdateManyWithoutUserNestedInput
     PublicProfile?: PublicProfileUpdateManyWithoutUserNestedInput
     ChallengeModifier?: ChallengeModifierUpdateManyWithoutCreatedByNestedInput
@@ -17805,6 +17860,7 @@ export namespace Prisma {
   export type UserUncheckedUpdateWithoutModifierOptionInput = {
     id?: IntFieldUpdateOperationsInput | number
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
+    numberOfGames?: IntFieldUpdateOperationsInput | number
     Game?: GameUncheckedUpdateManyWithoutUserNestedInput
     PublicProfile?: PublicProfileUncheckedUpdateManyWithoutUserNestedInput
     ChallengeModifier?: ChallengeModifierUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -18117,6 +18173,7 @@ export namespace Prisma {
 
   export type UserCreateWithoutModifierPackInput = {
     dateCreated?: Date | string
+    numberOfGames?: number
     Game?: GameCreateNestedManyWithoutUserInput
     PublicProfile?: PublicProfileCreateNestedManyWithoutUserInput
     ChallengeModifier?: ChallengeModifierCreateNestedManyWithoutCreatedByInput
@@ -18130,6 +18187,7 @@ export namespace Prisma {
   export type UserUncheckedCreateWithoutModifierPackInput = {
     id?: number
     dateCreated?: Date | string
+    numberOfGames?: number
     Game?: GameUncheckedCreateNestedManyWithoutUserInput
     PublicProfile?: PublicProfileUncheckedCreateNestedManyWithoutUserInput
     ChallengeModifier?: ChallengeModifierUncheckedCreateNestedManyWithoutCreatedByInput
@@ -18216,6 +18274,7 @@ export namespace Prisma {
 
   export type UserUpdateWithoutModifierPackInput = {
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
+    numberOfGames?: IntFieldUpdateOperationsInput | number
     Game?: GameUpdateManyWithoutUserNestedInput
     PublicProfile?: PublicProfileUpdateManyWithoutUserNestedInput
     ChallengeModifier?: ChallengeModifierUpdateManyWithoutCreatedByNestedInput
@@ -18229,6 +18288,7 @@ export namespace Prisma {
   export type UserUncheckedUpdateWithoutModifierPackInput = {
     id?: IntFieldUpdateOperationsInput | number
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
+    numberOfGames?: IntFieldUpdateOperationsInput | number
     Game?: GameUncheckedUpdateManyWithoutUserNestedInput
     PublicProfile?: PublicProfileUncheckedUpdateManyWithoutUserNestedInput
     ChallengeModifier?: ChallengeModifierUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -19262,6 +19322,7 @@ export namespace Prisma {
 
   export type UserUpdateWithoutDefaultExcludedChallengeModifiersInput = {
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
+    numberOfGames?: IntFieldUpdateOperationsInput | number
     Game?: GameUpdateManyWithoutUserNestedInput
     PublicProfile?: PublicProfileUpdateManyWithoutUserNestedInput
     ChallengeModifier?: ChallengeModifierUpdateManyWithoutCreatedByNestedInput
@@ -19275,6 +19336,7 @@ export namespace Prisma {
   export type UserUncheckedUpdateWithoutDefaultExcludedChallengeModifiersInput = {
     id?: IntFieldUpdateOperationsInput | number
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
+    numberOfGames?: IntFieldUpdateOperationsInput | number
     Game?: GameUncheckedUpdateManyWithoutUserNestedInput
     PublicProfile?: PublicProfileUncheckedUpdateManyWithoutUserNestedInput
     ChallengeModifier?: ChallengeModifierUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -19288,10 +19350,12 @@ export namespace Prisma {
   export type UserUncheckedUpdateManyWithoutUserExcludedInput = {
     id?: IntFieldUpdateOperationsInput | number
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
+    numberOfGames?: IntFieldUpdateOperationsInput | number
   }
 
   export type UserUpdateWithoutDefaultIncludedCustomChallengeModifiersInput = {
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
+    numberOfGames?: IntFieldUpdateOperationsInput | number
     Game?: GameUpdateManyWithoutUserNestedInput
     PublicProfile?: PublicProfileUpdateManyWithoutUserNestedInput
     ChallengeModifier?: ChallengeModifierUpdateManyWithoutCreatedByNestedInput
@@ -19305,6 +19369,7 @@ export namespace Prisma {
   export type UserUncheckedUpdateWithoutDefaultIncludedCustomChallengeModifiersInput = {
     id?: IntFieldUpdateOperationsInput | number
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
+    numberOfGames?: IntFieldUpdateOperationsInput | number
     Game?: GameUncheckedUpdateManyWithoutUserNestedInput
     PublicProfile?: PublicProfileUncheckedUpdateManyWithoutUserNestedInput
     ChallengeModifier?: ChallengeModifierUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -19318,6 +19383,7 @@ export namespace Prisma {
   export type UserUncheckedUpdateManyWithoutUserIncludedInput = {
     id?: IntFieldUpdateOperationsInput | number
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
+    numberOfGames?: IntFieldUpdateOperationsInput | number
   }
 
   export type DayUpdateWithoutExcludedChallengeModifiersInput = {
@@ -19598,6 +19664,7 @@ export namespace Prisma {
 
   export type UserUpdateWithoutDefaultExcludedModifierOptionsInput = {
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
+    numberOfGames?: IntFieldUpdateOperationsInput | number
     Game?: GameUpdateManyWithoutUserNestedInput
     PublicProfile?: PublicProfileUpdateManyWithoutUserNestedInput
     ChallengeModifier?: ChallengeModifierUpdateManyWithoutCreatedByNestedInput
@@ -19611,6 +19678,7 @@ export namespace Prisma {
   export type UserUncheckedUpdateWithoutDefaultExcludedModifierOptionsInput = {
     id?: IntFieldUpdateOperationsInput | number
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
+    numberOfGames?: IntFieldUpdateOperationsInput | number
     Game?: GameUncheckedUpdateManyWithoutUserNestedInput
     PublicProfile?: PublicProfileUncheckedUpdateManyWithoutUserNestedInput
     ChallengeModifier?: ChallengeModifierUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -19623,6 +19691,7 @@ export namespace Prisma {
 
   export type UserUpdateWithoutDefaultIncludedCustomModifierOptionsInput = {
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
+    numberOfGames?: IntFieldUpdateOperationsInput | number
     Game?: GameUpdateManyWithoutUserNestedInput
     PublicProfile?: PublicProfileUpdateManyWithoutUserNestedInput
     ChallengeModifier?: ChallengeModifierUpdateManyWithoutCreatedByNestedInput
@@ -19636,6 +19705,7 @@ export namespace Prisma {
   export type UserUncheckedUpdateWithoutDefaultIncludedCustomModifierOptionsInput = {
     id?: IntFieldUpdateOperationsInput | number
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
+    numberOfGames?: IntFieldUpdateOperationsInput | number
     Game?: GameUncheckedUpdateManyWithoutUserNestedInput
     PublicProfile?: PublicProfileUncheckedUpdateManyWithoutUserNestedInput
     ChallengeModifier?: ChallengeModifierUncheckedUpdateManyWithoutCreatedByNestedInput
