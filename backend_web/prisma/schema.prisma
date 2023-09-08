@@ -21,8 +21,8 @@ model User {
   ModifierOption                          ModifierOption[]
   DefaultExcludedChallengeModifiers       ChallengeModifier[] @relation(name: "DefaultExcludedChallengeModifiers")
   DefaultExcludedModifierOptions          ModifierOption[]    @relation(name: "DefaultExcludedModifierOptions")
-  DefaultIncludedPublicChallengeModifiers ChallengeModifier[] @relation(name: "DefaultIncludedPublicChallengeModifiers")
-  DefaultIncludedPublicModifierOptions    ModifierOption[]    @relation(name: "DefaultIncludedPublicModifierOptions")
+  DefaultIncludedCustomChallengeModifiers ChallengeModifier[] @relation(name: "DefaultIncludedCustomChallengeModifiers")
+  DefaultIncludedCustomModifierOptions    ModifierOption[]    @relation(name: "DefaultIncludedCustomModifierOptions")
   ModifierPack                            ModifierPack[]
 }
 
@@ -84,8 +84,8 @@ model Day {
   rerollTokensSpentDuringPart2     Int                 @default(0)
   ExcludedChallengeModifiers       ChallengeModifier[] @relation(name: "ExcludedChallengeModifiers")
   ExcludedModifierOptions          ModifierOption[]    @relation(name: "ExcludedModifierOptions")
-  IncludedPublicChallengeModifiers ChallengeModifier[] @relation(name: "IncludedPublicChallengeModifiers")
-  IncludedPublicModifierOptions    ModifierOption[]    @relation(name: "IncludedPublicModifierOptions")
+  IncludedCustomChallengeModifiers ChallengeModifier[] @relation(name: "IncludedCustomChallengeModifiers")
+  IncludedCustomModifierOptions    ModifierOption[]    @relation(name: "IncludedCustomModifierOptions")
   Game                             Game                @relation(fields: [gameId], references: [id])
   ModifierWhenPart1Completed       ChallengeModifier?  @relation(name: "ModifierWhenPart1Completed", fields: [modifierWhenPart1CompletedId], references: [id])
   OptionWhenPart1Completed         ModifierOption?     @relation(name: "OptionWhenPart1Completed", fields: [optionWhenPart1CompletedId], references: [id])
@@ -107,11 +107,11 @@ model ChallengeModifier {
   ModifierOption       ModifierOption[]
   Day                  Day[]
   ModifierPackExcluded ModifierPack[]   @relation(name: "ExcludedChallengeModifiers")
-  ModifierPackIncluded ModifierPack[]   @relation(name: "IncludedPublicChallengeModifiers")
+  ModifierPackIncluded ModifierPack[]   @relation(name: "IncludedCustomChallengeModifiers")
   UserExcluded         User[]           @relation(name: "DefaultExcludedChallengeModifiers")
-  UserIncluded         User[]           @relation(name: "DefaultIncludedPublicChallengeModifiers")
+  UserIncluded         User[]           @relation(name: "DefaultIncludedCustomChallengeModifiers")
   ExcludedFromDay      Day[]            @relation(name: "ExcludedChallengeModifiers")
-  IncludedInDay        Day[]            @relation(name: "IncludedPublicChallengeModifiers")
+  IncludedInDay        Day[]            @relation(name: "IncludedCustomChallengeModifiers")
   DayCompletedInPart1  Day[]            @relation(name: "ModifierWhenPart1Completed")
 }
 
@@ -129,11 +129,11 @@ model ModifierOption {
   CreatedBy            User?             @relation(fields: [createdById], references: [id])
   Day                  Day[]
   ModifierPackExcluded ModifierPack[]    @relation(name: "ExcludedModifierOptions")
-  ModifierPackIncluded ModifierPack[]    @relation(name: "IncludedPublicModifierOptions")
+  ModifierPackIncluded ModifierPack[]    @relation(name: "IncludedCustomModifierOptions")
   UserExcluded         User[]            @relation(name: "DefaultExcludedModifierOptions")
-  UserIncluded         User[]            @relation(name: "DefaultIncludedPublicModifierOptions")
+  UserIncluded         User[]            @relation(name: "DefaultIncludedCustomModifierOptions")
   ExcludedFromDay      Day[]             @relation(name: "ExcludedModifierOptions")
-  IncludedInDay        Day[]             @relation(name: "IncludedPublicModifierOptions")
+  IncludedInDay        Day[]             @relation(name: "IncludedCustomModifierOptions")
   DayCompletedInPart1  Day[]             @relation(name: "OptionWhenPart1Completed")
 }
 
@@ -144,7 +144,7 @@ model ModifierPack {
   public                           Boolean             @default(false)
   ExcludedChallengeModifiers       ChallengeModifier[] @relation(name: "ExcludedChallengeModifiers")
   ExcludedModifierOptions          ModifierOption[]    @relation(name: "ExcludedModifierOptions")
-  EncludedPublicChallengeModifiers ChallengeModifier[] @relation(name: "IncludedPublicChallengeModifiers")
-  IncludedPublicModifierOptions    ModifierOption[]    @relation(name: "IncludedPublicModifierOptions")
+  EncludedCustomChallengeModifiers ChallengeModifier[] @relation(name: "IncludedCustomChallengeModifiers")
+  IncludedCustomModifierOptions    ModifierOption[]    @relation(name: "IncludedCustomModifierOptions")
   CreatedBy                        User?               @relation(fields: [createdById], references: [id])
 }
