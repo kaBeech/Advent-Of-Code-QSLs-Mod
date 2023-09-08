@@ -6,6 +6,7 @@ import {
 import {
   createDay,
   createGame,
+  createUser,
   deleteGame,
   getAllChallengeModifiers,
   getAllGames,
@@ -14,6 +15,7 @@ import {
   getDaysByGameId,
   getGameById,
   getModifierOptionsByChallengeModifierId,
+  getUserById,
   updateDay,
   updateGame,
 } from "./db.ts";
@@ -32,6 +34,12 @@ router
       "You have successfully pinged the Advent Of Code: Xtreme Xmas API!";
   })
   /**
+   * Create User
+   */
+  .post("/user", async (context) => {
+    context.response.body = await createUser();
+  })
+  /**
    * Get All Games (eventually will be Continue Game)
    */
   .get("/user/:id/game", async (context) => {
@@ -48,11 +56,20 @@ router
    * Start New Game
    */
   .post("/user/:id/game", async (context) => {
-    const { name, playerName, year } = await context.request.body({
-      type: "json",
-    })
+    const { id } = context.params;
+    const user = await getUserById(+id);
+    const { name, year, playerName } = await context.request
+      .body({
+        type: "json",
+      })
       .value;
-    context.response.body = await createGame(name, playerName, year);
+    context.response.body = await createGame(
+      +id,
+      user!.numberOfGames + 1,
+      name,
+      year,
+      playerName,
+    );
   })
   /**
    * Delete Game
