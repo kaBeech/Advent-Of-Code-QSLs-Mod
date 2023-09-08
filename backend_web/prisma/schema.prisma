@@ -63,21 +63,24 @@ model Rank {
 
 model Day {
   id                           Int                @id @default(autoincrement())
-  game                         Game               @relation(fields: [gameId], references: [id])
+  gameId                       Int
   number                       Int
-  part1Completed               DateTime?
-  modifierWhenPart1CompletedId Int?
-  ModifierWhenPart1Completed   ChallengeModifier? @relation(name: "ModifierWhenPart1Completed", fields: [modifierWhenPart1CompletedId], references: [id])
-  optionWhenPart1CompletedId   Int?
-  OptionWhenPart1Completed     ModifierOption?    @relation(name: "OptionWhenPart1Completed", fields: [optionWhenPart1CompletedId], references: [id])
-  part2Completed               DateTime?
-  ChallengeModifier            ChallengeModifier? @relation(fields: [challengeModifierId], references: [id])
-  ModifierOption               ModifierOption?    @relation(fields: [modifierOptionId], references: [id])
-  challengeModifierRerollsUsed Int                @default(0)
-  modifierOptionRerollsUsed    Int                @default(0)
   challengeModifierId          Int?
   modifierOptionId             Int?
-  gameId                       Int
+  dateCreated                  DateTime           @default(now())
+  dateFirstRolled              DateTime?
+  part1Completed               DateTime?
+  modifierWhenPart1CompletedId Int?
+  optionWhenPart1CompletedId   Int?
+  part2Completed               DateTime?
+  challengeModifierRerollsUsed Int                @default(0)
+  modifierOptionRerollsUsed    Int                @default(0)
+  rerollTokensSpentDuringPart2 Int                @default(0)
+  game                         Game               @relation(fields: [gameId], references: [id])
+  ModifierWhenPart1Completed   ChallengeModifier? @relation(name: "ModifierWhenPart1Completed", fields: [modifierWhenPart1CompletedId], references: [id])
+  OptionWhenPart1Completed     ModifierOption?    @relation(name: "OptionWhenPart1Completed", fields: [optionWhenPart1CompletedId], references: [id])
+  ChallengeModifier            ChallengeModifier? @relation(fields: [challengeModifierId], references: [id])
+  ModifierOption               ModifierOption?    @relation(fields: [modifierOptionId], references: [id])
 }
 
 model ChallengeModifier {
