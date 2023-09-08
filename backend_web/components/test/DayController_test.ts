@@ -158,12 +158,12 @@ Deno.test("ModifierOption reroll throws error if day does not have a ChallengeMo
   );
 });
 
-Deno.test("ModifierOption reroll throws error if ChallengeModifier does not have options", () => {
+Deno.test("ModifierOption reroll throws error if ChallengeModifier does not have options", async () => {
   const dayController = DayController({
     ...exampleDay,
     challengeModifierId: 1,
   });
-  assertRejects(
+  await assertRejects(
     () => {
       return dayController.rerollModifierOption(
         exampleGameDay1.currentDay,
