@@ -97,7 +97,7 @@ model ChallengeModifier {
   name                 String           @unique
   text                 String
   hasOptions           Boolean          @default(false)
-  explanatoryURL       String?
+  explanatoryUrl       String?
   standard             Boolean          @default(false)
   createdById          Int?
   public               Boolean          @default(false)
@@ -118,7 +118,7 @@ model ModifierOption {
   name                 String            @unique
   challengeModifierId  Int
   text                 String
-  explanatoryURL       String?
+  explanatoryUrl       String?
   standard             Boolean           @default(false)
   createdById          Int?
   public               Boolean           @default(false)
