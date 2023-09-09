@@ -7,6 +7,7 @@ import {
   createGame,
   createUser,
   deleteGame,
+  getAllChallengeModifiers,
   getAllGames,
   getDayById,
   getDaysByGameId,
@@ -30,6 +31,12 @@ router
   .get("/", (context) => {
     context.response.body =
       "You have successfully pinged the Advent Of Code: Xtreme Xmas API!";
+  })
+  /**
+   * Get All Challenge Modifiers
+   */
+  .get("/modifier", async (context) => {
+    context.response.body = await getAllChallengeModifiers();
   })
   /**
    * Create User
