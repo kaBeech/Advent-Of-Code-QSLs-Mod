@@ -149,6 +149,8 @@ exports.Prisma.DayScalarFieldEnum = {
   id: 'id',
   dateCreated: 'dateCreated',
   gameId: 'gameId',
+  userId: 'userId',
+  gameNumber: 'gameNumber',
   number: 'number',
   challengeModifierId: 'challengeModifierId',
   modifierOptionId: 'modifierOptionId',

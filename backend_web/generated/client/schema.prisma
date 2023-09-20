@@ -72,6 +72,8 @@ model Day {
   id                               Int                 @id @default(autoincrement())
   dateCreated                      DateTime            @default(now())
   gameId                           Int
+  userId                           Int
+  gameNumber                       Int
   number                           Int
   challengeModifierId              Int?
   modifierOptionId                 Int?

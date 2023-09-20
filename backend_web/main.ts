@@ -7,10 +7,10 @@ import {
   createGame,
   createUser,
   deleteGame,
+  getAllChallengeModifiers,
   getAllGames,
-  getDayById,
-  getDaysByGameId,
-  getGameById,
+  getDaysByUserIdAndGameNumber,
+  getGamesByUserId,
   getUserById,
 } from "./db.ts";
 import { completePart1 } from "./routes/day/completePart1.ts";
@@ -19,6 +19,7 @@ import { rerollModifierOption } from "./routes/day/rerollModifierOption.ts";
 import { rerollChallengeModifier } from "./routes/day/rerollChallengeModifier.ts";
 import { rollInitialModifier } from "./routes/day/rollInitialModifier.ts";
 import { startNextDay } from "./routes/day/startNextDay.ts";
+import { completeCurrentDay } from "./routes/game/completeCurrentDay.ts";
 
 const app = new Application();
 const router = new Router();
@@ -30,6 +31,12 @@ router
   .get("/", (context) => {
     context.response.body =
       "You have successfully pinged the Advent Of Code: Xtreme Xmas API!";
+  })
+  /**
+   * Get All Challenge Modifiers
+   */
+  .get("/modifier", async (context) => {
+    context.response.body = await getAllChallengeModifiers();
   })
   /**
    * Create User
@@ -46,9 +53,10 @@ router
   /**
    * Resume Game
    */
-  .get("/user/:id/game/:id", async (context) => {
-    const { id } = context.params;
-    context.response.body = await getGameById(+id);
+  .get("/user/:id/game/:gamenumber", async (context) => {
+    const { id, gamenumber } = context.params;
+    const games = await getGamesByUserId(+id);
+    context.response.body = games[+gamenumber - 1];
   })
   /**
    * Start New Game
@@ -72,66 +80,103 @@ router
   /**
    * Delete Game
    */
-  .delete("/user/:id/game/:id", async (context) => {
-    const { id } = context.params;
-    context.response.body = await deleteGame(+id);
+  .delete("/user/:id/game/:gamenumber", async (context) => {
+    const { id, gamenumber } = context.params;
+    const games = await getGamesByUserId(+id);
+    const game = games[+gamenumber - 1];
+    context.response.body = await deleteGame(game.id);
   })
   /**
    * Get all Days for a Game
    */
-  .get("/user/:id/game/:id/day", async (context) => {
-    const { id } = context.params;
-    context.response.body = await getDaysByGameId(+id);
+  .get("/user/:id/game/:gamenumber/day", async (context) => {
+    const { id, gamenumber } = context.params;
+    context.response.body = await getDaysByUserIdAndGameNumber(
+      +id,
+      +gamenumber,
+    );
   })
   /**
    * Get a Day
    */
-  .get("/user/:id/game/:id/day/:id", async (context) => {
-    const { id } = context.params;
-    context.response.body = await getDayById(+id);
+  .get("/user/:id/game/:gamenumber/day/:daynumber", async (context) => {
+    const { id, gamenumber, daynumber } = context.params;
+    const days = await getDaysByUserIdAndGameNumber(+id, +gamenumber);
+    context.response.body = days[+daynumber - 1];
+  })
+  /**
+   * Complete a Game's current Day
+   */
+  .put("/user/:id/game/:gamenumber/day/complete", async (context) => {
+    const { id, gamenumber } = context.params;
+    context.response.body = await completeCurrentDay(+id, +gamenumber);
   })
   /**
    * Start the next Day
    */
-  .post("/user/:id/game/:id/day", async (context) => {
-    const { id } = context.params;
-    context.response.body = await startNextDay(+id);
+  .post("/user/:id/game/:gamenumber/day", async (context) => {
+    const { id, gamenumber } = context.params;
+    context.response.body = await startNextDay(+id, +gamenumber);
   })
   /**
    * Roll a Day's initial Challenge Modifier
    */
-  .put("/user/:id/game/:id/day/:id/roll", async (context) => {
-    const { id } = context.params;
-    context.response.body = await rollInitialModifier(+id);
+  .put("/user/:id/game/:gamenumber/day/:daynumber/roll", async (context) => {
+    const { id, gamenumber, daynumber } = context.params;
+    context.response.body = await rollInitialModifier(
+      +id,
+      +gamenumber,
+      +daynumber,
+    );
   })
   /**
    * Reroll a Day's Challenge Modifier
    */
-  .put("/user/:id/game/:id/day/:id/reroll/modifier", async (context) => {
-    const { id } = context.params;
-    context.response.body = await rerollChallengeModifier(+id);
-  })
+  .put(
+    "/user/:id/game/:gamenumber/day/:daynumber/reroll/modifier",
+    async (context) => {
+      const { id, gamenumber, daynumber } = context.params;
+      context.response.body = await rerollChallengeModifier(
+        +id,
+        +gamenumber,
+        +daynumber,
+      );
+    },
+  )
   /**
    * Reroll a Day's Modifier Option
    */
-  .put("/user/:id/game/:id/day/:id/reroll/option", async (context) => {
-    const { id } = context.params;
-    context.response.body = await rerollModifierOption(+id);
-  })
+  .put(
+    "/user/:id/game/:gamenumber/day/:daynumber/reroll/option",
+    async (context) => {
+      const { id, gamenumber, daynumber } = context.params;
+      context.response.body = await rerollModifierOption(
+        +id,
+        +gamenumber,
+        +daynumber,
+      );
+    },
+  )
   /**
    * Complete Part 1 for a Day
    */
-  .put("/user/:id/game/:id/day/:id/complete/part1", async (context) => {
-    const { id } = context.params;
-    context.response.body = await completePart1(+id);
-  })
+  .put(
+    "/user/:id/game/:gamenumber/day/:daynumber/complete/part1",
+    async (context) => {
+      const { id, gamenumber, daynumber } = context.params;
+      context.response.body = await completePart1(+id, +gamenumber, +daynumber);
+    },
+  )
   /**
    * Complete Part 2 for a Day
    */
-  .put("/user/:id/game/:id/day/:id/complete/part2", async (context) => {
-    const { id } = context.params;
-    context.response.body = await completePart2(+id);
-  });
+  .put(
+    "/user/:id/game/:gamenumber/day/:daynumber/complete/part2",
+    async (context) => {
+      const { id, gamenumber, daynumber } = context.params;
+      context.response.body = await completePart2(+id, +gamenumber, +daynumber);
+    },
+  );
 
 app.use(router.routes());
 app.use(router.allowedMethods());

@@ -2,7 +2,7 @@
 
 \*\*UNDER CONSTRUCTION\*\*
 
-\*\*CURRENT STATUS: Very basic backend logic works, some API testing needs to be written. Next step - build very basic frontend\*\*
+\*\*CURRENT STATUS: Very basic backend logic works, some routes testing needs to be written. Next step - build very basic frontend\*\*
 
 Have you ever been savoring your [Advent Of Code](https://adventofcode.com/) calendar, keyboard dusted with sugar cookie crumbles, reindeer curled at your feet, and found yourself wishing the puzzles were wilder? More challenging? MORE XTREME??
 
