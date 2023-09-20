@@ -50,6 +50,8 @@ export const exampleDay = {
   "id": 1,
   "dateCreated": new Date(),
   "gameId": 1,
+  "userId": 1,
+  "gameNumber": 1,
   "number": 1,
   "challengeModifierId": null,
   "modifierOptionId": null,
