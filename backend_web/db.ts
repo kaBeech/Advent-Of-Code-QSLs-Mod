@@ -100,17 +100,15 @@ export async function getGameById(id: number) {
   return game;
 }
 
-export async function getGameByUserIdAndGameNumber(
+export async function getGamesByUserId(
   userId: number,
-  gameNumber: number,
 ) {
-  const game = await prisma.game.findFirstOrThrow({
+  const games = await prisma.game.findMany({
     where: {
       id: userId,
-      number: gameNumber,
     },
   });
-  return game;
+  return games;
 }
 
 export async function updateGame(game: Game) {
@@ -139,13 +137,17 @@ export async function deleteGame(id: number) {
  */
 
 export async function createDay(
+  userId: number,
   gameId: number,
+  gameNumber: number,
   dayNumber: number,
 ) {
   const result = await prisma.day.create({
     data: {
-      number: dayNumber,
+      userId,
       gameId,
+      gameNumber,
+      number: dayNumber,
     },
   });
   return result;
@@ -158,6 +160,19 @@ export async function getDayById(id: number) {
     },
   });
   return day;
+}
+
+export async function getDaysByUserIdAndGameNumber(
+  userId: number,
+  gameNumber: number,
+) {
+  const days = await prisma.day.findMany({
+    where: {
+      userId,
+      gameNumber,
+    },
+  });
+  return days;
 }
 
 export async function getDaysByGameId(gameId: number) {

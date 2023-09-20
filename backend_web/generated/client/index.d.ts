@@ -129,6 +129,8 @@ export type DayPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArg
     id: number
     dateCreated: Date
     gameId: number
+    userId: number
+    gameNumber: number
     number: number
     challengeModifierId: number | null
     modifierOptionId: number | null
@@ -6500,6 +6502,8 @@ export namespace Prisma {
   export type DayAvgAggregateOutputType = {
     id: number | null
     gameId: number | null
+    userId: number | null
+    gameNumber: number | null
     number: number | null
     challengeModifierId: number | null
     modifierOptionId: number | null
@@ -6513,6 +6517,8 @@ export namespace Prisma {
   export type DaySumAggregateOutputType = {
     id: number | null
     gameId: number | null
+    userId: number | null
+    gameNumber: number | null
     number: number | null
     challengeModifierId: number | null
     modifierOptionId: number | null
@@ -6527,6 +6533,8 @@ export namespace Prisma {
     id: number | null
     dateCreated: Date | null
     gameId: number | null
+    userId: number | null
+    gameNumber: number | null
     number: number | null
     challengeModifierId: number | null
     modifierOptionId: number | null
@@ -6544,6 +6552,8 @@ export namespace Prisma {
     id: number | null
     dateCreated: Date | null
     gameId: number | null
+    userId: number | null
+    gameNumber: number | null
     number: number | null
     challengeModifierId: number | null
     modifierOptionId: number | null
@@ -6561,6 +6571,8 @@ export namespace Prisma {
     id: number
     dateCreated: number
     gameId: number
+    userId: number
+    gameNumber: number
     number: number
     challengeModifierId: number
     modifierOptionId: number
@@ -6579,6 +6591,8 @@ export namespace Prisma {
   export type DayAvgAggregateInputType = {
     id?: true
     gameId?: true
+    userId?: true
+    gameNumber?: true
     number?: true
     challengeModifierId?: true
     modifierOptionId?: true
@@ -6592,6 +6606,8 @@ export namespace Prisma {
   export type DaySumAggregateInputType = {
     id?: true
     gameId?: true
+    userId?: true
+    gameNumber?: true
     number?: true
     challengeModifierId?: true
     modifierOptionId?: true
@@ -6606,6 +6622,8 @@ export namespace Prisma {
     id?: true
     dateCreated?: true
     gameId?: true
+    userId?: true
+    gameNumber?: true
     number?: true
     challengeModifierId?: true
     modifierOptionId?: true
@@ -6623,6 +6641,8 @@ export namespace Prisma {
     id?: true
     dateCreated?: true
     gameId?: true
+    userId?: true
+    gameNumber?: true
     number?: true
     challengeModifierId?: true
     modifierOptionId?: true
@@ -6640,6 +6660,8 @@ export namespace Prisma {
     id?: true
     dateCreated?: true
     gameId?: true
+    userId?: true
+    gameNumber?: true
     number?: true
     challengeModifierId?: true
     modifierOptionId?: true
@@ -6745,6 +6767,8 @@ export namespace Prisma {
     id: number
     dateCreated: Date
     gameId: number
+    userId: number
+    gameNumber: number
     number: number
     challengeModifierId: number | null
     modifierOptionId: number | null
@@ -6781,6 +6805,8 @@ export namespace Prisma {
     id?: boolean
     dateCreated?: boolean
     gameId?: boolean
+    userId?: boolean
+    gameNumber?: boolean
     number?: boolean
     challengeModifierId?: boolean
     modifierOptionId?: boolean
@@ -6808,6 +6834,8 @@ export namespace Prisma {
     id?: boolean
     dateCreated?: boolean
     gameId?: boolean
+    userId?: boolean
+    gameNumber?: boolean
     number?: boolean
     challengeModifierId?: boolean
     modifierOptionId?: boolean
@@ -11235,6 +11263,8 @@ export namespace Prisma {
     id: 'id',
     dateCreated: 'dateCreated',
     gameId: 'gameId',
+    userId: 'userId',
+    gameNumber: 'gameNumber',
     number: 'number',
     challengeModifierId: 'challengeModifierId',
     modifierOptionId: 'modifierOptionId',
@@ -11580,6 +11610,8 @@ export namespace Prisma {
     id?: IntFilter | number
     dateCreated?: DateTimeFilter | Date | string
     gameId?: IntFilter | number
+    userId?: IntFilter | number
+    gameNumber?: IntFilter | number
     number?: IntFilter | number
     challengeModifierId?: IntNullableFilter | number | null
     modifierOptionId?: IntNullableFilter | number | null
@@ -11606,6 +11638,8 @@ export namespace Prisma {
     id?: SortOrder
     dateCreated?: SortOrder
     gameId?: SortOrder
+    userId?: SortOrder
+    gameNumber?: SortOrder
     number?: SortOrder
     challengeModifierId?: SortOrderInput | SortOrder
     modifierOptionId?: SortOrderInput | SortOrder
@@ -11636,6 +11670,8 @@ export namespace Prisma {
     id?: SortOrder
     dateCreated?: SortOrder
     gameId?: SortOrder
+    userId?: SortOrder
+    gameNumber?: SortOrder
     number?: SortOrder
     challengeModifierId?: SortOrderInput | SortOrder
     modifierOptionId?: SortOrderInput | SortOrder
@@ -11661,6 +11697,8 @@ export namespace Prisma {
     id?: IntWithAggregatesFilter | number
     dateCreated?: DateTimeWithAggregatesFilter | Date | string
     gameId?: IntWithAggregatesFilter | number
+    userId?: IntWithAggregatesFilter | number
+    gameNumber?: IntWithAggregatesFilter | number
     number?: IntWithAggregatesFilter | number
     challengeModifierId?: IntNullableWithAggregatesFilter | number | null
     modifierOptionId?: IntNullableWithAggregatesFilter | number | null
@@ -12209,6 +12247,8 @@ export namespace Prisma {
 
   export type DayCreateInput = {
     dateCreated?: Date | string
+    userId: number
+    gameNumber: number
     number: number
     dateFirstRolled?: Date | string | null
     part1Completed?: Date | string | null
@@ -12231,6 +12271,8 @@ export namespace Prisma {
     id?: number
     dateCreated?: Date | string
     gameId: number
+    userId: number
+    gameNumber: number
     number: number
     challengeModifierId?: number | null
     modifierOptionId?: number | null
@@ -12250,6 +12292,8 @@ export namespace Prisma {
 
   export type DayUpdateInput = {
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: IntFieldUpdateOperationsInput | number
+    gameNumber?: IntFieldUpdateOperationsInput | number
     number?: IntFieldUpdateOperationsInput | number
     dateFirstRolled?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     part1Completed?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -12272,6 +12316,8 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     gameId?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+    gameNumber?: IntFieldUpdateOperationsInput | number
     number?: IntFieldUpdateOperationsInput | number
     challengeModifierId?: NullableIntFieldUpdateOperationsInput | number | null
     modifierOptionId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -12293,6 +12339,8 @@ export namespace Prisma {
     id?: number
     dateCreated?: Date | string
     gameId: number
+    userId: number
+    gameNumber: number
     number: number
     challengeModifierId?: number | null
     modifierOptionId?: number | null
@@ -12308,6 +12356,8 @@ export namespace Prisma {
 
   export type DayUpdateManyMutationInput = {
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: IntFieldUpdateOperationsInput | number
+    gameNumber?: IntFieldUpdateOperationsInput | number
     number?: IntFieldUpdateOperationsInput | number
     dateFirstRolled?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     part1Completed?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -12321,6 +12371,8 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     gameId?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+    gameNumber?: IntFieldUpdateOperationsInput | number
     number?: IntFieldUpdateOperationsInput | number
     challengeModifierId?: NullableIntFieldUpdateOperationsInput | number | null
     modifierOptionId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -13080,6 +13132,8 @@ export namespace Prisma {
     id?: SortOrder
     dateCreated?: SortOrder
     gameId?: SortOrder
+    userId?: SortOrder
+    gameNumber?: SortOrder
     number?: SortOrder
     challengeModifierId?: SortOrder
     modifierOptionId?: SortOrder
@@ -13096,6 +13150,8 @@ export namespace Prisma {
   export type DayAvgOrderByAggregateInput = {
     id?: SortOrder
     gameId?: SortOrder
+    userId?: SortOrder
+    gameNumber?: SortOrder
     number?: SortOrder
     challengeModifierId?: SortOrder
     modifierOptionId?: SortOrder
@@ -13110,6 +13166,8 @@ export namespace Prisma {
     id?: SortOrder
     dateCreated?: SortOrder
     gameId?: SortOrder
+    userId?: SortOrder
+    gameNumber?: SortOrder
     number?: SortOrder
     challengeModifierId?: SortOrder
     modifierOptionId?: SortOrder
@@ -13127,6 +13185,8 @@ export namespace Prisma {
     id?: SortOrder
     dateCreated?: SortOrder
     gameId?: SortOrder
+    userId?: SortOrder
+    gameNumber?: SortOrder
     number?: SortOrder
     challengeModifierId?: SortOrder
     modifierOptionId?: SortOrder
@@ -13143,6 +13203,8 @@ export namespace Prisma {
   export type DaySumOrderByAggregateInput = {
     id?: SortOrder
     gameId?: SortOrder
+    userId?: SortOrder
+    gameNumber?: SortOrder
     number?: SortOrder
     challengeModifierId?: SortOrder
     modifierOptionId?: SortOrder
@@ -15953,6 +16015,8 @@ export namespace Prisma {
 
   export type DayCreateWithoutGameInput = {
     dateCreated?: Date | string
+    userId: number
+    gameNumber: number
     number: number
     dateFirstRolled?: Date | string | null
     part1Completed?: Date | string | null
@@ -15973,6 +16037,8 @@ export namespace Prisma {
   export type DayUncheckedCreateWithoutGameInput = {
     id?: number
     dateCreated?: Date | string
+    userId: number
+    gameNumber: number
     number: number
     challengeModifierId?: number | null
     modifierOptionId?: number | null
@@ -16089,6 +16155,8 @@ export namespace Prisma {
     id?: IntFilter | number
     dateCreated?: DateTimeFilter | Date | string
     gameId?: IntFilter | number
+    userId?: IntFilter | number
+    gameNumber?: IntFilter | number
     number?: IntFilter | number
     challengeModifierId?: IntNullableFilter | number | null
     modifierOptionId?: IntNullableFilter | number | null
@@ -16940,6 +17008,8 @@ export namespace Prisma {
 
   export type DayCreateWithoutChallengeModifierInput = {
     dateCreated?: Date | string
+    userId: number
+    gameNumber: number
     number: number
     dateFirstRolled?: Date | string | null
     part1Completed?: Date | string | null
@@ -16961,6 +17031,8 @@ export namespace Prisma {
     id?: number
     dateCreated?: Date | string
     gameId: number
+    userId: number
+    gameNumber: number
     number: number
     modifierOptionId?: number | null
     dateFirstRolled?: Date | string | null
@@ -17101,6 +17173,8 @@ export namespace Prisma {
 
   export type DayCreateWithoutExcludedChallengeModifiersInput = {
     dateCreated?: Date | string
+    userId: number
+    gameNumber: number
     number: number
     dateFirstRolled?: Date | string | null
     part1Completed?: Date | string | null
@@ -17122,6 +17196,8 @@ export namespace Prisma {
     id?: number
     dateCreated?: Date | string
     gameId: number
+    userId: number
+    gameNumber: number
     number: number
     challengeModifierId?: number | null
     modifierOptionId?: number | null
@@ -17145,6 +17221,8 @@ export namespace Prisma {
 
   export type DayCreateWithoutIncludedCustomChallengeModifiersInput = {
     dateCreated?: Date | string
+    userId: number
+    gameNumber: number
     number: number
     dateFirstRolled?: Date | string | null
     part1Completed?: Date | string | null
@@ -17166,6 +17244,8 @@ export namespace Prisma {
     id?: number
     dateCreated?: Date | string
     gameId: number
+    userId: number
+    gameNumber: number
     number: number
     challengeModifierId?: number | null
     modifierOptionId?: number | null
@@ -17189,6 +17269,8 @@ export namespace Prisma {
 
   export type DayCreateWithoutModifierWhenPart1CompletedInput = {
     dateCreated?: Date | string
+    userId: number
+    gameNumber: number
     number: number
     dateFirstRolled?: Date | string | null
     part1Completed?: Date | string | null
@@ -17210,6 +17292,8 @@ export namespace Prisma {
     id?: number
     dateCreated?: Date | string
     gameId: number
+    userId: number
+    gameNumber: number
     number: number
     challengeModifierId?: number | null
     modifierOptionId?: number | null
@@ -17499,6 +17583,8 @@ export namespace Prisma {
 
   export type DayCreateWithoutModifierOptionInput = {
     dateCreated?: Date | string
+    userId: number
+    gameNumber: number
     number: number
     dateFirstRolled?: Date | string | null
     part1Completed?: Date | string | null
@@ -17520,6 +17606,8 @@ export namespace Prisma {
     id?: number
     dateCreated?: Date | string
     gameId: number
+    userId: number
+    gameNumber: number
     number: number
     challengeModifierId?: number | null
     dateFirstRolled?: Date | string | null
@@ -17660,6 +17748,8 @@ export namespace Prisma {
 
   export type DayCreateWithoutExcludedModifierOptionsInput = {
     dateCreated?: Date | string
+    userId: number
+    gameNumber: number
     number: number
     dateFirstRolled?: Date | string | null
     part1Completed?: Date | string | null
@@ -17681,6 +17771,8 @@ export namespace Prisma {
     id?: number
     dateCreated?: Date | string
     gameId: number
+    userId: number
+    gameNumber: number
     number: number
     challengeModifierId?: number | null
     modifierOptionId?: number | null
@@ -17704,6 +17796,8 @@ export namespace Prisma {
 
   export type DayCreateWithoutIncludedCustomModifierOptionsInput = {
     dateCreated?: Date | string
+    userId: number
+    gameNumber: number
     number: number
     dateFirstRolled?: Date | string | null
     part1Completed?: Date | string | null
@@ -17725,6 +17819,8 @@ export namespace Prisma {
     id?: number
     dateCreated?: Date | string
     gameId: number
+    userId: number
+    gameNumber: number
     number: number
     challengeModifierId?: number | null
     modifierOptionId?: number | null
@@ -17748,6 +17844,8 @@ export namespace Prisma {
 
   export type DayCreateWithoutOptionWhenPart1CompletedInput = {
     dateCreated?: Date | string
+    userId: number
+    gameNumber: number
     number: number
     dateFirstRolled?: Date | string | null
     part1Completed?: Date | string | null
@@ -17769,6 +17867,8 @@ export namespace Prisma {
     id?: number
     dateCreated?: Date | string
     gameId: number
+    userId: number
+    gameNumber: number
     number: number
     challengeModifierId?: number | null
     modifierOptionId?: number | null
@@ -18820,6 +18920,8 @@ export namespace Prisma {
   export type DayCreateManyGameInput = {
     id?: number
     dateCreated?: Date | string
+    userId: number
+    gameNumber: number
     number: number
     challengeModifierId?: number | null
     modifierOptionId?: number | null
@@ -18835,6 +18937,8 @@ export namespace Prisma {
 
   export type DayUpdateWithoutGameInput = {
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: IntFieldUpdateOperationsInput | number
+    gameNumber?: IntFieldUpdateOperationsInput | number
     number?: IntFieldUpdateOperationsInput | number
     dateFirstRolled?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     part1Completed?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -18855,6 +18959,8 @@ export namespace Prisma {
   export type DayUncheckedUpdateWithoutGameInput = {
     id?: IntFieldUpdateOperationsInput | number
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: IntFieldUpdateOperationsInput | number
+    gameNumber?: IntFieldUpdateOperationsInput | number
     number?: IntFieldUpdateOperationsInput | number
     challengeModifierId?: NullableIntFieldUpdateOperationsInput | number | null
     modifierOptionId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -18875,6 +18981,8 @@ export namespace Prisma {
   export type DayUncheckedUpdateManyWithoutDayInput = {
     id?: IntFieldUpdateOperationsInput | number
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: IntFieldUpdateOperationsInput | number
+    gameNumber?: IntFieldUpdateOperationsInput | number
     number?: IntFieldUpdateOperationsInput | number
     challengeModifierId?: NullableIntFieldUpdateOperationsInput | number | null
     modifierOptionId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -19164,6 +19272,8 @@ export namespace Prisma {
     id?: number
     dateCreated?: Date | string
     gameId: number
+    userId: number
+    gameNumber: number
     number: number
     modifierOptionId?: number | null
     dateFirstRolled?: Date | string | null
@@ -19180,6 +19290,8 @@ export namespace Prisma {
     id?: number
     dateCreated?: Date | string
     gameId: number
+    userId: number
+    gameNumber: number
     number: number
     challengeModifierId?: number | null
     modifierOptionId?: number | null
@@ -19231,6 +19343,8 @@ export namespace Prisma {
 
   export type DayUpdateWithoutChallengeModifierInput = {
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: IntFieldUpdateOperationsInput | number
+    gameNumber?: IntFieldUpdateOperationsInput | number
     number?: IntFieldUpdateOperationsInput | number
     dateFirstRolled?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     part1Completed?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -19252,6 +19366,8 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     gameId?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+    gameNumber?: IntFieldUpdateOperationsInput | number
     number?: IntFieldUpdateOperationsInput | number
     modifierOptionId?: NullableIntFieldUpdateOperationsInput | number | null
     dateFirstRolled?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -19388,6 +19504,8 @@ export namespace Prisma {
 
   export type DayUpdateWithoutExcludedChallengeModifiersInput = {
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: IntFieldUpdateOperationsInput | number
+    gameNumber?: IntFieldUpdateOperationsInput | number
     number?: IntFieldUpdateOperationsInput | number
     dateFirstRolled?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     part1Completed?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -19409,6 +19527,8 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     gameId?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+    gameNumber?: IntFieldUpdateOperationsInput | number
     number?: IntFieldUpdateOperationsInput | number
     challengeModifierId?: NullableIntFieldUpdateOperationsInput | number | null
     modifierOptionId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -19429,6 +19549,8 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     gameId?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+    gameNumber?: IntFieldUpdateOperationsInput | number
     number?: IntFieldUpdateOperationsInput | number
     challengeModifierId?: NullableIntFieldUpdateOperationsInput | number | null
     modifierOptionId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -19444,6 +19566,8 @@ export namespace Prisma {
 
   export type DayUpdateWithoutIncludedCustomChallengeModifiersInput = {
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: IntFieldUpdateOperationsInput | number
+    gameNumber?: IntFieldUpdateOperationsInput | number
     number?: IntFieldUpdateOperationsInput | number
     dateFirstRolled?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     part1Completed?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -19465,6 +19589,8 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     gameId?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+    gameNumber?: IntFieldUpdateOperationsInput | number
     number?: IntFieldUpdateOperationsInput | number
     challengeModifierId?: NullableIntFieldUpdateOperationsInput | number | null
     modifierOptionId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -19485,6 +19611,8 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     gameId?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+    gameNumber?: IntFieldUpdateOperationsInput | number
     number?: IntFieldUpdateOperationsInput | number
     challengeModifierId?: NullableIntFieldUpdateOperationsInput | number | null
     modifierOptionId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -19500,6 +19628,8 @@ export namespace Prisma {
 
   export type DayUpdateWithoutModifierWhenPart1CompletedInput = {
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: IntFieldUpdateOperationsInput | number
+    gameNumber?: IntFieldUpdateOperationsInput | number
     number?: IntFieldUpdateOperationsInput | number
     dateFirstRolled?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     part1Completed?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -19521,6 +19651,8 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     gameId?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+    gameNumber?: IntFieldUpdateOperationsInput | number
     number?: IntFieldUpdateOperationsInput | number
     challengeModifierId?: NullableIntFieldUpdateOperationsInput | number | null
     modifierOptionId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -19541,6 +19673,8 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     gameId?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+    gameNumber?: IntFieldUpdateOperationsInput | number
     number?: IntFieldUpdateOperationsInput | number
     challengeModifierId?: NullableIntFieldUpdateOperationsInput | number | null
     modifierOptionId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -19557,6 +19691,8 @@ export namespace Prisma {
     id?: number
     dateCreated?: Date | string
     gameId: number
+    userId: number
+    gameNumber: number
     number: number
     challengeModifierId?: number | null
     dateFirstRolled?: Date | string | null
@@ -19573,6 +19709,8 @@ export namespace Prisma {
     id?: number
     dateCreated?: Date | string
     gameId: number
+    userId: number
+    gameNumber: number
     number: number
     challengeModifierId?: number | null
     modifierOptionId?: number | null
@@ -19587,6 +19725,8 @@ export namespace Prisma {
 
   export type DayUpdateWithoutModifierOptionInput = {
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: IntFieldUpdateOperationsInput | number
+    gameNumber?: IntFieldUpdateOperationsInput | number
     number?: IntFieldUpdateOperationsInput | number
     dateFirstRolled?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     part1Completed?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -19608,6 +19748,8 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     gameId?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+    gameNumber?: IntFieldUpdateOperationsInput | number
     number?: IntFieldUpdateOperationsInput | number
     challengeModifierId?: NullableIntFieldUpdateOperationsInput | number | null
     dateFirstRolled?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -19718,6 +19860,8 @@ export namespace Prisma {
 
   export type DayUpdateWithoutExcludedModifierOptionsInput = {
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: IntFieldUpdateOperationsInput | number
+    gameNumber?: IntFieldUpdateOperationsInput | number
     number?: IntFieldUpdateOperationsInput | number
     dateFirstRolled?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     part1Completed?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -19739,6 +19883,8 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     gameId?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+    gameNumber?: IntFieldUpdateOperationsInput | number
     number?: IntFieldUpdateOperationsInput | number
     challengeModifierId?: NullableIntFieldUpdateOperationsInput | number | null
     modifierOptionId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -19757,6 +19903,8 @@ export namespace Prisma {
 
   export type DayUpdateWithoutIncludedCustomModifierOptionsInput = {
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: IntFieldUpdateOperationsInput | number
+    gameNumber?: IntFieldUpdateOperationsInput | number
     number?: IntFieldUpdateOperationsInput | number
     dateFirstRolled?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     part1Completed?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -19778,6 +19926,8 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     gameId?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+    gameNumber?: IntFieldUpdateOperationsInput | number
     number?: IntFieldUpdateOperationsInput | number
     challengeModifierId?: NullableIntFieldUpdateOperationsInput | number | null
     modifierOptionId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -19796,6 +19946,8 @@ export namespace Prisma {
 
   export type DayUpdateWithoutOptionWhenPart1CompletedInput = {
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: IntFieldUpdateOperationsInput | number
+    gameNumber?: IntFieldUpdateOperationsInput | number
     number?: IntFieldUpdateOperationsInput | number
     dateFirstRolled?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     part1Completed?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -19817,6 +19969,8 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     gameId?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+    gameNumber?: IntFieldUpdateOperationsInput | number
     number?: IntFieldUpdateOperationsInput | number
     challengeModifierId?: NullableIntFieldUpdateOperationsInput | number | null
     modifierOptionId?: NullableIntFieldUpdateOperationsInput | number | null
