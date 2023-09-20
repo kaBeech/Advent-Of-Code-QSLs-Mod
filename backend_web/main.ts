@@ -20,6 +20,7 @@ import { rerollModifierOption } from "./routes/day/rerollModifierOption.ts";
 import { rerollChallengeModifier } from "./routes/day/rerollChallengeModifier.ts";
 import { rollInitialModifier } from "./routes/day/rollInitialModifier.ts";
 import { startNextDay } from "./routes/day/startNextDay.ts";
+import { completeCurrentDay } from "./routes/game/completeCurrentDay.ts";
 
 const app = new Application();
 const router = new Router();
@@ -96,6 +97,13 @@ router
   .get("/user/:id/game/:id/day/:id", async (context) => {
     const { id } = context.params;
     context.response.body = await getDayById(+id);
+  })
+  /**
+   * Complete a Game's current Day
+   */
+  .put("/user/:id/game/:id/day/complete", async (context) => {
+    const { id } = context.params;
+    context.response.body = await completeCurrentDay(+id);
   })
   /**
    * Start the next Day
