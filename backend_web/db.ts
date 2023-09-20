@@ -34,7 +34,7 @@ export async function upsertUser(id: number) {
 }
 
 export async function getUserById(id: number) {
-  const user = await prisma.user.findUnique({
+  const user = await prisma.user.findUniqueOrThrow({
     where: {
       id,
     },
@@ -92,7 +92,7 @@ export async function getAllGames() {
 }
 
 export async function getGameById(id: number) {
-  const game = await prisma.game.findUnique({
+  const game = await prisma.game.findUniqueOrThrow({
     where: {
       id,
     },
@@ -152,7 +152,7 @@ export async function createDay(
 }
 
 export async function getDayById(id: number) {
-  const day = await prisma.day.findUnique({
+  const day = await prisma.day.findUniqueOrThrow({
     where: {
       id,
     },
