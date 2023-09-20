@@ -100,6 +100,19 @@ export async function getGameById(id: number) {
   return game;
 }
 
+export async function getGameByUserIdAndGameNumber(
+  userId: number,
+  gameNumber: number,
+) {
+  const game = await prisma.game.findFirstOrThrow({
+    where: {
+      id: userId,
+      number: gameNumber,
+    },
+  });
+  return game;
+}
+
 export async function updateGame(game: Game) {
   const result = await prisma.game.update({
     where: {

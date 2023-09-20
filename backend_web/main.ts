@@ -12,6 +12,7 @@ import {
   getDayById,
   getDaysByGameId,
   getGameById,
+  getGameByUserIdAndGameNumber,
   getUserById,
 } from "./db.ts";
 import { completePart1 } from "./routes/day/completePart1.ts";
@@ -54,9 +55,12 @@ router
   /**
    * Resume Game
    */
-  .get("/user/:id/game/:id", async (context) => {
-    const { id } = context.params;
-    context.response.body = await getGameById(+id);
+  .get("/user/:id/game/:gamenumber", async (context) => {
+    const { id, gamenumber } = context.params;
+    context.response.body = await getGameByUserIdAndGameNumber(
+      +id,
+      +gamenumber,
+    );
   })
   /**
    * Start New Game
