@@ -84,16 +84,18 @@ router
   /**
    * Delete Game
    */
-  .delete("/user/:id/game/:id", async (context) => {
-    const { id } = context.params;
-    context.response.body = await deleteGame(+id);
+  .delete("/user/:id/game/:gamenumber", async (context) => {
+    const { id, gamenumber } = context.params;
+    const game = await getGameByUserIdAndGameNumber(+id, +gamenumber);
+    context.response.body = await deleteGame(game.id);
   })
   /**
    * Get all Days for a Game
    */
-  .get("/user/:id/game/:id/day", async (context) => {
-    const { id } = context.params;
-    context.response.body = await getDaysByGameId(+id);
+  .get("/user/:id/game/:gamenumber/day", async (context) => {
+    const { id, gamenumber } = context.params;
+    const game = await getGameByUserIdAndGameNumber(+id, +gamenumber);
+    context.response.body = await getDaysByGameId(game.id);
   })
   /**
    * Get a Day
