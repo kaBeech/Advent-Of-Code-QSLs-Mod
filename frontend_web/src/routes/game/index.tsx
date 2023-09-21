@@ -20,8 +20,8 @@ const serverFetcher = server$(async function (gameID: number, dayID: number) {
   );
   const data = await res.json();
   return {
-    challengeModifier: data.challengeModifierId,
-    modifierOption: data.modifierOptionId,
+    challengeModifier: data.ChallengeModifier.text,
+    modifierOption: data.hasOptions ? data.ModifierOption.text : "None",
   };
 });
 
