@@ -4,20 +4,18 @@ import { Link, server$ } from "@builder.io/qwik-city";
 
 const gameID = 1;
 const dayID = 1;
-const xtremeXmasAPI = "http://localhost:8000";
 
-const serverFetcher = server$(async function (gameID: number, dayID: number) {
+const serverFetcher = server$(async function (route: string, method: string) {
   //   const xtremeXmasAPI = this.env.get("XTREME_XMAS_API");
   // if (xtremeXmasAPI == undefined) {
   //   console.error("XTREME_XMAS_API string not found upon request");
   // }
+  const xtremeXmasAPI = "http://localhost:8000";
   const abortController = new AbortController();
-  const res = await fetch(
-    `${xtremeXmasAPI}/user/1/game/${gameID}/day/${dayID}`,
-    {
-      signal: abortController.signal,
-    }
-  );
+  const res = await fetch(`${xtremeXmasAPI}/${route}`, {
+    signal: abortController.signal,
+    method,
+  });
   const data = await res.json();
   return {
     challengeModifier: data.ChallengeModifier.text,
@@ -37,7 +35,10 @@ export default component$(() => {
       const dayID = track(() => state.dayID);
       const abortController = new AbortController();
       cleanup(() => abortController.abort("cleanup"));
-      const res = await serverFetcher(gameID, dayID);
+      const res = await serverFetcher(
+        `user/1/game/${gameID}/day/${dayID}`,
+        "GET"
+      );
       return res;
     }
   );
@@ -89,12 +90,16 @@ export default component$(() => {
             );
           }}
         />
-        <form
-          action={`${xtremeXmasAPI}/user/1/game/${state.gameID}/day/${state.dayID}/complete/part1`}
-          method="post"
+        <button
+          onClick$={async () => {
+            await serverFetcher(
+              `user/1/game/${state.gameID}/day/${state.dayID}/complete/part2`,
+              "PUT"
+            );
+          }}
         >
-          <button type="submit">Submit</button>
-        </form>
+          Complete Part 2
+        </button>
         <p>
           <Link href="../">{"<-- Back"}</Link>
         </p>
