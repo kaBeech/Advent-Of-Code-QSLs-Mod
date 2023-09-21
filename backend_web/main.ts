@@ -9,9 +9,9 @@ import {
   deleteGame,
   getAllChallengeModifiers,
   getAllGames,
-  getDaysByUserIdAndGameNumber,
   getGamesByUserId,
   getUserById,
+  getUserByIdWithRelations,
 } from "./db.ts";
 import { completePart1 } from "./routes/day/completePart1.ts";
 import { completePart2 } from "./routes/day/completePart2.ts";
@@ -43,6 +43,14 @@ router
    */
   .post("/user", async (context) => {
     context.response.body = await createUser();
+  })
+  /**
+   * Get User with Relations
+   */
+  .get("/user/:id", async (context) => {
+    const { id } = context.params;
+    const games = await getUserByIdWithRelations(+id);
+    context.response.body = games;
   })
   /**
    * Get All Games (eventually will be Continue Game)
@@ -91,18 +99,16 @@ router
    */
   .get("/user/:id/game/:gamenumber/day", async (context) => {
     const { id, gamenumber } = context.params;
-    context.response.body = await getDaysByUserIdAndGameNumber(
-      +id,
-      +gamenumber,
-    );
+    const userData = await getUserByIdWithRelations(+id);
+    context.response.body = userData.Game[+gamenumber - 1].Day;
   })
   /**
    * Get a Day
    */
   .get("/user/:id/game/:gamenumber/day/:daynumber", async (context) => {
     const { id, gamenumber, daynumber } = context.params;
-    const days = await getDaysByUserIdAndGameNumber(+id, +gamenumber);
-    context.response.body = days[+daynumber - 1];
+    const userData = await getUserByIdWithRelations(+id);
+    context.response.body = userData.Game[+gamenumber - 1].Day[+daynumber - 1];
   })
   /**
    * Complete a Game's current Day
