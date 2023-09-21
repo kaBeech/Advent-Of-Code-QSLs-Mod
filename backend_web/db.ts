@@ -188,28 +188,6 @@ export async function getDayById(id: number) {
   return day;
 }
 
-export async function getDaysByUserIdAndGameNumber(
-  userId: number,
-  gameNumber: number,
-) {
-  const days = await prisma.day.findMany({
-    where: {
-      userId,
-      gameNumber,
-    },
-  });
-  return days;
-}
-
-export async function getDaysByGameId(gameId: number) {
-  const days = await prisma.day.findMany({
-    where: {
-      gameId,
-    },
-  });
-  return days;
-}
-
 export async function updateDay(day: Day) {
   const result = await prisma.day.update({
     where: {
