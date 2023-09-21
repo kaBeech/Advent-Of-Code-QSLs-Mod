@@ -18,7 +18,9 @@ const serverFetcher = server$(async function (route: string, method: string) {
   });
   const data = await res.json();
   return {
-    challengeModifier: data.ChallengeModifier.text,
+    challengeModifier: data.challengeModifierId
+      ? data.ChallengeModifier.text
+      : "None",
     modifierOption: data.hasOptions ? data.ModifierOption.text : "None",
   };
 });
