@@ -113,7 +113,7 @@ export default component$(() => {
         <button
           onClick$={async () => {
             await serverFetcher(
-              `user/1/game/${state.gameID}/day/${state.dayID}/complete`,
+              `user/1/game/${state.gameID}/day/complete`,
               "PUT"
             );
           }}
