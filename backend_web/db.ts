@@ -48,7 +48,7 @@ export async function updateUser(user: User) {
       id: user.id,
     },
     data: {
-      ...user,
+      numberOfGames: user.numberOfGames,
     },
   });
   return result;
@@ -143,7 +143,19 @@ export async function updateGame(game: Game) {
       id: game.id,
     },
     data: {
-      ...game,
+      name: game.name,
+      playerName: game.playerName,
+      currentDay: game.currentDay,
+      currentDayCompleted: game.currentDayCompleted,
+      currentRerollTokens: game.currentRerollTokens,
+      rerollTokensSpent: game.rerollTokensSpent,
+      repositoryLink: game.repositoryLink,
+      progressSheetLink: game.progressSheetLink,
+      public: game.public,
+      publicProfileId: game.publicProfileId,
+      score: game.score,
+      rankId: game.rankId,
+      dateCompleted: game.dateCompleted,
     },
   });
   return result;
@@ -194,7 +206,17 @@ export async function updateDay(day: Day) {
       id: day.id,
     },
     data: {
-      ...day,
+      gameNumber: day.gameNumber,
+      challengeModifierId: day.challengeModifierId,
+      modifierOptionId: day.modifierOptionId,
+      dateFirstRolled: day.dateFirstRolled,
+      part1Completed: day.part1Completed,
+      modifierWhenPart1CompletedId: day.modifierWhenPart1CompletedId,
+      optionWhenPart1CompletedId: day.optionWhenPart1CompletedId,
+      part2Completed: day.part2Completed,
+      challengeModifierRerollsUsed: day.challengeModifierRerollsUsed,
+      modifierOptionRerollsUsed: day.modifierOptionRerollsUsed,
+      rerollTokensSpentDuringPart2: day.rerollTokensSpentDuringPart2,
     },
   });
   return result;
