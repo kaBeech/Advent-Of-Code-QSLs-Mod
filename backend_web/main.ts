@@ -9,7 +9,6 @@ import {
   deleteGame,
   getAllChallengeModifiers,
   getAllGames,
-  getDaysByUserIdAndGameNumber,
   getGamesByUserId,
   getUserById,
   getUserByIdWithRelations,
@@ -100,18 +99,16 @@ router
    */
   .get("/user/:id/game/:gamenumber/day", async (context) => {
     const { id, gamenumber } = context.params;
-    context.response.body = await getDaysByUserIdAndGameNumber(
-      +id,
-      +gamenumber,
-    );
+    const userData = await getUserByIdWithRelations(+id);
+    context.response.body = userData.Game[+gamenumber - 1].Day;
   })
   /**
    * Get a Day
    */
   .get("/user/:id/game/:gamenumber/day/:daynumber", async (context) => {
     const { id, gamenumber, daynumber } = context.params;
-    const days = await getDaysByUserIdAndGameNumber(+id, +gamenumber);
-    context.response.body = days[+daynumber - 1];
+    const userData = await getUserByIdWithRelations(+id);
+    context.response.body = userData.Game[+gamenumber - 1].Day[+daynumber - 1];
   })
   /**
    * Complete a Game's current Day
