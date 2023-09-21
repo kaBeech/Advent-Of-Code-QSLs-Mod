@@ -93,12 +93,69 @@ export default component$(() => {
         <button
           onClick$={async () => {
             await serverFetcher(
+              `user/1/game/${state.gameID}/day/${state.dayID}/complete/part1`,
+              "PUT"
+            );
+          }}
+        >
+          Complete Part 1
+        </button>
+        <button
+          onClick$={async () => {
+            await serverFetcher(
               `user/1/game/${state.gameID}/day/${state.dayID}/complete/part2`,
               "PUT"
             );
           }}
         >
           Complete Part 2
+        </button>
+        <button
+          onClick$={async () => {
+            await serverFetcher(
+              `user/1/game/${state.gameID}/day/${state.dayID}/complete`,
+              "PUT"
+            );
+          }}
+        >
+          Complete Day
+        </button>
+        <button
+          onClick$={async () => {
+            await serverFetcher(`user/1/game/${state.gameID}/day`, "POST");
+          }}
+        >
+          Start Next Day
+        </button>
+        <button
+          onClick$={async () => {
+            await serverFetcher(
+              `user/1/game/${state.gameID}/day/${state.dayID}/roll`,
+              "PUT"
+            );
+          }}
+        >
+          Roll Initial Challenge Modifier
+        </button>
+        <button
+          onClick$={async () => {
+            await serverFetcher(
+              `user/1/game/${state.gameID}/day/${state.dayID}/reroll/modifier`,
+              "PUT"
+            );
+          }}
+        >
+          Reroll Challenge Modifier
+        </button>
+        <button
+          onClick$={async () => {
+            await serverFetcher(
+              `user/1/game/${state.gameID}/day/${state.dayID}/reroll/option`,
+              "PUT"
+            );
+          }}
+        >
+          Reroll Modifier Option
         </button>
         <p>
           <Link href="../">{"<-- Back"}</Link>
