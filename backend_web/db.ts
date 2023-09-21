@@ -100,12 +100,38 @@ export async function getGameById(id: number) {
   return game;
 }
 
+export async function getUserByIdWithRelations(
+  userId: number,
+) {
+  const games = await prisma.user.findUniqueOrThrow({
+    where: {
+      id: userId,
+    },
+    include: {
+      Game: {
+        include: {
+          Day: {
+            include: {
+              ChallengeModifier: {
+                include: {
+                  ModifierOption: true,
+                },
+              },
+            },
+          },
+        },
+      },
+    },
+  });
+  return games;
+}
+
 export async function getGamesByUserId(
   userId: number,
 ) {
   const games = await prisma.game.findMany({
     where: {
-      id: userId,
+      userId,
     },
   });
   return games;

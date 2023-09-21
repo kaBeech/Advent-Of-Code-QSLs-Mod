@@ -12,6 +12,7 @@ import {
   getDaysByUserIdAndGameNumber,
   getGamesByUserId,
   getUserById,
+  getUserByIdWithRelations,
 } from "./db.ts";
 import { completePart1 } from "./routes/day/completePart1.ts";
 import { completePart2 } from "./routes/day/completePart2.ts";
@@ -43,6 +44,14 @@ router
    */
   .post("/user", async (context) => {
     context.response.body = await createUser();
+  })
+  /**
+   * Get User with Relations
+   */
+  .get("/user/:id", async (context) => {
+    const { id } = context.params;
+    const games = await getUserByIdWithRelations(+id);
+    context.response.body = games;
   })
   /**
    * Get All Games (eventually will be Continue Game)

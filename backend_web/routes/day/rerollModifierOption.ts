@@ -1,9 +1,8 @@
 import { DayController } from "../../components/DayController.ts";
 import { GameController } from "../../components/GameController.ts";
 import {
-  getDaysByUserIdAndGameNumber,
-  getGamesByUserId,
   getModifierOptionsByChallengeModifierId,
+  getUserByIdWithRelations,
   updateDay,
   updateGame,
 } from "../../db.ts";
@@ -13,10 +12,9 @@ export const rerollModifierOption = async (
   gameNumber: number,
   dayNumber: number,
 ) => {
-  const days = await getDaysByUserIdAndGameNumber(userId, gameNumber);
-  const day = days[dayNumber - 1];
-  const games = await getGamesByUserId(userId);
-  const game = games[gameNumber - 1];
+  const userData = await getUserByIdWithRelations(userId);
+  const game = userData.Game[gameNumber - 1];
+  const day = game.Day[dayNumber - 1];
   const modifierOptions = await getModifierOptionsByChallengeModifierId(
     day!.challengeModifierId!,
   );
