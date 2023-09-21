@@ -4,9 +4,9 @@ import { Link, server$ } from "@builder.io/qwik-city";
 
 const gameID = 1;
 const dayID = 1;
+const xtremeXmasAPI = "http://localhost:8000";
 
 const serverFetcher = server$(async function (gameID: number, dayID: number) {
-  const xtremeXmasAPI = "http://localhost:8000";
   //   const xtremeXmasAPI = this.env.get("XTREME_XMAS_API");
   // if (xtremeXmasAPI == undefined) {
   //   console.error("XTREME_XMAS_API string not found upon request");
@@ -89,6 +89,12 @@ export default component$(() => {
             );
           }}
         />
+        <form
+          action={`${xtremeXmasAPI}/user/1/game/${state.gameID}/day/${state.dayID}/complete/part1`}
+          method="post"
+        >
+          <button type="submit">Submit</button>
+        </form>
         <p>
           <Link href="../">{"<-- Back"}</Link>
         </p>
