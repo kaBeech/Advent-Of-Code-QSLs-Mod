@@ -120,9 +120,9 @@ router
   /**
    * Start the next Day
    */
-  .post("/user/:id/game/:gamenumber/day", async (context) => {
-    const { id, gamenumber } = context.params;
-    context.response.body = await startNextDay(+id, +gamenumber);
+  .put("/user/:id/game/:gamenumber/day/:daynumber", async (context) => {
+    const { id, gamenumber, daynumber } = context.params;
+    context.response.body = await startNextDay(+id, +gamenumber, +daynumber);
   })
   /**
    * Roll a Day's initial Challenge Modifier
