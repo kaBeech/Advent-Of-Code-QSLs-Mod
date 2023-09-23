@@ -124,7 +124,10 @@ export default component$(() => {
         </button>
         <button
           onClick$={async () => {
-            await serverFetcher(`user/1/game/${state.gameID}/day`, "POST");
+            await serverFetcher(
+              `user/1/game/${state.gameID}/day/${+state.dayID + 1}`,
+              "PUT"
+            );
           }}
         >
           Start Next Day
