@@ -18,7 +18,7 @@ export const rerollChallengeModifier = async (
   const day = game.Day[dayNumber - 1];
   const challengeModifiers = await getAllChallengeModifiers();
   const modifierOptions = await getAllModifierOptions();
-  const updatedDay = await DayController(day!).rerollChallengeModifier(
+  const updatedDay = DayController(day!).rerollChallengeModifier(
     game!,
     challengeModifiers,
     modifierOptions,

@@ -16,7 +16,7 @@ export const rollInitialModifier = async (
   const day = game.Day[dayNumber - 1];
   const challengeModifiers = await getAllChallengeModifiers();
   const modifierOptions = await getAllModifierOptions();
-  const updatedDay = await DayController(day!).rollInitialChallengeModifier(
+  const updatedDay = DayController(day!).rollInitialChallengeModifier(
     game!,
     challengeModifiers,
     modifierOptions,
