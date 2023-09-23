@@ -48,10 +48,8 @@ export default component$(() => {
         challengeModifier: dayData.challengeModifierId
           ? dayData.ChallengeModifier.text
           : "None",
-        modifierOption: dayData.challengeModifierId
-          ? dayData.ChallengeModifier.hasOptions
-            ? dayData.ChallengeModifier.ModifierOption.text
-            : "None"
+        modifierOption: dayData.modifierOptionId
+          ? dayData.ModifierOption.text
           : "None",
         currentRerollTokens: gameData.currentRerollTokens,
       };
