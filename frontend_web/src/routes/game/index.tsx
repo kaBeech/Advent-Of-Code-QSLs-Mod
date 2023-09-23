@@ -17,12 +17,13 @@ const serverFetcher = server$(async function (route: string, method: string) {
     method,
   });
   const data = await res.json();
-  return {
-    challengeModifier: data.challengeModifierId
-      ? data.ChallengeModifier.text
-      : "None",
-    modifierOption: data.hasOptions ? data.ModifierOption.text : "None",
-  };
+  // return {
+  //   challengeModifier: data.challengeModifierId
+  //     ? data.ChallengeModifier.text
+  //     : "None",
+  //   modifierOption: data.hasOptions ? data.ModifierOption.text : "None",
+  // };
+  return data;
 });
 
 export default component$(() => {
@@ -32,19 +33,32 @@ export default component$(() => {
     buttonPresses: 0,
   });
 
-  const xtremeXmasDayResource = useResource$<any>(
+  const xtremeXmasUserDataResource = useResource$<any>(
     async ({ track, cleanup }) => {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const gameID = track(() => state.gameID);
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const dayID = track(() => state.dayID);
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const buttonPresses = track(() => state.buttonPresses);
       const abortController = new AbortController();
       cleanup(() => abortController.abort("cleanup"));
-      const res = await serverFetcher(
-        `user/1/game/${gameID}/day/${dayID}`,
-        "GET"
+      const userData = await serverFetcher(`user/1`, "GET");
+      const gameData = userData.Game.find(
+        (game: { number: number }) => game.number === +gameID
       );
-      return res;
+      const dayData = gameData.Day.find(
+        (day: { number: number }) => day.number === +dayID
+      );
+      return {
+        challengeModifier: dayData.challengeModifierId
+          ? dayData.ChallengeModifier.text
+          : "None",
+        modifierOption: dayData.ChallengeModifier.hasOptions
+          ? dayData.ChallengeModifier.ModifierOption.text
+          : "None",
+        currentRerollTokens: gameData.currentRerollTokens,
+      };
     }
   );
 
@@ -69,7 +83,7 @@ export default component$(() => {
           aria-labelledby="Day ID"
         />
         <Resource
-          value={xtremeXmasDayResource}
+          value={xtremeXmasUserDataResource}
           onPending={() => {
             return (
               <div>
@@ -80,17 +94,21 @@ export default component$(() => {
               </div>
             );
           }}
-          onResolved={(xtremeXmasDayData) => {
+          onResolved={(xtremeXmasData) => {
             return (
               <div class="flex column">
                 <h2>
                   Challenge Modifier:{" "}
-                  <strong>{xtremeXmasDayData.challengeModifier}</strong>
+                  <strong>{xtremeXmasData.challengeModifier}</strong>
                 </h2>
                 <h3>
                   Modifier Option:{" "}
-                  <strong>{xtremeXmasDayData.modifierOption}</strong>
+                  <strong>{xtremeXmasData.modifierOption}</strong>
                 </h3>
+                <div>
+                  Current Reroll Tokens:{" "}
+                  <strong>{xtremeXmasData.currentRerollTokens}</strong>
+                </div>
               </div>
             );
           }}
