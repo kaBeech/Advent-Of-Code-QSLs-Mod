@@ -165,6 +165,7 @@ Deno.test("ModifierOption reroll throws error if ChallengeModifier does not have
       return dayController.rerollModifierOption(
         exampleGameDay1.currentDay,
         exampleModifierOptions,
+        exampleGameDay1,
       );
     },
     Error,
