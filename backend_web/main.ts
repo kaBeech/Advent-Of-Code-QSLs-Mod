@@ -12,6 +12,7 @@ import {
   getGamesByUserId,
   getUserById,
   getUserByIdWithRelations,
+  updateUser,
 } from "./db.ts";
 import { completePart1 } from "./routes/day/completePart1.ts";
 import { completePart2 } from "./routes/day/completePart2.ts";
@@ -77,9 +78,11 @@ router
         type: "json",
       })
       .value;
+    user!.numberOfGames++;
+    await updateUser(user!);
     context.response.body = await createGame(
       +id,
-      user!.numberOfGames + 1,
+      user!.numberOfGames,
       name,
       year,
       playerName,
