@@ -117,6 +117,7 @@ export async function getUserByIdWithRelations(
                   ModifierOption: true,
                 },
               },
+              ModifierOption: true,
             },
           },
         },
