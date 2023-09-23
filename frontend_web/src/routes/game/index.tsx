@@ -29,12 +29,15 @@ export default component$(() => {
   const state = useStore({
     gameID,
     dayID,
+    buttonPresses: 0,
   });
 
   const xtremeXmasDayResource = useResource$<any>(
     async ({ track, cleanup }) => {
       const gameID = track(() => state.gameID);
       const dayID = track(() => state.dayID);
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      const buttonPresses = track(() => state.buttonPresses);
       const abortController = new AbortController();
       cleanup(() => abortController.abort("cleanup"));
       const res = await serverFetcher(
@@ -98,6 +101,7 @@ export default component$(() => {
               `user/1/game/${state.gameID}/day/${state.dayID}/complete/part1`,
               "PUT"
             );
+            state.buttonPresses++;
           }}
         >
           Complete Part 1
@@ -108,6 +112,7 @@ export default component$(() => {
               `user/1/game/${state.gameID}/day/${state.dayID}/complete/part2`,
               "PUT"
             );
+            state.buttonPresses++;
           }}
         >
           Complete Part 2
@@ -118,6 +123,7 @@ export default component$(() => {
               `user/1/game/${state.gameID}/day/complete`,
               "PUT"
             );
+            state.buttonPresses++;
           }}
         >
           Complete Day
@@ -128,6 +134,7 @@ export default component$(() => {
               `user/1/game/${state.gameID}/day/${+state.dayID + 1}`,
               "PUT"
             );
+            state.buttonPresses++;
           }}
         >
           Start Next Day
@@ -138,6 +145,7 @@ export default component$(() => {
               `user/1/game/${state.gameID}/day/${state.dayID}/roll`,
               "PUT"
             );
+            state.buttonPresses++;
           }}
         >
           Roll Initial Challenge Modifier
@@ -148,6 +156,7 @@ export default component$(() => {
               `user/1/game/${state.gameID}/day/${state.dayID}/reroll/modifier`,
               "PUT"
             );
+            state.buttonPresses++;
           }}
         >
           Reroll Challenge Modifier
@@ -158,6 +167,7 @@ export default component$(() => {
               `user/1/game/${state.gameID}/day/${state.dayID}/reroll/option`,
               "PUT"
             );
+            state.buttonPresses++;
           }}
         >
           Reroll Modifier Option
