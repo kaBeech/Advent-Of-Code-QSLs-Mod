@@ -41,12 +41,13 @@ const initialChallengeModifierRoller = (state: DayControllerState) => ({
     const selectedChallengeModifier = rollChallengeModifier(challengeModifiers);
     state.day.challengeModifierId = selectedChallengeModifier.id;
     if (selectedChallengeModifier.hasOptions) {
-      const selectedModifierOptions = modifierOptions.filter(
+      const filteredModifierOptions = modifierOptions.filter(
         (option) => option.challengeModifierId === selectedChallengeModifier.id,
       );
-      state.day.modifierOptionId = await rollModifierOption(
-        selectedModifierOptions,
+      const selectedModifierOption = await rollModifierOption(
+        filteredModifierOptions,
       );
+      state.day.modifierOptionId = selectedModifierOption.id;
     }
     return state.day;
   },
@@ -71,12 +72,13 @@ const challengeModifierReroller = (state: DayControllerState) => ({
     );
     state.day.challengeModifierId = selectedChallengeModifier.id;
     if (selectedChallengeModifier.hasOptions) {
-      const selectedModifierOptions = modifierOptions.filter(
+      const filteredModifierOptions = modifierOptions.filter(
         (option) => option.challengeModifierId === selectedChallengeModifier.id,
       );
-      state.day.modifierOptionId = await rollModifierOption(
-        selectedModifierOptions,
+      const selectedModifierOption = await rollModifierOption(
+        filteredModifierOptions,
       );
+      state.day.modifierOptionId = selectedModifierOption.id;
     }
     return state.day;
   },
