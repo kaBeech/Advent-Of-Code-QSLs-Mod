@@ -52,6 +52,10 @@ export default component$(() => {
           ? dayData.ModifierOption.text
           : "None",
         currentRerollTokens: gameData.currentRerollTokens,
+        currentDay: gameData.currentDay,
+        currentDayCompleted: dayData.currentDayCompleted ? "Yes" : "No",
+        part1Completed: dayData.part1Completed ? "Yes" : "No",
+        part2Completed: dayData.part2Completed ? "Yes" : "No",
       };
     }
   );
@@ -102,6 +106,21 @@ export default component$(() => {
                 <div>
                   Current Reroll Tokens:{" "}
                   <strong>{xtremeXmasData.currentRerollTokens}</strong>
+                </div>
+                <div>
+                  Current Day: <strong>{xtremeXmasData.currentDay}</strong>
+                </div>
+                <div>
+                  Current Day Completed?{" "}
+                  <strong>{xtremeXmasData.currentDayCompleted}</strong>
+                </div>
+                <div>
+                  Selected Day Part 1 Completed?{" "}
+                  <strong>{xtremeXmasData.part1Completed}</strong>
+                </div>
+                <div>
+                  Selected Day Part 2 Completed?{" "}
+                  <strong>{xtremeXmasData.part2Completed}</strong>
                 </div>
               </div>
             );
