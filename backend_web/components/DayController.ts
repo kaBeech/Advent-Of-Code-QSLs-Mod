@@ -71,12 +71,11 @@ const challengeModifierReroller = (state: DayControllerState) => ({
     );
     state.day.challengeModifierId = selectedChallengeModifier.id;
     if (selectedChallengeModifier.hasOptions) {
-      state.day = await modifierOptionReroller(state).rerollModifierOption(
-        game.currentDay,
-        modifierOptions.filter((option) =>
-          option.challengeModifierId === selectedChallengeModifier.id
-        ),
-        true,
+      const selectedModifierOptions = modifierOptions.filter(
+        (option) => option.challengeModifierId === selectedChallengeModifier.id,
+      );
+      state.day.modifierOptionId = await rollModifierOption(
+        selectedModifierOptions,
       );
     }
     return state.day;
@@ -87,7 +86,6 @@ const modifierOptionReroller = (state: DayControllerState) => ({
   rerollModifierOption: async (
     currentDay: number,
     modifierOptions: ModifierOption[],
-    gratis: boolean,
     game?: Game,
   ) => {
     verifyDayIsCurrent(state.day.number, currentDay);
@@ -97,7 +95,7 @@ const modifierOptionReroller = (state: DayControllerState) => ({
     if (!state.day.modifierOptionId || state.day.modifierOptionId === 0) {
       throw new Error("No modifier option to reroll");
     }
-    if (!gratis && game!.currentRerollTokens < 1) {
+    if (game!.currentRerollTokens < 1) {
       throw new Error("Not enough reroll tokens");
     }
     state.day.modifierOptionRerollsUsed += 1;

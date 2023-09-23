@@ -21,7 +21,6 @@ export const rerollModifierOption = async (
   const updatedDay = await DayController(day!).rerollModifierOption(
     game!.currentDay,
     modifierOptions,
-    false,
     game!,
   );
   const updatedGame = GameController(game!).spendRerollTokens(1);
