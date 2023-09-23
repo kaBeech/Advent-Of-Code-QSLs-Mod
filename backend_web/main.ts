@@ -64,7 +64,7 @@ router
   .get("/user/:id/game/:gamenumber", async (context) => {
     const { id, gamenumber } = context.params;
     const games = await getGamesByUserId(+id);
-    context.response.body = games[+gamenumber - 1];
+    context.response.body = games.find((game) => game.number === +gamenumber);
   })
   /**
    * Start New Game
@@ -91,8 +91,8 @@ router
   .delete("/user/:id/game/:gamenumber", async (context) => {
     const { id, gamenumber } = context.params;
     const games = await getGamesByUserId(+id);
-    const game = games[+gamenumber - 1];
-    context.response.body = await deleteGame(game.id);
+    const game = games.find((game) => game.number === +gamenumber);
+    context.response.body = await deleteGame(game!.id);
   })
   /**
    * Get all Days for a Game
@@ -100,7 +100,9 @@ router
   .get("/user/:id/game/:gamenumber/day", async (context) => {
     const { id, gamenumber } = context.params;
     const userData = await getUserByIdWithRelations(+id);
-    context.response.body = userData.Game[+gamenumber - 1].Day;
+    context.response.body = userData.Game.find((game) =>
+      game.number === +gamenumber
+    )!.Day;
   })
   /**
    * Get a Day
@@ -108,7 +110,9 @@ router
   .get("/user/:id/game/:gamenumber/day/:daynumber", async (context) => {
     const { id, gamenumber, daynumber } = context.params;
     const userData = await getUserByIdWithRelations(+id);
-    context.response.body = userData.Game[+gamenumber - 1].Day[+daynumber - 1];
+    context.response.body = userData.Game.find((game) =>
+      game.number === +gamenumber
+    )!.Day.find((day) => day.number === +daynumber);
   })
   /**
    * Complete a Game's current Day
