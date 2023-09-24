@@ -1,12 +1,12 @@
 export const exampleUser = {
-  "id": 1,
+  "id": "1",
   "dateCreated": new Date(),
   "numberOfGames": 1,
 };
 
 export const exampleGame = {
   "id": 1,
-  "userId": 1,
+  "userId": "1",
   "number": 1,
   "year": 2022,
   "name": "Test Game",
@@ -27,7 +27,7 @@ export const exampleGame = {
 
 export const exampleGameDay1 = {
   "id": 1,
-  "userId": 1,
+  "userId": "1",
   "number": 1,
   "year": 2022,
   "name": "Test Game",
@@ -50,7 +50,7 @@ export const exampleDay = {
   "id": 1,
   "dateCreated": new Date(),
   "gameId": 1,
-  "userId": 1,
+  "userId": "1",
   "gameNumber": 1,
   "number": 1,
   "challengeModifierId": null,

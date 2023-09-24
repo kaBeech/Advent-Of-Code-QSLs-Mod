@@ -10,7 +10,7 @@ export const gitHubStrategy = new GitHubStrategy({
 });
 
 export const serializerA = async (userInfo: any) => {
-  const serializedId = Math.floor(Math.random() * 1000000000);
+  const serializedId = self.crypto.randomUUID();
 
   try {
     await upsertUser(serializedId);
@@ -23,7 +23,7 @@ export const serializerA = async (userInfo: any) => {
 
 export const deserializerA = async (serializedId: string | number) => {
   try {
-    const userInfo = await getUserById(+serializedId);
+    const userInfo = await getUserById(serializedId);
     return userInfo;
   } catch (err) {
     // return new Error(err);

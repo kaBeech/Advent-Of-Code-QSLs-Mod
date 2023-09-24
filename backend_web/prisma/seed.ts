@@ -292,6 +292,17 @@ const modifierOptionData: Prisma.ModifierOptionCreateInput[] = [
   {
     ChallengeModifier: {
       connect: {
+        name: "language_box_1",
+      },
+    },
+    name: "language_box_1_elixir",
+    text: "Elixir",
+    standard: true,
+    public: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
         name: "language_box_2",
       },
     },
@@ -363,6 +374,17 @@ const modifierOptionData: Prisma.ModifierOptionCreateInput[] = [
     },
     name: "language_box_2_csharp",
     text: "C#",
+    standard: true,
+    public: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "language_box_2",
+      },
+    },
+    name: "language_box_2_erlang",
+    text: "Erlang",
     standard: true,
     public: true,
   },
@@ -517,7 +539,7 @@ for (const u of rankData) {
 }
 
 const userData: Prisma.UserCreateInput[] = [
-  { "numberOfGames": 0 },
+  { "id": "1", "numberOfGames": 0 },
 ];
 
 for (const u of userData) {

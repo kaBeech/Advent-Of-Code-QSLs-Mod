@@ -26,7 +26,7 @@ export type UserPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultAr
     ModifierPack: ModifierPackPayload<ExtArgs>[]
   }
   scalars: $Extensions.GetResult<{
-    id: number
+    id: string
     dateCreated: Date
     numberOfGames: number
   }, ExtArgs["result"]["user"]>
@@ -48,7 +48,7 @@ export type PublicProfilePayload<ExtArgs extends $Extensions.Args = $Extensions.
     id: number
     dateCreated: Date
     name: string
-    userId: number
+    userId: string
   }, ExtArgs["result"]["publicProfile"]>
   composites: {}
 }
@@ -69,7 +69,7 @@ export type GamePayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultAr
   scalars: $Extensions.GetResult<{
     id: number
     dateCreated: Date
-    userId: number
+    userId: string
     number: number
     year: number
     name: string
@@ -129,7 +129,7 @@ export type DayPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArg
     id: number
     dateCreated: Date
     gameId: number
-    userId: number
+    userId: string
     gameNumber: number
     number: number
     challengeModifierId: number | null
@@ -173,7 +173,7 @@ export type ChallengeModifierPayload<ExtArgs extends $Extensions.Args = $Extensi
     hasOptions: boolean
     explanatoryUrl: string | null
     standard: boolean
-    createdById: number | null
+    createdById: string | null
     public: boolean
   }, ExtArgs["result"]["challengeModifier"]>
   composites: {}
@@ -206,7 +206,7 @@ export type ModifierOptionPayload<ExtArgs extends $Extensions.Args = $Extensions
     text: string
     explanatoryUrl: string | null
     standard: boolean
-    createdById: number | null
+    createdById: string | null
     public: boolean
   }, ExtArgs["result"]["modifierOption"]>
   composites: {}
@@ -229,7 +229,7 @@ export type ModifierPackPayload<ExtArgs extends $Extensions.Args = $Extensions.D
   scalars: $Extensions.GetResult<{
     id: number
     dateCreated: Date
-    createdById: number | null
+    createdById: string | null
     public: boolean
   }, ExtArgs["result"]["modifierPack"]>
   composites: {}
@@ -2240,23 +2240,21 @@ export namespace Prisma {
   }
 
   export type UserAvgAggregateOutputType = {
-    id: number | null
     numberOfGames: number | null
   }
 
   export type UserSumAggregateOutputType = {
-    id: number | null
     numberOfGames: number | null
   }
 
   export type UserMinAggregateOutputType = {
-    id: number | null
+    id: string | null
     dateCreated: Date | null
     numberOfGames: number | null
   }
 
   export type UserMaxAggregateOutputType = {
-    id: number | null
+    id: string | null
     dateCreated: Date | null
     numberOfGames: number | null
   }
@@ -2270,12 +2268,10 @@ export namespace Prisma {
 
 
   export type UserAvgAggregateInputType = {
-    id?: true
     numberOfGames?: true
   }
 
   export type UserSumAggregateInputType = {
-    id?: true
     numberOfGames?: true
   }
 
@@ -2386,7 +2382,7 @@ export namespace Prisma {
 
 
   export type UserGroupByOutputType = {
-    id: number
+    id: string
     dateCreated: Date
     numberOfGames: number
     _count: UserCountAggregateOutputType | null
@@ -3077,7 +3073,7 @@ export namespace Prisma {
     /**
      * The data needed to create a User.
      */
-    data?: XOR<UserCreateInput, UserUncheckedCreateInput>
+    data: XOR<UserCreateInput, UserUncheckedCreateInput>
   }
 
 
@@ -3408,26 +3404,24 @@ export namespace Prisma {
 
   export type PublicProfileAvgAggregateOutputType = {
     id: number | null
-    userId: number | null
   }
 
   export type PublicProfileSumAggregateOutputType = {
     id: number | null
-    userId: number | null
   }
 
   export type PublicProfileMinAggregateOutputType = {
     id: number | null
     dateCreated: Date | null
     name: string | null
-    userId: number | null
+    userId: string | null
   }
 
   export type PublicProfileMaxAggregateOutputType = {
     id: number | null
     dateCreated: Date | null
     name: string | null
-    userId: number | null
+    userId: string | null
   }
 
   export type PublicProfileCountAggregateOutputType = {
@@ -3441,12 +3435,10 @@ export namespace Prisma {
 
   export type PublicProfileAvgAggregateInputType = {
     id?: true
-    userId?: true
   }
 
   export type PublicProfileSumAggregateInputType = {
     id?: true
-    userId?: true
   }
 
   export type PublicProfileMinAggregateInputType = {
@@ -3562,7 +3554,7 @@ export namespace Prisma {
     id: number
     dateCreated: Date
     name: string
-    userId: number
+    userId: string
     _count: PublicProfileCountAggregateOutputType | null
     _avg: PublicProfileAvgAggregateOutputType | null
     _sum: PublicProfileSumAggregateOutputType | null
@@ -4388,7 +4380,6 @@ export namespace Prisma {
 
   export type GameAvgAggregateOutputType = {
     id: number | null
-    userId: number | null
     number: number | null
     year: number | null
     currentDay: number | null
@@ -4401,7 +4392,6 @@ export namespace Prisma {
 
   export type GameSumAggregateOutputType = {
     id: number | null
-    userId: number | null
     number: number | null
     year: number | null
     currentDay: number | null
@@ -4415,7 +4405,7 @@ export namespace Prisma {
   export type GameMinAggregateOutputType = {
     id: number | null
     dateCreated: Date | null
-    userId: number | null
+    userId: string | null
     number: number | null
     year: number | null
     name: string | null
@@ -4436,7 +4426,7 @@ export namespace Prisma {
   export type GameMaxAggregateOutputType = {
     id: number | null
     dateCreated: Date | null
-    userId: number | null
+    userId: string | null
     number: number | null
     year: number | null
     name: string | null
@@ -4479,7 +4469,6 @@ export namespace Prisma {
 
   export type GameAvgAggregateInputType = {
     id?: true
-    userId?: true
     number?: true
     year?: true
     currentDay?: true
@@ -4492,7 +4481,6 @@ export namespace Prisma {
 
   export type GameSumAggregateInputType = {
     id?: true
-    userId?: true
     number?: true
     year?: true
     currentDay?: true
@@ -4657,7 +4645,7 @@ export namespace Prisma {
   export type GameGroupByOutputType = {
     id: number
     dateCreated: Date
-    userId: number
+    userId: string
     number: number
     year: number
     name: string
@@ -6502,7 +6490,6 @@ export namespace Prisma {
   export type DayAvgAggregateOutputType = {
     id: number | null
     gameId: number | null
-    userId: number | null
     gameNumber: number | null
     number: number | null
     challengeModifierId: number | null
@@ -6517,7 +6504,6 @@ export namespace Prisma {
   export type DaySumAggregateOutputType = {
     id: number | null
     gameId: number | null
-    userId: number | null
     gameNumber: number | null
     number: number | null
     challengeModifierId: number | null
@@ -6533,7 +6519,7 @@ export namespace Prisma {
     id: number | null
     dateCreated: Date | null
     gameId: number | null
-    userId: number | null
+    userId: string | null
     gameNumber: number | null
     number: number | null
     challengeModifierId: number | null
@@ -6552,7 +6538,7 @@ export namespace Prisma {
     id: number | null
     dateCreated: Date | null
     gameId: number | null
-    userId: number | null
+    userId: string | null
     gameNumber: number | null
     number: number | null
     challengeModifierId: number | null
@@ -6591,7 +6577,6 @@ export namespace Prisma {
   export type DayAvgAggregateInputType = {
     id?: true
     gameId?: true
-    userId?: true
     gameNumber?: true
     number?: true
     challengeModifierId?: true
@@ -6606,7 +6591,6 @@ export namespace Prisma {
   export type DaySumAggregateInputType = {
     id?: true
     gameId?: true
-    userId?: true
     gameNumber?: true
     number?: true
     challengeModifierId?: true
@@ -6767,7 +6751,7 @@ export namespace Prisma {
     id: number
     dateCreated: Date
     gameId: number
-    userId: number
+    userId: string
     gameNumber: number
     number: number
     challengeModifierId: number | null
@@ -7720,12 +7704,10 @@ export namespace Prisma {
 
   export type ChallengeModifierAvgAggregateOutputType = {
     id: number | null
-    createdById: number | null
   }
 
   export type ChallengeModifierSumAggregateOutputType = {
     id: number | null
-    createdById: number | null
   }
 
   export type ChallengeModifierMinAggregateOutputType = {
@@ -7736,7 +7718,7 @@ export namespace Prisma {
     hasOptions: boolean | null
     explanatoryUrl: string | null
     standard: boolean | null
-    createdById: number | null
+    createdById: string | null
     public: boolean | null
   }
 
@@ -7748,7 +7730,7 @@ export namespace Prisma {
     hasOptions: boolean | null
     explanatoryUrl: string | null
     standard: boolean | null
-    createdById: number | null
+    createdById: string | null
     public: boolean | null
   }
 
@@ -7768,12 +7750,10 @@ export namespace Prisma {
 
   export type ChallengeModifierAvgAggregateInputType = {
     id?: true
-    createdById?: true
   }
 
   export type ChallengeModifierSumAggregateInputType = {
     id?: true
-    createdById?: true
   }
 
   export type ChallengeModifierMinAggregateInputType = {
@@ -7908,7 +7888,7 @@ export namespace Prisma {
     hasOptions: boolean
     explanatoryUrl: string | null
     standard: boolean
-    createdById: number | null
+    createdById: string | null
     public: boolean
     _count: ChallengeModifierCountAggregateOutputType | null
     _avg: ChallengeModifierAvgAggregateOutputType | null
@@ -8946,13 +8926,11 @@ export namespace Prisma {
   export type ModifierOptionAvgAggregateOutputType = {
     id: number | null
     challengeModifierId: number | null
-    createdById: number | null
   }
 
   export type ModifierOptionSumAggregateOutputType = {
     id: number | null
     challengeModifierId: number | null
-    createdById: number | null
   }
 
   export type ModifierOptionMinAggregateOutputType = {
@@ -8963,7 +8941,7 @@ export namespace Prisma {
     text: string | null
     explanatoryUrl: string | null
     standard: boolean | null
-    createdById: number | null
+    createdById: string | null
     public: boolean | null
   }
 
@@ -8975,7 +8953,7 @@ export namespace Prisma {
     text: string | null
     explanatoryUrl: string | null
     standard: boolean | null
-    createdById: number | null
+    createdById: string | null
     public: boolean | null
   }
 
@@ -8996,13 +8974,11 @@ export namespace Prisma {
   export type ModifierOptionAvgAggregateInputType = {
     id?: true
     challengeModifierId?: true
-    createdById?: true
   }
 
   export type ModifierOptionSumAggregateInputType = {
     id?: true
     challengeModifierId?: true
-    createdById?: true
   }
 
   export type ModifierOptionMinAggregateInputType = {
@@ -9137,7 +9113,7 @@ export namespace Prisma {
     text: string
     explanatoryUrl: string | null
     standard: boolean
-    createdById: number | null
+    createdById: string | null
     public: boolean
     _count: ModifierOptionCountAggregateOutputType | null
     _avg: ModifierOptionAvgAggregateOutputType | null
@@ -10153,25 +10129,23 @@ export namespace Prisma {
 
   export type ModifierPackAvgAggregateOutputType = {
     id: number | null
-    createdById: number | null
   }
 
   export type ModifierPackSumAggregateOutputType = {
     id: number | null
-    createdById: number | null
   }
 
   export type ModifierPackMinAggregateOutputType = {
     id: number | null
     dateCreated: Date | null
-    createdById: number | null
+    createdById: string | null
     public: boolean | null
   }
 
   export type ModifierPackMaxAggregateOutputType = {
     id: number | null
     dateCreated: Date | null
-    createdById: number | null
+    createdById: string | null
     public: boolean | null
   }
 
@@ -10186,12 +10160,10 @@ export namespace Prisma {
 
   export type ModifierPackAvgAggregateInputType = {
     id?: true
-    createdById?: true
   }
 
   export type ModifierPackSumAggregateInputType = {
     id?: true
-    createdById?: true
   }
 
   export type ModifierPackMinAggregateInputType = {
@@ -10306,7 +10278,7 @@ export namespace Prisma {
   export type ModifierPackGroupByOutputType = {
     id: number
     dateCreated: Date
-    createdById: number | null
+    createdById: string | null
     public: boolean
     _count: ModifierPackCountAggregateOutputType | null
     _avg: ModifierPackAvgAggregateOutputType | null
@@ -11354,7 +11326,7 @@ export namespace Prisma {
     AND?: Enumerable<UserWhereInput>
     OR?: Enumerable<UserWhereInput>
     NOT?: Enumerable<UserWhereInput>
-    id?: IntFilter | number
+    id?: StringFilter | string
     dateCreated?: DateTimeFilter | Date | string
     numberOfGames?: IntFilter | number
     Game?: GameListRelationFilter
@@ -11384,7 +11356,7 @@ export namespace Prisma {
   }
 
   export type UserWhereUniqueInput = {
-    id?: number
+    id?: string
   }
 
   export type UserOrderByWithAggregationInput = {
@@ -11402,7 +11374,7 @@ export namespace Prisma {
     AND?: Enumerable<UserScalarWhereWithAggregatesInput>
     OR?: Enumerable<UserScalarWhereWithAggregatesInput>
     NOT?: Enumerable<UserScalarWhereWithAggregatesInput>
-    id?: IntWithAggregatesFilter | number
+    id?: StringWithAggregatesFilter | string
     dateCreated?: DateTimeWithAggregatesFilter | Date | string
     numberOfGames?: IntWithAggregatesFilter | number
   }
@@ -11414,7 +11386,7 @@ export namespace Prisma {
     id?: IntFilter | number
     dateCreated?: DateTimeFilter | Date | string
     name?: StringFilter | string
-    userId?: IntFilter | number
+    userId?: StringFilter | string
     User?: XOR<UserRelationFilter, UserWhereInput>
     Game?: GameListRelationFilter
   }
@@ -11451,7 +11423,7 @@ export namespace Prisma {
     id?: IntWithAggregatesFilter | number
     dateCreated?: DateTimeWithAggregatesFilter | Date | string
     name?: StringWithAggregatesFilter | string
-    userId?: IntWithAggregatesFilter | number
+    userId?: StringWithAggregatesFilter | string
   }
 
   export type GameWhereInput = {
@@ -11460,7 +11432,7 @@ export namespace Prisma {
     NOT?: Enumerable<GameWhereInput>
     id?: IntFilter | number
     dateCreated?: DateTimeFilter | Date | string
-    userId?: IntFilter | number
+    userId?: StringFilter | string
     number?: IntFilter | number
     year?: IntFilter | number
     name?: StringFilter | string
@@ -11543,7 +11515,7 @@ export namespace Prisma {
     NOT?: Enumerable<GameScalarWhereWithAggregatesInput>
     id?: IntWithAggregatesFilter | number
     dateCreated?: DateTimeWithAggregatesFilter | Date | string
-    userId?: IntWithAggregatesFilter | number
+    userId?: StringWithAggregatesFilter | string
     number?: IntWithAggregatesFilter | number
     year?: IntWithAggregatesFilter | number
     name?: StringWithAggregatesFilter | string
@@ -11610,7 +11582,7 @@ export namespace Prisma {
     id?: IntFilter | number
     dateCreated?: DateTimeFilter | Date | string
     gameId?: IntFilter | number
-    userId?: IntFilter | number
+    userId?: StringFilter | string
     gameNumber?: IntFilter | number
     number?: IntFilter | number
     challengeModifierId?: IntNullableFilter | number | null
@@ -11697,7 +11669,7 @@ export namespace Prisma {
     id?: IntWithAggregatesFilter | number
     dateCreated?: DateTimeWithAggregatesFilter | Date | string
     gameId?: IntWithAggregatesFilter | number
-    userId?: IntWithAggregatesFilter | number
+    userId?: StringWithAggregatesFilter | string
     gameNumber?: IntWithAggregatesFilter | number
     number?: IntWithAggregatesFilter | number
     challengeModifierId?: IntNullableWithAggregatesFilter | number | null
@@ -11723,7 +11695,7 @@ export namespace Prisma {
     hasOptions?: BoolFilter | boolean
     explanatoryUrl?: StringNullableFilter | string | null
     standard?: BoolFilter | boolean
-    createdById?: IntNullableFilter | number | null
+    createdById?: StringNullableFilter | string | null
     public?: BoolFilter | boolean
     CreatedBy?: XOR<UserRelationFilter, UserWhereInput> | null
     ModifierOption?: ModifierOptionListRelationFilter
@@ -11792,7 +11764,7 @@ export namespace Prisma {
     hasOptions?: BoolWithAggregatesFilter | boolean
     explanatoryUrl?: StringNullableWithAggregatesFilter | string | null
     standard?: BoolWithAggregatesFilter | boolean
-    createdById?: IntNullableWithAggregatesFilter | number | null
+    createdById?: StringNullableWithAggregatesFilter | string | null
     public?: BoolWithAggregatesFilter | boolean
   }
 
@@ -11807,7 +11779,7 @@ export namespace Prisma {
     text?: StringFilter | string
     explanatoryUrl?: StringNullableFilter | string | null
     standard?: BoolFilter | boolean
-    createdById?: IntNullableFilter | number | null
+    createdById?: StringNullableFilter | string | null
     public?: BoolFilter | boolean
     ChallengeModifier?: XOR<ChallengeModifierRelationFilter, ChallengeModifierWhereInput>
     CreatedBy?: XOR<UserRelationFilter, UserWhereInput> | null
@@ -11876,7 +11848,7 @@ export namespace Prisma {
     text?: StringWithAggregatesFilter | string
     explanatoryUrl?: StringNullableWithAggregatesFilter | string | null
     standard?: BoolWithAggregatesFilter | boolean
-    createdById?: IntNullableWithAggregatesFilter | number | null
+    createdById?: StringNullableWithAggregatesFilter | string | null
     public?: BoolWithAggregatesFilter | boolean
   }
 
@@ -11886,7 +11858,7 @@ export namespace Prisma {
     NOT?: Enumerable<ModifierPackWhereInput>
     id?: IntFilter | number
     dateCreated?: DateTimeFilter | Date | string
-    createdById?: IntNullableFilter | number | null
+    createdById?: StringNullableFilter | string | null
     public?: BoolFilter | boolean
     ExcludedChallengeModifiers?: ChallengeModifierListRelationFilter
     ExcludedModifierOptions?: ModifierOptionListRelationFilter
@@ -11929,11 +11901,12 @@ export namespace Prisma {
     NOT?: Enumerable<ModifierPackScalarWhereWithAggregatesInput>
     id?: IntWithAggregatesFilter | number
     dateCreated?: DateTimeWithAggregatesFilter | Date | string
-    createdById?: IntNullableWithAggregatesFilter | number | null
+    createdById?: StringNullableWithAggregatesFilter | string | null
     public?: BoolWithAggregatesFilter | boolean
   }
 
   export type UserCreateInput = {
+    id: string
     dateCreated?: Date | string
     numberOfGames?: number
     Game?: GameCreateNestedManyWithoutUserInput
@@ -11948,7 +11921,7 @@ export namespace Prisma {
   }
 
   export type UserUncheckedCreateInput = {
-    id?: number
+    id: string
     dateCreated?: Date | string
     numberOfGames?: number
     Game?: GameUncheckedCreateNestedManyWithoutUserInput
@@ -11963,6 +11936,7 @@ export namespace Prisma {
   }
 
   export type UserUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     numberOfGames?: IntFieldUpdateOperationsInput | number
     Game?: GameUpdateManyWithoutUserNestedInput
@@ -11977,7 +11951,7 @@ export namespace Prisma {
   }
 
   export type UserUncheckedUpdateInput = {
-    id?: IntFieldUpdateOperationsInput | number
+    id?: StringFieldUpdateOperationsInput | string
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     numberOfGames?: IntFieldUpdateOperationsInput | number
     Game?: GameUncheckedUpdateManyWithoutUserNestedInput
@@ -11992,18 +11966,19 @@ export namespace Prisma {
   }
 
   export type UserCreateManyInput = {
-    id?: number
+    id: string
     dateCreated?: Date | string
     numberOfGames?: number
   }
 
   export type UserUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     numberOfGames?: IntFieldUpdateOperationsInput | number
   }
 
   export type UserUncheckedUpdateManyInput = {
-    id?: IntFieldUpdateOperationsInput | number
+    id?: StringFieldUpdateOperationsInput | string
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     numberOfGames?: IntFieldUpdateOperationsInput | number
   }
@@ -12019,7 +11994,7 @@ export namespace Prisma {
     id?: number
     dateCreated?: Date | string
     name: string
-    userId: number
+    userId: string
     Game?: GameUncheckedCreateNestedManyWithoutPublicProfileInput
   }
 
@@ -12034,7 +12009,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     name?: StringFieldUpdateOperationsInput | string
-    userId?: IntFieldUpdateOperationsInput | number
+    userId?: StringFieldUpdateOperationsInput | string
     Game?: GameUncheckedUpdateManyWithoutPublicProfileNestedInput
   }
 
@@ -12042,7 +12017,7 @@ export namespace Prisma {
     id?: number
     dateCreated?: Date | string
     name: string
-    userId: number
+    userId: string
   }
 
   export type PublicProfileUpdateManyMutationInput = {
@@ -12054,7 +12029,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     name?: StringFieldUpdateOperationsInput | string
-    userId?: IntFieldUpdateOperationsInput | number
+    userId?: StringFieldUpdateOperationsInput | string
   }
 
   export type GameCreateInput = {
@@ -12081,7 +12056,7 @@ export namespace Prisma {
   export type GameUncheckedCreateInput = {
     id?: number
     dateCreated?: Date | string
-    userId: number
+    userId: string
     number: number
     year: number
     name: string
@@ -12124,7 +12099,7 @@ export namespace Prisma {
   export type GameUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    userId?: IntFieldUpdateOperationsInput | number
+    userId?: StringFieldUpdateOperationsInput | string
     number?: IntFieldUpdateOperationsInput | number
     year?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
@@ -12146,7 +12121,7 @@ export namespace Prisma {
   export type GameCreateManyInput = {
     id?: number
     dateCreated?: Date | string
-    userId: number
+    userId: string
     number: number
     year: number
     name: string
@@ -12184,7 +12159,7 @@ export namespace Prisma {
   export type GameUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    userId?: IntFieldUpdateOperationsInput | number
+    userId?: StringFieldUpdateOperationsInput | string
     number?: IntFieldUpdateOperationsInput | number
     year?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
@@ -12247,7 +12222,7 @@ export namespace Prisma {
 
   export type DayCreateInput = {
     dateCreated?: Date | string
-    userId: number
+    userId: string
     gameNumber: number
     number: number
     dateFirstRolled?: Date | string | null
@@ -12271,7 +12246,7 @@ export namespace Prisma {
     id?: number
     dateCreated?: Date | string
     gameId: number
-    userId: number
+    userId: string
     gameNumber: number
     number: number
     challengeModifierId?: number | null
@@ -12292,7 +12267,7 @@ export namespace Prisma {
 
   export type DayUpdateInput = {
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    userId?: IntFieldUpdateOperationsInput | number
+    userId?: StringFieldUpdateOperationsInput | string
     gameNumber?: IntFieldUpdateOperationsInput | number
     number?: IntFieldUpdateOperationsInput | number
     dateFirstRolled?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -12316,7 +12291,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     gameId?: IntFieldUpdateOperationsInput | number
-    userId?: IntFieldUpdateOperationsInput | number
+    userId?: StringFieldUpdateOperationsInput | string
     gameNumber?: IntFieldUpdateOperationsInput | number
     number?: IntFieldUpdateOperationsInput | number
     challengeModifierId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -12339,7 +12314,7 @@ export namespace Prisma {
     id?: number
     dateCreated?: Date | string
     gameId: number
-    userId: number
+    userId: string
     gameNumber: number
     number: number
     challengeModifierId?: number | null
@@ -12356,7 +12331,7 @@ export namespace Prisma {
 
   export type DayUpdateManyMutationInput = {
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    userId?: IntFieldUpdateOperationsInput | number
+    userId?: StringFieldUpdateOperationsInput | string
     gameNumber?: IntFieldUpdateOperationsInput | number
     number?: IntFieldUpdateOperationsInput | number
     dateFirstRolled?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -12371,7 +12346,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     gameId?: IntFieldUpdateOperationsInput | number
-    userId?: IntFieldUpdateOperationsInput | number
+    userId?: StringFieldUpdateOperationsInput | string
     gameNumber?: IntFieldUpdateOperationsInput | number
     number?: IntFieldUpdateOperationsInput | number
     challengeModifierId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -12414,7 +12389,7 @@ export namespace Prisma {
     hasOptions?: boolean
     explanatoryUrl?: string | null
     standard?: boolean
-    createdById?: number | null
+    createdById?: string | null
     public?: boolean
     ModifierOption?: ModifierOptionUncheckedCreateNestedManyWithoutChallengeModifierInput
     Day?: DayUncheckedCreateNestedManyWithoutChallengeModifierInput
@@ -12455,7 +12430,7 @@ export namespace Prisma {
     hasOptions?: BoolFieldUpdateOperationsInput | boolean
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
-    createdById?: NullableIntFieldUpdateOperationsInput | number | null
+    createdById?: NullableStringFieldUpdateOperationsInput | string | null
     public?: BoolFieldUpdateOperationsInput | boolean
     ModifierOption?: ModifierOptionUncheckedUpdateManyWithoutChallengeModifierNestedInput
     Day?: DayUncheckedUpdateManyWithoutChallengeModifierNestedInput
@@ -12476,7 +12451,7 @@ export namespace Prisma {
     hasOptions?: boolean
     explanatoryUrl?: string | null
     standard?: boolean
-    createdById?: number | null
+    createdById?: string | null
     public?: boolean
   }
 
@@ -12498,7 +12473,7 @@ export namespace Prisma {
     hasOptions?: BoolFieldUpdateOperationsInput | boolean
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
-    createdById?: NullableIntFieldUpdateOperationsInput | number | null
+    createdById?: NullableStringFieldUpdateOperationsInput | string | null
     public?: BoolFieldUpdateOperationsInput | boolean
   }
 
@@ -12529,7 +12504,7 @@ export namespace Prisma {
     text: string
     explanatoryUrl?: string | null
     standard?: boolean
-    createdById?: number | null
+    createdById?: string | null
     public?: boolean
     Day?: DayUncheckedCreateNestedManyWithoutModifierOptionInput
     ModifierPackExcluded?: ModifierPackUncheckedCreateNestedManyWithoutExcludedModifierOptionsInput
@@ -12568,7 +12543,7 @@ export namespace Prisma {
     text?: StringFieldUpdateOperationsInput | string
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
-    createdById?: NullableIntFieldUpdateOperationsInput | number | null
+    createdById?: NullableStringFieldUpdateOperationsInput | string | null
     public?: BoolFieldUpdateOperationsInput | boolean
     Day?: DayUncheckedUpdateManyWithoutModifierOptionNestedInput
     ModifierPackExcluded?: ModifierPackUncheckedUpdateManyWithoutExcludedModifierOptionsNestedInput
@@ -12588,7 +12563,7 @@ export namespace Prisma {
     text: string
     explanatoryUrl?: string | null
     standard?: boolean
-    createdById?: number | null
+    createdById?: string | null
     public?: boolean
   }
 
@@ -12609,7 +12584,7 @@ export namespace Prisma {
     text?: StringFieldUpdateOperationsInput | string
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
-    createdById?: NullableIntFieldUpdateOperationsInput | number | null
+    createdById?: NullableStringFieldUpdateOperationsInput | string | null
     public?: BoolFieldUpdateOperationsInput | boolean
   }
 
@@ -12626,7 +12601,7 @@ export namespace Prisma {
   export type ModifierPackUncheckedCreateInput = {
     id?: number
     dateCreated?: Date | string
-    createdById?: number | null
+    createdById?: string | null
     public?: boolean
     ExcludedChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutModifierPackExcludedInput
     ExcludedModifierOptions?: ModifierOptionUncheckedCreateNestedManyWithoutModifierPackExcludedInput
@@ -12647,7 +12622,7 @@ export namespace Prisma {
   export type ModifierPackUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdById?: NullableIntFieldUpdateOperationsInput | number | null
+    createdById?: NullableStringFieldUpdateOperationsInput | string | null
     public?: BoolFieldUpdateOperationsInput | boolean
     ExcludedChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutModifierPackExcludedNestedInput
     ExcludedModifierOptions?: ModifierOptionUncheckedUpdateManyWithoutModifierPackExcludedNestedInput
@@ -12658,7 +12633,7 @@ export namespace Prisma {
   export type ModifierPackCreateManyInput = {
     id?: number
     dateCreated?: Date | string
-    createdById?: number | null
+    createdById?: string | null
     public?: boolean
   }
 
@@ -12670,19 +12645,23 @@ export namespace Prisma {
   export type ModifierPackUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdById?: NullableIntFieldUpdateOperationsInput | number | null
+    createdById?: NullableStringFieldUpdateOperationsInput | string | null
     public?: BoolFieldUpdateOperationsInput | boolean
   }
 
-  export type IntFilter = {
-    equals?: number
-    in?: Enumerable<number> | number
-    notIn?: Enumerable<number> | number
-    lt?: number
-    lte?: number
-    gt?: number
-    gte?: number
-    not?: NestedIntFilter | number
+  export type StringFilter = {
+    equals?: string
+    in?: Enumerable<string> | string
+    notIn?: Enumerable<string> | string
+    lt?: string
+    lte?: string
+    gt?: string
+    gte?: string
+    contains?: string
+    startsWith?: string
+    endsWith?: string
+    mode?: QueryMode
+    not?: NestedStringFilter | string
   }
 
   export type DateTimeFilter = {
@@ -12694,6 +12673,17 @@ export namespace Prisma {
     gt?: Date | string
     gte?: Date | string
     not?: NestedDateTimeFilter | Date | string
+  }
+
+  export type IntFilter = {
+    equals?: number
+    in?: Enumerable<number> | number
+    notIn?: Enumerable<number> | number
+    lt?: number
+    lte?: number
+    gt?: number
+    gte?: number
+    not?: NestedIntFilter | number
   }
 
   export type GameListRelationFilter = {
@@ -12753,7 +12743,6 @@ export namespace Prisma {
   }
 
   export type UserAvgOrderByAggregateInput = {
-    id?: SortOrder
     numberOfGames?: SortOrder
   }
 
@@ -12770,89 +12759,7 @@ export namespace Prisma {
   }
 
   export type UserSumOrderByAggregateInput = {
-    id?: SortOrder
     numberOfGames?: SortOrder
-  }
-
-  export type IntWithAggregatesFilter = {
-    equals?: number
-    in?: Enumerable<number> | number
-    notIn?: Enumerable<number> | number
-    lt?: number
-    lte?: number
-    gt?: number
-    gte?: number
-    not?: NestedIntWithAggregatesFilter | number
-    _count?: NestedIntFilter
-    _avg?: NestedFloatFilter
-    _sum?: NestedIntFilter
-    _min?: NestedIntFilter
-    _max?: NestedIntFilter
-  }
-
-  export type DateTimeWithAggregatesFilter = {
-    equals?: Date | string
-    in?: Enumerable<Date> | Enumerable<string> | Date | string
-    notIn?: Enumerable<Date> | Enumerable<string> | Date | string
-    lt?: Date | string
-    lte?: Date | string
-    gt?: Date | string
-    gte?: Date | string
-    not?: NestedDateTimeWithAggregatesFilter | Date | string
-    _count?: NestedIntFilter
-    _min?: NestedDateTimeFilter
-    _max?: NestedDateTimeFilter
-  }
-
-  export type StringFilter = {
-    equals?: string
-    in?: Enumerable<string> | string
-    notIn?: Enumerable<string> | string
-    lt?: string
-    lte?: string
-    gt?: string
-    gte?: string
-    contains?: string
-    startsWith?: string
-    endsWith?: string
-    mode?: QueryMode
-    not?: NestedStringFilter | string
-  }
-
-  export type UserRelationFilter = {
-    is?: UserWhereInput | null
-    isNot?: UserWhereInput | null
-  }
-
-  export type PublicProfileCountOrderByAggregateInput = {
-    id?: SortOrder
-    dateCreated?: SortOrder
-    name?: SortOrder
-    userId?: SortOrder
-  }
-
-  export type PublicProfileAvgOrderByAggregateInput = {
-    id?: SortOrder
-    userId?: SortOrder
-  }
-
-  export type PublicProfileMaxOrderByAggregateInput = {
-    id?: SortOrder
-    dateCreated?: SortOrder
-    name?: SortOrder
-    userId?: SortOrder
-  }
-
-  export type PublicProfileMinOrderByAggregateInput = {
-    id?: SortOrder
-    dateCreated?: SortOrder
-    name?: SortOrder
-    userId?: SortOrder
-  }
-
-  export type PublicProfileSumOrderByAggregateInput = {
-    id?: SortOrder
-    userId?: SortOrder
   }
 
   export type StringWithAggregatesFilter = {
@@ -12871,6 +12778,70 @@ export namespace Prisma {
     _count?: NestedIntFilter
     _min?: NestedStringFilter
     _max?: NestedStringFilter
+  }
+
+  export type DateTimeWithAggregatesFilter = {
+    equals?: Date | string
+    in?: Enumerable<Date> | Enumerable<string> | Date | string
+    notIn?: Enumerable<Date> | Enumerable<string> | Date | string
+    lt?: Date | string
+    lte?: Date | string
+    gt?: Date | string
+    gte?: Date | string
+    not?: NestedDateTimeWithAggregatesFilter | Date | string
+    _count?: NestedIntFilter
+    _min?: NestedDateTimeFilter
+    _max?: NestedDateTimeFilter
+  }
+
+  export type IntWithAggregatesFilter = {
+    equals?: number
+    in?: Enumerable<number> | number
+    notIn?: Enumerable<number> | number
+    lt?: number
+    lte?: number
+    gt?: number
+    gte?: number
+    not?: NestedIntWithAggregatesFilter | number
+    _count?: NestedIntFilter
+    _avg?: NestedFloatFilter
+    _sum?: NestedIntFilter
+    _min?: NestedIntFilter
+    _max?: NestedIntFilter
+  }
+
+  export type UserRelationFilter = {
+    is?: UserWhereInput | null
+    isNot?: UserWhereInput | null
+  }
+
+  export type PublicProfileCountOrderByAggregateInput = {
+    id?: SortOrder
+    dateCreated?: SortOrder
+    name?: SortOrder
+    userId?: SortOrder
+  }
+
+  export type PublicProfileAvgOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type PublicProfileMaxOrderByAggregateInput = {
+    id?: SortOrder
+    dateCreated?: SortOrder
+    name?: SortOrder
+    userId?: SortOrder
+  }
+
+  export type PublicProfileMinOrderByAggregateInput = {
+    id?: SortOrder
+    dateCreated?: SortOrder
+    name?: SortOrder
+    userId?: SortOrder
+  }
+
+  export type PublicProfileSumOrderByAggregateInput = {
+    id?: SortOrder
   }
 
   export type StringNullableFilter = {
@@ -12963,7 +12934,6 @@ export namespace Prisma {
 
   export type GameAvgOrderByAggregateInput = {
     id?: SortOrder
-    userId?: SortOrder
     number?: SortOrder
     year?: SortOrder
     currentDay?: SortOrder
@@ -13018,7 +12988,6 @@ export namespace Prisma {
 
   export type GameSumOrderByAggregateInput = {
     id?: SortOrder
-    userId?: SortOrder
     number?: SortOrder
     year?: SortOrder
     currentDay?: SortOrder
@@ -13150,7 +13119,6 @@ export namespace Prisma {
   export type DayAvgOrderByAggregateInput = {
     id?: SortOrder
     gameId?: SortOrder
-    userId?: SortOrder
     gameNumber?: SortOrder
     number?: SortOrder
     challengeModifierId?: SortOrder
@@ -13203,7 +13171,6 @@ export namespace Prisma {
   export type DaySumOrderByAggregateInput = {
     id?: SortOrder
     gameId?: SortOrder
-    userId?: SortOrder
     gameNumber?: SortOrder
     number?: SortOrder
     challengeModifierId?: SortOrder
@@ -13239,7 +13206,6 @@ export namespace Prisma {
 
   export type ChallengeModifierAvgOrderByAggregateInput = {
     id?: SortOrder
-    createdById?: SortOrder
   }
 
   export type ChallengeModifierMaxOrderByAggregateInput = {
@@ -13268,7 +13234,6 @@ export namespace Prisma {
 
   export type ChallengeModifierSumOrderByAggregateInput = {
     id?: SortOrder
-    createdById?: SortOrder
   }
 
   export type ModifierOptionCountOrderByAggregateInput = {
@@ -13286,7 +13251,6 @@ export namespace Prisma {
   export type ModifierOptionAvgOrderByAggregateInput = {
     id?: SortOrder
     challengeModifierId?: SortOrder
-    createdById?: SortOrder
   }
 
   export type ModifierOptionMaxOrderByAggregateInput = {
@@ -13316,7 +13280,6 @@ export namespace Prisma {
   export type ModifierOptionSumOrderByAggregateInput = {
     id?: SortOrder
     challengeModifierId?: SortOrder
-    createdById?: SortOrder
   }
 
   export type ModifierPackCountOrderByAggregateInput = {
@@ -13328,7 +13291,6 @@ export namespace Prisma {
 
   export type ModifierPackAvgOrderByAggregateInput = {
     id?: SortOrder
-    createdById?: SortOrder
   }
 
   export type ModifierPackMaxOrderByAggregateInput = {
@@ -13347,7 +13309,6 @@ export namespace Prisma {
 
   export type ModifierPackSumOrderByAggregateInput = {
     id?: SortOrder
-    createdById?: SortOrder
   }
 
   export type GameCreateNestedManyWithoutUserInput = {
@@ -13466,6 +13427,10 @@ export namespace Prisma {
     connectOrCreate?: Enumerable<ModifierPackCreateOrConnectWithoutCreatedByInput>
     createMany?: ModifierPackCreateManyCreatedByInputEnvelope
     connect?: Enumerable<ModifierPackWhereUniqueInput>
+  }
+
+  export type StringFieldUpdateOperationsInput = {
+    set?: string
   }
 
   export type DateTimeFieldUpdateOperationsInput = {
@@ -13742,10 +13707,6 @@ export namespace Prisma {
     connectOrCreate?: Enumerable<GameCreateOrConnectWithoutPublicProfileInput>
     createMany?: GameCreateManyPublicProfileInputEnvelope
     connect?: Enumerable<GameWhereUniqueInput>
-  }
-
-  export type StringFieldUpdateOperationsInput = {
-    set?: string
   }
 
   export type UserUpdateOneRequiredWithoutPublicProfileNestedInput = {
@@ -15044,15 +15005,18 @@ export namespace Prisma {
     deleteMany?: Enumerable<ModifierOptionScalarWhereInput>
   }
 
-  export type NestedIntFilter = {
-    equals?: number
-    in?: Enumerable<number> | number
-    notIn?: Enumerable<number> | number
-    lt?: number
-    lte?: number
-    gt?: number
-    gte?: number
-    not?: NestedIntFilter | number
+  export type NestedStringFilter = {
+    equals?: string
+    in?: Enumerable<string> | string
+    notIn?: Enumerable<string> | string
+    lt?: string
+    lte?: string
+    gt?: string
+    gte?: string
+    contains?: string
+    startsWith?: string
+    endsWith?: string
+    not?: NestedStringFilter | string
   }
 
   export type NestedDateTimeFilter = {
@@ -15064,6 +15028,48 @@ export namespace Prisma {
     gt?: Date | string
     gte?: Date | string
     not?: NestedDateTimeFilter | Date | string
+  }
+
+  export type NestedIntFilter = {
+    equals?: number
+    in?: Enumerable<number> | number
+    notIn?: Enumerable<number> | number
+    lt?: number
+    lte?: number
+    gt?: number
+    gte?: number
+    not?: NestedIntFilter | number
+  }
+
+  export type NestedStringWithAggregatesFilter = {
+    equals?: string
+    in?: Enumerable<string> | string
+    notIn?: Enumerable<string> | string
+    lt?: string
+    lte?: string
+    gt?: string
+    gte?: string
+    contains?: string
+    startsWith?: string
+    endsWith?: string
+    not?: NestedStringWithAggregatesFilter | string
+    _count?: NestedIntFilter
+    _min?: NestedStringFilter
+    _max?: NestedStringFilter
+  }
+
+  export type NestedDateTimeWithAggregatesFilter = {
+    equals?: Date | string
+    in?: Enumerable<Date> | Enumerable<string> | Date | string
+    notIn?: Enumerable<Date> | Enumerable<string> | Date | string
+    lt?: Date | string
+    lte?: Date | string
+    gt?: Date | string
+    gte?: Date | string
+    not?: NestedDateTimeWithAggregatesFilter | Date | string
+    _count?: NestedIntFilter
+    _min?: NestedDateTimeFilter
+    _max?: NestedDateTimeFilter
   }
 
   export type NestedIntWithAggregatesFilter = {
@@ -15091,51 +15097,6 @@ export namespace Prisma {
     gt?: number
     gte?: number
     not?: NestedFloatFilter | number
-  }
-
-  export type NestedDateTimeWithAggregatesFilter = {
-    equals?: Date | string
-    in?: Enumerable<Date> | Enumerable<string> | Date | string
-    notIn?: Enumerable<Date> | Enumerable<string> | Date | string
-    lt?: Date | string
-    lte?: Date | string
-    gt?: Date | string
-    gte?: Date | string
-    not?: NestedDateTimeWithAggregatesFilter | Date | string
-    _count?: NestedIntFilter
-    _min?: NestedDateTimeFilter
-    _max?: NestedDateTimeFilter
-  }
-
-  export type NestedStringFilter = {
-    equals?: string
-    in?: Enumerable<string> | string
-    notIn?: Enumerable<string> | string
-    lt?: string
-    lte?: string
-    gt?: string
-    gte?: string
-    contains?: string
-    startsWith?: string
-    endsWith?: string
-    not?: NestedStringFilter | string
-  }
-
-  export type NestedStringWithAggregatesFilter = {
-    equals?: string
-    in?: Enumerable<string> | string
-    notIn?: Enumerable<string> | string
-    lt?: string
-    lte?: string
-    gt?: string
-    gte?: string
-    contains?: string
-    startsWith?: string
-    endsWith?: string
-    not?: NestedStringWithAggregatesFilter | string
-    _count?: NestedIntFilter
-    _min?: NestedStringFilter
-    _max?: NestedStringFilter
   }
 
   export type NestedStringNullableFilter = {
@@ -15442,7 +15403,7 @@ export namespace Prisma {
     hasOptions?: boolean
     explanatoryUrl?: string | null
     standard?: boolean
-    createdById?: number | null
+    createdById?: string | null
     public?: boolean
     ModifierOption?: ModifierOptionUncheckedCreateNestedManyWithoutChallengeModifierInput
     Day?: DayUncheckedCreateNestedManyWithoutChallengeModifierInput
@@ -15485,7 +15446,7 @@ export namespace Prisma {
     text: string
     explanatoryUrl?: string | null
     standard?: boolean
-    createdById?: number | null
+    createdById?: string | null
     public?: boolean
     Day?: DayUncheckedCreateNestedManyWithoutModifierOptionInput
     ModifierPackExcluded?: ModifierPackUncheckedCreateNestedManyWithoutExcludedModifierOptionsInput
@@ -15528,7 +15489,7 @@ export namespace Prisma {
     hasOptions?: boolean
     explanatoryUrl?: string | null
     standard?: boolean
-    createdById?: number | null
+    createdById?: string | null
     public?: boolean
     ModifierOption?: ModifierOptionUncheckedCreateNestedManyWithoutChallengeModifierInput
     Day?: DayUncheckedCreateNestedManyWithoutChallengeModifierInput
@@ -15571,7 +15532,7 @@ export namespace Prisma {
     text: string
     explanatoryUrl?: string | null
     standard?: boolean
-    createdById?: number | null
+    createdById?: string | null
     public?: boolean
     Day?: DayUncheckedCreateNestedManyWithoutModifierOptionInput
     ModifierPackExcluded?: ModifierPackUncheckedCreateNestedManyWithoutExcludedModifierOptionsInput
@@ -15638,7 +15599,7 @@ export namespace Prisma {
     NOT?: Enumerable<GameScalarWhereInput>
     id?: IntFilter | number
     dateCreated?: DateTimeFilter | Date | string
-    userId?: IntFilter | number
+    userId?: StringFilter | string
     number?: IntFilter | number
     year?: IntFilter | number
     name?: StringFilter | string
@@ -15679,7 +15640,7 @@ export namespace Prisma {
     id?: IntFilter | number
     dateCreated?: DateTimeFilter | Date | string
     name?: StringFilter | string
-    userId?: IntFilter | number
+    userId?: StringFilter | string
   }
 
   export type ChallengeModifierUpsertWithWhereUniqueWithoutCreatedByInput = {
@@ -15709,7 +15670,7 @@ export namespace Prisma {
     hasOptions?: BoolFilter | boolean
     explanatoryUrl?: StringNullableFilter | string | null
     standard?: BoolFilter | boolean
-    createdById?: IntNullableFilter | number | null
+    createdById?: StringNullableFilter | string | null
     public?: BoolFilter | boolean
   }
 
@@ -15740,7 +15701,7 @@ export namespace Prisma {
     text?: StringFilter | string
     explanatoryUrl?: StringNullableFilter | string | null
     standard?: BoolFilter | boolean
-    createdById?: IntNullableFilter | number | null
+    createdById?: StringNullableFilter | string | null
     public?: BoolFilter | boolean
   }
 
@@ -15830,11 +15791,12 @@ export namespace Prisma {
     NOT?: Enumerable<ModifierPackScalarWhereInput>
     id?: IntFilter | number
     dateCreated?: DateTimeFilter | Date | string
-    createdById?: IntNullableFilter | number | null
+    createdById?: StringNullableFilter | string | null
     public?: BoolFilter | boolean
   }
 
   export type UserCreateWithoutPublicProfileInput = {
+    id: string
     dateCreated?: Date | string
     numberOfGames?: number
     Game?: GameCreateNestedManyWithoutUserInput
@@ -15848,7 +15810,7 @@ export namespace Prisma {
   }
 
   export type UserUncheckedCreateWithoutPublicProfileInput = {
-    id?: number
+    id: string
     dateCreated?: Date | string
     numberOfGames?: number
     Game?: GameUncheckedCreateNestedManyWithoutUserInput
@@ -15889,7 +15851,7 @@ export namespace Prisma {
   export type GameUncheckedCreateWithoutPublicProfileInput = {
     id?: number
     dateCreated?: Date | string
-    userId: number
+    userId: string
     number: number
     year: number
     name: string
@@ -15923,6 +15885,7 @@ export namespace Prisma {
   }
 
   export type UserUpdateWithoutPublicProfileInput = {
+    id?: StringFieldUpdateOperationsInput | string
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     numberOfGames?: IntFieldUpdateOperationsInput | number
     Game?: GameUpdateManyWithoutUserNestedInput
@@ -15936,7 +15899,7 @@ export namespace Prisma {
   }
 
   export type UserUncheckedUpdateWithoutPublicProfileInput = {
-    id?: IntFieldUpdateOperationsInput | number
+    id?: StringFieldUpdateOperationsInput | string
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     numberOfGames?: IntFieldUpdateOperationsInput | number
     Game?: GameUncheckedUpdateManyWithoutUserNestedInput
@@ -15966,6 +15929,7 @@ export namespace Prisma {
   }
 
   export type UserCreateWithoutGameInput = {
+    id: string
     dateCreated?: Date | string
     numberOfGames?: number
     PublicProfile?: PublicProfileCreateNestedManyWithoutUserInput
@@ -15979,7 +15943,7 @@ export namespace Prisma {
   }
 
   export type UserUncheckedCreateWithoutGameInput = {
-    id?: number
+    id: string
     dateCreated?: Date | string
     numberOfGames?: number
     PublicProfile?: PublicProfileUncheckedCreateNestedManyWithoutUserInput
@@ -16015,7 +15979,7 @@ export namespace Prisma {
 
   export type DayCreateWithoutGameInput = {
     dateCreated?: Date | string
-    userId: number
+    userId: string
     gameNumber: number
     number: number
     dateFirstRolled?: Date | string | null
@@ -16037,7 +16001,7 @@ export namespace Prisma {
   export type DayUncheckedCreateWithoutGameInput = {
     id?: number
     dateCreated?: Date | string
-    userId: number
+    userId: string
     gameNumber: number
     number: number
     challengeModifierId?: number | null
@@ -16076,7 +16040,7 @@ export namespace Prisma {
     id?: number
     dateCreated?: Date | string
     name: string
-    userId: number
+    userId: string
   }
 
   export type PublicProfileCreateOrConnectWithoutGameInput = {
@@ -16090,6 +16054,7 @@ export namespace Prisma {
   }
 
   export type UserUpdateWithoutGameInput = {
+    id?: StringFieldUpdateOperationsInput | string
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     numberOfGames?: IntFieldUpdateOperationsInput | number
     PublicProfile?: PublicProfileUpdateManyWithoutUserNestedInput
@@ -16103,7 +16068,7 @@ export namespace Prisma {
   }
 
   export type UserUncheckedUpdateWithoutGameInput = {
-    id?: IntFieldUpdateOperationsInput | number
+    id?: StringFieldUpdateOperationsInput | string
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     numberOfGames?: IntFieldUpdateOperationsInput | number
     PublicProfile?: PublicProfileUncheckedUpdateManyWithoutUserNestedInput
@@ -16155,7 +16120,7 @@ export namespace Prisma {
     id?: IntFilter | number
     dateCreated?: DateTimeFilter | Date | string
     gameId?: IntFilter | number
-    userId?: IntFilter | number
+    userId?: StringFilter | string
     gameNumber?: IntFilter | number
     number?: IntFilter | number
     challengeModifierId?: IntNullableFilter | number | null
@@ -16185,7 +16150,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     name?: StringFieldUpdateOperationsInput | string
-    userId?: IntFieldUpdateOperationsInput | number
+    userId?: StringFieldUpdateOperationsInput | string
   }
 
   export type GameCreateWithoutRankInput = {
@@ -16211,7 +16176,7 @@ export namespace Prisma {
   export type GameUncheckedCreateWithoutRankInput = {
     id?: number
     dateCreated?: Date | string
-    userId: number
+    userId: string
     number: number
     year: number
     name: string
@@ -16282,7 +16247,7 @@ export namespace Prisma {
     hasOptions?: boolean
     explanatoryUrl?: string | null
     standard?: boolean
-    createdById?: number | null
+    createdById?: string | null
     public?: boolean
     ModifierOption?: ModifierOptionUncheckedCreateNestedManyWithoutChallengeModifierInput
     Day?: DayUncheckedCreateNestedManyWithoutChallengeModifierInput
@@ -16325,7 +16290,7 @@ export namespace Prisma {
     text: string
     explanatoryUrl?: string | null
     standard?: boolean
-    createdById?: number | null
+    createdById?: string | null
     public?: boolean
     Day?: DayUncheckedCreateNestedManyWithoutModifierOptionInput
     ModifierPackExcluded?: ModifierPackUncheckedCreateNestedManyWithoutExcludedModifierOptionsInput
@@ -16368,7 +16333,7 @@ export namespace Prisma {
     hasOptions?: boolean
     explanatoryUrl?: string | null
     standard?: boolean
-    createdById?: number | null
+    createdById?: string | null
     public?: boolean
     ModifierOption?: ModifierOptionUncheckedCreateNestedManyWithoutChallengeModifierInput
     Day?: DayUncheckedCreateNestedManyWithoutChallengeModifierInput
@@ -16411,7 +16376,7 @@ export namespace Prisma {
     text: string
     explanatoryUrl?: string | null
     standard?: boolean
-    createdById?: number | null
+    createdById?: string | null
     public?: boolean
     Day?: DayUncheckedCreateNestedManyWithoutModifierOptionInput
     ModifierPackExcluded?: ModifierPackUncheckedCreateNestedManyWithoutExcludedModifierOptionsInput
@@ -16450,7 +16415,7 @@ export namespace Prisma {
   export type GameUncheckedCreateWithoutDayInput = {
     id?: number
     dateCreated?: Date | string
-    userId: number
+    userId: string
     number: number
     year: number
     name: string
@@ -16500,7 +16465,7 @@ export namespace Prisma {
     hasOptions?: boolean
     explanatoryUrl?: string | null
     standard?: boolean
-    createdById?: number | null
+    createdById?: string | null
     public?: boolean
     ModifierOption?: ModifierOptionUncheckedCreateNestedManyWithoutChallengeModifierInput
     Day?: DayUncheckedCreateNestedManyWithoutChallengeModifierInput
@@ -16543,7 +16508,7 @@ export namespace Prisma {
     text: string
     explanatoryUrl?: string | null
     standard?: boolean
-    createdById?: number | null
+    createdById?: string | null
     public?: boolean
     Day?: DayUncheckedCreateNestedManyWithoutModifierOptionInput
     ModifierPackExcluded?: ModifierPackUncheckedCreateNestedManyWithoutExcludedModifierOptionsInput
@@ -16586,7 +16551,7 @@ export namespace Prisma {
     hasOptions?: boolean
     explanatoryUrl?: string | null
     standard?: boolean
-    createdById?: number | null
+    createdById?: string | null
     public?: boolean
     ModifierOption?: ModifierOptionUncheckedCreateNestedManyWithoutChallengeModifierInput
     ModifierPackExcluded?: ModifierPackUncheckedCreateNestedManyWithoutExcludedChallengeModifiersInput
@@ -16629,7 +16594,7 @@ export namespace Prisma {
     text: string
     explanatoryUrl?: string | null
     standard?: boolean
-    createdById?: number | null
+    createdById?: string | null
     public?: boolean
     ModifierPackExcluded?: ModifierPackUncheckedCreateNestedManyWithoutExcludedModifierOptionsInput
     ModifierPackIncluded?: ModifierPackUncheckedCreateNestedManyWithoutIncludedCustomModifierOptionsInput
@@ -16737,7 +16702,7 @@ export namespace Prisma {
   export type GameUncheckedUpdateWithoutDayInput = {
     id?: IntFieldUpdateOperationsInput | number
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    userId?: IntFieldUpdateOperationsInput | number
+    userId?: StringFieldUpdateOperationsInput | string
     number?: IntFieldUpdateOperationsInput | number
     year?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
@@ -16787,7 +16752,7 @@ export namespace Prisma {
     hasOptions?: BoolFieldUpdateOperationsInput | boolean
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
-    createdById?: NullableIntFieldUpdateOperationsInput | number | null
+    createdById?: NullableStringFieldUpdateOperationsInput | string | null
     public?: BoolFieldUpdateOperationsInput | boolean
     ModifierOption?: ModifierOptionUncheckedUpdateManyWithoutChallengeModifierNestedInput
     Day?: DayUncheckedUpdateManyWithoutChallengeModifierNestedInput
@@ -16830,7 +16795,7 @@ export namespace Prisma {
     text?: StringFieldUpdateOperationsInput | string
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
-    createdById?: NullableIntFieldUpdateOperationsInput | number | null
+    createdById?: NullableStringFieldUpdateOperationsInput | string | null
     public?: BoolFieldUpdateOperationsInput | boolean
     Day?: DayUncheckedUpdateManyWithoutModifierOptionNestedInput
     ModifierPackExcluded?: ModifierPackUncheckedUpdateManyWithoutExcludedModifierOptionsNestedInput
@@ -16873,7 +16838,7 @@ export namespace Prisma {
     hasOptions?: BoolFieldUpdateOperationsInput | boolean
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
-    createdById?: NullableIntFieldUpdateOperationsInput | number | null
+    createdById?: NullableStringFieldUpdateOperationsInput | string | null
     public?: BoolFieldUpdateOperationsInput | boolean
     ModifierOption?: ModifierOptionUncheckedUpdateManyWithoutChallengeModifierNestedInput
     ModifierPackExcluded?: ModifierPackUncheckedUpdateManyWithoutExcludedChallengeModifiersNestedInput
@@ -16916,7 +16881,7 @@ export namespace Prisma {
     text?: StringFieldUpdateOperationsInput | string
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
-    createdById?: NullableIntFieldUpdateOperationsInput | number | null
+    createdById?: NullableStringFieldUpdateOperationsInput | string | null
     public?: BoolFieldUpdateOperationsInput | boolean
     ModifierPackExcluded?: ModifierPackUncheckedUpdateManyWithoutExcludedModifierOptionsNestedInput
     ModifierPackIncluded?: ModifierPackUncheckedUpdateManyWithoutIncludedCustomModifierOptionsNestedInput
@@ -16928,6 +16893,7 @@ export namespace Prisma {
   }
 
   export type UserCreateWithoutChallengeModifierInput = {
+    id: string
     dateCreated?: Date | string
     numberOfGames?: number
     Game?: GameCreateNestedManyWithoutUserInput
@@ -16941,7 +16907,7 @@ export namespace Prisma {
   }
 
   export type UserUncheckedCreateWithoutChallengeModifierInput = {
-    id?: number
+    id: string
     dateCreated?: Date | string
     numberOfGames?: number
     Game?: GameUncheckedCreateNestedManyWithoutUserInput
@@ -16984,7 +16950,7 @@ export namespace Prisma {
     text: string
     explanatoryUrl?: string | null
     standard?: boolean
-    createdById?: number | null
+    createdById?: string | null
     public?: boolean
     Day?: DayUncheckedCreateNestedManyWithoutModifierOptionInput
     ModifierPackExcluded?: ModifierPackUncheckedCreateNestedManyWithoutExcludedModifierOptionsInput
@@ -17008,7 +16974,7 @@ export namespace Prisma {
 
   export type DayCreateWithoutChallengeModifierInput = {
     dateCreated?: Date | string
-    userId: number
+    userId: string
     gameNumber: number
     number: number
     dateFirstRolled?: Date | string | null
@@ -17031,7 +16997,7 @@ export namespace Prisma {
     id?: number
     dateCreated?: Date | string
     gameId: number
-    userId: number
+    userId: string
     gameNumber: number
     number: number
     modifierOptionId?: number | null
@@ -17071,7 +17037,7 @@ export namespace Prisma {
   export type ModifierPackUncheckedCreateWithoutExcludedChallengeModifiersInput = {
     id?: number
     dateCreated?: Date | string
-    createdById?: number | null
+    createdById?: string | null
     public?: boolean
     ExcludedModifierOptions?: ModifierOptionUncheckedCreateNestedManyWithoutModifierPackExcludedInput
     EncludedCustomChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutModifierPackIncludedInput
@@ -17095,7 +17061,7 @@ export namespace Prisma {
   export type ModifierPackUncheckedCreateWithoutEncludedCustomChallengeModifiersInput = {
     id?: number
     dateCreated?: Date | string
-    createdById?: number | null
+    createdById?: string | null
     public?: boolean
     ExcludedChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutModifierPackExcludedInput
     ExcludedModifierOptions?: ModifierOptionUncheckedCreateNestedManyWithoutModifierPackExcludedInput
@@ -17108,6 +17074,7 @@ export namespace Prisma {
   }
 
   export type UserCreateWithoutDefaultExcludedChallengeModifiersInput = {
+    id: string
     dateCreated?: Date | string
     numberOfGames?: number
     Game?: GameCreateNestedManyWithoutUserInput
@@ -17121,7 +17088,7 @@ export namespace Prisma {
   }
 
   export type UserUncheckedCreateWithoutDefaultExcludedChallengeModifiersInput = {
-    id?: number
+    id: string
     dateCreated?: Date | string
     numberOfGames?: number
     Game?: GameUncheckedCreateNestedManyWithoutUserInput
@@ -17140,6 +17107,7 @@ export namespace Prisma {
   }
 
   export type UserCreateWithoutDefaultIncludedCustomChallengeModifiersInput = {
+    id: string
     dateCreated?: Date | string
     numberOfGames?: number
     Game?: GameCreateNestedManyWithoutUserInput
@@ -17153,7 +17121,7 @@ export namespace Prisma {
   }
 
   export type UserUncheckedCreateWithoutDefaultIncludedCustomChallengeModifiersInput = {
-    id?: number
+    id: string
     dateCreated?: Date | string
     numberOfGames?: number
     Game?: GameUncheckedCreateNestedManyWithoutUserInput
@@ -17173,7 +17141,7 @@ export namespace Prisma {
 
   export type DayCreateWithoutExcludedChallengeModifiersInput = {
     dateCreated?: Date | string
-    userId: number
+    userId: string
     gameNumber: number
     number: number
     dateFirstRolled?: Date | string | null
@@ -17196,7 +17164,7 @@ export namespace Prisma {
     id?: number
     dateCreated?: Date | string
     gameId: number
-    userId: number
+    userId: string
     gameNumber: number
     number: number
     challengeModifierId?: number | null
@@ -17221,7 +17189,7 @@ export namespace Prisma {
 
   export type DayCreateWithoutIncludedCustomChallengeModifiersInput = {
     dateCreated?: Date | string
-    userId: number
+    userId: string
     gameNumber: number
     number: number
     dateFirstRolled?: Date | string | null
@@ -17244,7 +17212,7 @@ export namespace Prisma {
     id?: number
     dateCreated?: Date | string
     gameId: number
-    userId: number
+    userId: string
     gameNumber: number
     number: number
     challengeModifierId?: number | null
@@ -17269,7 +17237,7 @@ export namespace Prisma {
 
   export type DayCreateWithoutModifierWhenPart1CompletedInput = {
     dateCreated?: Date | string
-    userId: number
+    userId: string
     gameNumber: number
     number: number
     dateFirstRolled?: Date | string | null
@@ -17292,7 +17260,7 @@ export namespace Prisma {
     id?: number
     dateCreated?: Date | string
     gameId: number
-    userId: number
+    userId: string
     gameNumber: number
     number: number
     challengeModifierId?: number | null
@@ -17326,6 +17294,7 @@ export namespace Prisma {
   }
 
   export type UserUpdateWithoutChallengeModifierInput = {
+    id?: StringFieldUpdateOperationsInput | string
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     numberOfGames?: IntFieldUpdateOperationsInput | number
     Game?: GameUpdateManyWithoutUserNestedInput
@@ -17339,7 +17308,7 @@ export namespace Prisma {
   }
 
   export type UserUncheckedUpdateWithoutChallengeModifierInput = {
-    id?: IntFieldUpdateOperationsInput | number
+    id?: StringFieldUpdateOperationsInput | string
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     numberOfGames?: IntFieldUpdateOperationsInput | number
     Game?: GameUncheckedUpdateManyWithoutUserNestedInput
@@ -17436,7 +17405,7 @@ export namespace Prisma {
     AND?: Enumerable<UserScalarWhereInput>
     OR?: Enumerable<UserScalarWhereInput>
     NOT?: Enumerable<UserScalarWhereInput>
-    id?: IntFilter | number
+    id?: StringFilter | string
     dateCreated?: DateTimeFilter | Date | string
     numberOfGames?: IntFilter | number
   }
@@ -17532,7 +17501,7 @@ export namespace Prisma {
     hasOptions?: boolean
     explanatoryUrl?: string | null
     standard?: boolean
-    createdById?: number | null
+    createdById?: string | null
     public?: boolean
     Day?: DayUncheckedCreateNestedManyWithoutChallengeModifierInput
     ModifierPackExcluded?: ModifierPackUncheckedCreateNestedManyWithoutExcludedChallengeModifiersInput
@@ -17550,6 +17519,7 @@ export namespace Prisma {
   }
 
   export type UserCreateWithoutModifierOptionInput = {
+    id: string
     dateCreated?: Date | string
     numberOfGames?: number
     Game?: GameCreateNestedManyWithoutUserInput
@@ -17563,7 +17533,7 @@ export namespace Prisma {
   }
 
   export type UserUncheckedCreateWithoutModifierOptionInput = {
-    id?: number
+    id: string
     dateCreated?: Date | string
     numberOfGames?: number
     Game?: GameUncheckedCreateNestedManyWithoutUserInput
@@ -17583,7 +17553,7 @@ export namespace Prisma {
 
   export type DayCreateWithoutModifierOptionInput = {
     dateCreated?: Date | string
-    userId: number
+    userId: string
     gameNumber: number
     number: number
     dateFirstRolled?: Date | string | null
@@ -17606,7 +17576,7 @@ export namespace Prisma {
     id?: number
     dateCreated?: Date | string
     gameId: number
-    userId: number
+    userId: string
     gameNumber: number
     number: number
     challengeModifierId?: number | null
@@ -17646,7 +17616,7 @@ export namespace Prisma {
   export type ModifierPackUncheckedCreateWithoutExcludedModifierOptionsInput = {
     id?: number
     dateCreated?: Date | string
-    createdById?: number | null
+    createdById?: string | null
     public?: boolean
     ExcludedChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutModifierPackExcludedInput
     EncludedCustomChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutModifierPackIncludedInput
@@ -17670,7 +17640,7 @@ export namespace Prisma {
   export type ModifierPackUncheckedCreateWithoutIncludedCustomModifierOptionsInput = {
     id?: number
     dateCreated?: Date | string
-    createdById?: number | null
+    createdById?: string | null
     public?: boolean
     ExcludedChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutModifierPackExcludedInput
     ExcludedModifierOptions?: ModifierOptionUncheckedCreateNestedManyWithoutModifierPackExcludedInput
@@ -17683,6 +17653,7 @@ export namespace Prisma {
   }
 
   export type UserCreateWithoutDefaultExcludedModifierOptionsInput = {
+    id: string
     dateCreated?: Date | string
     numberOfGames?: number
     Game?: GameCreateNestedManyWithoutUserInput
@@ -17696,7 +17667,7 @@ export namespace Prisma {
   }
 
   export type UserUncheckedCreateWithoutDefaultExcludedModifierOptionsInput = {
-    id?: number
+    id: string
     dateCreated?: Date | string
     numberOfGames?: number
     Game?: GameUncheckedCreateNestedManyWithoutUserInput
@@ -17715,6 +17686,7 @@ export namespace Prisma {
   }
 
   export type UserCreateWithoutDefaultIncludedCustomModifierOptionsInput = {
+    id: string
     dateCreated?: Date | string
     numberOfGames?: number
     Game?: GameCreateNestedManyWithoutUserInput
@@ -17728,7 +17700,7 @@ export namespace Prisma {
   }
 
   export type UserUncheckedCreateWithoutDefaultIncludedCustomModifierOptionsInput = {
-    id?: number
+    id: string
     dateCreated?: Date | string
     numberOfGames?: number
     Game?: GameUncheckedCreateNestedManyWithoutUserInput
@@ -17748,7 +17720,7 @@ export namespace Prisma {
 
   export type DayCreateWithoutExcludedModifierOptionsInput = {
     dateCreated?: Date | string
-    userId: number
+    userId: string
     gameNumber: number
     number: number
     dateFirstRolled?: Date | string | null
@@ -17771,7 +17743,7 @@ export namespace Prisma {
     id?: number
     dateCreated?: Date | string
     gameId: number
-    userId: number
+    userId: string
     gameNumber: number
     number: number
     challengeModifierId?: number | null
@@ -17796,7 +17768,7 @@ export namespace Prisma {
 
   export type DayCreateWithoutIncludedCustomModifierOptionsInput = {
     dateCreated?: Date | string
-    userId: number
+    userId: string
     gameNumber: number
     number: number
     dateFirstRolled?: Date | string | null
@@ -17819,7 +17791,7 @@ export namespace Prisma {
     id?: number
     dateCreated?: Date | string
     gameId: number
-    userId: number
+    userId: string
     gameNumber: number
     number: number
     challengeModifierId?: number | null
@@ -17844,7 +17816,7 @@ export namespace Prisma {
 
   export type DayCreateWithoutOptionWhenPart1CompletedInput = {
     dateCreated?: Date | string
-    userId: number
+    userId: string
     gameNumber: number
     number: number
     dateFirstRolled?: Date | string | null
@@ -17867,7 +17839,7 @@ export namespace Prisma {
     id?: number
     dateCreated?: Date | string
     gameId: number
-    userId: number
+    userId: string
     gameNumber: number
     number: number
     challengeModifierId?: number | null
@@ -17927,7 +17899,7 @@ export namespace Prisma {
     hasOptions?: BoolFieldUpdateOperationsInput | boolean
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
-    createdById?: NullableIntFieldUpdateOperationsInput | number | null
+    createdById?: NullableStringFieldUpdateOperationsInput | string | null
     public?: BoolFieldUpdateOperationsInput | boolean
     Day?: DayUncheckedUpdateManyWithoutChallengeModifierNestedInput
     ModifierPackExcluded?: ModifierPackUncheckedUpdateManyWithoutExcludedChallengeModifiersNestedInput
@@ -17945,6 +17917,7 @@ export namespace Prisma {
   }
 
   export type UserUpdateWithoutModifierOptionInput = {
+    id?: StringFieldUpdateOperationsInput | string
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     numberOfGames?: IntFieldUpdateOperationsInput | number
     Game?: GameUpdateManyWithoutUserNestedInput
@@ -17958,7 +17931,7 @@ export namespace Prisma {
   }
 
   export type UserUncheckedUpdateWithoutModifierOptionInput = {
-    id?: IntFieldUpdateOperationsInput | number
+    id?: StringFieldUpdateOperationsInput | string
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     numberOfGames?: IntFieldUpdateOperationsInput | number
     Game?: GameUncheckedUpdateManyWithoutUserNestedInput
@@ -18126,7 +18099,7 @@ export namespace Prisma {
     hasOptions?: boolean
     explanatoryUrl?: string | null
     standard?: boolean
-    createdById?: number | null
+    createdById?: string | null
     public?: boolean
     ModifierOption?: ModifierOptionUncheckedCreateNestedManyWithoutChallengeModifierInput
     Day?: DayUncheckedCreateNestedManyWithoutChallengeModifierInput
@@ -18169,7 +18142,7 @@ export namespace Prisma {
     text: string
     explanatoryUrl?: string | null
     standard?: boolean
-    createdById?: number | null
+    createdById?: string | null
     public?: boolean
     Day?: DayUncheckedCreateNestedManyWithoutModifierOptionInput
     ModifierPackIncluded?: ModifierPackUncheckedCreateNestedManyWithoutIncludedCustomModifierOptionsInput
@@ -18212,7 +18185,7 @@ export namespace Prisma {
     hasOptions?: boolean
     explanatoryUrl?: string | null
     standard?: boolean
-    createdById?: number | null
+    createdById?: string | null
     public?: boolean
     ModifierOption?: ModifierOptionUncheckedCreateNestedManyWithoutChallengeModifierInput
     Day?: DayUncheckedCreateNestedManyWithoutChallengeModifierInput
@@ -18255,7 +18228,7 @@ export namespace Prisma {
     text: string
     explanatoryUrl?: string | null
     standard?: boolean
-    createdById?: number | null
+    createdById?: string | null
     public?: boolean
     Day?: DayUncheckedCreateNestedManyWithoutModifierOptionInput
     ModifierPackExcluded?: ModifierPackUncheckedCreateNestedManyWithoutExcludedModifierOptionsInput
@@ -18272,6 +18245,7 @@ export namespace Prisma {
   }
 
   export type UserCreateWithoutModifierPackInput = {
+    id: string
     dateCreated?: Date | string
     numberOfGames?: number
     Game?: GameCreateNestedManyWithoutUserInput
@@ -18285,7 +18259,7 @@ export namespace Prisma {
   }
 
   export type UserUncheckedCreateWithoutModifierPackInput = {
-    id?: number
+    id: string
     dateCreated?: Date | string
     numberOfGames?: number
     Game?: GameUncheckedCreateNestedManyWithoutUserInput
@@ -18373,6 +18347,7 @@ export namespace Prisma {
   }
 
   export type UserUpdateWithoutModifierPackInput = {
+    id?: StringFieldUpdateOperationsInput | string
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     numberOfGames?: IntFieldUpdateOperationsInput | number
     Game?: GameUpdateManyWithoutUserNestedInput
@@ -18386,7 +18361,7 @@ export namespace Prisma {
   }
 
   export type UserUncheckedUpdateWithoutModifierPackInput = {
-    id?: IntFieldUpdateOperationsInput | number
+    id?: StringFieldUpdateOperationsInput | string
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     numberOfGames?: IntFieldUpdateOperationsInput | number
     Game?: GameUncheckedUpdateManyWithoutUserNestedInput
@@ -18658,7 +18633,7 @@ export namespace Prisma {
     hasOptions?: BoolFieldUpdateOperationsInput | boolean
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
-    createdById?: NullableIntFieldUpdateOperationsInput | number | null
+    createdById?: NullableStringFieldUpdateOperationsInput | string | null
     public?: BoolFieldUpdateOperationsInput | boolean
     ModifierOption?: ModifierOptionUncheckedUpdateManyWithoutChallengeModifierNestedInput
     Day?: DayUncheckedUpdateManyWithoutChallengeModifierNestedInput
@@ -18678,7 +18653,7 @@ export namespace Prisma {
     hasOptions?: BoolFieldUpdateOperationsInput | boolean
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
-    createdById?: NullableIntFieldUpdateOperationsInput | number | null
+    createdById?: NullableStringFieldUpdateOperationsInput | string | null
     public?: BoolFieldUpdateOperationsInput | boolean
   }
 
@@ -18708,7 +18683,7 @@ export namespace Prisma {
     text?: StringFieldUpdateOperationsInput | string
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
-    createdById?: NullableIntFieldUpdateOperationsInput | number | null
+    createdById?: NullableStringFieldUpdateOperationsInput | string | null
     public?: BoolFieldUpdateOperationsInput | boolean
     Day?: DayUncheckedUpdateManyWithoutModifierOptionNestedInput
     ModifierPackExcluded?: ModifierPackUncheckedUpdateManyWithoutExcludedModifierOptionsNestedInput
@@ -18727,7 +18702,7 @@ export namespace Prisma {
     text?: StringFieldUpdateOperationsInput | string
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
-    createdById?: NullableIntFieldUpdateOperationsInput | number | null
+    createdById?: NullableStringFieldUpdateOperationsInput | string | null
     public?: BoolFieldUpdateOperationsInput | boolean
   }
 
@@ -18758,7 +18733,7 @@ export namespace Prisma {
     hasOptions?: BoolFieldUpdateOperationsInput | boolean
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
-    createdById?: NullableIntFieldUpdateOperationsInput | number | null
+    createdById?: NullableStringFieldUpdateOperationsInput | string | null
     public?: BoolFieldUpdateOperationsInput | boolean
     ModifierOption?: ModifierOptionUncheckedUpdateManyWithoutChallengeModifierNestedInput
     Day?: DayUncheckedUpdateManyWithoutChallengeModifierNestedInput
@@ -18778,7 +18753,7 @@ export namespace Prisma {
     hasOptions?: BoolFieldUpdateOperationsInput | boolean
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
-    createdById?: NullableIntFieldUpdateOperationsInput | number | null
+    createdById?: NullableStringFieldUpdateOperationsInput | string | null
     public?: BoolFieldUpdateOperationsInput | boolean
   }
 
@@ -18808,7 +18783,7 @@ export namespace Prisma {
     text?: StringFieldUpdateOperationsInput | string
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
-    createdById?: NullableIntFieldUpdateOperationsInput | number | null
+    createdById?: NullableStringFieldUpdateOperationsInput | string | null
     public?: BoolFieldUpdateOperationsInput | boolean
     Day?: DayUncheckedUpdateManyWithoutModifierOptionNestedInput
     ModifierPackExcluded?: ModifierPackUncheckedUpdateManyWithoutExcludedModifierOptionsNestedInput
@@ -18827,7 +18802,7 @@ export namespace Prisma {
     text?: StringFieldUpdateOperationsInput | string
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
-    createdById?: NullableIntFieldUpdateOperationsInput | number | null
+    createdById?: NullableStringFieldUpdateOperationsInput | string | null
     public?: BoolFieldUpdateOperationsInput | boolean
   }
 
@@ -18859,7 +18834,7 @@ export namespace Prisma {
   export type GameCreateManyPublicProfileInput = {
     id?: number
     dateCreated?: Date | string
-    userId: number
+    userId: string
     number: number
     year: number
     name: string
@@ -18899,7 +18874,7 @@ export namespace Prisma {
   export type GameUncheckedUpdateWithoutPublicProfileInput = {
     id?: IntFieldUpdateOperationsInput | number
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    userId?: IntFieldUpdateOperationsInput | number
+    userId?: StringFieldUpdateOperationsInput | string
     number?: IntFieldUpdateOperationsInput | number
     year?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
@@ -18920,7 +18895,7 @@ export namespace Prisma {
   export type DayCreateManyGameInput = {
     id?: number
     dateCreated?: Date | string
-    userId: number
+    userId: string
     gameNumber: number
     number: number
     challengeModifierId?: number | null
@@ -18937,7 +18912,7 @@ export namespace Prisma {
 
   export type DayUpdateWithoutGameInput = {
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    userId?: IntFieldUpdateOperationsInput | number
+    userId?: StringFieldUpdateOperationsInput | string
     gameNumber?: IntFieldUpdateOperationsInput | number
     number?: IntFieldUpdateOperationsInput | number
     dateFirstRolled?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -18959,7 +18934,7 @@ export namespace Prisma {
   export type DayUncheckedUpdateWithoutGameInput = {
     id?: IntFieldUpdateOperationsInput | number
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    userId?: IntFieldUpdateOperationsInput | number
+    userId?: StringFieldUpdateOperationsInput | string
     gameNumber?: IntFieldUpdateOperationsInput | number
     number?: IntFieldUpdateOperationsInput | number
     challengeModifierId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -18981,7 +18956,7 @@ export namespace Prisma {
   export type DayUncheckedUpdateManyWithoutDayInput = {
     id?: IntFieldUpdateOperationsInput | number
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    userId?: IntFieldUpdateOperationsInput | number
+    userId?: StringFieldUpdateOperationsInput | string
     gameNumber?: IntFieldUpdateOperationsInput | number
     number?: IntFieldUpdateOperationsInput | number
     challengeModifierId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -18999,7 +18974,7 @@ export namespace Prisma {
   export type GameCreateManyRankInput = {
     id?: number
     dateCreated?: Date | string
-    userId: number
+    userId: string
     number: number
     year: number
     name: string
@@ -19039,7 +19014,7 @@ export namespace Prisma {
   export type GameUncheckedUpdateWithoutRankInput = {
     id?: IntFieldUpdateOperationsInput | number
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    userId?: IntFieldUpdateOperationsInput | number
+    userId?: StringFieldUpdateOperationsInput | string
     number?: IntFieldUpdateOperationsInput | number
     year?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
@@ -19084,7 +19059,7 @@ export namespace Prisma {
     hasOptions?: BoolFieldUpdateOperationsInput | boolean
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
-    createdById?: NullableIntFieldUpdateOperationsInput | number | null
+    createdById?: NullableStringFieldUpdateOperationsInput | string | null
     public?: BoolFieldUpdateOperationsInput | boolean
     ModifierOption?: ModifierOptionUncheckedUpdateManyWithoutChallengeModifierNestedInput
     Day?: DayUncheckedUpdateManyWithoutChallengeModifierNestedInput
@@ -19104,7 +19079,7 @@ export namespace Prisma {
     hasOptions?: BoolFieldUpdateOperationsInput | boolean
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
-    createdById?: NullableIntFieldUpdateOperationsInput | number | null
+    createdById?: NullableStringFieldUpdateOperationsInput | string | null
     public?: BoolFieldUpdateOperationsInput | boolean
   }
 
@@ -19134,7 +19109,7 @@ export namespace Prisma {
     text?: StringFieldUpdateOperationsInput | string
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
-    createdById?: NullableIntFieldUpdateOperationsInput | number | null
+    createdById?: NullableStringFieldUpdateOperationsInput | string | null
     public?: BoolFieldUpdateOperationsInput | boolean
     Day?: DayUncheckedUpdateManyWithoutModifierOptionNestedInput
     ModifierPackExcluded?: ModifierPackUncheckedUpdateManyWithoutExcludedModifierOptionsNestedInput
@@ -19153,7 +19128,7 @@ export namespace Prisma {
     text?: StringFieldUpdateOperationsInput | string
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
-    createdById?: NullableIntFieldUpdateOperationsInput | number | null
+    createdById?: NullableStringFieldUpdateOperationsInput | string | null
     public?: BoolFieldUpdateOperationsInput | boolean
   }
 
@@ -19184,7 +19159,7 @@ export namespace Prisma {
     hasOptions?: BoolFieldUpdateOperationsInput | boolean
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
-    createdById?: NullableIntFieldUpdateOperationsInput | number | null
+    createdById?: NullableStringFieldUpdateOperationsInput | string | null
     public?: BoolFieldUpdateOperationsInput | boolean
     ModifierOption?: ModifierOptionUncheckedUpdateManyWithoutChallengeModifierNestedInput
     Day?: DayUncheckedUpdateManyWithoutChallengeModifierNestedInput
@@ -19204,7 +19179,7 @@ export namespace Prisma {
     hasOptions?: BoolFieldUpdateOperationsInput | boolean
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
-    createdById?: NullableIntFieldUpdateOperationsInput | number | null
+    createdById?: NullableStringFieldUpdateOperationsInput | string | null
     public?: BoolFieldUpdateOperationsInput | boolean
   }
 
@@ -19234,7 +19209,7 @@ export namespace Prisma {
     text?: StringFieldUpdateOperationsInput | string
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
-    createdById?: NullableIntFieldUpdateOperationsInput | number | null
+    createdById?: NullableStringFieldUpdateOperationsInput | string | null
     public?: BoolFieldUpdateOperationsInput | boolean
     Day?: DayUncheckedUpdateManyWithoutModifierOptionNestedInput
     ModifierPackExcluded?: ModifierPackUncheckedUpdateManyWithoutExcludedModifierOptionsNestedInput
@@ -19253,7 +19228,7 @@ export namespace Prisma {
     text?: StringFieldUpdateOperationsInput | string
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
-    createdById?: NullableIntFieldUpdateOperationsInput | number | null
+    createdById?: NullableStringFieldUpdateOperationsInput | string | null
     public?: BoolFieldUpdateOperationsInput | boolean
   }
 
@@ -19264,7 +19239,7 @@ export namespace Prisma {
     text: string
     explanatoryUrl?: string | null
     standard?: boolean
-    createdById?: number | null
+    createdById?: string | null
     public?: boolean
   }
 
@@ -19272,7 +19247,7 @@ export namespace Prisma {
     id?: number
     dateCreated?: Date | string
     gameId: number
-    userId: number
+    userId: string
     gameNumber: number
     number: number
     modifierOptionId?: number | null
@@ -19290,7 +19265,7 @@ export namespace Prisma {
     id?: number
     dateCreated?: Date | string
     gameId: number
-    userId: number
+    userId: string
     gameNumber: number
     number: number
     challengeModifierId?: number | null
@@ -19329,7 +19304,7 @@ export namespace Prisma {
     text?: StringFieldUpdateOperationsInput | string
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
-    createdById?: NullableIntFieldUpdateOperationsInput | number | null
+    createdById?: NullableStringFieldUpdateOperationsInput | string | null
     public?: BoolFieldUpdateOperationsInput | boolean
     Day?: DayUncheckedUpdateManyWithoutModifierOptionNestedInput
     ModifierPackExcluded?: ModifierPackUncheckedUpdateManyWithoutExcludedModifierOptionsNestedInput
@@ -19343,7 +19318,7 @@ export namespace Prisma {
 
   export type DayUpdateWithoutChallengeModifierInput = {
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    userId?: IntFieldUpdateOperationsInput | number
+    userId?: StringFieldUpdateOperationsInput | string
     gameNumber?: IntFieldUpdateOperationsInput | number
     number?: IntFieldUpdateOperationsInput | number
     dateFirstRolled?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -19366,7 +19341,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     gameId?: IntFieldUpdateOperationsInput | number
-    userId?: IntFieldUpdateOperationsInput | number
+    userId?: StringFieldUpdateOperationsInput | string
     gameNumber?: IntFieldUpdateOperationsInput | number
     number?: IntFieldUpdateOperationsInput | number
     modifierOptionId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -19396,7 +19371,7 @@ export namespace Prisma {
   export type ModifierPackUncheckedUpdateWithoutExcludedChallengeModifiersInput = {
     id?: IntFieldUpdateOperationsInput | number
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdById?: NullableIntFieldUpdateOperationsInput | number | null
+    createdById?: NullableStringFieldUpdateOperationsInput | string | null
     public?: BoolFieldUpdateOperationsInput | boolean
     ExcludedModifierOptions?: ModifierOptionUncheckedUpdateManyWithoutModifierPackExcludedNestedInput
     EncludedCustomChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutModifierPackIncludedNestedInput
@@ -19406,7 +19381,7 @@ export namespace Prisma {
   export type ModifierPackUncheckedUpdateManyWithoutModifierPackExcludedInput = {
     id?: IntFieldUpdateOperationsInput | number
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdById?: NullableIntFieldUpdateOperationsInput | number | null
+    createdById?: NullableStringFieldUpdateOperationsInput | string | null
     public?: BoolFieldUpdateOperationsInput | boolean
   }
 
@@ -19422,7 +19397,7 @@ export namespace Prisma {
   export type ModifierPackUncheckedUpdateWithoutEncludedCustomChallengeModifiersInput = {
     id?: IntFieldUpdateOperationsInput | number
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdById?: NullableIntFieldUpdateOperationsInput | number | null
+    createdById?: NullableStringFieldUpdateOperationsInput | string | null
     public?: BoolFieldUpdateOperationsInput | boolean
     ExcludedChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutModifierPackExcludedNestedInput
     ExcludedModifierOptions?: ModifierOptionUncheckedUpdateManyWithoutModifierPackExcludedNestedInput
@@ -19432,11 +19407,12 @@ export namespace Prisma {
   export type ModifierPackUncheckedUpdateManyWithoutModifierPackIncludedInput = {
     id?: IntFieldUpdateOperationsInput | number
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdById?: NullableIntFieldUpdateOperationsInput | number | null
+    createdById?: NullableStringFieldUpdateOperationsInput | string | null
     public?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type UserUpdateWithoutDefaultExcludedChallengeModifiersInput = {
+    id?: StringFieldUpdateOperationsInput | string
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     numberOfGames?: IntFieldUpdateOperationsInput | number
     Game?: GameUpdateManyWithoutUserNestedInput
@@ -19450,7 +19426,7 @@ export namespace Prisma {
   }
 
   export type UserUncheckedUpdateWithoutDefaultExcludedChallengeModifiersInput = {
-    id?: IntFieldUpdateOperationsInput | number
+    id?: StringFieldUpdateOperationsInput | string
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     numberOfGames?: IntFieldUpdateOperationsInput | number
     Game?: GameUncheckedUpdateManyWithoutUserNestedInput
@@ -19464,12 +19440,13 @@ export namespace Prisma {
   }
 
   export type UserUncheckedUpdateManyWithoutUserExcludedInput = {
-    id?: IntFieldUpdateOperationsInput | number
+    id?: StringFieldUpdateOperationsInput | string
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     numberOfGames?: IntFieldUpdateOperationsInput | number
   }
 
   export type UserUpdateWithoutDefaultIncludedCustomChallengeModifiersInput = {
+    id?: StringFieldUpdateOperationsInput | string
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     numberOfGames?: IntFieldUpdateOperationsInput | number
     Game?: GameUpdateManyWithoutUserNestedInput
@@ -19483,7 +19460,7 @@ export namespace Prisma {
   }
 
   export type UserUncheckedUpdateWithoutDefaultIncludedCustomChallengeModifiersInput = {
-    id?: IntFieldUpdateOperationsInput | number
+    id?: StringFieldUpdateOperationsInput | string
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     numberOfGames?: IntFieldUpdateOperationsInput | number
     Game?: GameUncheckedUpdateManyWithoutUserNestedInput
@@ -19497,14 +19474,14 @@ export namespace Prisma {
   }
 
   export type UserUncheckedUpdateManyWithoutUserIncludedInput = {
-    id?: IntFieldUpdateOperationsInput | number
+    id?: StringFieldUpdateOperationsInput | string
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     numberOfGames?: IntFieldUpdateOperationsInput | number
   }
 
   export type DayUpdateWithoutExcludedChallengeModifiersInput = {
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    userId?: IntFieldUpdateOperationsInput | number
+    userId?: StringFieldUpdateOperationsInput | string
     gameNumber?: IntFieldUpdateOperationsInput | number
     number?: IntFieldUpdateOperationsInput | number
     dateFirstRolled?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -19527,7 +19504,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     gameId?: IntFieldUpdateOperationsInput | number
-    userId?: IntFieldUpdateOperationsInput | number
+    userId?: StringFieldUpdateOperationsInput | string
     gameNumber?: IntFieldUpdateOperationsInput | number
     number?: IntFieldUpdateOperationsInput | number
     challengeModifierId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -19549,7 +19526,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     gameId?: IntFieldUpdateOperationsInput | number
-    userId?: IntFieldUpdateOperationsInput | number
+    userId?: StringFieldUpdateOperationsInput | string
     gameNumber?: IntFieldUpdateOperationsInput | number
     number?: IntFieldUpdateOperationsInput | number
     challengeModifierId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -19566,7 +19543,7 @@ export namespace Prisma {
 
   export type DayUpdateWithoutIncludedCustomChallengeModifiersInput = {
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    userId?: IntFieldUpdateOperationsInput | number
+    userId?: StringFieldUpdateOperationsInput | string
     gameNumber?: IntFieldUpdateOperationsInput | number
     number?: IntFieldUpdateOperationsInput | number
     dateFirstRolled?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -19589,7 +19566,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     gameId?: IntFieldUpdateOperationsInput | number
-    userId?: IntFieldUpdateOperationsInput | number
+    userId?: StringFieldUpdateOperationsInput | string
     gameNumber?: IntFieldUpdateOperationsInput | number
     number?: IntFieldUpdateOperationsInput | number
     challengeModifierId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -19611,7 +19588,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     gameId?: IntFieldUpdateOperationsInput | number
-    userId?: IntFieldUpdateOperationsInput | number
+    userId?: StringFieldUpdateOperationsInput | string
     gameNumber?: IntFieldUpdateOperationsInput | number
     number?: IntFieldUpdateOperationsInput | number
     challengeModifierId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -19628,7 +19605,7 @@ export namespace Prisma {
 
   export type DayUpdateWithoutModifierWhenPart1CompletedInput = {
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    userId?: IntFieldUpdateOperationsInput | number
+    userId?: StringFieldUpdateOperationsInput | string
     gameNumber?: IntFieldUpdateOperationsInput | number
     number?: IntFieldUpdateOperationsInput | number
     dateFirstRolled?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -19651,7 +19628,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     gameId?: IntFieldUpdateOperationsInput | number
-    userId?: IntFieldUpdateOperationsInput | number
+    userId?: StringFieldUpdateOperationsInput | string
     gameNumber?: IntFieldUpdateOperationsInput | number
     number?: IntFieldUpdateOperationsInput | number
     challengeModifierId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -19673,7 +19650,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     gameId?: IntFieldUpdateOperationsInput | number
-    userId?: IntFieldUpdateOperationsInput | number
+    userId?: StringFieldUpdateOperationsInput | string
     gameNumber?: IntFieldUpdateOperationsInput | number
     number?: IntFieldUpdateOperationsInput | number
     challengeModifierId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -19691,7 +19668,7 @@ export namespace Prisma {
     id?: number
     dateCreated?: Date | string
     gameId: number
-    userId: number
+    userId: string
     gameNumber: number
     number: number
     challengeModifierId?: number | null
@@ -19709,7 +19686,7 @@ export namespace Prisma {
     id?: number
     dateCreated?: Date | string
     gameId: number
-    userId: number
+    userId: string
     gameNumber: number
     number: number
     challengeModifierId?: number | null
@@ -19725,7 +19702,7 @@ export namespace Prisma {
 
   export type DayUpdateWithoutModifierOptionInput = {
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    userId?: IntFieldUpdateOperationsInput | number
+    userId?: StringFieldUpdateOperationsInput | string
     gameNumber?: IntFieldUpdateOperationsInput | number
     number?: IntFieldUpdateOperationsInput | number
     dateFirstRolled?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -19748,7 +19725,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     gameId?: IntFieldUpdateOperationsInput | number
-    userId?: IntFieldUpdateOperationsInput | number
+    userId?: StringFieldUpdateOperationsInput | string
     gameNumber?: IntFieldUpdateOperationsInput | number
     number?: IntFieldUpdateOperationsInput | number
     challengeModifierId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -19778,7 +19755,7 @@ export namespace Prisma {
   export type ModifierPackUncheckedUpdateWithoutExcludedModifierOptionsInput = {
     id?: IntFieldUpdateOperationsInput | number
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdById?: NullableIntFieldUpdateOperationsInput | number | null
+    createdById?: NullableStringFieldUpdateOperationsInput | string | null
     public?: BoolFieldUpdateOperationsInput | boolean
     ExcludedChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutModifierPackExcludedNestedInput
     EncludedCustomChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutModifierPackIncludedNestedInput
@@ -19797,7 +19774,7 @@ export namespace Prisma {
   export type ModifierPackUncheckedUpdateWithoutIncludedCustomModifierOptionsInput = {
     id?: IntFieldUpdateOperationsInput | number
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdById?: NullableIntFieldUpdateOperationsInput | number | null
+    createdById?: NullableStringFieldUpdateOperationsInput | string | null
     public?: BoolFieldUpdateOperationsInput | boolean
     ExcludedChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutModifierPackExcludedNestedInput
     ExcludedModifierOptions?: ModifierOptionUncheckedUpdateManyWithoutModifierPackExcludedNestedInput
@@ -19805,6 +19782,7 @@ export namespace Prisma {
   }
 
   export type UserUpdateWithoutDefaultExcludedModifierOptionsInput = {
+    id?: StringFieldUpdateOperationsInput | string
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     numberOfGames?: IntFieldUpdateOperationsInput | number
     Game?: GameUpdateManyWithoutUserNestedInput
@@ -19818,7 +19796,7 @@ export namespace Prisma {
   }
 
   export type UserUncheckedUpdateWithoutDefaultExcludedModifierOptionsInput = {
-    id?: IntFieldUpdateOperationsInput | number
+    id?: StringFieldUpdateOperationsInput | string
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     numberOfGames?: IntFieldUpdateOperationsInput | number
     Game?: GameUncheckedUpdateManyWithoutUserNestedInput
@@ -19832,6 +19810,7 @@ export namespace Prisma {
   }
 
   export type UserUpdateWithoutDefaultIncludedCustomModifierOptionsInput = {
+    id?: StringFieldUpdateOperationsInput | string
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     numberOfGames?: IntFieldUpdateOperationsInput | number
     Game?: GameUpdateManyWithoutUserNestedInput
@@ -19845,7 +19824,7 @@ export namespace Prisma {
   }
 
   export type UserUncheckedUpdateWithoutDefaultIncludedCustomModifierOptionsInput = {
-    id?: IntFieldUpdateOperationsInput | number
+    id?: StringFieldUpdateOperationsInput | string
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     numberOfGames?: IntFieldUpdateOperationsInput | number
     Game?: GameUncheckedUpdateManyWithoutUserNestedInput
@@ -19860,7 +19839,7 @@ export namespace Prisma {
 
   export type DayUpdateWithoutExcludedModifierOptionsInput = {
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    userId?: IntFieldUpdateOperationsInput | number
+    userId?: StringFieldUpdateOperationsInput | string
     gameNumber?: IntFieldUpdateOperationsInput | number
     number?: IntFieldUpdateOperationsInput | number
     dateFirstRolled?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -19883,7 +19862,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     gameId?: IntFieldUpdateOperationsInput | number
-    userId?: IntFieldUpdateOperationsInput | number
+    userId?: StringFieldUpdateOperationsInput | string
     gameNumber?: IntFieldUpdateOperationsInput | number
     number?: IntFieldUpdateOperationsInput | number
     challengeModifierId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -19903,7 +19882,7 @@ export namespace Prisma {
 
   export type DayUpdateWithoutIncludedCustomModifierOptionsInput = {
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    userId?: IntFieldUpdateOperationsInput | number
+    userId?: StringFieldUpdateOperationsInput | string
     gameNumber?: IntFieldUpdateOperationsInput | number
     number?: IntFieldUpdateOperationsInput | number
     dateFirstRolled?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -19926,7 +19905,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     gameId?: IntFieldUpdateOperationsInput | number
-    userId?: IntFieldUpdateOperationsInput | number
+    userId?: StringFieldUpdateOperationsInput | string
     gameNumber?: IntFieldUpdateOperationsInput | number
     number?: IntFieldUpdateOperationsInput | number
     challengeModifierId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -19946,7 +19925,7 @@ export namespace Prisma {
 
   export type DayUpdateWithoutOptionWhenPart1CompletedInput = {
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    userId?: IntFieldUpdateOperationsInput | number
+    userId?: StringFieldUpdateOperationsInput | string
     gameNumber?: IntFieldUpdateOperationsInput | number
     number?: IntFieldUpdateOperationsInput | number
     dateFirstRolled?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -19969,7 +19948,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     gameId?: IntFieldUpdateOperationsInput | number
-    userId?: IntFieldUpdateOperationsInput | number
+    userId?: StringFieldUpdateOperationsInput | string
     gameNumber?: IntFieldUpdateOperationsInput | number
     number?: IntFieldUpdateOperationsInput | number
     challengeModifierId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -20014,7 +19993,7 @@ export namespace Prisma {
     hasOptions?: BoolFieldUpdateOperationsInput | boolean
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
-    createdById?: NullableIntFieldUpdateOperationsInput | number | null
+    createdById?: NullableStringFieldUpdateOperationsInput | string | null
     public?: BoolFieldUpdateOperationsInput | boolean
     ModifierOption?: ModifierOptionUncheckedUpdateManyWithoutChallengeModifierNestedInput
     Day?: DayUncheckedUpdateManyWithoutChallengeModifierNestedInput
@@ -20052,7 +20031,7 @@ export namespace Prisma {
     text?: StringFieldUpdateOperationsInput | string
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
-    createdById?: NullableIntFieldUpdateOperationsInput | number | null
+    createdById?: NullableStringFieldUpdateOperationsInput | string | null
     public?: BoolFieldUpdateOperationsInput | boolean
     Day?: DayUncheckedUpdateManyWithoutModifierOptionNestedInput
     ModifierPackIncluded?: ModifierPackUncheckedUpdateManyWithoutIncludedCustomModifierOptionsNestedInput
@@ -20090,7 +20069,7 @@ export namespace Prisma {
     hasOptions?: BoolFieldUpdateOperationsInput | boolean
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
-    createdById?: NullableIntFieldUpdateOperationsInput | number | null
+    createdById?: NullableStringFieldUpdateOperationsInput | string | null
     public?: BoolFieldUpdateOperationsInput | boolean
     ModifierOption?: ModifierOptionUncheckedUpdateManyWithoutChallengeModifierNestedInput
     Day?: DayUncheckedUpdateManyWithoutChallengeModifierNestedInput
@@ -20110,7 +20089,7 @@ export namespace Prisma {
     hasOptions?: BoolFieldUpdateOperationsInput | boolean
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
-    createdById?: NullableIntFieldUpdateOperationsInput | number | null
+    createdById?: NullableStringFieldUpdateOperationsInput | string | null
     public?: BoolFieldUpdateOperationsInput | boolean
   }
 
@@ -20140,7 +20119,7 @@ export namespace Prisma {
     text?: StringFieldUpdateOperationsInput | string
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
-    createdById?: NullableIntFieldUpdateOperationsInput | number | null
+    createdById?: NullableStringFieldUpdateOperationsInput | string | null
     public?: BoolFieldUpdateOperationsInput | boolean
     Day?: DayUncheckedUpdateManyWithoutModifierOptionNestedInput
     ModifierPackExcluded?: ModifierPackUncheckedUpdateManyWithoutExcludedModifierOptionsNestedInput
