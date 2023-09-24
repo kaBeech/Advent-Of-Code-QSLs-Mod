@@ -1,5 +1,7 @@
 import { component$ } from "@builder.io/qwik";
 import type { DocumentHead } from "@builder.io/qwik-city";
+import SignIn from "~/components/signIn/signIn";
+import SignOut from "~/components/signOut/signOut";
 
 import Counter from "~/components/starter/counter/counter";
 import Hero from "~/components/starter/hero/hero";
@@ -10,6 +12,8 @@ export default component$(() => {
   return (
     <>
       <Hero />
+      <SignIn />
+      <SignOut />
       <Starter />
 
       <div role="presentation" class="ellipsis"></div>

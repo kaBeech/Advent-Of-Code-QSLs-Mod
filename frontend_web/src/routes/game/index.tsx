@@ -1,6 +1,19 @@
+import type { Session } from "@auth/core/types";
 import { Resource, component$, useResource$, useStore } from "@builder.io/qwik";
-import type { DocumentHead } from "@builder.io/qwik-city";
+import type { DocumentHead, RequestHandler } from "@builder.io/qwik-city";
 import { Link, server$ } from "@builder.io/qwik-city";
+import SignIn from "~/components/signIn/signIn";
+import SignOut from "~/components/signOut/signOut";
+
+export const onRequest: RequestHandler = (event) => {
+  const session: Session | null = event.sharedMap.get("session");
+  if (!session || new Date(session.expires) < new Date()) {
+    throw event.redirect(
+      302,
+      `/api/auth/signin?callbackUrl=${event.url.pathname}`
+    );
+  }
+};
 
 const gameID = 1;
 const dayID = 1;
@@ -64,6 +77,8 @@ export default component$(() => {
     <div>
       <div>
         <h1 class="title">Xtreme Xmas Day Viewer</h1>
+        <SignIn />
+        <SignOut />
 
         <h2>Enter Game and Day IDs:</h2>
         <input
