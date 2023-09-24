@@ -1,4 +1,3 @@
-import { DashportOak } from "https://deno.land/x/dashport@v1.2.1/mod.ts";
 import {
   Application,
   Context,
@@ -22,16 +21,9 @@ import { rerollChallengeModifier } from "./routes/day/rerollChallengeModifier.ts
 import { rollInitialModifier } from "./routes/day/rollInitialModifier.ts";
 import { startNextDay } from "./routes/day/startNextDay.ts";
 import { completeCurrentDay } from "./routes/game/completeCurrentDay.ts";
-import {
-  deserializerA,
-  gitHubStrategy,
-  serializerA,
-} from "./dashportconfig.ts";
 
 const app = new Application();
 const router = new Router();
-
-const dashport = new DashportOak(app);
 
 router
   /**
@@ -46,7 +38,6 @@ router
    */
   .get(
     "/privatepage",
-    dashport.authenticate(gitHubStrategy, serializerA, deserializerA),
     async (ctx: any, next: any) => {
       const userId = ctx.locals.id;
       ctx.response.body = `Welcome, ${userId}!`;
@@ -59,7 +50,6 @@ router
    */
   .get(
     "/logout",
-    dashport.logOut,
     (ctx: any, next: any) => {
       ctx.response.body = "You've logged out";
     },
@@ -87,7 +77,6 @@ router
   })
   .get(
     "/userdata",
-    dashport.authenticate(gitHubStrategy, serializerA, deserializerA),
     async (ctx: any, next: any) => {
       const userId = ctx.locals.id;
       const games = await getUserByIdWithRelations(userId);
