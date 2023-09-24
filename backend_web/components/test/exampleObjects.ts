@@ -65,51 +65,6 @@ export const exampleDay = {
   "rerollTokensSpentDuringPart2": 0,
 };
 
-export const exampleChallengeModifiersOrig = [
-  {
-    "id": 1,
-    "name": "new_codebase_language",
-    "text": "in a programming language not yet used in this codebase",
-    "hasOptions": false,
-  },
-  {
-    "id": 2,
-    "name": "new_language",
-    "text": "in a programming language you've never used before",
-    "hasOptions": false,
-  },
-  {
-    "id": 3,
-    "name": "quickly",
-    "text": "as quickly as you can",
-    "hasOptions": false,
-  },
-  {
-    "id": 4,
-    "name": "language_box_1",
-    "text": "using a random programming language from Language Box 1: ",
-    "hasOptions": true,
-  },
-  {
-    "id": 5,
-    "name": "language_box_2",
-    "text": "using a random programming language from Language Box 2: ",
-    "hasOptions": true,
-  },
-  {
-    "id": 6,
-    "name": "language_box_3",
-    "text": "using a random programming language from Language Box 3: ",
-    "hasOptions": true,
-  },
-  {
-    "id": 7,
-    "name": "testing",
-    "text": "with thorough testing",
-    "hasOptions": false,
-  },
-];
-
 export const exampleChallengeModifiers = [
   {
     "id": 1,
