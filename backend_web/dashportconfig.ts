@@ -21,7 +21,7 @@ export const serializerA = async (userInfo: any) => {
   }
 };
 
-export const deserializerA = async (serializedId: string | number) => {
+export const deserializerA = async (serializedId: string) => {
   try {
     const userInfo = await getUserById(serializedId);
     return userInfo;
