@@ -1,5 +1,5 @@
 import { component$ } from "@builder.io/qwik";
-import type { DocumentHead } from "@builder.io/qwik-city";
+import { Link, type DocumentHead } from "@builder.io/qwik-city";
 import SignIn from "~/components/signIn/signIn";
 import SignOut from "~/components/signOut/signOut";
 
@@ -14,6 +14,11 @@ export default component$(() => {
       <Hero />
       <SignIn />
       <SignOut />
+      <button>
+        <Link href="/game/" style={"color: #fff"}>
+          GAME
+        </Link>
+      </button>
       <Starter />
 
       <div role="presentation" class="ellipsis"></div>
