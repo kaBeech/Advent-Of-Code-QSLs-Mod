@@ -41,18 +41,26 @@ router
     context.response.body =
       "You have successfully pinged the Advent Of Code: Xtreme Xmas API!";
   })
+  /**
+   * Return User Info (remove eventually)
+   */
   .get(
     "/privatepage",
     dashport.authenticate(gitHubStrategy, serializerA, deserializerA),
     async (ctx: any, next: any) => {
       const userId = ctx.locals.id;
       ctx.response.body = `Welcome, ${userId}!`;
+      const games = await getUserByIdWithRelations(userId);
+      ctx.response.body = games;
     },
   )
+  /**
+   * Log Out
+   */
   .get(
     "/logout",
     dashport.logOut,
-    async (ctx: any, next: any) => {
+    (ctx: any, next: any) => {
       ctx.response.body = "You've logged out";
     },
   )
@@ -77,6 +85,15 @@ router
     const games = await getUserByIdWithRelations(id);
     context.response.body = games;
   })
+  .get(
+    "/userdata",
+    dashport.authenticate(gitHubStrategy, serializerA, deserializerA),
+    async (ctx: any, next: any) => {
+      const userId = ctx.locals.id;
+      const games = await getUserByIdWithRelations(userId);
+      ctx.response.body = games;
+    },
+  )
   /**
    * Get All Games (eventually will be Continue Game)
    */
