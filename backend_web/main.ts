@@ -65,8 +65,9 @@ router
   /**
    * Create User
    */
-  .post("/user", async (context) => {
-    context.response.body = await createUser();
+  .put("/user/:id", async (context) => {
+    const { id } = context.params;
+    context.response.body = await createUser(id);
   })
   /**
    * Get User with Relations

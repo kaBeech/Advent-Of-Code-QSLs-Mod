@@ -15,12 +15,16 @@ const prisma = new PrismaClient({
  * User CRUD
  */
 
-export async function createUser() {
-  const result = await prisma.user.create({});
+export async function createUser(id: string) {
+  const result = await prisma.user.create({
+    data: {
+      id,
+    },
+  });
   return result;
 }
 
-export async function upsertUser(id: number) {
+export async function upsertUser(id: string) {
   const result = await prisma.user.upsert({
     where: {
       id,
@@ -33,7 +37,7 @@ export async function upsertUser(id: number) {
   return result;
 }
 
-export async function getUserById(id: number) {
+export async function getUserById(id: string) {
   const user = await prisma.user.findUniqueOrThrow({
     where: {
       id,
@@ -54,7 +58,7 @@ export async function updateUser(user: User) {
   return result;
 }
 
-export async function deleteUser(id: number) {
+export async function deleteUser(id: string) {
   const result = await prisma.user.delete({
     where: {
       id,
