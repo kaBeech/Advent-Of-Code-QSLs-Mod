@@ -2,7 +2,7 @@ import { GameController } from "../../components/GameController.ts";
 import { createDay, getGamesByUserId, updateGame } from "../../db.ts";
 
 export const startNextDay = async (
-  userId: number,
+  userId: string,
   gameNumber: number,
   dayNumber: number,
 ) => {

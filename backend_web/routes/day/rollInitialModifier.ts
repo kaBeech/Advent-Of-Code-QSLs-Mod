@@ -7,7 +7,7 @@ import {
 } from "../../db.ts";
 
 export const rollInitialModifier = async (
-  userId: number,
+  userId: string,
   gameNumber: number,
   dayNumber: number,
 ) => {

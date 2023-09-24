@@ -8,7 +8,7 @@ import {
 } from "../../db.ts";
 
 export const rerollModifierOption = async (
-  userId: number,
+  userId: string,
   gameNumber: number,
   dayNumber: number,
 ) => {

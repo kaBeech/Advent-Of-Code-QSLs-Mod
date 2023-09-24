@@ -68,7 +68,7 @@ export async function deleteUser(id: number) {
  */
 
 export async function createGame(
-  userId: number,
+  userId: string,
   number: number,
   name: string,
   year: number,
@@ -101,7 +101,7 @@ export async function getGameById(id: number) {
 }
 
 export async function getUserByIdWithRelations(
-  userId: number,
+  userId: string,
 ) {
   const games = await prisma.user.findUniqueOrThrow({
     where: {
@@ -128,7 +128,7 @@ export async function getUserByIdWithRelations(
 }
 
 export async function getGamesByUserId(
-  userId: number,
+  userId: string,
 ) {
   const games = await prisma.game.findMany({
     where: {
@@ -176,7 +176,7 @@ export async function deleteGame(id: number) {
  */
 
 export async function createDay(
-  userId: number,
+  userId: string,
   gameId: number,
   gameNumber: number,
   dayNumber: number,

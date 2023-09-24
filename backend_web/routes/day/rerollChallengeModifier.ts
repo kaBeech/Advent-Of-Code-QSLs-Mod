@@ -9,7 +9,7 @@ import {
 } from "../../db.ts";
 
 export const rerollChallengeModifier = async (
-  userId: number,
+  userId: string,
   gameNumber: number,
   dayNumber: number,
 ) => {
