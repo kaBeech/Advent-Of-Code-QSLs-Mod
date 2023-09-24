@@ -1,8 +1,9 @@
+import { DashportOak } from "https://deno.land/x/dashport@v1.2.1/mod.ts";
 import {
   Application,
   Context,
   Router,
-} from "https://deno.land/x/oak@v11.1.0/mod.ts";
+} from "https://deno.land/x/oak@v12.6.1/mod.ts";
 import {
   createGame,
   createUser,
@@ -21,9 +22,16 @@ import { rerollChallengeModifier } from "./routes/day/rerollChallengeModifier.ts
 import { rollInitialModifier } from "./routes/day/rollInitialModifier.ts";
 import { startNextDay } from "./routes/day/startNextDay.ts";
 import { completeCurrentDay } from "./routes/game/completeCurrentDay.ts";
+import {
+  deserializerA,
+  gitHubStrategy,
+  serializerA,
+} from "./dashportconfig.ts";
 
 const app = new Application();
 const router = new Router();
+
+const dashport = new DashportOak(app);
 
 router
   /**
@@ -33,6 +41,21 @@ router
     context.response.body =
       "You have successfully pinged the Advent Of Code: Xtreme Xmas API!";
   })
+  .get(
+    "/privatepage",
+    dashport.authenticate(gitHubStrategy, serializerA, deserializerA),
+    async (ctx: any, next: any) => {
+      const displayName = ctx.locals.id;
+      ctx.response.body = `Welcome, ${displayName}!`;
+    },
+  )
+  .get(
+    "/logout",
+    dashport.logOut,
+    async (ctx: any, next: any) => {
+      ctx.response.body = "You've logged out";
+    },
+  )
   /**
    * Get All Challenge Modifiers
    */
