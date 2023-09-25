@@ -91,7 +91,7 @@ router
     const res = await userResponse.json();
     const userId = res.id.toString();
     const user = await upsertUser(userId);
-    ctx.state.session.flash("userId", userId);
+    ctx.state.session.set("userId", userId);
     console.debug(user);
     console.log(res);
     console.debug(`Hello, ${res.login}!`);
