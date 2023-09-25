@@ -62,16 +62,37 @@ router
     ctx.response.body =
       "You have successfully pinged the Advent Of Code: Xtreme Xmas API!";
   })
+  /**
+   * Dashport signup
+   */
+  .get("/sign-up", (ctx) =>
+    ctx.response.body = `<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>Sign Up</h1>
+    <form action="" method="POST">
+      <label for="username">Username</label>
+      <input name="username" placeholder="username" type="text" />
+      <label for="password">Password</label>
+      <input name="password" type="password" />
+      <button>Sign Up</button>
+    </form>
+  </body>
+  </html>`)
   .post("/sign-up", async (ctx, next) => {
     try {
       // const user = new User({
       //   username: req.body.username,
       //   password: req.body.password
       // });
+      const body = await ctx.request.body({ type: "form" }).value;
       const user = await createUser(
-        ctx.request.body.arguments.username,
-        ctx.request.body.arguments.username,
-        ctx.request.body.arguments.password,
+        Math.floor(Math.random() * 1000000000).toString(),
+        body.get("username")!,
+        body.get("password")!,
       );
       const _result = user;
       ctx.response.redirect("/");
