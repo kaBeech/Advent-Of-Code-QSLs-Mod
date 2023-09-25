@@ -5,6 +5,7 @@ import {
 } from "https://deno.land/x/oak@v12.6.1/mod.ts";
 // import { Session } from "https://deno.land/x/oak_sessions@v4.0.5/mod.ts";
 // import { OAuth2Client } from "https://deno.land/x/oauth2_client@v1.0.2/mod.ts";
+import { DashportOak } from "https://deno.land/x/dashport@v1.2.1/mod.ts";
 
 import {
   createGame,
@@ -49,6 +50,7 @@ const githubClientSecret = "3b3de07f53954481c2453993a15af07147261214";
 // const app = new Application<AppState>();
 
 const app = new Application();
+const dashport = new DashportOak(app);
 const router = new Router();
 
 router
@@ -58,6 +60,24 @@ router
   .get("/", (ctx) => {
     ctx.response.body =
       "You have successfully pinged the Advent Of Code: Xtreme Xmas API!";
+  })
+  .post("/sign-up", async (ctx, next) => {
+    try {
+      // const user = new User({
+      //   username: req.body.username,
+      //   password: req.body.password
+      // });
+      const user = await createUser(
+        ctx.request.body.arguments.username,
+        ctx.request.body.arguments.username,
+        ctx.request.body.arguments.password,
+      );
+      const _result = user;
+      ctx.response.redirect("/");
+    } catch (err) {
+      // return next(err);
+      return next;
+    }
   })
   /**
    * Login
