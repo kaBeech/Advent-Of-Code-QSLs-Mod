@@ -101,7 +101,7 @@ router
    */
   .get(
     "/logout",
-    (ctx: any, next: any) => {
+    (ctx) => {
       ctx.response.body = "You've logged out";
     },
   )
@@ -171,6 +171,24 @@ router
       playerName,
     );
   })
+  .post("/game", async (ctx) => {
+    const userId = ctx.state.session.get("userId");
+    const user = await getUserById(userId);
+    const { name, year, playerName } = await ctx.request
+      .body({
+        type: "json",
+      })
+      .value;
+    user!.numberOfGames++;
+    await updateUser(user!);
+    ctx.response.body = await createGame(
+      userId,
+      user!.numberOfGames,
+      name,
+      year,
+      playerName,
+    );
+  })
   /**
    * Delete Game
    */
@@ -180,12 +198,27 @@ router
     const game = games.find((game) => game.number === +gamenumber);
     ctx.response.body = await deleteGame(game!.id);
   })
+  .delete("/game/:gamenumber", async (ctx) => {
+    const { gamenumber } = ctx.params;
+    const userId = ctx.state.session.get("userId");
+    const games = await getGamesByUserId(userId);
+    const game = games.find((game) => game.number === +gamenumber);
+    ctx.response.body = await deleteGame(game!.id);
+  })
   /**
    * Get all Days for a Game
    */
   .get("/user/:id/game/:gamenumber/day", async (ctx) => {
     const { id, gamenumber } = ctx.params;
     const userData = await getUserByIdWithRelations(id);
+    ctx.response.body = userData.Game.find((game) =>
+      game.number === +gamenumber
+    )!.Day;
+  })
+  .get("/game/:gamenumber/day", async (ctx) => {
+    const { gamenumber } = ctx.params;
+    const userId = ctx.state.session.get("userId");
+    const userData = await getUserByIdWithRelations(userId);
     ctx.response.body = userData.Game.find((game) =>
       game.number === +gamenumber
     )!.Day;
@@ -200,6 +233,14 @@ router
       game.number === +gamenumber
     )!.Day.find((day) => day.number === +daynumber);
   })
+  .get("/game/:gamenumber/day/:daynumber", async (ctx) => {
+    const { gamenumber, daynumber } = ctx.params;
+    const userId = ctx.state.session.get("userId");
+    const userData = await getUserByIdWithRelations(userId);
+    ctx.response.body = userData.Game.find((game) =>
+      game.number === +gamenumber
+    )!.Day.find((day) => day.number === +daynumber);
+  })
   /**
    * Complete a Game's current Day
    */
@@ -207,12 +248,21 @@ router
     const { id, gamenumber } = ctx.params;
     ctx.response.body = await completeCurrentDay(id, +gamenumber);
   })
-  /**
+  .put("/game/:gamenumber/day/complete", async (ctx) => {
+    const { gamenumber } = ctx.params;
+    const userId = ctx.state.session.get("userId");
+    ctx.response.body = await completeCurrentDay(userId, +gamenumber);
+  }) /**
    * Start the next Day
    */
   .put("/user/:id/game/:gamenumber/day/:daynumber", async (ctx) => {
     const { id, gamenumber, daynumber } = ctx.params;
     ctx.response.body = await startNextDay(id, +gamenumber, +daynumber);
+  })
+  .put("/game/:gamenumber/day/:daynumber", async (ctx) => {
+    const { gamenumber, daynumber } = ctx.params;
+    const userId = ctx.state.session.get("userId");
+    ctx.response.body = await startNextDay(userId, +gamenumber, +daynumber);
   })
   /**
    * Roll a Day's initial Challenge Modifier
@@ -221,6 +271,15 @@ router
     const { id, gamenumber, daynumber } = ctx.params;
     ctx.response.body = await rollInitialModifier(
       id,
+      +gamenumber,
+      +daynumber,
+    );
+  })
+  .put("/game/:gamenumber/day/:daynumber/roll", async (ctx) => {
+    const { gamenumber, daynumber } = ctx.params;
+    const userId = ctx.state.session.get("userId");
+    ctx.response.body = await rollInitialModifier(
+      userId,
       +gamenumber,
       +daynumber,
     );
@@ -234,6 +293,18 @@ router
       const { id, gamenumber, daynumber } = ctx.params;
       ctx.response.body = await rerollChallengeModifier(
         id,
+        +gamenumber,
+        +daynumber,
+      );
+    },
+  )
+  .put(
+    "/game/:gamenumber/day/:daynumber/reroll/modifier",
+    async (ctx) => {
+      const { gamenumber, daynumber } = ctx.params;
+      const userId = ctx.state.session.get("userId");
+      ctx.response.body = await rerollChallengeModifier(
+        userId,
         +gamenumber,
         +daynumber,
       );
@@ -253,6 +324,18 @@ router
       );
     },
   )
+  .put(
+    "/game/:gamenumber/day/:daynumber/reroll/option",
+    async (ctx) => {
+      const { gamenumber, daynumber } = ctx.params;
+      const userId = ctx.state.session.get("userId");
+      ctx.response.body = await rerollModifierOption(
+        userId,
+        +gamenumber,
+        +daynumber,
+      );
+    },
+  )
   /**
    * Complete Part 1 for a Day
    */
@@ -263,6 +346,14 @@ router
       ctx.response.body = await completePart1(id, +gamenumber, +daynumber);
     },
   )
+  .put(
+    "/game/:gamenumber/day/:daynumber/complete/part1",
+    async (ctx) => {
+      const { gamenumber, daynumber } = ctx.params;
+      const userId = ctx.state.session.get("userId");
+      ctx.response.body = await completePart1(userId, +gamenumber, +daynumber);
+    },
+  )
   /**
    * Complete Part 2 for a Day
    */
@@ -271,6 +362,14 @@ router
     async (ctx) => {
       const { id, gamenumber, daynumber } = ctx.params;
       ctx.response.body = await completePart2(id, +gamenumber, +daynumber);
+    },
+  )
+  .put(
+    "/game/:gamenumber/day/:daynumber/complete/part2",
+    async (ctx) => {
+      const { gamenumber, daynumber } = ctx.params;
+      const userId = ctx.state.session.get("userId");
+      ctx.response.body = await completePart2(userId, +gamenumber, +daynumber);
     },
   );
 
