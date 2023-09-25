@@ -43,6 +43,15 @@ export async function upsertUser(id: string) {
   return result;
 }
 
+export async function getUserByUsername(username: string) {
+  const user = await prisma.user.findUniqueOrThrow({
+    where: {
+      username,
+    },
+  });
+  return user;
+}
+
 export async function getUserById(id: string) {
   const user = await prisma.user.findUniqueOrThrow({
     where: {
