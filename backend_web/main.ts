@@ -3,8 +3,8 @@ import {
   Context,
   Router,
 } from "https://deno.land/x/oak@v12.6.1/mod.ts";
-import { Session } from "https://deno.land/x/oak_sessions@v4.0.5/mod.ts";
-import { OAuth2Client } from "https://deno.land/x/oauth2_client@v1.0.2/mod.ts";
+// import { Session } from "https://deno.land/x/oak_sessions@v4.0.5/mod.ts";
+// import { OAuth2Client } from "https://deno.land/x/oauth2_client@v1.0.2/mod.ts";
 
 import {
   createGame,
@@ -31,22 +31,24 @@ const githubClientId = "1cfb5aa9850ade3203a3";
 const githubClientSecret = "3b3de07f53954481c2453993a15af07147261214";
 // const githubClientSecret = Deno.env.get("GITHUB_CLIENT_SECRET");
 
-const oauth2Client = new OAuth2Client({
-  clientId: githubClientId,
-  clientSecret: githubClientSecret,
-  authorizationEndpointUri: "https://github.com/login/oauth/authorize",
-  tokenUri: "https://github.com/login/oauth/access_token",
-  redirectUri: "http://127.0.0.1:8000/oauth2/callback",
-  defaults: {
-    scope: "user:read",
-  },
-});
+// const oauth2Client = new OAuth2Client({
+//   clientId: githubClientId,
+//   clientSecret: githubClientSecret,
+//   authorizationEndpointUri: "https://github.com/login/oauth/authorize",
+//   tokenUri: "https://github.com/login/oauth/access_token",
+//   redirectUri: "http://127.0.0.1:8000/oauth2/callback",
+//   defaults: {
+//     scope: "user:read",
+//   },
+// });
 
-type AppState = {
-  session: Session;
-};
+// type AppState = {
+//   session: Session;
+// };
 
-const app = new Application<AppState>();
+// const app = new Application<AppState>();
+
+const app = new Application();
 const router = new Router();
 
 router
@@ -60,42 +62,42 @@ router
   /**
    * Login
    */
-  .get("/login", async (ctx) => {
-    // Construct the URL for the authorization redirect and get a PKCE codeVerifier
-    const { uri, codeVerifier } = await oauth2Client.code.getAuthorizationUri();
+  // .get("/login", async (ctx) => {
+  //   // Construct the URL for the authorization redirect and get a PKCE codeVerifier
+  //   const { uri, codeVerifier } = await oauth2Client.code.getAuthorizationUri();
 
-    // Store both the state and codeVerifier in the user session
-    ctx.state.session.flash("codeVerifier", codeVerifier);
+  //   // Store both the state and codeVerifier in the user session
+  //   ctx.state.session.flash("codeVerifier", codeVerifier);
 
-    // Redirect the user to the authorization endpoint
-    ctx.response.redirect(uri);
-  })
-  .get("/oauth2/callback", async (ctx) => {
-    // Make sure the codeVerifier is present for the user's session
-    const codeVerifier = ctx.state.session.get("codeVerifier");
-    if (typeof codeVerifier !== "string") {
-      throw new Error("invalid codeVerifier");
-    }
+  //   // Redirect the user to the authorization endpoint
+  //   ctx.response.redirect(uri);
+  // })
+  // .get("/oauth2/callback", async (ctx) => {
+  //   // Make sure the codeVerifier is present for the user's session
+  //   const codeVerifier = ctx.state.session.get("codeVerifier");
+  //   if (typeof codeVerifier !== "string") {
+  //     throw new Error("invalid codeVerifier");
+  //   }
 
-    // Exchange the authorization code for an access token
-    const tokens = await oauth2Client.code.getToken(ctx.request.url, {
-      codeVerifier,
-    });
+  //   // Exchange the authorization code for an access token
+  //   const tokens = await oauth2Client.code.getToken(ctx.request.url, {
+  //     codeVerifier,
+  //   });
 
-    // Use the access token to make an authenticated API request
-    const userResponse = await fetch("https://api.github.com/user", {
-      headers: {
-        Authorization: `Bearer ${tokens.accessToken}`,
-      },
-    });
-    const res = await userResponse.json();
-    const userId = res.id.toString();
-    const user = await upsertUser(userId);
-    ctx.state.session.set("userId", userId);
-    console.debug(user);
-    console.debug(`Hello, ${res.login}!`);
-    ctx.response.redirect("/userdata");
-  })
+  //   // Use the access token to make an authenticated API request
+  //   const userResponse = await fetch("https://api.github.com/user", {
+  //     headers: {
+  //       Authorization: `Bearer ${tokens.accessToken}`,
+  //     },
+  //   });
+  //   const res = await userResponse.json();
+  //   const userId = res.id.toString();
+  //   const user = await upsertUser(userId);
+  //   ctx.state.session.set("userId", userId);
+  //   console.debug(user);
+  //   console.debug(`Hello, ${res.login}!`);
+  //   ctx.response.redirect("/userdata");
+  // })
   /**
    * Log Out
    */
@@ -373,7 +375,7 @@ router
     },
   );
 
-app.use(Session.initMiddleware());
+// app.use(Session.initMiddleware());
 app.use(router.routes());
 app.use(router.allowedMethods());
 
