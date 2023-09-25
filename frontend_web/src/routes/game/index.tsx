@@ -1,19 +1,20 @@
-import type { Session } from "@auth/core/types";
+// import type { Session } from "@auth/core/types";
 import { Resource, component$, useResource$, useStore } from "@builder.io/qwik";
-import type { DocumentHead, RequestHandler } from "@builder.io/qwik-city";
+import type { DocumentHead } from "@builder.io/qwik-city";
+// import type { DocumentHead, RequestHandler } from "@builder.io/qwik-city";
 import { Link, server$ } from "@builder.io/qwik-city";
 import SignIn from "~/components/signIn/signIn";
 import SignOut from "~/components/signOut/signOut";
 
-export const onRequest: RequestHandler = (event) => {
-  const session: Session | null = event.sharedMap.get("session");
-  if (!session || new Date(session.expires) < new Date()) {
-    throw event.redirect(
-      302,
-      `/api/auth/signin?callbackUrl=${event.url.pathname}`
-    );
-  }
-};
+// export const onRequest: RequestHandler = (event) => {
+//   const session: Session | null = event.sharedMap.get("session");
+//   if (!session || new Date(session.expires) < new Date()) {
+//     throw event.redirect(
+//       302,
+//       `/api/auth/signin?callbackUrl=${event.url.pathname}`
+//     );
+//   }
+// };
 
 const gameID = 1;
 const dayID = 1;
