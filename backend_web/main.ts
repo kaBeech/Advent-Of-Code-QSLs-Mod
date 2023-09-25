@@ -50,8 +50,9 @@ const githubClientSecret = "3b3de07f53954481c2453993a15af07147261214";
 // const app = new Application<AppState>();
 
 const app = new Application();
-const dashport = new DashportOak(app);
 const router = new Router();
+
+const dashport = new DashportOak(app);
 
 router
   /**
@@ -403,6 +404,10 @@ app.use((ctx: Context) => {
   ctx.response.status = 404;
   ctx.response.body =
     `404 | Page not found! Requested ${ctx.request.method} on ${ctx.request.url}`;
+});
+
+app.addEventListener("error", (evt) => {
+  console.log(evt.error);
 });
 
 console.log(`Server running on http://localhost:8000`);
