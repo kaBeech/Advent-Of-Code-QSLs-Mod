@@ -51,7 +51,8 @@ export default component$(() => {
       const buttonPresses = track(() => state.buttonPresses);
       const abortController = new AbortController();
       cleanup(() => abortController.abort("cleanup"));
-      const userData = await serverFetcher(`user/1`, "GET");
+      const userData = await serverFetcher(`userdata`, "GET");
+      // const userData = await serverFetcher(`user/1`, "GET");
       const gameData = userData.Game.find(
         (game: { number: number }) => game.number === +gameID
       );
