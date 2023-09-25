@@ -36,12 +36,12 @@ export const ghStrat = new GitHubStrategy({
 });
 
 export const serializerA = async (userInfo: any) => {
-  const serializedId = Math.floor(Math.random() * 1000000000);
+  const serializedId = Math.floor(Math.random() * 1000000000).toString();
   userInfo.id = serializedId;
 
   try {
     await createUser(
-      serializedId.toString(),
+      userInfo.id,
       userInfo.username,
       userInfo.password,
     );
