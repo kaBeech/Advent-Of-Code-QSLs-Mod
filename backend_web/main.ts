@@ -53,8 +53,8 @@ router
   /**
    * Hello World!
    */
-  .get("/", (context) => {
-    context.response.body =
+  .get("/", (ctx) => {
+    ctx.response.body =
       "You have successfully pinged the Advent Of Code: Xtreme Xmas API!";
   })
   /**
@@ -93,7 +93,6 @@ router
     const user = await upsertUser(userId);
     ctx.state.session.set("userId", userId);
     console.debug(user);
-    console.log(res);
     console.debug(`Hello, ${res.login}!`);
     ctx.response.redirect("/userdata");
   })
@@ -119,52 +118,52 @@ router
   ) /**
    * Get All Challenge Modifiers
    */
-  .get("/modifier", async (context) => {
-    context.response.body = await getAllChallengeModifiers();
+  .get("/modifier", async (ctx) => {
+    ctx.response.body = await getAllChallengeModifiers();
   })
   /**
    * Create User
    */
-  .put("/user/:id", async (context) => {
-    const { id } = context.params;
-    context.response.body = await createUser(id);
+  .put("/user/:id", async (ctx) => {
+    const { id } = ctx.params;
+    ctx.response.body = await createUser(id);
   })
   /**
    * Get User with Relations
    */
-  .get("/user/:id", async (context) => {
-    const { id } = context.params;
+  .get("/user/:id", async (ctx) => {
+    const { id } = ctx.params;
     const games = await getUserByIdWithRelations(id);
-    context.response.body = games;
+    ctx.response.body = games;
   })
   /**
    * Get All Games (eventually will be Continue Game)
    */
-  .get("/user/:id/game", async (context) => {
-    context.response.body = await getAllGames();
+  .get("/user/:id/game", async (ctx) => {
+    ctx.response.body = await getAllGames();
   })
   /**
    * Resume Game
    */
-  .get("/user/:id/game/:gamenumber", async (context) => {
-    const { id, gamenumber } = context.params;
+  .get("/user/:id/game/:gamenumber", async (ctx) => {
+    const { id, gamenumber } = ctx.params;
     const games = await getGamesByUserId(id);
-    context.response.body = games.find((game) => game.number === +gamenumber);
+    ctx.response.body = games.find((game) => game.number === +gamenumber);
   })
   /**
    * Start New Game
    */
-  .post("/user/:id/game", async (context) => {
-    const { id } = context.params;
+  .post("/user/:id/game", async (ctx) => {
+    const { id } = ctx.params;
     const user = await getUserById(id);
-    const { name, year, playerName } = await context.request
+    const { name, year, playerName } = await ctx.request
       .body({
         type: "json",
       })
       .value;
     user!.numberOfGames++;
     await updateUser(user!);
-    context.response.body = await createGame(
+    ctx.response.body = await createGame(
       id,
       user!.numberOfGames,
       name,
@@ -175,52 +174,52 @@ router
   /**
    * Delete Game
    */
-  .delete("/user/:id/game/:gamenumber", async (context) => {
-    const { id, gamenumber } = context.params;
+  .delete("/user/:id/game/:gamenumber", async (ctx) => {
+    const { id, gamenumber } = ctx.params;
     const games = await getGamesByUserId(id);
     const game = games.find((game) => game.number === +gamenumber);
-    context.response.body = await deleteGame(game!.id);
+    ctx.response.body = await deleteGame(game!.id);
   })
   /**
    * Get all Days for a Game
    */
-  .get("/user/:id/game/:gamenumber/day", async (context) => {
-    const { id, gamenumber } = context.params;
+  .get("/user/:id/game/:gamenumber/day", async (ctx) => {
+    const { id, gamenumber } = ctx.params;
     const userData = await getUserByIdWithRelations(id);
-    context.response.body = userData.Game.find((game) =>
+    ctx.response.body = userData.Game.find((game) =>
       game.number === +gamenumber
     )!.Day;
   })
   /**
    * Get a Day
    */
-  .get("/user/:id/game/:gamenumber/day/:daynumber", async (context) => {
-    const { id, gamenumber, daynumber } = context.params;
+  .get("/user/:id/game/:gamenumber/day/:daynumber", async (ctx) => {
+    const { id, gamenumber, daynumber } = ctx.params;
     const userData = await getUserByIdWithRelations(id);
-    context.response.body = userData.Game.find((game) =>
+    ctx.response.body = userData.Game.find((game) =>
       game.number === +gamenumber
     )!.Day.find((day) => day.number === +daynumber);
   })
   /**
    * Complete a Game's current Day
    */
-  .put("/user/:id/game/:gamenumber/day/complete", async (context) => {
-    const { id, gamenumber } = context.params;
-    context.response.body = await completeCurrentDay(id, +gamenumber);
+  .put("/user/:id/game/:gamenumber/day/complete", async (ctx) => {
+    const { id, gamenumber } = ctx.params;
+    ctx.response.body = await completeCurrentDay(id, +gamenumber);
   })
   /**
    * Start the next Day
    */
-  .put("/user/:id/game/:gamenumber/day/:daynumber", async (context) => {
-    const { id, gamenumber, daynumber } = context.params;
-    context.response.body = await startNextDay(id, +gamenumber, +daynumber);
+  .put("/user/:id/game/:gamenumber/day/:daynumber", async (ctx) => {
+    const { id, gamenumber, daynumber } = ctx.params;
+    ctx.response.body = await startNextDay(id, +gamenumber, +daynumber);
   })
   /**
    * Roll a Day's initial Challenge Modifier
    */
-  .put("/user/:id/game/:gamenumber/day/:daynumber/roll", async (context) => {
-    const { id, gamenumber, daynumber } = context.params;
-    context.response.body = await rollInitialModifier(
+  .put("/user/:id/game/:gamenumber/day/:daynumber/roll", async (ctx) => {
+    const { id, gamenumber, daynumber } = ctx.params;
+    ctx.response.body = await rollInitialModifier(
       id,
       +gamenumber,
       +daynumber,
@@ -231,9 +230,9 @@ router
    */
   .put(
     "/user/:id/game/:gamenumber/day/:daynumber/reroll/modifier",
-    async (context) => {
-      const { id, gamenumber, daynumber } = context.params;
-      context.response.body = await rerollChallengeModifier(
+    async (ctx) => {
+      const { id, gamenumber, daynumber } = ctx.params;
+      ctx.response.body = await rerollChallengeModifier(
         id,
         +gamenumber,
         +daynumber,
@@ -245,9 +244,9 @@ router
    */
   .put(
     "/user/:id/game/:gamenumber/day/:daynumber/reroll/option",
-    async (context) => {
-      const { id, gamenumber, daynumber } = context.params;
-      context.response.body = await rerollModifierOption(
+    async (ctx) => {
+      const { id, gamenumber, daynumber } = ctx.params;
+      ctx.response.body = await rerollModifierOption(
         id,
         +gamenumber,
         +daynumber,
@@ -259,9 +258,9 @@ router
    */
   .put(
     "/user/:id/game/:gamenumber/day/:daynumber/complete/part1",
-    async (context) => {
-      const { id, gamenumber, daynumber } = context.params;
-      context.response.body = await completePart1(id, +gamenumber, +daynumber);
+    async (ctx) => {
+      const { id, gamenumber, daynumber } = ctx.params;
+      ctx.response.body = await completePart1(id, +gamenumber, +daynumber);
     },
   )
   /**
@@ -269,9 +268,9 @@ router
    */
   .put(
     "/user/:id/game/:gamenumber/day/:daynumber/complete/part2",
-    async (context) => {
-      const { id, gamenumber, daynumber } = context.params;
-      context.response.body = await completePart2(id, +gamenumber, +daynumber);
+    async (ctx) => {
+      const { id, gamenumber, daynumber } = ctx.params;
+      ctx.response.body = await completePart2(id, +gamenumber, +daynumber);
     },
   );
 
@@ -279,10 +278,10 @@ app.use(Session.initMiddleware());
 app.use(router.routes());
 app.use(router.allowedMethods());
 
-app.use((context: Context) => {
-  context.response.status = 404;
-  context.response.body =
-    `404 | Page not found! Requested ${context.request.method} on ${context.request.url}`;
+app.use((ctx: Context) => {
+  ctx.response.status = 404;
+  ctx.response.body =
+    `404 | Page not found! Requested ${ctx.request.method} on ${ctx.request.url}`;
 });
 
 console.log(`Server running on http://localhost:8000`);
