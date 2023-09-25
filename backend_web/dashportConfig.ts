@@ -1,6 +1,24 @@
+import LocalStrategy from "https://deno.land/x/dashport_localauth/mod.ts";
 // import GoogleStrategy from "https://deno.land/x/dashport_google/mod.ts";
 import GitHubStrategy from "https://deno.land/x/dashport_github/mod.ts";
-import { createUser, getUserById } from "./db.ts";
+import { createUser, getUserById, getUserByUsername } from "./db.ts";
+
+export const localStrategy = new LocalStrategy({
+  usernamefield: "username",
+  passwordfield: "password",
+  authorize: async (username: string, password: string) => {
+    try {
+      const user = await getUserByUsername(username);
+      if (user.password === password) {
+        return user;
+      }
+      return false;
+    } catch (err) {
+      return err;
+      // or return new Error(err);
+    }
+  },
+});
 
 // export const googStrat = new GoogleStrategy({
 //   client_id: "client-id-here",
