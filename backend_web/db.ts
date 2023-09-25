@@ -15,10 +15,16 @@ const prisma = new PrismaClient({
  * User CRUD
  */
 
-export async function createUser(id: string) {
+export async function createUser(
+  id: string,
+  username?: string,
+  password?: string,
+) {
   const result = await prisma.user.create({
     data: {
       id,
+      username,
+      password,
     },
   });
   return result;
