@@ -16,6 +16,7 @@ import {
   getUserById,
   getUserByIdWithRelations,
   updateUser,
+  upsertUser,
 } from "./db.ts";
 import { completePart1 } from "./routes/day/completePart1.ts";
 import { completePart2 } from "./routes/day/completePart2.ts";
@@ -87,9 +88,14 @@ router
         Authorization: `Bearer ${tokens.accessToken}`,
       },
     });
-    const { login } = await userResponse.json();
-
-    ctx.response.body = `Hello, ${login}!`;
+    const res = await userResponse.json();
+    const userId = res.id.toString();
+    const user = await upsertUser(userId);
+    ctx.state.session.flash("userId", userId);
+    console.debug(user);
+    console.log(res);
+    console.debug(`Hello, ${res.login}!`);
+    ctx.response.redirect("/userdata");
   })
   /**
    * Log Out
@@ -101,6 +107,16 @@ router
     },
   )
   /**
+   * Get User with Relations
+   */
+  .get(
+    "/userdata",
+    async (ctx) => {
+      const userId = ctx.state.session.get("userId");
+      const userData = await getUserByIdWithRelations(userId);
+      ctx.response.body = userData;
+    },
+  ) /**
    * Get All Challenge Modifiers
    */
   .get("/modifier", async (context) => {
@@ -121,14 +137,6 @@ router
     const games = await getUserByIdWithRelations(id);
     context.response.body = games;
   })
-  .get(
-    "/userdata",
-    async (ctx: any, next: any) => {
-      const userId = ctx.locals.id;
-      const games = await getUserByIdWithRelations(userId);
-      ctx.response.body = games;
-    },
-  )
   /**
    * Get All Games (eventually will be Continue Game)
    */
