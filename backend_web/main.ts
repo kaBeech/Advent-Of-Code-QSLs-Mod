@@ -26,6 +26,7 @@ import { rerollChallengeModifier } from "./routes/day/rerollChallengeModifier.ts
 import { rollInitialModifier } from "./routes/day/rollInitialModifier.ts";
 import { startNextDay } from "./routes/day/startNextDay.ts";
 import { completeCurrentDay } from "./routes/game/completeCurrentDay.ts";
+import { deserializerA, localStrategy, serializerA } from "./dashportConfig.ts";
 
 const githubClientId = "1cfb5aa9850ade3203a3";
 // const githubClientId = Deno.env.get("GITHUB_CLIENT_ID");
@@ -59,8 +60,23 @@ router
    * Hello World!
    */
   .get("/", (ctx) => {
-    ctx.response.body =
-      "You have successfully pinged the Advent Of Code: Xtreme Xmas API!";
+    ctx.response.body = `<html lang="en">
+      <head>
+        <meta charset="UTF-8">
+        <title></title>
+      </head>
+      <body><h1>Hello World! You have successfully pinged the Advent Of Code: Xtreme Xmas API!</h1>
+      <h1>Please log in:</h1>
+      <form action="/log-in" method="POST">
+        <label for="username">Username</label>
+        <input name="username" placeholder="username" type="text" />
+        <label for="password">Password</label>
+        <input name="password" type="password" />
+        <button>Log In</button>
+      </form>
+      </body>
+      </html>
+      `;
   })
   /**
    * Dashport signup
@@ -104,6 +120,13 @@ router
   /**
    * Login
    */
+  .post(
+    "/login",
+    dashport.authenticate(localStrategy, serializerA, deserializerA),
+    async (ctx: any, next: any) => {
+      ctx.response.body = "This is a private page!";
+    },
+  )
   // .get("/login", async (ctx) => {
   //   // Construct the URL for the authorization redirect and get a PKCE codeVerifier
   //   const { uri, codeVerifier } = await oauth2Client.code.getAuthorizationUri();
