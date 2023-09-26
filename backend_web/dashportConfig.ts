@@ -4,6 +4,7 @@ import GitHubStrategy from "https://deno.land/x/dashport_github/mod.ts";
 import {
   createUser,
   getUserById,
+  getUserBySerializedId,
   getUserByUsername,
   upsertUser,
 } from "./db.ts";
@@ -60,7 +61,7 @@ export const serializerA = async (userInfo: any) => {
 
 export const deserializerA = async (serializedId: string) => {
   try {
-    const userInfo = await getUserById(serializedId);
+    const userInfo = await getUserBySerializedId(serializedId);
     return userInfo;
   } catch (err) {
     return err;

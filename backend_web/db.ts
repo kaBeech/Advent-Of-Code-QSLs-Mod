@@ -73,6 +73,15 @@ export async function getUserById(id: string) {
   return user;
 }
 
+export async function getUserBySerializedId(serializedId: string) {
+  const user = await prisma.user.findUniqueOrThrow({
+    where: {
+      serializedId,
+    },
+  });
+  return user;
+}
+
 export async function updateUser(user: User) {
   const result = await prisma.user.update({
     where: {
