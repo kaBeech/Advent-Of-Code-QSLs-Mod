@@ -1,7 +1,12 @@
 import LocalStrategy from "https://deno.land/x/dashport_localauth/mod.ts";
 // import GoogleStrategy from "https://deno.land/x/dashport_google/mod.ts";
 import GitHubStrategy from "https://deno.land/x/dashport_github/mod.ts";
-import { createUser, getUserById, getUserByUsername } from "./db.ts";
+import {
+  createUser,
+  getUserById,
+  getUserByUsername,
+  upsertUser,
+} from "./db.ts";
 
 export const localStrategy = new LocalStrategy({
   usernamefield: "username",
@@ -40,10 +45,11 @@ export const serializerA = async (userInfo: any) => {
   userInfo.serializedId = serializedId;
 
   try {
-    await createUser(
+    await upsertUser(
       userInfo.id,
       userInfo.username,
       userInfo.password,
+      userInfo.serializedId,
     );
     return serializedId;
   } catch (err) {

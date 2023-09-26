@@ -30,14 +30,26 @@ export async function createUser(
   return result;
 }
 
-export async function upsertUser(id: string) {
+export async function upsertUser(
+  id: string,
+  username?: string,
+  password?: string,
+  serializedId?: string,
+) {
   const result = await prisma.user.upsert({
     where: {
       id,
     },
-    update: {},
+    update: {
+      username,
+      password,
+      serializedId,
+    },
     create: {
       id,
+      username,
+      password,
+      serializedId,
     },
   });
   return result;
