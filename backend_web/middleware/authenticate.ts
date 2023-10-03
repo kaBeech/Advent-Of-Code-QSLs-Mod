@@ -1,4 +1,4 @@
-import { verify } from "https://deno.land/x/djwt@v2.4/mod.ts";
+import { verify } from "https://deno.land/x/djwt@v2.9.1/mod.ts";
 import { key } from "../util/apiKey.ts";
 import { Context } from "https://deno.land/x/oak@v12.6.1/mod.ts";
 
@@ -17,10 +17,10 @@ export const authenticate = async (ctx: Context, next: any) => {
       return;
     }
     const payload = await verify(jwt, key);
-
     if (!payload) {
       throw new Error("!payload");
     }
+    ctx.cookies.set("id", payload.payload.id);
     await next();
   } catch (error) {
     ctx.response.status = 401;

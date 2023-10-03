@@ -31,6 +31,7 @@ import { startNextDay } from "./routes/day/startNextDay.ts";
 import { completeCurrentDay } from "./routes/game/completeCurrentDay.ts";
 import { deserializerA, localStrategy, serializerA } from "./dashportConfig.ts";
 import { key } from "./util/apiKey.ts";
+import { authenticate } from "./middleware/authenticate.ts";
 
 const githubClientId = "1cfb5aa9850ade3203a3";
 // const githubClientId = Deno.env.get("GITHUB_CLIENT_ID");
@@ -235,9 +236,11 @@ router
    */
   .get(
     "/userdata",
+    authenticate,
     async (ctx) => {
-      const userId = ctx.state.session.get("userId");
-      const userData = await getUserByIdWithRelations(userId);
+      // const userId = ctx.state.session.get("userId");
+      const id = await ctx.cookies.get("id");
+      const userData = await getUserByIdWithRelations(id!);
       ctx.response.body = userData;
     },
   ) /**
