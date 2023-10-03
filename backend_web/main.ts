@@ -7,6 +7,7 @@ import {
 // import { OAuth2Client } from "https://deno.land/x/oauth2_client@v1.0.2/mod.ts";
 import { DashportOak } from "https://deno.land/x/dashport@v1.2.1/mod.ts";
 import * as bcrypt from "https://deno.land/x/bcrypt@v0.4.1/mod.ts";
+import { create } from "https://deno.land/x/djwt@v2.4/mod.ts";
 
 import {
   createGame,
@@ -17,6 +18,7 @@ import {
   getGamesByUserId,
   getUserById,
   getUserByIdWithRelations,
+  getUserByUsername,
   updateUser,
   upsertUser,
 } from "./db.ts";
@@ -28,6 +30,7 @@ import { rollInitialModifier } from "./routes/day/rollInitialModifier.ts";
 import { startNextDay } from "./routes/day/startNextDay.ts";
 import { completeCurrentDay } from "./routes/game/completeCurrentDay.ts";
 import { deserializerA, localStrategy, serializerA } from "./dashportConfig.ts";
+import { key } from "./util/apiKey.ts";
 
 const githubClientId = "1cfb5aa9850ade3203a3";
 // const githubClientId = Deno.env.get("GITHUB_CLIENT_ID");
@@ -105,7 +108,7 @@ router
       //   username: req.body.username,
       //   password: req.body.password
       // });
-      const body = await ctx.request.body({ type: "form" }).value;
+      const body = await ctx.request.body().value;
       const salt = await bcrypt.genSalt(8);
       const hashedPassword = await bcrypt.hash(body.get("password")!, salt);
       const user = await createUser(
@@ -130,10 +133,56 @@ router
    * Login
    */
   .post(
-    "/login",
-    dashport.authenticate(localStrategy, serializerA, deserializerA),
+    "/log-in",
+    // dashport.authenticate(localStrategy, serializerA, deserializerA),
     async (ctx: any, next: any) => {
-      ctx.response.body = "This is a private page!";
+      const body = await ctx.request.body().value;
+      const username = body.get("username");
+      const password = body.get("password");
+      const user = await getUserByUsername(username);
+
+      if (!user) {
+        ctx.response.status = 404;
+        ctx.response.body = {
+          message: `User "${username}" not found`,
+        };
+        return;
+      }
+      if (!user.password) {
+        ctx.response.status = 404;
+        ctx.response.body = {
+          message: `User "${username}" does not have a password`,
+        };
+        return;
+      }
+      const confirmPassword = await bcrypt.compare(
+        password,
+        user.password,
+      );
+      if (!confirmPassword) {
+        ctx.response.body = 404;
+        ctx.response.body = { message: "Incorrect password" };
+        return;
+      }
+      const payload = {
+        id: user.id,
+        name: user.username,
+      };
+      const jwt = await create({ alg: "HS512", typ: "JWT" }, { payload }, key);
+      if (jwt) {
+        ctx.response.status = 200;
+        ctx.response.body = {
+          userId: user.id,
+          username: user.username,
+          token: jwt,
+        };
+      } else {
+        ctx.response.status = 500;
+        ctx.response.body = {
+          message: "Internal server error",
+        };
+      }
+      return;
     },
   )
   // .get("/login", async (ctx) => {
