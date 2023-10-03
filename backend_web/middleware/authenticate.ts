@@ -20,7 +20,8 @@ export const authenticate = async (ctx: Context, next: any) => {
     if (!payload) {
       throw new Error("!payload");
     }
-    ctx.cookies.set("id", payload.payload.id);
+    // ctx.cookies.set("id", payload.payload.id);
+    ctx.state.session.set("userId", payload.payload.id);
     await next();
   } catch (error) {
     ctx.response.status = 401;
