@@ -5,7 +5,6 @@ import {
 } from "https://deno.land/x/oak@v12.6.1/mod.ts";
 import { Session } from "https://deno.land/x/oak_sessions@v4.0.5/mod.ts";
 import { OAuth2Client } from "https://deno.land/x/oauth2_client@v1.0.2/mod.ts";
-// import { DashportOak } from "https://deno.land/x/dashport@v1.2.1/mod.ts";
 import * as bcrypt from "https://deno.land/x/bcrypt@v0.4.1/mod.ts";
 import { create } from "https://deno.land/x/djwt@v2.4/mod.ts";
 
@@ -29,12 +28,11 @@ import { rerollChallengeModifier } from "./routes/day/rerollChallengeModifier.ts
 import { rollInitialModifier } from "./routes/day/rollInitialModifier.ts";
 import { startNextDay } from "./routes/day/startNextDay.ts";
 import { completeCurrentDay } from "./routes/game/completeCurrentDay.ts";
-// import { deserializerA, localStrategy, serializerA } from "./dashportConfig.ts";
 import { key } from "./util/apiKey.ts";
 import { authenticate } from "./middleware/authenticate.ts";
 import { config } from "https://deno.land/std@0.163.0/dotenv/mod.ts";
 
-const dotEnv = await config();
+const _dotEnv = await config();
 const githubClientId = Deno.env.get("GITHUB_CLIENT_ID");
 const githubClientSecret = Deno.env.get("GITHUB_CLIENT_SECRET");
 
@@ -53,13 +51,8 @@ type AppState = {
   session: Session;
 };
 
-// const app = new Application();
-// const router = new Router();
-
 const app = new Application<AppState>();
 const router = new Router<AppState>();
-
-// const dashport = new DashportOak(app);
 
 router
   /**
@@ -106,10 +99,6 @@ router
   </html>`)
   .post("/sign-up", async (ctx, next) => {
     try {
-      // const user = new User({
-      //   username: req.body.username,
-      //   password: req.body.password
-      // });
       const body = await ctx.request.body().value;
       const salt = await bcrypt.genSalt(8);
       const hashedPassword = await bcrypt.hash(body.get("password")!, salt);
@@ -125,9 +114,7 @@ router
         userId: user.id,
         user: user.username,
       };
-      // ctx.response.redirect("/");
     } catch (err) {
-      // return next(err);
       return next;
     }
   })
@@ -136,7 +123,6 @@ router
    */
   .post(
     "/log-in",
-    // dashport.authenticate(localStrategy, serializerA, deserializerA),
     async (ctx: any, next: any) => {
       const body = await ctx.request.body().value;
       const username = body.get("username");
@@ -239,7 +225,6 @@ router
     }
     console.debug(user);
     console.debug(`Hello, ${res.login}!`);
-    // ctx.response.redirect("/userdata");
   })
   /**
    * Log Out
@@ -258,7 +243,6 @@ router
     authenticate,
     async (ctx) => {
       const userId = await ctx.state.session.get("userId") as string;
-      // const id = await ctx.cookies.get("id");
       const userData = await getUserByIdWithRelations(userId);
       ctx.response.body = userData;
     },
@@ -268,7 +252,6 @@ router
     // authenticate,
     async (ctx) => {
       const userId = await ctx.state.session.get("userId") as string;
-      // const id = await ctx.cookies.get("id");
       const userData = await getUserByIdWithRelations(userId);
       ctx.response.body = userData;
     },
