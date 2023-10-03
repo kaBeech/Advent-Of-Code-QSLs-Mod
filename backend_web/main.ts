@@ -236,7 +236,7 @@ router
    * Get User with Relations
    */
   .get(
-    "/userdata",
+    "/userdata-jwt",
     authenticate,
     async (ctx) => {
       const userId = await ctx.state.session.get("userId") as string;
@@ -244,7 +244,18 @@ router
       const userData = await getUserByIdWithRelations(userId);
       ctx.response.body = userData;
     },
-  ) /**
+  )
+  .get(
+    "/userdata",
+    // authenticate,
+    async (ctx) => {
+      const userId = await ctx.state.session.get("userId") as string;
+      // const id = await ctx.cookies.get("id");
+      const userData = await getUserByIdWithRelations(userId);
+      ctx.response.body = userData;
+    },
+  )
+  /**
    * Get All Challenge Modifiers
    */
   .get("/modifier", async (ctx) => {
