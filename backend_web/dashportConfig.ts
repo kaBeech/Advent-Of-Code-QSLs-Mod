@@ -8,6 +8,7 @@ import {
   getUserByUsername,
   upsertUser,
 } from "./db.ts";
+import { config } from "https://deno.land/std@0.163.0/dotenv/mod.ts";
 
 export const localStrategy = new LocalStrategy({
   usernamefield: "username",
@@ -35,9 +36,13 @@ export const localStrategy = new LocalStrategy({
 //   grant_type: "authorization_code",
 // });
 
+const dotEnv = await config();
+const githubClientId = Deno.env.get("GITHUB_CLIENT_ID");
+const githubClientSecret = Deno.env.get("GITHUB_CLIENT_SECRET");
+
 export const ghStrat = new GitHubStrategy({
-  client_id: "1cfb5aa9850ade3203a3",
-  client_secret: "3b3de07f53954481c2453993a15af07147261214",
+  client_id: githubClientId,
+  client_secret: githubClientSecret,
   redirect_uri: "http://localhost:8000/privatepage",
 });
 

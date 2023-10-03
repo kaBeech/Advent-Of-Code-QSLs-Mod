@@ -32,15 +32,15 @@ import { completeCurrentDay } from "./routes/game/completeCurrentDay.ts";
 // import { deserializerA, localStrategy, serializerA } from "./dashportConfig.ts";
 import { key } from "./util/apiKey.ts";
 import { authenticate } from "./middleware/authenticate.ts";
+import { config } from "https://deno.land/std@0.163.0/dotenv/mod.ts";
 
-const githubClientId = "1cfb5aa9850ade3203a3";
-// const githubClientId = Deno.env.get("GITHUB_CLIENT_ID");
-const githubClientSecret = "3b3de07f53954481c2453993a15af07147261214";
-// const githubClientSecret = Deno.env.get("GITHUB_CLIENT_SECRET");
+const dotEnv = await config();
+const githubClientId = Deno.env.get("GITHUB_CLIENT_ID");
+const githubClientSecret = Deno.env.get("GITHUB_CLIENT_SECRET");
 
 const oauth2Client = new OAuth2Client({
-  clientId: githubClientId,
-  clientSecret: githubClientSecret,
+  clientId: githubClientId!,
+  clientSecret: githubClientSecret!,
   authorizationEndpointUri: "https://github.com/login/oauth/authorize",
   tokenUri: "https://github.com/login/oauth/access_token",
   redirectUri: "http://127.0.0.1:8000/oauth2/callback",
