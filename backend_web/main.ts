@@ -78,7 +78,7 @@ router
       `;
   })
   /**
-   * Dashport signup
+   * Signup
    */
   .get("/sign-up", (ctx) =>
     ctx.response.body = `<html lang="en">
