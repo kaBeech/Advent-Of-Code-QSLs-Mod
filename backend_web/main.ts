@@ -6,6 +6,7 @@ import {
 // import { Session } from "https://deno.land/x/oak_sessions@v4.0.5/mod.ts";
 // import { OAuth2Client } from "https://deno.land/x/oauth2_client@v1.0.2/mod.ts";
 import { DashportOak } from "https://deno.land/x/dashport@v1.2.1/mod.ts";
+import * as bcrypt from "https://deno.land/x/bcrypt@v0.4.1/mod.ts";
 
 import {
   createGame,
@@ -105,10 +106,12 @@ router
       //   password: req.body.password
       // });
       const body = await ctx.request.body({ type: "form" }).value;
+      const salt = await bcrypt.genSalt(8);
+      const hashedPassword = await bcrypt.hash(body.get("password")!, salt);
       const user = await createUser(
         Math.floor(Math.random() * 1000000000).toString(),
         body.get("username")!,
-        body.get("password")!,
+        hashedPassword,
       );
       const _result = user;
       ctx.response.redirect("/");
