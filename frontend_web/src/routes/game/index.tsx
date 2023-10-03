@@ -51,8 +51,8 @@ export default component$(() => {
       const buttonPresses = track(() => state.buttonPresses);
       const abortController = new AbortController();
       cleanup(() => abortController.abort("cleanup"));
-      const userData = await serverFetcher(`userdata`, "GET");
-      // const userData = await serverFetcher(`user/1`, "GET");
+      // const userData = await serverFetcher(`userdata`, "GET");
+      const userData = await serverFetcher(`user/1`, "GET");
       const gameData = userData.Game.find(
         (game: { number: number }) => game.number === +gameID
       );
@@ -155,6 +155,16 @@ export default component$(() => {
           Complete Part 1
         </button>
         <button
+          onClick$={async () => {
+            await serverFetcher(
+              `login`,
+              "GET"
+            );
+            state.buttonPresses++;
+          }}
+        >
+          Login
+        </button>        <button
           onClick$={async () => {
             await serverFetcher(
               `user/1/game/${state.gameID}/day/${state.dayID}/complete/part2`,
