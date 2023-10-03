@@ -41,8 +41,8 @@ const githubClientId = Deno.env.get("GITHUB_CLIENT_ID");
 const githubClientSecret = Deno.env.get("GITHUB_CLIENT_SECRET");
 
 export const ghStrat = new GitHubStrategy({
-  client_id: githubClientId,
-  client_secret: githubClientSecret,
+  client_id: githubClientId!,
+  client_secret: githubClientSecret!,
   redirect_uri: "http://localhost:8000/privatepage",
 });
 
