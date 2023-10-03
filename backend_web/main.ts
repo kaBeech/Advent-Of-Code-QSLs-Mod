@@ -218,10 +218,28 @@ router
     const res = await userResponse.json();
     const userId = res.id.toString();
     const user = await upsertUser(userId);
+    const payload = {
+      id: userId,
+      name: user.username,
+    };
+    const jwt = await create({ alg: "HS512", typ: "JWT" }, { payload }, key);
     ctx.state.session.set("userId", userId);
+    if (jwt) {
+      ctx.response.status = 200;
+      ctx.response.body = {
+        userId: user.id,
+        username: user.username,
+        token: jwt,
+      };
+    } else {
+      ctx.response.status = 500;
+      ctx.response.body = {
+        message: "Internal server error",
+      };
+    }
     console.debug(user);
     console.debug(`Hello, ${res.login}!`);
-    ctx.response.redirect("/userdata");
+    // ctx.response.redirect("/userdata");
   })
   /**
    * Log Out
