@@ -502,16 +502,12 @@ router
     "/user/:id/game/:gamenumber/day/:daynumber/complete/part2",
     async (ctx) => {
       const { id, gamenumber, daynumber } = ctx.params;
-      ctx.response.body = await completePart2(id, +gamenumber, +daynumber);
+      ctx.response.body = await completePart2Old(id, +gamenumber, +daynumber);
     },
   )
   .put(
     "/game/:gamenumber/day/:daynumber/complete/part2",
-    async (ctx) => {
-      const { gamenumber, daynumber } = ctx.params;
-      const userId = ctx.state.session.get("userId") as string;
-      ctx.response.body = await completePart2(userId, +gamenumber, +daynumber);
-    },
+    completePart2,
   );
 
 app.use(Session.initMiddleware());
