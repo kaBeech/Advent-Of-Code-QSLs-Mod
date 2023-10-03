@@ -114,7 +114,13 @@ router
         hashedPassword,
       );
       const _result = user;
-      ctx.response.redirect("/");
+      ctx.response.status = 201;
+      ctx.response.body = {
+        message: "User created",
+        userId: user.id,
+        user: user.username,
+      };
+      // ctx.response.redirect("/");
     } catch (err) {
       // return next(err);
       return next;
