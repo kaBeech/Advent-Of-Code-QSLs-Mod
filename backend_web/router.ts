@@ -1,5 +1,6 @@
 import { Router } from "https://deno.land/x/oak@v12.6.1/mod.ts";
 import { Session } from "https://deno.land/x/oak_sessions@v4.0.5/mod.ts";
+import { authenticate } from "./middleware/authenticate.ts";
 import { completePart1 } from "./routes/day/completePart1.ts";
 import { completePart2 } from "./routes/day/completePart2.ts";
 import { rerollModifierOption } from "./routes/day/rerollModifierOption.ts";
@@ -7,7 +8,6 @@ import { rerollChallengeModifier } from "./routes/day/rerollChallengeModifier.ts
 import { rollInitialModifier } from "./routes/day/rollInitialModifier.ts";
 import { startNextDay } from "./routes/day/startNextDay.ts";
 import { completeCurrentDay } from "./routes/game/completeCurrentDay.ts";
-import { authenticate } from "./middleware/authenticate.ts";
 import { getDay } from "./routes/day/getDay.ts";
 import { getAllDays } from "./routes/game/getAllDays.ts";
 import { deleteGame } from "./routes/game/deleteGame.ts";
