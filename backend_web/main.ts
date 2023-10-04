@@ -4,22 +4,6 @@ import {
   Router,
 } from "https://deno.land/x/oak@v12.6.1/mod.ts";
 import { Session } from "https://deno.land/x/oak_sessions@v4.0.5/mod.ts";
-import { OAuth2Client } from "https://deno.land/x/oauth2_client@v1.0.2/mod.ts";
-import * as bcrypt from "https://deno.land/x/bcrypt@v0.4.1/mod.ts";
-import { create } from "https://deno.land/x/djwt@v2.4/mod.ts";
-
-import {
-  createGame,
-  createUser,
-  getAllChallengeModifiers,
-  getAllGames,
-  getGamesByUserId,
-  getUserById,
-  getUserByIdWithRelations,
-  getUserByUsername,
-  updateUser,
-  upsertUser,
-} from "./db.ts";
 import { completePart1 } from "./routes/day/completePart1.ts";
 import { completePart2 } from "./routes/day/completePart2.ts";
 import { rerollModifierOption } from "./routes/day/rerollModifierOption.ts";
@@ -27,7 +11,6 @@ import { rerollChallengeModifier } from "./routes/day/rerollChallengeModifier.ts
 import { rollInitialModifier } from "./routes/day/rollInitialModifier.ts";
 import { startNextDay } from "./routes/day/startNextDay.ts";
 import { completeCurrentDay } from "./routes/game/completeCurrentDay.ts";
-import { key } from "./util/apiKey.ts";
 import { authenticate } from "./middleware/authenticate.ts";
 import { config } from "https://deno.land/std@0.163.0/dotenv/mod.ts";
 import { getDay } from "./routes/day/getDay.ts";
