@@ -11,7 +11,6 @@ import { create } from "https://deno.land/x/djwt@v2.4/mod.ts";
 import {
   createGame,
   createUser,
-  deleteGame,
   getAllChallengeModifiers,
   getAllGames,
   getGamesByUserId,
@@ -31,6 +30,11 @@ import { completeCurrentDay } from "./routes/game/completeCurrentDay.ts";
 import { key } from "./util/apiKey.ts";
 import { authenticate } from "./middleware/authenticate.ts";
 import { config } from "https://deno.land/std@0.163.0/dotenv/mod.ts";
+import { getDay } from "./routes/day/getDay.ts";
+import { getAllDays } from "./routes/game/getAllDays.ts";
+import { deleteGame } from "./routes/game/deleteGame.ts";
+import { startNewGame } from "./routes/game/startNewGame.ts";
+import { getGame } from "./routes/game/getGame.ts";
 
 const _dotEnv = await config();
 const githubClientId = Deno.env.get("GITHUB_CLIENT_ID");
@@ -283,144 +287,24 @@ router
   .get("/user/:id/game", async (ctx) => {
     ctx.response.body = await getAllGames();
   })
-  /**
-   * Resume Game
-   */
-  .get("/user/:id/game/:gamenumber", async (ctx) => {
-    const { id, gamenumber } = ctx.params;
-    const games = await getGamesByUserId(id);
-    ctx.response.body = games.find((game) => game.number === +gamenumber);
-  })
-  /**
-   * Start New Game
-   */
-  .post("/user/:id/game", async (ctx) => {
-    const { id } = ctx.params;
-    const user = await getUserById(id);
-    const { name, year, playerName } = await ctx.request
-      .body({
-        type: "json",
-      })
-      .value;
-    user!.numberOfGames++;
-    await updateUser(user!);
-    ctx.response.body = await createGame(
-      id,
-      user!.numberOfGames,
-      name,
-      year,
-      playerName,
-    );
-  })
-  .post("/game", async (ctx) => {
-    const userId = ctx.state.session.get("userId") as string;
-    const user = await getUserById(userId);
-    const { name, year, playerName } = await ctx.request
-      .body({
-        type: "json",
-      })
-      .value;
-    user!.numberOfGames++;
-    await updateUser(user!);
-    ctx.response.body = await createGame(
-      userId,
-      user!.numberOfGames,
-      name,
-      year,
-      playerName,
-    );
-  })
-  /**
-   * Delete Game
-   */
-  .delete("/user/:id/game/:gamenumber", async (ctx) => {
-    const { id, gamenumber } = ctx.params;
-    const games = await getGamesByUserId(id);
-    const game = games.find((game) => game.number === +gamenumber);
-    ctx.response.body = await deleteGame(game!.id);
-  })
-  .delete("/game/:gamenumber", async (ctx) => {
-    const { gamenumber } = ctx.params;
-    const userId = ctx.state.session.get("userId") as string;
-    const games = await getGamesByUserId(userId);
-    const game = games.find((game) => game.number === +gamenumber);
-    ctx.response.body = await deleteGame(game!.id);
-  })
-  /**
-   * Get all Days for a Game
-   */
-  .get("/user/:id/game/:gamenumber/day", async (ctx) => {
-    const { id, gamenumber } = ctx.params;
-    const userData = await getUserByIdWithRelations(id);
-    ctx.response.body = userData.Game.find((game) =>
-      game.number === +gamenumber
-    )!.Day;
-  })
-  .get("/game/:gamenumber/day", async (ctx) => {
-    const { gamenumber } = ctx.params;
-    const userId = ctx.state.session.get("userId") as string;
-    const userData = await getUserByIdWithRelations(userId);
-    ctx.response.body = userData.Game.find((game) =>
-      game.number === +gamenumber
-    )!.Day;
-  })
-  /**
-   * Get a Day
-   */
-  .get("/user/:id/game/:gamenumber/day/:daynumber", async (ctx) => {
-    const { id, gamenumber, daynumber } = ctx.params;
-    const userData = await getUserByIdWithRelations(id);
-    ctx.response.body = userData.Game.find((game) =>
-      game.number === +gamenumber
-    )!.Day.find((day) => day.number === +daynumber);
-  })
-  .get("/game/:gamenumber/day/:daynumber", async (ctx) => {
-    const { gamenumber, daynumber } = ctx.params;
-    const userId = ctx.state.session.get("userId") as string;
-    const userData = await getUserByIdWithRelations(userId);
-    ctx.response.body = userData.Game.find((game) =>
-      game.number === +gamenumber
-    )!.Day.find((day) => day.number === +daynumber);
-  })
-  /**
-   * Complete a Game's current Day
-   */
-  .put("/game/:gameNumber/day/complete", completeCurrentDay) /**
-   * Start the next Day
-   */
+  .get("/user/:id/game/:gamenumber", getGame)
+  .post("/game", startNewGame)
+  .delete("/game/:gamenumber", deleteGame)
+  .get("/game/:gamenumber/day", getAllDays)
+  .get("/game/:gamenumber/day/:daynumber", getDay)
+  .put("/game/:gameNumber/day/complete", completeCurrentDay)
   .put("/game/:gameNumber/day/:dayNumber", startNextDay)
-  /**
-   * Roll a Day's initial Challenge Modifier
-   */
   .put("/game/:gameNumber/day/:dayNumber/roll", rollInitialModifier)
-  /**
-   * Reroll a Day's Challenge Modifier
-   */
   .put(
     "/game/:gameNumber/day/:dayNumber/reroll/modifier",
     rerollChallengeModifier,
   )
-  /**
-   * Reroll a Day's Modifier Option
-   */
   .put(
     "/game/:gameNumber/day/:dayNumber/reroll/option",
     rerollModifierOption,
   )
-  /**
-   * Complete Part 1 for a Day
-   */
-  .put(
-    "/game/:gameNumber/day/:dayNumber/complete/part1",
-    completePart1,
-  )
-  /**
-   * Complete Part 2 for a Day
-   */
-  .put(
-    "/game/:gameNumber/day/:dayNumber/complete/part2",
-    completePart2,
-  );
+  .put("/game/:gameNumber/day/:dayNumber/complete/part1", completePart1)
+  .put("/game/:gameNumber/day/:dayNumber/complete/part2", completePart2);
 
 app.use(Session.initMiddleware());
 app.use(router.routes());
