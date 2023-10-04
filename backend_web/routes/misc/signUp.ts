@@ -1,8 +1,8 @@
 import * as bcrypt from "https://deno.land/x/bcrypt@v0.4.1/mod.ts";
 import { createUser } from "../../db.ts";
-import { Context } from "https://deno.land/x/oak@v12.6.1/mod.ts";
+import { Context, Next } from "https://deno.land/x/oak@v12.6.1/mod.ts";
 
-export const signUp = async (ctx: Context, next: any) => {
+export const signUp = async (ctx: Context, next: Next) => {
   try {
     const body = await ctx.request.body().value;
     const salt = await bcrypt.genSalt(8);
@@ -19,7 +19,7 @@ export const signUp = async (ctx: Context, next: any) => {
       userId: user.id,
       user: user.username,
     };
-  } catch (err) {
+  } catch (_err) {
     return next;
   }
 };

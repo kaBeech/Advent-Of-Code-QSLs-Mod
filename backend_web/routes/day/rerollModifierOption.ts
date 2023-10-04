@@ -11,7 +11,7 @@ import {
 
 export const rerollModifierOption = async (
   ctx: RouterContext<
-    "/game/:gameNumber/day/:dayNumber/reroll/modifier",
+    "/game/:gameNumber/day/:dayNumber/reroll/option",
     {
       gameNumber: string;
     } & {
