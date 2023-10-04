@@ -37,25 +37,39 @@ router
   .post("/log-in", logInWithPassword)
   .get("/login", logInWithOAuth)
   .get("/oauth2/callback", getOAuthData)
-  .get("/logout", logOut)
+  .get("/logout", authenticate, logOut)
   .get("/userdata", authenticate, getUserData)
   .get("/modifier", getChallengeModifiers)
   .get("/user/:id/game", getGames)
   .get("/user/:id/game/:gameNumber", getGame)
-  .post("/game", startNewGame)
-  .delete("/game/:gameNumber", deleteGame)
-  .get("/game/:gameNumber/day", getAllDays)
-  .get("/game/:gameNumber/day/:dayNumber", getDay)
-  .put("/game/:gameNumber/day/complete", completeCurrentDay)
-  .put("/game/:gameNumber/day/:dayNumber", startNextDay)
-  .put("/game/:gameNumber/day/:dayNumber/roll", rollInitialModifier)
+  .post("/game", authenticate, startNewGame)
+  .delete("/game/:gameNumber", authenticate, deleteGame)
+  .get("/game/:gameNumber/day", authenticate, getAllDays)
+  .get("/game/:gameNumber/day/:dayNumber", authenticate, getDay)
+  .put("/game/:gameNumber/day/complete", authenticate, completeCurrentDay)
+  .put("/game/:gameNumber/day/:dayNumber", authenticate, startNextDay)
+  .put(
+    "/game/:gameNumber/day/:dayNumber/roll",
+    authenticate,
+    rollInitialModifier,
+  )
   .put(
     "/game/:gameNumber/day/:dayNumber/reroll/modifier",
+    authenticate,
     rerollChallengeModifier,
   )
   .put(
     "/game/:gameNumber/day/:dayNumber/reroll/option",
+    authenticate,
     rerollModifierOption,
   )
-  .put("/game/:gameNumber/day/:dayNumber/complete/part1", completePart1)
-  .put("/game/:gameNumber/day/:dayNumber/complete/part2", completePart2);
+  .put(
+    "/game/:gameNumber/day/:dayNumber/complete/part1",
+    authenticate,
+    completePart1,
+  )
+  .put(
+    "/game/:gameNumber/day/:dayNumber/complete/part2",
+    authenticate,
+    completePart2,
+  );
