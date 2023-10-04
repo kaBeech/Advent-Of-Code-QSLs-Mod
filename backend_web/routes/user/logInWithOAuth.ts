@@ -8,5 +8,8 @@ export const logInWithOAuth = async (ctx: any) => {
   ctx.state.session.flash("codeVerifier", codeVerifier);
 
   // Redirect the user to the authorization endpoint
-  ctx.response.redirect(uri);
+  ctx.response.status = 302;
+  ctx.response.headers.set("Location", uri);
+  ctx.response.body = { "uri": uri };
+  // ctx.response.redirect(uri);
 };
