@@ -385,128 +385,40 @@ router
   /**
    * Complete a Game's current Day
    */
-  .put("/user/:id/game/:gamenumber/day/complete", async (ctx) => {
-    const { id, gamenumber } = ctx.params;
-    ctx.response.body = await completeCurrentDay(id, +gamenumber);
-  })
-  .put("/game/:gamenumber/day/complete", async (ctx) => {
-    const { gamenumber } = ctx.params;
-    const userId = ctx.state.session.get("userId") as string;
-    ctx.response.body = await completeCurrentDay(userId, +gamenumber);
-  }) /**
+  .put("/game/:gameNumber/day/complete", completeCurrentDay) /**
    * Start the next Day
    */
-  .put("/user/:id/game/:gamenumber/day/:daynumber", async (ctx) => {
-    const { id, gamenumber, daynumber } = ctx.params;
-    ctx.response.body = await startNextDay(id, +gamenumber, +daynumber);
-  })
-  .put("/game/:gamenumber/day/:daynumber", async (ctx) => {
-    const { gamenumber, daynumber } = ctx.params;
-    const userId = ctx.state.session.get("userId") as string;
-    ctx.response.body = await startNextDay(userId, +gamenumber, +daynumber);
-  })
+  .put("/game/:gameNumber/day/:dayNumber", startNextDay)
   /**
    * Roll a Day's initial Challenge Modifier
    */
-  .put("/user/:id/game/:gamenumber/day/:daynumber/roll", async (ctx) => {
-    const { id, gamenumber, daynumber } = ctx.params;
-    ctx.response.body = await rollInitialModifier(
-      id,
-      +gamenumber,
-      +daynumber,
-    );
-  })
-  .put("/game/:gamenumber/day/:daynumber/roll", async (ctx) => {
-    const { gamenumber, daynumber } = ctx.params;
-    const userId = ctx.state.session.get("userId") as string;
-    ctx.response.body = await rollInitialModifier(
-      userId,
-      +gamenumber,
-      +daynumber,
-    );
-  })
+  .put("/game/:gameNumber/day/:dayNumber/roll", rollInitialModifier)
   /**
    * Reroll a Day's Challenge Modifier
    */
   .put(
-    "/user/:id/game/:gamenumber/day/:daynumber/reroll/modifier",
-    async (ctx) => {
-      const { id, gamenumber, daynumber } = ctx.params;
-      ctx.response.body = await rerollChallengeModifier(
-        id,
-        +gamenumber,
-        +daynumber,
-      );
-    },
-  )
-  .put(
-    "/game/:gamenumber/day/:daynumber/reroll/modifier",
-    async (ctx) => {
-      const { gamenumber, daynumber } = ctx.params;
-      const userId = ctx.state.session.get("userId") as string;
-      ctx.response.body = await rerollChallengeModifier(
-        userId,
-        +gamenumber,
-        +daynumber,
-      );
-    },
+    "/game/:gameNumber/day/:dayNumber/reroll/modifier",
+    rerollChallengeModifier,
   )
   /**
    * Reroll a Day's Modifier Option
    */
   .put(
-    "/user/:id/game/:gamenumber/day/:daynumber/reroll/option",
-    async (ctx) => {
-      const { id, gamenumber, daynumber } = ctx.params;
-      ctx.response.body = await rerollModifierOption(
-        id,
-        +gamenumber,
-        +daynumber,
-      );
-    },
-  )
-  .put(
-    "/game/:gamenumber/day/:daynumber/reroll/option",
-    async (ctx) => {
-      const { gamenumber, daynumber } = ctx.params;
-      const userId = ctx.state.session.get("userId") as string;
-      ctx.response.body = await rerollModifierOption(
-        userId,
-        +gamenumber,
-        +daynumber,
-      );
-    },
+    "/game/:gameNumber/day/:dayNumber/reroll/option",
+    rerollModifierOption,
   )
   /**
    * Complete Part 1 for a Day
    */
   .put(
-    "/user/:id/game/:gamenumber/day/:daynumber/complete/part1",
-    async (ctx) => {
-      const { id, gamenumber, daynumber } = ctx.params;
-      ctx.response.body = await completePart1(id, +gamenumber, +daynumber);
-    },
-  )
-  .put(
-    "/game/:gamenumber/day/:daynumber/complete/part1",
-    async (ctx) => {
-      const { gamenumber, daynumber } = ctx.params;
-      const userId = ctx.state.session.get("userId") as string;
-      ctx.response.body = await completePart1(userId, +gamenumber, +daynumber);
-    },
+    "/game/:gameNumber/day/:dayNumber/complete/part1",
+    completePart1,
   )
   /**
    * Complete Part 2 for a Day
    */
   .put(
-    "/user/:id/game/:gamenumber/day/:daynumber/complete/part2",
-    async (ctx) => {
-      const { id, gamenumber, daynumber } = ctx.params;
-      ctx.response.body = await completePart2Old(id, +gamenumber, +daynumber);
-    },
-  )
-  .put(
-    "/game/:gamenumber/day/:daynumber/complete/part2",
+    "/game/:gameNumber/day/:dayNumber/complete/part2",
     completePart2,
   );
 

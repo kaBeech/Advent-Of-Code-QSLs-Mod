@@ -6,11 +6,9 @@ import {
   updateDay,
 } from "../../db.ts";
 
-export const rollInitialModifier = async (
-  userId: string,
-  gameNumber: number,
-  dayNumber: number,
-) => {
+export const rollInitialModifier = async (ctx: any) => {
+  const { gameNumber, dayNumber } = ctx.params;
+  const userId = ctx.state.session.get("userId") as string;
   const userData = await getUserByIdWithRelations(userId);
   const game = userData.Game[gameNumber - 1];
   const day = game.Day[dayNumber - 1];
@@ -22,5 +20,5 @@ export const rollInitialModifier = async (
     modifierOptions,
   );
   await updateDay(updatedDay);
-  return updatedDay;
+  ctx.response.body = updatedDay;
 };
