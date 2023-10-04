@@ -202,7 +202,7 @@ export async function updateGame(game: Game) {
   return result;
 }
 
-export async function deleteGame(id: number) {
+export async function deleteGameById(id: number) {
   const result = await prisma.game.delete({
     where: {
       id,
