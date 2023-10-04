@@ -10,13 +10,12 @@ import {
   exampleModifierOptions,
 } from "./exampleObjects.ts";
 import { assertThrows } from "https://deno.land/std@0.152.0/testing/asserts.ts";
-import { assertRejects } from "https://deno.land/std@0.197.0/assert/assert_rejects.ts";
 
 const dayController = DayController(exampleDay);
 
-Deno.test("Initial roll sets a ChallengeModifier", async () => {
+Deno.test("Initial roll sets a ChallengeModifier", () => {
   assertEquals(exampleDay.challengeModifierId, null);
-  const result = await dayController.rollInitialChallengeModifier(
+  const result = dayController.rollInitialChallengeModifier(
     exampleGameDay1,
     exampleChallengeModifiers,
     exampleModifierOptions,
@@ -29,7 +28,7 @@ Deno.test("Initial roll throws error if day is not current", () => {
     ...exampleDay,
     number: 90,
   });
-  assertRejects(
+  assertThrows(
     () => {
       return dayController.rollInitialChallengeModifier(
         exampleGameDay1,
@@ -47,7 +46,7 @@ Deno.test("Initial roll throws error if day already has a ChallengeModifier", ()
     ...exampleDay,
     challengeModifierId: 1,
   });
-  assertRejects(
+  assertThrows(
     () => {
       return dayController.rollInitialChallengeModifier(
         exampleGameDay1,
@@ -60,9 +59,9 @@ Deno.test("Initial roll throws error if day already has a ChallengeModifier", ()
   );
 });
 
-Deno.test("ChallengeModifier reroll sets a new ChallengeModifier", async () => {
+Deno.test("ChallengeModifier reroll sets a new ChallengeModifier", () => {
   const oldResult = exampleDay.challengeModifierId;
-  const result = await dayController.rerollChallengeModifier(
+  const result = dayController.rerollChallengeModifier(
     exampleGameDay1,
     exampleChallengeModifiers,
     exampleModifierOptions,
@@ -76,7 +75,7 @@ Deno.test("ChallengeModifier reroll throws error if day is not current", () => {
     ...exampleDay,
     number: 90,
   });
-  assertRejects(
+  assertThrows(
     () => {
       return dayController.rerollChallengeModifier(
         exampleGameDay1,
@@ -94,7 +93,7 @@ Deno.test("ChallengeModifier reroll throws error if day does not have a Challeng
     ...exampleDay,
     challengeModifierId: null,
   });
-  assertRejects(
+  assertThrows(
     () => {
       return dayController.rerollChallengeModifier(
         exampleGameDay1,
@@ -107,16 +106,15 @@ Deno.test("ChallengeModifier reroll throws error if day does not have a Challeng
   );
 });
 
-Deno.test("ModifierOption reroll sets a new ModifierOption if ChallengeModifier has options", async () => {
+Deno.test("ModifierOption reroll sets a new ModifierOption if ChallengeModifier has options", () => {
   const dayController = DayController({
     ...exampleDay,
     challengeModifierId: 5,
     modifierOptionId: 14,
   });
-  const result = await dayController.rerollModifierOption(
+  const result = dayController.rerollModifierOption(
     exampleGameDay1.currentDay,
     exampleModifierOptions,
-    true,
   );
   assertEquals(typeof result.modifierOptionId, "number");
   assertNotEquals(result.modifierOptionId, exampleDay.modifierOptionId);
@@ -127,12 +125,11 @@ Deno.test("ModifierOption reroll throws error if day is not current", () => {
     ...exampleDay,
     number: 90,
   });
-  assertRejects(
+  assertThrows(
     () => {
       return dayController.rerollModifierOption(
         exampleGameDay1.currentDay,
         exampleModifierOptions,
-        true,
       );
     },
     Error,
@@ -145,12 +142,11 @@ Deno.test("ModifierOption reroll throws error if day does not have a ChallengeMo
     ...exampleDay,
     challengeModifierId: null,
   });
-  assertRejects(
+  assertThrows(
     () => {
       return dayController.rerollModifierOption(
         exampleGameDay1.currentDay,
         exampleModifierOptions,
-        true,
       );
     },
     Error,
@@ -158,17 +154,17 @@ Deno.test("ModifierOption reroll throws error if day does not have a ChallengeMo
   );
 });
 
-Deno.test("ModifierOption reroll throws error if ChallengeModifier does not have options", async () => {
+Deno.test("ModifierOption reroll throws error if ChallengeModifier does not have options", () => {
   const dayController = DayController({
     ...exampleDay,
     challengeModifierId: 1,
   });
-  await assertRejects(
+  assertThrows(
     () => {
       return dayController.rerollModifierOption(
         exampleGameDay1.currentDay,
         exampleModifierOptions,
-        true,
+        exampleGameDay1,
       );
     },
     Error,
@@ -181,12 +177,11 @@ Deno.test("ModifierOption reroll throws error if day does not have a ModifierOpt
     ...exampleDay,
     modifierOptionId: 0,
   });
-  assertRejects(
+  assertThrows(
     () => {
       return dayController.rerollModifierOption(
         exampleGameDay1.currentDay,
         exampleModifierOptions,
-        true,
       );
     },
     Error,
@@ -199,12 +194,11 @@ Deno.test("ModifierOption reroll throws error if day does not have a ModifierOpt
     ...exampleDay,
     modifierOptionId: null,
   });
-  assertRejects(
+  assertThrows(
     () => {
       return dayController.rerollModifierOption(
         exampleGameDay1.currentDay,
         exampleModifierOptions,
-        true,
       );
     },
     Error,

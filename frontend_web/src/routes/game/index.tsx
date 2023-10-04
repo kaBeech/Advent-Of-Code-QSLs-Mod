@@ -1,44 +1,77 @@
+// import type { Session } from "@auth/core/types";
 import { Resource, component$, useResource$, useStore } from "@builder.io/qwik";
 import type { DocumentHead } from "@builder.io/qwik-city";
+// import type { DocumentHead, RequestHandler } from "@builder.io/qwik-city";
 import { Link, server$ } from "@builder.io/qwik-city";
+import SignIn from "~/components/signIn/signIn";
+import SignOut from "~/components/signOut/signOut";
+
+// export const onRequest: RequestHandler = (event) => {
+//   const session: Session | null = event.sharedMap.get("session");
+//   if (!session || new Date(session.expires) < new Date()) {
+//     throw event.redirect(
+//       302,
+//       `/api/auth/signin?callbackUrl=${event.url.pathname}`
+//     );
+//   }
+// };
 
 const gameID = 1;
 const dayID = 1;
 
-const serverFetcher = server$(async function (gameID: number, dayID: number) {
-  const xtremeXmasAPI = "http://localhost:8000";
+const serverFetcher = server$(async function (route: string, method: string) {
   //   const xtremeXmasAPI = this.env.get("XTREME_XMAS_API");
   // if (xtremeXmasAPI == undefined) {
   //   console.error("XTREME_XMAS_API string not found upon request");
   // }
+  const xtremeXmasAPI = "http://localhost:8000";
   const abortController = new AbortController();
-  const res = await fetch(
-    `${xtremeXmasAPI}/user/1/game/${gameID}/day/${dayID}`,
-    {
-      signal: abortController.signal,
-    }
-  );
+  const res = await fetch(`${xtremeXmasAPI}/${route}`, {
+    signal: abortController.signal,
+    method,
+  });
   const data = await res.json();
-  return {
-    challengeModifier: data.ChallengeModifier.text,
-    modifierOption: data.hasOptions ? data.ModifierOption.text : "None",
-  };
+  return data;
 });
 
 export default component$(() => {
   const state = useStore({
     gameID,
     dayID,
+    buttonPresses: 0,
   });
 
-  const xtremeXmasDayResource = useResource$<any>(
+  const xtremeXmasUserDataResource = useResource$<any>(
     async ({ track, cleanup }) => {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const gameID = track(() => state.gameID);
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const dayID = track(() => state.dayID);
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      const buttonPresses = track(() => state.buttonPresses);
       const abortController = new AbortController();
       cleanup(() => abortController.abort("cleanup"));
-      const res = await serverFetcher(gameID, dayID);
-      return res;
+      // const userData = await serverFetcher(`userdata`, "GET");
+      const userData = await serverFetcher(`user/1`, "GET");
+      const gameData = userData.Game.find(
+        (game: { number: number }) => game.number === +gameID
+      );
+      const dayData = gameData.Day.find(
+        (day: { number: number }) => day.number === +dayID
+      );
+      return {
+        challengeModifier: dayData.challengeModifierId
+          ? dayData.ChallengeModifier.text
+          : "None",
+        modifierOption: dayData.modifierOptionId
+          ? dayData.ModifierOption.text
+          : "None",
+        currentRerollTokens: gameData.currentRerollTokens,
+        currentDay: gameData.currentDay,
+        currentDayCompleted: dayData.currentDayCompleted ? "Yes" : "No",
+        part1Completed: dayData.part1Completed ? "Yes" : "No",
+        part2Completed: dayData.part2Completed ? "Yes" : "No",
+      };
     }
   );
 
@@ -46,6 +79,8 @@ export default component$(() => {
     <div>
       <div>
         <h1 class="title">Xtreme Xmas Day Viewer</h1>
+        <SignIn />
+        <SignOut />
 
         <h2>Enter Game and Day IDs:</h2>
         <input
@@ -63,7 +98,7 @@ export default component$(() => {
           aria-labelledby="Day ID"
         />
         <Resource
-          value={xtremeXmasDayResource}
+          value={xtremeXmasUserDataResource}
           onPending={() => {
             return (
               <div>
@@ -74,21 +109,127 @@ export default component$(() => {
               </div>
             );
           }}
-          onResolved={(xtremeXmasDayData) => {
+          onResolved={(xtremeXmasData) => {
             return (
               <div class="flex column">
                 <h2>
                   Challenge Modifier:{" "}
-                  <strong>{xtremeXmasDayData.challengeModifier}</strong>
+                  <strong>{xtremeXmasData.challengeModifier}</strong>
                 </h2>
                 <h3>
                   Modifier Option:{" "}
-                  <strong>{xtremeXmasDayData.modifierOption}</strong>
+                  <strong>{xtremeXmasData.modifierOption}</strong>
                 </h3>
+                <div>
+                  Current Reroll Tokens:{" "}
+                  <strong>{xtremeXmasData.currentRerollTokens}</strong>
+                </div>
+                <div>
+                  Current Day: <strong>{xtremeXmasData.currentDay}</strong>
+                </div>
+                <div>
+                  Current Day Completed?{" "}
+                  <strong>{xtremeXmasData.currentDayCompleted}</strong>
+                </div>
+                <div>
+                  Selected Day Part 1 Completed?{" "}
+                  <strong>{xtremeXmasData.part1Completed}</strong>
+                </div>
+                <div>
+                  Selected Day Part 2 Completed?{" "}
+                  <strong>{xtremeXmasData.part2Completed}</strong>
+                </div>
               </div>
             );
           }}
         />
+        <button
+          onClick$={async () => {
+            await serverFetcher(
+              `user/1/game/${state.gameID}/day/${state.dayID}/complete/part1`,
+              "PUT"
+            );
+            state.buttonPresses++;
+          }}
+        >
+          Complete Part 1
+        </button>
+        <button
+          onClick$={async () => {
+            await serverFetcher(
+              `login`,
+              "GET"
+            );
+            state.buttonPresses++;
+          }}
+        >
+          Login
+        </button>        <button
+          onClick$={async () => {
+            await serverFetcher(
+              `user/1/game/${state.gameID}/day/${state.dayID}/complete/part2`,
+              "PUT"
+            );
+            state.buttonPresses++;
+          }}
+        >
+          Complete Part 2
+        </button>
+        <button
+          onClick$={async () => {
+            await serverFetcher(
+              `user/1/game/${state.gameID}/day/complete`,
+              "PUT"
+            );
+            state.buttonPresses++;
+          }}
+        >
+          Complete Day
+        </button>
+        <button
+          onClick$={async () => {
+            await serverFetcher(
+              `user/1/game/${state.gameID}/day/${+state.dayID + 1}`,
+              "PUT"
+            );
+            state.buttonPresses++;
+          }}
+        >
+          Start Next Day
+        </button>
+        <button
+          onClick$={async () => {
+            await serverFetcher(
+              `user/1/game/${state.gameID}/day/${state.dayID}/roll`,
+              "PUT"
+            );
+            state.buttonPresses++;
+          }}
+        >
+          Roll Initial Challenge Modifier
+        </button>
+        <button
+          onClick$={async () => {
+            await serverFetcher(
+              `user/1/game/${state.gameID}/day/${state.dayID}/reroll/modifier`,
+              "PUT"
+            );
+            state.buttonPresses++;
+          }}
+        >
+          Reroll Challenge Modifier
+        </button>
+        <button
+          onClick$={async () => {
+            await serverFetcher(
+              `user/1/game/${state.gameID}/day/${state.dayID}/reroll/option`,
+              "PUT"
+            );
+            state.buttonPresses++;
+          }}
+        >
+          Reroll Modifier Option
+        </button>
         <p>
           <Link href="../">{"<-- Back"}</Link>
         </p>
@@ -107,83 +248,3 @@ export const head: DocumentHead = {
     },
   ],
 };
-
-// import { component$ } from "@builder.io/qwik";
-// import {
-//   type DocumentHead,
-//   routeLoader$,
-//   routeAction$,
-//   zod$,
-//   z,
-//   Form,
-// } from "@builder.io/qwik-city";
-// import styles from "./todolist.module.css";
-
-// interface ListItem {
-//   text: string;
-// }
-
-// export const list: ListItem[] = [];
-
-// export const useListLoader = routeLoader$(() => {
-//   return list;
-// });
-
-// export const useAddToListAction = routeAction$(
-//   (item) => {
-//     list.push(item);
-//     return {
-//       success: true,
-//     };
-//   },
-//   zod$({
-//     text: z.string().trim().min(1),
-//   })
-// );
-
-// export default component$(() => {
-//   const list = useListLoader();
-//   const action = useAddToListAction();
-
-//   return (
-//     <>
-//       <div>Hello World!</div>
-//       <div class="container container-center">
-//         <h1>
-//           <span class="highlight">TODO</span> List
-//         </h1>
-//       </div>
-
-//       <div role="presentation" class="ellipsis"></div>
-
-//       <div class="container container-center">
-//         {list.value.length === 0 ? (
-//           <span class={styles.empty}>No items found</span>
-//         ) : (
-//           <ul class={styles.list}>
-//             {list.value.map((item, index) => (
-//               <li key={`items-${index}`}>{item.text}</li>
-//             ))}
-//           </ul>
-//         )}
-//       </div>
-
-//       <div class="container container-center">
-//         <Form action={action} spaReset>
-//           <input type="text" name="text" required class={styles.input} />{" "}
-//           <button type="submit" class="button-dark">
-//             Add item
-//           </button>
-//         </Form>
-
-//         <p class={styles.hint}>
-//           PS: This little app works even when JavaScript is disabled.
-//         </p>
-//       </div>
-//     </>
-//   );
-// });
-
-// export const head: DocumentHead = {
-//   title: "Advent Of Code - Xtreme Xmas",
-// };

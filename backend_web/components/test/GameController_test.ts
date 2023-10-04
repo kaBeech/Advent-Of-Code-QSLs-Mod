@@ -5,8 +5,8 @@ import { assertThrows } from "https://deno.land/std@0.152.0/testing/asserts.ts";
 
 const gameController = GameController(exampleGame);
 
-Deno.test("Starts first day", async () => {
-  const result = await gameController.startNextDay();
+Deno.test("Starts first day", () => {
+  const result = gameController.startNextDay();
   assertEquals(result.currentDay, 1);
 });
 
@@ -25,13 +25,13 @@ Deno.test("Starting next day throws error if current day is not completed", () =
   );
 });
 
-Deno.test("Starts next day", async () => {
+Deno.test("Starts next day", () => {
   const gameController = GameController({
     ...exampleGame,
     currentDay: 1,
     currentDayCompleted: true,
   });
-  const result = await gameController.startNextDay();
+  const result = gameController.startNextDay();
   assertEquals(result.currentDay, 2);
 });
 
@@ -61,8 +61,8 @@ Deno.test("Spends reroll tokens", () => {
   assertEquals(result.currentRerollTokens, 7);
 });
 
-Deno.test("Completes current day", async () => {
-  const result = await gameController.completeCurrentDay();
+Deno.test("Completes current day", () => {
+  const result = gameController.completeCurrentDay();
   assertEquals(result.currentDay, 1);
   assertEquals(result.currentDayCompleted, true);
 });
@@ -77,8 +77,8 @@ Deno.test("Starting next day throws error if current day is already completed", 
   );
 });
 
-Deno.test("Sets name", async () => {
-  const result = await gameController.setName("New Name");
+Deno.test("Sets name", () => {
+  const result = gameController.setName("New Name");
   assertEquals(result.name, "New Name");
 });
 
@@ -102,8 +102,8 @@ Deno.test("Setting name to string longer than 24 characters throws error", () =>
   );
 });
 
-Deno.test("Sets player name", async () => {
-  const result = await gameController.setPlayerName("New Player Name");
+Deno.test("Sets player name", () => {
+  const result = gameController.setPlayerName("New Player Name");
   assertEquals(result.playerName, "New Player Name");
 });
 
@@ -127,8 +127,8 @@ Deno.test("Setting player name to string longer than 24 characters throws error"
   );
 });
 
-Deno.test("Sets repository link", async () => {
-  const result = await gameController.setRepositoryLink(
+Deno.test("Sets repository link", () => {
+  const result = gameController.setRepositoryLink(
     "https://github.com/kaBeech/Advent-Of-Code",
   );
   assertEquals(
@@ -149,8 +149,8 @@ Deno.test("Setting repository link to string longer than 255 characters throws e
   );
 });
 
-Deno.test("Sets progress sheet link", async () => {
-  const result = await gameController.setProgressSheetLink(
+Deno.test("Sets progress sheet link", () => {
+  const result = gameController.setProgressSheetLink(
     "https://www.kabeech.com/projects/#adventOfCode",
   );
   assertEquals(

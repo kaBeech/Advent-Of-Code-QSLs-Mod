@@ -8,17 +8,15 @@ import {
   updateGame,
 } from "../../db.ts";
 
-export const rerollChallengeModifier = async (
-  userId: number,
-  gameNumber: number,
-  dayNumber: number,
-) => {
+export const rerollChallengeModifier = async (ctx: any) => {
+  const { gameNumber, dayNumber } = ctx.params;
+  const userId = ctx.state.session.get("userId") as string;
   const userData = await getUserByIdWithRelations(userId);
   const game = userData.Game[gameNumber - 1];
   const day = game.Day[dayNumber - 1];
   const challengeModifiers = await getAllChallengeModifiers();
   const modifierOptions = await getAllModifierOptions();
-  const updatedDay = await DayController(day!).rerollChallengeModifier(
+  const updatedDay = DayController(day!).rerollChallengeModifier(
     game!,
     challengeModifiers,
     modifierOptions,
@@ -26,5 +24,5 @@ export const rerollChallengeModifier = async (
   const updatedGame = GameController(game!).spendRerollTokens(2);
   await updateDay(updatedDay);
   await updateGame(updatedGame);
-  return updatedGame;
+  ctx.response.body = updatedGame;
 };

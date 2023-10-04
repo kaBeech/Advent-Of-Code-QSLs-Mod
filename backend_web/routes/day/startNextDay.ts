@@ -1,9 +1,28 @@
 import { GameController } from "../../components/GameController.ts";
 import { createDay, getGamesByUserId, updateGame } from "../../db.ts";
 
-export const startNextDay = async (userId: number, gameNumber: number) => {
+export const startNextDay = async (ctx: any) => {
+  const { gameNumber, dayNumber } = ctx.params;
+  const userId = ctx.state.session.get("userId") as string;
   const games = await getGamesByUserId(userId);
-  const game = games[gameNumber - 1];
+  const game = games.find((game) => game.number === +gameNumber);
+  console.log(
+    "user",
+    userId,
+    "games",
+    games,
+    "game",
+    game,
+    "gameNumber",
+    gameNumber,
+  );
+  if (game!.currentDay !== dayNumber - 1) {
+    throw new Error(
+      `Requested to start Day ${dayNumber}, but current Day is ${
+        game!.currentDay
+      }`,
+    );
+  }
   const updatedGame = GameController(game!).startNextDay();
   const nextDay = await createDay(
     updatedGame.userId,
@@ -12,5 +31,5 @@ export const startNextDay = async (userId: number, gameNumber: number) => {
     updatedGame.currentDay,
   );
   await updateGame(updatedGame);
-  return nextDay;
+  ctx.response.body = nextDay;
 };

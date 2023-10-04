@@ -15,28 +15,68 @@ const prisma = new PrismaClient({
  * User CRUD
  */
 
-export async function createUser() {
-  const result = await prisma.user.create({});
-  return result;
-}
-
-export async function upsertUser(id: number) {
-  const result = await prisma.user.upsert({
-    where: {
+export async function createUser(
+  id: string,
+  username?: string,
+  password?: string,
+) {
+  const result = await prisma.user.create({
+    data: {
       id,
-    },
-    update: {},
-    create: {
-      id,
+      username,
+      password,
     },
   });
   return result;
 }
 
-export async function getUserById(id: number) {
+export async function upsertUser(
+  id: string,
+  username?: string,
+  password?: string,
+  serializedId?: string,
+) {
+  const result = await prisma.user.upsert({
+    where: {
+      id,
+    },
+    update: {
+      username,
+      password,
+      serializedId,
+    },
+    create: {
+      id,
+      username,
+      password,
+      serializedId,
+    },
+  });
+  return result;
+}
+
+export async function getUserByUsername(username: string) {
+  const user = await prisma.user.findUniqueOrThrow({
+    where: {
+      username,
+    },
+  });
+  return user;
+}
+
+export async function getUserById(id: string) {
   const user = await prisma.user.findUniqueOrThrow({
     where: {
       id,
+    },
+  });
+  return user;
+}
+
+export async function getUserBySerializedId(serializedId: string) {
+  const user = await prisma.user.findUniqueOrThrow({
+    where: {
+      serializedId,
     },
   });
   return user;
@@ -48,13 +88,13 @@ export async function updateUser(user: User) {
       id: user.id,
     },
     data: {
-      ...user,
+      numberOfGames: user.numberOfGames,
     },
   });
   return result;
 }
 
-export async function deleteUser(id: number) {
+export async function deleteUser(id: string) {
   const result = await prisma.user.delete({
     where: {
       id,
@@ -68,7 +108,7 @@ export async function deleteUser(id: number) {
  */
 
 export async function createGame(
-  userId: number,
+  userId: string,
   number: number,
   name: string,
   year: number,
@@ -101,7 +141,7 @@ export async function getGameById(id: number) {
 }
 
 export async function getUserByIdWithRelations(
-  userId: number,
+  userId: string,
 ) {
   const games = await prisma.user.findUniqueOrThrow({
     where: {
@@ -117,6 +157,7 @@ export async function getUserByIdWithRelations(
                   ModifierOption: true,
                 },
               },
+              ModifierOption: true,
             },
           },
         },
@@ -127,7 +168,7 @@ export async function getUserByIdWithRelations(
 }
 
 export async function getGamesByUserId(
-  userId: number,
+  userId: string,
 ) {
   const games = await prisma.game.findMany({
     where: {
@@ -143,7 +184,19 @@ export async function updateGame(game: Game) {
       id: game.id,
     },
     data: {
-      ...game,
+      name: game.name,
+      playerName: game.playerName,
+      currentDay: game.currentDay,
+      currentDayCompleted: game.currentDayCompleted,
+      currentRerollTokens: game.currentRerollTokens,
+      rerollTokensSpent: game.rerollTokensSpent,
+      repositoryLink: game.repositoryLink,
+      progressSheetLink: game.progressSheetLink,
+      public: game.public,
+      publicProfileId: game.publicProfileId,
+      score: game.score,
+      rankId: game.rankId,
+      dateCompleted: game.dateCompleted,
     },
   });
   return result;
@@ -163,7 +216,7 @@ export async function deleteGame(id: number) {
  */
 
 export async function createDay(
-  userId: number,
+  userId: string,
   gameId: number,
   gameNumber: number,
   dayNumber: number,
@@ -194,7 +247,17 @@ export async function updateDay(day: Day) {
       id: day.id,
     },
     data: {
-      ...day,
+      gameNumber: day.gameNumber,
+      challengeModifierId: day.challengeModifierId,
+      modifierOptionId: day.modifierOptionId,
+      dateFirstRolled: day.dateFirstRolled,
+      part1Completed: day.part1Completed,
+      modifierWhenPart1CompletedId: day.modifierWhenPart1CompletedId,
+      optionWhenPart1CompletedId: day.optionWhenPart1CompletedId,
+      part2Completed: day.part2Completed,
+      challengeModifierRerollsUsed: day.challengeModifierRerollsUsed,
+      modifierOptionRerollsUsed: day.modifierOptionRerollsUsed,
+      rerollTokensSpentDuringPart2: day.rerollTokensSpentDuringPart2,
     },
   });
   return result;
