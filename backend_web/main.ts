@@ -35,6 +35,7 @@ import { getAllDays } from "./routes/game/getAllDays.ts";
 import { deleteGame } from "./routes/game/deleteGame.ts";
 import { startNewGame } from "./routes/game/startNewGame.ts";
 import { getGame } from "./routes/game/getGame.ts";
+import { getGames } from "./routes/user/getGames.ts";
 
 const _dotEnv = await config();
 const githubClientId = Deno.env.get("GITHUB_CLIENT_ID");
@@ -266,27 +267,7 @@ router
   .get("/modifier", async (ctx) => {
     ctx.response.body = await getAllChallengeModifiers();
   })
-  /**
-   * Create User
-   */
-  .put("/user/:id", async (ctx) => {
-    const { id } = ctx.params;
-    ctx.response.body = await createUser(id);
-  })
-  /**
-   * Get User with Relations
-   */
-  .get("/user/:id", async (ctx) => {
-    const { id } = ctx.params;
-    const games = await getUserByIdWithRelations(id);
-    ctx.response.body = games;
-  })
-  /**
-   * Get All Games (eventually will be Continue Game)
-   */
-  .get("/user/:id/game", async (ctx) => {
-    ctx.response.body = await getAllGames();
-  })
+  .get("/user/:id/game", getGames)
   .get("/user/:id/game/:gamenumber", getGame)
   .post("/game", startNewGame)
   .delete("/game/:gamenumber", deleteGame)
