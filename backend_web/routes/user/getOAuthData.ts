@@ -2,8 +2,9 @@ import { create } from "https://deno.land/x/djwt@v2.4/mod.ts";
 import { upsertUser } from "../../db.ts";
 import { key } from "../../util/apiKey.ts";
 import { oauth2Client } from "../../util/oauth2Client.ts";
+import { Context } from "https://deno.land/x/oak@v12.6.1/mod.ts";
 
-export const getOAuthData = async (ctx: any) => {
+export const getOAuthData = async (ctx: Context) => {
   // Make sure the codeVerifier is present for the user's session
   const codeVerifier = ctx.state.session.get("codeVerifier");
   if (typeof codeVerifier !== "string") {

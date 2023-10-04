@@ -1,6 +1,7 @@
+import { Context } from "https://deno.land/x/oak@v12.6.1/mod.ts";
 import { oauth2Client } from "../../util/oauth2Client.ts";
 
-export const logInWithOAuth = async (ctx: any) => {
+export const logInWithOAuth = async (ctx: Context) => {
   // Construct the URL for the authorization redirect and get a PKCE codeVerifier
   const { uri, codeVerifier } = await oauth2Client.code.getAuthorizationUri();
 
