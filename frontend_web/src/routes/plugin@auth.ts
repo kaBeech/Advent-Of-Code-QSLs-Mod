@@ -23,7 +23,7 @@ export const { onRequest, useAuthSession, useAuthSignin, useAuthSignout } =
       //       password,
       //     };
       //     const bodyFormData = getFormData(bodyData);
-      //     const response = await fetch(`http://127.0.0.1:8000/log-in/local`, {
+      // const response = await fetch(`${env.get("XTREME_XMAS_API")}/log-in/local`, {
       //       method: "POST",
       //       body: bodyFormData,
       //     });

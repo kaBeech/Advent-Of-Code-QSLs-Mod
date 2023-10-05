@@ -1,4 +1,3 @@
-// import type { Session } from "@auth/core/types";
 import {
   Resource,
   component$,
@@ -7,20 +6,9 @@ import {
   useVisibleTask$,
 } from "@builder.io/qwik";
 import type { DocumentHead } from "@builder.io/qwik-city";
-// import type { DocumentHead, RequestHandler } from "@builder.io/qwik-city";
 import { Link, server$ } from "@builder.io/qwik-city";
 import SignIn from "~/components/signIn/signIn";
 import SignOut from "~/components/signOut/signOut";
-
-// export const onRequest: RequestHandler = (event) => {
-//   const session: Session | null = event.sharedMap.get("session");
-//   if (!session || new Date(session.expires) < new Date()) {
-//     throw event.redirect(
-//       302,
-//       `/api/auth/signin?callbackUrl=${event.url.pathname}`
-//     );
-//   }
-// };
 
 const gameID = 1;
 const dayID = 1;
@@ -30,11 +18,10 @@ const serverFetcher = server$(async function (
   method: string,
   token: string
 ) {
-  //   const xtremeXmasAPI = this.env.get("XTREME_XMAS_API");
-  // if (xtremeXmasAPI == undefined) {
-  //   console.error("XTREME_XMAS_API string not found upon request");
-  // }
-  const xtremeXmasAPI = "http://127.0.0.1:8000";
+  const xtremeXmasAPI = this.env.get("XTREME_XMAS_API");
+  if (xtremeXmasAPI == undefined) {
+    console.error("XTREME_XMAS_API string not found upon request");
+  }
   const abortController = new AbortController();
   const res = await fetch(`${xtremeXmasAPI}/${route}`, {
     signal: abortController.signal,

@@ -6,7 +6,7 @@ const gameID = 1;
 const dayID = 1;
 
 const serverFetcher = server$(async function () {
-  const xtremeXmasAPI = "http://127.0.0.1:8000";
+  const xtremeXmasAPI = this.env.get("XTREME_XMAS_API");
   const abortController = new AbortController();
   const res = await fetch(`${xtremeXmasAPI}/modifier`, {
     signal: abortController.signal,

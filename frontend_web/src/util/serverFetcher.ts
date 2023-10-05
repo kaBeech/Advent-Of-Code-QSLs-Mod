@@ -4,16 +4,15 @@ import { getFormData } from "./getFormData";
 export const serverFetcher = server$(async function (
   route: string,
   method: string,
-  username: string,
-  password: string,
+  username?: string,
+  password?: string,
 ) {
-  //   const xtremeXmasAPI = this.env.get("XTREME_XMAS_API");
-  // if (xtremeXmasAPI == undefined) {
-  //   console.error("XTREME_XMAS_API string not found upon request");
-  // }
-  const xtremeXmasAPI = "http://127.0.0.1:8000";
+  const xtremeXmasAPI = this.env.get("XTREME_XMAS_API")!;
+  if (xtremeXmasAPI == undefined) {
+    console.error("XTREME_XMAS_API string not found upon request");
+  }
   const abortController = new AbortController();
-  if (method !== `GET`) {
+  if (username && password && method !== `GET`) {
     const bodyData = { username, password };
     const bodyFormData = getFormData(bodyData);
     const res = await fetch(`${xtremeXmasAPI}/${route}`, {
