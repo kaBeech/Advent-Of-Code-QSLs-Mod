@@ -11,7 +11,7 @@ export const serverFetcher = server$(async function (
   // if (xtremeXmasAPI == undefined) {
   //   console.error("XTREME_XMAS_API string not found upon request");
   // }
-  const xtremeXmasAPI = "http://localhost:8000";
+  const xtremeXmasAPI = "http://127.0.0.1:8000";
   const abortController = new AbortController();
   if (method !== `GET`) {
     const bodyData = { username, password };
