@@ -7,11 +7,7 @@ export default component$(() => {
   return (
     <Form action={signIn}>
       <input type="hidden" name="providerId" value="github" />
-      <input
-        type="hidden"
-        name="options.callbackUrl"
-        value="http://127.0.0.1:5173/test"
-      />
+      <input type="hidden" name="options.callbackUrl" value="/test" />
       <button>Sign In</button>
     </Form>
   );
