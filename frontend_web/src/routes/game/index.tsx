@@ -24,7 +24,7 @@ const serverFetcher = server$(async function (route: string, method: string) {
   // if (xtremeXmasAPI == undefined) {
   //   console.error("XTREME_XMAS_API string not found upon request");
   // }
-  const xtremeXmasAPI = "http://localhost:8000";
+  const xtremeXmasAPI = "http://127.0.0.1:8000";
   const abortController = new AbortController();
   const res = await fetch(`${xtremeXmasAPI}/${route}`, {
     signal: abortController.signal,
@@ -81,7 +81,6 @@ export default component$(() => {
         <h1 class="title">Xtreme Xmas Day Viewer</h1>
         <SignIn />
         <SignOut />
-
         <h2>Enter Game and Day IDs:</h2>
         <input
           class="pointer"
@@ -156,15 +155,13 @@ export default component$(() => {
         </button>
         <button
           onClick$={async () => {
-            await serverFetcher(
-              `login`,
-              "GET"
-            );
+            await serverFetcher(`login`, "GET");
             state.buttonPresses++;
           }}
         >
           Login
-        </button>        <button
+        </button>{" "}
+        <button
           onClick$={async () => {
             await serverFetcher(
               `user/1/game/${state.gameID}/day/${state.dayID}/complete/part2`,
