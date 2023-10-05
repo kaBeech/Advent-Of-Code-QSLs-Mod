@@ -10,7 +10,7 @@ export default component$(() => {
       <input
         type="hidden"
         name="options.callbackUrl"
-        value="http://127.0.0.1:5173/game"
+        value="http://127.0.0.1:5173/test"
       />
       <button>Sign In</button>
     </Form>
