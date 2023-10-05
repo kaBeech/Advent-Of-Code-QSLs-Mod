@@ -4,7 +4,6 @@ import { useAuthSession } from "~/routes/plugin@auth";
 
 export default component$(() => {
   const session = useAuthSession();
-  console.log(session.value);
   return (
     <>
       <p>TEST{session.value?.user?.email}</p>
