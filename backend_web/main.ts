@@ -1,5 +1,7 @@
 import { Application, Context } from "https://deno.land/x/oak@v12.6.1/mod.ts";
 import { Session } from "https://deno.land/x/oak_sessions@v4.0.5/mod.ts";
+import { oakCors } from "https://deno.land/x/cors@v1.2.2/mod.ts";
+
 import { router } from "./router.ts";
 
 type AppState = {
@@ -8,6 +10,11 @@ type AppState = {
 
 const app = new Application<AppState>();
 
+app.use(
+  oakCors({
+    origin: "http://127.0.0.1:5173",
+  }),
+);
 app.use(Session.initMiddleware());
 app.use(router.routes());
 app.use(router.allowedMethods());

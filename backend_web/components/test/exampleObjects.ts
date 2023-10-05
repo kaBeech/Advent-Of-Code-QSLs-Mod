@@ -2,6 +2,9 @@ export const exampleUser = {
   "id": "1",
   "dateCreated": new Date(),
   "numberOfGames": 1,
+  "serializedId": "42",
+  "username": "exampleUser",
+  "password": "examplePassword",
 };
 
 export const exampleGame = {

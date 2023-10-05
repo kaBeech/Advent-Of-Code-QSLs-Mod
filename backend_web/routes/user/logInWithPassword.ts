@@ -2,11 +2,23 @@ import { create } from "https://deno.land/x/djwt@v2.4/mod.ts";
 import { getUserByUsername } from "../../db.ts";
 import { key } from "../../util/apiKey.ts";
 import * as bcrypt from "https://deno.land/x/bcrypt@v0.4.1/mod.ts";
+import {
+  FormDataReader,
+  RouterContext,
+  State,
+} from "https://deno.land/x/oak@v12.6.1/mod.ts";
 
-export const logInWithPassword = async (ctx: any) => {
-  const body = await ctx.request.body().value;
-  const username = body.get("username");
-  const password = body.get("password");
+export const logInWithPassword = async (
+  ctx: RouterContext<
+    "/log-in/local",
+    Record<string | number, string | undefined>,
+    State
+  >,
+) => {
+  const body: FormDataReader = await ctx.request.body().value;
+  const bodyData = await body.read();
+  const username = bodyData.fields.username;
+  const password = bodyData.fields.password;
   const user = await getUserByUsername(username);
 
   if (!user) {

@@ -1,4 +1,6 @@
-export const getHelloWorld = (ctx: any) => {
+import { Context } from "https://deno.land/x/oak@v12.6.1/mod.ts";
+
+export const getHelloWorld = (ctx: Context) => {
   ctx.response.body = `<html lang="en">
   <head>
     <meta charset="UTF-8">
