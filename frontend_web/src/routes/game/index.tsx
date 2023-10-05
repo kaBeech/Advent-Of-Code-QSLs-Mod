@@ -6,33 +6,13 @@ import {
   useVisibleTask$,
 } from "@builder.io/qwik";
 import type { DocumentHead } from "@builder.io/qwik-city";
-import { Link, server$ } from "@builder.io/qwik-city";
+import { Link } from "@builder.io/qwik-city";
 import SignIn from "~/components/signIn/signIn";
 import SignOut from "~/components/signOut/signOut";
+import { serverFetcher } from "~/util/serverFetcher";
 
 const gameID = 1;
 const dayID = 1;
-
-const serverFetcher = server$(async function (
-  route: string,
-  method: string,
-  token: string
-) {
-  const xtremeXmasAPI = this.env.get("XTREME_XMAS_API");
-  if (xtremeXmasAPI == undefined) {
-    console.error("XTREME_XMAS_API string not found upon request");
-  }
-  const abortController = new AbortController();
-  const res = await fetch(`${xtremeXmasAPI}/${route}`, {
-    signal: abortController.signal,
-    method,
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
-  const data = await res.json();
-  return data;
-});
 
 export default component$(() => {
   const state = useStore({

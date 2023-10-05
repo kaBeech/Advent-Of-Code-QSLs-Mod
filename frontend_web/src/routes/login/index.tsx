@@ -27,32 +27,29 @@ export default component$(() => {
     const data = await serverFetcher(
       `log-in/local`,
       "POST",
+      undefined,
       state.username,
       state.password
     );
+    console.log(data);
     localStorage.setItem("token", data.token);
     sessionStorage.setItem("token", data.token);
     state.buttonPresses++;
   });
 
   const getData = $(async () => {
-    const data = await fetch(`http://127.0.0.1:8000/userdata`, {
-      method: "GET",
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-      },
-    });
-    const json = await data.json();
-    console.log(json);
+    const data = await serverFetcher(
+      `userdata`,
+      "GET",
+      localStorage.getItem("token")!
+    );
+    console.log(data);
     state.buttonPresses++;
   });
 
   const loginGitHub = $(async () => {
-    const data = await fetch(`http://127.0.0.1:8000/log-in/github`, {
-      method: "GET",
-    });
-    const json = await data.json();
-    const uri = json.uri;
+    const data = await serverFetcher(`log-in/github`, "GET");
+    const uri = data.uri;
     const githubOAuth = await fetch(uri, {
       method: "GET",
     });

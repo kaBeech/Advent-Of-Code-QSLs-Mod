@@ -4,6 +4,7 @@ import { getFormData } from "./getFormData";
 export const serverFetcher = server$(async function (
   route: string,
   method: string,
+  token?: string,
   username?: string,
   password?: string,
 ) {
@@ -18,6 +19,9 @@ export const serverFetcher = server$(async function (
     const res = await fetch(`${xtremeXmasAPI}/${route}`, {
       signal: abortController.signal,
       method,
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
       body: bodyFormData,
     });
     const data = await res.json();
@@ -26,6 +30,9 @@ export const serverFetcher = server$(async function (
     const res = await fetch(`${xtremeXmasAPI}/${route}`, {
       signal: abortController.signal,
       method,
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
     });
     const data = await res.json();
     return data;
