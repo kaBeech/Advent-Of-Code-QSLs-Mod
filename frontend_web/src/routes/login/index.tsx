@@ -2,14 +2,9 @@
 import { $, component$, useStore } from "@builder.io/qwik";
 import type { DocumentHead } from "@builder.io/qwik-city";
 import { Link, server$ } from "@builder.io/qwik-city";
+import { getFormData } from "~/util/getFormData";
 
-const getFormData = (object: { [x: string]: string | Blob }) =>
-  Object.keys(object).reduce((formData, key) => {
-    formData.append(key, object[key]);
-    return formData;
-  }, new FormData());
-
-const serverFetcher = server$(async function (
+export const serverFetcher = server$(async function (
   route: string,
   method: string,
   username: string,
