@@ -1,5 +1,11 @@
 // import type { Session } from "@auth/core/types";
-import { Resource, component$, useResource$, useStore } from "@builder.io/qwik";
+import {
+  Resource,
+  component$,
+  useResource$,
+  useStore,
+  useVisibleTask$,
+} from "@builder.io/qwik";
 import type { DocumentHead } from "@builder.io/qwik-city";
 // import type { DocumentHead, RequestHandler } from "@builder.io/qwik-city";
 import { Link, server$ } from "@builder.io/qwik-city";
@@ -19,7 +25,11 @@ import SignOut from "~/components/signOut/signOut";
 const gameID = 1;
 const dayID = 1;
 
-const serverFetcher = server$(async function (route: string, method: string) {
+const serverFetcher = server$(async function (
+  route: string,
+  method: string,
+  token: string
+) {
   //   const xtremeXmasAPI = this.env.get("XTREME_XMAS_API");
   // if (xtremeXmasAPI == undefined) {
   //   console.error("XTREME_XMAS_API string not found upon request");
@@ -29,6 +39,9 @@ const serverFetcher = server$(async function (route: string, method: string) {
   const res = await fetch(`${xtremeXmasAPI}/${route}`, {
     signal: abortController.signal,
     method,
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
   });
   const data = await res.json();
   return data;
@@ -39,6 +52,11 @@ export default component$(() => {
     gameID,
     dayID,
     buttonPresses: 0,
+    token: "undefined",
+  });
+
+  useVisibleTask$(() => {
+    state.token = localStorage.getItem("token")!;
   });
 
   const xtremeXmasUserDataResource = useResource$<any>(
@@ -49,10 +67,22 @@ export default component$(() => {
       const dayID = track(() => state.dayID);
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const buttonPresses = track(() => state.buttonPresses);
+      const token = track(() => state.token);
+      if (token === "undefined") {
+        return {
+          challengeModifier: "Loading...",
+          modifierOption: "Loading...",
+          currentRerollTokens: "Loading...",
+          currentDay: "Loading...",
+          currentDayCompleted: "Loading...",
+          part1Completed: "Loading...",
+          part2Completed: "Loading...",
+        };
+      }
+      console.log("xmasToken", token);
       const abortController = new AbortController();
       cleanup(() => abortController.abort("cleanup"));
-      // const userData = await serverFetcher(`userdata`, "GET");
-      const userData = await serverFetcher(`user/1`, "GET");
+      const userData = await serverFetcher(`userdata`, "GET", token);
       const gameData = userData.Game.find(
         (game: { number: number }) => game.number === +gameID
       );
@@ -145,8 +175,9 @@ export default component$(() => {
         <button
           onClick$={async () => {
             await serverFetcher(
-              `user/1/game/${state.gameID}/day/${state.dayID}/complete/part1`,
-              "PUT"
+              `game/${state.gameID}/day/${state.dayID}/complete/part1`,
+              "PUT",
+              localStorage.getItem("token")!
             );
             state.buttonPresses++;
           }}
@@ -155,17 +186,31 @@ export default component$(() => {
         </button>
         <button
           onClick$={async () => {
+            const data = await serverFetcher(
+              `userdata`,
+              "GET",
+              localStorage.getItem("token")!
+            );
+            console.log(data);
+            state.buttonPresses++;
+          }}
+        >
+          Get Data
+        </button>
+        {/* <button
+          onClick$={async () => {
             await serverFetcher(`login`, "GET");
             state.buttonPresses++;
           }}
         >
           Login
-        </button>{" "}
+        </button>{" "} */}
         <button
           onClick$={async () => {
             await serverFetcher(
-              `user/1/game/${state.gameID}/day/${state.dayID}/complete/part2`,
-              "PUT"
+              `game/${state.gameID}/day/${state.dayID}/complete/part2`,
+              "PUT",
+              localStorage.getItem("token")!
             );
             state.buttonPresses++;
           }}
@@ -175,8 +220,9 @@ export default component$(() => {
         <button
           onClick$={async () => {
             await serverFetcher(
-              `user/1/game/${state.gameID}/day/complete`,
-              "PUT"
+              `game/${state.gameID}/day/complete`,
+              "PUT",
+              localStorage.getItem("token")!
             );
             state.buttonPresses++;
           }}
@@ -186,8 +232,9 @@ export default component$(() => {
         <button
           onClick$={async () => {
             await serverFetcher(
-              `user/1/game/${state.gameID}/day/${+state.dayID + 1}`,
-              "PUT"
+              `game/${state.gameID}/day/${+state.dayID + 1}`,
+              "PUT",
+              localStorage.getItem("token")!
             );
             state.buttonPresses++;
           }}
@@ -197,8 +244,9 @@ export default component$(() => {
         <button
           onClick$={async () => {
             await serverFetcher(
-              `user/1/game/${state.gameID}/day/${state.dayID}/roll`,
-              "PUT"
+              `game/${state.gameID}/day/${state.dayID}/roll`,
+              "PUT",
+              localStorage.getItem("token")!
             );
             state.buttonPresses++;
           }}
@@ -208,8 +256,9 @@ export default component$(() => {
         <button
           onClick$={async () => {
             await serverFetcher(
-              `user/1/game/${state.gameID}/day/${state.dayID}/reroll/modifier`,
-              "PUT"
+              `game/${state.gameID}/day/${state.dayID}/reroll/modifier`,
+              "PUT",
+              localStorage.getItem("token")!
             );
             state.buttonPresses++;
           }}
@@ -219,8 +268,9 @@ export default component$(() => {
         <button
           onClick$={async () => {
             await serverFetcher(
-              `user/1/game/${state.gameID}/day/${state.dayID}/reroll/option`,
-              "PUT"
+              `game/${state.gameID}/day/${state.dayID}/reroll/option`,
+              "PUT",
+              localStorage.getItem("token")!
             );
             state.buttonPresses++;
           }}
