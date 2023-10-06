@@ -9,9 +9,7 @@ export default component$(() => {
       <SignIn />
       <SignOut />
       <button>
-        <Link href="/game/" style={"color: #fff"}>
-          GAME
-        </Link>
+        <Link href="/game/">GAME</Link>
       </button>
 
       <div role="presentation" class="ellipsis"></div>
