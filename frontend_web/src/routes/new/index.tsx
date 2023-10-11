@@ -91,9 +91,9 @@ export default component$(() => {
         <button
           onClick$={async () => {
             await serverFetcher(`game`, "POST", userId, {
-              name: title,
-              year,
-              playerName,
+              name: state.title,
+              year: state.year,
+              playerName: state.playerName,
             });
             state.buttonPresses++;
           }}
