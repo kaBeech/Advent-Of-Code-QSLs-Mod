@@ -93,7 +93,7 @@ export default component$(() => {
                 <button
                   onClick$={async () => {
                     await serverFetcher(
-                      `game/${xtremeXmasData.numberOfGames + 1}`,
+                      `game/${+xtremeXmasData.numberOfGames + 1}`,
                       "PUT",
                       userId,
                       {
