@@ -5,19 +5,22 @@ export default component$(() => {
     <header>
       <div class={`flex`}>
         <div class="flex column">
-          <div>Xtreme Xmas</div>
-          <div>YEAR0</div>
+          <a href="/">Xtreme Xmas</a>
+          <a href="/game">YEAR0</a>
         </div>
         <div class="flex column">
           <div class="flex">
             {" "}
-            <div>[About]</div> <div>[Games]</div> <div>[Shop???]</div>{" "}
-            <div>[Settings]</div> <div>[Log Out]</div> <div>NAME</div>{" "}
+            <a href="/about">[About]</a> <a href="/events">[Events]</a>{" "}
+            <div>[Shop???]</div> <a href="/settings">[Settings]</a>{" "}
+            <div>[Log Out]</div> <div>NAME</div>{" "}
           </div>
           <div class="flex">
             {" "}
-            <div>[Progress]</div> <div>[XX++]</div> <div>[Sponsors]</div>{" "}
-            <div>[Leaderboard]</div> <div>[Stats]</div>
+            <a href="/game">[Calendar]</a> <a href="/support">[XX++]</a>{" "}
+            <a href="/sponsors">[Sponsors]</a>{" "}
+            <a href="/leaderboard">[Leaderboard]</a>{" "}
+            <a href="/stats">[Stats]</a>
           </div>
         </div>
       </div>
