@@ -8,6 +8,7 @@ export default component$(() => {
       onClick$={() => {
         signIn.submit({
           providerId: "github",
+          // options: { callbackUrl: "test" },
         });
       }}
     >
