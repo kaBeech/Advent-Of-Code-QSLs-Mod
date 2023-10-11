@@ -5,7 +5,7 @@ export const serverFetcher = server$(async function (
   route: string,
   method: string,
   username?: string,
-  password?: string,
+  body?: any,
 ) {
   const xtremeXmasAPI = this.env.get("XTREME_XMAS_API")!;
   const xmasSecret = this.env.get("XMAS_SECRET")!;
@@ -13,9 +13,8 @@ export const serverFetcher = server$(async function (
     console.error("XTREME_XMAS_API string not found upon request");
   }
   const abortController = new AbortController();
-  if (username && password && method !== `GET`) {
-    const bodyData = { username, password };
-    const bodyFormData = getFormData(bodyData);
+  if (method !== `GET`) {
+    const bodyFormData = getFormData(body);
     const res = await fetch(`${xtremeXmasAPI}/${route}`, {
       signal: abortController.signal,
       method,
