@@ -10,11 +10,16 @@ import { Link } from "@builder.io/qwik-city";
 import SignIn from "~/components/signIn/signIn";
 import SignOut from "~/components/signOut/signOut";
 import { serverFetcher } from "~/util/serverFetcher";
+import { useAuthSession } from "../plugin@auth";
+import { getGithubUserIdFromUserImage } from "~/util/getGithubUserIdFromUserImage";
 
 const gameID = 1;
 const dayID = 1;
 
 export default component$(() => {
+  const session = useAuthSession();
+  const userId = getGithubUserIdFromUserImage(session.value!.user!.image!);
+
   const state = useStore({
     gameID,
     dayID,
@@ -49,7 +54,7 @@ export default component$(() => {
       console.log("xmasToken", token);
       const abortController = new AbortController();
       cleanup(() => abortController.abort("cleanup"));
-      const userData = await serverFetcher(`userdata`, "GET", token);
+      const userData = await serverFetcher(`userdata`, "GET", userId);
       const gameData = userData.Game.find(
         (game: { number: number }) => game.number === +gameID
       );
@@ -144,7 +149,7 @@ export default component$(() => {
             await serverFetcher(
               `game/${state.gameID}/day/${state.dayID}/complete/part1`,
               "PUT",
-              localStorage.getItem("token")!
+              userId
             );
             state.buttonPresses++;
           }}
@@ -153,11 +158,7 @@ export default component$(() => {
         </button>
         <button
           onClick$={async () => {
-            const data = await serverFetcher(
-              `userdata`,
-              "GET",
-              localStorage.getItem("token")!
-            );
+            const data = await serverFetcher(`userdata`, "GET", userId);
             console.log(data);
             state.buttonPresses++;
           }}
@@ -177,7 +178,7 @@ export default component$(() => {
             await serverFetcher(
               `game/${state.gameID}/day/${state.dayID}/complete/part2`,
               "PUT",
-              localStorage.getItem("token")!
+              userId
             );
             state.buttonPresses++;
           }}
@@ -189,7 +190,7 @@ export default component$(() => {
             await serverFetcher(
               `game/${state.gameID}/day/complete`,
               "PUT",
-              localStorage.getItem("token")!
+              userId
             );
             state.buttonPresses++;
           }}
@@ -201,7 +202,7 @@ export default component$(() => {
             await serverFetcher(
               `game/${state.gameID}/day/${+state.dayID + 1}`,
               "PUT",
-              localStorage.getItem("token")!
+              userId
             );
             state.buttonPresses++;
           }}
@@ -213,7 +214,7 @@ export default component$(() => {
             await serverFetcher(
               `game/${state.gameID}/day/${state.dayID}/roll`,
               "PUT",
-              localStorage.getItem("token")!
+              userId
             );
             state.buttonPresses++;
           }}
@@ -225,7 +226,7 @@ export default component$(() => {
             await serverFetcher(
               `game/${state.gameID}/day/${state.dayID}/reroll/modifier`,
               "PUT",
-              localStorage.getItem("token")!
+              userId
             );
             state.buttonPresses++;
           }}
@@ -237,7 +238,7 @@ export default component$(() => {
             await serverFetcher(
               `game/${state.gameID}/day/${state.dayID}/reroll/option`,
               "PUT",
-              localStorage.getItem("token")!
+              userId
             );
             state.buttonPresses++;
           }}
