@@ -58,7 +58,8 @@ export const authenticate = async (ctx: Context, next: Next) => {
     ctx.state.session.set("userId", userId);
     console.log("userId", userId);
     await next();
-  } catch (_error) {
+  } catch (error) {
+    console.log(error);
     ctx.response.status = 401;
     ctx.response.body = {
       message: "You are not authorized to access this route",
