@@ -26,8 +26,6 @@ export const startNewGame = async (
   const user = await getUserById(userId);
   const body: FormDataReader = ctx.request.body({ type: "form-data" }).value;
   const bodyData = await body.read();
-  user!.numberOfGames++;
-  await updateUser(user!);
   const game = await createGame(
     userId,
     +gameNumber,
@@ -43,5 +41,7 @@ export const startNewGame = async (
     updatedGame.currentDay,
   );
   await updateGame(updatedGame);
+  user!.numberOfGames++;
+  await updateUser(user!);
   ctx.response.body = updatedGame;
 };
