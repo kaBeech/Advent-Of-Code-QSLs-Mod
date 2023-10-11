@@ -1,8 +1,6 @@
 import { Resource, component$, useResource$, useStore } from "@builder.io/qwik";
 import type { DocumentHead } from "@builder.io/qwik-city";
 import { Link } from "@builder.io/qwik-city";
-import SignIn from "~/components/signIn/signIn";
-import SignOut from "~/components/signOut/signOut";
 import { serverFetcher } from "~/util/serverFetcher";
 import { useAuthSession } from "../plugin@auth";
 import { getGithubUserIdFromUserImage } from "~/util/getGithubUserIdFromUserImage";
@@ -58,8 +56,6 @@ export default component$(() => {
     <div>
       <div>
         <h1 class="title">Xtreme Xmas Day Viewer</h1>
-        <SignIn />
-        <SignOut />
         <h2>Enter Game and Day IDs:</h2>
         <input
           class="pointer"

@@ -1,13 +1,9 @@
 import { component$ } from "@builder.io/qwik";
 import { Link, type DocumentHead } from "@builder.io/qwik-city";
-import SignIn from "~/components/signIn/signIn";
-import SignOut from "~/components/signOut/signOut";
 
 export default component$(() => {
   return (
     <>
-      <SignIn />
-      <SignOut />
       <button>
         <Link href="/game/">GAME</Link>
       </button>
