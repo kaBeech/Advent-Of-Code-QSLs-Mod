@@ -47,6 +47,7 @@ body {
 a {
   color: var(--xxmas-green-text);
   text-decoration: none;
+  cursor: pointer;
 }
 
 .flex {
