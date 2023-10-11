@@ -1,10 +1,4 @@
-import {
-  Resource,
-  component$,
-  useResource$,
-  useStore,
-  useVisibleTask$,
-} from "@builder.io/qwik";
+import { Resource, component$, useResource$, useStore } from "@builder.io/qwik";
 import type { DocumentHead } from "@builder.io/qwik-city";
 import { Link } from "@builder.io/qwik-city";
 import SignIn from "~/components/signIn/signIn";
@@ -24,11 +18,6 @@ export default component$(() => {
     gameID,
     dayID,
     buttonPresses: 0,
-    token: "undefined",
-  });
-
-  useVisibleTask$(() => {
-    state.token = localStorage.getItem("token")!;
   });
 
   const xtremeXmasUserDataResource = useResource$<any>(
@@ -39,19 +28,7 @@ export default component$(() => {
       const dayID = track(() => state.dayID);
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const buttonPresses = track(() => state.buttonPresses);
-      const token = track(() => state.token);
-      if (token === "undefined") {
-        return {
-          challengeModifier: "Loading...",
-          modifierOption: "Loading...",
-          currentRerollTokens: "Loading...",
-          currentDay: "Loading...",
-          currentDayCompleted: "Loading...",
-          part1Completed: "Loading...",
-          part2Completed: "Loading...",
-        };
-      }
-      console.log("xmasToken", token);
+
       const abortController = new AbortController();
       cleanup(() => abortController.abort("cleanup"));
       const userData = await serverFetcher(`userdata`, "GET", userId);
