@@ -1,12 +1,20 @@
 import { Resource, component$, useResource$, useStore } from "@builder.io/qwik";
-import type { DocumentHead } from "@builder.io/qwik-city";
+import type { DocumentHead, RequestHandler } from "@builder.io/qwik-city";
 import { Link } from "@builder.io/qwik-city";
 import { serverFetcher } from "~/util/serverFetcher";
 import { useAuthSession } from "../plugin@auth";
 import { getGithubUserIdFromUserImage } from "~/util/getGithubUserIdFromUserImage";
+import type { Session } from "@auth/core/types";
 
 const gameID = 1;
 const dayID = 1;
+
+export const onRequest: RequestHandler = (event) => {
+  const session: Session | null = event.sharedMap.get("session");
+  if (!session || new Date(session.expires) < new Date()) {
+    throw event.redirect(302, `/signin`);
+  }
+};
 
 export default component$(() => {
   const session = useAuthSession();
