@@ -50,6 +50,8 @@ export default component$(() => {
           type="text"
           onInput$={(ev: any) => (state.title = ev.target.value)}
           value={title}
+          minLength={1}
+          maxLength={256}
           aria-labelledby="Title"
         />
         <input
@@ -57,6 +59,8 @@ export default component$(() => {
           type="number"
           onInput$={(ev: any) => (state.year = ev.target.value)}
           value={year}
+          min="2014"
+          max="2023"
           aria-labelledby="Year"
         />
         <input
@@ -64,6 +68,8 @@ export default component$(() => {
           type="text"
           onInput$={(ev: any) => (state.playerName = ev.target.value)}
           value={playerName}
+          minLength={1}
+          maxLength={256}
           aria-labelledby="Player Name"
         />
         <Resource

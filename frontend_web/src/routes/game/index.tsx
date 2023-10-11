@@ -37,6 +37,7 @@ export default component$(() => {
         (day: { number: number }) => day.number === +dayID
       );
       return {
+        numberOfGames: JSON.stringify(userData.Game.length),
         challengeModifier: dayData.challengeModifierId
           ? dayData.ChallengeModifier.text
           : "None",
@@ -57,20 +58,7 @@ export default component$(() => {
       <div>
         <h1 class="title">Xtreme Xmas Day Viewer</h1>
         <h2>Enter Game and Day IDs:</h2>
-        <input
-          class="pointer"
-          type="number"
-          onInput$={(ev: any) => (state.gameID = ev.target.value)}
-          value={gameID}
-          aria-labelledby="Game ID"
-        />
-        <input
-          class="pointer"
-          type="number"
-          onInput$={(ev: any) => (state.dayID = ev.target.value)}
-          value={dayID}
-          aria-labelledby="Day ID"
-        />
+
         <Resource
           value={xtremeXmasUserDataResource}
           onPending={() => {
@@ -85,35 +73,55 @@ export default component$(() => {
           }}
           onResolved={(xtremeXmasData) => {
             return (
-              <div class="flex column">
-                <h2>
-                  Challenge Modifier:{" "}
-                  <strong>{xtremeXmasData.challengeModifier}</strong>
-                </h2>
-                <h3>
-                  Modifier Option:{" "}
-                  <strong>{xtremeXmasData.modifierOption}</strong>
-                </h3>
-                <div>
-                  Current Reroll Tokens:{" "}
-                  <strong>{xtremeXmasData.currentRerollTokens}</strong>
+              <>
+                <input
+                  class="pointer"
+                  type="number"
+                  onInput$={(ev: any) => (state.gameID = ev.target.value)}
+                  value={gameID}
+                  min={1}
+                  max={xtremeXmasData.numberOfGames}
+                  aria-labelledby="Game ID"
+                />
+                <input
+                  class="pointer"
+                  type="number"
+                  onInput$={(ev: any) => (state.dayID = ev.target.value)}
+                  value={dayID}
+                  min={1}
+                  max={xtremeXmasData.currentDay}
+                  aria-labelledby="Day ID"
+                />
+                <div class="flex column">
+                  <h2>
+                    Challenge Modifier:{" "}
+                    <strong>{xtremeXmasData.challengeModifier}</strong>
+                  </h2>
+                  <h3>
+                    Modifier Option:{" "}
+                    <strong>{xtremeXmasData.modifierOption}</strong>
+                  </h3>
+                  <div>
+                    Current Reroll Tokens:{" "}
+                    <strong>{xtremeXmasData.currentRerollTokens}</strong>
+                  </div>
+                  <div>
+                    Current Day: <strong>{xtremeXmasData.currentDay}</strong>
+                  </div>
+                  <div>
+                    Current Day Completed?{" "}
+                    <strong>{xtremeXmasData.currentDayCompleted}</strong>
+                  </div>
+                  <div>
+                    Selected Day Part 1 Completed?{" "}
+                    <strong>{xtremeXmasData.part1Completed}</strong>
+                  </div>
+                  <div>
+                    Selected Day Part 2 Completed?{" "}
+                    <strong>{xtremeXmasData.part2Completed}</strong>
+                  </div>
                 </div>
-                <div>
-                  Current Day: <strong>{xtremeXmasData.currentDay}</strong>
-                </div>
-                <div>
-                  Current Day Completed?{" "}
-                  <strong>{xtremeXmasData.currentDayCompleted}</strong>
-                </div>
-                <div>
-                  Selected Day Part 1 Completed?{" "}
-                  <strong>{xtremeXmasData.part1Completed}</strong>
-                </div>
-                <div>
-                  Selected Day Part 2 Completed?{" "}
-                  <strong>{xtremeXmasData.part2Completed}</strong>
-                </div>
-              </div>
+              </>
             );
           }}
         />
