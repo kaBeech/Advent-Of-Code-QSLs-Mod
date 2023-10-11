@@ -27,15 +27,16 @@ html {
     "Noto Color Emoji";
 }
 
-body {
-  padding: 0;
-  line-height: inherit;
-}
-
 :root {
   --xxmas-dark-background: hsl(240, 40%, 10%);
   --xxmas-dark-text: hsl(0, 0%, 80%);
   --xxmas-red-text: hsl(0, 100%, 36%);
+  --xxmas-green-text: hsl(140, 99%, 29%);
+  --xxmas-gold-text: hsl(63, 100%, 69%);
+}
+
+header {
+  color: var(--xxmas-gold-text);
 }
 
 body {
