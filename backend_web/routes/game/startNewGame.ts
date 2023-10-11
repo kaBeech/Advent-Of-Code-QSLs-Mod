@@ -3,7 +3,13 @@ import {
   FormDataReader,
 } from "https://deno.land/x/oak@v12.6.1/mod.ts";
 import { GameController } from "../../components/GameController.ts";
-import { createDay, createGame, getUserById, updateUser } from "../../db.ts";
+import {
+  createDay,
+  createGame,
+  getUserById,
+  updateGame,
+  updateUser,
+} from "../../db.ts";
 
 export const startNewGame = async (ctx: Context) => {
   const userId = ctx.state.session.get("userId") as string;
@@ -26,5 +32,6 @@ export const startNewGame = async (ctx: Context) => {
     updatedGame.number,
     updatedGame.currentDay,
   );
+  await updateGame(updatedGame);
   ctx.response.body = updatedGame;
 };
