@@ -44,7 +44,12 @@ body {
   margin: 0;
   line-height: inherit;
   background: var(--xxmas-dark-background);
+  color: var(--xxmas-dark-text);
+}
+
+a {
   color: var(--xxmas-red-text);
+  text-decoration: none;
 }
 
 .flex {
