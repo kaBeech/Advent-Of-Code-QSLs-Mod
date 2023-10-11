@@ -6,6 +6,7 @@ import SignOut from "~/components/signOut/signOut";
 import { serverFetcher } from "~/util/serverFetcher";
 import { useAuthSession } from "../plugin@auth";
 import { getGithubUserIdFromUserImage } from "~/util/getGithubUserIdFromUserImage";
+import Header from "~/components/header/header";
 
 const gameID = 1;
 const dayID = 1;
@@ -56,6 +57,7 @@ export default component$(() => {
 
   return (
     <div>
+      <Header />
       <div>
         <h1 class="title">Xtreme Xmas Day Viewer</h1>
         <SignIn />
