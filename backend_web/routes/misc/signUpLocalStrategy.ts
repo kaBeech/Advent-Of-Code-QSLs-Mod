@@ -2,7 +2,7 @@ import * as bcrypt from "https://deno.land/x/bcrypt@v0.4.1/mod.ts";
 import { createUser } from "../../db.ts";
 import { Context, Next } from "https://deno.land/x/oak@v12.6.1/mod.ts";
 
-export const signUp = async (ctx: Context, next: Next) => {
+export const signUpLocalStrategy = async (ctx: Context, next: Next) => {
   try {
     const body = await ctx.request.body().value;
     const salt = await bcrypt.genSalt(8);

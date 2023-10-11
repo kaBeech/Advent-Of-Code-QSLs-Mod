@@ -4,23 +4,22 @@ import { getFormData } from "./getFormData";
 export const serverFetcher = server$(async function (
   route: string,
   method: string,
-  token?: string,
   username?: string,
-  password?: string,
+  body?: any,
 ) {
   const xtremeXmasAPI = this.env.get("XTREME_XMAS_API")!;
+  const xmasSecret = this.env.get("XMAS_SECRET")!;
   if (xtremeXmasAPI == undefined) {
     console.error("XTREME_XMAS_API string not found upon request");
   }
   const abortController = new AbortController();
-  if (username && password && method !== `GET`) {
-    const bodyData = { username, password };
-    const bodyFormData = getFormData(bodyData);
+  if (body && method !== `GET`) {
+    const bodyFormData = getFormData(body);
     const res = await fetch(`${xtremeXmasAPI}/${route}`, {
       signal: abortController.signal,
       method,
       headers: {
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${xmasSecret} ${username}`,
       },
       body: bodyFormData,
     });
@@ -31,7 +30,7 @@ export const serverFetcher = server$(async function (
       signal: abortController.signal,
       method,
       headers: {
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${xmasSecret} ${username}`,
       },
     });
     const data = await res.json();

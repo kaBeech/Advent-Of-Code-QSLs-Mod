@@ -1,29 +1,21 @@
-import {
-  Resource,
-  component$,
-  useResource$,
-  useStore,
-  useVisibleTask$,
-} from "@builder.io/qwik";
+import { Resource, component$, useResource$, useStore } from "@builder.io/qwik";
 import type { DocumentHead } from "@builder.io/qwik-city";
 import { Link } from "@builder.io/qwik-city";
-import SignIn from "~/components/signIn/signIn";
-import SignOut from "~/components/signOut/signOut";
 import { serverFetcher } from "~/util/serverFetcher";
+import { useAuthSession } from "../plugin@auth";
+import { getGithubUserIdFromUserImage } from "~/util/getGithubUserIdFromUserImage";
 
 const gameID = 1;
 const dayID = 1;
 
 export default component$(() => {
+  const session = useAuthSession();
+  const userId = getGithubUserIdFromUserImage(session.value!.user!.image!);
+
   const state = useStore({
     gameID,
     dayID,
     buttonPresses: 0,
-    token: "undefined",
-  });
-
-  useVisibleTask$(() => {
-    state.token = localStorage.getItem("token")!;
   });
 
   const xtremeXmasUserDataResource = useResource$<any>(
@@ -34,22 +26,10 @@ export default component$(() => {
       const dayID = track(() => state.dayID);
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const buttonPresses = track(() => state.buttonPresses);
-      const token = track(() => state.token);
-      if (token === "undefined") {
-        return {
-          challengeModifier: "Loading...",
-          modifierOption: "Loading...",
-          currentRerollTokens: "Loading...",
-          currentDay: "Loading...",
-          currentDayCompleted: "Loading...",
-          part1Completed: "Loading...",
-          part2Completed: "Loading...",
-        };
-      }
-      console.log("xmasToken", token);
+
       const abortController = new AbortController();
       cleanup(() => abortController.abort("cleanup"));
-      const userData = await serverFetcher(`userdata`, "GET", token);
+      const userData = await serverFetcher(`userdata`, "GET", userId);
       const gameData = userData.Game.find(
         (game: { number: number }) => game.number === +gameID
       );
@@ -57,6 +37,7 @@ export default component$(() => {
         (day: { number: number }) => day.number === +dayID
       );
       return {
+        numberOfGames: JSON.stringify(userData.Game.length),
         challengeModifier: dayData.challengeModifierId
           ? dayData.ChallengeModifier.text
           : "None",
@@ -76,23 +57,8 @@ export default component$(() => {
     <div>
       <div>
         <h1 class="title">Xtreme Xmas Day Viewer</h1>
-        <SignIn />
-        <SignOut />
         <h2>Enter Game and Day IDs:</h2>
-        <input
-          class="pointer"
-          type="number"
-          onInput$={(ev: any) => (state.gameID = ev.target.value)}
-          value={gameID}
-          aria-labelledby="Game ID"
-        />
-        <input
-          class="pointer"
-          type="number"
-          onInput$={(ev: any) => (state.dayID = ev.target.value)}
-          value={dayID}
-          aria-labelledby="Day ID"
-        />
+
         <Resource
           value={xtremeXmasUserDataResource}
           onPending={() => {
@@ -107,35 +73,55 @@ export default component$(() => {
           }}
           onResolved={(xtremeXmasData) => {
             return (
-              <div class="flex column">
-                <h2>
-                  Challenge Modifier:{" "}
-                  <strong>{xtremeXmasData.challengeModifier}</strong>
-                </h2>
-                <h3>
-                  Modifier Option:{" "}
-                  <strong>{xtremeXmasData.modifierOption}</strong>
-                </h3>
-                <div>
-                  Current Reroll Tokens:{" "}
-                  <strong>{xtremeXmasData.currentRerollTokens}</strong>
+              <>
+                <input
+                  class="pointer"
+                  type="number"
+                  onInput$={(ev: any) => (state.gameID = ev.target.value)}
+                  value={gameID}
+                  min={1}
+                  max={xtremeXmasData.numberOfGames}
+                  aria-labelledby="Game ID"
+                />
+                <input
+                  class="pointer"
+                  type="number"
+                  onInput$={(ev: any) => (state.dayID = ev.target.value)}
+                  value={dayID}
+                  min={1}
+                  max={xtremeXmasData.currentDay}
+                  aria-labelledby="Day ID"
+                />
+                <div class="flex column">
+                  <h2>
+                    Challenge Modifier:{" "}
+                    <strong>{xtremeXmasData.challengeModifier}</strong>
+                  </h2>
+                  <h3>
+                    Modifier Option:{" "}
+                    <strong>{xtremeXmasData.modifierOption}</strong>
+                  </h3>
+                  <div>
+                    Current Reroll Tokens:{" "}
+                    <strong>{xtremeXmasData.currentRerollTokens}</strong>
+                  </div>
+                  <div>
+                    Current Day: <strong>{xtremeXmasData.currentDay}</strong>
+                  </div>
+                  <div>
+                    Current Day Completed?{" "}
+                    <strong>{xtremeXmasData.currentDayCompleted}</strong>
+                  </div>
+                  <div>
+                    Selected Day Part 1 Completed?{" "}
+                    <strong>{xtremeXmasData.part1Completed}</strong>
+                  </div>
+                  <div>
+                    Selected Day Part 2 Completed?{" "}
+                    <strong>{xtremeXmasData.part2Completed}</strong>
+                  </div>
                 </div>
-                <div>
-                  Current Day: <strong>{xtremeXmasData.currentDay}</strong>
-                </div>
-                <div>
-                  Current Day Completed?{" "}
-                  <strong>{xtremeXmasData.currentDayCompleted}</strong>
-                </div>
-                <div>
-                  Selected Day Part 1 Completed?{" "}
-                  <strong>{xtremeXmasData.part1Completed}</strong>
-                </div>
-                <div>
-                  Selected Day Part 2 Completed?{" "}
-                  <strong>{xtremeXmasData.part2Completed}</strong>
-                </div>
-              </div>
+              </>
             );
           }}
         />
@@ -144,7 +130,7 @@ export default component$(() => {
             await serverFetcher(
               `game/${state.gameID}/day/${state.dayID}/complete/part1`,
               "PUT",
-              localStorage.getItem("token")!
+              userId
             );
             state.buttonPresses++;
           }}
@@ -153,11 +139,7 @@ export default component$(() => {
         </button>
         <button
           onClick$={async () => {
-            const data = await serverFetcher(
-              `userdata`,
-              "GET",
-              localStorage.getItem("token")!
-            );
+            const data = await serverFetcher(`userdata`, "GET", userId);
             console.log(data);
             state.buttonPresses++;
           }}
@@ -177,7 +159,7 @@ export default component$(() => {
             await serverFetcher(
               `game/${state.gameID}/day/${state.dayID}/complete/part2`,
               "PUT",
-              localStorage.getItem("token")!
+              userId
             );
             state.buttonPresses++;
           }}
@@ -189,7 +171,7 @@ export default component$(() => {
             await serverFetcher(
               `game/${state.gameID}/day/complete`,
               "PUT",
-              localStorage.getItem("token")!
+              userId
             );
             state.buttonPresses++;
           }}
@@ -201,7 +183,7 @@ export default component$(() => {
             await serverFetcher(
               `game/${state.gameID}/day/${+state.dayID + 1}`,
               "PUT",
-              localStorage.getItem("token")!
+              userId
             );
             state.buttonPresses++;
           }}
@@ -213,7 +195,7 @@ export default component$(() => {
             await serverFetcher(
               `game/${state.gameID}/day/${state.dayID}/roll`,
               "PUT",
-              localStorage.getItem("token")!
+              userId
             );
             state.buttonPresses++;
           }}
@@ -225,7 +207,7 @@ export default component$(() => {
             await serverFetcher(
               `game/${state.gameID}/day/${state.dayID}/reroll/modifier`,
               "PUT",
-              localStorage.getItem("token")!
+              userId
             );
             state.buttonPresses++;
           }}
@@ -237,7 +219,7 @@ export default component$(() => {
             await serverFetcher(
               `game/${state.gameID}/day/${state.dayID}/reroll/option`,
               "PUT",
-              localStorage.getItem("token")!
+              userId
             );
             state.buttonPresses++;
           }}
