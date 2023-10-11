@@ -13,7 +13,7 @@ export const serverFetcher = server$(async function (
     console.error("XTREME_XMAS_API string not found upon request");
   }
   const abortController = new AbortController();
-  if (method !== `GET`) {
+  if (body && method !== `GET`) {
     const bodyFormData = getFormData(body);
     const res = await fetch(`${xtremeXmasAPI}/${route}`, {
       signal: abortController.signal,
