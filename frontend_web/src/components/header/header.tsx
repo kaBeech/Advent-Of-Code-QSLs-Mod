@@ -1,4 +1,6 @@
 import { component$ } from "@builder.io/qwik";
+import SignIn from "../signIn/signIn";
+import SignOut from "../signOut/signOut";
 
 export default component$(() => {
   return (
@@ -12,8 +14,8 @@ export default component$(() => {
           <div class="flex">
             {" "}
             <a href="/about">[About]</a> <a href="/events">[Events]</a>{" "}
-            <div>[Shop???]</div> <a href="/settings">[Settings]</a>{" "}
-            <div>[Log Out]</div> <div>NAME</div>{" "}
+            <div>[Shop???]</div> <a href="/settings">[Settings]</a> <SignIn />{" "}
+            <SignOut /> <div>NAME</div>{" "}
           </div>
           <div class="flex">
             {" "}

@@ -1,10 +1,14 @@
 import { component$ } from "@builder.io/qwik";
 import { useAuthSignin } from "~/routes/plugin@auth";
 
+// If we can guarantee that the user is redirected to the /test page,
+// then auth works great
+
 export default component$(() => {
   const signIn = useAuthSignin();
   return (
-    <button
+    <a
+      // href="/test"
       onClick$={() => {
         signIn.submit({
           providerId: "github",
@@ -12,7 +16,7 @@ export default component$(() => {
         });
       }}
     >
-      Sign In
-    </button>
+      [Sign In]
+    </a>
   );
 });
