@@ -38,6 +38,9 @@ export default component$(() => {
       const abortController = new AbortController();
       cleanup(() => abortController.abort("cleanup"));
       const userData = await serverFetcher(`userdata`, "GET", userId);
+      if (userData.Game.length < 1) {
+        return { numberOfGames: JSON.stringify(userData.Game.length) };
+      }
       const gameData = userData.Game.find(
         (game: { number: number }) => game.number === +gameID
       );
@@ -80,6 +83,16 @@ export default component$(() => {
             );
           }}
           onResolved={(xtremeXmasData) => {
+            if (+xtremeXmasData.numberOfGames < 1) {
+              return (
+                <div>
+                  <h2>
+                    Please <a href="/new">[Start a New Game!]</a>
+                  </h2>
+                </div>
+              );
+            }
+
             return (
               <>
                 <input
