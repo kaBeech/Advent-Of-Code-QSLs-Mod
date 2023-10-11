@@ -1,13 +1,9 @@
 import { component$ } from "@builder.io/qwik";
-import { Link, type DocumentHead } from "@builder.io/qwik-city";
+import type { DocumentHead } from "@builder.io/qwik-city";
 
 export default component$(() => {
   return (
     <>
-      <button>
-        <Link href="/game/">GAME</Link>
-      </button>
-
       <div role="presentation" class="ellipsis"></div>
       <div role="presentation" class="ellipsis ellipsis-purple"></div>
 
