@@ -44,7 +44,7 @@ router
   .get("/modifier", getChallengeModifiers)
   .get("/game", authenticate, getGames)
   .get("/game/:gameNumber", authenticate, getGame)
-  .post("/game", authenticate, startNewGame)
+  .put("/game/:gameNumber", authenticate, startNewGame)
   .delete("/game/:gameNumber", authenticate, deleteGame)
   .get("/game/:gameNumber/day", authenticate, getAllDays)
   .get("/game/:gameNumber/day/:dayNumber", authenticate, getDay)

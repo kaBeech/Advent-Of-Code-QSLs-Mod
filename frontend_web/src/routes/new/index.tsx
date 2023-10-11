@@ -84,22 +84,27 @@ export default component$(() => {
                   Number Of Games:{" "}
                   <strong>{xtremeXmasData.numberOfGames}</strong>
                 </div>
+                <button
+                  onClick$={async () => {
+                    await serverFetcher(
+                      `game/${xtremeXmasData.numberOfGames + 1}`,
+                      "PUT",
+                      userId,
+                      {
+                        name: state.title,
+                        year: state.year,
+                        playerName: state.playerName,
+                      }
+                    );
+                    state.buttonPresses++;
+                  }}
+                >
+                  Create New Game
+                </button>
               </div>
             );
           }}
         />
-        <button
-          onClick$={async () => {
-            await serverFetcher(`game`, "POST", userId, {
-              name: state.title,
-              year: state.year,
-              playerName: state.playerName,
-            });
-            state.buttonPresses++;
-          }}
-        >
-          Create New Game
-        </button>
       </div>
     </div>
   );
