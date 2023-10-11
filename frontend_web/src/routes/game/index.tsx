@@ -57,7 +57,6 @@ export default component$(() => {
 
   return (
     <div>
-      <Header />
       <div>
         <h1 class="title">Xtreme Xmas Day Viewer</h1>
         <SignIn />
