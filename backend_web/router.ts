@@ -19,11 +19,11 @@ import { logOut } from "./routes/user/logOut.ts";
 import { getChallengeModifiers } from "./routes/misc/getChallengeModifiers.ts";
 import { getHelloWorld } from "./routes/misc/getHelloWorld.ts";
 import { getSignupForm } from "./routes/misc/getSignupForm.ts";
-import { signUp } from "./routes/user/signUp.ts";
 import { logInWithPassword } from "./routes/user/logInWithPassword.ts";
 import { logInWithOAuth } from "./routes/user/logInWithOAuth.ts";
 import { getOAuthData } from "./routes/user/getOAuthData.ts";
 import { signUpLocalStrategy } from "./routes/misc/signUpLocalStrategy.ts";
+import { getOrCreateUser } from "./routes/user/getOrCreateUser.ts";
 
 type AppState = {
   session: Session;
@@ -33,7 +33,7 @@ export const router = new Router<AppState>();
 
 router
   .get("/", getHelloWorld)
-  .put("/user", authenticate, signUp)
+  .put("/user", authenticate, getOrCreateUser)
   .get("/sign-up", getSignupForm)
   .post("/sign-up", signUpLocalStrategy)
   .post("/log-in/local", logInWithPassword)
