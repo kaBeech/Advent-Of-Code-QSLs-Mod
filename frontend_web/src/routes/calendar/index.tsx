@@ -50,7 +50,7 @@ export default component$(() => {
   return (
     <div>
       <div>
-        <h1 class="title">Current Games</h1>
+        <h1 class="title">Calendar</h1>
         <Resource
           value={xtremeXmasUserDataResource}
           onPending={() => {
