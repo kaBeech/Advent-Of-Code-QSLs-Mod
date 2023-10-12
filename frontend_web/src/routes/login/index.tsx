@@ -1,11 +1,11 @@
 import { component$ } from "@builder.io/qwik";
-import SignIn from "~/components/signIn/signIn";
+import LogIn from "~/components/logIn/logIn";
 
 export default component$(() => {
   return (
     <>
       <p>
-        Please <SignIn /> to play!{" "}
+        Please <LogIn /> to play!{" "}
       </p>
     </>
   );
