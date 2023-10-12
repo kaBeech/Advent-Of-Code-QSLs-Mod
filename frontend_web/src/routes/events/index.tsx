@@ -76,6 +76,7 @@ export default component$(() => {
                 {xtremeXmasData.userData.Game.map((game) => (
                   <div>{game.name}</div>
                 ))}
+                <a href="/new">[New Game]</a>
               </>
             );
           }}
