@@ -1,5 +1,9 @@
 import { component$ } from "@builder.io/qwik";
-import type { DocumentHead } from "@builder.io/qwik-city";
+import type { DocumentHead, RequestHandler } from "@builder.io/qwik-city";
+
+export const onRequest: RequestHandler = (event) => {
+  throw event.redirect(302, `/game`);
+};
 
 export default component$(() => {
   return (
