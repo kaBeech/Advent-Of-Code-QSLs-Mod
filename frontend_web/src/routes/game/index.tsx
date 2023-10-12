@@ -75,10 +75,43 @@ export default component$(() => {
           onPending={() => {
             return (
               <div>
+                <input
+                  class="pointer"
+                  type="number"
+                  onInput$={(ev: any) => (state.gameID = ev.target.value)}
+                  value={state.gameID}
+                  min={1}
+                  max={1}
+                  aria-labelledby="Game ID"
+                />
+                <input
+                  class="pointer"
+                  type="number"
+                  onInput$={(ev: any) => (state.dayID = ev.target.value)}
+                  value={state.dayID}
+                  min={1}
+                  max={1}
+                  aria-labelledby="Day ID"
+                />
                 <h2>
                   Challenge Modifier: <strong>Loading...</strong>
                 </h2>
                 <h3>Modifier Option: Loading...</h3>
+                <div>
+                  Current Reroll Tokens: <strong>Loading...</strong>
+                </div>
+                <div>
+                  Current Day: <strong>Loading...</strong>
+                </div>
+                <div>
+                  Current Day Completed?: <strong>Loading...</strong>
+                </div>
+                <div>
+                  Selected Day Part 1 Completed?: <strong>Loading...</strong>
+                </div>
+                <div>
+                  Selected Day Part 2 Completed?: <strong>Loading...</strong>
+                </div>
               </div>
             );
           }}
