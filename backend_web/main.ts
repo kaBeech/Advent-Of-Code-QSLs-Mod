@@ -21,8 +21,11 @@ app.use(router.allowedMethods());
 
 app.use((ctx: Context) => {
   ctx.response.status = 404;
-  ctx.response.body =
-    `404 | Page not found! Requested ${ctx.request.method} on ${ctx.request.url}`;
+  const body = {
+    message:
+      `404 | Page not found! Requested ${ctx.request.method} on ${ctx.request.url}`,
+  };
+  ctx.response.body = body;
 });
 
 app.addEventListener("error", (evt) => {
