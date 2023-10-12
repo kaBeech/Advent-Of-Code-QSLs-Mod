@@ -41,7 +41,7 @@ export default component$((props: HeaderProps) => {
             <a href="/game">[Calendar]</a> <a href="/support">[XX++]</a>{" "}
             <a href="/sponsors">[Sponsors]</a>{" "}
             <a href="/leaderboard">[Leaderboard]</a>{" "}
-            <a href="/stats">[Stats]</a>
+            <a href="/stats">[Stats﹡]</a>
           </div>
         </div>
       </div>
