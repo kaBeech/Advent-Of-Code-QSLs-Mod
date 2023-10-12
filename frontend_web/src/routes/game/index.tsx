@@ -146,7 +146,7 @@ export default component$(() => {
             );
           }}
         />
-        <button
+        <a
           onClick$={async () => {
             await serverFetcher(
               `game/${state.gameID}/day/${state.dayID}/complete/part1`,
@@ -156,26 +156,18 @@ export default component$(() => {
             state.buttonPresses++;
           }}
         >
-          Complete Part 1
-        </button>
-        <button
+          [ Complete Part 1]
+        </a>
+        <a
           onClick$={async () => {
             const data = await serverFetcher(`userdata`, "GET", userId);
             console.log(data);
             state.buttonPresses++;
           }}
         >
-          Get Data
-        </button>
-        {/* <button
-          onClick$={async () => {
-            await serverFetcher(`login`, "GET");
-            state.buttonPresses++;
-          }}
-        >
-          Login
-        </button>{" "} */}
-        <button
+          [Get Data]
+        </a>
+        <a
           onClick$={async () => {
             await serverFetcher(
               `game/${state.gameID}/day/${state.dayID}/complete/part2`,
@@ -185,9 +177,9 @@ export default component$(() => {
             state.buttonPresses++;
           }}
         >
-          Complete Part 2
-        </button>
-        <button
+          [ Complete Part 2]
+        </a>
+        <a
           onClick$={async () => {
             await serverFetcher(
               `game/${state.gameID}/day/complete`,
@@ -197,9 +189,9 @@ export default component$(() => {
             state.buttonPresses++;
           }}
         >
-          Complete Day
-        </button>
-        <button
+          [Complete Day]
+        </a>
+        <a
           onClick$={async () => {
             await serverFetcher(
               `game/${state.gameID}/day/${+state.dayID + 1}`,
@@ -209,9 +201,9 @@ export default component$(() => {
             state.buttonPresses++;
           }}
         >
-          Start Next Day
-        </button>
-        <button
+          [ Start Next Day]
+        </a>
+        <a
           onClick$={async () => {
             await serverFetcher(
               `game/${state.gameID}/day/${state.dayID}/roll`,
@@ -221,9 +213,9 @@ export default component$(() => {
             state.buttonPresses++;
           }}
         >
-          Roll Initial Challenge Modifier
-        </button>
-        <button
+          [Roll Initial Challenge Modifier]
+        </a>
+        <a
           onClick$={async () => {
             await serverFetcher(
               `game/${state.gameID}/day/${state.dayID}/reroll/modifier`,
@@ -233,9 +225,9 @@ export default component$(() => {
             state.buttonPresses++;
           }}
         >
-          Reroll Challenge Modifier
-        </button>
-        <button
+          [Reroll Challenge Modifier]
+        </a>
+        <a
           onClick$={async () => {
             await serverFetcher(
               `game/${state.gameID}/day/${state.dayID}/reroll/option`,
@@ -245,8 +237,8 @@ export default component$(() => {
             state.buttonPresses++;
           }}
         >
-          Reroll Modifier Option
-        </button>
+          [Reroll Modifier Option]
+        </a>
         <a href="/new">[New Game]</a>
         <p>
           <Link href="../">{"<-- Back"}</Link>
