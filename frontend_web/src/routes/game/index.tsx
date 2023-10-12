@@ -247,6 +247,7 @@ export default component$(() => {
         >
           Reroll Modifier Option
         </button>
+        <a href="/new">[New Game]</a>
         <p>
           <Link href="../">{"<-- Back"}</Link>
         </p>
