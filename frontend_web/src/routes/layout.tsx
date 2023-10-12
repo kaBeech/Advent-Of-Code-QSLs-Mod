@@ -1,9 +1,21 @@
-import { component$, Slot, useStyles$ } from "@builder.io/qwik";
+import { $, component$, Slot, useStore, useStyles$ } from "@builder.io/qwik";
 import { routeLoader$ } from "@builder.io/qwik-city";
 import type { RequestHandler } from "@builder.io/qwik-city";
 
 import styles from "./styles.css?inline";
 import Header from "~/components/header/header";
+import type { Session } from "@auth/core/types";
+
+let isLoggedIn = false;
+
+export const onRequest: RequestHandler = (event) => {
+  const session: Session | null = event.sharedMap.get("session");
+  if (session && new Date(session.expires) > new Date()) {
+    isLoggedIn = true;
+  } else {
+    isLoggedIn = false;
+  }
+};
 
 export const onGet: RequestHandler = async ({ cacheControl }) => {
   // Control caching for this request for best performance and to reduce hosting costs:
@@ -24,9 +36,17 @@ export const useServerTimeLoader = routeLoader$(() => {
 
 export default component$(() => {
   useStyles$(styles);
+
+  const state = useStore({
+    isLoggedIn,
+  });
+
+  const toggleLoggedIn = $(() => {
+    state.isLoggedIn ? (state.isLoggedIn = false) : (state.isLoggedIn = true);
+  });
   return (
     <>
-      <Header />
+      <Header isLoggedIn={isLoggedIn} toggleLoggedIn={toggleLoggedIn} />
       <main>
         <Slot />
       </main>

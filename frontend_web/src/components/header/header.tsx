@@ -1,8 +1,21 @@
-import { component$ } from "@builder.io/qwik";
-import SignIn from "../signIn/signIn";
-import SignOut from "../signOut/signOut";
+import { $, component$, useStore } from "@builder.io/qwik";
+import LogInOrOut from "../logInOrOut/logInOrOut";
 
-export default component$(() => {
+interface HeaderProps {
+  isLoggedIn: boolean;
+  toggleLoggedIn: Function | any;
+}
+
+export default component$((props: HeaderProps) => {
+  console.log("Props", props.isLoggedIn);
+
+  const toggleLoggedIn = $(() => {
+    props.toggleLoggedIn();
+  });
+
+  const state = useStore({
+    isLoggedIn: props.isLoggedIn,
+  });
   return (
     <header>
       <div class={`flex`}>
@@ -14,8 +27,11 @@ export default component$(() => {
           <div class="flex">
             {" "}
             <a href="/about">[About]</a> <a href="/events">[Events]</a>{" "}
-            <div>[Shop???]</div> <a href="/settings">[Settings]</a> <SignIn />{" "}
-            <SignOut /> <div>NAME</div>{" "}
+            <div>[Shop???]</div> <a href="/settings">[Settings]</a>{" "}
+            <LogInOrOut
+              isLoggedIn={state.isLoggedIn}
+              toggleLoggedIn={toggleLoggedIn}
+            />
           </div>
           <div class="flex">
             {" "}
