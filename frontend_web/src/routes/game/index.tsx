@@ -116,49 +116,129 @@ export default component$(() => {
                 <div class="flex column">
                   <h2>
                     Challenge Modifier:{" "}
-                    <strong>{xtremeXmasData.challengeModifier}</strong>
+                    <strong>{xtremeXmasData.challengeModifier}</strong>{" "}
+                    {xtremeXmasData.challengeModifier === "None" ? (
+                      <a
+                        onClick$={async () => {
+                          await serverFetcher(
+                            `game/${state.gameID}/day/${state.dayID}/roll`,
+                            "PUT",
+                            userId
+                          );
+                          state.buttonPresses++;
+                        }}
+                      >
+                        [Roll Initial Challenge Modifier]
+                      </a>
+                    ) : (
+                      <a
+                        onClick$={async () => {
+                          await serverFetcher(
+                            `game/${state.gameID}/day/${state.dayID}/reroll/modifier`,
+                            "PUT",
+                            userId
+                          );
+                          state.buttonPresses++;
+                        }}
+                      >
+                        [Reroll Challenge Modifier]
+                      </a>
+                    )}
                   </h2>
                   <h3>
                     Modifier Option:{" "}
                     <strong>{xtremeXmasData.modifierOption}</strong>
+                    {xtremeXmasData.modifierOption === "None" ? (
+                      <></>
+                    ) : (
+                      <a
+                        onClick$={async () => {
+                          await serverFetcher(
+                            `game/${state.gameID}/day/${state.dayID}/reroll/option`,
+                            "PUT",
+                            userId
+                          );
+                          state.buttonPresses++;
+                        }}
+                      >
+                        [Reroll Modifier Option]
+                      </a>
+                    )}
                   </h3>
                   <div>
                     Current Reroll Tokens:{" "}
                     <strong>{xtremeXmasData.currentRerollTokens}</strong>
                   </div>
                   <div>
-                    Current Day: <strong>{xtremeXmasData.currentDay}</strong>
+                    Current Day: <strong>{xtremeXmasData.currentDay}</strong>{" "}
+                    <a
+                      onClick$={async () => {
+                        await serverFetcher(
+                          `game/${state.gameID}/day/${+state.dayID + 1}`,
+                          "PUT",
+                          userId
+                        );
+                        state.buttonPresses++;
+                      }}
+                    >
+                      [ Start Next Day]
+                    </a>
                   </div>
                   <div>
                     Current Day Completed?{" "}
-                    <strong>{xtremeXmasData.currentDayCompleted}</strong>
+                    <strong>{xtremeXmasData.currentDayCompleted}</strong>{" "}
+                    <a
+                      onClick$={async () => {
+                        await serverFetcher(
+                          `game/${state.gameID}/day/complete`,
+                          "PUT",
+                          userId
+                        );
+                        state.buttonPresses++;
+                      }}
+                    >
+                      [Complete Day]
+                    </a>
                   </div>
                   <div>
                     Selected Day Part 1 Completed?{" "}
-                    <strong>{xtremeXmasData.part1Completed}</strong>
+                    <strong>{xtremeXmasData.part1Completed}</strong>{" "}
+                    <a
+                      onClick$={async () => {
+                        await serverFetcher(
+                          `game/${state.gameID}/day/${state.dayID}/complete/part1`,
+                          "PUT",
+                          userId
+                        );
+                        state.buttonPresses++;
+                      }}
+                    >
+                      [Complete Part 1]
+                    </a>
                   </div>
                   <div>
                     Selected Day Part 2 Completed?{" "}
-                    <strong>{xtremeXmasData.part2Completed}</strong>
-                  </div>
+                    <strong>{xtremeXmasData.part2Completed}</strong>{" "}
+                    <a
+                      onClick$={async () => {
+                        await serverFetcher(
+                          `game/${state.gameID}/day/${state.dayID}/complete/part2`,
+                          "PUT",
+                          userId
+                        );
+                        state.buttonPresses++;
+                      }}
+                    >
+                      [Complete Part 2]
+                    </a>
+                  </div>{" "}
                 </div>
               </>
             );
           }}
         />
-        <a
-          onClick$={async () => {
-            await serverFetcher(
-              `game/${state.gameID}/day/${state.dayID}/complete/part1`,
-              "PUT",
-              userId
-            );
-            state.buttonPresses++;
-          }}
-        >
-          [ Complete Part 1]
-        </a>
-        <a
+
+        {/* <a
           onClick$={async () => {
             const data = await serverFetcher(`userdata`, "GET", userId);
             console.log(data);
@@ -166,79 +246,8 @@ export default component$(() => {
           }}
         >
           [Get Data]
-        </a>
-        <a
-          onClick$={async () => {
-            await serverFetcher(
-              `game/${state.gameID}/day/${state.dayID}/complete/part2`,
-              "PUT",
-              userId
-            );
-            state.buttonPresses++;
-          }}
-        >
-          [ Complete Part 2]
-        </a>
-        <a
-          onClick$={async () => {
-            await serverFetcher(
-              `game/${state.gameID}/day/complete`,
-              "PUT",
-              userId
-            );
-            state.buttonPresses++;
-          }}
-        >
-          [Complete Day]
-        </a>
-        <a
-          onClick$={async () => {
-            await serverFetcher(
-              `game/${state.gameID}/day/${+state.dayID + 1}`,
-              "PUT",
-              userId
-            );
-            state.buttonPresses++;
-          }}
-        >
-          [ Start Next Day]
-        </a>
-        <a
-          onClick$={async () => {
-            await serverFetcher(
-              `game/${state.gameID}/day/${state.dayID}/roll`,
-              "PUT",
-              userId
-            );
-            state.buttonPresses++;
-          }}
-        >
-          [Roll Initial Challenge Modifier]
-        </a>
-        <a
-          onClick$={async () => {
-            await serverFetcher(
-              `game/${state.gameID}/day/${state.dayID}/reroll/modifier`,
-              "PUT",
-              userId
-            );
-            state.buttonPresses++;
-          }}
-        >
-          [Reroll Challenge Modifier]
-        </a>
-        <a
-          onClick$={async () => {
-            await serverFetcher(
-              `game/${state.gameID}/day/${state.dayID}/reroll/option`,
-              "PUT",
-              userId
-            );
-            state.buttonPresses++;
-          }}
-        >
-          [Reroll Modifier Option]
-        </a>
+        </a> */}
+
         <a href="/new">[New Game]</a>
         <p>
           <Link href="../">{"<-- Back"}</Link>
