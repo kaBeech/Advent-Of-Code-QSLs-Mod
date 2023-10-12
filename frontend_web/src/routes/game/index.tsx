@@ -47,6 +47,7 @@ export default component$(() => {
       const dayData = gameData.Day.find(
         (day: { number: number }) => day.number === +dayID
       );
+      console.log("gameData", gameData);
       return {
         numberOfGames: JSON.stringify(userData.Game.length),
         challengeModifier: dayData.challengeModifierId
@@ -57,7 +58,7 @@ export default component$(() => {
           : "None",
         currentRerollTokens: gameData.currentRerollTokens,
         currentDay: gameData.currentDay,
-        currentDayCompleted: dayData.currentDayCompleted ? "Yes" : "No",
+        currentDayCompleted: gameData.currentDayCompleted ? "Yes" : "No",
         part1Completed: dayData.part1Completed ? "Yes" : "No",
         part2Completed: dayData.part2Completed ? "Yes" : "No",
       };
@@ -130,6 +131,8 @@ export default component$(() => {
                       >
                         [Roll Initial Challenge Modifier]
                       </a>
+                    ) : xtremeXmasData.part2Completed === "Yes" ? (
+                      <></>
                     ) : (
                       <a
                         onClick$={async () => {
@@ -148,7 +151,8 @@ export default component$(() => {
                   <h3>
                     Modifier Option:{" "}
                     <strong>{xtremeXmasData.modifierOption}</strong>
-                    {xtremeXmasData.modifierOption === "None" ? (
+                    {xtremeXmasData.modifierOption === "None" ||
+                    xtremeXmasData.part2Completed === "Yes" ? (
                       <></>
                     ) : (
                       <a
@@ -171,66 +175,87 @@ export default component$(() => {
                   </div>
                   <div>
                     Current Day: <strong>{xtremeXmasData.currentDay}</strong>{" "}
-                    <a
-                      onClick$={async () => {
-                        await serverFetcher(
-                          `game/${state.gameID}/day/${+state.dayID + 1}`,
-                          "PUT",
-                          userId
-                        );
-                        state.buttonPresses++;
-                      }}
-                    >
-                      [ Start Next Day]
-                    </a>
+                    {xtremeXmasData.currentDayCompleted !== "Yes" ||
+                    xtremeXmasData.currentDay != +state.dayID ? (
+                      <></>
+                    ) : (
+                      <a
+                        onClick$={async () => {
+                          await serverFetcher(
+                            `game/${state.gameID}/day/${+state.dayID + 1}`,
+                            "PUT",
+                            userId
+                          );
+                          state.buttonPresses++;
+                        }}
+                      >
+                        [ Start Next Day]
+                      </a>
+                    )}
                   </div>
                   <div>
                     Current Day Completed?{" "}
                     <strong>{xtremeXmasData.currentDayCompleted}</strong>{" "}
-                    <a
-                      onClick$={async () => {
-                        await serverFetcher(
-                          `game/${state.gameID}/day/complete`,
-                          "PUT",
-                          userId
-                        );
-                        state.buttonPresses++;
-                      }}
-                    >
-                      [Complete Day]
-                    </a>
+                    {xtremeXmasData.part2Completed !== "Yes" ||
+                    xtremeXmasData.currentDayCompleted === "Yes" ||
+                    xtremeXmasData.currentDay != +state.dayID ? (
+                      <></>
+                    ) : (
+                      <a
+                        onClick$={async () => {
+                          await serverFetcher(
+                            `game/${state.gameID}/day/complete`,
+                            "PUT",
+                            userId
+                          );
+                          state.buttonPresses++;
+                        }}
+                      >
+                        [Complete Day]
+                      </a>
+                    )}
                   </div>
                   <div>
                     Selected Day Part 1 Completed?{" "}
                     <strong>{xtremeXmasData.part1Completed}</strong>{" "}
-                    <a
-                      onClick$={async () => {
-                        await serverFetcher(
-                          `game/${state.gameID}/day/${state.dayID}/complete/part1`,
-                          "PUT",
-                          userId
-                        );
-                        state.buttonPresses++;
-                      }}
-                    >
-                      [Complete Part 1]
-                    </a>
+                    {xtremeXmasData.challengeModifier === "None" ||
+                    xtremeXmasData.part1Completed === "Yes" ? (
+                      <></>
+                    ) : (
+                      <a
+                        onClick$={async () => {
+                          await serverFetcher(
+                            `game/${state.gameID}/day/${state.dayID}/complete/part1`,
+                            "PUT",
+                            userId
+                          );
+                          state.buttonPresses++;
+                        }}
+                      >
+                        [Complete Part 1]
+                      </a>
+                    )}
                   </div>
                   <div>
                     Selected Day Part 2 Completed?{" "}
                     <strong>{xtremeXmasData.part2Completed}</strong>{" "}
-                    <a
-                      onClick$={async () => {
-                        await serverFetcher(
-                          `game/${state.gameID}/day/${state.dayID}/complete/part2`,
-                          "PUT",
-                          userId
-                        );
-                        state.buttonPresses++;
-                      }}
-                    >
-                      [Complete Part 2]
-                    </a>
+                    {xtremeXmasData.part1Completed !== "Yes" ||
+                    xtremeXmasData.part2Completed === "Yes" ? (
+                      <></>
+                    ) : (
+                      <a
+                        onClick$={async () => {
+                          await serverFetcher(
+                            `game/${state.gameID}/day/${state.dayID}/complete/part2`,
+                            "PUT",
+                            userId
+                          );
+                          state.buttonPresses++;
+                        }}
+                      >
+                        [Complete Part 2]
+                      </a>
+                    )}
                   </div>{" "}
                 </div>
               </>
