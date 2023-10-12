@@ -90,7 +90,7 @@ export default component$(() => {
                   Number Of Games:{" "}
                   <strong>{xtremeXmasData.numberOfGames}</strong>
                 </div>
-                <button
+                <a
                   onClick$={async () => {
                     await serverFetcher(
                       `game/${+xtremeXmasData.numberOfGames + 1}`,
@@ -105,8 +105,8 @@ export default component$(() => {
                     state.buttonPresses++;
                   }}
                 >
-                  Create New Game
-                </button>
+                  [Create New Game]
+                </a>
               </div>
             );
           }}

@@ -8,7 +8,7 @@ export default component$(() => {
       // href="/"
       onClick$={() => signOut.submit({ callbackUrl: "/" })}
     >
-      [Sign Out]
+      [Log Out]
     </a>
   );
 });

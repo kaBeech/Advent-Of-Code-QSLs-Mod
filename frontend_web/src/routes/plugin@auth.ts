@@ -10,6 +10,27 @@ export const { onRequest, useAuthSession, useAuthSignin, useAuthSignout } =
       GitHub({
         clientId: env.get("GITHUB_ID")!,
         clientSecret: env.get("GITHUB_SECRET")!,
+        profile(profile) {
+          // Create a user in the database if one doesn't yet exist
+          const abortController = new AbortController();
+          fetch(`${env.get("XTREME_XMAS_API")}/user`, {
+            signal: abortController.signal,
+            method: "PUT",
+            headers: {
+              Authorization: `Bearer ${
+                env.get("XMAS_SECRET")
+              } githubtest${profile.id}`,
+            },
+          });
+
+          // Return profile info
+          return {
+            id: profile.id.toString(),
+            name: profile.name ?? profile.login,
+            email: profile.email,
+            image: profile.avatar_url,
+          };
+        },
       }),
     ] as Provider[],
   }));
