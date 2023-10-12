@@ -1,6 +1,5 @@
 import { Resource, component$, useResource$, useStore } from "@builder.io/qwik";
 import type { DocumentHead, RequestHandler } from "@builder.io/qwik-city";
-import { Link } from "@builder.io/qwik-city";
 import { serverFetcher } from "~/util/serverFetcher";
 import { useAuthSession } from "../plugin@auth";
 import { getGithubUserIdFromUserImage } from "~/util/getGithubUserIdFromUserImage";
@@ -262,21 +261,7 @@ export default component$(() => {
             );
           }}
         />
-
-        {/* <a
-          onClick$={async () => {
-            const data = await serverFetcher(`userdata`, "GET", userId);
-            console.log(data);
-            state.buttonPresses++;
-          }}
-        >
-          [Get Data]
-        </a> */}
-
         <a href="/new">[New Game]</a>
-        <p>
-          <Link href="../">{"<-- Back"}</Link>
-        </p>
       </div>
     </div>
   );
