@@ -117,7 +117,9 @@ export default component$(() => {
                   <h2>
                     Challenge Modifier:{" "}
                     <strong>{xtremeXmasData.challengeModifier}</strong>{" "}
-                    {xtremeXmasData.challengeModifier === "None" ? (
+                    {xtremeXmasData.part2Completed === "Yes" ? (
+                      <></>
+                    ) : xtremeXmasData.challengeModifier === "None" ? (
                       <a
                         onClick$={async () => {
                           await serverFetcher(
@@ -130,8 +132,6 @@ export default component$(() => {
                       >
                         [Roll Initial Challenge Modifier]
                       </a>
-                    ) : xtremeXmasData.part2Completed === "Yes" ? (
-                      <></>
                     ) : (
                       <a
                         onClick$={async () => {
