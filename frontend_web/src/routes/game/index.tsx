@@ -99,7 +99,7 @@ export default component$(() => {
                   class="pointer"
                   type="number"
                   onInput$={(ev: any) => (state.gameID = ev.target.value)}
-                  value={gameID}
+                  value={state.gameID}
                   min={1}
                   max={xtremeXmasData.numberOfGames}
                   aria-labelledby="Game ID"
@@ -108,7 +108,7 @@ export default component$(() => {
                   class="pointer"
                   type="number"
                   onInput$={(ev: any) => (state.dayID = ev.target.value)}
-                  value={dayID}
+                  value={state.dayID}
                   min={1}
                   max={xtremeXmasData.currentDay}
                   aria-labelledby="Day ID"
