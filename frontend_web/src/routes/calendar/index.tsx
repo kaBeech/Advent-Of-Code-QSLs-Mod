@@ -50,7 +50,7 @@ export default component$(() => {
   return (
     <div>
       <div>
-        <h1 class="title">Current Games</h1>
+        <h1 class="title">Calendar</h1>
         <Resource
           value={xtremeXmasUserDataResource}
           onPending={() => {
@@ -61,6 +61,7 @@ export default component$(() => {
             );
           }}
           onResolved={(xtremeXmasData) => {
+            console.log(xtremeXmasData.userData.Game);
             if (+xtremeXmasData.numberOfGames < 1) {
               return (
                 <div>
@@ -73,10 +74,7 @@ export default component$(() => {
 
             return (
               <>
-                {xtremeXmasData.userData.Game.map((game) => (
-                  <div>{game.name}</div>
-                ))}
-                <a href="/new">[New Game]</a>
+                <a href="/game">[Click Here!]</a>
               </>
             );
           }}
@@ -87,7 +85,7 @@ export default component$(() => {
 });
 
 export const head: DocumentHead = {
-  title: "Xtreme Xmas - Events",
+  title: "Xtreme Xmas - Day Viewer",
   meta: [
     {
       name: "description",

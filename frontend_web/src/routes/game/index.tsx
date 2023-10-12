@@ -146,7 +146,6 @@ export default component$(() => {
                   max={xtremeXmasData.currentDay}
                   aria-labelledby="Day ID"
                 />
-                <a href="/new">[New Game]</a>
                 <div class="flex column">
                   <h2>
                     Challenge Modifier:{" "}
