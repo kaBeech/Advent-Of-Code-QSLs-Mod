@@ -1,22 +1,14 @@
 import { component$ } from "@builder.io/qwik";
 
-// export default component$(() => {
-//   return (
-//     <>
-//       <h1>About!</h1>
-//     </>
-//   );
-// });
-
 import { Resource, useResource$, useStore } from "@builder.io/qwik";
 import type { DocumentHead } from "@builder.io/qwik-city";
 import { serverFetcher } from "~/util/serverFetcher";
-// import { useAuthSession } from "../plugin@auth";
-// import { getGithubUserIdFromUserImage } from "~/util/getGithubUserIdFromUserImage";
+import { useAuthSession } from "../plugin@auth";
+import { getGithubUserIdFromUserImage } from "~/util/getGithubUserIdFromUserImage";
 
 export default component$(() => {
-  // const session = useAuthSession();
-  const userId = "githubtest97925125";
+  const session = useAuthSession();
+  const userId = getGithubUserIdFromUserImage(session.value!.user!.image!);
 
   const state = useStore({
     buttonPresses: 0,
