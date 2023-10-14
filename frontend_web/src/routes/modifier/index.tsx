@@ -1,15 +1,9 @@
 import { component$ } from "@builder.io/qwik";
-
 import { Resource, useResource$, useStore } from "@builder.io/qwik";
 import type { DocumentHead } from "@builder.io/qwik-city";
 import { serverFetcher } from "~/util/serverFetcher";
-import { useAuthSession } from "../plugin@auth";
-import { getGithubUserIdFromUserImage } from "~/util/getGithubUserIdFromUserImage";
 
 export default component$(() => {
-  const session = useAuthSession();
-  const userId = getGithubUserIdFromUserImage(session.value!.user!.image!);
-
   const state = useStore({
     buttonPresses: 0,
   });
@@ -21,7 +15,7 @@ export default component$(() => {
 
       const abortController = new AbortController();
       cleanup(() => abortController.abort("cleanup"));
-      const userData = await serverFetcher(`modifier`, "GET", userId);
+      const userData = await serverFetcher(`modifier`, "GET");
       const numberOfGames = JSON.stringify(userData);
       return {
         numberOfGames: numberOfGames ? numberOfGames : "None",
