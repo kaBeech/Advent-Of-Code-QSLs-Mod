@@ -2,33 +2,45 @@ import { component$ } from "@builder.io/qwik";
 import { renderSpentTokens } from "~/util/renderSpentTokens";
 import { renderTokens } from "~/util/renderTokens";
 
-interface DayLinkProps {
-  isLocked: boolean;
-  dayNumber: number;
+interface DayLinkData {
   challengeModifier: string;
   modifierOption: string;
   score: number;
   isCompleted: boolean;
-  toggleLoggedIn: Function | any;
   tokensGained: number;
   tokensSpent: number;
+}
+
+interface DayLinkProps {
+  dayNumber: number;
+  dayLinkData?: DayLinkData;
 }
 
 export default component$((props: DayLinkProps) => {
   return (
     <>
-      {props.isLocked ? (
-        <div>Day {props.dayNumber}</div>
-      ) : (
+      {props.dayLinkData ? (
         <a href={`day/${props.dayNumber}`}>
-          Day {props.dayNumber}: {props.challengeModifier},{" "}
-          {props.modifierOption},{" "}
-          {props.isCompleted
-            ? `Completed, ${props.score} points`
+          Day {props.dayNumber}: {props.dayLinkData.challengeModifier},{" "}
+          {props.dayLinkData.modifierOption},{" "}
+          {props.dayLinkData.isCompleted
+            ? `Completed, ${props.dayLinkData.score} points`
             : "Not Completed"}{" "}
-          <span class="token">{renderTokens(props.tokensGained)}</span>
-          <span class="tokenSpent">{renderSpentTokens(props.tokensSpent)}</span>
+          <span class="token">
+            {renderTokens(
+              props.dayLinkData.tokensGained
+                ? props.dayLinkData.tokensGained
+                : 0
+            )}
+          </span>
+          <span class="tokenSpent">
+            {renderSpentTokens(
+              props.dayLinkData.tokensSpent ? props.dayLinkData.tokensSpent : 0
+            )}
+          </span>
         </a>
+      ) : (
+        <div>Day {props.dayNumber}</div>
       )}
     </>
   );
