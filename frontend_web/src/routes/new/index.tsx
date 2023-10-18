@@ -38,7 +38,7 @@ export default component$(() => {
         numberOfGames = +JSON.stringify(userData.Game.length);
       }
       return {
-        numberOfGames: numberOfGames ? numberOfGames : 0,
+        numberOfGames: +numberOfGames > 0 ? numberOfGames : 0,
       };
     }
   );
@@ -105,7 +105,6 @@ export default component$(() => {
                         playerName: state.playerName,
                       }
                     );
-                    console.log("res", res);
                     state.buttonPresses++;
                     window.location.href = `/game/${res.number}`;
                   }}
