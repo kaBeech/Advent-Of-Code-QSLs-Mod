@@ -52,7 +52,7 @@ export default component$((props: DayLinkProps) => {
   tokensSpent += props.dayLinkData.challengeModifierRerollsUsed * 2;
   tokensSpent += props.dayLinkData.modifierOptionRerollsUsed;
 
-  const dayDataString = ` ${challengeModifier}${modifierOption}${score} points, `;
+  const dayDataString = ` ${challengeModifier}${modifierOption}${score} points `;
   let frontPadding = "";
   let endPadding = "";
   if (dayDataString.length < 55) {
