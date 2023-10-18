@@ -41,13 +41,18 @@ export default component$(() => {
         <Resource
           value={gameDataResource}
           onPending={() => {
+            const pendingDays = [];
+            for (let i = 1; i <= 25; i++) {
+              pendingDays.push({ number: i });
+            }
             return (
               <>
-                {() => {
-                  for (let i = 1; i <= 25; i++) {
-                    <div>Day {i}</div>;
-                  }
-                }}
+                {pendingDays.map((day: { number: number }) => (
+                  <DayLink
+                    key={`pendingDay-${day.number}`}
+                    dayNumber={day.number}
+                  />
+                ))}
               </>
             );
           }}
