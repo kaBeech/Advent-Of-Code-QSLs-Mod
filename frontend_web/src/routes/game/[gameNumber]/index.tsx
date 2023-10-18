@@ -59,13 +59,21 @@ export default component$(() => {
           }}
           onResolved={(gameData) => {
             if (gameData.game.currentDay === undefined) {
+              const dummyDays = [];
+              for (let i = 25; i > 0; i--) {
+                dummyDays.push({ number: i });
+              }
               return (
-                <div>
-                  <h2>
-                    Game not found - please try again or{" "}
-                    <a href="/new">[start a new game!]</a>
-                  </h2>
-                </div>
+                <>
+                  {dummyDays.map((day: { number: number }) => (
+                    <DayLink
+                      key={`lockedDay-${day.number}`}
+                      dayNumber={day.number}
+                    />
+                  ))}
+                  <br />
+                  <a href="/new">[Start a New Game!]</a>
+                </>
               );
             }
             const lockedDays = [];
