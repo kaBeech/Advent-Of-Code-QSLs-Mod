@@ -82,6 +82,33 @@ export async function getUserBySerializedId(serializedId: string) {
   return user;
 }
 
+export async function getUserByIdWithRelations(
+  userId: string,
+) {
+  const user = await prisma.user.findUniqueOrThrow({
+    where: {
+      id: userId,
+    },
+    include: {
+      Game: {
+        include: {
+          Day: {
+            include: {
+              ChallengeModifier: {
+                include: {
+                  ModifierOption: true,
+                },
+              },
+              ModifierOption: true,
+            },
+          },
+        },
+      },
+    },
+  });
+  return user;
+}
+
 export async function updateUser(user: User) {
   const result = await prisma.user.update({
     where: {
@@ -138,33 +165,6 @@ export async function getGameById(id: number) {
     },
   });
   return game;
-}
-
-export async function getUserByIdWithRelations(
-  userId: string,
-) {
-  const user = await prisma.user.findUniqueOrThrow({
-    where: {
-      id: userId,
-    },
-    include: {
-      Game: {
-        include: {
-          Day: {
-            include: {
-              ChallengeModifier: {
-                include: {
-                  ModifierOption: true,
-                },
-              },
-              ModifierOption: true,
-            },
-          },
-        },
-      },
-    },
-  });
-  return user;
 }
 
 export async function getGameByNumberAndUserIdWithRelations(
