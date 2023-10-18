@@ -38,7 +38,7 @@ export default component$(() => {
   return (
     <div>
       <div>
-        <h1 class="title">Xtreme Xmas Game Viewer</h1>
+        <br />
         <Resource
           value={gameDataResource}
           onPending={() => {
