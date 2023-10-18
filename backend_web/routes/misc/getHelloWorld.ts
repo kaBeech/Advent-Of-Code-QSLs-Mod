@@ -1,7 +1,8 @@
 import { Context } from "https://deno.land/x/oak@v12.6.1/mod.ts";
 
 export const getHelloWorld = (ctx: Context) => {
-  ctx.response.body = `<html lang="en">
+  ctx.response.body = {
+    message: `<html lang="en">
   <head>
     <meta charset="UTF-8">
     <title></title>
@@ -16,5 +17,6 @@ export const getHelloWorld = (ctx: Context) => {
       <button>Sign Up</button>
     </form>
   </body>
-  </html>`;
+  </html>`,
+  };
 };

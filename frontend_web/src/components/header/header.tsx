@@ -8,8 +8,6 @@ interface HeaderProps {
 }
 
 export default component$((props: HeaderProps) => {
-  console.log("Props", props.isLoggedIn);
-
   const toggleLoggedIn = $(() => {
     props.toggleLoggedIn();
   });

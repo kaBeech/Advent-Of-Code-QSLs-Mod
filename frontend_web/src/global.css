@@ -30,7 +30,7 @@ html {
 :root {
   --xxmas-dark-background: hsl(240, 40%, 10%);
   --xxmas-dark-text: hsl(0, 0%, 80%);
-  --xxmas-red-text: hsl(0, 100%, 36%);
+  --xxmas-red-text: hsl(0, 100%, 48%);
   --xxmas-green-text: hsl(140, 99%, 29%);
   --xxmas-gold-text: hsl(63, 100%, 69%);
 }
@@ -56,4 +56,12 @@ a {
 
 .column {
   flex-direction: column;
+}
+
+.token {
+  color: var(--xxmas-gold-text);
+}
+
+.tokenSpent {
+  color: var(--xxmas-red-text);
 }

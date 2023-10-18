@@ -5,8 +5,8 @@ import { useAuthSession } from "../plugin@auth";
 import { getGithubUserIdFromUserImage } from "~/util/getGithubUserIdFromUserImage";
 import type { Session } from "@auth/core/types";
 
-const gameID = 1;
-const dayID = 1;
+const gameNumber = 1;
+const dayNumber = 1;
 
 export const onRequest: RequestHandler = (event) => {
   const session: Session | null = event.sharedMap.get("session");
@@ -20,17 +20,17 @@ export default component$(() => {
   const userId = getGithubUserIdFromUserImage(session.value!.user!.image!);
 
   const state = useStore({
-    gameID,
-    dayID,
+    gameNumber,
+    dayNumber,
     buttonPresses: 0,
   });
 
   const xtremeXmasUserDataResource = useResource$<any>(
     async ({ track, cleanup }) => {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      const gameID = track(() => state.gameID);
+      const gameNumber = track(() => state.gameNumber);
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      const dayID = track(() => state.dayID);
+      const dayNumber = track(() => state.dayNumber);
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const buttonPresses = track(() => state.buttonPresses);
 
@@ -73,7 +73,7 @@ export default component$(() => {
 
             return (
               <>
-                {xtremeXmasData.userData.Game.map((game) => (
+                {xtremeXmasData.userData.Game.map((game: { name: string }) => (
                   <div>{game.name}</div>
                 ))}
                 <a href="/new">[New Game]</a>

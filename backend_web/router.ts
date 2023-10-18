@@ -24,6 +24,7 @@ import { logInWithOAuth } from "./routes/user/logInWithOAuth.ts";
 import { getOAuthData } from "./routes/user/getOAuthData.ts";
 import { signUpLocalStrategy } from "./routes/misc/signUpLocalStrategy.ts";
 import { getOrCreateUser } from "./routes/user/getOrCreateUser.ts";
+import { getGameData } from "./routes/game/getGameData.ts";
 
 type AppState = {
   session: Session;
@@ -41,6 +42,7 @@ router
   .get("/oauth2/callback", getOAuthData)
   .get("/logout", authenticate, logOut)
   .get("/userdata", authenticate, getUserData)
+  .get("/gamedata/:gameNumber", authenticate, getGameData)
   .get("/modifier", getChallengeModifiers)
   .get("/game", authenticate, getGames)
   .get("/game/:gameNumber", authenticate, getGame)
