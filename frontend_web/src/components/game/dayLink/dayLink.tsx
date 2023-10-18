@@ -42,7 +42,7 @@ export default component$((props: DayLinkProps) => {
     ? props.dayLinkData.ModifierOption.name + ", "
     : "";
   let score = String(props.dayLinkData.netScore);
-  if (+score <= 0) {
+  if (+score >= 0) {
     score = "+" + score;
   }
   let tokensGained = 0;
