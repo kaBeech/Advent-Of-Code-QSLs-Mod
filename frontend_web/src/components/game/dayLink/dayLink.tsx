@@ -24,14 +24,19 @@ export interface DayLinkProps {
 
 export default component$((props: DayLinkProps) => {
   if (!props.dayLinkData) {
-    return <div>Day {props.dayNumber}: Not Started</div>;
+    return (
+      <div>
+        #######################################################{" "}
+        {props.dayNumber}
+      </div>
+    );
   }
 
   const challengeModifier = props.dayLinkData.ChallengeModifier
-    ? props.dayLinkData.ChallengeModifier.name + ","
+    ? props.dayLinkData.ChallengeModifier.name + ", "
     : "";
   const modifierOption = props.dayLinkData.ModifierOption?.name
-    ? props.dayLinkData.ModifierOption.name + ","
+    ? props.dayLinkData.ModifierOption.name + ", "
     : "";
   const score = 0;
   let tokensGained = 0;
@@ -41,14 +46,22 @@ export default component$((props: DayLinkProps) => {
   tokensSpent += props.dayLinkData.challengeModifierRerollsUsed * 2;
   tokensSpent += props.dayLinkData.modifierOptionRerollsUsed;
 
+  let dayDataString = ` ${challengeModifier}${modifierOption}${score} points, `;
+  if (dayDataString.length < 55) {
+    const frontPadding = (55 - dayDataString.length) / 2;
+    let endPadding = Math.floor(frontPadding);
+    if (frontPadding !== endPadding) {
+      endPadding += 1;
+    }
+    dayDataString =
+      "#".repeat(frontPadding) + dayDataString + "#".repeat(endPadding) + " ";
+  }
+
   return (
     <div>
       <a href={`day/${props.dayNumber}`}>
-        Day {props.dayNumber}:{" "}
-        {props.dayLinkData.part2Completed
-          ? `Completed, ${score} points, `
-          : "In Progress, "}
-        {challengeModifier} {modifierOption}{" "}
+        {dayDataString}
+        {props.dayNumber < 10 ? " " + props.dayNumber : props.dayNumber}{" "}
         <span class="token">{renderTokens(tokensGained)}</span>
         <span class="tokenSpent">{renderSpentTokens(tokensSpent)}</span>
       </a>
