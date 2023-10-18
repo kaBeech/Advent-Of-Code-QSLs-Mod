@@ -17,6 +17,8 @@ export const exampleGame = {
   "currentDayCompleted": false,
   "currentRerollTokens": 7,
   "rerollTokensSpent": 0,
+  "rerollTokensSpentDuringPart2Raw": 0,
+  "rerollTokensSpentDuringPart2Limited": 0,
   "repositoryLink": null,
   "progressSheetLink": null,
   "public": false,
