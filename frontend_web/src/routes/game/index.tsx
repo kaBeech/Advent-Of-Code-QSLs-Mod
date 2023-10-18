@@ -11,21 +11,13 @@ export const onRequest: RequestHandler = (event) => {
 
 export default component$(() => {
   return (
-    <>
-      <div class="screenContents justifyCenter">
-        Oh! Looks like the redirect didn't work. Maybe try{" "}
-        <Link class="link" href="game/1">
-          this link
-        </Link>
-        ?
-      </div>
-      <div class="container container-center container-spacing-xl">
-        <h3>
-          You can <span class="highlight">count</span>
-          <br /> on me
-        </h3>
-      </div>
-    </>
+    <div>
+      Oh! Looks like the redirect didn't work. Maybe try{" "}
+      <Link class="link" href="game/1">
+        this link
+      </Link>
+      ?
+    </div>
   );
 });
 
