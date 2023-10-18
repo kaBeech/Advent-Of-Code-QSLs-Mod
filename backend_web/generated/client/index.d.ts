@@ -80,6 +80,8 @@ export type GamePayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultAr
     currentDayCompleted: boolean
     currentRerollTokens: number
     rerollTokensSpent: number
+    rerollTokensSpentDuringPart2Raw: number
+    rerollTokensSpentDuringPart2Limited: number
     repositoryLink: string | null
     progressSheetLink: string | null
     public: boolean
@@ -4406,6 +4408,8 @@ export namespace Prisma {
     currentDay: number | null
     currentRerollTokens: number | null
     rerollTokensSpent: number | null
+    rerollTokensSpentDuringPart2Raw: number | null
+    rerollTokensSpentDuringPart2Limited: number | null
     publicProfileId: number | null
     score: number | null
     rankId: number | null
@@ -4418,6 +4422,8 @@ export namespace Prisma {
     currentDay: number | null
     currentRerollTokens: number | null
     rerollTokensSpent: number | null
+    rerollTokensSpentDuringPart2Raw: number | null
+    rerollTokensSpentDuringPart2Limited: number | null
     publicProfileId: number | null
     score: number | null
     rankId: number | null
@@ -4435,6 +4441,8 @@ export namespace Prisma {
     currentDayCompleted: boolean | null
     currentRerollTokens: number | null
     rerollTokensSpent: number | null
+    rerollTokensSpentDuringPart2Raw: number | null
+    rerollTokensSpentDuringPart2Limited: number | null
     repositoryLink: string | null
     progressSheetLink: string | null
     public: boolean | null
@@ -4456,6 +4464,8 @@ export namespace Prisma {
     currentDayCompleted: boolean | null
     currentRerollTokens: number | null
     rerollTokensSpent: number | null
+    rerollTokensSpentDuringPart2Raw: number | null
+    rerollTokensSpentDuringPart2Limited: number | null
     repositoryLink: string | null
     progressSheetLink: string | null
     public: boolean | null
@@ -4477,6 +4487,8 @@ export namespace Prisma {
     currentDayCompleted: number
     currentRerollTokens: number
     rerollTokensSpent: number
+    rerollTokensSpentDuringPart2Raw: number
+    rerollTokensSpentDuringPart2Limited: number
     repositoryLink: number
     progressSheetLink: number
     public: number
@@ -4495,6 +4507,8 @@ export namespace Prisma {
     currentDay?: true
     currentRerollTokens?: true
     rerollTokensSpent?: true
+    rerollTokensSpentDuringPart2Raw?: true
+    rerollTokensSpentDuringPart2Limited?: true
     publicProfileId?: true
     score?: true
     rankId?: true
@@ -4507,6 +4521,8 @@ export namespace Prisma {
     currentDay?: true
     currentRerollTokens?: true
     rerollTokensSpent?: true
+    rerollTokensSpentDuringPart2Raw?: true
+    rerollTokensSpentDuringPart2Limited?: true
     publicProfileId?: true
     score?: true
     rankId?: true
@@ -4524,6 +4540,8 @@ export namespace Prisma {
     currentDayCompleted?: true
     currentRerollTokens?: true
     rerollTokensSpent?: true
+    rerollTokensSpentDuringPart2Raw?: true
+    rerollTokensSpentDuringPart2Limited?: true
     repositoryLink?: true
     progressSheetLink?: true
     public?: true
@@ -4545,6 +4563,8 @@ export namespace Prisma {
     currentDayCompleted?: true
     currentRerollTokens?: true
     rerollTokensSpent?: true
+    rerollTokensSpentDuringPart2Raw?: true
+    rerollTokensSpentDuringPart2Limited?: true
     repositoryLink?: true
     progressSheetLink?: true
     public?: true
@@ -4566,6 +4586,8 @@ export namespace Prisma {
     currentDayCompleted?: true
     currentRerollTokens?: true
     rerollTokensSpent?: true
+    rerollTokensSpentDuringPart2Raw?: true
+    rerollTokensSpentDuringPart2Limited?: true
     repositoryLink?: true
     progressSheetLink?: true
     public?: true
@@ -4675,6 +4697,8 @@ export namespace Prisma {
     currentDayCompleted: boolean
     currentRerollTokens: number
     rerollTokensSpent: number
+    rerollTokensSpentDuringPart2Raw: number
+    rerollTokensSpentDuringPart2Limited: number
     repositoryLink: string | null
     progressSheetLink: string | null
     public: boolean
@@ -4715,6 +4739,8 @@ export namespace Prisma {
     currentDayCompleted?: boolean
     currentRerollTokens?: boolean
     rerollTokensSpent?: boolean
+    rerollTokensSpentDuringPart2Raw?: boolean
+    rerollTokensSpentDuringPart2Limited?: boolean
     repositoryLink?: boolean
     progressSheetLink?: boolean
     public?: boolean
@@ -4741,6 +4767,8 @@ export namespace Prisma {
     currentDayCompleted?: boolean
     currentRerollTokens?: boolean
     rerollTokensSpent?: boolean
+    rerollTokensSpentDuringPart2Raw?: boolean
+    rerollTokensSpentDuringPart2Limited?: boolean
     repositoryLink?: boolean
     progressSheetLink?: boolean
     public?: boolean
@@ -11246,6 +11274,8 @@ export namespace Prisma {
     currentDayCompleted: 'currentDayCompleted',
     currentRerollTokens: 'currentRerollTokens',
     rerollTokensSpent: 'rerollTokensSpent',
+    rerollTokensSpentDuringPart2Raw: 'rerollTokensSpentDuringPart2Raw',
+    rerollTokensSpentDuringPart2Limited: 'rerollTokensSpentDuringPart2Limited',
     repositoryLink: 'repositoryLink',
     progressSheetLink: 'progressSheetLink',
     public: 'public',
@@ -11488,6 +11518,8 @@ export namespace Prisma {
     currentDayCompleted?: BoolFilter | boolean
     currentRerollTokens?: IntFilter | number
     rerollTokensSpent?: IntFilter | number
+    rerollTokensSpentDuringPart2Raw?: IntFilter | number
+    rerollTokensSpentDuringPart2Limited?: IntFilter | number
     repositoryLink?: StringNullableFilter | string | null
     progressSheetLink?: StringNullableFilter | string | null
     public?: BoolFilter | boolean
@@ -11513,6 +11545,8 @@ export namespace Prisma {
     currentDayCompleted?: SortOrder
     currentRerollTokens?: SortOrder
     rerollTokensSpent?: SortOrder
+    rerollTokensSpentDuringPart2Raw?: SortOrder
+    rerollTokensSpentDuringPart2Limited?: SortOrder
     repositoryLink?: SortOrderInput | SortOrder
     progressSheetLink?: SortOrderInput | SortOrder
     public?: SortOrder
@@ -11542,6 +11576,8 @@ export namespace Prisma {
     currentDayCompleted?: SortOrder
     currentRerollTokens?: SortOrder
     rerollTokensSpent?: SortOrder
+    rerollTokensSpentDuringPart2Raw?: SortOrder
+    rerollTokensSpentDuringPart2Limited?: SortOrder
     repositoryLink?: SortOrderInput | SortOrder
     progressSheetLink?: SortOrderInput | SortOrder
     public?: SortOrder
@@ -11571,6 +11607,8 @@ export namespace Prisma {
     currentDayCompleted?: BoolWithAggregatesFilter | boolean
     currentRerollTokens?: IntWithAggregatesFilter | number
     rerollTokensSpent?: IntWithAggregatesFilter | number
+    rerollTokensSpentDuringPart2Raw?: IntWithAggregatesFilter | number
+    rerollTokensSpentDuringPart2Limited?: IntWithAggregatesFilter | number
     repositoryLink?: StringNullableWithAggregatesFilter | string | null
     progressSheetLink?: StringNullableWithAggregatesFilter | string | null
     public?: BoolWithAggregatesFilter | boolean
@@ -12107,6 +12145,8 @@ export namespace Prisma {
     currentDayCompleted?: boolean
     currentRerollTokens?: number
     rerollTokensSpent?: number
+    rerollTokensSpentDuringPart2Raw?: number
+    rerollTokensSpentDuringPart2Limited?: number
     repositoryLink?: string | null
     progressSheetLink?: string | null
     public?: boolean
@@ -12130,6 +12170,8 @@ export namespace Prisma {
     currentDayCompleted?: boolean
     currentRerollTokens?: number
     rerollTokensSpent?: number
+    rerollTokensSpentDuringPart2Raw?: number
+    rerollTokensSpentDuringPart2Limited?: number
     repositoryLink?: string | null
     progressSheetLink?: string | null
     public?: boolean
@@ -12150,6 +12192,8 @@ export namespace Prisma {
     currentDayCompleted?: BoolFieldUpdateOperationsInput | boolean
     currentRerollTokens?: IntFieldUpdateOperationsInput | number
     rerollTokensSpent?: IntFieldUpdateOperationsInput | number
+    rerollTokensSpentDuringPart2Raw?: IntFieldUpdateOperationsInput | number
+    rerollTokensSpentDuringPart2Limited?: IntFieldUpdateOperationsInput | number
     repositoryLink?: NullableStringFieldUpdateOperationsInput | string | null
     progressSheetLink?: NullableStringFieldUpdateOperationsInput | string | null
     public?: BoolFieldUpdateOperationsInput | boolean
@@ -12173,6 +12217,8 @@ export namespace Prisma {
     currentDayCompleted?: BoolFieldUpdateOperationsInput | boolean
     currentRerollTokens?: IntFieldUpdateOperationsInput | number
     rerollTokensSpent?: IntFieldUpdateOperationsInput | number
+    rerollTokensSpentDuringPart2Raw?: IntFieldUpdateOperationsInput | number
+    rerollTokensSpentDuringPart2Limited?: IntFieldUpdateOperationsInput | number
     repositoryLink?: NullableStringFieldUpdateOperationsInput | string | null
     progressSheetLink?: NullableStringFieldUpdateOperationsInput | string | null
     public?: BoolFieldUpdateOperationsInput | boolean
@@ -12195,6 +12241,8 @@ export namespace Prisma {
     currentDayCompleted?: boolean
     currentRerollTokens?: number
     rerollTokensSpent?: number
+    rerollTokensSpentDuringPart2Raw?: number
+    rerollTokensSpentDuringPart2Limited?: number
     repositoryLink?: string | null
     progressSheetLink?: string | null
     public?: boolean
@@ -12214,6 +12262,8 @@ export namespace Prisma {
     currentDayCompleted?: BoolFieldUpdateOperationsInput | boolean
     currentRerollTokens?: IntFieldUpdateOperationsInput | number
     rerollTokensSpent?: IntFieldUpdateOperationsInput | number
+    rerollTokensSpentDuringPart2Raw?: IntFieldUpdateOperationsInput | number
+    rerollTokensSpentDuringPart2Limited?: IntFieldUpdateOperationsInput | number
     repositoryLink?: NullableStringFieldUpdateOperationsInput | string | null
     progressSheetLink?: NullableStringFieldUpdateOperationsInput | string | null
     public?: BoolFieldUpdateOperationsInput | boolean
@@ -12233,6 +12283,8 @@ export namespace Prisma {
     currentDayCompleted?: BoolFieldUpdateOperationsInput | boolean
     currentRerollTokens?: IntFieldUpdateOperationsInput | number
     rerollTokensSpent?: IntFieldUpdateOperationsInput | number
+    rerollTokensSpentDuringPart2Raw?: IntFieldUpdateOperationsInput | number
+    rerollTokensSpentDuringPart2Limited?: IntFieldUpdateOperationsInput | number
     repositoryLink?: NullableStringFieldUpdateOperationsInput | string | null
     progressSheetLink?: NullableStringFieldUpdateOperationsInput | string | null
     public?: BoolFieldUpdateOperationsInput | boolean
@@ -13019,6 +13071,8 @@ export namespace Prisma {
     currentDayCompleted?: SortOrder
     currentRerollTokens?: SortOrder
     rerollTokensSpent?: SortOrder
+    rerollTokensSpentDuringPart2Raw?: SortOrder
+    rerollTokensSpentDuringPart2Limited?: SortOrder
     repositoryLink?: SortOrder
     progressSheetLink?: SortOrder
     public?: SortOrder
@@ -13035,6 +13089,8 @@ export namespace Prisma {
     currentDay?: SortOrder
     currentRerollTokens?: SortOrder
     rerollTokensSpent?: SortOrder
+    rerollTokensSpentDuringPart2Raw?: SortOrder
+    rerollTokensSpentDuringPart2Limited?: SortOrder
     publicProfileId?: SortOrder
     score?: SortOrder
     rankId?: SortOrder
@@ -13052,6 +13108,8 @@ export namespace Prisma {
     currentDayCompleted?: SortOrder
     currentRerollTokens?: SortOrder
     rerollTokensSpent?: SortOrder
+    rerollTokensSpentDuringPart2Raw?: SortOrder
+    rerollTokensSpentDuringPart2Limited?: SortOrder
     repositoryLink?: SortOrder
     progressSheetLink?: SortOrder
     public?: SortOrder
@@ -13073,6 +13131,8 @@ export namespace Prisma {
     currentDayCompleted?: SortOrder
     currentRerollTokens?: SortOrder
     rerollTokensSpent?: SortOrder
+    rerollTokensSpentDuringPart2Raw?: SortOrder
+    rerollTokensSpentDuringPart2Limited?: SortOrder
     repositoryLink?: SortOrder
     progressSheetLink?: SortOrder
     public?: SortOrder
@@ -13089,6 +13149,8 @@ export namespace Prisma {
     currentDay?: SortOrder
     currentRerollTokens?: SortOrder
     rerollTokensSpent?: SortOrder
+    rerollTokensSpentDuringPart2Raw?: SortOrder
+    rerollTokensSpentDuringPart2Limited?: SortOrder
     publicProfileId?: SortOrder
     score?: SortOrder
     rankId?: SortOrder
@@ -15299,6 +15361,8 @@ export namespace Prisma {
     currentDayCompleted?: boolean
     currentRerollTokens?: number
     rerollTokensSpent?: number
+    rerollTokensSpentDuringPart2Raw?: number
+    rerollTokensSpentDuringPart2Limited?: number
     repositoryLink?: string | null
     progressSheetLink?: string | null
     public?: boolean
@@ -15320,6 +15384,8 @@ export namespace Prisma {
     currentDayCompleted?: boolean
     currentRerollTokens?: number
     rerollTokensSpent?: number
+    rerollTokensSpentDuringPart2Raw?: number
+    rerollTokensSpentDuringPart2Limited?: number
     repositoryLink?: string | null
     progressSheetLink?: string | null
     public?: boolean
@@ -15691,6 +15757,8 @@ export namespace Prisma {
     currentDayCompleted?: BoolFilter | boolean
     currentRerollTokens?: IntFilter | number
     rerollTokensSpent?: IntFilter | number
+    rerollTokensSpentDuringPart2Raw?: IntFilter | number
+    rerollTokensSpentDuringPart2Limited?: IntFilter | number
     repositoryLink?: StringNullableFilter | string | null
     progressSheetLink?: StringNullableFilter | string | null
     public?: BoolFilter | boolean
@@ -15925,6 +15993,8 @@ export namespace Prisma {
     currentDayCompleted?: boolean
     currentRerollTokens?: number
     rerollTokensSpent?: number
+    rerollTokensSpentDuringPart2Raw?: number
+    rerollTokensSpentDuringPart2Limited?: number
     repositoryLink?: string | null
     progressSheetLink?: string | null
     public?: boolean
@@ -15947,6 +16017,8 @@ export namespace Prisma {
     currentDayCompleted?: boolean
     currentRerollTokens?: number
     rerollTokensSpent?: number
+    rerollTokensSpentDuringPart2Raw?: number
+    rerollTokensSpentDuringPart2Limited?: number
     repositoryLink?: string | null
     progressSheetLink?: string | null
     public?: boolean
@@ -16265,6 +16337,8 @@ export namespace Prisma {
     currentDayCompleted?: boolean
     currentRerollTokens?: number
     rerollTokensSpent?: number
+    rerollTokensSpentDuringPart2Raw?: number
+    rerollTokensSpentDuringPart2Limited?: number
     repositoryLink?: string | null
     progressSheetLink?: string | null
     public?: boolean
@@ -16287,6 +16361,8 @@ export namespace Prisma {
     currentDayCompleted?: boolean
     currentRerollTokens?: number
     rerollTokensSpent?: number
+    rerollTokensSpentDuringPart2Raw?: number
+    rerollTokensSpentDuringPart2Limited?: number
     repositoryLink?: string | null
     progressSheetLink?: string | null
     public?: boolean
@@ -16504,6 +16580,8 @@ export namespace Prisma {
     currentDayCompleted?: boolean
     currentRerollTokens?: number
     rerollTokensSpent?: number
+    rerollTokensSpentDuringPart2Raw?: number
+    rerollTokensSpentDuringPart2Limited?: number
     repositoryLink?: string | null
     progressSheetLink?: string | null
     public?: boolean
@@ -16526,6 +16604,8 @@ export namespace Prisma {
     currentDayCompleted?: boolean
     currentRerollTokens?: number
     rerollTokensSpent?: number
+    rerollTokensSpentDuringPart2Raw?: number
+    rerollTokensSpentDuringPart2Limited?: number
     repositoryLink?: string | null
     progressSheetLink?: string | null
     public?: boolean
@@ -16791,6 +16871,8 @@ export namespace Prisma {
     currentDayCompleted?: BoolFieldUpdateOperationsInput | boolean
     currentRerollTokens?: IntFieldUpdateOperationsInput | number
     rerollTokensSpent?: IntFieldUpdateOperationsInput | number
+    rerollTokensSpentDuringPart2Raw?: IntFieldUpdateOperationsInput | number
+    rerollTokensSpentDuringPart2Limited?: IntFieldUpdateOperationsInput | number
     repositoryLink?: NullableStringFieldUpdateOperationsInput | string | null
     progressSheetLink?: NullableStringFieldUpdateOperationsInput | string | null
     public?: BoolFieldUpdateOperationsInput | boolean
@@ -16813,6 +16895,8 @@ export namespace Prisma {
     currentDayCompleted?: BoolFieldUpdateOperationsInput | boolean
     currentRerollTokens?: IntFieldUpdateOperationsInput | number
     rerollTokensSpent?: IntFieldUpdateOperationsInput | number
+    rerollTokensSpentDuringPart2Raw?: IntFieldUpdateOperationsInput | number
+    rerollTokensSpentDuringPart2Limited?: IntFieldUpdateOperationsInput | number
     repositoryLink?: NullableStringFieldUpdateOperationsInput | string | null
     progressSheetLink?: NullableStringFieldUpdateOperationsInput | string | null
     public?: BoolFieldUpdateOperationsInput | boolean
@@ -18545,6 +18629,8 @@ export namespace Prisma {
     currentDayCompleted?: boolean
     currentRerollTokens?: number
     rerollTokensSpent?: number
+    rerollTokensSpentDuringPart2Raw?: number
+    rerollTokensSpentDuringPart2Limited?: number
     repositoryLink?: string | null
     progressSheetLink?: string | null
     public?: boolean
@@ -18598,6 +18684,8 @@ export namespace Prisma {
     currentDayCompleted?: BoolFieldUpdateOperationsInput | boolean
     currentRerollTokens?: IntFieldUpdateOperationsInput | number
     rerollTokensSpent?: IntFieldUpdateOperationsInput | number
+    rerollTokensSpentDuringPart2Raw?: IntFieldUpdateOperationsInput | number
+    rerollTokensSpentDuringPart2Limited?: IntFieldUpdateOperationsInput | number
     repositoryLink?: NullableStringFieldUpdateOperationsInput | string | null
     progressSheetLink?: NullableStringFieldUpdateOperationsInput | string | null
     public?: BoolFieldUpdateOperationsInput | boolean
@@ -18619,6 +18707,8 @@ export namespace Prisma {
     currentDayCompleted?: BoolFieldUpdateOperationsInput | boolean
     currentRerollTokens?: IntFieldUpdateOperationsInput | number
     rerollTokensSpent?: IntFieldUpdateOperationsInput | number
+    rerollTokensSpentDuringPart2Raw?: IntFieldUpdateOperationsInput | number
+    rerollTokensSpentDuringPart2Limited?: IntFieldUpdateOperationsInput | number
     repositoryLink?: NullableStringFieldUpdateOperationsInput | string | null
     progressSheetLink?: NullableStringFieldUpdateOperationsInput | string | null
     public?: BoolFieldUpdateOperationsInput | boolean
@@ -18640,6 +18730,8 @@ export namespace Prisma {
     currentDayCompleted?: BoolFieldUpdateOperationsInput | boolean
     currentRerollTokens?: IntFieldUpdateOperationsInput | number
     rerollTokensSpent?: IntFieldUpdateOperationsInput | number
+    rerollTokensSpentDuringPart2Raw?: IntFieldUpdateOperationsInput | number
+    rerollTokensSpentDuringPart2Limited?: IntFieldUpdateOperationsInput | number
     repositoryLink?: NullableStringFieldUpdateOperationsInput | string | null
     progressSheetLink?: NullableStringFieldUpdateOperationsInput | string | null
     public?: BoolFieldUpdateOperationsInput | boolean
@@ -19003,6 +19095,8 @@ export namespace Prisma {
     currentDayCompleted?: boolean
     currentRerollTokens?: number
     rerollTokensSpent?: number
+    rerollTokensSpentDuringPart2Raw?: number
+    rerollTokensSpentDuringPart2Limited?: number
     repositoryLink?: string | null
     progressSheetLink?: string | null
     public?: boolean
@@ -19021,6 +19115,8 @@ export namespace Prisma {
     currentDayCompleted?: BoolFieldUpdateOperationsInput | boolean
     currentRerollTokens?: IntFieldUpdateOperationsInput | number
     rerollTokensSpent?: IntFieldUpdateOperationsInput | number
+    rerollTokensSpentDuringPart2Raw?: IntFieldUpdateOperationsInput | number
+    rerollTokensSpentDuringPart2Limited?: IntFieldUpdateOperationsInput | number
     repositoryLink?: NullableStringFieldUpdateOperationsInput | string | null
     progressSheetLink?: NullableStringFieldUpdateOperationsInput | string | null
     public?: BoolFieldUpdateOperationsInput | boolean
@@ -19043,6 +19139,8 @@ export namespace Prisma {
     currentDayCompleted?: BoolFieldUpdateOperationsInput | boolean
     currentRerollTokens?: IntFieldUpdateOperationsInput | number
     rerollTokensSpent?: IntFieldUpdateOperationsInput | number
+    rerollTokensSpentDuringPart2Raw?: IntFieldUpdateOperationsInput | number
+    rerollTokensSpentDuringPart2Limited?: IntFieldUpdateOperationsInput | number
     repositoryLink?: NullableStringFieldUpdateOperationsInput | string | null
     progressSheetLink?: NullableStringFieldUpdateOperationsInput | string | null
     public?: BoolFieldUpdateOperationsInput | boolean
@@ -19147,6 +19245,8 @@ export namespace Prisma {
     currentDayCompleted?: boolean
     currentRerollTokens?: number
     rerollTokensSpent?: number
+    rerollTokensSpentDuringPart2Raw?: number
+    rerollTokensSpentDuringPart2Limited?: number
     repositoryLink?: string | null
     progressSheetLink?: string | null
     public?: boolean
@@ -19165,6 +19265,8 @@ export namespace Prisma {
     currentDayCompleted?: BoolFieldUpdateOperationsInput | boolean
     currentRerollTokens?: IntFieldUpdateOperationsInput | number
     rerollTokensSpent?: IntFieldUpdateOperationsInput | number
+    rerollTokensSpentDuringPart2Raw?: IntFieldUpdateOperationsInput | number
+    rerollTokensSpentDuringPart2Limited?: IntFieldUpdateOperationsInput | number
     repositoryLink?: NullableStringFieldUpdateOperationsInput | string | null
     progressSheetLink?: NullableStringFieldUpdateOperationsInput | string | null
     public?: BoolFieldUpdateOperationsInput | boolean
@@ -19187,6 +19289,8 @@ export namespace Prisma {
     currentDayCompleted?: BoolFieldUpdateOperationsInput | boolean
     currentRerollTokens?: IntFieldUpdateOperationsInput | number
     rerollTokensSpent?: IntFieldUpdateOperationsInput | number
+    rerollTokensSpentDuringPart2Raw?: IntFieldUpdateOperationsInput | number
+    rerollTokensSpentDuringPart2Limited?: IntFieldUpdateOperationsInput | number
     repositoryLink?: NullableStringFieldUpdateOperationsInput | string | null
     progressSheetLink?: NullableStringFieldUpdateOperationsInput | string | null
     public?: BoolFieldUpdateOperationsInput | boolean
