@@ -167,6 +167,31 @@ export async function getUserByIdWithRelations(
   return games;
 }
 
+export async function getGameByNumberAndUserIdWithRelations(
+  userId: string,
+  gameNumber: number,
+) {
+  const game = await prisma.game.findFirstOrThrow({
+    where: {
+      userId,
+      number: gameNumber,
+    },
+    include: {
+      Day: {
+        include: {
+          ChallengeModifier: {
+            include: {
+              ModifierOption: true,
+            },
+          },
+          ModifierOption: true,
+        },
+      },
+    },
+  });
+  return game;
+}
+
 export async function getGamesByUserId(
   userId: string,
 ) {
