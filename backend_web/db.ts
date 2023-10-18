@@ -143,7 +143,7 @@ export async function getGameById(id: number) {
 export async function getUserByIdWithRelations(
   userId: string,
 ) {
-  const games = await prisma.user.findUniqueOrThrow({
+  const user = await prisma.user.findUniqueOrThrow({
     where: {
       id: userId,
     },
@@ -164,7 +164,7 @@ export async function getUserByIdWithRelations(
       },
     },
   });
-  return games;
+  return user;
 }
 
 export async function getGameByNumberAndUserIdWithRelations(
