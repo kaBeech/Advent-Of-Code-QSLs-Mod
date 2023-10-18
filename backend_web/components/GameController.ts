@@ -130,14 +130,21 @@ const progressSheetLinkSetter = (state: GameControllerState) => ({
 
 const scoreCalculator = (state: GameControllerState) => ({
   calculateScore: () => {
-    let fewRerollsBonus = 300 - 10 * state.game.rerollTokensSpent;
-    if (fewRerollsBonus < 0) {
-      fewRerollsBonus = 0;
+    if (state.game.rerollTokensSpentDuringPart2Limited === 50) {
+      const tokensSpentDuringPart1 = state.game.rerollTokensSpent -
+        state.game.rerollTokensSpentDuringPart2Raw;
+      state.game.score = 1120 + 10 * state.game.currentRerollTokens -
+        10 * tokensSpentDuringPart1;
+      return state.game.score;
+    }
+    let fewRerollsBonus = 0;
+    if (state.game.dateCompleted) {
+      fewRerollsBonus = Math.min(300 - 10 * state.game.rerollTokensSpent, 0);
     }
     const part2RerollBonus = 20 *
       state.game.rerollTokensSpentDuringPart2Limited;
-    state.game.score = 10 * state.game.currentRerollTokens + part2RerollBonus;
-    +fewRerollsBonus;
+    state.game.score = 10 * state.game.currentRerollTokens + part2RerollBonus +
+      fewRerollsBonus;
     return state.game.score;
   },
 });
