@@ -23,7 +23,7 @@ export default component$(() => {
     const abortController = new AbortController();
     cleanup(() => abortController.abort("cleanup"));
     const gameData = await serverFetcher(
-      `userdata/game/${gameNumber}`,
+      `gamedata/${gameNumber}`,
       "GET",
       userId
     );
@@ -54,31 +54,25 @@ export default component$(() => {
           onResolved={(gameData) => {
             return (
               <>
-                <DayLink
-                  dayLinkData={{
-                    challengeModifier: "language_box_functional",
-                    modifierOption: "Haskell",
-                    score: 9,
-                    isCompleted: true,
-                    tokensGained: 2,
-                    tokensSpent: 2,
-                  }}
-                  dayNumber={1}
-                />
-                <DayLink dayNumber={2} />
-                {() => {
-                  for (let i = 1; i <= gameData.currentDay; i++) {
+                {gameData.game.Day.map(
+                  (day: {
+                    number: number;
+                    challengeModifierId: string;
+                    modifierOptionId: string;
+                  }) => (
                     <DayLink
-                      dayNumber={i}
-                      dayLinkData={gameData.Day.find(
-                        (day: { number: number }) => day.number === i
-                      )}
-                    />;
-                  }
-                  for (let i = gameData.currentDay + 1; i <= 25; i++) {
-                    <DayLink dayNumber={i} />;
-                  }
-                }}
+                      dayNumber={day.number}
+                      dayLinkData={{
+                        challengeModifier: day.challengeModifierId,
+                        modifierOption: day.modifierOptionId,
+                        score: 100,
+                        isCompleted: true,
+                        tokensGained: 2,
+                        tokensSpent: 2,
+                      }}
+                    />
+                  )
+                )}
               </>
             );
           }}
