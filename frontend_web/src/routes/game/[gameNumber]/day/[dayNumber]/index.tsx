@@ -9,8 +9,6 @@ import { getGithubUserIdFromUserImage } from "~/util/getGithubUserIdFromUserImag
 import type { Session } from "@auth/core/types";
 import { useAuthSession } from "~/routes/plugin@auth";
 
-const gameID = 1;
-
 export const onRequest: RequestHandler = (event) => {
   const session: Session | null = event.sharedMap.get("session");
   if (!session || new Date(session.expires) < new Date()) {
@@ -21,6 +19,7 @@ export const onRequest: RequestHandler = (event) => {
 export default component$(() => {
   const session = useAuthSession();
   const userId = getGithubUserIdFromUserImage(session.value!.user!.image!);
+  const gameID = useLocation().params.gameNumber;
   const dayID = useLocation().params.dayNumber;
 
   const state = useStore({

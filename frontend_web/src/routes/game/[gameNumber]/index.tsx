@@ -1,12 +1,14 @@
 import { Resource, component$, useResource$ } from "@builder.io/qwik";
-import type { DocumentHead, RequestHandler } from "@builder.io/qwik-city";
+import {
+  useLocation,
+  type DocumentHead,
+  type RequestHandler,
+} from "@builder.io/qwik-city";
 import { serverFetcher } from "~/util/serverFetcher";
-import { useAuthSession } from "../plugin@auth";
+import { useAuthSession } from "../../plugin@auth";
 import { getGithubUserIdFromUserImage } from "~/util/getGithubUserIdFromUserImage";
 import type { Session } from "@auth/core/types";
 import DayLink from "~/components/game/dayLink/dayLink";
-
-const gameNumber = 1;
 
 export const onRequest: RequestHandler = (event) => {
   const session: Session | null = event.sharedMap.get("session");
@@ -18,6 +20,7 @@ export const onRequest: RequestHandler = (event) => {
 export default component$(() => {
   const session = useAuthSession();
   const userId = getGithubUserIdFromUserImage(session.value!.user!.image!);
+  const gameNumber = useLocation().params.gameNumber;
 
   const gameDataResource = useResource$<any>(async ({ cleanup }) => {
     const abortController = new AbortController();
