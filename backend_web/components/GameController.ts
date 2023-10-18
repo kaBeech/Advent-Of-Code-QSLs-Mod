@@ -20,7 +20,6 @@ export const GameController = (
     ...playerNameSetter(state),
     ...repositoryLinkSetter(state),
     ...progressSheetLinkSetter(state),
-    ...scoreCalculator(state),
   };
 };
 
@@ -68,6 +67,8 @@ const currentDayCompleter = (state: GameControllerState) => ({
 const currentRerollTokensAdjuster = (state: GameControllerState) => ({
   adjustCurrentRerollTokens: (amount: number) => {
     state.game.currentRerollTokens += amount;
+    scoreCalculator(state).calculateScore();
+    console.log("state.game.score", state.game.score);
     return state.game;
   },
 });

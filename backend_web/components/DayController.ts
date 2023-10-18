@@ -25,7 +25,6 @@ export const DayController = (
     ...modifierOptionReroller(state),
     ...part1Completer(state),
     ...part2Completer(state),
-    ...netScoreCalculator(state),
   };
 };
 
@@ -84,6 +83,7 @@ const challengeModifierReroller = (state: DayControllerState) => ({
     if (state.day.part1Completed) {
       state.day.rerollTokensSpentDuringPart2 += 2;
     }
+    netScoreCalculator(state).calculateNetScore();
     return state.day;
   },
 });
@@ -112,6 +112,7 @@ const modifierOptionReroller = (state: DayControllerState) => ({
     if (state.day.part1Completed) {
       state.day.rerollTokensSpentDuringPart2 += 1;
     }
+    netScoreCalculator(state).calculateNetScore();
     return state.day;
   },
 });
@@ -123,6 +124,7 @@ const part1Completer = (state: DayControllerState) => ({
       throw new Error("Part 1 already completed");
     }
     state.day.part1Completed = new Date();
+    netScoreCalculator(state).calculateNetScore();
     return state.day;
   },
 });
@@ -137,6 +139,7 @@ const part2Completer = (state: DayControllerState) => ({
       throw new Error("Part 2 already completed");
     }
     state.day.part2Completed = new Date();
+    netScoreCalculator(state).calculateNetScore();
     return state.day;
   },
 });

@@ -15,6 +15,7 @@ export interface DayLinkData {
   ModifierOption?: {
     name: string;
   };
+  netScore: number;
 }
 
 export interface DayLinkProps {
@@ -38,7 +39,7 @@ export default component$((props: DayLinkProps) => {
   const modifierOption = props.dayLinkData.ModifierOption?.name
     ? props.dayLinkData.ModifierOption.name + ", "
     : "";
-  const score = 0;
+  const score = props.dayLinkData.netScore;
   let tokensGained = 0;
   let tokensSpent = 0;
   props.dayLinkData.part1Completed && tokensGained++;
