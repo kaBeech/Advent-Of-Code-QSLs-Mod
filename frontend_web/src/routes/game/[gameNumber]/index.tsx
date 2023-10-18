@@ -87,6 +87,12 @@ export default component$(() => {
                     part2Completed: string | null;
                     challengeModifierRerollsUsed: number;
                     modifierOptionRerollsUsed: number;
+                    ChallengeModifier?: {
+                      name: string;
+                    };
+                    ModifierOption?: {
+                      name: string;
+                    };
                   }) => (
                     <DayLink
                       key={`unlockedDay-${day.number}`}
@@ -100,6 +106,8 @@ export default component$(() => {
                           day.challengeModifierRerollsUsed,
                         modifierOptionRerollsUsed:
                           day.modifierOptionRerollsUsed,
+                        ChallengeModifier: day.ChallengeModifier,
+                        ModifierOption: day.ModifierOption,
                       }}
                     />
                   )

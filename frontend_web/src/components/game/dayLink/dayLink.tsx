@@ -9,6 +9,12 @@ export interface DayLinkData {
   part2Completed: string | null;
   challengeModifierRerollsUsed: number;
   modifierOptionRerollsUsed: number;
+  ChallengeModifier?: {
+    name: string;
+  };
+  ModifierOption?: {
+    name: string;
+  };
 }
 
 export interface DayLinkProps {
@@ -21,8 +27,12 @@ export default component$((props: DayLinkProps) => {
     return <div>Day {props.dayNumber}: Not Started</div>;
   }
 
-  const challengeModifier = props.dayLinkData?.challengeModifierId;
-  const modifierOption = props.dayLinkData?.modifierOptionId;
+  const challengeModifier = props.dayLinkData.ChallengeModifier
+    ? props.dayLinkData.ChallengeModifier.name + ","
+    : "";
+  const modifierOption = props.dayLinkData.ModifierOption?.name
+    ? props.dayLinkData.ModifierOption.name + ","
+    : "";
   const score = 0;
   let tokensGained = 0;
   let tokensSpent = 0;
@@ -34,10 +44,11 @@ export default component$((props: DayLinkProps) => {
   return (
     <div>
       <a href={`day/${props.dayNumber}`}>
-        Day {props.dayNumber}: {challengeModifier}, {modifierOption},{" "}
+        Day {props.dayNumber}:{" "}
         {props.dayLinkData.part2Completed
-          ? `Completed, ${score} points`
-          : "Not Completed"}{" "}
+          ? `Completed, ${score} points, `
+          : "In Progress, "}
+        {challengeModifier} {modifierOption}{" "}
         <span class="token">{renderTokens(tokensGained)}</span>
         <span class="tokenSpent">{renderSpentTokens(tokensSpent)}</span>
       </a>
