@@ -196,12 +196,13 @@ export default component$(() => {
                     ) : (
                       <a
                         onClick$={async () => {
-                          await serverFetcher(
+                          const res = await serverFetcher(
                             `game/${state.gameNumber}/day/complete`,
                             "PUT",
                             userId
                           );
                           state.buttonPresses++;
+                          window.location.href = `/game/${state.gameNumber}/day/${res.currentDay}`;
                         }}
                       >
                         [Complete Day]
