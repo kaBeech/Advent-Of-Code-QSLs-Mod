@@ -28,7 +28,9 @@ export default component$((props: DayLinkProps) => {
     return (
       <div>
         #######################################################{" "}
-        <span class="textBright">{props.dayNumber}</span>
+        <span class="textBright">
+          {props.dayNumber < 10 ? " " + props.dayNumber : props.dayNumber}
+        </span>
       </div>
     );
   }
