@@ -52,6 +52,10 @@ export default component$(() => {
             );
           }}
           onResolved={(gameData) => {
+            const lockedDays = [];
+            for (let i = gameData.game.currentDay + 1; i <= 25; i++) {
+              lockedDays.push({ number: i });
+            }
             return (
               <>
                 {gameData.game.Day.map(
@@ -61,6 +65,7 @@ export default component$(() => {
                     modifierOptionId: string;
                   }) => (
                     <DayLink
+                      key={`unlockedDay-${day.number}`}
                       dayNumber={day.number}
                       dayLinkData={{
                         challengeModifier: day.challengeModifierId,
@@ -73,6 +78,12 @@ export default component$(() => {
                     />
                   )
                 )}
+                {lockedDays.map((day: { number: number }) => (
+                  <DayLink
+                    key={`lockedDay-${day.number}`}
+                    dayNumber={day.number}
+                  />
+                ))}
               </>
             );
           }}
