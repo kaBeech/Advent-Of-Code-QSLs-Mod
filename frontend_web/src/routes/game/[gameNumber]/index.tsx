@@ -60,6 +60,16 @@ export default component$(() => {
             );
           }}
           onResolved={(gameData) => {
+            if (gameData.numberOfGames === undefined) {
+              return (
+                <div>
+                  <h2>
+                    Game not found - please try again or{" "}
+                    <a href="/new">[start a new game!]</a>
+                  </h2>
+                </div>
+              );
+            }
             const lockedDays = [];
             for (let i = gameData.game.currentDay + 1; i <= 25; i++) {
               lockedDays.push({ number: i });
