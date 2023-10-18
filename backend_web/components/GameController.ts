@@ -20,6 +20,7 @@ export const GameController = (
     ...playerNameSetter(state),
     ...repositoryLinkSetter(state),
     ...progressSheetLinkSetter(state),
+    ...scoreCalculator(state),
   };
 };
 
@@ -124,5 +125,19 @@ const progressSheetLinkSetter = (state: GameControllerState) => ({
     }
     state.game.progressSheetLink = newProgressSheetLink;
     return state.game;
+  },
+});
+
+const scoreCalculator = (state: GameControllerState) => ({
+  calculateScore: () => {
+    let fewRerollsBonus = 300 - 10 * state.game.rerollTokensSpent;
+    if (fewRerollsBonus < 0) {
+      fewRerollsBonus = 0;
+    }
+    const part2RerollBonus = 20 *
+      state.game.rerollTokensSpentDuringPart2Limited;
+    state.game.score = 10 * state.game.currentRerollTokens + part2RerollBonus;
+    +fewRerollsBonus;
+    return state.game.score;
   },
 });
