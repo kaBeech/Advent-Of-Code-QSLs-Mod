@@ -69,15 +69,22 @@ export default component$(() => {
               );
             }
             const lockedDays = [];
-            for (let i = gameData.game.currentDay + 1; i <= 25; i++) {
+            for (let i = 25; i > gameData.game.currentDay; i--) {
               lockedDays.push({ number: i });
             }
-            const sortedDays = gameData.game.Day.sort((a: any, b: any) => {
-              return a.number - b.number;
-            });
-            console.log("test", sortedDays[0]);
+            const sortedDays = gameData.game.Day.sort(
+              (a: { number: number }, b: { number: number }) => {
+                return b.number - a.number;
+              }
+            );
             return (
               <>
+                {lockedDays.map((day: { number: number }) => (
+                  <DayLink
+                    key={`lockedDay-${day.number}`}
+                    dayNumber={day.number}
+                  />
+                ))}
                 {sortedDays.map(
                   (day: {
                     number: number;
@@ -112,12 +119,6 @@ export default component$(() => {
                     />
                   )
                 )}
-                {lockedDays.map((day: { number: number }) => (
-                  <DayLink
-                    key={`lockedDay-${day.number}`}
-                    dayNumber={day.number}
-                  />
-                ))}
               </>
             );
           }}
