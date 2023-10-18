@@ -1,3 +1,11 @@
+# To Do
+
+- Allow completion of puzzles without Chal Mods, but don't award tokens for doing so. Make sure score is unaffected.
+
+- Allow removal of Chal Mods, but don't award tokens for doing so. Make sure score is unaffected.
+
+- Add Leaderboards
+
 # Programming language list
 
 - To be sorted, classified, and set into language boxes
