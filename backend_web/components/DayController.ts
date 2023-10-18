@@ -25,6 +25,7 @@ export const DayController = (
     ...modifierOptionReroller(state),
     ...part1Completer(state),
     ...part2Completer(state),
+    ...netScoreCalculator(state),
   };
 };
 
@@ -131,5 +132,20 @@ const part2Completer = (state: DayControllerState) => ({
     }
     state.day.part2Completed = new Date();
     return state.day;
+  },
+});
+
+const netScoreCalculator = (state: DayControllerState) => ({
+  calculateNetScore: () => {
+    let netTokensGained = 0;
+    state.day.part1Completed && netTokensGained++;
+    state.day.part2Completed && netTokensGained++;
+    netTokensGained -= state.day.challengeModifierRerollsUsed * 2;
+    netTokensGained -= state.day.modifierOptionRerollsUsed;
+
+    state.day.netScore = 10 * netTokensGained +
+      20 * state.day.rerollTokensSpentDuringPart2;
+
+    return state.day.netScore;
   },
 });
