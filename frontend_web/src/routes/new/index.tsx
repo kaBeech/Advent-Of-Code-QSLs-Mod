@@ -33,9 +33,12 @@ export default component$(() => {
       const abortController = new AbortController();
       cleanup(() => abortController.abort("cleanup"));
       const userData = await serverFetcher(`userdata`, "GET", userId);
-      const numberOfGames = JSON.stringify(userData.Game.length);
+      let numberOfGames = 0;
+      if (userData.Game) {
+        numberOfGames = +JSON.stringify(userData.Game.length);
+      }
       return {
-        numberOfGames: numberOfGames ? numberOfGames : "None",
+        numberOfGames: +numberOfGames > 0 ? numberOfGames : 0,
       };
     }
   );
@@ -102,7 +105,6 @@ export default component$(() => {
                         playerName: state.playerName,
                       }
                     );
-                    console.log("res", res);
                     state.buttonPresses++;
                     window.location.href = `/game/${res.number}`;
                   }}

@@ -192,24 +192,6 @@ export default component$(() => {
                   <div>
                     Current Day Completed?{" "}
                     <strong>{xtremeXmasData.currentDayCompleted}</strong>{" "}
-                    {xtremeXmasData.part2Completed !== "Yes" ||
-                    xtremeXmasData.currentDayCompleted === "Yes" ||
-                    xtremeXmasData.currentDay != +state.dayNumber ? (
-                      <></>
-                    ) : (
-                      <a
-                        onClick$={async () => {
-                          await serverFetcher(
-                            `game/${state.gameNumber}/day/complete`,
-                            "PUT",
-                            userId
-                          );
-                          state.buttonPresses++;
-                        }}
-                      >
-                        [Complete Day]
-                      </a>
-                    )}
                   </div>
                   <div>
                     Selected Day Part 1 Completed?{" "}

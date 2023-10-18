@@ -67,14 +67,30 @@ const currentDayCompleter = (state: GameControllerState) => ({
 const currentRerollTokensAdjuster = (state: GameControllerState) => ({
   adjustCurrentRerollTokens: (amount: number) => {
     state.game.currentRerollTokens += amount;
+    scoreCalculator(state).calculateScore();
+    console.log("state.game.score", state.game.score);
     return state.game;
   },
 });
 
 const rerollTokenSpender = (state: GameControllerState) => ({
-  spendRerollTokens: (amount: number) => {
+  spendRerollTokens: (
+    amount: number,
+    round2: boolean,
+    tokensAlreadySpentDuringRound2: number,
+  ) => {
     currentRerollTokensAdjuster(state).adjustCurrentRerollTokens(-amount);
     state.game.rerollTokensSpent += amount;
+    if (round2) {
+      state.game.rerollTokensSpentDuringPart2Raw += amount;
+      state.game.rerollTokensSpentDuringPart2Limited += Math.min(
+        amount,
+        Math.max(
+          2 - tokensAlreadySpentDuringRound2,
+          0,
+        ),
+      );
+    }
     return state.game;
   },
 });
@@ -124,5 +140,26 @@ const progressSheetLinkSetter = (state: GameControllerState) => ({
     }
     state.game.progressSheetLink = newProgressSheetLink;
     return state.game;
+  },
+});
+
+const scoreCalculator = (state: GameControllerState) => ({
+  calculateScore: () => {
+    if (state.game.rerollTokensSpentDuringPart2Limited === 50) {
+      const tokensSpentDuringPart1 = state.game.rerollTokensSpent -
+        state.game.rerollTokensSpentDuringPart2Raw;
+      state.game.score = 1120 + 10 * state.game.currentRerollTokens -
+        10 * tokensSpentDuringPart1;
+      return state.game.score;
+    }
+    let fewRerollsBonus = 0;
+    if (state.game.dateCompleted) {
+      fewRerollsBonus = Math.max(300 - 10 * state.game.rerollTokensSpent, 0);
+    }
+    const part2RerollBonus = 20 *
+      state.game.rerollTokensSpentDuringPart2Limited;
+    state.game.score = 10 * state.game.currentRerollTokens + part2RerollBonus +
+      fewRerollsBonus;
+    return state.game.score;
   },
 });

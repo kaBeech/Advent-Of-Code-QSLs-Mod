@@ -18,13 +18,11 @@ const prisma = new PrismaClient({
 export async function createUser(
   id: string,
   username?: string,
-  password?: string,
 ) {
   const result = await prisma.user.create({
     data: {
       id,
       username,
-      password,
     },
   });
   return result;
@@ -33,7 +31,6 @@ export async function createUser(
 export async function upsertUser(
   id: string,
   username?: string,
-  password?: string,
   serializedId?: string,
 ) {
   const result = await prisma.user.upsert({
@@ -42,13 +39,11 @@ export async function upsertUser(
     },
     update: {
       username,
-      password,
       serializedId,
     },
     create: {
       id,
       username,
-      password,
       serializedId,
     },
   });
@@ -215,6 +210,9 @@ export async function updateGame(game: Game) {
       currentDayCompleted: game.currentDayCompleted,
       currentRerollTokens: game.currentRerollTokens,
       rerollTokensSpent: game.rerollTokensSpent,
+      rerollTokensSpentDuringPart2Raw: game.rerollTokensSpentDuringPart2Raw,
+      rerollTokensSpentDuringPart2Limited:
+        game.rerollTokensSpentDuringPart2Limited,
       repositoryLink: game.repositoryLink,
       progressSheetLink: game.progressSheetLink,
       public: game.public,
@@ -283,6 +281,7 @@ export async function updateDay(day: Day) {
       challengeModifierRerollsUsed: day.challengeModifierRerollsUsed,
       modifierOptionRerollsUsed: day.modifierOptionRerollsUsed,
       rerollTokensSpentDuringPart2: day.rerollTokensSpentDuringPart2,
+      netScore: day.netScore,
     },
   });
   return result;

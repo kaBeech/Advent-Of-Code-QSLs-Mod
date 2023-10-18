@@ -16,7 +16,6 @@ model User {
   id                                      String              @id
   serializedId                            String?             @unique
   username                                String?             @unique
-  password                                String?
   dateCreated                             DateTime            @default(now())
   numberOfGames                           Int                 @default(0)
   Game                                    Game[]
@@ -40,28 +39,30 @@ model PublicProfile {
 }
 
 model Game {
-  id                  Int            @id @default(autoincrement())
-  dateCreated         DateTime       @default(now())
-  userId              String
-  number              Int
-  year                Int
-  name                String
-  playerName          String?
-  currentDay          Int            @default(0)
-  currentDayCompleted Boolean        @default(false)
-  currentRerollTokens Int            @default(7)
-  rerollTokensSpent   Int            @default(0)
-  repositoryLink      String?
-  progressSheetLink   String?
-  public              Boolean        @default(false)
-  publicProfileId     Int?
-  score               Int            @default(0)
-  rankId              Int?
-  dateCompleted       DateTime?
-  User                User           @relation(fields: [userId], references: [id])
-  Rank                Rank?          @relation(fields: [rankId], references: [id])
-  Day                 Day[]
-  PublicProfile       PublicProfile? @relation(fields: [publicProfileId], references: [id])
+  id                                  Int            @id @default(autoincrement())
+  dateCreated                         DateTime       @default(now())
+  userId                              String
+  number                              Int
+  year                                Int
+  name                                String
+  playerName                          String?
+  currentDay                          Int            @default(0)
+  currentDayCompleted                 Boolean        @default(false)
+  currentRerollTokens                 Int            @default(7)
+  rerollTokensSpent                   Int            @default(0)
+  rerollTokensSpentDuringPart2Raw     Int            @default(0)
+  rerollTokensSpentDuringPart2Limited Int            @default(0)
+  repositoryLink                      String?
+  progressSheetLink                   String?
+  public                              Boolean        @default(false)
+  publicProfileId                     Int?
+  score                               Int            @default(0)
+  rankId                              Int?
+  dateCompleted                       DateTime?
+  User                                User           @relation(fields: [userId], references: [id])
+  Rank                                Rank?          @relation(fields: [rankId], references: [id])
+  Day                                 Day[]
+  PublicProfile                       PublicProfile? @relation(fields: [publicProfileId], references: [id])
 }
 
 model Rank {
@@ -88,6 +89,7 @@ model Day {
   challengeModifierRerollsUsed     Int                 @default(0)
   modifierOptionRerollsUsed        Int                 @default(0)
   rerollTokensSpentDuringPart2     Int                 @default(0)
+  netScore                         Int                 @default(0)
   ExcludedChallengeModifiers       ChallengeModifier[] @relation(name: "ExcludedChallengeModifiers")
   ExcludedModifierOptions          ModifierOption[]    @relation(name: "ExcludedModifierOptions")
   IncludedCustomChallengeModifiers ChallengeModifier[] @relation(name: "IncludedCustomChallengeModifiers")

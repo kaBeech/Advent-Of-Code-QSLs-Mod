@@ -108,6 +108,7 @@ export default component$(() => {
                     ModifierOption?: {
                       name: string;
                     };
+                    netScore: number;
                   }) => (
                     <DayLink
                       key={`unlockedDay-${day.number}`}
@@ -123,6 +124,7 @@ export default component$(() => {
                           day.modifierOptionRerollsUsed,
                         ChallengeModifier: day.ChallengeModifier,
                         ModifierOption: day.ModifierOption,
+                        netScore: day.netScore,
                       }}
                     />
                   )

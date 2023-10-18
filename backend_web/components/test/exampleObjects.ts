@@ -4,7 +4,6 @@ export const exampleUser = {
   "numberOfGames": 1,
   "serializedId": "42",
   "username": "exampleUser",
-  "password": "examplePassword",
 };
 
 export const exampleGame = {
@@ -18,6 +17,8 @@ export const exampleGame = {
   "currentDayCompleted": false,
   "currentRerollTokens": 7,
   "rerollTokensSpent": 0,
+  "rerollTokensSpentDuringPart2Raw": 0,
+  "rerollTokensSpentDuringPart2Limited": 0,
   "repositoryLink": null,
   "progressSheetLink": null,
   "public": false,
@@ -43,7 +44,7 @@ export const exampleGameDay1 = {
   "progressSheetLink": null,
   "public": false,
   "publicProfileId": null,
-  "score": 0,
+  "netScore": 0,
   "rankId": null,
   "dateCreated": new Date(),
   "dateCompleted": null,
@@ -66,6 +67,7 @@ export const exampleDay = {
   "challengeModifierRerollsUsed": 0,
   "modifierOptionRerollsUsed": 0,
   "rerollTokensSpentDuringPart2": 0,
+  "netScore": 0,
 };
 
 export const exampleChallengeModifiers = [

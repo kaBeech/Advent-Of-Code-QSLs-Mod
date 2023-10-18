@@ -66,7 +66,6 @@ const challengeModifierReroller = (state: DayControllerState) => ({
     if (game.currentRerollTokens < 2) {
       throw new Error("Not enough reroll tokens");
     }
-    state.day.challengeModifierRerollsUsed += 1;
     const selectedChallengeModifier = rollChallengeModifier(
       challengeModifiers,
     );
@@ -80,6 +79,11 @@ const challengeModifierReroller = (state: DayControllerState) => ({
       );
       state.day.modifierOptionId = selectedModifierOption.id;
     }
+    state.day.challengeModifierRerollsUsed += 1;
+    if (state.day.part1Completed) {
+      state.day.rerollTokensSpentDuringPart2 += 2;
+    }
+    netScoreCalculator(state).calculateNetScore();
     return state.day;
   },
 });
@@ -100,11 +104,15 @@ const modifierOptionReroller = (state: DayControllerState) => ({
     if (game && game.currentRerollTokens < 1) {
       throw new Error("Not enough reroll tokens");
     }
-    state.day.modifierOptionRerollsUsed += 1;
     const selectedModifierOption = rollModifierOption(
       modifierOptions,
     );
     state.day.modifierOptionId = selectedModifierOption.id;
+    state.day.modifierOptionRerollsUsed += 1;
+    if (state.day.part1Completed) {
+      state.day.rerollTokensSpentDuringPart2 += 1;
+    }
+    netScoreCalculator(state).calculateNetScore();
     return state.day;
   },
 });
@@ -116,6 +124,7 @@ const part1Completer = (state: DayControllerState) => ({
       throw new Error("Part 1 already completed");
     }
     state.day.part1Completed = new Date();
+    netScoreCalculator(state).calculateNetScore();
     return state.day;
   },
 });
@@ -130,6 +139,24 @@ const part2Completer = (state: DayControllerState) => ({
       throw new Error("Part 2 already completed");
     }
     state.day.part2Completed = new Date();
+    netScoreCalculator(state).calculateNetScore();
     return state.day;
+  },
+});
+
+const netScoreCalculator = (state: DayControllerState) => ({
+  calculateNetScore: () => {
+    let netTokensGained = 0;
+    state.day.part1Completed && netTokensGained++;
+    state.day.part2Completed && netTokensGained++;
+    netTokensGained -= state.day.challengeModifierRerollsUsed * 2;
+    netTokensGained -= state.day.modifierOptionRerollsUsed;
+    let part2RerollBonus = 20 * state.day.rerollTokensSpentDuringPart2;
+    if (part2RerollBonus > 40) {
+      part2RerollBonus = 40;
+    }
+    state.day.netScore = 10 * netTokensGained + part2RerollBonus;
+
+    return state.day.netScore;
   },
 });

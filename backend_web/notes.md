@@ -42,8 +42,8 @@ S = Score
 T = Tokens remaining
 P1 = Tokens spent during Part 1
 P2 = Tokens spent during Part 2 (possibly up to a maximum of 2 per day)
-Z = 300 - 10 \* S (to a minimum of 0)
 R = Total tokens spent
+Z = `300 - 10 * R (to a minimum of 0)`
 
-If P2 >= 50, then S = 1120 + 10 _ T - 10 _ P1
-Else, S = 10 \* T + 20 + P2 + Z
+If P2 >= 50, then S = `1120 + 10 * T - 10 * P1`
+Else, S = `10 * T + 20 * P2 + Z`
