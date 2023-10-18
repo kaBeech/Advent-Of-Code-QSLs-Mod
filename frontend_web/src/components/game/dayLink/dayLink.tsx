@@ -20,25 +20,29 @@ export default component$((props: DayLinkProps) => {
   return (
     <>
       {props.dayLinkData ? (
-        <a href={`day/${props.dayNumber}`}>
-          Day {props.dayNumber}: {props.dayLinkData.challengeModifier},{" "}
-          {props.dayLinkData.modifierOption},{" "}
-          {props.dayLinkData.isCompleted
-            ? `Completed, ${props.dayLinkData.score} points`
-            : "Not Completed"}{" "}
-          <span class="token">
-            {renderTokens(
-              props.dayLinkData.tokensGained
-                ? props.dayLinkData.tokensGained
-                : 0
-            )}
-          </span>
-          <span class="tokenSpent">
-            {renderSpentTokens(
-              props.dayLinkData.tokensSpent ? props.dayLinkData.tokensSpent : 0
-            )}
-          </span>
-        </a>
+        <div>
+          <a href={`day/${props.dayNumber}`}>
+            Day {props.dayNumber}: {props.dayLinkData.challengeModifier},{" "}
+            {props.dayLinkData.modifierOption},{" "}
+            {props.dayLinkData.isCompleted
+              ? `Completed, ${props.dayLinkData.score} points`
+              : "Not Completed"}{" "}
+            <span class="token">
+              {renderTokens(
+                props.dayLinkData.tokensGained
+                  ? props.dayLinkData.tokensGained
+                  : 0
+              )}
+            </span>
+            <span class="tokenSpent">
+              {renderSpentTokens(
+                props.dayLinkData.tokensSpent
+                  ? props.dayLinkData.tokensSpent
+                  : 0
+              )}
+            </span>
+          </a>
+        </div>
       ) : (
         <div>Day {props.dayNumber}</div>
       )}
