@@ -7,7 +7,6 @@ import { rerollModifierOption } from "./routes/day/rerollModifierOption.ts";
 import { rerollChallengeModifier } from "./routes/day/rerollChallengeModifier.ts";
 import { rollInitialModifier } from "./routes/day/rollInitialModifier.ts";
 import { startNextDay } from "./routes/day/startNextDay.ts";
-import { completeCurrentDay } from "./routes/game/completeCurrentDay.ts";
 import { getDay } from "./routes/day/getDay.ts";
 import { getAllDays } from "./routes/game/getAllDays.ts";
 import { deleteGame } from "./routes/game/deleteGame.ts";
@@ -44,7 +43,6 @@ router
   .delete("/game/:gameNumber", authenticate, deleteGame)
   .get("/game/:gameNumber/day", authenticate, getAllDays)
   .get("/game/:gameNumber/day/:dayNumber", authenticate, getDay)
-  .put("/game/:gameNumber/day/complete", authenticate, completeCurrentDay)
   .put("/game/:gameNumber/day/:dayNumber", authenticate, startNextDay)
   .put(
     "/game/:gameNumber/day/:dayNumber/roll",

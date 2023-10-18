@@ -21,7 +21,8 @@ export const completePart2 = async (
   const game = userData.Game.find((game) => game.number === +gameNumber);
   const day = game!.Day.find((day) => day.number === +dayNumber);
   const updatedDay = DayController(day!).completePart2(game!.currentDay);
-  const updatedGame = GameController(game!).adjustCurrentRerollTokens(1);
+  let updatedGame = GameController(game!).adjustCurrentRerollTokens(1);
+  updatedGame = GameController(game!).completeCurrentDay();
   await updateDay(updatedDay);
   await updateGame(updatedGame);
   ctx.response.body = { updatedDay, updatedGame };
