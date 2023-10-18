@@ -38,9 +38,7 @@ export default component$(() => {
   return (
     <div>
       <div>
-        <h1 class="title">Xtreme Xmas Day Viewer</h1>
-        <h2>Enter Game and Day IDs:</h2>
-
+        <h1 class="title">Xtreme Xmas Game Viewer</h1>
         <Resource
           value={gameDataResource}
           onPending={() => {
@@ -60,7 +58,7 @@ export default component$(() => {
             );
           }}
           onResolved={(gameData) => {
-            if (gameData.numberOfGames === undefined) {
+            if (gameData.game.currentDay === undefined) {
               return (
                 <div>
                   <h2>
@@ -115,7 +113,7 @@ export default component$(() => {
 });
 
 export const head: DocumentHead = {
-  title: "Xtreme Xmas - Day Viewer",
+  title: "Xtreme Xmas - Game Viewer",
   meta: [
     {
       name: "description",

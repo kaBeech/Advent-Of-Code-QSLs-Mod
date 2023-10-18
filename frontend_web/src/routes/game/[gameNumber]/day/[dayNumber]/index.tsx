@@ -45,7 +45,6 @@ export default component$(() => {
       const dayData = gameData.Day.find(
         (day: { number: number }) => day.number === +dayNumber
       );
-      console.log("gameData", gameData);
       return {
         numberOfGames: JSON.stringify(userData.Game.length),
         challengeModifier: dayData.challengeModifierId
