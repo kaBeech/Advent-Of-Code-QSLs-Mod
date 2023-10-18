@@ -172,7 +172,7 @@ export default component$(() => {
                     ) : (
                       <a
                         onClick$={async () => {
-                          await serverFetcher(
+                          const res = await serverFetcher(
                             `game/${state.gameNumber}/day/${
                               +state.dayNumber + 1
                             }`,
@@ -180,6 +180,9 @@ export default component$(() => {
                             userId
                           );
                           state.buttonPresses++;
+                          window.location.href = `/game/${
+                            state.gameNumber
+                          }/day/${+res.number}`;
                         }}
                       >
                         [ Start Next Day]
@@ -196,15 +199,12 @@ export default component$(() => {
                     ) : (
                       <a
                         onClick$={async () => {
-                          const res = await serverFetcher(
+                          await serverFetcher(
                             `game/${state.gameNumber}/day/complete`,
                             "PUT",
                             userId
                           );
                           state.buttonPresses++;
-                          window.location.href = `/game/${
-                            state.gameNumber
-                          }/day/${+res.currentDay + 1}`;
                         }}
                       >
                         [Complete Day]

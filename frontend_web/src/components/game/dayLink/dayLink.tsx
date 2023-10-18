@@ -27,7 +27,7 @@ export default component$((props: DayLinkProps) => {
     return (
       <div>
         #######################################################{" "}
-        {props.dayNumber}
+        <span class="textBright">{props.dayNumber}</span>
       </div>
     );
   }
@@ -46,25 +46,31 @@ export default component$((props: DayLinkProps) => {
   tokensSpent += props.dayLinkData.challengeModifierRerollsUsed * 2;
   tokensSpent += props.dayLinkData.modifierOptionRerollsUsed;
 
-  let dayDataString = ` ${challengeModifier}${modifierOption}${score} points, `;
+  const dayDataString = ` ${challengeModifier}${modifierOption}${score} points, `;
+  let frontPadding = "";
+  let endPadding = "";
   if (dayDataString.length < 55) {
-    const frontPadding = (55 - dayDataString.length) / 2;
-    let endPadding = Math.floor(frontPadding);
-    if (frontPadding !== endPadding) {
-      endPadding += 1;
+    const frontPaddingDiff = (55 - dayDataString.length) / 2;
+    let endPaddingDiff = Math.floor(frontPaddingDiff);
+    if (frontPaddingDiff !== endPaddingDiff) {
+      endPaddingDiff += 1;
     }
-    dayDataString =
-      "#".repeat(frontPadding) + dayDataString + "#".repeat(endPadding) + " ";
+    frontPadding = "#".repeat(frontPaddingDiff);
+    endPadding = "#".repeat(endPaddingDiff) + " ";
   }
 
   return (
     <div>
       <a href={`day/${props.dayNumber}`}>
+        <span class="textDim">{frontPadding}</span>
         {dayDataString}
-        {props.dayNumber < 10 ? " " + props.dayNumber : props.dayNumber}{" "}
-        <span class="token">{renderTokens(tokensGained)}</span>
-        <span class="tokenSpent">{renderSpentTokens(tokensSpent)}</span>
+        <span class="textDim">{endPadding}</span>
       </a>
+      <span class="textBright">
+        {props.dayNumber < 10 ? " " + props.dayNumber : props.dayNumber}{" "}
+      </span>
+      <span class="token">{renderTokens(tokensGained)}</span>
+      <span class="tokenSpent">{renderSpentTokens(tokensSpent)}</span>
     </div>
   );
 });
