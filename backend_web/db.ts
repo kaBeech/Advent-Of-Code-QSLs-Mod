@@ -210,6 +210,9 @@ export async function updateGame(game: Game) {
       currentDayCompleted: game.currentDayCompleted,
       currentRerollTokens: game.currentRerollTokens,
       rerollTokensSpent: game.rerollTokensSpent,
+      rerollTokensSpentDuringPart2Raw: game.rerollTokensSpentDuringPart2Raw,
+      rerollTokensSpentDuringPart2Limited:
+        game.rerollTokensSpentDuringPart2Limited,
       repositoryLink: game.repositoryLink,
       progressSheetLink: game.progressSheetLink,
       public: game.public,
@@ -278,6 +281,7 @@ export async function updateDay(day: Day) {
       challengeModifierRerollsUsed: day.challengeModifierRerollsUsed,
       modifierOptionRerollsUsed: day.modifierOptionRerollsUsed,
       rerollTokensSpentDuringPart2: day.rerollTokensSpentDuringPart2,
+      netScore: day.netScore,
     },
   });
   return result;
