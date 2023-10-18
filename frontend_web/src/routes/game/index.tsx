@@ -5,8 +5,8 @@ import { useAuthSession } from "../plugin@auth";
 import { getGithubUserIdFromUserImage } from "~/util/getGithubUserIdFromUserImage";
 import type { Session } from "@auth/core/types";
 
-const gameID = 1;
-const dayID = 1;
+const gameNumber = 1;
+const dayNumber = 1;
 
 export const onRequest: RequestHandler = (event) => {
   const session: Session | null = event.sharedMap.get("session");
@@ -20,17 +20,17 @@ export default component$(() => {
   const userId = getGithubUserIdFromUserImage(session.value!.user!.image!);
 
   const state = useStore({
-    gameID,
-    dayID,
+    gameNumber,
+    dayNumber,
     buttonPresses: 0,
   });
 
   const xtremeXmasUserDataResource = useResource$<any>(
     async ({ track, cleanup }) => {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      const gameID = track(() => state.gameID);
+      const gameNumber = track(() => state.gameNumber);
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      const dayID = track(() => state.dayID);
+      const dayNumber = track(() => state.dayNumber);
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const buttonPresses = track(() => state.buttonPresses);
 
@@ -41,10 +41,10 @@ export default component$(() => {
         return { numberOfGames: JSON.stringify(userData.Game.length) };
       }
       const gameData = userData.Game.find(
-        (game: { number: number }) => game.number === +gameID
+        (game: { number: number }) => game.number === +gameNumber
       );
       const dayData = gameData.Day.find(
-        (day: { number: number }) => day.number === +dayID
+        (day: { number: number }) => day.number === +dayNumber
       );
       console.log("gameData", gameData);
       return {
@@ -78,8 +78,8 @@ export default component$(() => {
                 <input
                   class="pointer"
                   type="number"
-                  onInput$={(ev: any) => (state.gameID = ev.target.value)}
-                  value={state.gameID}
+                  onInput$={(ev: any) => (state.gameNumber = ev.target.value)}
+                  value={state.gameNumber}
                   min={1}
                   max={1}
                   aria-labelledby="Game ID"
@@ -87,8 +87,8 @@ export default component$(() => {
                 <input
                   class="pointer"
                   type="number"
-                  onInput$={(ev: any) => (state.dayID = ev.target.value)}
-                  value={state.dayID}
+                  onInput$={(ev: any) => (state.dayNumber = ev.target.value)}
+                  value={state.dayNumber}
                   min={1}
                   max={1}
                   aria-labelledby="Day ID"
@@ -131,8 +131,8 @@ export default component$(() => {
                 <input
                   class="pointer"
                   type="number"
-                  onInput$={(ev: any) => (state.gameID = ev.target.value)}
-                  value={state.gameID}
+                  onInput$={(ev: any) => (state.gameNumber = ev.target.value)}
+                  value={state.gameNumber}
                   min={1}
                   max={xtremeXmasData.numberOfGames}
                   aria-labelledby="Game ID"
@@ -140,8 +140,8 @@ export default component$(() => {
                 <input
                   class="pointer"
                   type="number"
-                  onInput$={(ev: any) => (state.dayID = ev.target.value)}
-                  value={state.dayID}
+                  onInput$={(ev: any) => (state.dayNumber = ev.target.value)}
+                  value={state.dayNumber}
                   min={1}
                   max={xtremeXmasData.currentDay}
                   aria-labelledby="Day ID"
@@ -156,7 +156,7 @@ export default component$(() => {
                       <a
                         onClick$={async () => {
                           await serverFetcher(
-                            `game/${state.gameID}/day/${state.dayID}/roll`,
+                            `game/${state.gameNumber}/day/${state.dayNumber}/roll`,
                             "PUT",
                             userId
                           );
@@ -169,7 +169,7 @@ export default component$(() => {
                       <a
                         onClick$={async () => {
                           await serverFetcher(
-                            `game/${state.gameID}/day/${state.dayID}/reroll/modifier`,
+                            `game/${state.gameNumber}/day/${state.dayNumber}/reroll/modifier`,
                             "PUT",
                             userId
                           );
@@ -190,7 +190,7 @@ export default component$(() => {
                       <a
                         onClick$={async () => {
                           await serverFetcher(
-                            `game/${state.gameID}/day/${state.dayID}/reroll/option`,
+                            `game/${state.gameNumber}/day/${state.dayNumber}/reroll/option`,
                             "PUT",
                             userId
                           );
@@ -208,13 +208,15 @@ export default component$(() => {
                   <div>
                     Current Day: <strong>{xtremeXmasData.currentDay}</strong>{" "}
                     {xtremeXmasData.currentDayCompleted !== "Yes" ||
-                    xtremeXmasData.currentDay != +state.dayID ? (
+                    xtremeXmasData.currentDay != +state.dayNumber ? (
                       <></>
                     ) : (
                       <a
                         onClick$={async () => {
                           await serverFetcher(
-                            `game/${state.gameID}/day/${+state.dayID + 1}`,
+                            `game/${state.gameNumber}/day/${
+                              +state.dayNumber + 1
+                            }`,
                             "PUT",
                             userId
                           );
@@ -230,13 +232,13 @@ export default component$(() => {
                     <strong>{xtremeXmasData.currentDayCompleted}</strong>{" "}
                     {xtremeXmasData.part2Completed !== "Yes" ||
                     xtremeXmasData.currentDayCompleted === "Yes" ||
-                    xtremeXmasData.currentDay != +state.dayID ? (
+                    xtremeXmasData.currentDay != +state.dayNumber ? (
                       <></>
                     ) : (
                       <a
                         onClick$={async () => {
                           await serverFetcher(
-                            `game/${state.gameID}/day/complete`,
+                            `game/${state.gameNumber}/day/complete`,
                             "PUT",
                             userId
                           );
@@ -257,7 +259,7 @@ export default component$(() => {
                       <a
                         onClick$={async () => {
                           await serverFetcher(
-                            `game/${state.gameID}/day/${state.dayID}/complete/part1`,
+                            `game/${state.gameNumber}/day/${state.dayNumber}/complete/part1`,
                             "PUT",
                             userId
                           );
@@ -278,7 +280,7 @@ export default component$(() => {
                       <a
                         onClick$={async () => {
                           await serverFetcher(
-                            `game/${state.gameID}/day/${state.dayID}/complete/part2`,
+                            `game/${state.gameNumber}/day/${state.dayNumber}/complete/part2`,
                             "PUT",
                             userId
                           );

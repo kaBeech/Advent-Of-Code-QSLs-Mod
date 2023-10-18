@@ -19,12 +19,12 @@ export const onRequest: RequestHandler = (event) => {
 export default component$(() => {
   const session = useAuthSession();
   const userId = getGithubUserIdFromUserImage(session.value!.user!.image!);
-  const gameID = useLocation().params.gameNumber;
-  const dayID = useLocation().params.dayNumber;
+  const gameNumber = useLocation().params.gameNumber;
+  const dayNumber = useLocation().params.dayNumber;
 
   const state = useStore({
-    gameID,
-    dayID,
+    gameNumber,
+    dayNumber,
     buttonPresses: 0,
   });
 
@@ -40,10 +40,10 @@ export default component$(() => {
         return { numberOfGames: JSON.stringify(userData.Game.length) };
       }
       const gameData = userData.Game.find(
-        (game: { number: number }) => game.number === +gameID
+        (game: { number: number }) => game.number === +gameNumber
       );
       const dayData = gameData.Day.find(
-        (day: { number: number }) => day.number === +dayID
+        (day: { number: number }) => day.number === +dayNumber
       );
       console.log("gameData", gameData);
       return {
@@ -117,7 +117,7 @@ export default component$(() => {
                       <a
                         onClick$={async () => {
                           await serverFetcher(
-                            `game/${state.gameID}/day/${state.dayID}/roll`,
+                            `game/${state.gameNumber}/day/${state.dayNumber}/roll`,
                             "PUT",
                             userId
                           );
@@ -130,7 +130,7 @@ export default component$(() => {
                       <a
                         onClick$={async () => {
                           await serverFetcher(
-                            `game/${state.gameID}/day/${state.dayID}/reroll/modifier`,
+                            `game/${state.gameNumber}/day/${state.dayNumber}/reroll/modifier`,
                             "PUT",
                             userId
                           );
@@ -151,7 +151,7 @@ export default component$(() => {
                       <a
                         onClick$={async () => {
                           await serverFetcher(
-                            `game/${state.gameID}/day/${state.dayID}/reroll/option`,
+                            `game/${state.gameNumber}/day/${state.dayNumber}/reroll/option`,
                             "PUT",
                             userId
                           );
@@ -169,13 +169,15 @@ export default component$(() => {
                   <div>
                     Current Day: <strong>{xtremeXmasData.currentDay}</strong>{" "}
                     {xtremeXmasData.currentDayCompleted !== "Yes" ||
-                    xtremeXmasData.currentDay != +state.dayID ? (
+                    xtremeXmasData.currentDay != +state.dayNumber ? (
                       <></>
                     ) : (
                       <a
                         onClick$={async () => {
                           await serverFetcher(
-                            `game/${state.gameID}/day/${+state.dayID + 1}`,
+                            `game/${state.gameNumber}/day/${
+                              +state.dayNumber + 1
+                            }`,
                             "PUT",
                             userId
                           );
@@ -191,13 +193,13 @@ export default component$(() => {
                     <strong>{xtremeXmasData.currentDayCompleted}</strong>{" "}
                     {xtremeXmasData.part2Completed !== "Yes" ||
                     xtremeXmasData.currentDayCompleted === "Yes" ||
-                    xtremeXmasData.currentDay != +state.dayID ? (
+                    xtremeXmasData.currentDay != +state.dayNumber ? (
                       <></>
                     ) : (
                       <a
                         onClick$={async () => {
                           await serverFetcher(
-                            `game/${state.gameID}/day/complete`,
+                            `game/${state.gameNumber}/day/complete`,
                             "PUT",
                             userId
                           );
@@ -218,7 +220,7 @@ export default component$(() => {
                       <a
                         onClick$={async () => {
                           await serverFetcher(
-                            `game/${state.gameID}/day/${state.dayID}/complete/part1`,
+                            `game/${state.gameNumber}/day/${state.dayNumber}/complete/part1`,
                             "PUT",
                             userId
                           );
@@ -239,7 +241,7 @@ export default component$(() => {
                       <a
                         onClick$={async () => {
                           await serverFetcher(
-                            `game/${state.gameID}/day/${state.dayID}/complete/part2`,
+                            `game/${state.gameNumber}/day/${state.dayNumber}/complete/part2`,
                             "PUT",
                             userId
                           );
