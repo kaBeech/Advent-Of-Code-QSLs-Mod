@@ -164,7 +164,7 @@ exports.Prisma.DayScalarFieldEnum = {
   challengeModifierRerollsUsed: 'challengeModifierRerollsUsed',
   modifierOptionRerollsUsed: 'modifierOptionRerollsUsed',
   rerollTokensSpentDuringPart2: 'rerollTokensSpentDuringPart2',
-  score: 'score'
+  netScore: 'netScore'
 };
 
 exports.Prisma.ChallengeModifierScalarFieldEnum = {

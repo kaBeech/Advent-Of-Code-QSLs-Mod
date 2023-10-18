@@ -42,7 +42,7 @@ export const exampleGameDay1 = {
   "progressSheetLink": null,
   "public": false,
   "publicProfileId": null,
-  "score": 0,
+  "netScore": 0,
   "rankId": null,
   "dateCreated": new Date(),
   "dateCompleted": null,
@@ -65,7 +65,7 @@ export const exampleDay = {
   "challengeModifierRerollsUsed": 0,
   "modifierOptionRerollsUsed": 0,
   "rerollTokensSpentDuringPart2": 0,
-  "score": 0,
+  "netScore": 0,
 };
 
 export const exampleChallengeModifiers = [
