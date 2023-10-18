@@ -92,7 +92,7 @@ export default component$(() => {
                 </div>
                 <a
                   onClick$={async () => {
-                    await serverFetcher(
+                    const res = await serverFetcher(
                       `game/${+xtremeXmasData.numberOfGames + 1}`,
                       "PUT",
                       userId,
@@ -102,7 +102,9 @@ export default component$(() => {
                         playerName: state.playerName,
                       }
                     );
+                    console.log("res", res);
                     state.buttonPresses++;
+                    window.location.href = `/game/${res.number}`;
                   }}
                 >
                   [Create New Game]
