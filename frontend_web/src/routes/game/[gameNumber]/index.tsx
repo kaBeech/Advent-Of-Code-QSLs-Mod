@@ -75,6 +75,7 @@ export default component$(() => {
             const sortedDays = gameData.game.Day.sort((a: any, b: any) => {
               return a.number - b.number;
             });
+            console.log("test", sortedDays[0]);
             return (
               <>
                 {sortedDays.map(
@@ -82,17 +83,23 @@ export default component$(() => {
                     number: number;
                     challengeModifierId: string;
                     modifierOptionId: string;
+                    part1Completed: string | null;
+                    part2Completed: string | null;
+                    challengeModifierRerollsUsed: number;
+                    modifierOptionRerollsUsed: number;
                   }) => (
                     <DayLink
                       key={`unlockedDay-${day.number}`}
                       dayNumber={day.number}
                       dayLinkData={{
-                        challengeModifier: day.challengeModifierId,
-                        modifierOption: day.modifierOptionId,
-                        score: 100,
-                        isCompleted: true,
-                        tokensGained: 2,
-                        tokensSpent: 2,
+                        challengeModifierId: day.challengeModifierId,
+                        modifierOptionId: day.modifierOptionId,
+                        part1Completed: day.part1Completed,
+                        part2Completed: day.part2Completed,
+                        challengeModifierRerollsUsed:
+                          day.challengeModifierRerollsUsed,
+                        modifierOptionRerollsUsed:
+                          day.modifierOptionRerollsUsed,
                       }}
                     />
                   )

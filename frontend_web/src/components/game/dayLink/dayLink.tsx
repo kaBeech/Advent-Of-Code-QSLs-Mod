@@ -2,50 +2,45 @@ import { component$ } from "@builder.io/qwik";
 import { renderSpentTokens } from "~/util/renderSpentTokens";
 import { renderTokens } from "~/util/renderTokens";
 
-interface DayLinkData {
-  challengeModifier: string | null;
-  modifierOption: string | null;
-  score: number | null;
-  isCompleted: boolean;
-  tokensGained: number;
-  tokensSpent: number;
+export interface DayLinkData {
+  challengeModifierId: string;
+  modifierOptionId: string;
+  part1Completed: string | null;
+  part2Completed: string | null;
+  challengeModifierRerollsUsed: number;
+  modifierOptionRerollsUsed: number;
 }
 
-interface DayLinkProps {
+export interface DayLinkProps {
   dayNumber: number;
   dayLinkData?: DayLinkData;
 }
 
 export default component$((props: DayLinkProps) => {
+  if (!props.dayLinkData) {
+    return <div>Day {props.dayNumber}: Not Started</div>;
+  }
+
+  const challengeModifier = props.dayLinkData?.challengeModifierId;
+  const modifierOption = props.dayLinkData?.modifierOptionId;
+  const score = 0;
+  let tokensGained = 0;
+  let tokensSpent = 0;
+  props.dayLinkData.part1Completed && tokensGained++;
+  props.dayLinkData.part2Completed && tokensGained++;
+  tokensSpent += props.dayLinkData.challengeModifierRerollsUsed * 2;
+  tokensSpent += props.dayLinkData.modifierOptionRerollsUsed;
+
   return (
-    <>
-      {props.dayLinkData ? (
-        <div>
-          <a href={`day/${props.dayNumber}`}>
-            Day {props.dayNumber}: {props.dayLinkData.challengeModifier},{" "}
-            {props.dayLinkData.modifierOption},{" "}
-            {props.dayLinkData.isCompleted
-              ? `Completed, ${props.dayLinkData.score} points`
-              : "Not Completed"}{" "}
-            <span class="token">
-              {renderTokens(
-                props.dayLinkData.tokensGained
-                  ? props.dayLinkData.tokensGained
-                  : 0
-              )}
-            </span>
-            <span class="tokenSpent">
-              {renderSpentTokens(
-                props.dayLinkData.tokensSpent
-                  ? props.dayLinkData.tokensSpent
-                  : 0
-              )}
-            </span>
-          </a>
-        </div>
-      ) : (
-        <div>Day {props.dayNumber}: Not Started</div>
-      )}
-    </>
+    <div>
+      <a href={`day/${props.dayNumber}`}>
+        Day {props.dayNumber}: {challengeModifier}, {modifierOption},{" "}
+        {props.dayLinkData.part2Completed
+          ? `Completed, ${score} points`
+          : "Not Completed"}{" "}
+        <span class="token">{renderTokens(tokensGained)}</span>
+        <span class="tokenSpent">{renderSpentTokens(tokensSpent)}</span>
+      </a>
+    </div>
   );
 });
