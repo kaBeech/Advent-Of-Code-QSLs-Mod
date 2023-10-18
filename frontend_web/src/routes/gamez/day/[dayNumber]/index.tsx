@@ -21,7 +21,7 @@ export const onRequest: RequestHandler = (event) => {
 export default component$(() => {
   const session = useAuthSession();
   const userId = getGithubUserIdFromUserImage(session.value!.user!.image!);
-  const dayID = useLocation().params.number;
+  const dayID = useLocation().params.dayNumber;
 
   const state = useStore({
     gameID,
