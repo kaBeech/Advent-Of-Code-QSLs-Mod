@@ -29,7 +29,6 @@ export type UserPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultAr
     id: string
     serializedId: string | null
     username: string | null
-    password: string | null
     dateCreated: Date
     numberOfGames: number
   }, ExtArgs["result"]["user"]>
@@ -145,6 +144,7 @@ export type DayPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArg
     challengeModifierRerollsUsed: number
     modifierOptionRerollsUsed: number
     rerollTokensSpentDuringPart2: number
+    score: number
   }, ExtArgs["result"]["day"]>
   composites: {}
 }
@@ -2254,7 +2254,6 @@ export namespace Prisma {
     id: string | null
     serializedId: string | null
     username: string | null
-    password: string | null
     dateCreated: Date | null
     numberOfGames: number | null
   }
@@ -2263,7 +2262,6 @@ export namespace Prisma {
     id: string | null
     serializedId: string | null
     username: string | null
-    password: string | null
     dateCreated: Date | null
     numberOfGames: number | null
   }
@@ -2272,7 +2270,6 @@ export namespace Prisma {
     id: number
     serializedId: number
     username: number
-    password: number
     dateCreated: number
     numberOfGames: number
     _all: number
@@ -2291,7 +2288,6 @@ export namespace Prisma {
     id?: true
     serializedId?: true
     username?: true
-    password?: true
     dateCreated?: true
     numberOfGames?: true
   }
@@ -2300,7 +2296,6 @@ export namespace Prisma {
     id?: true
     serializedId?: true
     username?: true
-    password?: true
     dateCreated?: true
     numberOfGames?: true
   }
@@ -2309,7 +2304,6 @@ export namespace Prisma {
     id?: true
     serializedId?: true
     username?: true
-    password?: true
     dateCreated?: true
     numberOfGames?: true
     _all?: true
@@ -2406,7 +2400,6 @@ export namespace Prisma {
     id: string
     serializedId: string | null
     username: string | null
-    password: string | null
     dateCreated: Date
     numberOfGames: number
     _count: UserCountAggregateOutputType | null
@@ -2434,7 +2427,6 @@ export namespace Prisma {
     id?: boolean
     serializedId?: boolean
     username?: boolean
-    password?: boolean
     dateCreated?: boolean
     numberOfGames?: boolean
     Game?: boolean | User$GameArgs<ExtArgs>
@@ -2453,7 +2445,6 @@ export namespace Prisma {
     id?: boolean
     serializedId?: boolean
     username?: boolean
-    password?: boolean
     dateCreated?: boolean
     numberOfGames?: boolean
   }
@@ -6529,6 +6520,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed: number | null
     modifierOptionRerollsUsed: number | null
     rerollTokensSpentDuringPart2: number | null
+    score: number | null
   }
 
   export type DaySumAggregateOutputType = {
@@ -6543,6 +6535,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed: number | null
     modifierOptionRerollsUsed: number | null
     rerollTokensSpentDuringPart2: number | null
+    score: number | null
   }
 
   export type DayMinAggregateOutputType = {
@@ -6562,6 +6555,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed: number | null
     modifierOptionRerollsUsed: number | null
     rerollTokensSpentDuringPart2: number | null
+    score: number | null
   }
 
   export type DayMaxAggregateOutputType = {
@@ -6581,6 +6575,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed: number | null
     modifierOptionRerollsUsed: number | null
     rerollTokensSpentDuringPart2: number | null
+    score: number | null
   }
 
   export type DayCountAggregateOutputType = {
@@ -6600,6 +6595,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed: number
     modifierOptionRerollsUsed: number
     rerollTokensSpentDuringPart2: number
+    score: number
     _all: number
   }
 
@@ -6616,6 +6612,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: true
     modifierOptionRerollsUsed?: true
     rerollTokensSpentDuringPart2?: true
+    score?: true
   }
 
   export type DaySumAggregateInputType = {
@@ -6630,6 +6627,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: true
     modifierOptionRerollsUsed?: true
     rerollTokensSpentDuringPart2?: true
+    score?: true
   }
 
   export type DayMinAggregateInputType = {
@@ -6649,6 +6647,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: true
     modifierOptionRerollsUsed?: true
     rerollTokensSpentDuringPart2?: true
+    score?: true
   }
 
   export type DayMaxAggregateInputType = {
@@ -6668,6 +6667,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: true
     modifierOptionRerollsUsed?: true
     rerollTokensSpentDuringPart2?: true
+    score?: true
   }
 
   export type DayCountAggregateInputType = {
@@ -6687,6 +6687,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: true
     modifierOptionRerollsUsed?: true
     rerollTokensSpentDuringPart2?: true
+    score?: true
     _all?: true
   }
 
@@ -6794,6 +6795,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed: number
     modifierOptionRerollsUsed: number
     rerollTokensSpentDuringPart2: number
+    score: number
     _count: DayCountAggregateOutputType | null
     _avg: DayAvgAggregateOutputType | null
     _sum: DaySumAggregateOutputType | null
@@ -6832,6 +6834,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: boolean
     modifierOptionRerollsUsed?: boolean
     rerollTokensSpentDuringPart2?: boolean
+    score?: boolean
     ExcludedChallengeModifiers?: boolean | Day$ExcludedChallengeModifiersArgs<ExtArgs>
     ExcludedModifierOptions?: boolean | Day$ExcludedModifierOptionsArgs<ExtArgs>
     IncludedCustomChallengeModifiers?: boolean | Day$IncludedCustomChallengeModifiersArgs<ExtArgs>
@@ -6861,6 +6864,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: boolean
     modifierOptionRerollsUsed?: boolean
     rerollTokensSpentDuringPart2?: boolean
+    score?: boolean
   }
 
   export type DayInclude<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
@@ -11213,7 +11217,6 @@ export namespace Prisma {
     id: 'id',
     serializedId: 'serializedId',
     username: 'username',
-    password: 'password',
     dateCreated: 'dateCreated',
     numberOfGames: 'numberOfGames'
   };
@@ -11280,7 +11283,8 @@ export namespace Prisma {
     part2Completed: 'part2Completed',
     challengeModifierRerollsUsed: 'challengeModifierRerollsUsed',
     modifierOptionRerollsUsed: 'modifierOptionRerollsUsed',
-    rerollTokensSpentDuringPart2: 'rerollTokensSpentDuringPart2'
+    rerollTokensSpentDuringPart2: 'rerollTokensSpentDuringPart2',
+    score: 'score'
   };
 
   export type DayScalarFieldEnum = (typeof DayScalarFieldEnum)[keyof typeof DayScalarFieldEnum]
@@ -11362,7 +11366,6 @@ export namespace Prisma {
     id?: StringFilter | string
     serializedId?: StringNullableFilter | string | null
     username?: StringNullableFilter | string | null
-    password?: StringNullableFilter | string | null
     dateCreated?: DateTimeFilter | Date | string
     numberOfGames?: IntFilter | number
     Game?: GameListRelationFilter
@@ -11380,7 +11383,6 @@ export namespace Prisma {
     id?: SortOrder
     serializedId?: SortOrderInput | SortOrder
     username?: SortOrderInput | SortOrder
-    password?: SortOrderInput | SortOrder
     dateCreated?: SortOrder
     numberOfGames?: SortOrder
     Game?: GameOrderByRelationAggregateInput
@@ -11404,7 +11406,6 @@ export namespace Prisma {
     id?: SortOrder
     serializedId?: SortOrderInput | SortOrder
     username?: SortOrderInput | SortOrder
-    password?: SortOrderInput | SortOrder
     dateCreated?: SortOrder
     numberOfGames?: SortOrder
     _count?: UserCountOrderByAggregateInput
@@ -11421,7 +11422,6 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter | string
     serializedId?: StringNullableWithAggregatesFilter | string | null
     username?: StringNullableWithAggregatesFilter | string | null
-    password?: StringNullableWithAggregatesFilter | string | null
     dateCreated?: DateTimeWithAggregatesFilter | Date | string
     numberOfGames?: IntWithAggregatesFilter | number
   }
@@ -11642,6 +11642,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: IntFilter | number
     modifierOptionRerollsUsed?: IntFilter | number
     rerollTokensSpentDuringPart2?: IntFilter | number
+    score?: IntFilter | number
     ExcludedChallengeModifiers?: ChallengeModifierListRelationFilter
     ExcludedModifierOptions?: ModifierOptionListRelationFilter
     IncludedCustomChallengeModifiers?: ChallengeModifierListRelationFilter
@@ -11670,6 +11671,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: SortOrder
     modifierOptionRerollsUsed?: SortOrder
     rerollTokensSpentDuringPart2?: SortOrder
+    score?: SortOrder
     ExcludedChallengeModifiers?: ChallengeModifierOrderByRelationAggregateInput
     ExcludedModifierOptions?: ModifierOptionOrderByRelationAggregateInput
     IncludedCustomChallengeModifiers?: ChallengeModifierOrderByRelationAggregateInput
@@ -11702,6 +11704,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: SortOrder
     modifierOptionRerollsUsed?: SortOrder
     rerollTokensSpentDuringPart2?: SortOrder
+    score?: SortOrder
     _count?: DayCountOrderByAggregateInput
     _avg?: DayAvgOrderByAggregateInput
     _max?: DayMaxOrderByAggregateInput
@@ -11729,6 +11732,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: IntWithAggregatesFilter | number
     modifierOptionRerollsUsed?: IntWithAggregatesFilter | number
     rerollTokensSpentDuringPart2?: IntWithAggregatesFilter | number
+    score?: IntWithAggregatesFilter | number
   }
 
   export type ChallengeModifierWhereInput = {
@@ -11956,7 +11960,6 @@ export namespace Prisma {
     id: string
     serializedId?: string | null
     username?: string | null
-    password?: string | null
     dateCreated?: Date | string
     numberOfGames?: number
     Game?: GameCreateNestedManyWithoutUserInput
@@ -11974,7 +11977,6 @@ export namespace Prisma {
     id: string
     serializedId?: string | null
     username?: string | null
-    password?: string | null
     dateCreated?: Date | string
     numberOfGames?: number
     Game?: GameUncheckedCreateNestedManyWithoutUserInput
@@ -11992,7 +11994,6 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     serializedId?: NullableStringFieldUpdateOperationsInput | string | null
     username?: NullableStringFieldUpdateOperationsInput | string | null
-    password?: NullableStringFieldUpdateOperationsInput | string | null
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     numberOfGames?: IntFieldUpdateOperationsInput | number
     Game?: GameUpdateManyWithoutUserNestedInput
@@ -12010,7 +12011,6 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     serializedId?: NullableStringFieldUpdateOperationsInput | string | null
     username?: NullableStringFieldUpdateOperationsInput | string | null
-    password?: NullableStringFieldUpdateOperationsInput | string | null
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     numberOfGames?: IntFieldUpdateOperationsInput | number
     Game?: GameUncheckedUpdateManyWithoutUserNestedInput
@@ -12028,7 +12028,6 @@ export namespace Prisma {
     id: string
     serializedId?: string | null
     username?: string | null
-    password?: string | null
     dateCreated?: Date | string
     numberOfGames?: number
   }
@@ -12037,7 +12036,6 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     serializedId?: NullableStringFieldUpdateOperationsInput | string | null
     username?: NullableStringFieldUpdateOperationsInput | string | null
-    password?: NullableStringFieldUpdateOperationsInput | string | null
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     numberOfGames?: IntFieldUpdateOperationsInput | number
   }
@@ -12046,7 +12044,6 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     serializedId?: NullableStringFieldUpdateOperationsInput | string | null
     username?: NullableStringFieldUpdateOperationsInput | string | null
-    password?: NullableStringFieldUpdateOperationsInput | string | null
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     numberOfGames?: IntFieldUpdateOperationsInput | number
   }
@@ -12299,6 +12296,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: number
     modifierOptionRerollsUsed?: number
     rerollTokensSpentDuringPart2?: number
+    score?: number
     ExcludedChallengeModifiers?: ChallengeModifierCreateNestedManyWithoutExcludedFromDayInput
     ExcludedModifierOptions?: ModifierOptionCreateNestedManyWithoutExcludedFromDayInput
     IncludedCustomChallengeModifiers?: ChallengeModifierCreateNestedManyWithoutIncludedInDayInput
@@ -12327,6 +12325,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: number
     modifierOptionRerollsUsed?: number
     rerollTokensSpentDuringPart2?: number
+    score?: number
     ExcludedChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutExcludedFromDayInput
     ExcludedModifierOptions?: ModifierOptionUncheckedCreateNestedManyWithoutExcludedFromDayInput
     IncludedCustomChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutIncludedInDayInput
@@ -12344,6 +12343,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: IntFieldUpdateOperationsInput | number
     modifierOptionRerollsUsed?: IntFieldUpdateOperationsInput | number
     rerollTokensSpentDuringPart2?: IntFieldUpdateOperationsInput | number
+    score?: IntFieldUpdateOperationsInput | number
     ExcludedChallengeModifiers?: ChallengeModifierUpdateManyWithoutExcludedFromDayNestedInput
     ExcludedModifierOptions?: ModifierOptionUpdateManyWithoutExcludedFromDayNestedInput
     IncludedCustomChallengeModifiers?: ChallengeModifierUpdateManyWithoutIncludedInDayNestedInput
@@ -12372,6 +12372,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: IntFieldUpdateOperationsInput | number
     modifierOptionRerollsUsed?: IntFieldUpdateOperationsInput | number
     rerollTokensSpentDuringPart2?: IntFieldUpdateOperationsInput | number
+    score?: IntFieldUpdateOperationsInput | number
     ExcludedChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutExcludedFromDayNestedInput
     ExcludedModifierOptions?: ModifierOptionUncheckedUpdateManyWithoutExcludedFromDayNestedInput
     IncludedCustomChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutIncludedInDayNestedInput
@@ -12395,6 +12396,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: number
     modifierOptionRerollsUsed?: number
     rerollTokensSpentDuringPart2?: number
+    score?: number
   }
 
   export type DayUpdateManyMutationInput = {
@@ -12408,6 +12410,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: IntFieldUpdateOperationsInput | number
     modifierOptionRerollsUsed?: IntFieldUpdateOperationsInput | number
     rerollTokensSpentDuringPart2?: IntFieldUpdateOperationsInput | number
+    score?: IntFieldUpdateOperationsInput | number
   }
 
   export type DayUncheckedUpdateManyInput = {
@@ -12427,6 +12430,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: IntFieldUpdateOperationsInput | number
     modifierOptionRerollsUsed?: IntFieldUpdateOperationsInput | number
     rerollTokensSpentDuringPart2?: IntFieldUpdateOperationsInput | number
+    score?: IntFieldUpdateOperationsInput | number
   }
 
   export type ChallengeModifierCreateInput = {
@@ -12828,7 +12832,6 @@ export namespace Prisma {
     id?: SortOrder
     serializedId?: SortOrder
     username?: SortOrder
-    password?: SortOrder
     dateCreated?: SortOrder
     numberOfGames?: SortOrder
   }
@@ -12841,7 +12844,6 @@ export namespace Prisma {
     id?: SortOrder
     serializedId?: SortOrder
     username?: SortOrder
-    password?: SortOrder
     dateCreated?: SortOrder
     numberOfGames?: SortOrder
   }
@@ -12850,7 +12852,6 @@ export namespace Prisma {
     id?: SortOrder
     serializedId?: SortOrder
     username?: SortOrder
-    password?: SortOrder
     dateCreated?: SortOrder
     numberOfGames?: SortOrder
   }
@@ -13191,6 +13192,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: SortOrder
     modifierOptionRerollsUsed?: SortOrder
     rerollTokensSpentDuringPart2?: SortOrder
+    score?: SortOrder
   }
 
   export type DayAvgOrderByAggregateInput = {
@@ -13205,6 +13207,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: SortOrder
     modifierOptionRerollsUsed?: SortOrder
     rerollTokensSpentDuringPart2?: SortOrder
+    score?: SortOrder
   }
 
   export type DayMaxOrderByAggregateInput = {
@@ -13224,6 +13227,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: SortOrder
     modifierOptionRerollsUsed?: SortOrder
     rerollTokensSpentDuringPart2?: SortOrder
+    score?: SortOrder
   }
 
   export type DayMinOrderByAggregateInput = {
@@ -13243,6 +13247,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: SortOrder
     modifierOptionRerollsUsed?: SortOrder
     rerollTokensSpentDuringPart2?: SortOrder
+    score?: SortOrder
   }
 
   export type DaySumOrderByAggregateInput = {
@@ -13257,6 +13262,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: SortOrder
     modifierOptionRerollsUsed?: SortOrder
     rerollTokensSpentDuringPart2?: SortOrder
+    score?: SortOrder
   }
 
   export type UserListRelationFilter = {
@@ -15876,7 +15882,6 @@ export namespace Prisma {
     id: string
     serializedId?: string | null
     username?: string | null
-    password?: string | null
     dateCreated?: Date | string
     numberOfGames?: number
     Game?: GameCreateNestedManyWithoutUserInput
@@ -15893,7 +15898,6 @@ export namespace Prisma {
     id: string
     serializedId?: string | null
     username?: string | null
-    password?: string | null
     dateCreated?: Date | string
     numberOfGames?: number
     Game?: GameUncheckedCreateNestedManyWithoutUserInput
@@ -15971,7 +15975,6 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     serializedId?: NullableStringFieldUpdateOperationsInput | string | null
     username?: NullableStringFieldUpdateOperationsInput | string | null
-    password?: NullableStringFieldUpdateOperationsInput | string | null
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     numberOfGames?: IntFieldUpdateOperationsInput | number
     Game?: GameUpdateManyWithoutUserNestedInput
@@ -15988,7 +15991,6 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     serializedId?: NullableStringFieldUpdateOperationsInput | string | null
     username?: NullableStringFieldUpdateOperationsInput | string | null
-    password?: NullableStringFieldUpdateOperationsInput | string | null
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     numberOfGames?: IntFieldUpdateOperationsInput | number
     Game?: GameUncheckedUpdateManyWithoutUserNestedInput
@@ -16021,7 +16023,6 @@ export namespace Prisma {
     id: string
     serializedId?: string | null
     username?: string | null
-    password?: string | null
     dateCreated?: Date | string
     numberOfGames?: number
     PublicProfile?: PublicProfileCreateNestedManyWithoutUserInput
@@ -16038,7 +16039,6 @@ export namespace Prisma {
     id: string
     serializedId?: string | null
     username?: string | null
-    password?: string | null
     dateCreated?: Date | string
     numberOfGames?: number
     PublicProfile?: PublicProfileUncheckedCreateNestedManyWithoutUserInput
@@ -16083,6 +16083,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: number
     modifierOptionRerollsUsed?: number
     rerollTokensSpentDuringPart2?: number
+    score?: number
     ExcludedChallengeModifiers?: ChallengeModifierCreateNestedManyWithoutExcludedFromDayInput
     ExcludedModifierOptions?: ModifierOptionCreateNestedManyWithoutExcludedFromDayInput
     IncludedCustomChallengeModifiers?: ChallengeModifierCreateNestedManyWithoutIncludedInDayInput
@@ -16109,6 +16110,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: number
     modifierOptionRerollsUsed?: number
     rerollTokensSpentDuringPart2?: number
+    score?: number
     ExcludedChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutExcludedFromDayInput
     ExcludedModifierOptions?: ModifierOptionUncheckedCreateNestedManyWithoutExcludedFromDayInput
     IncludedCustomChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutIncludedInDayInput
@@ -16152,7 +16154,6 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     serializedId?: NullableStringFieldUpdateOperationsInput | string | null
     username?: NullableStringFieldUpdateOperationsInput | string | null
-    password?: NullableStringFieldUpdateOperationsInput | string | null
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     numberOfGames?: IntFieldUpdateOperationsInput | number
     PublicProfile?: PublicProfileUpdateManyWithoutUserNestedInput
@@ -16169,7 +16170,6 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     serializedId?: NullableStringFieldUpdateOperationsInput | string | null
     username?: NullableStringFieldUpdateOperationsInput | string | null
-    password?: NullableStringFieldUpdateOperationsInput | string | null
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     numberOfGames?: IntFieldUpdateOperationsInput | number
     PublicProfile?: PublicProfileUncheckedUpdateManyWithoutUserNestedInput
@@ -16234,6 +16234,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: IntFilter | number
     modifierOptionRerollsUsed?: IntFilter | number
     rerollTokensSpentDuringPart2?: IntFilter | number
+    score?: IntFilter | number
   }
 
   export type PublicProfileUpsertWithoutGameInput = {
@@ -16997,7 +16998,6 @@ export namespace Prisma {
     id: string
     serializedId?: string | null
     username?: string | null
-    password?: string | null
     dateCreated?: Date | string
     numberOfGames?: number
     Game?: GameCreateNestedManyWithoutUserInput
@@ -17014,7 +17014,6 @@ export namespace Prisma {
     id: string
     serializedId?: string | null
     username?: string | null
-    password?: string | null
     dateCreated?: Date | string
     numberOfGames?: number
     Game?: GameUncheckedCreateNestedManyWithoutUserInput
@@ -17090,6 +17089,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: number
     modifierOptionRerollsUsed?: number
     rerollTokensSpentDuringPart2?: number
+    score?: number
     ExcludedChallengeModifiers?: ChallengeModifierCreateNestedManyWithoutExcludedFromDayInput
     ExcludedModifierOptions?: ModifierOptionCreateNestedManyWithoutExcludedFromDayInput
     IncludedCustomChallengeModifiers?: ChallengeModifierCreateNestedManyWithoutIncludedInDayInput
@@ -17116,6 +17116,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: number
     modifierOptionRerollsUsed?: number
     rerollTokensSpentDuringPart2?: number
+    score?: number
     ExcludedChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutExcludedFromDayInput
     ExcludedModifierOptions?: ModifierOptionUncheckedCreateNestedManyWithoutExcludedFromDayInput
     IncludedCustomChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutIncludedInDayInput
@@ -17184,7 +17185,6 @@ export namespace Prisma {
     id: string
     serializedId?: string | null
     username?: string | null
-    password?: string | null
     dateCreated?: Date | string
     numberOfGames?: number
     Game?: GameCreateNestedManyWithoutUserInput
@@ -17201,7 +17201,6 @@ export namespace Prisma {
     id: string
     serializedId?: string | null
     username?: string | null
-    password?: string | null
     dateCreated?: Date | string
     numberOfGames?: number
     Game?: GameUncheckedCreateNestedManyWithoutUserInput
@@ -17223,7 +17222,6 @@ export namespace Prisma {
     id: string
     serializedId?: string | null
     username?: string | null
-    password?: string | null
     dateCreated?: Date | string
     numberOfGames?: number
     Game?: GameCreateNestedManyWithoutUserInput
@@ -17240,7 +17238,6 @@ export namespace Prisma {
     id: string
     serializedId?: string | null
     username?: string | null
-    password?: string | null
     dateCreated?: Date | string
     numberOfGames?: number
     Game?: GameUncheckedCreateNestedManyWithoutUserInput
@@ -17269,6 +17266,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: number
     modifierOptionRerollsUsed?: number
     rerollTokensSpentDuringPart2?: number
+    score?: number
     ExcludedModifierOptions?: ModifierOptionCreateNestedManyWithoutExcludedFromDayInput
     IncludedCustomChallengeModifiers?: ChallengeModifierCreateNestedManyWithoutIncludedInDayInput
     IncludedCustomModifierOptions?: ModifierOptionCreateNestedManyWithoutIncludedInDayInput
@@ -17296,6 +17294,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: number
     modifierOptionRerollsUsed?: number
     rerollTokensSpentDuringPart2?: number
+    score?: number
     ExcludedModifierOptions?: ModifierOptionUncheckedCreateNestedManyWithoutExcludedFromDayInput
     IncludedCustomChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutIncludedInDayInput
     IncludedCustomModifierOptions?: ModifierOptionUncheckedCreateNestedManyWithoutIncludedInDayInput
@@ -17317,6 +17316,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: number
     modifierOptionRerollsUsed?: number
     rerollTokensSpentDuringPart2?: number
+    score?: number
     ExcludedChallengeModifiers?: ChallengeModifierCreateNestedManyWithoutExcludedFromDayInput
     ExcludedModifierOptions?: ModifierOptionCreateNestedManyWithoutExcludedFromDayInput
     IncludedCustomModifierOptions?: ModifierOptionCreateNestedManyWithoutIncludedInDayInput
@@ -17344,6 +17344,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: number
     modifierOptionRerollsUsed?: number
     rerollTokensSpentDuringPart2?: number
+    score?: number
     ExcludedChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutExcludedFromDayInput
     ExcludedModifierOptions?: ModifierOptionUncheckedCreateNestedManyWithoutExcludedFromDayInput
     IncludedCustomModifierOptions?: ModifierOptionUncheckedCreateNestedManyWithoutIncludedInDayInput
@@ -17365,6 +17366,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: number
     modifierOptionRerollsUsed?: number
     rerollTokensSpentDuringPart2?: number
+    score?: number
     ExcludedChallengeModifiers?: ChallengeModifierCreateNestedManyWithoutExcludedFromDayInput
     ExcludedModifierOptions?: ModifierOptionCreateNestedManyWithoutExcludedFromDayInput
     IncludedCustomChallengeModifiers?: ChallengeModifierCreateNestedManyWithoutIncludedInDayInput
@@ -17391,6 +17393,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: number
     modifierOptionRerollsUsed?: number
     rerollTokensSpentDuringPart2?: number
+    score?: number
     ExcludedChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutExcludedFromDayInput
     ExcludedModifierOptions?: ModifierOptionUncheckedCreateNestedManyWithoutExcludedFromDayInput
     IncludedCustomChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutIncludedInDayInput
@@ -17416,7 +17419,6 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     serializedId?: NullableStringFieldUpdateOperationsInput | string | null
     username?: NullableStringFieldUpdateOperationsInput | string | null
-    password?: NullableStringFieldUpdateOperationsInput | string | null
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     numberOfGames?: IntFieldUpdateOperationsInput | number
     Game?: GameUpdateManyWithoutUserNestedInput
@@ -17433,7 +17435,6 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     serializedId?: NullableStringFieldUpdateOperationsInput | string | null
     username?: NullableStringFieldUpdateOperationsInput | string | null
-    password?: NullableStringFieldUpdateOperationsInput | string | null
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     numberOfGames?: IntFieldUpdateOperationsInput | number
     Game?: GameUncheckedUpdateManyWithoutUserNestedInput
@@ -17533,7 +17534,6 @@ export namespace Prisma {
     id?: StringFilter | string
     serializedId?: StringNullableFilter | string | null
     username?: StringNullableFilter | string | null
-    password?: StringNullableFilter | string | null
     dateCreated?: DateTimeFilter | Date | string
     numberOfGames?: IntFilter | number
   }
@@ -17650,7 +17650,6 @@ export namespace Prisma {
     id: string
     serializedId?: string | null
     username?: string | null
-    password?: string | null
     dateCreated?: Date | string
     numberOfGames?: number
     Game?: GameCreateNestedManyWithoutUserInput
@@ -17667,7 +17666,6 @@ export namespace Prisma {
     id: string
     serializedId?: string | null
     username?: string | null
-    password?: string | null
     dateCreated?: Date | string
     numberOfGames?: number
     Game?: GameUncheckedCreateNestedManyWithoutUserInput
@@ -17696,6 +17694,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: number
     modifierOptionRerollsUsed?: number
     rerollTokensSpentDuringPart2?: number
+    score?: number
     ExcludedChallengeModifiers?: ChallengeModifierCreateNestedManyWithoutExcludedFromDayInput
     ExcludedModifierOptions?: ModifierOptionCreateNestedManyWithoutExcludedFromDayInput
     IncludedCustomChallengeModifiers?: ChallengeModifierCreateNestedManyWithoutIncludedInDayInput
@@ -17722,6 +17721,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: number
     modifierOptionRerollsUsed?: number
     rerollTokensSpentDuringPart2?: number
+    score?: number
     ExcludedChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutExcludedFromDayInput
     ExcludedModifierOptions?: ModifierOptionUncheckedCreateNestedManyWithoutExcludedFromDayInput
     IncludedCustomChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutIncludedInDayInput
@@ -17790,7 +17790,6 @@ export namespace Prisma {
     id: string
     serializedId?: string | null
     username?: string | null
-    password?: string | null
     dateCreated?: Date | string
     numberOfGames?: number
     Game?: GameCreateNestedManyWithoutUserInput
@@ -17807,7 +17806,6 @@ export namespace Prisma {
     id: string
     serializedId?: string | null
     username?: string | null
-    password?: string | null
     dateCreated?: Date | string
     numberOfGames?: number
     Game?: GameUncheckedCreateNestedManyWithoutUserInput
@@ -17829,7 +17827,6 @@ export namespace Prisma {
     id: string
     serializedId?: string | null
     username?: string | null
-    password?: string | null
     dateCreated?: Date | string
     numberOfGames?: number
     Game?: GameCreateNestedManyWithoutUserInput
@@ -17846,7 +17843,6 @@ export namespace Prisma {
     id: string
     serializedId?: string | null
     username?: string | null
-    password?: string | null
     dateCreated?: Date | string
     numberOfGames?: number
     Game?: GameUncheckedCreateNestedManyWithoutUserInput
@@ -17875,6 +17871,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: number
     modifierOptionRerollsUsed?: number
     rerollTokensSpentDuringPart2?: number
+    score?: number
     ExcludedChallengeModifiers?: ChallengeModifierCreateNestedManyWithoutExcludedFromDayInput
     IncludedCustomChallengeModifiers?: ChallengeModifierCreateNestedManyWithoutIncludedInDayInput
     IncludedCustomModifierOptions?: ModifierOptionCreateNestedManyWithoutIncludedInDayInput
@@ -17902,6 +17899,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: number
     modifierOptionRerollsUsed?: number
     rerollTokensSpentDuringPart2?: number
+    score?: number
     ExcludedChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutExcludedFromDayInput
     IncludedCustomChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutIncludedInDayInput
     IncludedCustomModifierOptions?: ModifierOptionUncheckedCreateNestedManyWithoutIncludedInDayInput
@@ -17923,6 +17921,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: number
     modifierOptionRerollsUsed?: number
     rerollTokensSpentDuringPart2?: number
+    score?: number
     ExcludedChallengeModifiers?: ChallengeModifierCreateNestedManyWithoutExcludedFromDayInput
     ExcludedModifierOptions?: ModifierOptionCreateNestedManyWithoutExcludedFromDayInput
     IncludedCustomChallengeModifiers?: ChallengeModifierCreateNestedManyWithoutIncludedInDayInput
@@ -17950,6 +17949,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: number
     modifierOptionRerollsUsed?: number
     rerollTokensSpentDuringPart2?: number
+    score?: number
     ExcludedChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutExcludedFromDayInput
     ExcludedModifierOptions?: ModifierOptionUncheckedCreateNestedManyWithoutExcludedFromDayInput
     IncludedCustomChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutIncludedInDayInput
@@ -17971,6 +17971,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: number
     modifierOptionRerollsUsed?: number
     rerollTokensSpentDuringPart2?: number
+    score?: number
     ExcludedChallengeModifiers?: ChallengeModifierCreateNestedManyWithoutExcludedFromDayInput
     ExcludedModifierOptions?: ModifierOptionCreateNestedManyWithoutExcludedFromDayInput
     IncludedCustomChallengeModifiers?: ChallengeModifierCreateNestedManyWithoutIncludedInDayInput
@@ -17997,6 +17998,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: number
     modifierOptionRerollsUsed?: number
     rerollTokensSpentDuringPart2?: number
+    score?: number
     ExcludedChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutExcludedFromDayInput
     ExcludedModifierOptions?: ModifierOptionUncheckedCreateNestedManyWithoutExcludedFromDayInput
     IncludedCustomChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutIncludedInDayInput
@@ -18066,7 +18068,6 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     serializedId?: NullableStringFieldUpdateOperationsInput | string | null
     username?: NullableStringFieldUpdateOperationsInput | string | null
-    password?: NullableStringFieldUpdateOperationsInput | string | null
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     numberOfGames?: IntFieldUpdateOperationsInput | number
     Game?: GameUpdateManyWithoutUserNestedInput
@@ -18083,7 +18084,6 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     serializedId?: NullableStringFieldUpdateOperationsInput | string | null
     username?: NullableStringFieldUpdateOperationsInput | string | null
-    password?: NullableStringFieldUpdateOperationsInput | string | null
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     numberOfGames?: IntFieldUpdateOperationsInput | number
     Game?: GameUncheckedUpdateManyWithoutUserNestedInput
@@ -18400,7 +18400,6 @@ export namespace Prisma {
     id: string
     serializedId?: string | null
     username?: string | null
-    password?: string | null
     dateCreated?: Date | string
     numberOfGames?: number
     Game?: GameCreateNestedManyWithoutUserInput
@@ -18417,7 +18416,6 @@ export namespace Prisma {
     id: string
     serializedId?: string | null
     username?: string | null
-    password?: string | null
     dateCreated?: Date | string
     numberOfGames?: number
     Game?: GameUncheckedCreateNestedManyWithoutUserInput
@@ -18508,7 +18506,6 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     serializedId?: NullableStringFieldUpdateOperationsInput | string | null
     username?: NullableStringFieldUpdateOperationsInput | string | null
-    password?: NullableStringFieldUpdateOperationsInput | string | null
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     numberOfGames?: IntFieldUpdateOperationsInput | number
     Game?: GameUpdateManyWithoutUserNestedInput
@@ -18525,7 +18522,6 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     serializedId?: NullableStringFieldUpdateOperationsInput | string | null
     username?: NullableStringFieldUpdateOperationsInput | string | null
-    password?: NullableStringFieldUpdateOperationsInput | string | null
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     numberOfGames?: IntFieldUpdateOperationsInput | number
     Game?: GameUncheckedUpdateManyWithoutUserNestedInput
@@ -19072,6 +19068,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: number
     modifierOptionRerollsUsed?: number
     rerollTokensSpentDuringPart2?: number
+    score?: number
   }
 
   export type DayUpdateWithoutGameInput = {
@@ -19085,6 +19082,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: IntFieldUpdateOperationsInput | number
     modifierOptionRerollsUsed?: IntFieldUpdateOperationsInput | number
     rerollTokensSpentDuringPart2?: IntFieldUpdateOperationsInput | number
+    score?: IntFieldUpdateOperationsInput | number
     ExcludedChallengeModifiers?: ChallengeModifierUpdateManyWithoutExcludedFromDayNestedInput
     ExcludedModifierOptions?: ModifierOptionUpdateManyWithoutExcludedFromDayNestedInput
     IncludedCustomChallengeModifiers?: ChallengeModifierUpdateManyWithoutIncludedInDayNestedInput
@@ -19111,6 +19109,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: IntFieldUpdateOperationsInput | number
     modifierOptionRerollsUsed?: IntFieldUpdateOperationsInput | number
     rerollTokensSpentDuringPart2?: IntFieldUpdateOperationsInput | number
+    score?: IntFieldUpdateOperationsInput | number
     ExcludedChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutExcludedFromDayNestedInput
     ExcludedModifierOptions?: ModifierOptionUncheckedUpdateManyWithoutExcludedFromDayNestedInput
     IncludedCustomChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutIncludedInDayNestedInput
@@ -19133,6 +19132,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: IntFieldUpdateOperationsInput | number
     modifierOptionRerollsUsed?: IntFieldUpdateOperationsInput | number
     rerollTokensSpentDuringPart2?: IntFieldUpdateOperationsInput | number
+    score?: IntFieldUpdateOperationsInput | number
   }
 
   export type GameCreateManyRankInput = {
@@ -19423,6 +19423,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: number
     modifierOptionRerollsUsed?: number
     rerollTokensSpentDuringPart2?: number
+    score?: number
   }
 
   export type DayCreateManyModifierWhenPart1CompletedInput = {
@@ -19441,6 +19442,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: number
     modifierOptionRerollsUsed?: number
     rerollTokensSpentDuringPart2?: number
+    score?: number
   }
 
   export type ModifierOptionUpdateWithoutChallengeModifierInput = {
@@ -19491,6 +19493,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: IntFieldUpdateOperationsInput | number
     modifierOptionRerollsUsed?: IntFieldUpdateOperationsInput | number
     rerollTokensSpentDuringPart2?: IntFieldUpdateOperationsInput | number
+    score?: IntFieldUpdateOperationsInput | number
     ExcludedChallengeModifiers?: ChallengeModifierUpdateManyWithoutExcludedFromDayNestedInput
     ExcludedModifierOptions?: ModifierOptionUpdateManyWithoutExcludedFromDayNestedInput
     IncludedCustomChallengeModifiers?: ChallengeModifierUpdateManyWithoutIncludedInDayNestedInput
@@ -19517,6 +19520,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: IntFieldUpdateOperationsInput | number
     modifierOptionRerollsUsed?: IntFieldUpdateOperationsInput | number
     rerollTokensSpentDuringPart2?: IntFieldUpdateOperationsInput | number
+    score?: IntFieldUpdateOperationsInput | number
     ExcludedChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutExcludedFromDayNestedInput
     ExcludedModifierOptions?: ModifierOptionUncheckedUpdateManyWithoutExcludedFromDayNestedInput
     IncludedCustomChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutIncludedInDayNestedInput
@@ -19579,7 +19583,6 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     serializedId?: NullableStringFieldUpdateOperationsInput | string | null
     username?: NullableStringFieldUpdateOperationsInput | string | null
-    password?: NullableStringFieldUpdateOperationsInput | string | null
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     numberOfGames?: IntFieldUpdateOperationsInput | number
     Game?: GameUpdateManyWithoutUserNestedInput
@@ -19596,7 +19599,6 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     serializedId?: NullableStringFieldUpdateOperationsInput | string | null
     username?: NullableStringFieldUpdateOperationsInput | string | null
-    password?: NullableStringFieldUpdateOperationsInput | string | null
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     numberOfGames?: IntFieldUpdateOperationsInput | number
     Game?: GameUncheckedUpdateManyWithoutUserNestedInput
@@ -19613,7 +19615,6 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     serializedId?: NullableStringFieldUpdateOperationsInput | string | null
     username?: NullableStringFieldUpdateOperationsInput | string | null
-    password?: NullableStringFieldUpdateOperationsInput | string | null
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     numberOfGames?: IntFieldUpdateOperationsInput | number
   }
@@ -19622,7 +19623,6 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     serializedId?: NullableStringFieldUpdateOperationsInput | string | null
     username?: NullableStringFieldUpdateOperationsInput | string | null
-    password?: NullableStringFieldUpdateOperationsInput | string | null
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     numberOfGames?: IntFieldUpdateOperationsInput | number
     Game?: GameUpdateManyWithoutUserNestedInput
@@ -19639,7 +19639,6 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     serializedId?: NullableStringFieldUpdateOperationsInput | string | null
     username?: NullableStringFieldUpdateOperationsInput | string | null
-    password?: NullableStringFieldUpdateOperationsInput | string | null
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     numberOfGames?: IntFieldUpdateOperationsInput | number
     Game?: GameUncheckedUpdateManyWithoutUserNestedInput
@@ -19656,7 +19655,6 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     serializedId?: NullableStringFieldUpdateOperationsInput | string | null
     username?: NullableStringFieldUpdateOperationsInput | string | null
-    password?: NullableStringFieldUpdateOperationsInput | string | null
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     numberOfGames?: IntFieldUpdateOperationsInput | number
   }
@@ -19672,6 +19670,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: IntFieldUpdateOperationsInput | number
     modifierOptionRerollsUsed?: IntFieldUpdateOperationsInput | number
     rerollTokensSpentDuringPart2?: IntFieldUpdateOperationsInput | number
+    score?: IntFieldUpdateOperationsInput | number
     ExcludedModifierOptions?: ModifierOptionUpdateManyWithoutExcludedFromDayNestedInput
     IncludedCustomChallengeModifiers?: ChallengeModifierUpdateManyWithoutIncludedInDayNestedInput
     IncludedCustomModifierOptions?: ModifierOptionUpdateManyWithoutIncludedInDayNestedInput
@@ -19699,6 +19698,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: IntFieldUpdateOperationsInput | number
     modifierOptionRerollsUsed?: IntFieldUpdateOperationsInput | number
     rerollTokensSpentDuringPart2?: IntFieldUpdateOperationsInput | number
+    score?: IntFieldUpdateOperationsInput | number
     ExcludedModifierOptions?: ModifierOptionUncheckedUpdateManyWithoutExcludedFromDayNestedInput
     IncludedCustomChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutIncludedInDayNestedInput
     IncludedCustomModifierOptions?: ModifierOptionUncheckedUpdateManyWithoutIncludedInDayNestedInput
@@ -19721,6 +19721,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: IntFieldUpdateOperationsInput | number
     modifierOptionRerollsUsed?: IntFieldUpdateOperationsInput | number
     rerollTokensSpentDuringPart2?: IntFieldUpdateOperationsInput | number
+    score?: IntFieldUpdateOperationsInput | number
   }
 
   export type DayUpdateWithoutIncludedCustomChallengeModifiersInput = {
@@ -19734,6 +19735,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: IntFieldUpdateOperationsInput | number
     modifierOptionRerollsUsed?: IntFieldUpdateOperationsInput | number
     rerollTokensSpentDuringPart2?: IntFieldUpdateOperationsInput | number
+    score?: IntFieldUpdateOperationsInput | number
     ExcludedChallengeModifiers?: ChallengeModifierUpdateManyWithoutExcludedFromDayNestedInput
     ExcludedModifierOptions?: ModifierOptionUpdateManyWithoutExcludedFromDayNestedInput
     IncludedCustomModifierOptions?: ModifierOptionUpdateManyWithoutIncludedInDayNestedInput
@@ -19761,6 +19763,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: IntFieldUpdateOperationsInput | number
     modifierOptionRerollsUsed?: IntFieldUpdateOperationsInput | number
     rerollTokensSpentDuringPart2?: IntFieldUpdateOperationsInput | number
+    score?: IntFieldUpdateOperationsInput | number
     ExcludedChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutExcludedFromDayNestedInput
     ExcludedModifierOptions?: ModifierOptionUncheckedUpdateManyWithoutExcludedFromDayNestedInput
     IncludedCustomModifierOptions?: ModifierOptionUncheckedUpdateManyWithoutIncludedInDayNestedInput
@@ -19783,6 +19786,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: IntFieldUpdateOperationsInput | number
     modifierOptionRerollsUsed?: IntFieldUpdateOperationsInput | number
     rerollTokensSpentDuringPart2?: IntFieldUpdateOperationsInput | number
+    score?: IntFieldUpdateOperationsInput | number
   }
 
   export type DayUpdateWithoutModifierWhenPart1CompletedInput = {
@@ -19796,6 +19800,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: IntFieldUpdateOperationsInput | number
     modifierOptionRerollsUsed?: IntFieldUpdateOperationsInput | number
     rerollTokensSpentDuringPart2?: IntFieldUpdateOperationsInput | number
+    score?: IntFieldUpdateOperationsInput | number
     ExcludedChallengeModifiers?: ChallengeModifierUpdateManyWithoutExcludedFromDayNestedInput
     ExcludedModifierOptions?: ModifierOptionUpdateManyWithoutExcludedFromDayNestedInput
     IncludedCustomChallengeModifiers?: ChallengeModifierUpdateManyWithoutIncludedInDayNestedInput
@@ -19822,6 +19827,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: IntFieldUpdateOperationsInput | number
     modifierOptionRerollsUsed?: IntFieldUpdateOperationsInput | number
     rerollTokensSpentDuringPart2?: IntFieldUpdateOperationsInput | number
+    score?: IntFieldUpdateOperationsInput | number
     ExcludedChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutExcludedFromDayNestedInput
     ExcludedModifierOptions?: ModifierOptionUncheckedUpdateManyWithoutExcludedFromDayNestedInput
     IncludedCustomChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutIncludedInDayNestedInput
@@ -19844,6 +19850,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: IntFieldUpdateOperationsInput | number
     modifierOptionRerollsUsed?: IntFieldUpdateOperationsInput | number
     rerollTokensSpentDuringPart2?: IntFieldUpdateOperationsInput | number
+    score?: IntFieldUpdateOperationsInput | number
   }
 
   export type DayCreateManyModifierOptionInput = {
@@ -19862,6 +19869,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: number
     modifierOptionRerollsUsed?: number
     rerollTokensSpentDuringPart2?: number
+    score?: number
   }
 
   export type DayCreateManyOptionWhenPart1CompletedInput = {
@@ -19880,6 +19888,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: number
     modifierOptionRerollsUsed?: number
     rerollTokensSpentDuringPart2?: number
+    score?: number
   }
 
   export type DayUpdateWithoutModifierOptionInput = {
@@ -19893,6 +19902,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: IntFieldUpdateOperationsInput | number
     modifierOptionRerollsUsed?: IntFieldUpdateOperationsInput | number
     rerollTokensSpentDuringPart2?: IntFieldUpdateOperationsInput | number
+    score?: IntFieldUpdateOperationsInput | number
     ExcludedChallengeModifiers?: ChallengeModifierUpdateManyWithoutExcludedFromDayNestedInput
     ExcludedModifierOptions?: ModifierOptionUpdateManyWithoutExcludedFromDayNestedInput
     IncludedCustomChallengeModifiers?: ChallengeModifierUpdateManyWithoutIncludedInDayNestedInput
@@ -19919,6 +19929,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: IntFieldUpdateOperationsInput | number
     modifierOptionRerollsUsed?: IntFieldUpdateOperationsInput | number
     rerollTokensSpentDuringPart2?: IntFieldUpdateOperationsInput | number
+    score?: IntFieldUpdateOperationsInput | number
     ExcludedChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutExcludedFromDayNestedInput
     ExcludedModifierOptions?: ModifierOptionUncheckedUpdateManyWithoutExcludedFromDayNestedInput
     IncludedCustomChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutIncludedInDayNestedInput
@@ -19967,7 +19978,6 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     serializedId?: NullableStringFieldUpdateOperationsInput | string | null
     username?: NullableStringFieldUpdateOperationsInput | string | null
-    password?: NullableStringFieldUpdateOperationsInput | string | null
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     numberOfGames?: IntFieldUpdateOperationsInput | number
     Game?: GameUpdateManyWithoutUserNestedInput
@@ -19984,7 +19994,6 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     serializedId?: NullableStringFieldUpdateOperationsInput | string | null
     username?: NullableStringFieldUpdateOperationsInput | string | null
-    password?: NullableStringFieldUpdateOperationsInput | string | null
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     numberOfGames?: IntFieldUpdateOperationsInput | number
     Game?: GameUncheckedUpdateManyWithoutUserNestedInput
@@ -20001,7 +20010,6 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     serializedId?: NullableStringFieldUpdateOperationsInput | string | null
     username?: NullableStringFieldUpdateOperationsInput | string | null
-    password?: NullableStringFieldUpdateOperationsInput | string | null
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     numberOfGames?: IntFieldUpdateOperationsInput | number
     Game?: GameUpdateManyWithoutUserNestedInput
@@ -20018,7 +20026,6 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     serializedId?: NullableStringFieldUpdateOperationsInput | string | null
     username?: NullableStringFieldUpdateOperationsInput | string | null
-    password?: NullableStringFieldUpdateOperationsInput | string | null
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     numberOfGames?: IntFieldUpdateOperationsInput | number
     Game?: GameUncheckedUpdateManyWithoutUserNestedInput
@@ -20042,6 +20049,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: IntFieldUpdateOperationsInput | number
     modifierOptionRerollsUsed?: IntFieldUpdateOperationsInput | number
     rerollTokensSpentDuringPart2?: IntFieldUpdateOperationsInput | number
+    score?: IntFieldUpdateOperationsInput | number
     ExcludedChallengeModifiers?: ChallengeModifierUpdateManyWithoutExcludedFromDayNestedInput
     IncludedCustomChallengeModifiers?: ChallengeModifierUpdateManyWithoutIncludedInDayNestedInput
     IncludedCustomModifierOptions?: ModifierOptionUpdateManyWithoutIncludedInDayNestedInput
@@ -20069,6 +20077,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: IntFieldUpdateOperationsInput | number
     modifierOptionRerollsUsed?: IntFieldUpdateOperationsInput | number
     rerollTokensSpentDuringPart2?: IntFieldUpdateOperationsInput | number
+    score?: IntFieldUpdateOperationsInput | number
     ExcludedChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutExcludedFromDayNestedInput
     IncludedCustomChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutIncludedInDayNestedInput
     IncludedCustomModifierOptions?: ModifierOptionUncheckedUpdateManyWithoutIncludedInDayNestedInput
@@ -20085,6 +20094,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: IntFieldUpdateOperationsInput | number
     modifierOptionRerollsUsed?: IntFieldUpdateOperationsInput | number
     rerollTokensSpentDuringPart2?: IntFieldUpdateOperationsInput | number
+    score?: IntFieldUpdateOperationsInput | number
     ExcludedChallengeModifiers?: ChallengeModifierUpdateManyWithoutExcludedFromDayNestedInput
     ExcludedModifierOptions?: ModifierOptionUpdateManyWithoutExcludedFromDayNestedInput
     IncludedCustomChallengeModifiers?: ChallengeModifierUpdateManyWithoutIncludedInDayNestedInput
@@ -20112,6 +20122,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: IntFieldUpdateOperationsInput | number
     modifierOptionRerollsUsed?: IntFieldUpdateOperationsInput | number
     rerollTokensSpentDuringPart2?: IntFieldUpdateOperationsInput | number
+    score?: IntFieldUpdateOperationsInput | number
     ExcludedChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutExcludedFromDayNestedInput
     ExcludedModifierOptions?: ModifierOptionUncheckedUpdateManyWithoutExcludedFromDayNestedInput
     IncludedCustomChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutIncludedInDayNestedInput
@@ -20128,6 +20139,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: IntFieldUpdateOperationsInput | number
     modifierOptionRerollsUsed?: IntFieldUpdateOperationsInput | number
     rerollTokensSpentDuringPart2?: IntFieldUpdateOperationsInput | number
+    score?: IntFieldUpdateOperationsInput | number
     ExcludedChallengeModifiers?: ChallengeModifierUpdateManyWithoutExcludedFromDayNestedInput
     ExcludedModifierOptions?: ModifierOptionUpdateManyWithoutExcludedFromDayNestedInput
     IncludedCustomChallengeModifiers?: ChallengeModifierUpdateManyWithoutIncludedInDayNestedInput
@@ -20154,6 +20166,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: IntFieldUpdateOperationsInput | number
     modifierOptionRerollsUsed?: IntFieldUpdateOperationsInput | number
     rerollTokensSpentDuringPart2?: IntFieldUpdateOperationsInput | number
+    score?: IntFieldUpdateOperationsInput | number
     ExcludedChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutExcludedFromDayNestedInput
     ExcludedModifierOptions?: ModifierOptionUncheckedUpdateManyWithoutExcludedFromDayNestedInput
     IncludedCustomChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutIncludedInDayNestedInput

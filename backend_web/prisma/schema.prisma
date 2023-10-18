@@ -16,7 +16,6 @@ model User {
   id                                      String              @id
   serializedId                            String?             @unique
   username                                String?             @unique
-  password                                String?
   dateCreated                             DateTime            @default(now())
   numberOfGames                           Int                 @default(0)
   Game                                    Game[]
@@ -88,6 +87,7 @@ model Day {
   challengeModifierRerollsUsed     Int                 @default(0)
   modifierOptionRerollsUsed        Int                 @default(0)
   rerollTokensSpentDuringPart2     Int                 @default(0)
+  score                            Int                 @default(0)
   ExcludedChallengeModifiers       ChallengeModifier[] @relation(name: "ExcludedChallengeModifiers")
   ExcludedModifierOptions          ModifierOption[]    @relation(name: "ExcludedModifierOptions")
   IncludedCustomChallengeModifiers ChallengeModifier[] @relation(name: "IncludedCustomChallengeModifiers")

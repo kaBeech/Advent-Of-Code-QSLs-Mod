@@ -109,7 +109,6 @@ exports.Prisma.UserScalarFieldEnum = {
   id: 'id',
   serializedId: 'serializedId',
   username: 'username',
-  password: 'password',
   dateCreated: 'dateCreated',
   numberOfGames: 'numberOfGames'
 };
@@ -164,7 +163,8 @@ exports.Prisma.DayScalarFieldEnum = {
   part2Completed: 'part2Completed',
   challengeModifierRerollsUsed: 'challengeModifierRerollsUsed',
   modifierOptionRerollsUsed: 'modifierOptionRerollsUsed',
-  rerollTokensSpentDuringPart2: 'rerollTokensSpentDuringPart2'
+  rerollTokensSpentDuringPart2: 'rerollTokensSpentDuringPart2',
+  score: 'score'
 };
 
 exports.Prisma.ChallengeModifierScalarFieldEnum = {
