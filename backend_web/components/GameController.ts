@@ -139,7 +139,7 @@ const scoreCalculator = (state: GameControllerState) => ({
     }
     let fewRerollsBonus = 0;
     if (state.game.dateCompleted) {
-      fewRerollsBonus = Math.min(300 - 10 * state.game.rerollTokensSpent, 0);
+      fewRerollsBonus = Math.max(300 - 10 * state.game.rerollTokensSpent, 0);
     }
     const part2RerollBonus = 20 *
       state.game.rerollTokensSpentDuringPart2Limited;
