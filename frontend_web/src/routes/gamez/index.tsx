@@ -56,9 +56,12 @@ export default component$(() => {
             for (let i = gameData.game.currentDay + 1; i <= 25; i++) {
               lockedDays.push({ number: i });
             }
+            const sortedDays = gameData.game.Day.sort((a: any, b: any) => {
+              return a.number - b.number;
+            });
             return (
               <>
-                {gameData.game.Day.map(
+                {sortedDays.map(
                   (day: {
                     number: number;
                     challengeModifierId: string;
