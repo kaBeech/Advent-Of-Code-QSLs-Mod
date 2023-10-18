@@ -202,7 +202,9 @@ export default component$(() => {
                             userId
                           );
                           state.buttonPresses++;
-                          window.location.href = `/game/${state.gameNumber}/day/${res.currentDay}`;
+                          window.location.href = `/game/${
+                            state.gameNumber
+                          }/day/${+res.currentDay + 1}`;
                         }}
                       >
                         [Complete Day]
