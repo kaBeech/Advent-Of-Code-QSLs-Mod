@@ -48,6 +48,9 @@ export default component$(() => {
             }
             return (
               <>
+                <div>Game Name: Loading...</div>
+                <div>Game Year: Loading...</div>
+                <div>Game Score: Loading...</div>
                 {pendingDays.map((day: { number: number }) => (
                   <DayLink
                     key={`pendingDay-${day.number}`}
@@ -65,6 +68,9 @@ export default component$(() => {
               }
               return (
                 <>
+                  <div>Game Name: Not Found!</div>
+                  <div>Game Year: Not Found!</div>
+                  <div>Game Score: Not Found!</div>
                   {dummyDays.map((day: { number: number }) => (
                     <DayLink
                       key={`lockedDay-${day.number}`}
@@ -87,6 +93,9 @@ export default component$(() => {
             );
             return (
               <>
+                <div>Game Name: {gameData.game.name}</div>
+                <div>Game Year: {gameData.game.year}</div>
+                <div>Game Score: {gameData.game.score}</div>
                 {lockedDays.map((day: { number: number }) => (
                   <DayLink
                     key={`lockedDay-${day.number}`}
