@@ -96,11 +96,10 @@ export default component$(() => {
           onResolved={(xtremeXmasData) => {
             if (+xtremeXmasData.numberOfGames < 1) {
               return (
-                <div>
-                  <h2>
-                    Please <a href="/new">[Start a New Game!]</a>
-                  </h2>
-                </div>
+                <h2>
+                  Day not found - please try again or{" "}
+                  <a href="/new">[start a new game!]</a>
+                </h2>
               );
             }
 

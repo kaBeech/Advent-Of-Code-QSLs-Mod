@@ -44,7 +44,7 @@ export default component$((props: DayLinkProps) => {
           </a>
         </div>
       ) : (
-        <div>Day {props.dayNumber}</div>
+        <div>Day {props.dayNumber}: Not Started</div>
       )}
     </>
   );
