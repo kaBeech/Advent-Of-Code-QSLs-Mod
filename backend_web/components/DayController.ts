@@ -67,7 +67,6 @@ const challengeModifierReroller = (state: DayControllerState) => ({
     if (game.currentRerollTokens < 2) {
       throw new Error("Not enough reroll tokens");
     }
-    state.day.challengeModifierRerollsUsed += 1;
     const selectedChallengeModifier = rollChallengeModifier(
       challengeModifiers,
     );
@@ -81,6 +80,7 @@ const challengeModifierReroller = (state: DayControllerState) => ({
       );
       state.day.modifierOptionId = selectedModifierOption.id;
     }
+    state.day.challengeModifierRerollsUsed += 1;
     return state.day;
   },
 });
@@ -101,11 +101,11 @@ const modifierOptionReroller = (state: DayControllerState) => ({
     if (game && game.currentRerollTokens < 1) {
       throw new Error("Not enough reroll tokens");
     }
-    state.day.modifierOptionRerollsUsed += 1;
     const selectedModifierOption = rollModifierOption(
       modifierOptions,
     );
     state.day.modifierOptionId = selectedModifierOption.id;
+    state.day.modifierOptionRerollsUsed += 1;
     return state.day;
   },
 });
