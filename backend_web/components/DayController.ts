@@ -81,6 +81,9 @@ const challengeModifierReroller = (state: DayControllerState) => ({
       state.day.modifierOptionId = selectedModifierOption.id;
     }
     state.day.challengeModifierRerollsUsed += 1;
+    if (state.day.part1Completed) {
+      state.day.rerollTokensSpentDuringPart2 += 2;
+    }
     return state.day;
   },
 });
@@ -106,6 +109,9 @@ const modifierOptionReroller = (state: DayControllerState) => ({
     );
     state.day.modifierOptionId = selectedModifierOption.id;
     state.day.modifierOptionRerollsUsed += 1;
+    if (state.day.part1Completed) {
+      state.day.rerollTokensSpentDuringPart2 += 1;
+    }
     return state.day;
   },
 });
