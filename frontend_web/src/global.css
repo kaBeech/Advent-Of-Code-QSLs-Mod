@@ -29,8 +29,10 @@ html {
 
 :root {
   --xxmas-dark-background: hsl(240, 40%, 10%);
-  --xxmas-dark-text: hsl(0, 0%, 80%);
-  --xxmas-red-text: hsl(0, 100%, 48%);
+  --xxmas-text-dim: hsl(0, 0%, 38%);
+  --xxmas-text-bright: hsl(0, 0%, 80%);
+  --xxmas-red-text-bright: hsl(0, 100%, 48%);
+  --xxmas-red-text: hsl(0, 100%, 44%);
   --xxmas-green-text: hsl(140, 99%, 29%);
   --xxmas-gold-text: hsl(63, 100%, 69%);
 }
@@ -41,7 +43,7 @@ body {
   margin: 0.5rem;
   line-height: inherit;
   background: var(--xxmas-dark-background);
-  color: var(--xxmas-dark-text);
+  color: var(--xxmas-text-dim);
 }
 
 a {
@@ -64,4 +66,12 @@ a {
 
 .tokenSpent {
   color: var(--xxmas-red-text);
+}
+
+.textBright {
+  color: var(--xxmas-text-bright);
+}
+
+.textDim {
+  color: var(--xxmas-text-dim);
 }
