@@ -3,9 +3,9 @@ import { renderSpentTokens } from "~/util/renderSpentTokens";
 import { renderTokens } from "~/util/renderTokens";
 
 interface DayLinkData {
-  challengeModifier: string;
-  modifierOption: string;
-  score: number;
+  challengeModifier: string | null;
+  modifierOption: string | null;
+  score: number | null;
   isCompleted: boolean;
   tokensGained: number;
   tokensSpent: number;
