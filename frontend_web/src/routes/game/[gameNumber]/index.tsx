@@ -144,6 +144,7 @@ export default component$(() => {
                     };
                     ModifierOption?: {
                       name: string;
+                      text: string;
                     };
                     netScore: number;
                   }) => (

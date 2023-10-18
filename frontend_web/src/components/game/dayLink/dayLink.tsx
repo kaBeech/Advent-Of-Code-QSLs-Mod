@@ -14,6 +14,7 @@ export interface DayLinkData {
   };
   ModifierOption?: {
     name: string;
+    text: string;
   };
   netScore: number;
 }
@@ -38,8 +39,8 @@ export default component$((props: DayLinkProps) => {
   const challengeModifier = props.dayLinkData.ChallengeModifier
     ? props.dayLinkData.ChallengeModifier.name + ", "
     : "";
-  const modifierOption = props.dayLinkData.ModifierOption?.name
-    ? props.dayLinkData.ModifierOption.name + ", "
+  const modifierOption = props.dayLinkData.ModifierOption?.text
+    ? props.dayLinkData.ModifierOption.text + ", "
     : "";
   let score = String(props.dayLinkData.netScore);
   if (+score >= 0) {
