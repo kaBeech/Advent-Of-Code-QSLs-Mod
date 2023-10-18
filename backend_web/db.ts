@@ -18,13 +18,11 @@ const prisma = new PrismaClient({
 export async function createUser(
   id: string,
   username?: string,
-  password?: string,
 ) {
   const result = await prisma.user.create({
     data: {
       id,
       username,
-      password,
     },
   });
   return result;
@@ -33,7 +31,6 @@ export async function createUser(
 export async function upsertUser(
   id: string,
   username?: string,
-  password?: string,
   serializedId?: string,
 ) {
   const result = await prisma.user.upsert({
@@ -42,13 +39,11 @@ export async function upsertUser(
     },
     update: {
       username,
-      password,
       serializedId,
     },
     create: {
       id,
       username,
-      password,
       serializedId,
     },
   });

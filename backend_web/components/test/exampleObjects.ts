@@ -4,7 +4,6 @@ export const exampleUser = {
   "numberOfGames": 1,
   "serializedId": "42",
   "username": "exampleUser",
-  "password": "examplePassword",
 };
 
 export const exampleGame = {
