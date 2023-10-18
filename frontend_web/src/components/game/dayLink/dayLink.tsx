@@ -41,7 +41,10 @@ export default component$((props: DayLinkProps) => {
   const modifierOption = props.dayLinkData.ModifierOption?.name
     ? props.dayLinkData.ModifierOption.name + ", "
     : "";
-  const score = props.dayLinkData.netScore;
+  let score = String(props.dayLinkData.netScore);
+  if (+score <= 0) {
+    score = "+" + score;
+  }
   let tokensGained = 0;
   let tokensSpent = 0;
   props.dayLinkData.part1Completed && tokensGained++;
