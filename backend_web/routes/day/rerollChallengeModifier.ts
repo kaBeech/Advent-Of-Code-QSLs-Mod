@@ -33,7 +33,11 @@ export const rerollChallengeModifier = async (
     challengeModifiers,
     modifierOptions,
   );
-  const updatedGame = GameController(game!).spendRerollTokens(2);
+  const updatedGame = GameController(game!).spendRerollTokens(
+    2,
+    Boolean(day!.part1Completed),
+    day!.rerollTokensSpentDuringPart2,
+  );
   await updateDay(updatedDay);
   await updateGame(updatedGame);
   ctx.response.body = updatedGame;

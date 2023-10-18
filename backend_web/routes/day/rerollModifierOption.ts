@@ -33,7 +33,11 @@ export const rerollModifierOption = async (
     modifierOptions,
     game!,
   );
-  const updatedGame = GameController(game!).spendRerollTokens(1);
+  const updatedGame = GameController(game!).spendRerollTokens(
+    1,
+    Boolean(day!.part1Completed),
+    day!.rerollTokensSpentDuringPart2,
+  );
   await updateDay(updatedDay);
   await updateGame(updatedGame);
   ctx.response.body = { updatedDay, updatedGame };

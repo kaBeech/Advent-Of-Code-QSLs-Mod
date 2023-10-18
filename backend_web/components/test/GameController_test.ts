@@ -56,7 +56,7 @@ Deno.test("Adjusts reroll tokens", () => {
 });
 
 Deno.test("Spends reroll tokens", () => {
-  const result = gameController.spendRerollTokens(1);
+  const result = gameController.spendRerollTokens(1, false, 0);
   assertEquals(result.rerollTokensSpent, 1);
   assertEquals(result.currentRerollTokens, 7);
 });
