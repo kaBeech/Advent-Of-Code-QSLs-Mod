@@ -117,6 +117,27 @@ export default component$(() => {
             . Xtreme Xmas Code will remember your unique ID, names, URL, and
             image from the service you use to authenticate.
           </span>
+          <p>
+            <em>How does scoring work?</em>
+            Scoring uses this formula XXXXXXXX...
+          </p>
+        </p>
+        <p>
+          <em>
+            I find the text on the site hard to read. Is there a high contrast
+            mode?
+          </em>
+          There is a high contrast alternate stylesheet. Firefox supports these
+          by default (View -{">"} Page Style -{">"} High Contrast).
+        </p>
+        <p>
+          <em>Can I use AI to get on the leaderboards?</em> Please don't post
+          games that use AI to solve most or all of your puzzle solving to the
+          leaderboards. The leaderboards are built on a principle of good faith
+          and I would like them to remain useful as a way for humans to interact
+          and compete with each other. That being said, some challenge modifiers
+          may require you (explicitly or practically) to use AI to complete
+          them. Just use your best judgement and be a good sport =)
         </p>
       </article>
     </>
