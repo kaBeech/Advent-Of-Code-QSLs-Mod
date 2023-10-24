@@ -32,21 +32,28 @@ const challengeModifierData: Prisma.ChallengeModifierCreateInput[] = [
   },
   {
     name: "language_box_1",
-    text: "using a random programming language from Language Box 1: ",
+    text: "using a random selection from Language Box 1: ",
     hasOptions: true,
     standard: true,
     public: true,
   },
   {
     name: "language_box_2",
-    text: "using a random programming language from Language Box 2: ",
+    text: "using a random selection from Language Box 2: ",
     hasOptions: true,
     standard: true,
     public: true,
   },
   {
     name: "language_box_3",
-    text: "using a random programming language from Language Box 3: ",
+    text: "using a random selection from Language Box 3: ",
+    hasOptions: true,
+    standard: true,
+    public: true,
+  },
+  {
+    name: "functional_programming_box",
+    text: "using a random selection from the Functional Programming Box: ",
     hasOptions: true,
     standard: true,
     public: true,
@@ -60,7 +67,7 @@ const challengeModifierData: Prisma.ChallengeModifierCreateInput[] = [
   },
   {
     name: "text_editor_box",
-    text: "using a random IDE from the IDE Box: ",
+    text: "using a random selection from the Text Editor Box: ",
     hasOptions: true,
     standard: true,
     public: true,
@@ -509,6 +516,127 @@ const modifierOptionData: Prisma.ModifierOptionCreateInput[] = [
     },
     name: "language_box_3_piet",
     text: "Piet",
+    standard: true,
+    public: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "functional_programming_box",
+      },
+    },
+    name: "functional_programming_box_commonlisp",
+    text: "Common Lisp",
+    standard: true,
+    public: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "functional_programming_box",
+      },
+    },
+    name: "functional_programming_box_scheme",
+    text: "Scheme",
+    standard: true,
+    public: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "functional_programming_box",
+      },
+    },
+    name: "functional_programming_box_racket",
+    text: "Racket",
+    standard: true,
+    public: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "functional_programming_box",
+      },
+    },
+    name: "functional_programming_box_clojure",
+    text: "Clojure",
+    standard: true,
+    public: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "functional_programming_box",
+      },
+    },
+    name: "functional_programming_box_erlang",
+    text: "Erlang",
+    standard: true,
+    public: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "functional_programming_box",
+      },
+    },
+    name: "functional_programming_box_elixir",
+    text: "Elixir",
+    standard: true,
+    public: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "functional_programming_box",
+      },
+    },
+    name: "functional_programming_box_haskell",
+    text: "Haskell",
+    standard: true,
+    public: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "functional_programming_box",
+      },
+    },
+    name: "functional_programming_box_ocaml",
+    text: "OCaml",
+    standard: true,
+    public: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "functional_programming_box",
+      },
+    },
+    name: "functional_programming_box_scala",
+    text: "Scala",
+    standard: true,
+    public: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "functional_programming_box",
+      },
+    },
+    name: "functional_programming_box_elm",
+    text: "Elm",
+    standard: true,
+    public: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "functional_programming_box",
+      },
+    },
+    name: "functional_programming_box_fsharp",
+    text: "F#",
     standard: true,
     public: true,
   },
