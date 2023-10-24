@@ -181,6 +181,11 @@ export default component$(() => {
           to a maximum of 2), and <em>P1</em> is the number of{" "}
           <em>tokens spent during Part 1</em>.
         </p>
+        <h2>--- Public Links ---</h2>
+        <p>
+          You can generate a <em>Public Link</em> to share your work with the
+          world by marking your game as Public. TBA...
+        </p>{" "}
         <h2>--- Frequently Asked Questions ---</h2>
         <p>
           <em>
@@ -254,11 +259,7 @@ export default component$(() => {
           player who I feel is abusing the leaderboards, including the voting
           and petitions process, may be subject to revocation of privileges,
           including being banned from voting in or posting to the leaderboards.
-        </p>{" "}
-        <p>
-          <em>How can I link to my game publicly?</em>
-          To generate a public link you must mark your game as Public. TBA...
-        </p>{" "}
+        </p>
         <p>
           <em>How does authentication work?</em> Xtreme Xmas Code uses{" "}
           <a href="" class="link">
