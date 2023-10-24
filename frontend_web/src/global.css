@@ -91,6 +91,16 @@ code {
   background: var(--xxmas-background-dark);
 }
 
+/* IDs */
+
+#sidebar {
+  width: 200px;
+  float: right;
+  margin: 0 15px 2em 2em;
+  position: relative;
+  z-index: 10;
+}
+
 /* Util Classes */
 
 .flex {
