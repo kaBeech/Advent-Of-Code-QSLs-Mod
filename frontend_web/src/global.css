@@ -52,6 +52,12 @@ a {
   cursor: pointer;
 }
 
+em {
+  color: #ffffff;
+  font-style: normal;
+  text-shadow: 0 0 5px;
+}
+
 .flex {
   display: flex;
 }
