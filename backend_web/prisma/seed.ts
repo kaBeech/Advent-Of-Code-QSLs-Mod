@@ -497,6 +497,17 @@ const modifierOptionData: Prisma.ModifierOptionCreateInput[] = [
   {
     ChallengeModifier: {
       connect: {
+        name: "language_box_3",
+      },
+    },
+    name: "language_box_3_piet",
+    text: "Piet",
+    standard: true,
+    public: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
         name: "text_editor_box",
       },
     },
