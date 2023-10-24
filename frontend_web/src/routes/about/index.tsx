@@ -4,7 +4,7 @@ export default component$(() => {
   return (
     <>
       <article>
-        <h1>--- About ---</h1>
+        <h1 class="visualHide">--- About ---</h1>
         <p>
           Hi! I'm{" "}
           <a href="" class="link">
