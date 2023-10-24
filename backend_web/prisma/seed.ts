@@ -52,6 +52,13 @@ const challengeModifierData: Prisma.ChallengeModifierCreateInput[] = [
     public: true,
   },
   {
+    name: "text_editor_box",
+    text: "using a random IDE from the IDE Box: ",
+    hasOptions: true,
+    standard: true,
+    public: true,
+  },
+  {
     name: "testing",
     text: "with thorough testing",
     standard: true,
@@ -484,6 +491,50 @@ const modifierOptionData: Prisma.ModifierOptionCreateInput[] = [
     },
     name: "language_box_3_jsfuck",
     text: "JSFuck",
+    standard: true,
+    public: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "text_editor_box",
+      },
+    },
+    name: "text_editor_box_vscode",
+    text: "Visual Studio Code",
+    standard: true,
+    public: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "text_editor_box",
+      },
+    },
+    name: "text_editor_box_vim",
+    text: "Vim",
+    standard: true,
+    public: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "text_editor_box",
+      },
+    },
+    name: "text_editor_box_emacs",
+    text: "Emacs",
+    standard: true,
+    public: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "text_editor_box",
+      },
+    },
+    name: "text_editor_box_nano",
+    text: "Nano",
     standard: true,
     public: true,
   },
