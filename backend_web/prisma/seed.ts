@@ -524,6 +524,10 @@ const rankData: Prisma.RankCreateInput[] = [
     minimumScore: 920,
   },
   {
+    name: "Legendary Champion",
+    minimumScore: 1000,
+  },
+  {
     name: "Santaic Champion",
     minimumScore: 1100,
   },
