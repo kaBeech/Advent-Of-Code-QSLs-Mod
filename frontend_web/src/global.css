@@ -18,10 +18,11 @@
   --xxmax-border-medium: hsl(240, 11%, 23%);
   --xxmas-text-dim: hsl(0, 0%, 80%);
   --xxmas-text-bright: hsl(0, 0%, 100%);
-  --xxmas-red-text-bright: hsl(0, 100%, 48%);
-  --xxmas-red-text: hsl(0, 100%, 44%);
-  --xxmas-green-text: hsl(140, 99%, 29%);
-  --xxmas-gold-text: hsl(63, 100%, 69%);
+  --xxmas-text-red-bright: hsl(0, 100%, 48%);
+  --xxmas-text-red: hsl(0, 100%, 44%);
+  --xxmas-text-green: hsl(120, 100%, 30%);
+  --xxmas-text-green-glow: hsl(120, 100%, 40%);
+  --xxmas-text-gold: hsl(63, 100%, 69%);
 }
 
 /* Elements */
@@ -79,7 +80,7 @@ em {
 }
 
 a {
-  color: var(--xxmas-green-text);
+  color: var(--xxmas-text-green);
   text-decoration: none;
   cursor: pointer;
 }
@@ -102,11 +103,11 @@ code {
 /* Custom Classes */
 
 .token {
-  color: var(--xxmas-gold-text);
+  color: var(--xxmas-text-gold);
 }
 
 .tokenSpent {
-  color: var(--xxmas-red-text);
+  color: var(--xxmas-text-red);
 }
 
 .textBright {
@@ -115,4 +116,11 @@ code {
 
 .textDim {
   color: var(--xxmas-text-dim);
+}
+
+.glowGreen {
+  color: var(--xxmas-text-green-glow);
+  text-shadow:
+    0 0 2px var(--xxmas-text-green-glow),
+    0 0 5px var(--xxmas-text-green-glow);
 }
