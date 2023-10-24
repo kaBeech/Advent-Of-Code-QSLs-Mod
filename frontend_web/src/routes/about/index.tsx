@@ -45,7 +45,8 @@ export default component$(() => {
         <p>
           Additionally, the mod scores each game based on how you use your
           reroll tokens and provides leaderboards for ranking games based on
-          this score. I hope this will provide a fun leaderboard experience{" "}
+          this score. I hope this will provide a brain-stretching leaderboard
+          experience{" "}
           <a href="" class="link">
             that isn't tied to a strict time schedule
           </a>
@@ -93,6 +94,25 @@ export default component$(() => {
             Twitter
           </a>
           !
+        </p>
+        <h2>--- Disclaimer ---</h2>
+        <p>
+          <em>Xtreme Xmas Code is under construction</em> and has not officially
+          launched.
+        </p>
+        <p>
+          I'm planning to enter a public Beta Testing phase in early November
+          2023. Before then,{" "}
+          <em>
+            any data submitted to Xtreme Xmas Code is subject to modification or
+            deletion without notice
+          </em>
+          . If you're eager to start using XXC for more permanent projects and
+          it hasn't launched yet, please{" "}
+          <a href="mailto:contact@kabeech.com" class="link">
+            send me an email
+          </a>{" "}
+          and I'll see what I can do.
         </p>
         <h2>--- Rules ---</h2>
         <p>
