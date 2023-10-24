@@ -59,10 +59,15 @@ body {
   color: var(--xxmas-text-dim);
 }
 
-a {
-  color: var(--xxmas-green-text);
-  text-decoration: none;
-  cursor: pointer;
+article {
+  width: 45em;
+  margin-bottom: 2em;
+}
+
+h1,
+h2 {
+  color: var(--xxmas-text-bright);
+  font-weight: normal;
 }
 
 em {
@@ -71,10 +76,10 @@ em {
   text-shadow: 0 0 5px;
 }
 
-h1,
-h2 {
-  color: var(--xxmas-text-bright);
-  font-weight: normal;
+a {
+  color: var(--xxmas-green-text);
+  text-decoration: none;
+  cursor: pointer;
 }
 
 /* Util Classes */
