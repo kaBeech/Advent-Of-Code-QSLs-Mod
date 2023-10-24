@@ -161,7 +161,7 @@ const challengeModifierData: Prisma.ChallengeModifierCreateInput[] = [
   {
     name: "chat_gpt",
     text:
-      "using ChatGPT exclusively (no editing Chat's responses - you must edit your prompts!)",
+      "by writing a program using ChatGPT (the free, GPT-3.5 version) exclusively (no editing Chat's responses - you must edit your prompts!)",
     standard: true,
     public: true,
   },
