@@ -273,9 +273,9 @@ export default component$(() => {
           games that use AI to do most or all of your puzzle solving to the
           leaderboards. The leaderboards are built on a principle of good faith
           and I would like them to remain useful as a way for humans to interact
-          and compete with each other. That being said, some challenge modifiers
-          may require you (explicitly or practically) to use AI to complete
-          them. Just use your best judgement and be a good sport =)
+          and compete with each other. That being said, mild use of AI tools is
+          permitted and some challenge modifiers may even require you to use AI
+          to complete them. Just use your best judgement and be a good sport =)
         </p>
         <p>
           <em>How do you deter cheating? </em>
