@@ -19,7 +19,7 @@ export default component$((props: HeaderProps) => {
   return (
     <header>
       <div class={`flex`}>
-        <div class="flex column">
+        <div class="flex column alignEnd">
           <a href="/" class="glowGreen  ">
             Xtreme Xmas Code
           </a>

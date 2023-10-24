@@ -100,6 +100,10 @@ code {
   flex-direction: column;
 }
 
+.alignEnd {
+  align-items: flex-end;
+}
+
 /* Custom Classes */
 
 .token {
