@@ -20,8 +20,12 @@ export default component$((props: HeaderProps) => {
     <header>
       <div class={`flex`}>
         <div class="flex column">
-          <a href="/">Xtreme Xmas Code</a>
-          <a href="/game">let y=2023</a>
+          <a href="/" class="glowGreen  ">
+            Xtreme Xmas Code
+          </a>
+          <a href="/game">
+            2023 let y=<span class="glowGreen">2023</span>
+          </a>
         </div>
         <div class="flex column">
           <div class="flex">
