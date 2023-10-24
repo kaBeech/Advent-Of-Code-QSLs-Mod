@@ -236,7 +236,7 @@ export default component$(() => {
         </p>
         <p>
           <em>Can I use AI to get on the leaderboards?</em> Please don't post
-          games that use AI to solve most or all of your puzzle solving to the
+          games that use AI to do most or all of your puzzle solving to the
           leaderboards. The leaderboards are built on a principle of good faith
           and I would like them to remain useful as a way for humans to interact
           and compete with each other. That being said, some challenge modifiers
