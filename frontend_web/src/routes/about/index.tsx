@@ -95,6 +95,62 @@ export default component$(() => {
           !
         </p>
         <h2>--- Rules ---</h2>
+        <p>
+          Each day you may roll a new <em>Challenge Modifier</em>. Our example
+          Challenge Modifier will be{" "}
+          <em>
+            "...using a specific language from the Functional Programming Box."
+          </em>
+        </p>
+        <p>
+          Some Challenge Modifiers have additional <em>Modifier Options</em>.
+          Our example Challenge Modifier has Modifier Options from the
+          Functional Programming Language Box. If you roll a Challenge Modifier
+          that has Modifier Options, a Modifier Option will be automatically
+          rolled as well. Our example Modifier Option will be{" "}
+          <em>"Haskell."</em>
+        </p>
+        <p>
+          Therefore the full text of our example Challenge Modifier including
+          its Modifier Option will be{" "}
+          <em>
+            "You must complete this challenge using this language from the
+            Functional Programming Box: Haskell."
+          </em>
+        </p>
+        <p>
+          At the start of a new game you will be given 12 <em>Reroll Tokens</em>
+          . You may spent 2 Reroll Tokens to reroll your Challenge Modifier. If
+          your Challenge Modifier has a Modifier Option, you may spend 1 Token
+          to reroll the Modifier Option.
+        </p>
+        <p>
+          You will earn 1 Reroll Token whenever you complete Part 1 or Part 2 of
+          a puzzle (i.e whenever you earn a Gold Star in Advent of Code).
+        </p>
+        <p>
+          In our example, say we are in Day 1 and are dissatisfied with our
+          Challenge Modifier. We decide to reroll our Modifier Option for one
+          Reroll Token, giving us{" "}
+          <em>
+            "You must complete this challenge using this language from the
+            Functional Programming Box: Erlang."
+          </em>
+        </p>
+        <p>
+          We don't want to use Erlang either, so we choose to reroll the whole
+          Challenge Modifier for 2 Reroll Tokens. This gives us{" "}
+          <em>
+            "You must complete this challenge making declarations in a natural
+            language not yet used in this codebase (e.g. Spanish)."
+          </em>{" "}
+          ¡Vamos!
+        </p>
+        <p>
+          After completing Part 2 of Day 1 we have spent 3 Tokens and earned 2,
+          which combined with the 12 we started with gives us 11 Reroll Tokens
+          at the start of Day 2.
+        </p>
         <h2>--- Scoring ---</h2>
         <p>
           The <em>Basic Scoring Formula</em> is{" "}
