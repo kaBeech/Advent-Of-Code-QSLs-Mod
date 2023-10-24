@@ -25,7 +25,7 @@ export default component$(() => {
           .
         </p>
         <p>
-          <em>Xtreme Xmas Code</em> is a mod/companion tool for{" "}
+          <em>Xtreme Xmas Code</em> is a mod/companion app for{" "}
           <a href="" class="link">
             Advent of Code
           </a>
@@ -54,7 +54,7 @@ export default component$(() => {
         <p>
           If you'd like to support Xtreme Xmas Code, you can do so indirectly by
           helping to{" "}
-          <a href="" class="link">
+          <span class="link">
             [Share
             <span class="clickShow">
               {" "}
@@ -67,7 +67,7 @@ export default component$(() => {
               </a>
             </span>
             ]
-          </a>{" "}
+          </span>{" "}
           it with others, or directly via{" "}
           <a href="" class="link">
             payment options
@@ -79,8 +79,8 @@ export default component$(() => {
           , creator of Advent of Code.
         </p>
         <p>
-          I'm also #OpenToWork, so if you're looking to work with a fun nerd you
-          may contact me via{" "}
+          I'm also <em>#OpenToWork</em>, so if you're looking to work with a fun
+          nerd you may contact me via{" "}
           <a href="" class="link">
             LinkedIn
           </a>
@@ -278,7 +278,7 @@ export default component$(() => {
           them. Just use your best judgement and be a good sport =)
         </p>
         <p>
-          <em>How do you deter cheating?</em>
+          <em>How do you deter cheating? </em>
           We use a community-based reputation system and focus on showing our
           work as players. Each game posted to the leaderboards must include a
           link to a public repository showing the code used to solve each
@@ -287,6 +287,8 @@ export default component$(() => {
           downvotes and less upvotes than downvotes, the game will by default
           not be shown on the leaderboards (this setting can be changed in the
           filter section). I may also review and hide or remove games manually.
+        </p>
+        <p>
           To downvote a game you must include the reason you consider the game
           invalid or dishonest. If your game gets hidden and you feel this is
           unjust, you may submit a petition for me to verify your game. Any
