@@ -1,5 +1,10 @@
 @font-face {
   font-family: "Source Code Pro";
+  src: url("/fonts/SourceCodePro-Regular.ttf");
+}
+
+@font-face {
+  font-family: "Source Code Xtreme";
   src: url("/fonts/SourceCodeXtreme-Regular.otf");
 }
 
@@ -10,7 +15,9 @@ html {
   -o-tab-size: 4;
   tab-size: 4;
   font-family:
+    "Source Code Xtreme",
     "Source Code Pro",
+    monospace,
     ui-sans-serif,
     system-ui,
     -apple-system,
