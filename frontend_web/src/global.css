@@ -1,12 +1,158 @@
+/* Reset - http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* Fonts */
+
 @font-face {
   font-family: "Source Code Pro";
-  src: url("/fonts/SourceCodePro-Regular.ttf");
+  src: url("/fonts/SourceCodePro-Light.ttf");
 }
 
 @font-face {
   font-family: "Source Code Xtreme";
   src: url("/fonts/SourceCodeXtreme-Regular.otf");
 }
+
+/* Colors */
+
+:root {
+  --xxmas-dark-background: hsl(240, 40%, 10%);
+  --xxmas-text-dim: hsl(0, 0%, 80%);
+  --xxmas-text-bright: hsl(0, 0%, 100%);
+  --xxmas-red-text-bright: hsl(0, 100%, 48%);
+  --xxmas-red-text: hsl(0, 100%, 44%);
+  --xxmas-green-text: hsl(140, 99%, 29%);
+  --xxmas-gold-text: hsl(63, 100%, 69%);
+}
+
+/* Elements */
 
 html {
   line-height: 1;
@@ -15,7 +161,7 @@ html {
   -o-tab-size: 4;
   tab-size: 4;
   font-family:
-    "Source Code Xtreme",
+    /* "Source Code Xtreme", */
     "Source Code Pro",
     monospace,
     ui-sans-serif,
@@ -34,18 +180,9 @@ html {
     "Noto Color Emoji";
 }
 
-:root {
-  --xxmas-dark-background: hsl(240, 40%, 10%);
-  --xxmas-text-dim: hsl(0, 0%, 38%);
-  --xxmas-text-bright: hsl(0, 0%, 80%);
-  --xxmas-red-text-bright: hsl(0, 100%, 48%);
-  --xxmas-red-text: hsl(0, 100%, 44%);
-  --xxmas-green-text: hsl(140, 99%, 29%);
-  --xxmas-gold-text: hsl(63, 100%, 69%);
-}
-
 body {
   font-size: 1.2rem;
+  font-weight: 300;
   padding: 0;
   margin: 0.5rem;
   line-height: inherit;
@@ -60,10 +197,12 @@ a {
 }
 
 em {
-  color: #ffffff;
+  color: var(--xxmas-text-bright);
   font-style: normal;
   text-shadow: 0 0 5px;
 }
+
+/* Util Classes */
 
 .flex {
   display: flex;
@@ -72,6 +211,8 @@ em {
 .column {
   flex-direction: column;
 }
+
+/* Custom Classes */
 
 .token {
   color: var(--xxmas-gold-text);
