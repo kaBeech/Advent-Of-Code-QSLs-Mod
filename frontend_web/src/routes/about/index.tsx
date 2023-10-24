@@ -221,11 +221,11 @@ export default component$(() => {
         <p>
           <em>How do the leaderboards work?</em>
           The leaderboards are opt-in; you must post your game manually for it
-          to show up. Games on the boards are ranked by end-of-game scores.
-          There are two boards for each year: In-Season and All-Time. To qualify
-          for the In-Season board, your game must be completed during the
+          to show up. Games on the boards are ranked by score. There are two
+          boards for each year: In-Season and All-Time. To qualify for the
+          In-Season board, your game must be completed and posted during the
           specified year. For example, to qualify for the 2023 In-Season board
-          your game must be completed before January 1, 2024.
+          your game must be completed and posted before January 1, 2024.
         </p>
         <p>
           <em>How can I post to the leaderboards?</em>
