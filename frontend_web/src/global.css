@@ -104,6 +104,15 @@ code {
   align-items: flex-end;
 }
 
+.gap1 {
+  gap: 1rem;
+}
+
+.marginTBPoint2 {
+  margin-top: 0.2rem;
+  margin-bottom: 0.2rem;
+}
+
 /* Custom Classes */
 
 .token {

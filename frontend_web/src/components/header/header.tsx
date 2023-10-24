@@ -18,17 +18,17 @@ export default component$((props: HeaderProps) => {
   const session = useAuthSession();
   return (
     <header>
-      <div class={`flex`}>
+      <div class={`flex gap1`}>
         <div class="flex column alignEnd">
-          <a href="/" class="glowGreen  ">
+          <a href="/" class="glowGreen marginTBPoint2">
             Xtreme Xmas Code
           </a>
-          <a href="/game">
-            2023 let y=<span class="glowGreen">2023</span>
+          <a href="/game" class="marginTBPoint2">
+            let y=<span class="glowGreen">2023</span>
           </a>
         </div>
         <div class="flex column">
-          <div class="flex">
+          <div class="flex gap1 marginTBPoint2">
             {" "}
             <a href="/about">[About]</a> <a href="/events">[Events]</a>{" "}
             <a href="https://adventofcode.com">[AoC]</a>{" "}
@@ -39,7 +39,7 @@ export default component$((props: HeaderProps) => {
             />
             <div>{session.value?.user?.name}</div>
           </div>
-          <div class="flex">
+          <div class="flex gap1 marginTBPoint2">
             {" "}
             <a href="/calendar">[Calendar]</a> <a href="/support">[XXC++]</a>{" "}
             <a href="/sponsors">[Sponsors]</a>{" "}
