@@ -94,6 +94,37 @@ export default component$(() => {
           </a>
           !
         </p>
+        <h2>--- Rules ---</h2>
+        <h2>--- Scoring ---</h2>
+        <p>
+          The <em>Basic Scoring Formula</em> is{" "}
+          <code>10 * T + 20 * P2 + B</code> where <em>T</em> is the number of{" "}
+          <em>unspent reroll Tokens</em>, <em>P2</em> is the number of{" "}
+          <em>tokens spent during Part 2</em>
+          (up to a maximum of 2 per day), and <em>B</em> is the{" "}
+          <em>end-of-game Bonus</em>
+        </p>
+        <p>
+          The <em>End-Game Bonus Formula</em> is <code>300 - 10 * S</code>, to a
+          minimum of 0, where <em>S</em> is the{" "}
+          <em>total number of tokens Spent</em>
+        </p>
+        <p>
+          If you spend at least 2 reroll tokens during Part 2 of every day, the{" "}
+          <em>Virtuoso Scoring Formula</em> is used instead. It is{" "}
+          <code>1120 + 10 * T - 10 * P1</code> where <em>T</em> is the number of{" "}
+          <em>unspent reroll Tokens</em> and <em>P1</em> is the number of{" "}
+          <em>tokens spent during Part 1</em>
+        </p>{" "}
+        <p>
+          Each day's individual score is a rough estimation of that day's effect
+          on the overall score, assuming use of the Basic Scoring Formula. The{" "}
+          <em>Day Score Formula</em> is <code>10 * T + 20 * P2 - 10 * P1</code>,
+          where <em>T</em> is the number of <em>unspent reroll Tokens</em>,{" "}
+          <em>P2</em> is the number of <em>tokens spent during Part 2</em> (up
+          to a maximum of 2), and <em>P1</em> is the number of{" "}
+          <em>tokens spent during Part 1</em>.
+        </p>
         <h2>--- Frequently Asked Questions ---</h2>
         <p>
           <em>
@@ -125,10 +156,6 @@ export default component$(() => {
           . I'm hoping that the score-based Xtreme Xmas Code leaderboards will
           provide an accessible alternative that rewards new learning, courage,
           and lateral thinking.
-        </p>
-        <p>
-          <em>How does scoring work?</em>
-          Scoring uses this formula: TBA...
         </p>
         <p>
           <em>How do the leaderboards work?</em>
