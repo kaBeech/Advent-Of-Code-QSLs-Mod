@@ -13,7 +13,9 @@
 /* Colors */
 
 :root {
-  --xxmas-dark-background: hsl(240, 40%, 10%);
+  --xxmas-background-dark: hsl(240, 24%, 8%);
+  --xxmas-background-dim: hsl(240, 40%, 10%);
+  --xxmax-border-medium: hsl(240, 11%, 23%);
   --xxmas-text-dim: hsl(0, 0%, 80%);
   --xxmas-text-bright: hsl(0, 0%, 100%);
   --xxmas-red-text-bright: hsl(0, 100%, 48%);
@@ -55,7 +57,7 @@ body {
   padding: 0;
   margin: 0.5rem;
   line-height: inherit;
-  background: var(--xxmas-dark-background);
+  background: var(--xxmas-background-dim);
   color: var(--xxmas-text-dim);
 }
 
@@ -80,6 +82,11 @@ a {
   color: var(--xxmas-green-text);
   text-decoration: none;
   cursor: pointer;
+}
+
+code {
+  border: 1px solid var(--xxmax-border-medium);
+  background: var(--xxmas-background-dark);
 }
 
 /* Util Classes */
