@@ -102,23 +102,25 @@ export default component$(() => {
           </em>
           There will be a high contrast alternate stylesheet. Firefox supports
           these by default (View -{">"} Page Style -{">"} High Contrast).
-        </p>{" "}
+        </p>
         <p>
           <em>Why make a mod for Advent of Code?</em>
-          Because it's fun! Pushing our boundaries and thinking laterally are a
-          great way to keep our brains in shape and learn new things!
-        </p>{" "}
+          Because it's fun! Using randomized challenges to push our boundaries
+          and encourage us to think outside the box is a great way to help keep
+          our brains in shape!
+        </p>
         <p>
-          Additionally, the leaderboard at{" "}
+          Additionally, XXC adds to AoC leaderboard options. Being a global
+          speed-based competition, the leaderboard at{" "}
           <a href="" class="link">
             Advent of Code
           </a>
-          , being a global speed-based competition,
           <a href="" class="link">
             encourages a particular playstyle
           </a>{" "}
+          and{" "}
           <a href="" class="link">
-            and isn't convenient for all players' schedules
+            isn't convenient for all players' schedules
           </a>
           . I'm hoping that the score-based Xtreme Xmas Code leaderboards will
           provide an accessible alternative that rewards new learning, courage,
@@ -126,16 +128,23 @@ export default component$(() => {
         </p>
         <p>
           <em>How does scoring work?</em>
-          Scoring uses this formula XXXXXXXX...
+          Scoring uses this formula: TBA...
         </p>
         <p>
           <em>How do the leaderboards work?</em>
-          The leaderboards XXXXXXXX...
+          The leaderboards are opt-in; you must post your game manually for it
+          to show up. Games on the boards are ranked by end-of-game scores.
+          There are two boards for each year: In-Season and All-Time. To qualify
+          for the In-Season board, your game must be completed during the
+          specified year. For example, to qualify for the 2023 In-Season board
+          your game must be completed before January 1, 2024.
         </p>
         <p>
           <em>How can I post to the leaderboards?</em>
-          To post a game to the learderboards, you must first mark the game as
-          Public and add a Repository Link. XXXXXXXX...
+          To post a game to the leaderboards, you must first mark your game as
+          Public and add a Repository Link. TBA... If you mark your game as
+          Private or remove its Repository Link, it will automatically be
+          removed from the leaderboards. TBA...
         </p>
         <p>
           <em>Can I use AI to get on the leaderboards?</em> Please don't post
@@ -146,6 +155,27 @@ export default component$(() => {
           may require you (explicitly or practically) to use AI to complete
           them. Just use your best judgement and be a good sport =)
         </p>
+        <p>
+          <em>How do you deter cheating?</em>
+          We use a community-based reputation system and focus on showing our
+          work as players. Each game posted to the leaderboards must include a
+          link to a public repository showing the code used to solve each
+          puzzle. Players can upvote and downvote games on the leaderboards to
+          either affirm or question their integrity. If a game has 5 or more
+          downvotes and less upvotes than downvotes, the game will by default
+          not be shown on the leaderboards (this setting can be changed in the
+          filter section). I may also review and hide or remove games manually.
+          To downvote a game you must include the reason you consider the game
+          invalid or dishonest. If your game gets hidden and you feel this is
+          unjust, you may submit a petition for me to verify your game. Any
+          player who I feel is abusing the leaderboards, including the voting
+          and petitions process, may be subject to revocation of privileges,
+          including being banned from voting in or posting to the leaderboards.
+        </p>{" "}
+        <p>
+          <em>How can I link to my game publicly?</em>
+          To generate a public link you must mark your game as Public. TBA...
+        </p>{" "}
         <p>
           <em>How does authentication work?</em> Xtreme Xmas Code uses{" "}
           <a href="" class="link">
