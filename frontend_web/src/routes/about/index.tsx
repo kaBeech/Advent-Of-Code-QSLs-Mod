@@ -99,7 +99,7 @@ export default component$(() => {
           Each day you may roll a new <em>Challenge Modifier</em>. Our example
           Challenge Modifier will be{" "}
           <em>
-            "...using a specific language from the Functional Programming Box."
+            "...using a random language from the Functional Programming Box."
           </em>
         </p>
         <p>
