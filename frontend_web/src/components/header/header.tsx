@@ -27,7 +27,8 @@ export default component$((props: HeaderProps) => {
           <div class="flex">
             {" "}
             <a href="/about">[About]</a> <a href="/events">[Events]</a>{" "}
-            <div>[Shop???]</div> <a href="/settings">[Settings]</a>{" "}
+            <a href="https://adventofcode.com">[AoC]</a>{" "}
+            <a href="/settings">[Settings]</a>{" "}
             <LogInOrOut
               isLoggedIn={state.isLoggedIn}
               toggleLoggedIn={toggleLoggedIn}
