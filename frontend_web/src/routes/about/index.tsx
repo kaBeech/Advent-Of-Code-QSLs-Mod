@@ -181,11 +181,45 @@ export default component$(() => {
           to a maximum of 2), and <em>P1</em> is the number of{" "}
           <em>tokens spent during Part 1</em>.
         </p>
+        <h2>--- Ranks ---</h2>
+        <p>
+          Upon completing Day 25 of a game you will be awarded a <em>Rank</em>{" "}
+          based on your score. The ranks are:
+        </p>
+        <ul>
+          <li>
+            0+ points: <em>Champion</em>
+          </li>
+          <li>
+            200+ points: <em>Gnarly Champion</em>
+          </li>
+          <li>
+            400+ points: <em>Radical Champion</em>
+          </li>
+          <li>
+            600+ points: <em>Righteous Champion</em>
+          </li>
+          <li>
+            800+ points: <em>Epic Champion</em>
+          </li>
+          <li>
+            920+ points: <em>Flawless Champion</em>
+          </li>
+          <li>
+            1000+ points: <em>Legendary Champion</em>
+          </li>
+          <li>
+            1100+ points: <em>Santaic Champion</em>
+          </li>
+          <li>
+            1240+ points: <em>Godlike Champion</em>
+          </li>
+        </ul>
         <h2>--- Public Links ---</h2>
         <p>
           You can generate a <em>Public Link</em> to share your work with the
           world by marking your game as Public. TBA...
-        </p>{" "}
+        </p>
         <h2>--- Frequently Asked Questions ---</h2>
         <p>
           <em>
