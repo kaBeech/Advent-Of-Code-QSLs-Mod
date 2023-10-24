@@ -73,7 +73,7 @@ export default component$(() => {
             payment options
           </a>
           . You can also support me by supporting{" "}
-          <a href="https://adventofcode.com/2023/support" class="link">
+          <a href="https://adventofcode.com/support" class="link">
             Eric Wastl
           </a>
           , creator of Advent of Code.
