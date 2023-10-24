@@ -500,17 +500,6 @@ const modifierOptionData: Prisma.ModifierOptionCreateInput[] = [
         name: "text_editor_box",
       },
     },
-    name: "text_editor_box_vscode",
-    text: "Visual Studio Code",
-    standard: true,
-    public: true,
-  },
-  {
-    ChallengeModifier: {
-      connect: {
-        name: "text_editor_box",
-      },
-    },
     name: "text_editor_box_vim",
     text: "Vim",
     standard: true,
@@ -533,8 +522,63 @@ const modifierOptionData: Prisma.ModifierOptionCreateInput[] = [
         name: "text_editor_box",
       },
     },
+    name: "text_editor_box_eclipse",
+    text: "Eclipse",
+    standard: true,
+    public: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "text_editor_box",
+      },
+    },
+    name: "text_editor_box_netbeans",
+    text: "NetBeans",
+    standard: true,
+    public: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "text_editor_box",
+      },
+    },
+    name: "text_editor_box_vscode",
+    text: "Visual Studio Code",
+    standard: true,
+    public: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "text_editor_box",
+      },
+    },
+    name: "text_editor_box_sublime",
+    text: "Sublime Text",
+    standard: true,
+    public: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "text_editor_box",
+      },
+    },
     name: "text_editor_box_nano",
     text: "Nano",
+    standard: true,
+    public: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "text_editor_box",
+      },
+    },
+    name: "text_editor_box_sysdef",
+    text: "Your system default text editor (e.g. gedit, TextEdit, Notepad)",
     standard: true,
     public: true,
   },
