@@ -4,7 +4,7 @@ export default component$(() => {
   return (
     <>
       <article>
-        <h1>About</h1>
+        <h1>--- About ---</h1>
         <p>
           Hi! I'm{" "}
           <a href="" class="link">
@@ -240,7 +240,7 @@ export default component$(() => {
           speed-based competition, the leaderboard at{" "}
           <a href="" class="link">
             Advent of Code
-          </a>
+          </a>{" "}
           <a href="" class="link">
             encourages a particular playstyle
           </a>{" "}
