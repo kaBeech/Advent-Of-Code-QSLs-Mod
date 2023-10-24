@@ -139,6 +139,37 @@ export default component$(() => {
           may require you (explicitly or practically) to use AI to complete
           them. Just use your best judgement and be a good sport =)
         </p>
+        <h2>--- Credits ---</h2>
+        <p>
+          Xtreme Xmas Code:{" "}
+          <a href="" class="link">
+            Kyle Beechly
+          </a>
+        </p>
+        <p>
+          Advent of Code:{" "}
+          <a href="" class="link">
+            Eric Wastl
+          </a>
+        </p>
+        <p>XXC Beta Testing:</p>
+        <ul>
+          <li>
+            -{" "}
+            <a href="" class="link">
+              Your name here!
+            </a>
+          </li>
+          <li>
+            -{" "}
+            <a href="" class="link">
+              Your name here!
+            </a>
+          </li>
+        </ul>
+        <p>Playing: You!</p>
+        <h2>--- Legal ---</h2>
+        <p>TBA</p>
       </article>
     </>
   );
