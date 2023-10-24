@@ -52,6 +52,13 @@ const challengeModifierData: Prisma.ChallengeModifierCreateInput[] = [
     public: true,
   },
   {
+    name: "visual_programming_box",
+    text: "using a random selection from the Visual Programming Box: ",
+    hasOptions: true,
+    standard: true,
+    public: true,
+  },
+  {
     name: "text_editor_box",
     text: "using a random IDE from the IDE Box: ",
     hasOptions: true,
@@ -502,6 +509,72 @@ const modifierOptionData: Prisma.ModifierOptionCreateInput[] = [
     },
     name: "language_box_3_piet",
     text: "Piet",
+    standard: true,
+    public: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "visual_programming_box",
+      },
+    },
+    name: "visual_programming_box_scratch",
+    text: "Scratch",
+    standard: true,
+    public: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "visual_programming_box",
+      },
+    },
+    name: "visual_programming_box_blockly",
+    text: "Blockly",
+    standard: true,
+    public: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "visual_programming_box",
+      },
+    },
+    name: "visual_programming_box_greenfoot",
+    text: "Greenfoot",
+    standard: true,
+    public: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "visual_programming_box",
+      },
+    },
+    name: "visual_programming_box_puredata",
+    text: "Pure Data",
+    standard: true,
+    public: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "visual_programming_box",
+      },
+    },
+    name: "visual_programming_box_nodered",
+    text: "Node-RED",
+    standard: true,
+    public: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "visual_programming_box",
+      },
+    },
+    name: "visual_programming_box_drakon",
+    text: "DRAKON",
     standard: true,
     public: true,
   },
