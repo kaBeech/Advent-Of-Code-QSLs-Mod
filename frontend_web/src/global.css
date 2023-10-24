@@ -15,8 +15,9 @@
 :root {
   --xxmas-background-dark: hsl(240, 24%, 8%);
   --xxmas-background-dim: hsl(240, 40%, 10%);
-  --xxmax-border-medium: hsl(240, 11%, 23%);
-  --xxmas-text-dim: hsl(0, 0%, 80%);
+  --xxmas-border-medium: hsl(240, 11%, 23%);
+  --xxmas-text-dim: hsl(0, 0%, 40%);
+  --xxmas-text-medium: hsl(0, 0%, 80%);
   --xxmas-text-bright: hsl(0, 0%, 100%);
   --xxmas-text-red-bright: hsl(0, 100%, 48%);
   --xxmas-text-red: hsl(0, 100%, 44%);
@@ -59,7 +60,7 @@ body {
   margin: 0.5rem;
   line-height: inherit;
   background: var(--xxmas-background-dim);
-  color: var(--xxmas-text-dim);
+  color: var(--xxmas-text-medium);
 }
 
 article {
@@ -86,7 +87,7 @@ a {
 }
 
 code {
-  border: 1px solid var(--xxmax-border-medium);
+  border: 1px solid var(--xxmas-border-medium);
   background: var(--xxmas-background-dark);
 }
 
@@ -125,6 +126,10 @@ code {
 
 .textBright {
   color: var(--xxmas-text-bright);
+}
+
+.textMedium {
+  color: var(--xxmas-text-medium);
 }
 
 .textDim {

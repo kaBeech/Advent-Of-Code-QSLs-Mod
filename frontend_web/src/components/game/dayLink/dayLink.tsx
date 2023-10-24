@@ -27,7 +27,7 @@ export interface DayLinkProps {
 export default component$((props: DayLinkProps) => {
   if (!props.dayLinkData) {
     return (
-      <div>
+      <div class="textDim">
         #######################################################{" "}
         <span class="textBright">
           {props.dayNumber < 10 ? " " + props.dayNumber : props.dayNumber}
@@ -69,9 +69,9 @@ export default component$((props: DayLinkProps) => {
   return (
     <div>
       <a href={`day/${props.dayNumber}`}>
-        <span class="textDim">{frontPadding}</span>
+        <span class="textMedium">{frontPadding}</span>
         {dayDataString}
-        <span class="textDim">{endPadding}</span>
+        <span class="textMedium">{endPadding}</span>
       </a>
       <span class="textBright">
         {props.dayNumber < 10 ? " " + props.dayNumber : props.dayNumber}{" "}

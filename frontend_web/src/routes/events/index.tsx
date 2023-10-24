@@ -78,7 +78,7 @@ export default component$(() => {
                     <div key={`game-${game.number}`}>
                       <a href={`/game/${game.number}`}>
                         {game.year}
-                        <span class="textDim"> - {game.name}</span>
+                        <span class="textMedium"> - {game.name}</span>
                       </a>
                     </div>
                   )
