@@ -20,8 +20,8 @@ export default component$((props: HeaderProps) => {
     <header>
       <div class={`flex`}>
         <div class="flex column">
-          <a href="/">Xtreme Xmas</a>
-          <a href="/game">YEAR0</a>
+          <a href="/">Xtreme Xmas Code</a>
+          <a href="/game">let y=2023</a>
         </div>
         <div class="flex column">
           <div class="flex">
@@ -37,10 +37,10 @@ export default component$((props: HeaderProps) => {
           </div>
           <div class="flex">
             {" "}
-            <a href="/calendar">[Calendar]</a> <a href="/support">[XX++]</a>{" "}
+            <a href="/calendar">[Calendar]</a> <a href="/support">[XXC++]</a>{" "}
             <a href="/sponsors">[Sponsors]</a>{" "}
             <a href="/leaderboard">[Leaderboard]</a>{" "}
-            <a href="/stats">[Stats﹡]</a>
+            <a href="/stats">[Stats]</a>
           </div>
         </div>
       </div>
