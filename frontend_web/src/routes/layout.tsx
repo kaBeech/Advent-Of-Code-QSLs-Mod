@@ -5,6 +5,7 @@ import type { RequestHandler } from "@builder.io/qwik-city";
 import styles from "./styles.css?inline";
 import Header from "~/components/header/header";
 import type { Session } from "@auth/core/types";
+import Sidebar from "~/components/sidebar/sidebar";
 
 let isLoggedIn = false;
 
@@ -47,6 +48,7 @@ export default component$(() => {
   return (
     <>
       <Header isLoggedIn={isLoggedIn} toggleLoggedIn={toggleLoggedIn} />
+      <Sidebar />
       <main>
         <Slot />
       </main>

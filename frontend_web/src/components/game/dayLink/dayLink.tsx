@@ -14,6 +14,7 @@ export interface DayLinkData {
   };
   ModifierOption?: {
     name: string;
+    text: string;
   };
   netScore: number;
 }
@@ -26,7 +27,7 @@ export interface DayLinkProps {
 export default component$((props: DayLinkProps) => {
   if (!props.dayLinkData) {
     return (
-      <div>
+      <div class="textDim">
         #######################################################{" "}
         <span class="textBright">
           {props.dayNumber < 10 ? " " + props.dayNumber : props.dayNumber}
@@ -38,10 +39,13 @@ export default component$((props: DayLinkProps) => {
   const challengeModifier = props.dayLinkData.ChallengeModifier
     ? props.dayLinkData.ChallengeModifier.name + ", "
     : "";
-  const modifierOption = props.dayLinkData.ModifierOption?.name
-    ? props.dayLinkData.ModifierOption.name + ", "
+  const modifierOption = props.dayLinkData.ModifierOption?.text
+    ? props.dayLinkData.ModifierOption.text + ", "
     : "";
-  const score = props.dayLinkData.netScore;
+  let score = String(props.dayLinkData.netScore);
+  if (+score >= 0) {
+    score = "+" + score;
+  }
   let tokensGained = 0;
   let tokensSpent = 0;
   props.dayLinkData.part1Completed && tokensGained++;
@@ -49,7 +53,7 @@ export default component$((props: DayLinkProps) => {
   tokensSpent += props.dayLinkData.challengeModifierRerollsUsed * 2;
   tokensSpent += props.dayLinkData.modifierOptionRerollsUsed;
 
-  const dayDataString = ` ${challengeModifier}${modifierOption}${score} points, `;
+  const dayDataString = ` ${challengeModifier}${modifierOption}${score} points `;
   let frontPadding = "";
   let endPadding = "";
   if (dayDataString.length < 55) {
@@ -65,9 +69,9 @@ export default component$((props: DayLinkProps) => {
   return (
     <div>
       <a href={`day/${props.dayNumber}`}>
-        <span class="textDim">{frontPadding}</span>
+        <span class="textMedium">{frontPadding}</span>
         {dayDataString}
-        <span class="textDim">{endPadding}</span>
+        <span class="textMedium">{endPadding}</span>
       </a>
       <span class="textBright">
         {props.dayNumber < 10 ? " " + props.dayNumber : props.dayNumber}{" "}

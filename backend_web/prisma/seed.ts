@@ -32,21 +32,42 @@ const challengeModifierData: Prisma.ChallengeModifierCreateInput[] = [
   },
   {
     name: "language_box_1",
-    text: "using a random programming language from Language Box 1: ",
+    text: "using a random selection from Language Box 1: ",
     hasOptions: true,
     standard: true,
     public: true,
   },
   {
     name: "language_box_2",
-    text: "using a random programming language from Language Box 2: ",
+    text: "using a random selection from Language Box 2: ",
     hasOptions: true,
     standard: true,
     public: true,
   },
   {
     name: "language_box_3",
-    text: "using a random programming language from Language Box 3: ",
+    text: "using a random selection from Language Box 3: ",
+    hasOptions: true,
+    standard: true,
+    public: true,
+  },
+  {
+    name: "functional_programming_box",
+    text: "using a random selection from the Functional Programming Box: ",
+    hasOptions: true,
+    standard: true,
+    public: true,
+  },
+  {
+    name: "visual_programming_box",
+    text: "using a random selection from the Visual Programming Box: ",
+    hasOptions: true,
+    standard: true,
+    public: true,
+  },
+  {
+    name: "text_editor_box",
+    text: "using a random selection from the Text Editor Box: ",
     hasOptions: true,
     standard: true,
     public: true,
@@ -140,7 +161,7 @@ const challengeModifierData: Prisma.ChallengeModifierCreateInput[] = [
   {
     name: "chat_gpt",
     text:
-      "using ChatGPT exclusively (no editing Chat's responses - you must edit your prompts!)",
+      "by writing a program using ChatGPT (the free, GPT-3.5 version) exclusively (no editing Chat's responses - you must edit your prompts!)",
     standard: true,
     public: true,
   },
@@ -487,6 +508,292 @@ const modifierOptionData: Prisma.ModifierOptionCreateInput[] = [
     standard: true,
     public: true,
   },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "language_box_3",
+      },
+    },
+    name: "language_box_3_piet",
+    text: "Piet",
+    standard: true,
+    public: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "functional_programming_box",
+      },
+    },
+    name: "functional_programming_box_commonlisp",
+    text: "Common Lisp",
+    standard: true,
+    public: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "functional_programming_box",
+      },
+    },
+    name: "functional_programming_box_scheme",
+    text: "Scheme",
+    standard: true,
+    public: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "functional_programming_box",
+      },
+    },
+    name: "functional_programming_box_racket",
+    text: "Racket",
+    standard: true,
+    public: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "functional_programming_box",
+      },
+    },
+    name: "functional_programming_box_clojure",
+    text: "Clojure",
+    standard: true,
+    public: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "functional_programming_box",
+      },
+    },
+    name: "functional_programming_box_erlang",
+    text: "Erlang",
+    standard: true,
+    public: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "functional_programming_box",
+      },
+    },
+    name: "functional_programming_box_elixir",
+    text: "Elixir",
+    standard: true,
+    public: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "functional_programming_box",
+      },
+    },
+    name: "functional_programming_box_haskell",
+    text: "Haskell",
+    standard: true,
+    public: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "functional_programming_box",
+      },
+    },
+    name: "functional_programming_box_ocaml",
+    text: "OCaml",
+    standard: true,
+    public: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "functional_programming_box",
+      },
+    },
+    name: "functional_programming_box_scala",
+    text: "Scala",
+    standard: true,
+    public: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "functional_programming_box",
+      },
+    },
+    name: "functional_programming_box_elm",
+    text: "Elm",
+    standard: true,
+    public: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "functional_programming_box",
+      },
+    },
+    name: "functional_programming_box_fsharp",
+    text: "F#",
+    standard: true,
+    public: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "visual_programming_box",
+      },
+    },
+    name: "visual_programming_box_scratch",
+    text: "Scratch",
+    standard: true,
+    public: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "visual_programming_box",
+      },
+    },
+    name: "visual_programming_box_blockly",
+    text: "Blockly",
+    standard: true,
+    public: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "visual_programming_box",
+      },
+    },
+    name: "visual_programming_box_greenfoot",
+    text: "Greenfoot",
+    standard: true,
+    public: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "visual_programming_box",
+      },
+    },
+    name: "visual_programming_box_puredata",
+    text: "Pure Data",
+    standard: true,
+    public: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "visual_programming_box",
+      },
+    },
+    name: "visual_programming_box_nodered",
+    text: "Node-RED",
+    standard: true,
+    public: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "visual_programming_box",
+      },
+    },
+    name: "visual_programming_box_drakon",
+    text: "DRAKON",
+    standard: true,
+    public: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "text_editor_box",
+      },
+    },
+    name: "text_editor_box_vim",
+    text: "Vim",
+    standard: true,
+    public: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "text_editor_box",
+      },
+    },
+    name: "text_editor_box_emacs",
+    text: "Emacs",
+    standard: true,
+    public: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "text_editor_box",
+      },
+    },
+    name: "text_editor_box_eclipse",
+    text: "Eclipse",
+    standard: true,
+    public: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "text_editor_box",
+      },
+    },
+    name: "text_editor_box_netbeans",
+    text: "NetBeans",
+    standard: true,
+    public: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "text_editor_box",
+      },
+    },
+    name: "text_editor_box_vscode",
+    text: "Visual Studio Code",
+    standard: true,
+    public: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "text_editor_box",
+      },
+    },
+    name: "text_editor_box_sublime",
+    text: "Sublime Text",
+    standard: true,
+    public: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "text_editor_box",
+      },
+    },
+    name: "text_editor_box_nano",
+    text: "Nano",
+    standard: true,
+    public: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "text_editor_box",
+      },
+    },
+    name: "text_editor_box_sysdef",
+    text: "Your system default text editor (e.g. gedit, TextEdit, Notepad)",
+    standard: true,
+    public: true,
+  },
 ];
 
 for (const u of modifierOptionData) {
@@ -524,6 +831,10 @@ const rankData: Prisma.RankCreateInput[] = [
     minimumScore: 920,
   },
   {
+    name: "Legendary Champion",
+    minimumScore: 1000,
+  },
+  {
     name: "Santaic Champion",
     minimumScore: 1100,
   },
@@ -550,7 +861,7 @@ for (const u of userData) {
   const user = await prisma.user.create({
     data: u,
   });
-  console.log(`Created rank with id: ${user.id}`);
+  console.log(`Created user with id: ${user.id}`);
 }
 
 console.log(`Seeding finished.`);

@@ -15,6 +15,10 @@ export const onRequest: RequestHandler = (event) => {
   if (!session || new Date(session.expires) < new Date()) {
     throw event.redirect(302, `/login`);
   }
+  event.cookie.set("gameNumber", event.params.gameNumber, {
+    path: "/",
+    secure: true,
+  });
 };
 
 export default component$(() => {
@@ -48,6 +52,12 @@ export default component$(() => {
             }
             return (
               <>
+                <div>Game Name Loading...</div>
+                <div>Player Loading...</div>
+                <div>Year: Loading...</div>
+                <div>Score: Loading...</div>
+                <div>Rank: Loading...</div>
+                <div>Completed During Calendar Year: Loading...</div>
                 {pendingDays.map((day: { number: number }) => (
                   <DayLink
                     key={`pendingDay-${day.number}`}
@@ -65,6 +75,12 @@ export default component$(() => {
               }
               return (
                 <>
+                  <div>Game Name Not Found!</div>
+                  <div>Player Not Found!</div>
+                  <div>Year: Not Found!</div>
+                  <div>Score: Not Found!</div>
+                  <div>Rank: Not Found!</div>
+                  <div>Completed During Calendar Year: Not Found!</div>
                   {dummyDays.map((day: { number: number }) => (
                     <DayLink
                       key={`lockedDay-${day.number}`}
@@ -87,6 +103,31 @@ export default component$(() => {
             );
             return (
               <>
+                <div>{gameData.game.name}</div>
+                <div>
+                  <img
+                    src={session.value!.user!.image!}
+                    alt="user avatar"
+                    style={{ height: "1.5rem", width: "1.5rem" }}
+                    width="24"
+                    height="24"
+                  />
+                  {session.value!.user!.name!}
+                </div>
+                <div>Year: {gameData.game.year}</div>
+                <div>Score: {gameData.game.score}</div>
+                {gameData.game.dateCompleted && (
+                  <>
+                    <div>Rank: {gameData.game.rank}</div>
+                    <div>
+                      Completed During Calendar Year:{" "}
+                      {gameData.game.dateCompleted.toString().slice(0, 4) ===
+                      gameData.game.year.toString()
+                        ? "Yes"
+                        : "No"}
+                    </div>
+                  </>
+                )}
                 {lockedDays.map((day: { number: number }) => (
                   <DayLink
                     key={`lockedDay-${day.number}`}
@@ -107,6 +148,7 @@ export default component$(() => {
                     };
                     ModifierOption?: {
                       name: string;
+                      text: string;
                     };
                     netScore: number;
                   }) => (

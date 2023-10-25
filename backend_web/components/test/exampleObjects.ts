@@ -44,10 +44,12 @@ export const exampleGameDay1 = {
   "progressSheetLink": null,
   "public": false,
   "publicProfileId": null,
-  "netScore": 0,
+  "score": 0,
   "rankId": null,
   "dateCreated": new Date(),
   "dateCompleted": null,
+  "rerollTokensSpentDuringPart2Raw": 0,
+  "rerollTokensSpentDuringPart2Limited": 0,
 };
 
 export const exampleDay = {

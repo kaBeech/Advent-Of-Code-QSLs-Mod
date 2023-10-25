@@ -48,7 +48,7 @@ model Game {
   playerName                          String?
   currentDay                          Int            @default(0)
   currentDayCompleted                 Boolean        @default(false)
-  currentRerollTokens                 Int            @default(7)
+  currentRerollTokens                 Int            @default(12)
   rerollTokensSpent                   Int            @default(0)
   rerollTokensSpentDuringPart2Raw     Int            @default(0)
   rerollTokensSpentDuringPart2Limited Int            @default(0)

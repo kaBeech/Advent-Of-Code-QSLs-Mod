@@ -1,7 +1,32 @@
+/* Fonts */
+
 @font-face {
   font-family: "Source Code Pro";
-  src: url("/fonts/SourceCodeXtreme-Regular.otf");
+  src: url("/fonts/SourceCodePro-Light.ttf");
 }
+
+@font-face {
+  font-family: "Source Code Xtreme";
+  src: url("/fonts/SourceCodeXtreme-Light.otf");
+}
+
+/* Colors */
+
+:root {
+  --xxmas-background-dark: hsl(240, 24%, 8%);
+  --xxmas-background-dim: hsl(240, 40%, 10%);
+  --xxmas-border-medium: hsl(240, 11%, 23%);
+  --xxmas-text-dim: hsl(0, 0%, 40%);
+  --xxmas-text-medium: hsl(0, 0%, 80%);
+  --xxmas-text-bright: hsl(0, 0%, 100%);
+  --xxmas-text-red-bright: hsl(0, 100%, 48%);
+  --xxmas-text-red: hsl(0, 100%, 44%);
+  --xxmas-text-green: hsl(120, 100%, 30%);
+  --xxmas-text-green-glow: hsl(120, 100%, 40%);
+  --xxmas-text-gold: hsl(63, 100%, 69%);
+}
+
+/* Elements */
 
 html {
   line-height: 1;
@@ -10,7 +35,9 @@ html {
   -o-tab-size: 4;
   tab-size: 4;
   font-family:
+    "Source Code Xtreme",
     "Source Code Pro",
+    monospace,
     ui-sans-serif,
     system-ui,
     -apple-system,
@@ -27,30 +54,54 @@ html {
     "Noto Color Emoji";
 }
 
-:root {
-  --xxmas-dark-background: hsl(240, 40%, 10%);
-  --xxmas-text-dim: hsl(0, 0%, 38%);
-  --xxmas-text-bright: hsl(0, 0%, 80%);
-  --xxmas-red-text-bright: hsl(0, 100%, 48%);
-  --xxmas-red-text: hsl(0, 100%, 44%);
-  --xxmas-green-text: hsl(140, 99%, 29%);
-  --xxmas-gold-text: hsl(63, 100%, 69%);
-}
-
 body {
-  font-size: 1.2rem;
+  font-weight: 300;
   padding: 0;
   margin: 0.5rem;
   line-height: inherit;
-  background: var(--xxmas-dark-background);
-  color: var(--xxmas-text-dim);
+  background: var(--xxmas-background-dim);
+  color: var(--xxmas-text-medium);
+}
+
+article {
+  width: 45em;
+  margin-bottom: 2em;
+}
+
+h1,
+h2 {
+  color: var(--xxmas-text-bright);
+  font-weight: normal;
+}
+
+em {
+  color: var(--xxmas-text-bright);
+  font-style: normal;
+  text-shadow: 0 0 5px;
 }
 
 a {
-  color: var(--xxmas-green-text);
+  color: var(--xxmas-text-green);
   text-decoration: none;
   cursor: pointer;
 }
+
+code {
+  border: 1px solid var(--xxmas-border-medium);
+  background: var(--xxmas-background-dark);
+}
+
+/* IDs */
+
+#sidebar {
+  width: 12.5rem;
+  float: right;
+  margin: 1rem 2rem 2em 2em;
+  position: relative;
+  z-index: 10;
+}
+
+/* Util Classes */
 
 .flex {
   display: flex;
@@ -60,18 +111,54 @@ a {
   flex-direction: column;
 }
 
+.alignEnd {
+  align-items: flex-end;
+}
+
+.gap1 {
+  gap: 1rem;
+}
+
+.marginTBPoint2 {
+  margin-top: 0.2rem;
+  margin-bottom: 0.2rem;
+}
+
+.visualHide:not(:focus):not(:active) {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+/* Custom Classes */
+
 .token {
-  color: var(--xxmas-gold-text);
+  color: var(--xxmas-text-gold);
 }
 
 .tokenSpent {
-  color: var(--xxmas-red-text);
+  color: var(--xxmas-text-red);
 }
 
 .textBright {
   color: var(--xxmas-text-bright);
 }
 
+.textMedium {
+  color: var(--xxmas-text-medium);
+}
+
 .textDim {
   color: var(--xxmas-text-dim);
+}
+
+.glowGreen {
+  color: var(--xxmas-text-green-glow);
+  text-shadow:
+    0 0 2px var(--xxmas-text-green-glow),
+    0 0 5px var(--xxmas-text-green-glow);
 }
