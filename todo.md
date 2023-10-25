@@ -1,12 +1,6 @@
 # To Do
 
-## Update routes
-
-- Write tests for routes
-
-### Adjust http routes
-
-- For example, get Day by route "/user/id:/game/:number/day/:number
+## Add leaderboards
 
 ## Update logic
 
