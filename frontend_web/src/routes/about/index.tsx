@@ -47,7 +47,10 @@ export default component$(() => {
           reroll tokens and provides leaderboards for ranking games based on
           this score. I hope this will provide a brain-stretching leaderboard
           experience{" "}
-          <a href="" class="link">
+          <a
+            href="https://www.reddit.com/r/adventofcode/comments/e2wjhf/comment/f90ksek/"
+            class="link"
+          >
             that isn't tied to a strict time schedule
           </a>
           .
