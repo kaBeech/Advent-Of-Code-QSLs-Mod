@@ -2,7 +2,7 @@ import { component$ } from "@builder.io/qwik";
 
 export default component$(() => {
   return (
-    <div id="sidebar">
+    <div id="sidebar" class="desktopShow">
       <div class="sponsor flex column gap1">
         <div class="textDim">
           Our{" "}

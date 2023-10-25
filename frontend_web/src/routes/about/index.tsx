@@ -21,7 +21,7 @@ export default component$(() => {
           <a href="https://www.linkedin.com/in/kyle-beechly/" class="link">
             LinkedIn
           </a>
-          ,
+          ,{" "}
           <a href="https://bsky.app/profile/kabeech.com" class="link">
             Bluesky
           </a>
@@ -99,7 +99,7 @@ export default component$(() => {
           <a href="mailto:contact@kabeech.com" class="link">
             Email
           </a>
-          ,
+          ,{" "}
           <a href="https://bsky.app/profile/kabeech.com" class="link">
             Bluesky
           </a>
@@ -243,7 +243,7 @@ export default component$(() => {
             1000+ points: <em>Legendary Champion</em>
           </li>
           <li>
-            1100+ points: <em>Santaic Champion</em>
+            1120+ points: <em>Santaic Champion</em>
           </li>
           <li>
             1240+ points: <em>Godlike Champion</em>
@@ -412,8 +412,15 @@ export default component$(() => {
         </p>
         <p>XXC Beta Testing:</p>
         <ul>
-          <li>- Your name here!</li>
-          <li>- Your name here!</li>
+          <li>
+            -{" "}
+            <a
+              href="mailto:contact@kabeech.com?subject=Xtreme%20Xmas%20Beta%20Testing"
+              class="link"
+            >
+              Your name here!
+            </a>
+          </li>
         </ul>
         <p>Playing: You!</p>
         <h2>--- Legal ---</h2>
