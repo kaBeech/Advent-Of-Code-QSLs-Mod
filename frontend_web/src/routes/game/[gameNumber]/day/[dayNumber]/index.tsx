@@ -147,7 +147,9 @@ export default component$(() => {
                   <strong class="tokenSpent">
                     {xtremeXmasData.rerollTokensSpentDuringPart1 > 9
                       ? xtremeXmasData.rerollTokensSpentDuringPart1 + "*"
-                      : "*".repeat(xtremeXmasData.rerollTokensSpentDuringPart1)}
+                      : "﹡".repeat(
+                          xtremeXmasData.rerollTokensSpentDuringPart1
+                        )}
                   </strong>
                 </li>
                 <li>
@@ -155,7 +157,9 @@ export default component$(() => {
                   <strong class="tokenSpent">
                     {xtremeXmasData.rerollTokensSpentDuringPart2 > 9
                       ? xtremeXmasData.rerollTokensSpentDuringPart2 + "*"
-                      : "*".repeat(xtremeXmasData.rerollTokensSpentDuringPart2)}
+                      : "﹡".repeat(
+                          xtremeXmasData.rerollTokensSpentDuringPart2
+                        )}
                   </strong>
                 </li>
                 <li>
@@ -178,7 +182,14 @@ export default component$(() => {
                 </li>
                 <li>
                   Challenge Modifier:{" "}
-                  <strong>{xtremeXmasData.challengeModifier}</strong>{" "}
+                  <strong>
+                    {xtremeXmasData.challengeModifier === "None"
+                      ? "None"
+                      : "You must complete this challenge " +
+                        xtremeXmasData.challengeModifier}
+                    {xtremeXmasData.modifierOption !== "None" &&
+                      xtremeXmasData.modifierOption}
+                  </strong>{" "}
                   {xtremeXmasData.part2Completed === "Yes" ? (
                     <></>
                   ) : xtremeXmasData.challengeModifier === "None" ? (
@@ -195,40 +206,41 @@ export default component$(() => {
                       [Roll Initial Challenge Modifier]
                     </a>
                   ) : (
-                    <a
-                      onClick$={async () => {
-                        await serverFetcher(
-                          `game/${state.gameNumber}/day/${state.dayNumber}/reroll/modifier`,
-                          "PUT",
-                          userId
-                        );
-                        state.buttonPresses++;
-                      }}
-                    >
-                      [Reroll Challenge Modifier]
-                    </a>
-                  )}
-                </li>
-                <li>
-                  Modifier Option:{" "}
-                  <strong>{xtremeXmasData.modifierOption}</strong>
-                  {xtremeXmasData.modifierOption === "None" ||
-                  xtremeXmasData.part2Completed === "Yes" ? (
-                    <></>
-                  ) : (
-                    <a
-                      onClick$={async () => {
-                        await serverFetcher(
-                          `game/${state.gameNumber}/day/${state.dayNumber}/reroll/option`,
-                          "PUT",
-                          userId
-                        );
-                        state.buttonPresses++;
-                      }}
-                    >
-                      [Reroll Modifier Option]
-                    </a>
-                  )}
+                    <li>
+                      <a
+                        onClick$={async () => {
+                          await serverFetcher(
+                            `game/${state.gameNumber}/day/${state.dayNumber}/reroll/modifier`,
+                            "PUT",
+                            userId
+                          );
+                          state.buttonPresses++;
+                        }}
+                      >
+                        [Reroll Challenge Modifier]
+                      </a>{" "}
+                      for <strong class="tokenSpent">﹡﹡</strong>
+                    </li>
+                  )}{" "}
+                  {xtremeXmasData.modifierOption !== "None" &&
+                    xtremeXmasData.part2Completed !== "Yes" && (
+                      <li>
+                        <a
+                          onClick$={async () => {
+                            await serverFetcher(
+                              `game/${state.gameNumber}/day/${state.dayNumber}/reroll/option`,
+                              "PUT",
+                              userId
+                            );
+                            state.buttonPresses++;
+                          }}
+                        >
+                          [Reroll Modifier Option]
+                        </a>{" "}
+                        ({xtremeXmasData.modifierOption}) for{" "}
+                        <strong class="tokenSpent">﹡</strong>
+                      </li>
+                    )}
                 </li>
                 <li>
                   Current Day: <strong>{xtremeXmasData.currentDay}</strong>{" "}
