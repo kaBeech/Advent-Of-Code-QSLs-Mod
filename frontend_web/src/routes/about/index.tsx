@@ -21,7 +21,7 @@ export default component$(() => {
           <a href="https://www.linkedin.com/in/kyle-beechly/" class="link">
             LinkedIn
           </a>
-          ,
+          ,{" "}
           <a href="https://bsky.app/profile/kabeech.com" class="link">
             Bluesky
           </a>
@@ -99,7 +99,7 @@ export default component$(() => {
           <a href="mailto:contact@kabeech.com" class="link">
             Email
           </a>
-          ,
+          ,{" "}
           <a href="https://bsky.app/profile/kabeech.com" class="link">
             Bluesky
           </a>
