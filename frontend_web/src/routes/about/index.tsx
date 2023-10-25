@@ -7,7 +7,7 @@ export default component$(() => {
         <h1 class="visualHide">--- About ---</h1>
         <p>
           Hi! I'm{" "}
-          <a href="" class="link">
+          <a href="https://www.kabeech.com/" class="link">
             Kyle Beechly
           </a>
           . I make Xtreme Xmas Code. I hope you like it! You can find me on{" "}
@@ -26,15 +26,15 @@ export default component$(() => {
         </p>
         <p>
           <em>Xtreme Xmas Code</em> is a mod/companion app for{" "}
-          <a href="" class="link">
+          <a href="https://adventofcode.com/" class="link">
             Advent of Code
           </a>
           , a delightful{" "}
-          <a href="" class="link">
+          <a href="https://en.wikipedia.org/wiki/Advent_calendar" class="link">
             Advent calendar
           </a>{" "}
           of small programming puzzles created by{" "}
-          <a href="" class="link">
+          <a href="http://was.tl/" class="link">
             Eric Wastl
           </a>
           . With it you can record your Advent of Code progress and each day get
@@ -70,8 +70,8 @@ export default component$(() => {
             ]
           </span>{" "}
           it with others, or directly via{" "}
-          <a href="" class="link">
-            payment options
+          <a href="/support" class="link">
+            my support page
           </a>
           . You can also support me by supporting{" "}
           <a href="https://adventofcode.com/support" class="link">
@@ -86,7 +86,7 @@ export default component$(() => {
             LinkedIn
           </a>
           ,{" "}
-          <a href="" class="link">
+          <a href="mailto:contact@kabeech.com" class="link">
             Email
           </a>
           , or{" "}
@@ -255,16 +255,38 @@ export default component$(() => {
           outside the box is a great way to help keep our brains in shape!
         </p>
         <p>
-          Additionally, XXC adds to AoC leaderboard options. Being a global
-          speed-based competition, the leaderboard at{" "}
+          Additionally, XXC adds to AoC leaderboard options. Being a worldwide
+          speed-based competition, the race to get on{" "}
           <a href="" class="link">
             Advent of Code
+          </a>
+          's global leaderboard{" "}
+          <a
+            href="https://adventofcode.com/2022/about#faq_compete"
+            class="link"
+          >
+            encourages
           </a>{" "}
-          <a href="" class="link">
-            encourages a particular playstyle
+          <a href="https://blog.vero.site/post/advent-leaderboard" class="link">
+            some
+          </a>{" "}
+          <a
+            href="https://kevinyap.ca/2019/12/going-fast-in-advent-of-code/"
+            class="link"
+          >
+            particular
+          </a>{" "}
+          <a
+            href="https://gist.github.com/mcpower/87427528b9ba5cac6f0c679370789661"
+            class="link"
+          >
+            techniques
           </a>{" "}
           and{" "}
-          <a href="" class="link">
+          <a
+            href="https://adventofcode.com/2022/about#faq_unlocktime"
+            class="link"
+          >
             isn't convenient for all players' schedules
           </a>
           . I'm hoping that the score-based Xtreme Xmas Code leaderboards will
@@ -317,7 +339,7 @@ export default component$(() => {
         </p>
         <p>
           <em>How does authentication work?</em> Xtreme Xmas Code uses{" "}
-          <a href="" class="link">
+          <a href="https://en.wikipedia.org/wiki/OAuth" class="link">
             OAuth
           </a>{" "}
           to verify and remember your identity. You choose a{" "}
@@ -339,11 +361,11 @@ export default component$(() => {
             ] to log in with and Xtreme Xmas Code receives information to
             remember who you are. This is generally public information; here are
             examples from{" "}
-            <a href="" class="link">
+            <a href="https://api.reddit.com/user/reddit/about" class="link">
               Reddit
             </a>{" "}
             and{" "}
-            <a href="" class="link">
+            <a href="https://api.github.com/users/octocat" class="link">
               GitHub
             </a>
             . Xtreme Xmas Code will remember your unique ID, names, URL, and
@@ -353,13 +375,13 @@ export default component$(() => {
         <h2>--- Credits ---</h2>
         <p>
           Xtreme Xmas Code:{" "}
-          <a href="" class="link">
+          <a href="https://www.kabeech.com/" class="link">
             Kyle Beechly
           </a>
         </p>
         <p>
           Advent of Code:{" "}
-          <a href="" class="link">
+          <a href="http://was.tl/" class="link">
             Eric Wastl
           </a>
         </p>
