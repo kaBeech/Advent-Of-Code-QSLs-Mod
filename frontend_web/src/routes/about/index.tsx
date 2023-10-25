@@ -243,7 +243,7 @@ export default component$(() => {
             1000+ points: <em>Legendary Champion</em>
           </li>
           <li>
-            1100+ points: <em>Santaic Champion</em>
+            1120+ points: <em>Santaic Champion</em>
           </li>
           <li>
             1240+ points: <em>Godlike Champion</em>
