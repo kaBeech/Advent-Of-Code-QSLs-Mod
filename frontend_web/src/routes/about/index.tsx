@@ -412,8 +412,12 @@ export default component$(() => {
         </p>
         <p>XXC Beta Testing:</p>
         <ul>
-          <li>- Your name here!</li>
-          <li>- Your name here!</li>
+          <a
+            href="mailto:contact@kabeech.com?subject=Xtreme%20Xmas%20Beta%20Testing"
+            class="link"
+          >
+            <li>- Your name here!</li>
+          </a>
         </ul>
         <p>Playing: You!</p>
         <h2>--- Legal ---</h2>
