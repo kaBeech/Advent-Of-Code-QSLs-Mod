@@ -24,7 +24,7 @@ export default component$((props: HeaderProps) => {
             Xtreme Xmas Code
           </a>
           <a href="/game" class="marginTBPoint2">
-            let y=<span class="glowGreen">2023</span>
+            const y=<span class="glowGreen">2023</span>
           </a>
         </div>
         <div class="flex column">
