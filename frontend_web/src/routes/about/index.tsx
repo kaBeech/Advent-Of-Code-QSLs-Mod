@@ -1,6 +1,9 @@
 import { component$ } from "@builder.io/qwik";
+import { useAuthSignin } from "../plugin@auth";
 
 export default component$(() => {
+  const signIn = useAuthSignin();
+
   return (
     <>
       <article>
@@ -11,15 +14,15 @@ export default component$(() => {
             Kyle Beechly
           </a>
           . I make Xtreme Xmas Code. I hope you like it! You can find me on{" "}
-          <a href="" class="link">
-            Twitter
+          <a href="https://hachyderm.io/@kaBeech" class="link">
+            Mastodon
           </a>
           ,{" "}
-          <a href="" class="link">
+          <a href="https://github.com/kaBeech" class="link">
             GitHub
           </a>
           , and{" "}
-          <a href="" class="link">
+          <a href="https://www.linkedin.com/in/kyle-beechly/" class="link">
             LinkedIn
           </a>
           .
@@ -58,7 +61,7 @@ export default component$(() => {
         <p>
           If you'd like to support Xtreme Xmas Code, you can do so indirectly by
           helping to{" "}
-          <span class="link">
+          {/* <span class="link">
             [Share
             <span class="clickShow">
               {" "}
@@ -67,12 +70,12 @@ export default component$(() => {
                 Mastodon
               </a>{" "}
               <a href="" class="link">
-                Twitter
+                BlueSky
               </a>
             </span>
             ]
-          </span>{" "}
-          it with others, or directly via{" "}
+          </span>{" "} */}
+          share it with others, or directly via{" "}
           <a href="/support" class="link">
             my support page
           </a>
@@ -85,7 +88,7 @@ export default component$(() => {
         <p>
           I'm also <em>#OpenToWork</em>, so if you're looking to work with a fun
           nerd you may contact me via{" "}
-          <a href="" class="link">
+          <a href="https://www.linkedin.com/in/kyle-beechly/" class="link">
             LinkedIn
           </a>
           ,{" "}
@@ -93,8 +96,8 @@ export default component$(() => {
             Email
           </a>
           , or{" "}
-          <a href="" class="link">
-            Twitter
+          <a href="https://hachyderm.io/@kaBeech" class="link">
+            Mastodon
           </a>
           !
         </p>
@@ -260,7 +263,7 @@ export default component$(() => {
         <p>
           Additionally, XXC adds to AoC leaderboard options. Being a worldwide
           speed-based competition, the race to get on{" "}
-          <a href="" class="link">
+          <a href="https://adventofcode.com/leaderboard" class="link">
             Advent of Code
           </a>
           's global leaderboard{" "}
@@ -346,7 +349,7 @@ export default component$(() => {
             OAuth
           </a>{" "}
           to verify and remember your identity. You choose a{" "}
-          <span class="clickable">
+          {/* <span class="clickable">
             [Service
             <span class="clickShow">
               {" "}
@@ -355,25 +358,36 @@ export default component$(() => {
                 GitHub
               </a>{" "}
               <a href="" class="link">
-                Twitter
+                Mastodon
               </a>{" "}
               <a href="" class="link">
                 Google
               </a>
-            </span>
-            ] to log in with and Xtreme Xmas Code receives information to
-            remember who you are. This is generally public information; here are
-            examples from{" "}
-            <a href="https://api.reddit.com/user/reddit/about" class="link">
-              Reddit
-            </a>{" "}
-            and{" "}
-            <a href="https://api.github.com/users/octocat" class="link">
-              GitHub
-            </a>
-            . Xtreme Xmas Code will remember your unique ID, names, URL, and
-            image from the service you use to authenticate.
-          </span>
+            </span>]
+          </span> */}
+          service like{" "}
+          <a
+            onClick$={() => {
+              signIn.submit({
+                providerId: "github",
+              });
+            }}
+            class="link"
+          >
+            GitHub
+          </a>{" "}
+          to log in with and Xtreme Xmas Code receives information to remember
+          who you are. This is generally public information; here are examples
+          from{" "}
+          <a href="https://api.reddit.com/user/reddit/about" class="link">
+            Reddit
+          </a>{" "}
+          and{" "}
+          <a href="https://api.github.com/users/octocat" class="link">
+            GitHub
+          </a>
+          . Xtreme Xmas Code will remember your unique ID, names, URL, and image
+          from the service you use to authenticate.
         </p>
         <h2>--- Credits ---</h2>
         <p>
@@ -390,18 +404,8 @@ export default component$(() => {
         </p>
         <p>XXC Beta Testing:</p>
         <ul>
-          <li>
-            -{" "}
-            <a href="" class="link">
-              Your name here!
-            </a>
-          </li>
-          <li>
-            -{" "}
-            <a href="" class="link">
-              Your name here!
-            </a>
-          </li>
+          <li>- Your name here!</li>
+          <li>- Your name here!</li>
         </ul>
         <p>Playing: You!</p>
         <h2>--- Legal ---</h2>
