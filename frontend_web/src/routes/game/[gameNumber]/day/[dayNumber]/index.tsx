@@ -336,6 +336,16 @@ export default component$(() => {
                   )}
                 </li>{" "}
               </ul>
+              {dayNumber < xtremeXmasData.currentDay && (
+                <a href={`/game/${gameNumber}/day/${+dayNumber + 1}/`}>
+                  [View Next Day]
+                </a>
+              )}
+              {+dayNumber > 1 && (
+                <a href={`/game/${gameNumber}/day/${+dayNumber - 1}/`}>
+                  [View Previous Day]
+                </a>
+              )}
             </>
           );
         }}
