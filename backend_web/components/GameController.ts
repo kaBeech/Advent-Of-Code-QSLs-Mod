@@ -57,9 +57,6 @@ const currentDayCompleter = (state: GameControllerState) => ({
     }
     state.game = currentDayCompletionStatusSetter(state)
       .setCurrentDayCompletionStatus(true);
-    state.game = currentRerollTokensAdjuster(state).adjustCurrentRerollTokens(
-      1,
-    );
     return state.game;
   },
 });
