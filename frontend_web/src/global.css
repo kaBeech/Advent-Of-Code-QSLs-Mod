@@ -136,6 +136,12 @@ code {
   width: 1px;
 }
 
+@media (max-width: 1150px) {
+  .desktopShow {
+    display: none;
+  }
+}
+
 /* Custom Classes */
 
 .token {
