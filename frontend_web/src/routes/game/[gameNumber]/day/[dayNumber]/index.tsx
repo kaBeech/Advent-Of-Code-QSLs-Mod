@@ -108,7 +108,6 @@ export default component$(() => {
               <li>
                 Challenge Modifier: <strong>Loading...</strong>
               </li>
-              <li>Modifier Option: Loading...</li>
               <li>
                 Current Day: <strong>Loading...</strong>
               </li>

@@ -75,12 +75,6 @@ export default component$(() => {
               }
               return (
                 <>
-                  <div>Game Name Not Found!</div>
-                  <div>Player Not Found!</div>
-                  <div>Year: Not Found!</div>
-                  <div>Score: Not Found!</div>
-                  <div>Rank: Not Found!</div>
-                  <div>Completed During Calendar Year: Not Found!</div>
                   {dummyDays.map((day: { number: number }) => (
                     <DayLink
                       key={`lockedDay-${day.number}`}
