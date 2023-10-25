@@ -15,6 +15,10 @@ export const onRequest: RequestHandler = (event) => {
   if (!session || new Date(session.expires) < new Date()) {
     throw event.redirect(302, `/login`);
   }
+  event.cookie.set("gameNumber", event.params.gameNumber, {
+    path: "/",
+    secure: true,
+  });
 };
 
 export default component$(() => {

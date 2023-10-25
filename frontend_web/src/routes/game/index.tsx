@@ -2,7 +2,8 @@ import { component$ } from "@builder.io/qwik";
 import { type DocumentHead, type RequestHandler } from "@builder.io/qwik-city";
 
 export const onRequest: RequestHandler = (event) => {
-  throw event.redirect(302, `/game/1`);
+  const gameNumber = event.cookie.get("gameNumber")?.value;
+  throw event.redirect(302, `/game/${gameNumber}`);
 };
 
 export default component$(() => {

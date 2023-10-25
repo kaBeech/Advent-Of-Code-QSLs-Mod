@@ -5,7 +5,7 @@ import { useAuthSession } from "../plugin@auth";
 import { getGithubUserIdFromUserImage } from "~/util/getGithubUserIdFromUserImage";
 import type { Session } from "@auth/core/types";
 
-const gameNumber = 1;
+let gameNumber = 1;
 const dayNumber = 1;
 
 export const onRequest: RequestHandler = (event) => {
@@ -13,6 +13,7 @@ export const onRequest: RequestHandler = (event) => {
   if (!session || new Date(session.expires) < new Date()) {
     throw event.redirect(302, `/login`);
   }
+  gameNumber = +event.cookie.get("gameNumber")!.value;
 };
 
 export default component$(() => {
