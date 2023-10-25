@@ -250,10 +250,9 @@ export default component$(() => {
           these by default (View -{">"} Page Style -{">"} High Contrast).
         </p>
         <p>
-          <em>Why make a mod for Advent of Code?</em>
-          Because it's fun! Using randomized challenges to push our boundaries
-          and encourage us to think outside the box is a great way to help keep
-          our brains in shape!
+          <em>Why make a mod for Advent of Code?</em> Because it's fun! Using
+          randomized challenges to push our boundaries and encourage us to think
+          outside the box is a great way to help keep our brains in shape!
         </p>
         <p>
           Additionally, XXC adds to AoC leaderboard options. Being a global
@@ -273,20 +272,20 @@ export default component$(() => {
           and lateral thinking.
         </p>
         <p>
-          <em>How do the leaderboards work?</em>
-          The leaderboards are opt-in; you must post your game manually for it
-          to show up. Games on the boards are ranked by score. There are two
-          boards for each year: In-Season and All-Time. To qualify for the
-          In-Season board, your game must be completed and posted during the
-          specified year. For example, to qualify for the 2023 In-Season board
-          your game must be completed and posted before January 1, 2024.
+          <em>How do the leaderboards work?</em> The leaderboards are opt-in;
+          you must post your game manually for it to show up. Games on the
+          boards are ranked by score. There are two boards for each year:
+          In-Season and All-Time. To qualify for the In-Season board, your game
+          must be completed and posted during the specified year. For example,
+          to qualify for the 2023 In-Season board your game must be completed
+          and posted before January 1, 2024.
         </p>
         <p>
-          <em>How can I post to the leaderboards?</em>
-          To post a game to the leaderboards, you must first mark your game as
-          Public and add a Repository Link. TBA... If you mark your game as
-          Private or remove its Repository Link, it will automatically be
-          removed from the leaderboards. TBA...
+          <em>How can I post to the leaderboards?</em> To post a game to the
+          leaderboards, you must first mark your game as Public and add a
+          Repository Link. TBA... If you mark your game as Private or remove its
+          Repository Link, it will automatically be removed from the
+          leaderboards. TBA...
         </p>
         <p>
           <em>Can I use AI to get on the leaderboards?</em> Please don't post
