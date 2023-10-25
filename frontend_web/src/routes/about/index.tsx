@@ -79,15 +79,17 @@ export default component$(() => {
             </span>
             ]
           </span>{" "} */}
-          share it with others, or directly via{" "}
+          share it with others, or more directly by visiting{" "}
           <a href="/support" class="link">
             my support page
-          </a>
-          . You can also support me by supporting{" "}
+          </a>{" "}
+          (you won't find any donate buttons over there, though). You can also
+          support me by supporting{" "}
           <a href="https://adventofcode.com/support" class="link">
             Eric Wastl
           </a>
-          , creator of Advent of Code.
+          , creator of Advent of Code (if you want to throw money at someone for
+          this, he's the guy).
         </p>
         <p>
           I'm also <em>#OpenToWork</em>, so if you're looking to work with a fun
