@@ -71,6 +71,8 @@ export default component$(() => {
         currentDay: gameData.currentDay,
         currentDayCompleted: gameData.currentDayCompleted ? "Yes" : "No",
         part1Completed: dayData.part1Completed ? "Yes" : "No",
+        modifierWhenPart1Completed: dayData.modifierWhenPart1Completed || null,
+        optionWhenPart1Completed: dayData.optionWhenPart1Completed || null,
         part2Completed: dayData.part2Completed ? "Yes" : "No",
       };
     }
@@ -292,6 +294,23 @@ export default component$(() => {
                     </a>
                   )}
                 </li>
+                {xtremeXmasData.modifierWhenPart1Completed &&
+                  (xtremeXmasData.modifierWhenPart1Completed !==
+                    xtremeXmasData.challengeModifier ||
+                    xtremeXmasData.optionWhenPart1Completed !==
+                      xtremeXmasData.modifierOption) && (
+                    <li>
+                      Challenge Modifier During Part 1:{" "}
+                      <strong>
+                        {xtremeXmasData.challengeModifier === "None"
+                          ? "None"
+                          : "You must complete this challenge " +
+                            xtremeXmasData.challengeModifier}
+                        {xtremeXmasData.modifierOption !== "None" &&
+                          xtremeXmasData.modifierOption}
+                      </strong>
+                    </li>
+                  )}
                 <li>
                   Selected Day Part 2 Completed?{" "}
                   <strong>{xtremeXmasData.part2Completed}</strong>{" "}
