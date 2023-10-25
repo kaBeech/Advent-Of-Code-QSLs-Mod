@@ -14,16 +14,20 @@ export default component$(() => {
             Kyle Beechly
           </a>
           . I make Xtreme Xmas Code. I hope you like it! You can find me on{" "}
-          <a href="https://hachyderm.io/@kaBeech" class="link">
-            Mastodon
-          </a>
-          ,{" "}
           <a href="https://github.com/kaBeech" class="link">
             GitHub
           </a>
-          , and{" "}
+          ,{" "}
           <a href="https://www.linkedin.com/in/kyle-beechly/" class="link">
             LinkedIn
+          </a>
+          ,
+          <a href="https://bsky.app/profile/kabeech.com" class="link">
+            Bluesky
+          </a>
+          , and{" "}
+          <a href="https://hachyderm.io/@kaBeech" class="link">
+            Mastodon
           </a>
           .
         </p>
@@ -94,6 +98,10 @@ export default component$(() => {
           ,{" "}
           <a href="mailto:contact@kabeech.com" class="link">
             Email
+          </a>
+          ,
+          <a href="https://bsky.app/profile/kabeech.com" class="link">
+            Bluesky
           </a>
           , or{" "}
           <a href="https://hachyderm.io/@kaBeech" class="link">
