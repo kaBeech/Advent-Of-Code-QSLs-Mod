@@ -106,10 +106,16 @@ const modifierOptionReroller = (state: DayControllerState) => ({
     if (game && game.currentRerollTokens < 1) {
       throw new Error("Not enough reroll tokens");
     }
+    const currentModifierOption = modifierOptions.find(
+      (option) => option.id === state.day.modifierOptionId,
+    );
     const filteredModifierOptions = modifierOptions.filter(
       (option) => option.challengeModifierId === state.day.challengeModifierId,
     );
-    const selectedModifierOption = rollModifierOption(filteredModifierOptions);
+    const selectedModifierOption = rollModifierOption(
+      filteredModifierOptions,
+      currentModifierOption,
+    );
     state.day.modifierOptionId = selectedModifierOption.id;
     state.day.modifierOptionRerollsUsed += 1;
     if (state.day.part1Completed) {
