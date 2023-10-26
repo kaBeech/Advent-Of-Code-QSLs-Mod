@@ -24,35 +24,28 @@ export default component$(() => {
   );
 
   return (
-    <div>
-      <div>
-        <h1 class="title">Create New Game</h1>
-        <h2>Enter Title, Year, and Player Name:</h2>
+    <article>
+      <h1 class="title">Create New Game</h1>
+      <h2>Enter Title, Year, and Player Name:</h2>
 
-        <Resource
-          value={xtremeXmasUserDataResource}
-          onPending={() => {
-            return (
-              <div>
-                <h2>
-                  Number Of Games: <strong>Loading...</strong>
-                </h2>
-              </div>
-            );
-          }}
-          onResolved={(xtremeXmasData) => {
-            return (
-              <div class="flex column">
-                <div>
-                  Number Of Games:{" "}
-                  <strong>{xtremeXmasData.numberOfGames}</strong>
-                </div>
-              </div>
-            );
-          }}
-        />
-      </div>
-    </div>
+      <Resource
+        value={xtremeXmasUserDataResource}
+        onPending={() => {
+          return (
+            <p>
+              Number Of Games: <strong>Loading...</strong>
+            </p>
+          );
+        }}
+        onResolved={(xtremeXmasData) => {
+          return (
+            <p>
+              Number Of Games: <strong>{xtremeXmasData.numberOfGames}</strong>
+            </p>
+          );
+        }}
+      />
+    </article>
   );
 });
 

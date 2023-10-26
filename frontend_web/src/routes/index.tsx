@@ -2,26 +2,21 @@ import { component$ } from "@builder.io/qwik";
 import type { DocumentHead, RequestHandler } from "@builder.io/qwik-city";
 
 export const onRequest: RequestHandler = (event) => {
-  throw event.redirect(302, `/game`);
+  const gameNumber = event.cookie.get("gameNumber")?.value || "1";
+  throw event.redirect(302, `/game/${gameNumber}`);
 };
 
 export default component$(() => {
   return (
-    <>
-      <div role="presentation" class="ellipsis"></div>
-      <div role="presentation" class="ellipsis ellipsis-purple"></div>
-
-      <div class="container container-center container-spacing-xl">
-        <h3>
-          You can <span class="highlight">count</span>
-          <br /> on me
-        </h3>
-      </div>
-
-      <div class="container container-flex">
-        <div></div>
-      </div>
-    </>
+    <article>
+      <p>
+        Oh! Looks like the redirect didn't work. Maybe try{" "}
+        <a class="link" href="game/1">
+          this link
+        </a>
+        ?
+      </p>
+    </article>
   );
 });
 

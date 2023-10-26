@@ -44,79 +44,74 @@ export default component$(() => {
   );
 
   return (
-    <div>
-      <div>
-        <h1 class="title">Create New Game</h1>
-        <h2>Enter Title, Year, and Player Name:</h2>
-        <input
-          class="pointer"
-          type="text"
-          onInput$={(ev: any) => (state.title = ev.target.value)}
-          value={title}
-          minLength={1}
-          maxLength={256}
-          aria-labelledby="Title"
-        />
-        <input
-          class="pointer"
-          type="number"
-          onInput$={(ev: any) => (state.year = ev.target.value)}
-          value={year}
-          min="2014"
-          max="2023"
-          aria-labelledby="Year"
-        />
-        <input
-          class="pointer"
-          type="text"
-          onInput$={(ev: any) => (state.playerName = ev.target.value)}
-          value={playerName}
-          minLength={1}
-          maxLength={256}
-          aria-labelledby="Player Name"
-        />
-        <Resource
-          value={xtremeXmasUserDataResource}
-          onPending={() => {
-            return (
-              <div>
-                <h2>
-                  Number Of Games: <strong>Loading...</strong>
-                </h2>
-              </div>
-            );
-          }}
-          onResolved={(xtremeXmasData) => {
-            return (
-              <div class="flex column">
-                <div>
-                  Number Of Games:{" "}
-                  <strong>{xtremeXmasData.numberOfGames}</strong>
-                </div>
-                <a
-                  onClick$={async () => {
-                    const res = await serverFetcher(
-                      `game/${+xtremeXmasData.numberOfGames + 1}`,
-                      "PUT",
-                      userId,
-                      {
-                        name: state.title,
-                        year: state.year,
-                        playerName: state.playerName,
-                      }
-                    );
-                    state.buttonPresses++;
-                    window.location.href = `/game/${res.number}`;
-                  }}
-                >
-                  [Create New Game]
-                </a>
-              </div>
-            );
-          }}
-        />
-      </div>
-    </div>
+    <article>
+      <h1 class="title">Create New Game</h1>
+      <h2>Enter Title, Year, and Player Name:</h2>
+      <input
+        class="pointer"
+        type="text"
+        onInput$={(ev: any) => (state.title = ev.target.value)}
+        value={title}
+        minLength={1}
+        maxLength={256}
+        aria-labelledby="Title"
+      />
+      <input
+        class="pointer"
+        type="number"
+        onInput$={(ev: any) => (state.year = ev.target.value)}
+        value={year}
+        min="2014"
+        max="2023"
+        aria-labelledby="Year"
+      />
+      <input
+        class="pointer"
+        type="text"
+        onInput$={(ev: any) => (state.playerName = ev.target.value)}
+        value={playerName}
+        minLength={1}
+        maxLength={256}
+        aria-labelledby="Player Name"
+      />
+      <Resource
+        value={xtremeXmasUserDataResource}
+        onPending={() => {
+          return (
+            <p>
+              Number Of Games: <strong>Loading...</strong>
+            </p>
+          );
+        }}
+        onResolved={(xtremeXmasData) => {
+          return (
+            <>
+              <p>
+                Number Of Games: <strong>{xtremeXmasData.numberOfGames}</strong>
+              </p>
+              <a
+                onClick$={async () => {
+                  const res = await serverFetcher(
+                    `game/${+xtremeXmasData.numberOfGames + 1}`,
+                    "PUT",
+                    userId,
+                    {
+                      name: state.title,
+                      year: state.year,
+                      playerName: state.playerName,
+                    }
+                  );
+                  state.buttonPresses++;
+                  window.location.href = `/game/${res.number}`;
+                }}
+              >
+                [Create New Game]
+              </a>
+            </>
+          );
+        }}
+      />
+    </article>
   );
 });
 

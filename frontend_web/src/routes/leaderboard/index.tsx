@@ -2,11 +2,11 @@ import { component$ } from "@builder.io/qwik";
 
 export default component$(() => {
   return (
-    <>
+    <article>
       <h1>Leaderboard</h1>
-      <div>
+      <p>
         <em>TBA!</em>
-      </div>
-    </>
+      </p>
+    </article>
   );
 });
