@@ -56,6 +56,7 @@ export default component$(() => {
                 <div>Player Loading...</div>
                 <div>Year: Loading...</div>
                 <div>Score: Loading...</div>
+                <div>Current Reroll Tokens: Loading...</div>
                 <div>Rank: Loading...</div>
                 <div>Completed During Calendar Year: Loading...</div>
                 {pendingDays.map((day: { number: number }) => (
@@ -110,6 +111,14 @@ export default component$(() => {
                 </div>
                 <div>Year: {gameData.game.year}</div>
                 <div>Score: {gameData.game.score}</div>
+                <div>
+                  Current Reroll Tokens:{" "}
+                  <strong class="token">
+                    {gameData.game.currentRerollTokens > 9
+                      ? gameData.game.currentRerollTokens + "*"
+                      : "*".repeat(gameData.game.currentRerollTokens)}
+                  </strong>
+                </div>
                 {gameData.game.dateCompleted && (
                   <>
                     <div>Rank: {gameData.game.rank}</div>
