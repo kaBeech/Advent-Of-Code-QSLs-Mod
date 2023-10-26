@@ -61,10 +61,14 @@ Deno.test("Initial roll throws error if day already has a ChallengeModifier", ()
 
 Deno.test("ChallengeModifier reroll sets a new ChallengeModifier", () => {
   const oldResult = exampleDay.challengeModifierId;
+  const currentChallengeModifier = exampleChallengeModifiers.find(
+    (modifier) => modifier.id === exampleDay.challengeModifierId,
+  );
   const result = dayController.rerollChallengeModifier(
     exampleGameDay1,
     exampleChallengeModifiers,
     exampleModifierOptions,
+    currentChallengeModifier,
   );
   assertEquals(typeof result.challengeModifierId, "number");
   assertNotEquals(result.challengeModifierId, oldResult);
@@ -157,7 +161,8 @@ Deno.test("ModifierOption reroll throws error if day does not have a ChallengeMo
 Deno.test("ModifierOption reroll throws error if ChallengeModifier does not have options", () => {
   const dayController = DayController({
     ...exampleDay,
-    challengeModifierId: 1,
+    challengeModifierId: 7,
+    modifierOptionId: 0,
   });
   assertThrows(
     () => {
