@@ -263,15 +263,4 @@ export const exampleModifierOptions = [
     "createdById": null,
     "public": true,
   },
-  {
-    "id": 11,
-    "dateCreated": new Date(),
-    "challengeModifierId": 5,
-    "name": "language_box_2_lisp",
-    "text": "Lisp",
-    "explanatoryUrl": null,
-    "standard": true,
-    "createdById": null,
-    "public": true,
-  },
 ];

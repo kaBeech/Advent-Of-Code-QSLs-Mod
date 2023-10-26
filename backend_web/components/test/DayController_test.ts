@@ -110,14 +110,14 @@ Deno.test("ModifierOption reroll sets a new ModifierOption if ChallengeModifier 
   const dayController = DayController({
     ...exampleDay,
     challengeModifierId: 5,
-    modifierOptionId: 14,
+    modifierOptionId: 10,
   });
   const result = dayController.rerollModifierOption(
     exampleGameDay1.currentDay,
     exampleModifierOptions,
   );
   assertEquals(typeof result.modifierOptionId, "number");
-  assertNotEquals(result.modifierOptionId, exampleDay.modifierOptionId);
+  assertEquals(result.modifierOptionId, 9);
 });
 
 Deno.test("ModifierOption reroll throws error if day is not current", () => {
