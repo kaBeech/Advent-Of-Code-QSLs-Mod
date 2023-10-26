@@ -3,8 +3,12 @@ import { pickRandomly } from "../util/pickRandomly.ts";
 
 const rollChallengeModifier = (
   challengeModifiers: ChallengeModifier[],
+  currentChallengeModifier?: ChallengeModifier,
 ) => {
-  const selectedChallengeModifier = pickRandomly(challengeModifiers);
+  const selectedChallengeModifier = pickRandomly(
+    challengeModifiers,
+    currentChallengeModifier,
+  );
   return selectedChallengeModifier;
 };
 
