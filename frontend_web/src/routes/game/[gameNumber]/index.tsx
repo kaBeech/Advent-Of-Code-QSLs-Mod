@@ -52,8 +52,8 @@ export default component$(() => {
             }
             return (
               <>
-                <div>Game Name Loading...</div>
-                <div>Player Loading...</div>
+                <div>Game Name: Loading...</div>
+                <div>Player: Loading...</div>
                 <div>Year: Loading...</div>
                 <div>Score: Loading...</div>
                 <div>Current Reroll Tokens: Loading...</div>
