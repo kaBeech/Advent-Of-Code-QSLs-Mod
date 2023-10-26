@@ -58,6 +58,7 @@ const challengeModifierReroller = (state: DayControllerState) => ({
     game: Game,
     challengeModifiers: ChallengeModifier[],
     modifierOptions: ModifierOption[],
+    currentChallengeModifier?: ChallengeModifier,
   ) => {
     verifyDayIsCurrent(state.day.number, game.currentDay);
     if (!state.day.challengeModifierId) {
@@ -68,6 +69,7 @@ const challengeModifierReroller = (state: DayControllerState) => ({
     }
     const selectedChallengeModifier = rollChallengeModifier(
       challengeModifiers,
+      currentChallengeModifier,
     );
     state.day.challengeModifierId = selectedChallengeModifier.id;
     if (selectedChallengeModifier.hasOptions) {
