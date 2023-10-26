@@ -1,6 +1,8 @@
 import {
+  assertAlmostEquals,
   assertEquals,
   assertNotEquals,
+  assertThrows,
 } from "https://deno.land/std@0.197.0/assert/mod.ts";
 import { DayController } from "../DayController.ts";
 import {
@@ -9,7 +11,6 @@ import {
   exampleGameDay1,
   exampleModifierOptions,
 } from "./exampleObjects.ts";
-import { assertThrows } from "https://deno.land/std@0.152.0/testing/asserts.ts";
 
 const dayController = DayController(exampleDay);
 
@@ -213,7 +214,7 @@ Deno.test("ModifierOption reroll throws error if day does not have a ModifierOpt
 
 Deno.test("Completes Part 1", () => {
   const result = dayController.completePart1(exampleGameDay1.currentDay);
-  assertEquals(result.part1Completed, new Date());
+  assertAlmostEquals(+result.part1Completed!, +new Date());
 });
 
 Deno.test("Completing Part 1 throws error if day is not current", () => {
@@ -246,7 +247,7 @@ Deno.test("Completing Part 1 throws error if day is already completed", () => {
 
 Deno.test("Completes Part 2", () => {
   const result = dayController.completePart2(exampleGameDay1.currentDay);
-  assertEquals(result.part2Completed, new Date());
+  assertAlmostEquals(+result.part2Completed!, +new Date());
 });
 
 Deno.test("Completing Part 2 throws error if day is not current", () => {
