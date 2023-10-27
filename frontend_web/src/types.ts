@@ -1,5 +1,4 @@
 export interface DayInfo {
-  numberOfGames: string;
   challengeModifier: string;
   modifierOption: string;
   rerollTokensSpentDuringPart1: number;
@@ -12,6 +11,7 @@ export interface DayInfo {
   modifierWhenPart1Completed: string;
   optionWhenPart1Completed: string;
   part2Completed: Date | null;
+  number: number;
 }
 
 export interface GameInfo {

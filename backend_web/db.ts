@@ -301,6 +301,17 @@ export async function getDayById(id: number) {
   return day;
 }
 
+export async function getPublicDayByNumberAndGameId(id: number) {
+  const day = await prisma.day.findFirstOrThrow({
+    where: {
+      number,
+      gameId,
+      public: true,
+    },
+  });
+  return day;
+}
+
 export async function getDaysByGameId(
   gameId: number,
 ) {
