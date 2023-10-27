@@ -25,11 +25,11 @@ let gameInfo: {
   currentRerollTokens: number;
   netScore: number;
   currentDay: number;
-  currentDayCompleted: string;
-  part1Completed: string;
+  currentDayCompleted: boolean;
+  part1Completed: Date | null;
   modifierWhenPart1Completed: string;
   optionWhenPart1Completed: string;
-  part2Completed: string;
+  part2Completed: Date | null;
 } | null;
 
 export const onRequest: RequestHandler = (event) => {
@@ -97,11 +97,11 @@ export default component$(() => {
         currentRerollTokens: gameData.currentRerollTokens,
         netScore: dayData.netScore,
         currentDay: gameData.currentDay,
-        currentDayCompleted: gameData.currentDayCompleted ? "Yes" : "No",
-        part1Completed: dayData.part1Completed ? "Yes" : "No",
+        currentDayCompleted: gameData.currentDayCompleted,
+        part1Completed: dayData.part1Completed || null,
         modifierWhenPart1Completed: dayData.modifierWhenPart1Completed || null,
         optionWhenPart1Completed: dayData.optionWhenPart1Completed || null,
-        part2Completed: dayData.part2Completed ? "Yes" : "No",
+        part2Completed: dayData.part2Completed || null,
       };
       state.gameInfo = returnData;
       return returnData;
@@ -167,9 +167,9 @@ export default component$(() => {
                 <li>
                   Reroll Tokens Earned:{" "}
                   <strong class="token">
-                    {xtremeXmasData.part2Completed === "Yes"
+                    {xtremeXmasData.part2Completed
                       ? "**"
-                      : xtremeXmasData.part1Completed === "Yes"
+                      : xtremeXmasData.part1Completed
                       ? "*"
                       : ""}
                   </strong>
@@ -222,7 +222,7 @@ export default component$(() => {
                     {xtremeXmasData.modifierOption !== "None" &&
                       xtremeXmasData.modifierOption}
                   </strong>{" "}
-                  {xtremeXmasData.part2Completed === "Yes" ? (
+                  {xtremeXmasData.part2Completed ? (
                     <></>
                   ) : xtremeXmasData.challengeModifier === "None" ? (
                     <a
@@ -263,7 +263,7 @@ export default component$(() => {
                     </li>
                   )}{" "}
                   {xtremeXmasData.modifierOption !== "None" &&
-                    xtremeXmasData.part2Completed !== "Yes" && (
+                    !xtremeXmasData.part2Completed && (
                       <li>
                         <a
                           onClick$={async () => {
@@ -288,7 +288,7 @@ export default component$(() => {
                 </li>
                 <li>
                   Current Day: <strong>{xtremeXmasData.currentDay}</strong>{" "}
-                  {xtremeXmasData.currentDayCompleted !== "Yes" ||
+                  {!xtremeXmasData.currentDayCompleted ||
                   xtremeXmasData.currentDay != +state.dayNumber ? (
                     <></>
                   ) : (
@@ -321,9 +321,11 @@ export default component$(() => {
                 </li>
                 <li>
                   Selected Day Part 1 Completed?{" "}
-                  <strong>{xtremeXmasData.part1Completed}</strong>{" "}
+                  <strong>
+                    {xtremeXmasData.part1Completed ? `Yes` : `No`}
+                  </strong>{" "}
                   {xtremeXmasData.challengeModifier === "None" ||
-                  xtremeXmasData.part1Completed === "Yes" ? (
+                  xtremeXmasData.part1Completed ? (
                     <></>
                   ) : (
                     <a
@@ -363,9 +365,11 @@ export default component$(() => {
                   )}
                 <li>
                   Selected Day Part 2 Completed?{" "}
-                  <strong>{xtremeXmasData.part2Completed}</strong>{" "}
-                  {xtremeXmasData.part1Completed !== "Yes" ||
-                  xtremeXmasData.part2Completed === "Yes" ? (
+                  <strong>
+                    {xtremeXmasData.part2Completed ? `Yes` : `No`}
+                  </strong>{" "}
+                  {!xtremeXmasData.part1Completed ||
+                  xtremeXmasData.part2Completed ? (
                     <></>
                   ) : (
                     <a
