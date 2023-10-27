@@ -49,6 +49,7 @@ const initialChallengeModifierRoller = (state: DayControllerState) => ({
       );
       state.day.modifierOptionId = selectedModifierOption.id;
     }
+    state.day.dateFirstRolled = new Date();
     return state.day;
   },
 });
@@ -135,6 +136,8 @@ const part1Completer = (state: DayControllerState) => ({
       throw new Error("Part 1 already completed");
     }
     state.day.part1Completed = new Date();
+    state.day.modifierWhenPart1CompletedId = state.day.challengeModifierId;
+    state.day.optionWhenPart1CompletedId = state.day.modifierOptionId;
     netScoreCalculator(state).calculateNetScore();
     return state.day;
   },
