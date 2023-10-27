@@ -17,6 +17,7 @@ export default component$(() => {
     year,
     playerName,
     buttonPresses: 0,
+    loading: false,
   });
 
   const xtremeXmasUserDataResource = useResource$<any>(
@@ -30,6 +31,7 @@ export default component$(() => {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const buttonPresses = track(() => state.buttonPresses);
 
+      state.loading = true;
       const abortController = new AbortController();
       cleanup(() => abortController.abort("cleanup"));
       const userData = await serverFetcher(`userdata`, "GET", userId);
@@ -37,6 +39,7 @@ export default component$(() => {
       if (userData.Game) {
         numberOfGames = +JSON.stringify(userData.Game.length);
       }
+      state.loading = false;
       return {
         numberOfGames: +numberOfGames > 0 ? numberOfGames : 0,
       };
@@ -77,6 +80,7 @@ export default component$(() => {
       <Resource
         value={xtremeXmasUserDataResource}
         onPending={() => {
+          state.loading = true;
           return (
             <p>
               Number Of Games: <strong>Loading...</strong>
@@ -84,6 +88,7 @@ export default component$(() => {
           );
         }}
         onResolved={(xtremeXmasData) => {
+          state.loading = false;
           return (
             <>
               <p>
@@ -91,6 +96,10 @@ export default component$(() => {
               </p>
               <a
                 onClick$={async () => {
+                  if (state.loading) {
+                    return;
+                  }
+                  state.loading = true;
                   const res = await serverFetcher(
                     `game/${+xtremeXmasData.numberOfGames + 1}`,
                     "PUT",

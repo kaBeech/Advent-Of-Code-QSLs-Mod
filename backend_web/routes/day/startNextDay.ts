@@ -1,7 +1,12 @@
 import { State } from "https://deno.land/x/oak@v12.6.1/application.ts";
 import { RouterContext } from "https://deno.land/x/oak@v12.6.1/router.ts";
 import { GameController } from "../../components/GameController.ts";
-import { createDay, getGamesByUserId, updateGame } from "../../db.ts";
+import {
+  createDay,
+  getDaysByGameId,
+  getGamesByUserId,
+  updateGame,
+} from "../../db.ts";
 
 export const startNextDay = async (
   ctx: RouterContext<
@@ -24,6 +29,16 @@ export const startNextDay = async (
         game!.currentDay
       }`,
     );
+  }
+  const days = await getDaysByGameId(game!.id);
+  const dayExists = days.find((day) => day.number === +dayNumber);
+  if (dayExists) {
+    ctx.response.status = 409;
+    ctx.response.body = {
+      message:
+        `Game number ${gameNumber} already exists for Day number ${dayNumber}`,
+    };
+    return;
   }
   const updatedGame = GameController(game!).startNextDay();
   const nextDay = await createDay(

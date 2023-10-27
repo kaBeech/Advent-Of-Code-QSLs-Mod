@@ -38,12 +38,14 @@ export default component$(() => {
     gameNumber,
     dayNumber,
     buttonPresses: 0,
+    loading: false,
   });
 
   const xtremeXmasUserDataResource = useResource$<any>(
     async ({ track, cleanup }) => {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const buttonPresses = track(() => state.buttonPresses);
+      state.loading = true;
 
       const abortController = new AbortController();
       cleanup(() => abortController.abort("cleanup"));
@@ -57,6 +59,7 @@ export default component$(() => {
       const dayData = gameData.Day.find(
         (day: { number: number }) => day.number === +dayNumber
       );
+      state.loading = false;
       return {
         numberOfGames: JSON.stringify(userData.Game.length),
         challengeModifier: dayData.challengeModifierId
@@ -88,6 +91,7 @@ export default component$(() => {
       <Resource
         value={xtremeXmasUserDataResource}
         onPending={() => {
+          state.loading = true;
           return (
             <ul>
               <li>
@@ -124,6 +128,7 @@ export default component$(() => {
           );
         }}
         onResolved={(xtremeXmasData) => {
+          state.loading = false;
           if (+xtremeXmasData.numberOfGames < 1) {
             return (
               <p>
@@ -199,6 +204,10 @@ export default component$(() => {
                   ) : xtremeXmasData.challengeModifier === "None" ? (
                     <a
                       onClick$={async () => {
+                        if (state.loading) {
+                          return;
+                        }
+                        state.loading = true;
                         await serverFetcher(
                           `game/${state.gameNumber}/day/${state.dayNumber}/roll`,
                           "PUT",
@@ -213,6 +222,10 @@ export default component$(() => {
                     <li>
                       <a
                         onClick$={async () => {
+                          if (state.loading) {
+                            return;
+                          }
+                          state.loading = true;
                           await serverFetcher(
                             `game/${state.gameNumber}/day/${state.dayNumber}/reroll/modifier`,
                             "PUT",
@@ -231,6 +244,10 @@ export default component$(() => {
                       <li>
                         <a
                           onClick$={async () => {
+                            if (state.loading) {
+                              return;
+                            }
+                            state.loading = true;
                             await serverFetcher(
                               `game/${state.gameNumber}/day/${state.dayNumber}/reroll/option`,
                               "PUT",
@@ -254,6 +271,10 @@ export default component$(() => {
                   ) : (
                     <a
                       onClick$={async () => {
+                        if (state.loading) {
+                          return;
+                        }
+                        state.loading = true;
                         const res = await serverFetcher(
                           `game/${state.gameNumber}/day/${
                             +state.dayNumber + 1
@@ -284,6 +305,10 @@ export default component$(() => {
                   ) : (
                     <a
                       onClick$={async () => {
+                        if (state.loading) {
+                          return;
+                        }
+                        state.loading = true;
                         await serverFetcher(
                           `game/${state.gameNumber}/day/${state.dayNumber}/complete/part1`,
                           "PUT",
@@ -322,6 +347,10 @@ export default component$(() => {
                   ) : (
                     <a
                       onClick$={async () => {
+                        if (state.loading) {
+                          return;
+                        }
+                        state.loading = true;
                         await serverFetcher(
                           `game/${state.gameNumber}/day/${state.dayNumber}/complete/part2`,
                           "PUT",
