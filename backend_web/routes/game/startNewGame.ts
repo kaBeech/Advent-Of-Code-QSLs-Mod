@@ -45,6 +45,7 @@ export const startNewGame = async (
     +bodyData.fields.year,
     bodyData.fields.isPublic === "true" ? true : false,
     bodyData.fields.playerName,
+    bodyData.fields.repositoryLink,
   );
   const updatedGame = GameController(game!).startNextDay();
   const _nextDay = await createDay(
