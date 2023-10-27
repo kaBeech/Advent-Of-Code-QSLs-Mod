@@ -87,7 +87,7 @@ export default component$(() => {
       <input
         class="pointer"
         type="text"
-        onInput$={(ev: any) => (state.playerName = ev.target.value)}
+        onInput$={(ev: any) => (state.repositoryLink = ev.target.value)}
         value={repositoryLink}
         minLength={1}
         maxLength={256}
