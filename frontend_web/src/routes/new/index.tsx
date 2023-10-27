@@ -9,6 +9,7 @@ const year = 2022;
 const playerName = "Me!";
 const numberOfGames = 0;
 const isPublic = false;
+const repositoryLink = "https://github.com/octocat/Spoon-Knife";
 
 export default component$(() => {
   const session = useAuthSession();
@@ -22,6 +23,7 @@ export default component$(() => {
     buttonPresses: 0,
     loading: false,
     isPublic,
+    repositoryLink,
   });
 
   const xtremeXmasUserDataResource = useResource$<any>(
@@ -84,6 +86,15 @@ export default component$(() => {
       />
       <input
         class="pointer"
+        type="text"
+        onInput$={(ev: any) => (state.playerName = ev.target.value)}
+        value={repositoryLink}
+        minLength={1}
+        maxLength={256}
+        aria-labelledby="Repository Link"
+      />
+      <input
+        class="pointer"
         type="checkbox"
         onInput$={(ev: any) => (state.isPublic = ev.target.value)}
         aria-labelledby="Public?"
@@ -114,6 +125,16 @@ export default component$(() => {
                     return;
                   }
                   state.loading = true;
+                  let repositoryLink = state.repositoryLink;
+                  if (
+                    repositoryLink === "https://github.com/octocat/Spoon-Knife"
+                  ) {
+                    repositoryLink = "";
+                  }
+                  let playerName = state.playerName;
+                  if (playerName === "") {
+                    playerName = session.value!.user!.name!;
+                  }
                   const res = await serverFetcher(
                     `game/${+xtremeXmasData.numberOfGames + 1}`,
                     "PUT",
@@ -121,8 +142,9 @@ export default component$(() => {
                     {
                       name: state.title,
                       year: state.year,
-                      playerName: state.playerName,
+                      playerName,
                       isPublic: state.isPublic,
+                      repositoryLink,
                     }
                   );
                   state.buttonPresses++;
