@@ -38,7 +38,6 @@ export const startNewGame = async (
   //   };
   //   return;
   // }
-  console.log("bodyData", bodyData.fields.isPublic);
   const game = await createGame(
     userId,
     +gameNumber,

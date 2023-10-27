@@ -8,7 +8,7 @@ const title = "Test Game";
 const year = 2022;
 const playerName = "Me!";
 const numberOfGames = 0;
-const isPublic = false;
+const isPublic: boolean = false;
 const repositoryLink = "https://github.com/octocat/Spoon-Knife";
 
 export default component$(() => {
@@ -93,11 +93,13 @@ export default component$(() => {
         maxLength={256}
         aria-labelledby="Repository Link"
       />
+      <br />
+      <label for="publicCheckbox">Public?</label>
       <input
         class="pointer"
         type="checkbox"
         onInput$={(ev: any) => (state.isPublic = ev.target.value)}
-        aria-labelledby="Public?"
+        id="publicCheckbox"
       />
       <Resource
         value={xtremeXmasUserDataResource}
@@ -143,7 +145,7 @@ export default component$(() => {
                       name: state.title,
                       year: state.year,
                       playerName,
-                      isPublic: state.isPublic,
+                      isPublic: state.isPublic ? true : false,
                       repositoryLink,
                     }
                   );
