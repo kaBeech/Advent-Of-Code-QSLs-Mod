@@ -9,8 +9,9 @@ import { useAuthSession } from "../../plugin@auth";
 import { getGithubUserIdFromUserImage } from "~/util/getGithubUserIdFromUserImage";
 import type { Session } from "@auth/core/types";
 import DayLink from "~/components/game/dayLink/dayLink";
+import type { GameInfo } from "~/types";
 
-let gameInfo;
+let gameInfo: GameInfo | null;
 
 export const onRequest: RequestHandler = (event) => {
   const session: Session | null = event.sharedMap.get("session");
@@ -43,9 +44,8 @@ export default component$(() => {
       "GET",
       userId
     );
-    return {
-      game: gameData,
-    };
+    state.gameInfo = gameData;
+    return gameData;
   });
 
   return (
@@ -63,14 +63,57 @@ export default component$(() => {
               <ul>
                 <li>
                   Game Name:{" "}
-                  {!state.numberOfGames ? `Loading...` : state.numberOfGames}
+                  {!state.gameInfo ? `Loading...` : state.gameInfo.name}
                 </li>
-                <li>Player: Loading...</li>
-                <li>Year: Loading...</li>
-                <li>Score: Loading...</li>
-                <li>Current Reroll Tokens: Loading...</li>
-                <li>Rank: Loading...</li>
-                <li>Completed During Calendar Year: Loading...</li>
+                <li>
+                  Player:{" "}
+                  {!state.gameInfo
+                    ? `Loading...`
+                    : (
+                        <img
+                          src={session.value!.user!.image!}
+                          alt="user avatar"
+                          style={{ height: "1.5rem", width: "1.5rem" }}
+                          width="24"
+                          height="24"
+                        />
+                      ) + session.value!.user!.name!}
+                </li>
+                <li>
+                  Year: {!state.gameInfo ? `Loading...` : state.gameInfo.year}
+                </li>
+                <li>
+                  Score: {!state.gameInfo ? `Loading...` : state.gameInfo.score}
+                </li>
+                <li>
+                  Current Reroll Tokens:{" "}
+                  {!state.gameInfo
+                    ? `Loading...`
+                    : state.gameInfo.currentRerollTokens > 9
+                    ? state.gameInfo.currentRerollTokens + "*"
+                    : "*".repeat(state.gameInfo.currentRerollTokens)}
+                </li>
+                {state.gameInfo?.dateCompleted && (
+                  <>
+                    <li>Rank: {state.gameInfo.rank}</li>
+                    <li>
+                      Completed During Calendar Year:{" "}
+                      {state.gameInfo.dateCompleted.toString().slice(0, 4) ===
+                      state.gameInfo.year.toString()
+                        ? "Yes"
+                        : "No"}
+                    </li>
+                  </>
+                )}
+                <li>
+                  Completed During Calendar Year?{" "}
+                  {!state.gameInfo
+                    ? `Loading...`
+                    : state.gameInfo.dateCompleted?.toString().slice(0, 4) ===
+                      state.gameInfo.year.toString()
+                    ? "Yes"
+                    : "No"}
+                </li>
               </ul>
               {pendingDays.map((day: { number: number }) => (
                 <DayLink
@@ -82,7 +125,7 @@ export default component$(() => {
           );
         }}
         onResolved={(gameData) => {
-          if (gameData.game.currentDay === undefined) {
+          if (gameData.currentDay === undefined) {
             const dummyDays = [];
             for (let i = 25; i > 0; i--) {
               dummyDays.push({ number: i });
@@ -101,10 +144,10 @@ export default component$(() => {
             );
           }
           const lockedDays = [];
-          for (let i = 25; i > gameData.game.currentDay; i--) {
+          for (let i = 25; i > gameData.currentDay; i--) {
             lockedDays.push({ number: i });
           }
-          const sortedDays = gameData.game.Day.sort(
+          const sortedDays = gameData.Day.sort(
             (a: { number: number }, b: { number: number }) => {
               return b.number - a.number;
             }
@@ -112,7 +155,7 @@ export default component$(() => {
           return (
             <>
               <ul>
-                <li>{gameData.game.name}</li>
+                <li>{gameData.name}</li>
                 <li>
                   <img
                     src={session.value!.user!.image!}
@@ -123,23 +166,23 @@ export default component$(() => {
                   />
                   {session.value!.user!.name!}
                 </li>
-                <li>Year: {gameData.game.year}</li>
-                <li>Score: {gameData.game.score}</li>
+                <li>Year: {gameData.year}</li>
+                <li>Score: {gameData.score}</li>
                 <li>
                   Current Reroll Tokens:{" "}
                   <strong class="token">
-                    {gameData.game.currentRerollTokens > 9
-                      ? gameData.game.currentRerollTokens + "*"
-                      : "*".repeat(gameData.game.currentRerollTokens)}
+                    {gameData.currentRerollTokens > 9
+                      ? gameData.currentRerollTokens + "*"
+                      : "*".repeat(gameData.currentRerollTokens)}
                   </strong>
                 </li>
-                {gameData.game.dateCompleted && (
+                {gameData.dateCompleted && (
                   <>
-                    <li>Rank: {gameData.game.rank}</li>
+                    <li>Rank: {gameData.rank}</li>
                     <li>
-                      Completed During Calendar Year:{" "}
-                      {gameData.game.dateCompleted.toString().slice(0, 4) ===
-                      gameData.game.year.toString()
+                      Completed During Calendar Year?{" "}
+                      {gameData.dateCompleted.toString().slice(0, 4) ===
+                      gameData.year.toString()
                         ? "Yes"
                         : "No"}
                     </li>

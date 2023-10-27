@@ -7,12 +7,14 @@ import { getGithubUserIdFromUserImage } from "~/util/getGithubUserIdFromUserImag
 const title = "Test Game";
 const year = 2022;
 const playerName = "Me!";
+const numberOfGames = 0;
 
 export default component$(() => {
   const session = useAuthSession();
   const userId = getGithubUserIdFromUserImage(session.value!.user!.image!);
 
   const state = useStore({
+    numberOfGames,
     title,
     year,
     playerName,
@@ -39,6 +41,7 @@ export default component$(() => {
       if (userData.Game) {
         numberOfGames = +JSON.stringify(userData.Game.length);
       }
+      state.numberOfGames = +numberOfGames;
       state.loading = false;
       return {
         numberOfGames: +numberOfGames > 0 ? numberOfGames : 0,
@@ -83,7 +86,10 @@ export default component$(() => {
           state.loading = true;
           return (
             <p>
-              Number Of Games: <strong>Loading...</strong>
+              Number Of Games:{" "}
+              <strong>
+                {!state.numberOfGames ? `Loading...` : state.numberOfGames}
+              </strong>
             </p>
           );
         }}

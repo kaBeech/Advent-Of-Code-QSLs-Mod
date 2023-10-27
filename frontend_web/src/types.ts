@@ -14,6 +14,15 @@ export interface DayInfo {
   part2Completed: Date | null;
 }
 
+export interface GameInfo {
+  name: string;
+  year: number;
+  score: number;
+  currentRerollTokens: number;
+  dateCompleted: string | null;
+  rank: number | null;
+}
+
 export interface UserData {
   Game: {
     name: string;
