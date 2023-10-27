@@ -68,7 +68,7 @@ export default component$(() => {
         (day: { number: number }) => day.number === +dayNumber
       );
       state.loading = false;
-      const returnData = {
+      const dayInfoData = {
         numberOfGames: JSON.stringify(userData.Game.length),
         challengeModifier: dayData.challengeModifierId
           ? dayData.ChallengeModifier.text
@@ -90,8 +90,8 @@ export default component$(() => {
         optionWhenPart1Completed: dayData.optionWhenPart1Completed || null,
         part2Completed: dayData.part2Completed || null,
       };
-      state.dayInfo = returnData;
-      return returnData;
+      state.dayInfo = dayInfoData;
+      return dayInfoData;
     }
   );
 
