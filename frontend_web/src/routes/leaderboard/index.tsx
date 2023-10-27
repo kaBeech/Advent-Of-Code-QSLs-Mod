@@ -47,7 +47,7 @@ export default component$(() => {
     <article>
       <h1>Leaderboard</h1>
       <p>
-        <em>TBA!</em>
+        <em>Under Construction!</em>
       </p>
       <Resource
         value={leaderboardGamesResource}
@@ -94,25 +94,31 @@ export default component$(() => {
 
           return (
             <ul>
-              <li>Year - Game Name - Score - Rank - Player Name - Repo Link</li>
+              <li>
+                Rank - Year - Game Name - Score - Title - Player Name - Repo
+                Link
+              </li>
               <br />
               {leaderboardGamesData.map(
-                (game: {
-                  id: string;
-                  playerName: string;
-                  name: string;
-                  number: number;
-                  year: number;
-                  score: number;
-                  rank: number;
-                  repositoryLink: string;
-                }) => (
+                (
+                  game: {
+                    id: string;
+                    playerName: string;
+                    name: string;
+                    number: number;
+                    year: number;
+                    score: number;
+                    rank: number;
+                    repositoryLink: string;
+                  },
+                  index: number
+                ) => (
                   <li key={`game-${game.id}`}>
                     <em>
-                      {game.year} - {game.name} - {game.score} -{" "}
+                      {index + 1} - {game.year} - {game.name} - {game.score} -{" "}
                       {game.rank ? game.rank : `Not Yet Completed`} -{" "}
                       {game.playerName} -{" "}
-                      <a href={`repositoryLink`}>Repo Link</a>
+                      <a href={game.repositoryLink}>Repo Link</a>
                     </em>
                   </li>
                 )
