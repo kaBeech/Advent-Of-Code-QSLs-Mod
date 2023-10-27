@@ -57,6 +57,7 @@ export default component$(() => {
     <article>
       <h1 class="title">Create New Game</h1>
       <h2>Enter Title, Year, and Player Name:</h2>
+      <p>(Repository Link only required for leaderboards)</p>
       <input
         class="pointer"
         type="text"
