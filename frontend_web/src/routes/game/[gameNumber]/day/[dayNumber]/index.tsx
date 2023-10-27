@@ -89,6 +89,7 @@ export default component$(() => {
         modifierWhenPart1Completed: dayData.modifierWhenPart1Completed || null,
         optionWhenPart1Completed: dayData.optionWhenPart1Completed || null,
         part2Completed: dayData.part2Completed || null,
+        number: dayData.number,
       };
       state.dayInfo = dayInfoData;
       return dayInfoData;
