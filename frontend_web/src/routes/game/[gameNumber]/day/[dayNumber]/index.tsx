@@ -15,6 +15,9 @@ import { getGithubUserIdFromUserImage } from "~/util/getGithubUserIdFromUserImag
 import type { Session } from "@auth/core/types";
 import { useAuthSession } from "~/routes/plugin@auth";
 import styles from "./day.css?inline";
+import type { DayInfo } from "~/types";
+
+let dayInfo: DayInfo | null;
 
 export const onRequest: RequestHandler = (event) => {
   const session: Session | null = event.sharedMap.get("session");
@@ -25,6 +28,10 @@ export const onRequest: RequestHandler = (event) => {
     path: "/",
     secure: true,
   });
+  const dayInfoString = event.cookie.get("dayInfo")?.value || null;
+  if (dayInfoString) {
+    dayInfo = JSON.parse(dayInfoString);
+  }
 };
 
 export default component$(() => {
@@ -39,6 +46,7 @@ export default component$(() => {
     dayNumber,
     buttonPresses: 0,
     loading: false,
+    dayInfo,
   });
 
   const xtremeXmasUserDataResource = useResource$<any>(
@@ -60,7 +68,7 @@ export default component$(() => {
         (day: { number: number }) => day.number === +dayNumber
       );
       state.loading = false;
-      return {
+      const dayInfoData = {
         numberOfGames: JSON.stringify(userData.Game.length),
         challengeModifier: dayData.challengeModifierId
           ? dayData.ChallengeModifier.text
@@ -76,12 +84,14 @@ export default component$(() => {
         currentRerollTokens: gameData.currentRerollTokens,
         netScore: dayData.netScore,
         currentDay: gameData.currentDay,
-        currentDayCompleted: gameData.currentDayCompleted ? "Yes" : "No",
-        part1Completed: dayData.part1Completed ? "Yes" : "No",
+        currentDayCompleted: gameData.currentDayCompleted,
+        part1Completed: dayData.part1Completed || null,
         modifierWhenPart1Completed: dayData.modifierWhenPart1Completed || null,
         optionWhenPart1Completed: dayData.optionWhenPart1Completed || null,
-        part2Completed: dayData.part2Completed ? "Yes" : "No",
+        part2Completed: dayData.part2Completed || null,
       };
+      state.dayInfo = dayInfoData;
+      return dayInfoData;
     }
   );
 
@@ -95,34 +105,122 @@ export default component$(() => {
           return (
             <ul>
               <li>
-                Reroll Tokens Earned: <strong>Loading...</strong>
+                Reroll Tokens Earned:{" "}
+                <strong>
+                  {state.dayInfo?.part2Completed
+                    ? "**"
+                    : state.dayInfo?.part1Completed
+                    ? "*"
+                    : ""}
+                </strong>
               </li>
               <li>
-                Reroll Tokens Spent During Part 1: <strong>Loading...</strong>
+                Reroll Tokens Spent During Part 1:{" "}
+                <strong>
+                  {(state.dayInfo?.rerollTokensSpentDuringPart1 || 0) > 9
+                    ? state.dayInfo?.rerollTokensSpentDuringPart1 + "*"
+                    : "﹡".repeat(
+                        state.dayInfo?.rerollTokensSpentDuringPart1 || 0
+                      )}
+                </strong>
               </li>
               <li>
-                Reroll Tokens Spent During Part 2: <strong>Loading...</strong>
+                Reroll Tokens Spent During Part 2:{" "}
+                <strong>
+                  {" "}
+                  {(state.dayInfo?.rerollTokensSpentDuringPart2 || 0) > 9
+                    ? state.dayInfo?.rerollTokensSpentDuringPart2 + "*"
+                    : "﹡".repeat(
+                        state.dayInfo?.rerollTokensSpentDuringPart2 || 0
+                      )}
+                </strong>
               </li>
               <li>
-                Current Reroll Tokens: <strong>Loading...</strong>
+                Current Reroll Tokens:{" "}
+                <strong>
+                  {" "}
+                  {(state.dayInfo?.currentRerollTokens || 0) > 9
+                    ? state.dayInfo?.currentRerollTokens + "*"
+                    : "﹡".repeat(state.dayInfo?.currentRerollTokens || 0)}
+                </strong>
               </li>
               <li>
-                Estimated Net Score: <strong>Loading...</strong>
+                Estimated Net Score:{" "}
+                <strong>
+                  {!state.dayInfo ? (
+                    `Loading...`
+                  ) : state.dayInfo.netScore > 0 ? (
+                    <strong class="token">+{state.dayInfo.netScore}</strong>
+                  ) : (
+                    <strong class="tokenSpent">{state.dayInfo.netScore}</strong>
+                  )}
+                </strong>
               </li>
               <li>
-                Challenge Modifier: <strong>Loading...</strong>
+                Challenge Modifier:{" "}
+                <strong>
+                  {!state.dayInfo
+                    ? `Loading...`
+                    : state.dayInfo.challengeModifier === "None"
+                    ? "None"
+                    : "You must complete this challenge " +
+                      state.dayInfo.challengeModifier +
+                      (state.dayInfo.modifierOption !== "None" &&
+                        state.dayInfo.modifierOption)}
+                </strong>
               </li>
               <li>
-                Current Day: <strong>Loading...</strong>
+                Current Day:{" "}
+                <strong>
+                  {!state.dayInfo ? `Loading...` : state.dayInfo.currentDay}
+                </strong>
               </li>
               <li>
-                Current Day Completed?: <strong>Loading...</strong>
+                Current Day Completed?:{" "}
+                <strong>
+                  {!state.dayInfo
+                    ? `Loading...`
+                    : state.dayInfo.part1Completed
+                    ? `Yes`
+                    : `No`}
+                </strong>
               </li>
               <li>
-                Selected Day Part 1 Completed?: <strong>Loading...</strong>
+                Selected Day Part 1 Completed?:{" "}
+                <strong>
+                  {" "}
+                  {!state.dayInfo
+                    ? `Loading...`
+                    : state.dayInfo.part1Completed
+                    ? `Yes`
+                    : `No`}
+                </strong>
+                {!state.dayInfo?.part1Completed ? null : (
+                  <>
+                    <br />
+                    <strong>
+                      {new Date(state.dayInfo.part1Completed).toString()}
+                    </strong>
+                  </>
+                )}
               </li>
               <li>
-                Selected Day Part 2 Completed?: <strong>Loading...</strong>
+                Selected Day Part 2 Completed?:{" "}
+                <strong>
+                  {!state.dayInfo
+                    ? `Loading...`
+                    : state.dayInfo.part2Completed
+                    ? `Yes`
+                    : `No`}
+                </strong>
+                {!state.dayInfo?.part2Completed ? null : (
+                  <>
+                    <br />
+                    <strong>
+                      {new Date(state.dayInfo.part2Completed).toString()}
+                    </strong>
+                  </>
+                )}
               </li>
             </ul>
           );
@@ -144,9 +242,9 @@ export default component$(() => {
                 <li>
                   Reroll Tokens Earned:{" "}
                   <strong class="token">
-                    {xtremeXmasData.part2Completed === "Yes"
+                    {xtremeXmasData.part2Completed
                       ? "**"
-                      : xtremeXmasData.part1Completed === "Yes"
+                      : xtremeXmasData.part1Completed
                       ? "*"
                       : ""}
                   </strong>
@@ -199,7 +297,7 @@ export default component$(() => {
                     {xtremeXmasData.modifierOption !== "None" &&
                       xtremeXmasData.modifierOption}
                   </strong>{" "}
-                  {xtremeXmasData.part2Completed === "Yes" ? (
+                  {xtremeXmasData.part2Completed ? (
                     <></>
                   ) : xtremeXmasData.challengeModifier === "None" ? (
                     <a
@@ -240,7 +338,7 @@ export default component$(() => {
                     </li>
                   )}{" "}
                   {xtremeXmasData.modifierOption !== "None" &&
-                    xtremeXmasData.part2Completed !== "Yes" && (
+                    !xtremeXmasData.part2Completed && (
                       <li>
                         <a
                           onClick$={async () => {
@@ -265,7 +363,7 @@ export default component$(() => {
                 </li>
                 <li>
                   Current Day: <strong>{xtremeXmasData.currentDay}</strong>{" "}
-                  {xtremeXmasData.currentDayCompleted !== "Yes" ||
+                  {!xtremeXmasData.currentDayCompleted ||
                   xtremeXmasData.currentDay != +state.dayNumber ? (
                     <></>
                   ) : (
@@ -294,13 +392,25 @@ export default component$(() => {
                 </li>
                 <li>
                   Current Day Completed?{" "}
-                  <strong>{xtremeXmasData.currentDayCompleted}</strong>{" "}
+                  <strong>
+                    {xtremeXmasData.currentDayCompleted ? `Yes` : `No`}
+                  </strong>{" "}
                 </li>
                 <li>
                   Selected Day Part 1 Completed?{" "}
-                  <strong>{xtremeXmasData.part1Completed}</strong>{" "}
+                  <strong>
+                    {xtremeXmasData.part1Completed ? `Yes` : `No`}
+                  </strong>
+                  {xtremeXmasData.part2Completed ? (
+                    <>
+                      <br />
+                      <strong>
+                        {new Date(xtremeXmasData.part2Completed).toString()}
+                      </strong>
+                    </>
+                  ) : null}
                   {xtremeXmasData.challengeModifier === "None" ||
-                  xtremeXmasData.part1Completed === "Yes" ? (
+                  xtremeXmasData.part1Completed ? (
                     <></>
                   ) : (
                     <a
@@ -340,9 +450,19 @@ export default component$(() => {
                   )}
                 <li>
                   Selected Day Part 2 Completed?{" "}
-                  <strong>{xtremeXmasData.part2Completed}</strong>{" "}
-                  {xtremeXmasData.part1Completed !== "Yes" ||
-                  xtremeXmasData.part2Completed === "Yes" ? (
+                  <strong>
+                    {xtremeXmasData.part2Completed ? `Yes` : `No`}
+                  </strong>{" "}
+                  {xtremeXmasData.part2Completed ? (
+                    <>
+                      <br />
+                      <strong>
+                        {new Date(xtremeXmasData.part2Completed).toString()}
+                      </strong>
+                    </>
+                  ) : null}
+                  {!xtremeXmasData.part1Completed ||
+                  xtremeXmasData.part2Completed ? (
                     <></>
                   ) : (
                     <a

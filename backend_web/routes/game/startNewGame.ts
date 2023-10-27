@@ -7,7 +7,7 @@ import { GameController } from "../../components/GameController.ts";
 import {
   createDay,
   createGame,
-  getGameByNumberAndUserIdWithRelations,
+  // getGameByNumberAndUserIdWithRelations,
   getUserById,
   updateGame,
   updateUser,
@@ -27,17 +27,17 @@ export const startNewGame = async (
   const user = await getUserById(userId);
   const body: FormDataReader = ctx.request.body({ type: "form-data" }).value;
   const bodyData = await body.read();
-  const gameExists = await getGameByNumberAndUserIdWithRelations(
-    userId,
-    +gameNumber,
-  );
-  if (gameExists) {
-    ctx.response.status = 409;
-    ctx.response.body = {
-      message: `Game number ${gameNumber} already exists for user`,
-    };
-    return;
-  }
+  // const gameExists = await getGameByNumberAndUserIdWithRelations(
+  //   userId,
+  //   +gameNumber,
+  // );
+  // if (gameExists) {
+  //   ctx.response.status = 409;
+  //   ctx.response.body = {
+  //     message: `Game number ${gameNumber} already exists for user`,
+  //   };
+  //   return;
+  // }
   const game = await createGame(
     userId,
     +gameNumber,

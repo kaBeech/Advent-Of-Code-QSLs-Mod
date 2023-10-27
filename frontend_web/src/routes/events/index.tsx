@@ -4,9 +4,11 @@ import { serverFetcher } from "~/util/serverFetcher";
 import { useAuthSession } from "../plugin@auth";
 import { getGithubUserIdFromUserImage } from "~/util/getGithubUserIdFromUserImage";
 import type { Session } from "@auth/core/types";
+import type { UserData } from "~/types";
 
 let gameNumber = 1;
 const dayNumber = 1;
+let userData: UserData | null = null;
 
 export const onRequest: RequestHandler = (event) => {
   const session: Session | null = event.sharedMap.get("session");
@@ -14,6 +16,10 @@ export const onRequest: RequestHandler = (event) => {
     throw event.redirect(302, `/login`);
   }
   gameNumber = +event.cookie.get("gameNumber")!.value;
+  const userDataString = event.cookie.get("userData")?.value || null;
+  if (userDataString) {
+    userData = JSON.parse(userDataString);
+  }
 };
 
 export default component$(() => {
@@ -24,6 +30,8 @@ export default component$(() => {
     gameNumber,
     dayNumber,
     buttonPresses: 0,
+    numberOfGames: 0,
+    userData,
   });
 
   const xtremeXmasUserDataResource = useResource$<any>(
@@ -41,8 +49,11 @@ export default component$(() => {
       if (userData.Game.length < 1) {
         return { numberOfGames: JSON.stringify(userData.Game.length) };
       }
+      const numberOfGames = +JSON.stringify(userData.Game.length);
+      state.numberOfGames = numberOfGames;
+      state.userData = userData;
       return {
-        numberOfGames: JSON.stringify(userData.Game.length),
+        numberOfGames,
         userData,
       };
     }
@@ -56,7 +67,34 @@ export default component$(() => {
         onPending={() => {
           return (
             <p>
-              <strong>Loading...</strong>
+              <strong>
+                {" "}
+                {!state.userData ? (
+                  `Loading...`
+                ) : state.numberOfGames < 1 ? (
+                  <h2>
+                    Please <a href="/new">[Start a New Game!]</a>
+                  </h2>
+                ) : (
+                  <ul>
+                    {state.userData.Game.map(
+                      (game: {
+                        name: string;
+                        number: number;
+                        year: number;
+                      }) => (
+                        <li key={`game-${game.number}`}>
+                          <a href={`/game/${game.number}`}>
+                            {game.year}
+                            <span class="textMedium"> - {game.name}</span>
+                          </a>
+                        </li>
+                      )
+                    )}
+                    <a href="/new">[New Game]</a>
+                  </ul>
+                )}
+              </strong>
             </p>
           );
         }}
