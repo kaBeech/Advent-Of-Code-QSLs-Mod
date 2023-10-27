@@ -7,7 +7,7 @@ import { GameController } from "../../components/GameController.ts";
 import {
   createDay,
   createGame,
-  getGameByNumberAndUserIdWithRelations,
+  // getGameByNumberAndUserIdWithRelations,
   getUserById,
   updateGame,
   updateUser,
