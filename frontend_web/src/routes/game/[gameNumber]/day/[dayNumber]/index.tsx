@@ -16,6 +16,22 @@ import type { Session } from "@auth/core/types";
 import { useAuthSession } from "~/routes/plugin@auth";
 import styles from "./day.css?inline";
 
+let gameInfo: {
+  numberOfGames: string;
+  challengeModifier: string;
+  modifierOption: string;
+  rerollTokensSpentDuringPart1: number;
+  rerollTokensSpentDuringPart2: number;
+  currentRerollTokens: number;
+  netScore: number;
+  currentDay: number;
+  currentDayCompleted: string;
+  part1Completed: string;
+  modifierWhenPart1Completed: string;
+  optionWhenPart1Completed: string;
+  part2Completed: string;
+} | null;
+
 export const onRequest: RequestHandler = (event) => {
   const session: Session | null = event.sharedMap.get("session");
   if (!session || new Date(session.expires) < new Date()) {
@@ -25,6 +41,10 @@ export const onRequest: RequestHandler = (event) => {
     path: "/",
     secure: true,
   });
+  const gameInfoString = event.cookie.get("gameInfo")?.value || null;
+  if (gameInfoString) {
+    gameInfo = JSON.parse(gameInfoString);
+  }
 };
 
 export default component$(() => {
@@ -39,6 +59,7 @@ export default component$(() => {
     dayNumber,
     buttonPresses: 0,
     loading: false,
+    gameInfo,
   });
 
   const xtremeXmasUserDataResource = useResource$<any>(
@@ -60,7 +81,7 @@ export default component$(() => {
         (day: { number: number }) => day.number === +dayNumber
       );
       state.loading = false;
-      return {
+      const returnData = {
         numberOfGames: JSON.stringify(userData.Game.length),
         challengeModifier: dayData.challengeModifierId
           ? dayData.ChallengeModifier.text
@@ -82,6 +103,8 @@ export default component$(() => {
         optionWhenPart1Completed: dayData.optionWhenPart1Completed || null,
         part2Completed: dayData.part2Completed ? "Yes" : "No",
       };
+      state.gameInfo = returnData;
+      return returnData;
     }
   );
 
