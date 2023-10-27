@@ -38,11 +38,13 @@ export const startNewGame = async (
   //   };
   //   return;
   // }
+  console.log("bodyData", bodyData.fields.isPublic);
   const game = await createGame(
     userId,
     +gameNumber,
     bodyData.fields.name,
     +bodyData.fields.year,
+    bodyData.fields.isPublic === "true" ? true : false,
     bodyData.fields.playerName,
   );
   const updatedGame = GameController(game!).startNextDay();

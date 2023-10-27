@@ -85,7 +85,6 @@ export default component$(() => {
           );
         }}
         onResolved={(gameData) => {
-          console.log("gameData", gameData);
           if (gameData.currentDay === undefined) {
             const dummyDays = [];
             for (let i = 25; i > 0; i--) {

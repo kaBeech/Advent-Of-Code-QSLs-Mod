@@ -72,7 +72,6 @@ export default component$(() => {
           );
         }}
         onResolved={(leaderboardGamesData) => {
-          console.log("leaderboardGamesData", leaderboardGamesData);
           if (leaderboardGamesData.length < 1) {
             return <h2>No games currently recorded for this leaderboard</h2>;
           }

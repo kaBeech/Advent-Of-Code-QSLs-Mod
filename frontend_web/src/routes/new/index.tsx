@@ -8,6 +8,7 @@ const title = "Test Game";
 const year = 2022;
 const playerName = "Me!";
 const numberOfGames = 0;
+const isPublic = false;
 
 export default component$(() => {
   const session = useAuthSession();
@@ -20,6 +21,7 @@ export default component$(() => {
     playerName,
     buttonPresses: 0,
     loading: false,
+    isPublic,
   });
 
   const xtremeXmasUserDataResource = useResource$<any>(
@@ -80,6 +82,12 @@ export default component$(() => {
         maxLength={256}
         aria-labelledby="Player Name"
       />
+      <input
+        class="pointer"
+        type="checkbox"
+        onInput$={(ev: any) => (state.isPublic = ev.target.value)}
+        aria-labelledby="Public?"
+      />
       <Resource
         value={xtremeXmasUserDataResource}
         onPending={() => {
@@ -114,6 +122,7 @@ export default component$(() => {
                       name: state.title,
                       year: state.year,
                       playerName: state.playerName,
+                      isPublic: state.isPublic,
                     }
                   );
                   state.buttonPresses++;

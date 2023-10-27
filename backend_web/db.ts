@@ -134,6 +134,7 @@ export async function createGame(
   number: number,
   name: string,
   year: number,
+  isPublic: boolean,
   playerName?: string,
 ) {
   const result = await prisma.game.create({
@@ -141,6 +142,7 @@ export async function createGame(
       userId,
       number,
       name,
+      isPublic,
       playerName,
       year,
     },
@@ -156,7 +158,7 @@ export async function getAllGames() {
 export async function getAllPublicGamesWithRepositoryLinks() {
   const games = await prisma.game.findMany({
     where: {
-      public: true,
+      isPublic: true,
       repositoryLink: {
         not: null,
       },
@@ -181,7 +183,7 @@ export async function getPublicGameById(id: number) {
   const game = await prisma.game.findFirstOrThrow({
     where: {
       id,
-      public: true,
+      isPublic: true,
     },
     include: {
       Day: {
@@ -252,7 +254,7 @@ export async function updateGame(game: Game) {
         game.rerollTokensSpentDuringPart2Limited,
       repositoryLink: game.repositoryLink,
       progressSheetLink: game.progressSheetLink,
-      public: game.public,
+      isPublic: game.isPublic,
       publicProfileId: game.publicProfileId,
       score: game.score,
       rankId: game.rankId,
@@ -296,17 +298,6 @@ export async function getDayById(id: number) {
   const day = await prisma.day.findUniqueOrThrow({
     where: {
       id,
-    },
-  });
-  return day;
-}
-
-export async function getPublicDayByNumberAndGameId(id: number) {
-  const day = await prisma.day.findFirstOrThrow({
-    where: {
-      number,
-      gameId,
-      public: true,
     },
   });
   return day;

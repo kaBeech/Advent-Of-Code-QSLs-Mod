@@ -136,7 +136,7 @@ exports.Prisma.GameScalarFieldEnum = {
   rerollTokensSpentDuringPart2Limited: 'rerollTokensSpentDuringPart2Limited',
   repositoryLink: 'repositoryLink',
   progressSheetLink: 'progressSheetLink',
-  public: 'public',
+  isPublic: 'isPublic',
   publicProfileId: 'publicProfileId',
   score: 'score',
   rankId: 'rankId',
@@ -178,7 +178,7 @@ exports.Prisma.ChallengeModifierScalarFieldEnum = {
   explanatoryUrl: 'explanatoryUrl',
   standard: 'standard',
   createdById: 'createdById',
-  public: 'public'
+  isPublic: 'isPublic'
 };
 
 exports.Prisma.ModifierOptionScalarFieldEnum = {
@@ -190,14 +190,14 @@ exports.Prisma.ModifierOptionScalarFieldEnum = {
   explanatoryUrl: 'explanatoryUrl',
   standard: 'standard',
   createdById: 'createdById',
-  public: 'public'
+  isPublic: 'isPublic'
 };
 
 exports.Prisma.ModifierPackScalarFieldEnum = {
   id: 'id',
   dateCreated: 'dateCreated',
   createdById: 'createdById',
-  public: 'public'
+  isPublic: 'isPublic'
 };
 
 exports.Prisma.SortOrder = {

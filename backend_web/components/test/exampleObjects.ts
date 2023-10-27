@@ -21,7 +21,7 @@ export const exampleGame = {
   "rerollTokensSpentDuringPart2Limited": 0,
   "repositoryLink": null,
   "progressSheetLink": null,
-  "public": false,
+  "isPsPublic": false,
   "publicProfileId": null,
   "score": 0,
   "rankId": null,
@@ -42,7 +42,7 @@ export const exampleGameDay1 = {
   "rerollTokensSpent": 0,
   "repositoryLink": null,
   "progressSheetLink": null,
-  "public": false,
+  "isPsPublic": false,
   "publicProfileId": null,
   "score": 0,
   "rankId": null,
@@ -82,7 +82,7 @@ export const exampleChallengeModifiers = [
   //   "explanatoryUrl": null,
   //   "standard": true,
   //   "createdById": null,
-  //   "public": true,
+  //   "isPsPublic": true,
   // },
   // {
   //   "id": 2,
@@ -93,7 +93,7 @@ export const exampleChallengeModifiers = [
   //   "explanatoryUrl": null,
   //   "standard": true,
   //   "createdById": null,
-  //   "public": true,
+  //   "isPsPublic": true,
   // },
   // {
   //   "id": 3,
@@ -104,7 +104,7 @@ export const exampleChallengeModifiers = [
   //   "explanatoryUrl": null,
   //   "standard": true,
   //   "createdById": null,
-  //   "public": true,
+  //   "isPsPublic": true,
   // },
   // {
   //   "id": 4,
@@ -115,7 +115,7 @@ export const exampleChallengeModifiers = [
   //   "explanatoryUrl": null,
   //   "standard": true,
   //   "createdById": null,
-  //   "public": true,
+  //   "isPsPublic": true,
   // },
   {
     "id": 5,
@@ -126,7 +126,7 @@ export const exampleChallengeModifiers = [
     "explanatoryUrl": null,
     "standard": true,
     "createdById": null,
-    "public": true,
+    "isPsPublic": true,
   },
   // {
   //   "id": 6,
@@ -137,7 +137,7 @@ export const exampleChallengeModifiers = [
   //   "explanatoryUrl": null,
   //   "standard": true,
   //   "createdById": null,
-  //   "public": true,
+  //   "isPsPublic": true,
   // },
   {
     "id": 7,
@@ -148,7 +148,7 @@ export const exampleChallengeModifiers = [
     "explanatoryUrl": null,
     "standard": true,
     "createdById": null,
-    "public": true,
+    "isPsPublic": true,
   },
 ];
 
@@ -162,7 +162,7 @@ export const exampleModifierOptions = [
   //   "explanatoryUrl": null,
   //   "standard": true,
   //   "createdById": null,
-  //   "public": true,
+  //   "isPsPublic": true,
   // },
   // {
   //   "id": 2,
@@ -173,7 +173,7 @@ export const exampleModifierOptions = [
   //   "explanatoryUrl": null,
   //   "standard": true,
   //   "createdById": null,
-  //   "public": true,
+  //   "isPsPublic": true,
   // },
   // {
   //   "id": 3,
@@ -184,7 +184,7 @@ export const exampleModifierOptions = [
   //   "explanatoryUrl": null,
   //   "standard": true,
   //   "createdById": null,
-  //   "public": true,
+  //   "isPsPublic": true,
   // },
   // {
   //   "id": 4,
@@ -195,7 +195,7 @@ export const exampleModifierOptions = [
   //   "explanatoryUrl": null,
   //   "standard": true,
   //   "createdById": null,
-  //   "public": true,
+  //   "isPsPublic": true,
   // },
   // {
   //   "id": 5,
@@ -206,7 +206,7 @@ export const exampleModifierOptions = [
   //   "explanatoryUrl": null,
   //   "standard": true,
   //   "createdById": null,
-  //   "public": true,
+  //   "isPsPublic": true,
   // },
   // {
   //   "id": 6,
@@ -217,7 +217,7 @@ export const exampleModifierOptions = [
   //   "explanatoryUrl": null,
   //   "standard": true,
   //   "createdById": null,
-  //   "public": true,
+  //   "isPsPublic": true,
   // },
   // {
   //   "id": 7,
@@ -228,7 +228,7 @@ export const exampleModifierOptions = [
   //   "explanatoryUrl": null,
   //   "standard": true,
   //   "createdById": null,
-  //   "public": true,
+  //   "isPsPublic": true,
   // },
   // {
   //   "id": 8,
@@ -239,7 +239,7 @@ export const exampleModifierOptions = [
   //   "explanatoryUrl": null,
   //   "standard": true,
   //   "createdById": null,
-  //   "public": true,
+  //   "isPsPublic": true,
   // },
   {
     "id": 9,
@@ -250,7 +250,7 @@ export const exampleModifierOptions = [
     "explanatoryUrl": null,
     "standard": true,
     "createdById": null,
-    "public": true,
+    "isPsPublic": true,
   },
   {
     "id": 10,
@@ -261,6 +261,6 @@ export const exampleModifierOptions = [
     "explanatoryUrl": null,
     "standard": true,
     "createdById": null,
-    "public": true,
+    "isPsPublic": true,
   },
 ];
