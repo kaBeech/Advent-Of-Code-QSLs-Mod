@@ -22,6 +22,8 @@ import { getOAuthData } from "./routes/user/getOAuthData.ts";
 import { getOrCreateUser } from "./routes/user/getOrCreateUser.ts";
 import { getGameData } from "./routes/game/getGameData.ts";
 import { getLeaderboardGames } from "./routes/leaderboard/getLeaderboardGames.ts";
+import { getPublicGame } from "./routes/game/getPublicGame.ts";
+import { getPublicDay } from "./routes/day/getPublicDay.ts";
 
 type AppState = {
   session: Session;
@@ -39,6 +41,8 @@ router
   .get("/gamedata/:gameNumber", authenticate, getGameData)
   .get("/modifier", getChallengeModifiers)
   .get("/leaderboard", getLeaderboardGames)
+  .get("/game/public/:id", getPublicGame)
+  .get("/game/public/:gameId/day/:dayNumber", getPublicDay)
   .get("/game", authenticate, getGames)
   .get("/game/:gameNumber", authenticate, getGame)
   .put("/game/:gameNumber", authenticate, startNewGame)

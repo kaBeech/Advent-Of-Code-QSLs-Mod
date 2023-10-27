@@ -11,19 +11,12 @@ import {
   type RequestHandler,
 } from "@builder.io/qwik-city";
 import { serverFetcher } from "~/util/serverFetcher";
-import { getGithubUserIdFromUserImage } from "~/util/getGithubUserIdFromUserImage";
-import type { Session } from "@auth/core/types";
-import { useAuthSession } from "~/routes/plugin@auth";
 import styles from "./day.css?inline";
 import type { DayInfo } from "~/types";
 
 let dayInfo: DayInfo | null;
 
 export const onRequest: RequestHandler = (event) => {
-  const session: Session | null = event.sharedMap.get("session");
-  if (!session || new Date(session.expires) < new Date()) {
-    throw event.redirect(302, `/login`);
-  }
   event.cookie.set("gameNumber", event.params.gameNumber, {
     path: "/",
     secure: true,
@@ -36,13 +29,11 @@ export const onRequest: RequestHandler = (event) => {
 
 export default component$(() => {
   useStylesScoped$(styles);
-  const session = useAuthSession();
-  const userId = getGithubUserIdFromUserImage(session.value!.user!.image!);
-  const gameNumber = useLocation().params.gameNumber;
+  const gameId = useLocation().params.id;
   const dayNumber = useLocation().params.dayNumber;
 
   const state = useStore({
-    gameNumber,
+    gameId,
     dayNumber,
     buttonPresses: 0,
     loading: false,
@@ -57,19 +48,13 @@ export default component$(() => {
 
       const abortController = new AbortController();
       cleanup(() => abortController.abort("cleanup"));
-      const userData = await serverFetcher(`userdata`, "GET", userId);
-      if (userData.Game.length < 1) {
-        return { numberOfGames: JSON.stringify(userData.Game.length) };
-      }
-      const gameData = userData.Game.find(
-        (game: { number: number }) => game.number === +gameNumber
-      );
+      const gameData = await serverFetcher(`game/public/${gameId}`, "GET");
       const dayData = gameData.Day.find(
-        (day: { number: number }) => day.number === +dayNumber
+        (day: DayInfo) => day.number === +dayNumber
       );
+
       state.loading = false;
       const dayInfoData = {
-        numberOfGames: JSON.stringify(userData.Game.length),
         challengeModifier: dayData.challengeModifierId
           ? dayData.ChallengeModifier.text
           : "None",
@@ -298,98 +283,9 @@ export default component$(() => {
                     {xtremeXmasData.modifierOption !== "None" &&
                       xtremeXmasData.modifierOption}
                   </strong>{" "}
-                  {xtremeXmasData.part2Completed ? (
-                    <></>
-                  ) : xtremeXmasData.challengeModifier === "None" ? (
-                    <a
-                      onClick$={async () => {
-                        if (state.loading) {
-                          return;
-                        }
-                        state.loading = true;
-                        await serverFetcher(
-                          `game/${state.gameNumber}/day/${state.dayNumber}/roll`,
-                          "PUT",
-                          userId
-                        );
-                        state.buttonPresses++;
-                      }}
-                    >
-                      [Roll Initial Challenge Modifier]
-                    </a>
-                  ) : (
-                    <li>
-                      <a
-                        onClick$={async () => {
-                          if (state.loading) {
-                            return;
-                          }
-                          state.loading = true;
-                          await serverFetcher(
-                            `game/${state.gameNumber}/day/${state.dayNumber}/reroll/modifier`,
-                            "PUT",
-                            userId
-                          );
-                          state.buttonPresses++;
-                        }}
-                      >
-                        [Reroll Challenge Modifier]
-                      </a>{" "}
-                      for <strong class="tokenSpent">﹡﹡</strong>
-                    </li>
-                  )}{" "}
-                  {xtremeXmasData.modifierOption !== "None" &&
-                    !xtremeXmasData.part2Completed && (
-                      <li>
-                        <a
-                          onClick$={async () => {
-                            if (state.loading) {
-                              return;
-                            }
-                            state.loading = true;
-                            await serverFetcher(
-                              `game/${state.gameNumber}/day/${state.dayNumber}/reroll/option`,
-                              "PUT",
-                              userId
-                            );
-                            state.buttonPresses++;
-                          }}
-                        >
-                          [Reroll Modifier Option]
-                        </a>{" "}
-                        ({xtremeXmasData.modifierOption}) for{" "}
-                        <strong class="tokenSpent">﹡</strong>
-                      </li>
-                    )}
                 </li>
                 <li>
                   Current Day: <strong>{xtremeXmasData.currentDay}</strong>{" "}
-                  {!xtremeXmasData.currentDayCompleted ||
-                  xtremeXmasData.currentDay != +state.dayNumber ? (
-                    <></>
-                  ) : (
-                    <a
-                      onClick$={async () => {
-                        if (state.loading) {
-                          return;
-                        }
-                        state.loading = true;
-                        const res = await serverFetcher(
-                          `game/${state.gameNumber}/day/${
-                            +state.dayNumber + 1
-                          }`,
-                          "PUT",
-                          userId
-                        );
-                        state.buttonPresses++;
-                        window.location.href = `/game/${
-                          state.gameNumber
-                        }/day/${+res.number}`;
-                      }}
-                    >
-                      [ Start Next Day]
-                    </a>
-                  )}
                 </li>
                 <li>
                   Current Day Completed?{" "}
@@ -410,27 +306,6 @@ export default component$(() => {
                       </strong>
                     </>
                   ) : null}
-                  {xtremeXmasData.challengeModifier === "None" ||
-                  xtremeXmasData.part1Completed ? (
-                    <></>
-                  ) : (
-                    <a
-                      onClick$={async () => {
-                        if (state.loading) {
-                          return;
-                        }
-                        state.loading = true;
-                        await serverFetcher(
-                          `game/${state.gameNumber}/day/${state.dayNumber}/complete/part1`,
-                          "PUT",
-                          userId
-                        );
-                        state.buttonPresses++;
-                      }}
-                    >
-                      [Complete Part 1]
-                    </a>
-                  )}
                 </li>
                 {xtremeXmasData.modifierWhenPart1Completed &&
                   (xtremeXmasData.modifierWhenPart1Completed !==
@@ -462,39 +337,8 @@ export default component$(() => {
                       </strong>
                     </>
                   ) : null}
-                  {!xtremeXmasData.part1Completed ||
-                  xtremeXmasData.part2Completed ? (
-                    <></>
-                  ) : (
-                    <a
-                      onClick$={async () => {
-                        if (state.loading) {
-                          return;
-                        }
-                        state.loading = true;
-                        await serverFetcher(
-                          `game/${state.gameNumber}/day/${state.dayNumber}/complete/part2`,
-                          "PUT",
-                          userId
-                        );
-                        state.buttonPresses++;
-                      }}
-                    >
-                      [Complete Part 2]
-                    </a>
-                  )}
                 </li>{" "}
               </ul>
-              {+dayNumber > 1 && (
-                <a href={`/game/${gameNumber}/day/${+dayNumber - 1}/`}>
-                  [Previous Day]
-                </a>
-              )}{" "}
-              {dayNumber < xtremeXmasData.currentDay && (
-                <a href={`/game/${gameNumber}/day/${+dayNumber + 1}/`}>
-                  [Next Day]
-                </a>
-              )}
             </>
           );
         }}

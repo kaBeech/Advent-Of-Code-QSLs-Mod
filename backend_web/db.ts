@@ -177,6 +177,28 @@ export async function getGameById(id: number) {
   return game;
 }
 
+export async function getPublicGameById(id: number) {
+  const game = await prisma.game.findFirstOrThrow({
+    where: {
+      id,
+      public: true,
+    },
+    include: {
+      Day: {
+        include: {
+          ChallengeModifier: {
+            include: {
+              ModifierOption: true,
+            },
+          },
+          ModifierOption: true,
+        },
+      },
+    },
+  });
+  return game;
+}
+
 export async function getGameByNumberAndUserIdWithRelations(
   userId: string,
   gameNumber: number,
@@ -274,6 +296,17 @@ export async function getDayById(id: number) {
   const day = await prisma.day.findUniqueOrThrow({
     where: {
       id,
+    },
+  });
+  return day;
+}
+
+export async function getPublicDayByNumberAndGameId(id: number) {
+  const day = await prisma.day.findFirstOrThrow({
+    where: {
+      number,
+      gameId,
+      public: true,
     },
   });
   return day;
