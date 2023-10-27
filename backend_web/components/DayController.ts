@@ -48,8 +48,8 @@ const initialChallengeModifierRoller = (state: DayControllerState) => ({
         filteredModifierOptions,
       );
       state.day.modifierOptionId = selectedModifierOption.id;
-      state.day.dateFirstRolled = new Date();
     }
+    state.day.dateFirstRolled = new Date();
     return state.day;
   },
 });
