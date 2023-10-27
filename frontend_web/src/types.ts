@@ -30,7 +30,7 @@ export interface LeaderboardGame {
   number: number;
   year: number;
   score: number;
-  rank: number;
+  Rank: { id: string; name: string; minimumScore: number };
   repositoryLink: string;
 }
 

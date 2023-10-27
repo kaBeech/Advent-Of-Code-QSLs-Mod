@@ -161,6 +161,9 @@ export async function getAllPublicGamesWithRepositoryLinks() {
         not: null,
       },
     },
+    include: {
+      Rank: true,
+    },
   });
   return games;
 }
@@ -337,4 +340,13 @@ export async function getModifierOptionsByChallengeModifierId(
     },
   });
   return modifierOptions;
+}
+
+/**
+ * Rank CRUD
+ */
+
+export async function getAllRanks() {
+  const ranks = await prisma.rank.findMany();
+  return ranks;
 }
