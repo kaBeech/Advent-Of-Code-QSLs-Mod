@@ -72,7 +72,6 @@ export default component$(() => {
           );
         }}
         onResolved={(leaderboardGamesData) => {
-          console.log("leaderboardGamesData", leaderboardGamesData);
           if (leaderboardGamesData.length < 1) {
             return <h2>No games currently recorded for this leaderboard</h2>;
           }
@@ -88,7 +87,9 @@ export default component$(() => {
                 (game: LeaderboardGame, index: number) => (
                   <li key={`game-${game.id}`}>
                     <em>
-                      {index + 1} - {game.year} - {game.name} - {game.score} -{" "}
+                      {index + 1} - {game.year} -{" "}
+                      <a href={`/game/public/${game.id}`}>{game.name}</a> -{" "}
+                      {game.score} -{" "}
                       {game.Rank ? game.Rank.name : `Not Yet Completed`} -{" "}
                       {game.playerName} -{" "}
                       <a href={game.repositoryLink}>Repo Link</a>

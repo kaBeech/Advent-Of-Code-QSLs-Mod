@@ -53,8 +53,8 @@ model Game {
   rerollTokensSpentDuringPart2Raw     Int            @default(0)
   rerollTokensSpentDuringPart2Limited Int            @default(0)
   repositoryLink                      String?
-  progressSheetLink                   String?
-  public                              Boolean        @default(false)
+  progressSheetLink                   String         @default("/game/public/${id}")
+  isPublic                            Boolean        @default(false)
   publicProfileId                     Int?
   score                               Int            @default(0)
   rankId                              Int?
@@ -110,7 +110,7 @@ model ChallengeModifier {
   explanatoryUrl       String?
   standard             Boolean          @default(false)
   createdById          String?
-  public               Boolean          @default(false)
+  isPublic             Boolean          @default(false)
   CreatedBy            User?            @relation(fields: [createdById], references: [id])
   ModifierOption       ModifierOption[]
   Day                  Day[]
@@ -132,7 +132,7 @@ model ModifierOption {
   explanatoryUrl       String?
   standard             Boolean           @default(false)
   createdById          String?
-  public               Boolean           @default(false)
+  isPublic             Boolean           @default(false)
   ChallengeModifier    ChallengeModifier @relation(fields: [challengeModifierId], references: [id])
   CreatedBy            User?             @relation(fields: [createdById], references: [id])
   Day                  Day[]
@@ -149,7 +149,7 @@ model ModifierPack {
   id                               Int                 @id @default(autoincrement())
   dateCreated                      DateTime            @default(now())
   createdById                      String?
-  public                           Boolean             @default(false)
+  isPublic                         Boolean             @default(false)
   ExcludedChallengeModifiers       ChallengeModifier[] @relation(name: "ExcludedChallengeModifiers")
   ExcludedModifierOptions          ModifierOption[]    @relation(name: "ExcludedModifierOptions")
   EncludedCustomChallengeModifiers ChallengeModifier[] @relation(name: "IncludedCustomChallengeModifiers")

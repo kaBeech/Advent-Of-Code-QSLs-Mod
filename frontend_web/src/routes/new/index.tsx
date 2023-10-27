@@ -8,6 +8,8 @@ const title = "Test Game";
 const year = 2022;
 const playerName = "Me!";
 const numberOfGames = 0;
+const isPublic: boolean = false;
+const repositoryLink = "https://github.com/octocat/Spoon-Knife";
 
 export default component$(() => {
   const session = useAuthSession();
@@ -20,6 +22,8 @@ export default component$(() => {
     playerName,
     buttonPresses: 0,
     loading: false,
+    isPublic,
+    repositoryLink,
   });
 
   const xtremeXmasUserDataResource = useResource$<any>(
@@ -80,6 +84,23 @@ export default component$(() => {
         maxLength={256}
         aria-labelledby="Player Name"
       />
+      <input
+        class="pointer"
+        type="text"
+        onInput$={(ev: any) => (state.playerName = ev.target.value)}
+        value={repositoryLink}
+        minLength={1}
+        maxLength={256}
+        aria-labelledby="Repository Link"
+      />
+      <br />
+      <label for="publicCheckbox">Public?</label>
+      <input
+        class="pointer"
+        type="checkbox"
+        onInput$={(ev: any) => (state.isPublic = ev.target.value)}
+        id="publicCheckbox"
+      />
       <Resource
         value={xtremeXmasUserDataResource}
         onPending={() => {
@@ -106,6 +127,16 @@ export default component$(() => {
                     return;
                   }
                   state.loading = true;
+                  let repositoryLink = state.repositoryLink;
+                  if (
+                    repositoryLink === "https://github.com/octocat/Spoon-Knife"
+                  ) {
+                    repositoryLink = "";
+                  }
+                  let playerName = state.playerName;
+                  if (playerName === "") {
+                    playerName = session.value!.user!.name!;
+                  }
                   const res = await serverFetcher(
                     `game/${+xtremeXmasData.numberOfGames + 1}`,
                     "PUT",
@@ -113,7 +144,9 @@ export default component$(() => {
                     {
                       name: state.title,
                       year: state.year,
-                      playerName: state.playerName,
+                      playerName,
+                      isPublic: state.isPublic ? true : false,
+                      repositoryLink,
                     }
                   );
                   state.buttonPresses++;

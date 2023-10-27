@@ -43,6 +43,7 @@ export const startNewGame = async (
     +gameNumber,
     bodyData.fields.name,
     +bodyData.fields.year,
+    bodyData.fields.isPublic === "true" ? true : false,
     bodyData.fields.playerName,
   );
   const updatedGame = GameController(game!).startNextDay();

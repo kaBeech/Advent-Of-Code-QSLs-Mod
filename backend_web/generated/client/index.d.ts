@@ -84,7 +84,7 @@ export type GamePayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultAr
     rerollTokensSpentDuringPart2Limited: number
     repositoryLink: string | null
     progressSheetLink: string | null
-    public: boolean
+    isPublic: boolean
     publicProfileId: number | null
     score: number
     rankId: number | null
@@ -179,7 +179,7 @@ export type ChallengeModifierPayload<ExtArgs extends $Extensions.Args = $Extensi
     explanatoryUrl: string | null
     standard: boolean
     createdById: string | null
-    public: boolean
+    isPublic: boolean
   }, ExtArgs["result"]["challengeModifier"]>
   composites: {}
 }
@@ -212,7 +212,7 @@ export type ModifierOptionPayload<ExtArgs extends $Extensions.Args = $Extensions
     explanatoryUrl: string | null
     standard: boolean
     createdById: string | null
-    public: boolean
+    isPublic: boolean
   }, ExtArgs["result"]["modifierOption"]>
   composites: {}
 }
@@ -235,7 +235,7 @@ export type ModifierPackPayload<ExtArgs extends $Extensions.Args = $Extensions.D
     id: number
     dateCreated: Date
     createdById: string | null
-    public: boolean
+    isPublic: boolean
   }, ExtArgs["result"]["modifierPack"]>
   composites: {}
 }
@@ -4445,7 +4445,7 @@ export namespace Prisma {
     rerollTokensSpentDuringPart2Limited: number | null
     repositoryLink: string | null
     progressSheetLink: string | null
-    public: boolean | null
+    isPublic: boolean | null
     publicProfileId: number | null
     score: number | null
     rankId: number | null
@@ -4468,7 +4468,7 @@ export namespace Prisma {
     rerollTokensSpentDuringPart2Limited: number | null
     repositoryLink: string | null
     progressSheetLink: string | null
-    public: boolean | null
+    isPublic: boolean | null
     publicProfileId: number | null
     score: number | null
     rankId: number | null
@@ -4491,7 +4491,7 @@ export namespace Prisma {
     rerollTokensSpentDuringPart2Limited: number
     repositoryLink: number
     progressSheetLink: number
-    public: number
+    isPublic: number
     publicProfileId: number
     score: number
     rankId: number
@@ -4544,7 +4544,7 @@ export namespace Prisma {
     rerollTokensSpentDuringPart2Limited?: true
     repositoryLink?: true
     progressSheetLink?: true
-    public?: true
+    isPublic?: true
     publicProfileId?: true
     score?: true
     rankId?: true
@@ -4567,7 +4567,7 @@ export namespace Prisma {
     rerollTokensSpentDuringPart2Limited?: true
     repositoryLink?: true
     progressSheetLink?: true
-    public?: true
+    isPublic?: true
     publicProfileId?: true
     score?: true
     rankId?: true
@@ -4590,7 +4590,7 @@ export namespace Prisma {
     rerollTokensSpentDuringPart2Limited?: true
     repositoryLink?: true
     progressSheetLink?: true
-    public?: true
+    isPublic?: true
     publicProfileId?: true
     score?: true
     rankId?: true
@@ -4701,7 +4701,7 @@ export namespace Prisma {
     rerollTokensSpentDuringPart2Limited: number
     repositoryLink: string | null
     progressSheetLink: string | null
-    public: boolean
+    isPublic: boolean
     publicProfileId: number | null
     score: number
     rankId: number | null
@@ -4743,7 +4743,7 @@ export namespace Prisma {
     rerollTokensSpentDuringPart2Limited?: boolean
     repositoryLink?: boolean
     progressSheetLink?: boolean
-    public?: boolean
+    isPublic?: boolean
     publicProfileId?: boolean
     score?: boolean
     rankId?: boolean
@@ -4771,7 +4771,7 @@ export namespace Prisma {
     rerollTokensSpentDuringPart2Limited?: boolean
     repositoryLink?: boolean
     progressSheetLink?: boolean
-    public?: boolean
+    isPublic?: boolean
     publicProfileId?: boolean
     score?: boolean
     rankId?: boolean
@@ -7781,7 +7781,7 @@ export namespace Prisma {
     explanatoryUrl: string | null
     standard: boolean | null
     createdById: string | null
-    public: boolean | null
+    isPublic: boolean | null
   }
 
   export type ChallengeModifierMaxAggregateOutputType = {
@@ -7793,7 +7793,7 @@ export namespace Prisma {
     explanatoryUrl: string | null
     standard: boolean | null
     createdById: string | null
-    public: boolean | null
+    isPublic: boolean | null
   }
 
   export type ChallengeModifierCountAggregateOutputType = {
@@ -7805,7 +7805,7 @@ export namespace Prisma {
     explanatoryUrl: number
     standard: number
     createdById: number
-    public: number
+    isPublic: number
     _all: number
   }
 
@@ -7827,7 +7827,7 @@ export namespace Prisma {
     explanatoryUrl?: true
     standard?: true
     createdById?: true
-    public?: true
+    isPublic?: true
   }
 
   export type ChallengeModifierMaxAggregateInputType = {
@@ -7839,7 +7839,7 @@ export namespace Prisma {
     explanatoryUrl?: true
     standard?: true
     createdById?: true
-    public?: true
+    isPublic?: true
   }
 
   export type ChallengeModifierCountAggregateInputType = {
@@ -7851,7 +7851,7 @@ export namespace Prisma {
     explanatoryUrl?: true
     standard?: true
     createdById?: true
-    public?: true
+    isPublic?: true
     _all?: true
   }
 
@@ -7951,7 +7951,7 @@ export namespace Prisma {
     explanatoryUrl: string | null
     standard: boolean
     createdById: string | null
-    public: boolean
+    isPublic: boolean
     _count: ChallengeModifierCountAggregateOutputType | null
     _avg: ChallengeModifierAvgAggregateOutputType | null
     _sum: ChallengeModifierSumAggregateOutputType | null
@@ -7982,7 +7982,7 @@ export namespace Prisma {
     explanatoryUrl?: boolean
     standard?: boolean
     createdById?: boolean
-    public?: boolean
+    isPublic?: boolean
     CreatedBy?: boolean | UserArgs<ExtArgs>
     ModifierOption?: boolean | ChallengeModifier$ModifierOptionArgs<ExtArgs>
     Day?: boolean | ChallengeModifier$DayArgs<ExtArgs>
@@ -8005,7 +8005,7 @@ export namespace Prisma {
     explanatoryUrl?: boolean
     standard?: boolean
     createdById?: boolean
-    public?: boolean
+    isPublic?: boolean
   }
 
   export type ChallengeModifierInclude<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
@@ -9004,7 +9004,7 @@ export namespace Prisma {
     explanatoryUrl: string | null
     standard: boolean | null
     createdById: string | null
-    public: boolean | null
+    isPublic: boolean | null
   }
 
   export type ModifierOptionMaxAggregateOutputType = {
@@ -9016,7 +9016,7 @@ export namespace Prisma {
     explanatoryUrl: string | null
     standard: boolean | null
     createdById: string | null
-    public: boolean | null
+    isPublic: boolean | null
   }
 
   export type ModifierOptionCountAggregateOutputType = {
@@ -9028,7 +9028,7 @@ export namespace Prisma {
     explanatoryUrl: number
     standard: number
     createdById: number
-    public: number
+    isPublic: number
     _all: number
   }
 
@@ -9052,7 +9052,7 @@ export namespace Prisma {
     explanatoryUrl?: true
     standard?: true
     createdById?: true
-    public?: true
+    isPublic?: true
   }
 
   export type ModifierOptionMaxAggregateInputType = {
@@ -9064,7 +9064,7 @@ export namespace Prisma {
     explanatoryUrl?: true
     standard?: true
     createdById?: true
-    public?: true
+    isPublic?: true
   }
 
   export type ModifierOptionCountAggregateInputType = {
@@ -9076,7 +9076,7 @@ export namespace Prisma {
     explanatoryUrl?: true
     standard?: true
     createdById?: true
-    public?: true
+    isPublic?: true
     _all?: true
   }
 
@@ -9176,7 +9176,7 @@ export namespace Prisma {
     explanatoryUrl: string | null
     standard: boolean
     createdById: string | null
-    public: boolean
+    isPublic: boolean
     _count: ModifierOptionCountAggregateOutputType | null
     _avg: ModifierOptionAvgAggregateOutputType | null
     _sum: ModifierOptionSumAggregateOutputType | null
@@ -9207,7 +9207,7 @@ export namespace Prisma {
     explanatoryUrl?: boolean
     standard?: boolean
     createdById?: boolean
-    public?: boolean
+    isPublic?: boolean
     ChallengeModifier?: boolean | ChallengeModifierArgs<ExtArgs>
     CreatedBy?: boolean | UserArgs<ExtArgs>
     Day?: boolean | ModifierOption$DayArgs<ExtArgs>
@@ -9230,7 +9230,7 @@ export namespace Prisma {
     explanatoryUrl?: boolean
     standard?: boolean
     createdById?: boolean
-    public?: boolean
+    isPublic?: boolean
   }
 
   export type ModifierOptionInclude<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
@@ -10201,21 +10201,21 @@ export namespace Prisma {
     id: number | null
     dateCreated: Date | null
     createdById: string | null
-    public: boolean | null
+    isPublic: boolean | null
   }
 
   export type ModifierPackMaxAggregateOutputType = {
     id: number | null
     dateCreated: Date | null
     createdById: string | null
-    public: boolean | null
+    isPublic: boolean | null
   }
 
   export type ModifierPackCountAggregateOutputType = {
     id: number
     dateCreated: number
     createdById: number
-    public: number
+    isPublic: number
     _all: number
   }
 
@@ -10232,21 +10232,21 @@ export namespace Prisma {
     id?: true
     dateCreated?: true
     createdById?: true
-    public?: true
+    isPublic?: true
   }
 
   export type ModifierPackMaxAggregateInputType = {
     id?: true
     dateCreated?: true
     createdById?: true
-    public?: true
+    isPublic?: true
   }
 
   export type ModifierPackCountAggregateInputType = {
     id?: true
     dateCreated?: true
     createdById?: true
-    public?: true
+    isPublic?: true
     _all?: true
   }
 
@@ -10341,7 +10341,7 @@ export namespace Prisma {
     id: number
     dateCreated: Date
     createdById: string | null
-    public: boolean
+    isPublic: boolean
     _count: ModifierPackCountAggregateOutputType | null
     _avg: ModifierPackAvgAggregateOutputType | null
     _sum: ModifierPackSumAggregateOutputType | null
@@ -10367,7 +10367,7 @@ export namespace Prisma {
     id?: boolean
     dateCreated?: boolean
     createdById?: boolean
-    public?: boolean
+    isPublic?: boolean
     ExcludedChallengeModifiers?: boolean | ModifierPack$ExcludedChallengeModifiersArgs<ExtArgs>
     ExcludedModifierOptions?: boolean | ModifierPack$ExcludedModifierOptionsArgs<ExtArgs>
     EncludedCustomChallengeModifiers?: boolean | ModifierPack$EncludedCustomChallengeModifiersArgs<ExtArgs>
@@ -10380,7 +10380,7 @@ export namespace Prisma {
     id?: boolean
     dateCreated?: boolean
     createdById?: boolean
-    public?: boolean
+    isPublic?: boolean
   }
 
   export type ModifierPackInclude<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
@@ -11278,7 +11278,7 @@ export namespace Prisma {
     rerollTokensSpentDuringPart2Limited: 'rerollTokensSpentDuringPart2Limited',
     repositoryLink: 'repositoryLink',
     progressSheetLink: 'progressSheetLink',
-    public: 'public',
+    isPublic: 'isPublic',
     publicProfileId: 'publicProfileId',
     score: 'score',
     rankId: 'rankId',
@@ -11329,7 +11329,7 @@ export namespace Prisma {
     explanatoryUrl: 'explanatoryUrl',
     standard: 'standard',
     createdById: 'createdById',
-    public: 'public'
+    isPublic: 'isPublic'
   };
 
   export type ChallengeModifierScalarFieldEnum = (typeof ChallengeModifierScalarFieldEnum)[keyof typeof ChallengeModifierScalarFieldEnum]
@@ -11344,7 +11344,7 @@ export namespace Prisma {
     explanatoryUrl: 'explanatoryUrl',
     standard: 'standard',
     createdById: 'createdById',
-    public: 'public'
+    isPublic: 'isPublic'
   };
 
   export type ModifierOptionScalarFieldEnum = (typeof ModifierOptionScalarFieldEnum)[keyof typeof ModifierOptionScalarFieldEnum]
@@ -11354,7 +11354,7 @@ export namespace Prisma {
     id: 'id',
     dateCreated: 'dateCreated',
     createdById: 'createdById',
-    public: 'public'
+    isPublic: 'isPublic'
   };
 
   export type ModifierPackScalarFieldEnum = (typeof ModifierPackScalarFieldEnum)[keyof typeof ModifierPackScalarFieldEnum]
@@ -11522,7 +11522,7 @@ export namespace Prisma {
     rerollTokensSpentDuringPart2Limited?: IntFilter | number
     repositoryLink?: StringNullableFilter | string | null
     progressSheetLink?: StringNullableFilter | string | null
-    public?: BoolFilter | boolean
+    isPublic?: BoolFilter | boolean
     publicProfileId?: IntNullableFilter | number | null
     score?: IntFilter | number
     rankId?: IntNullableFilter | number | null
@@ -11549,7 +11549,7 @@ export namespace Prisma {
     rerollTokensSpentDuringPart2Limited?: SortOrder
     repositoryLink?: SortOrderInput | SortOrder
     progressSheetLink?: SortOrderInput | SortOrder
-    public?: SortOrder
+    isPublic?: SortOrder
     publicProfileId?: SortOrderInput | SortOrder
     score?: SortOrder
     rankId?: SortOrderInput | SortOrder
@@ -11580,7 +11580,7 @@ export namespace Prisma {
     rerollTokensSpentDuringPart2Limited?: SortOrder
     repositoryLink?: SortOrderInput | SortOrder
     progressSheetLink?: SortOrderInput | SortOrder
-    public?: SortOrder
+    isPublic?: SortOrder
     publicProfileId?: SortOrderInput | SortOrder
     score?: SortOrder
     rankId?: SortOrderInput | SortOrder
@@ -11611,7 +11611,7 @@ export namespace Prisma {
     rerollTokensSpentDuringPart2Limited?: IntWithAggregatesFilter | number
     repositoryLink?: StringNullableWithAggregatesFilter | string | null
     progressSheetLink?: StringNullableWithAggregatesFilter | string | null
-    public?: BoolWithAggregatesFilter | boolean
+    isPublic?: BoolWithAggregatesFilter | boolean
     publicProfileId?: IntNullableWithAggregatesFilter | number | null
     score?: IntWithAggregatesFilter | number
     rankId?: IntNullableWithAggregatesFilter | number | null
@@ -11785,7 +11785,7 @@ export namespace Prisma {
     explanatoryUrl?: StringNullableFilter | string | null
     standard?: BoolFilter | boolean
     createdById?: StringNullableFilter | string | null
-    public?: BoolFilter | boolean
+    isPublic?: BoolFilter | boolean
     CreatedBy?: XOR<UserRelationFilter, UserWhereInput> | null
     ModifierOption?: ModifierOptionListRelationFilter
     Day?: DayListRelationFilter
@@ -11807,7 +11807,7 @@ export namespace Prisma {
     explanatoryUrl?: SortOrderInput | SortOrder
     standard?: SortOrder
     createdById?: SortOrderInput | SortOrder
-    public?: SortOrder
+    isPublic?: SortOrder
     CreatedBy?: UserOrderByWithRelationInput
     ModifierOption?: ModifierOptionOrderByRelationAggregateInput
     Day?: DayOrderByRelationAggregateInput
@@ -11834,7 +11834,7 @@ export namespace Prisma {
     explanatoryUrl?: SortOrderInput | SortOrder
     standard?: SortOrder
     createdById?: SortOrderInput | SortOrder
-    public?: SortOrder
+    isPublic?: SortOrder
     _count?: ChallengeModifierCountOrderByAggregateInput
     _avg?: ChallengeModifierAvgOrderByAggregateInput
     _max?: ChallengeModifierMaxOrderByAggregateInput
@@ -11854,7 +11854,7 @@ export namespace Prisma {
     explanatoryUrl?: StringNullableWithAggregatesFilter | string | null
     standard?: BoolWithAggregatesFilter | boolean
     createdById?: StringNullableWithAggregatesFilter | string | null
-    public?: BoolWithAggregatesFilter | boolean
+    isPublic?: BoolWithAggregatesFilter | boolean
   }
 
   export type ModifierOptionWhereInput = {
@@ -11869,7 +11869,7 @@ export namespace Prisma {
     explanatoryUrl?: StringNullableFilter | string | null
     standard?: BoolFilter | boolean
     createdById?: StringNullableFilter | string | null
-    public?: BoolFilter | boolean
+    isPublic?: BoolFilter | boolean
     ChallengeModifier?: XOR<ChallengeModifierRelationFilter, ChallengeModifierWhereInput>
     CreatedBy?: XOR<UserRelationFilter, UserWhereInput> | null
     Day?: DayListRelationFilter
@@ -11891,7 +11891,7 @@ export namespace Prisma {
     explanatoryUrl?: SortOrderInput | SortOrder
     standard?: SortOrder
     createdById?: SortOrderInput | SortOrder
-    public?: SortOrder
+    isPublic?: SortOrder
     ChallengeModifier?: ChallengeModifierOrderByWithRelationInput
     CreatedBy?: UserOrderByWithRelationInput
     Day?: DayOrderByRelationAggregateInput
@@ -11918,7 +11918,7 @@ export namespace Prisma {
     explanatoryUrl?: SortOrderInput | SortOrder
     standard?: SortOrder
     createdById?: SortOrderInput | SortOrder
-    public?: SortOrder
+    isPublic?: SortOrder
     _count?: ModifierOptionCountOrderByAggregateInput
     _avg?: ModifierOptionAvgOrderByAggregateInput
     _max?: ModifierOptionMaxOrderByAggregateInput
@@ -11938,7 +11938,7 @@ export namespace Prisma {
     explanatoryUrl?: StringNullableWithAggregatesFilter | string | null
     standard?: BoolWithAggregatesFilter | boolean
     createdById?: StringNullableWithAggregatesFilter | string | null
-    public?: BoolWithAggregatesFilter | boolean
+    isPublic?: BoolWithAggregatesFilter | boolean
   }
 
   export type ModifierPackWhereInput = {
@@ -11948,7 +11948,7 @@ export namespace Prisma {
     id?: IntFilter | number
     dateCreated?: DateTimeFilter | Date | string
     createdById?: StringNullableFilter | string | null
-    public?: BoolFilter | boolean
+    isPublic?: BoolFilter | boolean
     ExcludedChallengeModifiers?: ChallengeModifierListRelationFilter
     ExcludedModifierOptions?: ModifierOptionListRelationFilter
     EncludedCustomChallengeModifiers?: ChallengeModifierListRelationFilter
@@ -11960,7 +11960,7 @@ export namespace Prisma {
     id?: SortOrder
     dateCreated?: SortOrder
     createdById?: SortOrderInput | SortOrder
-    public?: SortOrder
+    isPublic?: SortOrder
     ExcludedChallengeModifiers?: ChallengeModifierOrderByRelationAggregateInput
     ExcludedModifierOptions?: ModifierOptionOrderByRelationAggregateInput
     EncludedCustomChallengeModifiers?: ChallengeModifierOrderByRelationAggregateInput
@@ -11976,7 +11976,7 @@ export namespace Prisma {
     id?: SortOrder
     dateCreated?: SortOrder
     createdById?: SortOrderInput | SortOrder
-    public?: SortOrder
+    isPublic?: SortOrder
     _count?: ModifierPackCountOrderByAggregateInput
     _avg?: ModifierPackAvgOrderByAggregateInput
     _max?: ModifierPackMaxOrderByAggregateInput
@@ -11991,7 +11991,7 @@ export namespace Prisma {
     id?: IntWithAggregatesFilter | number
     dateCreated?: DateTimeWithAggregatesFilter | Date | string
     createdById?: StringNullableWithAggregatesFilter | string | null
-    public?: BoolWithAggregatesFilter | boolean
+    isPublic?: BoolWithAggregatesFilter | boolean
   }
 
   export type UserCreateInput = {
@@ -12149,7 +12149,7 @@ export namespace Prisma {
     rerollTokensSpentDuringPart2Limited?: number
     repositoryLink?: string | null
     progressSheetLink?: string | null
-    public?: boolean
+    isPublic?: boolean
     score?: number
     dateCompleted?: Date | string | null
     User: UserCreateNestedOneWithoutGameInput
@@ -12174,7 +12174,7 @@ export namespace Prisma {
     rerollTokensSpentDuringPart2Limited?: number
     repositoryLink?: string | null
     progressSheetLink?: string | null
-    public?: boolean
+    isPublic?: boolean
     publicProfileId?: number | null
     score?: number
     rankId?: number | null
@@ -12196,7 +12196,7 @@ export namespace Prisma {
     rerollTokensSpentDuringPart2Limited?: IntFieldUpdateOperationsInput | number
     repositoryLink?: NullableStringFieldUpdateOperationsInput | string | null
     progressSheetLink?: NullableStringFieldUpdateOperationsInput | string | null
-    public?: BoolFieldUpdateOperationsInput | boolean
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
     score?: IntFieldUpdateOperationsInput | number
     dateCompleted?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     User?: UserUpdateOneRequiredWithoutGameNestedInput
@@ -12221,7 +12221,7 @@ export namespace Prisma {
     rerollTokensSpentDuringPart2Limited?: IntFieldUpdateOperationsInput | number
     repositoryLink?: NullableStringFieldUpdateOperationsInput | string | null
     progressSheetLink?: NullableStringFieldUpdateOperationsInput | string | null
-    public?: BoolFieldUpdateOperationsInput | boolean
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
     publicProfileId?: NullableIntFieldUpdateOperationsInput | number | null
     score?: IntFieldUpdateOperationsInput | number
     rankId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -12245,7 +12245,7 @@ export namespace Prisma {
     rerollTokensSpentDuringPart2Limited?: number
     repositoryLink?: string | null
     progressSheetLink?: string | null
-    public?: boolean
+    isPublic?: boolean
     publicProfileId?: number | null
     score?: number
     rankId?: number | null
@@ -12266,7 +12266,7 @@ export namespace Prisma {
     rerollTokensSpentDuringPart2Limited?: IntFieldUpdateOperationsInput | number
     repositoryLink?: NullableStringFieldUpdateOperationsInput | string | null
     progressSheetLink?: NullableStringFieldUpdateOperationsInput | string | null
-    public?: BoolFieldUpdateOperationsInput | boolean
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
     score?: IntFieldUpdateOperationsInput | number
     dateCompleted?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
@@ -12287,7 +12287,7 @@ export namespace Prisma {
     rerollTokensSpentDuringPart2Limited?: IntFieldUpdateOperationsInput | number
     repositoryLink?: NullableStringFieldUpdateOperationsInput | string | null
     progressSheetLink?: NullableStringFieldUpdateOperationsInput | string | null
-    public?: BoolFieldUpdateOperationsInput | boolean
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
     publicProfileId?: NullableIntFieldUpdateOperationsInput | number | null
     score?: IntFieldUpdateOperationsInput | number
     rankId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -12492,7 +12492,7 @@ export namespace Prisma {
     hasOptions?: boolean
     explanatoryUrl?: string | null
     standard?: boolean
-    public?: boolean
+    isPublic?: boolean
     CreatedBy?: UserCreateNestedOneWithoutChallengeModifierInput
     ModifierOption?: ModifierOptionCreateNestedManyWithoutChallengeModifierInput
     Day?: DayCreateNestedManyWithoutChallengeModifierInput
@@ -12514,7 +12514,7 @@ export namespace Prisma {
     explanatoryUrl?: string | null
     standard?: boolean
     createdById?: string | null
-    public?: boolean
+    isPublic?: boolean
     ModifierOption?: ModifierOptionUncheckedCreateNestedManyWithoutChallengeModifierInput
     Day?: DayUncheckedCreateNestedManyWithoutChallengeModifierInput
     ModifierPackExcluded?: ModifierPackUncheckedCreateNestedManyWithoutExcludedChallengeModifiersInput
@@ -12533,7 +12533,7 @@ export namespace Prisma {
     hasOptions?: BoolFieldUpdateOperationsInput | boolean
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
-    public?: BoolFieldUpdateOperationsInput | boolean
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
     CreatedBy?: UserUpdateOneWithoutChallengeModifierNestedInput
     ModifierOption?: ModifierOptionUpdateManyWithoutChallengeModifierNestedInput
     Day?: DayUpdateManyWithoutChallengeModifierNestedInput
@@ -12555,7 +12555,7 @@ export namespace Prisma {
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
     createdById?: NullableStringFieldUpdateOperationsInput | string | null
-    public?: BoolFieldUpdateOperationsInput | boolean
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
     ModifierOption?: ModifierOptionUncheckedUpdateManyWithoutChallengeModifierNestedInput
     Day?: DayUncheckedUpdateManyWithoutChallengeModifierNestedInput
     ModifierPackExcluded?: ModifierPackUncheckedUpdateManyWithoutExcludedChallengeModifiersNestedInput
@@ -12576,7 +12576,7 @@ export namespace Prisma {
     explanatoryUrl?: string | null
     standard?: boolean
     createdById?: string | null
-    public?: boolean
+    isPublic?: boolean
   }
 
   export type ChallengeModifierUpdateManyMutationInput = {
@@ -12586,7 +12586,7 @@ export namespace Prisma {
     hasOptions?: BoolFieldUpdateOperationsInput | boolean
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
-    public?: BoolFieldUpdateOperationsInput | boolean
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type ChallengeModifierUncheckedUpdateManyInput = {
@@ -12598,7 +12598,7 @@ export namespace Prisma {
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
     createdById?: NullableStringFieldUpdateOperationsInput | string | null
-    public?: BoolFieldUpdateOperationsInput | boolean
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type ModifierOptionCreateInput = {
@@ -12607,7 +12607,7 @@ export namespace Prisma {
     text: string
     explanatoryUrl?: string | null
     standard?: boolean
-    public?: boolean
+    isPublic?: boolean
     ChallengeModifier: ChallengeModifierCreateNestedOneWithoutModifierOptionInput
     CreatedBy?: UserCreateNestedOneWithoutModifierOptionInput
     Day?: DayCreateNestedManyWithoutModifierOptionInput
@@ -12629,7 +12629,7 @@ export namespace Prisma {
     explanatoryUrl?: string | null
     standard?: boolean
     createdById?: string | null
-    public?: boolean
+    isPublic?: boolean
     Day?: DayUncheckedCreateNestedManyWithoutModifierOptionInput
     ModifierPackExcluded?: ModifierPackUncheckedCreateNestedManyWithoutExcludedModifierOptionsInput
     ModifierPackIncluded?: ModifierPackUncheckedCreateNestedManyWithoutIncludedCustomModifierOptionsInput
@@ -12646,7 +12646,7 @@ export namespace Prisma {
     text?: StringFieldUpdateOperationsInput | string
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
-    public?: BoolFieldUpdateOperationsInput | boolean
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
     ChallengeModifier?: ChallengeModifierUpdateOneRequiredWithoutModifierOptionNestedInput
     CreatedBy?: UserUpdateOneWithoutModifierOptionNestedInput
     Day?: DayUpdateManyWithoutModifierOptionNestedInput
@@ -12668,7 +12668,7 @@ export namespace Prisma {
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
     createdById?: NullableStringFieldUpdateOperationsInput | string | null
-    public?: BoolFieldUpdateOperationsInput | boolean
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
     Day?: DayUncheckedUpdateManyWithoutModifierOptionNestedInput
     ModifierPackExcluded?: ModifierPackUncheckedUpdateManyWithoutExcludedModifierOptionsNestedInput
     ModifierPackIncluded?: ModifierPackUncheckedUpdateManyWithoutIncludedCustomModifierOptionsNestedInput
@@ -12688,7 +12688,7 @@ export namespace Prisma {
     explanatoryUrl?: string | null
     standard?: boolean
     createdById?: string | null
-    public?: boolean
+    isPublic?: boolean
   }
 
   export type ModifierOptionUpdateManyMutationInput = {
@@ -12697,7 +12697,7 @@ export namespace Prisma {
     text?: StringFieldUpdateOperationsInput | string
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
-    public?: BoolFieldUpdateOperationsInput | boolean
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type ModifierOptionUncheckedUpdateManyInput = {
@@ -12709,12 +12709,12 @@ export namespace Prisma {
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
     createdById?: NullableStringFieldUpdateOperationsInput | string | null
-    public?: BoolFieldUpdateOperationsInput | boolean
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type ModifierPackCreateInput = {
     dateCreated?: Date | string
-    public?: boolean
+    isPublic?: boolean
     ExcludedChallengeModifiers?: ChallengeModifierCreateNestedManyWithoutModifierPackExcludedInput
     ExcludedModifierOptions?: ModifierOptionCreateNestedManyWithoutModifierPackExcludedInput
     EncludedCustomChallengeModifiers?: ChallengeModifierCreateNestedManyWithoutModifierPackIncludedInput
@@ -12726,7 +12726,7 @@ export namespace Prisma {
     id?: number
     dateCreated?: Date | string
     createdById?: string | null
-    public?: boolean
+    isPublic?: boolean
     ExcludedChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutModifierPackExcludedInput
     ExcludedModifierOptions?: ModifierOptionUncheckedCreateNestedManyWithoutModifierPackExcludedInput
     EncludedCustomChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutModifierPackIncludedInput
@@ -12735,7 +12735,7 @@ export namespace Prisma {
 
   export type ModifierPackUpdateInput = {
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    public?: BoolFieldUpdateOperationsInput | boolean
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
     ExcludedChallengeModifiers?: ChallengeModifierUpdateManyWithoutModifierPackExcludedNestedInput
     ExcludedModifierOptions?: ModifierOptionUpdateManyWithoutModifierPackExcludedNestedInput
     EncludedCustomChallengeModifiers?: ChallengeModifierUpdateManyWithoutModifierPackIncludedNestedInput
@@ -12747,7 +12747,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     createdById?: NullableStringFieldUpdateOperationsInput | string | null
-    public?: BoolFieldUpdateOperationsInput | boolean
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
     ExcludedChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutModifierPackExcludedNestedInput
     ExcludedModifierOptions?: ModifierOptionUncheckedUpdateManyWithoutModifierPackExcludedNestedInput
     EncludedCustomChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutModifierPackIncludedNestedInput
@@ -12758,19 +12758,19 @@ export namespace Prisma {
     id?: number
     dateCreated?: Date | string
     createdById?: string | null
-    public?: boolean
+    isPublic?: boolean
   }
 
   export type ModifierPackUpdateManyMutationInput = {
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    public?: BoolFieldUpdateOperationsInput | boolean
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type ModifierPackUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     createdById?: NullableStringFieldUpdateOperationsInput | string | null
-    public?: BoolFieldUpdateOperationsInput | boolean
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type StringFilter = {
@@ -13075,7 +13075,7 @@ export namespace Prisma {
     rerollTokensSpentDuringPart2Limited?: SortOrder
     repositoryLink?: SortOrder
     progressSheetLink?: SortOrder
-    public?: SortOrder
+    isPublic?: SortOrder
     publicProfileId?: SortOrder
     score?: SortOrder
     rankId?: SortOrder
@@ -13112,7 +13112,7 @@ export namespace Prisma {
     rerollTokensSpentDuringPart2Limited?: SortOrder
     repositoryLink?: SortOrder
     progressSheetLink?: SortOrder
-    public?: SortOrder
+    isPublic?: SortOrder
     publicProfileId?: SortOrder
     score?: SortOrder
     rankId?: SortOrder
@@ -13135,7 +13135,7 @@ export namespace Prisma {
     rerollTokensSpentDuringPart2Limited?: SortOrder
     repositoryLink?: SortOrder
     progressSheetLink?: SortOrder
-    public?: SortOrder
+    isPublic?: SortOrder
     publicProfileId?: SortOrder
     score?: SortOrder
     rankId?: SortOrder
@@ -13346,7 +13346,7 @@ export namespace Prisma {
     explanatoryUrl?: SortOrder
     standard?: SortOrder
     createdById?: SortOrder
-    public?: SortOrder
+    isPublic?: SortOrder
   }
 
   export type ChallengeModifierAvgOrderByAggregateInput = {
@@ -13362,7 +13362,7 @@ export namespace Prisma {
     explanatoryUrl?: SortOrder
     standard?: SortOrder
     createdById?: SortOrder
-    public?: SortOrder
+    isPublic?: SortOrder
   }
 
   export type ChallengeModifierMinOrderByAggregateInput = {
@@ -13374,7 +13374,7 @@ export namespace Prisma {
     explanatoryUrl?: SortOrder
     standard?: SortOrder
     createdById?: SortOrder
-    public?: SortOrder
+    isPublic?: SortOrder
   }
 
   export type ChallengeModifierSumOrderByAggregateInput = {
@@ -13390,7 +13390,7 @@ export namespace Prisma {
     explanatoryUrl?: SortOrder
     standard?: SortOrder
     createdById?: SortOrder
-    public?: SortOrder
+    isPublic?: SortOrder
   }
 
   export type ModifierOptionAvgOrderByAggregateInput = {
@@ -13407,7 +13407,7 @@ export namespace Prisma {
     explanatoryUrl?: SortOrder
     standard?: SortOrder
     createdById?: SortOrder
-    public?: SortOrder
+    isPublic?: SortOrder
   }
 
   export type ModifierOptionMinOrderByAggregateInput = {
@@ -13419,7 +13419,7 @@ export namespace Prisma {
     explanatoryUrl?: SortOrder
     standard?: SortOrder
     createdById?: SortOrder
-    public?: SortOrder
+    isPublic?: SortOrder
   }
 
   export type ModifierOptionSumOrderByAggregateInput = {
@@ -13431,7 +13431,7 @@ export namespace Prisma {
     id?: SortOrder
     dateCreated?: SortOrder
     createdById?: SortOrder
-    public?: SortOrder
+    isPublic?: SortOrder
   }
 
   export type ModifierPackAvgOrderByAggregateInput = {
@@ -13442,14 +13442,14 @@ export namespace Prisma {
     id?: SortOrder
     dateCreated?: SortOrder
     createdById?: SortOrder
-    public?: SortOrder
+    isPublic?: SortOrder
   }
 
   export type ModifierPackMinOrderByAggregateInput = {
     id?: SortOrder
     dateCreated?: SortOrder
     createdById?: SortOrder
-    public?: SortOrder
+    isPublic?: SortOrder
   }
 
   export type ModifierPackSumOrderByAggregateInput = {
@@ -15365,7 +15365,7 @@ export namespace Prisma {
     rerollTokensSpentDuringPart2Limited?: number
     repositoryLink?: string | null
     progressSheetLink?: string | null
-    public?: boolean
+    isPublic?: boolean
     score?: number
     dateCompleted?: Date | string | null
     Rank?: RankCreateNestedOneWithoutGameInput
@@ -15388,7 +15388,7 @@ export namespace Prisma {
     rerollTokensSpentDuringPart2Limited?: number
     repositoryLink?: string | null
     progressSheetLink?: string | null
-    public?: boolean
+    isPublic?: boolean
     publicProfileId?: number | null
     score?: number
     rankId?: number | null
@@ -15436,7 +15436,7 @@ export namespace Prisma {
     hasOptions?: boolean
     explanatoryUrl?: string | null
     standard?: boolean
-    public?: boolean
+    isPublic?: boolean
     ModifierOption?: ModifierOptionCreateNestedManyWithoutChallengeModifierInput
     Day?: DayCreateNestedManyWithoutChallengeModifierInput
     ModifierPackExcluded?: ModifierPackCreateNestedManyWithoutExcludedChallengeModifiersInput
@@ -15456,7 +15456,7 @@ export namespace Prisma {
     hasOptions?: boolean
     explanatoryUrl?: string | null
     standard?: boolean
-    public?: boolean
+    isPublic?: boolean
     ModifierOption?: ModifierOptionUncheckedCreateNestedManyWithoutChallengeModifierInput
     Day?: DayUncheckedCreateNestedManyWithoutChallengeModifierInput
     ModifierPackExcluded?: ModifierPackUncheckedCreateNestedManyWithoutExcludedChallengeModifiersInput
@@ -15484,7 +15484,7 @@ export namespace Prisma {
     text: string
     explanatoryUrl?: string | null
     standard?: boolean
-    public?: boolean
+    isPublic?: boolean
     ChallengeModifier: ChallengeModifierCreateNestedOneWithoutModifierOptionInput
     Day?: DayCreateNestedManyWithoutModifierOptionInput
     ModifierPackExcluded?: ModifierPackCreateNestedManyWithoutExcludedModifierOptionsInput
@@ -15504,7 +15504,7 @@ export namespace Prisma {
     text: string
     explanatoryUrl?: string | null
     standard?: boolean
-    public?: boolean
+    isPublic?: boolean
     Day?: DayUncheckedCreateNestedManyWithoutModifierOptionInput
     ModifierPackExcluded?: ModifierPackUncheckedCreateNestedManyWithoutExcludedModifierOptionsInput
     ModifierPackIncluded?: ModifierPackUncheckedCreateNestedManyWithoutIncludedCustomModifierOptionsInput
@@ -15532,7 +15532,7 @@ export namespace Prisma {
     hasOptions?: boolean
     explanatoryUrl?: string | null
     standard?: boolean
-    public?: boolean
+    isPublic?: boolean
     CreatedBy?: UserCreateNestedOneWithoutChallengeModifierInput
     ModifierOption?: ModifierOptionCreateNestedManyWithoutChallengeModifierInput
     Day?: DayCreateNestedManyWithoutChallengeModifierInput
@@ -15553,7 +15553,7 @@ export namespace Prisma {
     explanatoryUrl?: string | null
     standard?: boolean
     createdById?: string | null
-    public?: boolean
+    isPublic?: boolean
     ModifierOption?: ModifierOptionUncheckedCreateNestedManyWithoutChallengeModifierInput
     Day?: DayUncheckedCreateNestedManyWithoutChallengeModifierInput
     ModifierPackExcluded?: ModifierPackUncheckedCreateNestedManyWithoutExcludedChallengeModifiersInput
@@ -15575,7 +15575,7 @@ export namespace Prisma {
     text: string
     explanatoryUrl?: string | null
     standard?: boolean
-    public?: boolean
+    isPublic?: boolean
     ChallengeModifier: ChallengeModifierCreateNestedOneWithoutModifierOptionInput
     CreatedBy?: UserCreateNestedOneWithoutModifierOptionInput
     Day?: DayCreateNestedManyWithoutModifierOptionInput
@@ -15596,7 +15596,7 @@ export namespace Prisma {
     explanatoryUrl?: string | null
     standard?: boolean
     createdById?: string | null
-    public?: boolean
+    isPublic?: boolean
     Day?: DayUncheckedCreateNestedManyWithoutModifierOptionInput
     ModifierPackExcluded?: ModifierPackUncheckedCreateNestedManyWithoutExcludedModifierOptionsInput
     ModifierPackIncluded?: ModifierPackUncheckedCreateNestedManyWithoutIncludedCustomModifierOptionsInput
@@ -15618,7 +15618,7 @@ export namespace Prisma {
     hasOptions?: boolean
     explanatoryUrl?: string | null
     standard?: boolean
-    public?: boolean
+    isPublic?: boolean
     CreatedBy?: UserCreateNestedOneWithoutChallengeModifierInput
     ModifierOption?: ModifierOptionCreateNestedManyWithoutChallengeModifierInput
     Day?: DayCreateNestedManyWithoutChallengeModifierInput
@@ -15639,7 +15639,7 @@ export namespace Prisma {
     explanatoryUrl?: string | null
     standard?: boolean
     createdById?: string | null
-    public?: boolean
+    isPublic?: boolean
     ModifierOption?: ModifierOptionUncheckedCreateNestedManyWithoutChallengeModifierInput
     Day?: DayUncheckedCreateNestedManyWithoutChallengeModifierInput
     ModifierPackExcluded?: ModifierPackUncheckedCreateNestedManyWithoutExcludedChallengeModifiersInput
@@ -15661,7 +15661,7 @@ export namespace Prisma {
     text: string
     explanatoryUrl?: string | null
     standard?: boolean
-    public?: boolean
+    isPublic?: boolean
     ChallengeModifier: ChallengeModifierCreateNestedOneWithoutModifierOptionInput
     CreatedBy?: UserCreateNestedOneWithoutModifierOptionInput
     Day?: DayCreateNestedManyWithoutModifierOptionInput
@@ -15682,7 +15682,7 @@ export namespace Prisma {
     explanatoryUrl?: string | null
     standard?: boolean
     createdById?: string | null
-    public?: boolean
+    isPublic?: boolean
     Day?: DayUncheckedCreateNestedManyWithoutModifierOptionInput
     ModifierPackExcluded?: ModifierPackUncheckedCreateNestedManyWithoutExcludedModifierOptionsInput
     ModifierPackIncluded?: ModifierPackUncheckedCreateNestedManyWithoutIncludedCustomModifierOptionsInput
@@ -15699,7 +15699,7 @@ export namespace Prisma {
 
   export type ModifierPackCreateWithoutCreatedByInput = {
     dateCreated?: Date | string
-    public?: boolean
+    isPublic?: boolean
     ExcludedChallengeModifiers?: ChallengeModifierCreateNestedManyWithoutModifierPackExcludedInput
     ExcludedModifierOptions?: ModifierOptionCreateNestedManyWithoutModifierPackExcludedInput
     EncludedCustomChallengeModifiers?: ChallengeModifierCreateNestedManyWithoutModifierPackIncludedInput
@@ -15709,7 +15709,7 @@ export namespace Prisma {
   export type ModifierPackUncheckedCreateWithoutCreatedByInput = {
     id?: number
     dateCreated?: Date | string
-    public?: boolean
+    isPublic?: boolean
     ExcludedChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutModifierPackExcludedInput
     ExcludedModifierOptions?: ModifierOptionUncheckedCreateNestedManyWithoutModifierPackExcludedInput
     EncludedCustomChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutModifierPackIncludedInput
@@ -15761,7 +15761,7 @@ export namespace Prisma {
     rerollTokensSpentDuringPart2Limited?: IntFilter | number
     repositoryLink?: StringNullableFilter | string | null
     progressSheetLink?: StringNullableFilter | string | null
-    public?: BoolFilter | boolean
+    isPublic?: BoolFilter | boolean
     publicProfileId?: IntNullableFilter | number | null
     score?: IntFilter | number
     rankId?: IntNullableFilter | number | null
@@ -15822,7 +15822,7 @@ export namespace Prisma {
     explanatoryUrl?: StringNullableFilter | string | null
     standard?: BoolFilter | boolean
     createdById?: StringNullableFilter | string | null
-    public?: BoolFilter | boolean
+    isPublic?: BoolFilter | boolean
   }
 
   export type ModifierOptionUpsertWithWhereUniqueWithoutCreatedByInput = {
@@ -15853,7 +15853,7 @@ export namespace Prisma {
     explanatoryUrl?: StringNullableFilter | string | null
     standard?: BoolFilter | boolean
     createdById?: StringNullableFilter | string | null
-    public?: BoolFilter | boolean
+    isPublic?: BoolFilter | boolean
   }
 
   export type ChallengeModifierUpsertWithWhereUniqueWithoutUserExcludedInput = {
@@ -15943,7 +15943,7 @@ export namespace Prisma {
     id?: IntFilter | number
     dateCreated?: DateTimeFilter | Date | string
     createdById?: StringNullableFilter | string | null
-    public?: BoolFilter | boolean
+    isPublic?: BoolFilter | boolean
   }
 
   export type UserCreateWithoutPublicProfileInput = {
@@ -15997,7 +15997,7 @@ export namespace Prisma {
     rerollTokensSpentDuringPart2Limited?: number
     repositoryLink?: string | null
     progressSheetLink?: string | null
-    public?: boolean
+    isPublic?: boolean
     score?: number
     dateCompleted?: Date | string | null
     User: UserCreateNestedOneWithoutGameInput
@@ -16021,7 +16021,7 @@ export namespace Prisma {
     rerollTokensSpentDuringPart2Limited?: number
     repositoryLink?: string | null
     progressSheetLink?: string | null
-    public?: boolean
+    isPublic?: boolean
     score?: number
     rankId?: number | null
     dateCompleted?: Date | string | null
@@ -16341,7 +16341,7 @@ export namespace Prisma {
     rerollTokensSpentDuringPart2Limited?: number
     repositoryLink?: string | null
     progressSheetLink?: string | null
-    public?: boolean
+    isPublic?: boolean
     score?: number
     dateCompleted?: Date | string | null
     User: UserCreateNestedOneWithoutGameInput
@@ -16365,7 +16365,7 @@ export namespace Prisma {
     rerollTokensSpentDuringPart2Limited?: number
     repositoryLink?: string | null
     progressSheetLink?: string | null
-    public?: boolean
+    isPublic?: boolean
     publicProfileId?: number | null
     score?: number
     dateCompleted?: Date | string | null
@@ -16405,7 +16405,7 @@ export namespace Prisma {
     hasOptions?: boolean
     explanatoryUrl?: string | null
     standard?: boolean
-    public?: boolean
+    isPublic?: boolean
     CreatedBy?: UserCreateNestedOneWithoutChallengeModifierInput
     ModifierOption?: ModifierOptionCreateNestedManyWithoutChallengeModifierInput
     Day?: DayCreateNestedManyWithoutChallengeModifierInput
@@ -16426,7 +16426,7 @@ export namespace Prisma {
     explanatoryUrl?: string | null
     standard?: boolean
     createdById?: string | null
-    public?: boolean
+    isPublic?: boolean
     ModifierOption?: ModifierOptionUncheckedCreateNestedManyWithoutChallengeModifierInput
     Day?: DayUncheckedCreateNestedManyWithoutChallengeModifierInput
     ModifierPackExcluded?: ModifierPackUncheckedCreateNestedManyWithoutExcludedChallengeModifiersInput
@@ -16448,7 +16448,7 @@ export namespace Prisma {
     text: string
     explanatoryUrl?: string | null
     standard?: boolean
-    public?: boolean
+    isPublic?: boolean
     ChallengeModifier: ChallengeModifierCreateNestedOneWithoutModifierOptionInput
     CreatedBy?: UserCreateNestedOneWithoutModifierOptionInput
     Day?: DayCreateNestedManyWithoutModifierOptionInput
@@ -16469,7 +16469,7 @@ export namespace Prisma {
     explanatoryUrl?: string | null
     standard?: boolean
     createdById?: string | null
-    public?: boolean
+    isPublic?: boolean
     Day?: DayUncheckedCreateNestedManyWithoutModifierOptionInput
     ModifierPackExcluded?: ModifierPackUncheckedCreateNestedManyWithoutExcludedModifierOptionsInput
     ModifierPackIncluded?: ModifierPackUncheckedCreateNestedManyWithoutIncludedCustomModifierOptionsInput
@@ -16491,7 +16491,7 @@ export namespace Prisma {
     hasOptions?: boolean
     explanatoryUrl?: string | null
     standard?: boolean
-    public?: boolean
+    isPublic?: boolean
     CreatedBy?: UserCreateNestedOneWithoutChallengeModifierInput
     ModifierOption?: ModifierOptionCreateNestedManyWithoutChallengeModifierInput
     Day?: DayCreateNestedManyWithoutChallengeModifierInput
@@ -16512,7 +16512,7 @@ export namespace Prisma {
     explanatoryUrl?: string | null
     standard?: boolean
     createdById?: string | null
-    public?: boolean
+    isPublic?: boolean
     ModifierOption?: ModifierOptionUncheckedCreateNestedManyWithoutChallengeModifierInput
     Day?: DayUncheckedCreateNestedManyWithoutChallengeModifierInput
     ModifierPackExcluded?: ModifierPackUncheckedCreateNestedManyWithoutExcludedChallengeModifiersInput
@@ -16534,7 +16534,7 @@ export namespace Prisma {
     text: string
     explanatoryUrl?: string | null
     standard?: boolean
-    public?: boolean
+    isPublic?: boolean
     ChallengeModifier: ChallengeModifierCreateNestedOneWithoutModifierOptionInput
     CreatedBy?: UserCreateNestedOneWithoutModifierOptionInput
     Day?: DayCreateNestedManyWithoutModifierOptionInput
@@ -16555,7 +16555,7 @@ export namespace Prisma {
     explanatoryUrl?: string | null
     standard?: boolean
     createdById?: string | null
-    public?: boolean
+    isPublic?: boolean
     Day?: DayUncheckedCreateNestedManyWithoutModifierOptionInput
     ModifierPackExcluded?: ModifierPackUncheckedCreateNestedManyWithoutExcludedModifierOptionsInput
     ModifierPackIncluded?: ModifierPackUncheckedCreateNestedManyWithoutIncludedCustomModifierOptionsInput
@@ -16584,7 +16584,7 @@ export namespace Prisma {
     rerollTokensSpentDuringPart2Limited?: number
     repositoryLink?: string | null
     progressSheetLink?: string | null
-    public?: boolean
+    isPublic?: boolean
     score?: number
     dateCompleted?: Date | string | null
     User: UserCreateNestedOneWithoutGameInput
@@ -16608,7 +16608,7 @@ export namespace Prisma {
     rerollTokensSpentDuringPart2Limited?: number
     repositoryLink?: string | null
     progressSheetLink?: string | null
-    public?: boolean
+    isPublic?: boolean
     publicProfileId?: number | null
     score?: number
     rankId?: number | null
@@ -16627,7 +16627,7 @@ export namespace Prisma {
     hasOptions?: boolean
     explanatoryUrl?: string | null
     standard?: boolean
-    public?: boolean
+    isPublic?: boolean
     CreatedBy?: UserCreateNestedOneWithoutChallengeModifierInput
     ModifierOption?: ModifierOptionCreateNestedManyWithoutChallengeModifierInput
     Day?: DayCreateNestedManyWithoutChallengeModifierInput
@@ -16648,7 +16648,7 @@ export namespace Prisma {
     explanatoryUrl?: string | null
     standard?: boolean
     createdById?: string | null
-    public?: boolean
+    isPublic?: boolean
     ModifierOption?: ModifierOptionUncheckedCreateNestedManyWithoutChallengeModifierInput
     Day?: DayUncheckedCreateNestedManyWithoutChallengeModifierInput
     ModifierPackExcluded?: ModifierPackUncheckedCreateNestedManyWithoutExcludedChallengeModifiersInput
@@ -16670,7 +16670,7 @@ export namespace Prisma {
     text: string
     explanatoryUrl?: string | null
     standard?: boolean
-    public?: boolean
+    isPublic?: boolean
     ChallengeModifier: ChallengeModifierCreateNestedOneWithoutModifierOptionInput
     CreatedBy?: UserCreateNestedOneWithoutModifierOptionInput
     Day?: DayCreateNestedManyWithoutModifierOptionInput
@@ -16691,7 +16691,7 @@ export namespace Prisma {
     explanatoryUrl?: string | null
     standard?: boolean
     createdById?: string | null
-    public?: boolean
+    isPublic?: boolean
     Day?: DayUncheckedCreateNestedManyWithoutModifierOptionInput
     ModifierPackExcluded?: ModifierPackUncheckedCreateNestedManyWithoutExcludedModifierOptionsInput
     ModifierPackIncluded?: ModifierPackUncheckedCreateNestedManyWithoutIncludedCustomModifierOptionsInput
@@ -16713,7 +16713,7 @@ export namespace Prisma {
     hasOptions?: boolean
     explanatoryUrl?: string | null
     standard?: boolean
-    public?: boolean
+    isPublic?: boolean
     CreatedBy?: UserCreateNestedOneWithoutChallengeModifierInput
     ModifierOption?: ModifierOptionCreateNestedManyWithoutChallengeModifierInput
     ModifierPackExcluded?: ModifierPackCreateNestedManyWithoutExcludedChallengeModifiersInput
@@ -16734,7 +16734,7 @@ export namespace Prisma {
     explanatoryUrl?: string | null
     standard?: boolean
     createdById?: string | null
-    public?: boolean
+    isPublic?: boolean
     ModifierOption?: ModifierOptionUncheckedCreateNestedManyWithoutChallengeModifierInput
     ModifierPackExcluded?: ModifierPackUncheckedCreateNestedManyWithoutExcludedChallengeModifiersInput
     ModifierPackIncluded?: ModifierPackUncheckedCreateNestedManyWithoutEncludedCustomChallengeModifiersInput
@@ -16756,7 +16756,7 @@ export namespace Prisma {
     text: string
     explanatoryUrl?: string | null
     standard?: boolean
-    public?: boolean
+    isPublic?: boolean
     ChallengeModifier: ChallengeModifierCreateNestedOneWithoutModifierOptionInput
     CreatedBy?: UserCreateNestedOneWithoutModifierOptionInput
     ModifierPackExcluded?: ModifierPackCreateNestedManyWithoutExcludedModifierOptionsInput
@@ -16777,7 +16777,7 @@ export namespace Prisma {
     explanatoryUrl?: string | null
     standard?: boolean
     createdById?: string | null
-    public?: boolean
+    isPublic?: boolean
     ModifierPackExcluded?: ModifierPackUncheckedCreateNestedManyWithoutExcludedModifierOptionsInput
     ModifierPackIncluded?: ModifierPackUncheckedCreateNestedManyWithoutIncludedCustomModifierOptionsInput
     UserExcluded?: UserUncheckedCreateNestedManyWithoutDefaultExcludedModifierOptionsInput
@@ -16875,7 +16875,7 @@ export namespace Prisma {
     rerollTokensSpentDuringPart2Limited?: IntFieldUpdateOperationsInput | number
     repositoryLink?: NullableStringFieldUpdateOperationsInput | string | null
     progressSheetLink?: NullableStringFieldUpdateOperationsInput | string | null
-    public?: BoolFieldUpdateOperationsInput | boolean
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
     score?: IntFieldUpdateOperationsInput | number
     dateCompleted?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     User?: UserUpdateOneRequiredWithoutGameNestedInput
@@ -16899,7 +16899,7 @@ export namespace Prisma {
     rerollTokensSpentDuringPart2Limited?: IntFieldUpdateOperationsInput | number
     repositoryLink?: NullableStringFieldUpdateOperationsInput | string | null
     progressSheetLink?: NullableStringFieldUpdateOperationsInput | string | null
-    public?: BoolFieldUpdateOperationsInput | boolean
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
     publicProfileId?: NullableIntFieldUpdateOperationsInput | number | null
     score?: IntFieldUpdateOperationsInput | number
     rankId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -16918,7 +16918,7 @@ export namespace Prisma {
     hasOptions?: BoolFieldUpdateOperationsInput | boolean
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
-    public?: BoolFieldUpdateOperationsInput | boolean
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
     CreatedBy?: UserUpdateOneWithoutChallengeModifierNestedInput
     ModifierOption?: ModifierOptionUpdateManyWithoutChallengeModifierNestedInput
     Day?: DayUpdateManyWithoutChallengeModifierNestedInput
@@ -16939,7 +16939,7 @@ export namespace Prisma {
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
     createdById?: NullableStringFieldUpdateOperationsInput | string | null
-    public?: BoolFieldUpdateOperationsInput | boolean
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
     ModifierOption?: ModifierOptionUncheckedUpdateManyWithoutChallengeModifierNestedInput
     Day?: DayUncheckedUpdateManyWithoutChallengeModifierNestedInput
     ModifierPackExcluded?: ModifierPackUncheckedUpdateManyWithoutExcludedChallengeModifiersNestedInput
@@ -16961,7 +16961,7 @@ export namespace Prisma {
     text?: StringFieldUpdateOperationsInput | string
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
-    public?: BoolFieldUpdateOperationsInput | boolean
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
     ChallengeModifier?: ChallengeModifierUpdateOneRequiredWithoutModifierOptionNestedInput
     CreatedBy?: UserUpdateOneWithoutModifierOptionNestedInput
     Day?: DayUpdateManyWithoutModifierOptionNestedInput
@@ -16982,7 +16982,7 @@ export namespace Prisma {
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
     createdById?: NullableStringFieldUpdateOperationsInput | string | null
-    public?: BoolFieldUpdateOperationsInput | boolean
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
     Day?: DayUncheckedUpdateManyWithoutModifierOptionNestedInput
     ModifierPackExcluded?: ModifierPackUncheckedUpdateManyWithoutExcludedModifierOptionsNestedInput
     ModifierPackIncluded?: ModifierPackUncheckedUpdateManyWithoutIncludedCustomModifierOptionsNestedInput
@@ -17004,7 +17004,7 @@ export namespace Prisma {
     hasOptions?: BoolFieldUpdateOperationsInput | boolean
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
-    public?: BoolFieldUpdateOperationsInput | boolean
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
     CreatedBy?: UserUpdateOneWithoutChallengeModifierNestedInput
     ModifierOption?: ModifierOptionUpdateManyWithoutChallengeModifierNestedInput
     ModifierPackExcluded?: ModifierPackUpdateManyWithoutExcludedChallengeModifiersNestedInput
@@ -17025,7 +17025,7 @@ export namespace Prisma {
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
     createdById?: NullableStringFieldUpdateOperationsInput | string | null
-    public?: BoolFieldUpdateOperationsInput | boolean
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
     ModifierOption?: ModifierOptionUncheckedUpdateManyWithoutChallengeModifierNestedInput
     ModifierPackExcluded?: ModifierPackUncheckedUpdateManyWithoutExcludedChallengeModifiersNestedInput
     ModifierPackIncluded?: ModifierPackUncheckedUpdateManyWithoutEncludedCustomChallengeModifiersNestedInput
@@ -17047,7 +17047,7 @@ export namespace Prisma {
     text?: StringFieldUpdateOperationsInput | string
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
-    public?: BoolFieldUpdateOperationsInput | boolean
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
     ChallengeModifier?: ChallengeModifierUpdateOneRequiredWithoutModifierOptionNestedInput
     CreatedBy?: UserUpdateOneWithoutModifierOptionNestedInput
     ModifierPackExcluded?: ModifierPackUpdateManyWithoutExcludedModifierOptionsNestedInput
@@ -17068,7 +17068,7 @@ export namespace Prisma {
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
     createdById?: NullableStringFieldUpdateOperationsInput | string | null
-    public?: BoolFieldUpdateOperationsInput | boolean
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
     ModifierPackExcluded?: ModifierPackUncheckedUpdateManyWithoutExcludedModifierOptionsNestedInput
     ModifierPackIncluded?: ModifierPackUncheckedUpdateManyWithoutIncludedCustomModifierOptionsNestedInput
     UserExcluded?: UserUncheckedUpdateManyWithoutDefaultExcludedModifierOptionsNestedInput
@@ -17121,7 +17121,7 @@ export namespace Prisma {
     text: string
     explanatoryUrl?: string | null
     standard?: boolean
-    public?: boolean
+    isPublic?: boolean
     CreatedBy?: UserCreateNestedOneWithoutModifierOptionInput
     Day?: DayCreateNestedManyWithoutModifierOptionInput
     ModifierPackExcluded?: ModifierPackCreateNestedManyWithoutExcludedModifierOptionsInput
@@ -17141,7 +17141,7 @@ export namespace Prisma {
     explanatoryUrl?: string | null
     standard?: boolean
     createdById?: string | null
-    public?: boolean
+    isPublic?: boolean
     Day?: DayUncheckedCreateNestedManyWithoutModifierOptionInput
     ModifierPackExcluded?: ModifierPackUncheckedCreateNestedManyWithoutExcludedModifierOptionsInput
     ModifierPackIncluded?: ModifierPackUncheckedCreateNestedManyWithoutIncludedCustomModifierOptionsInput
@@ -17219,7 +17219,7 @@ export namespace Prisma {
 
   export type ModifierPackCreateWithoutExcludedChallengeModifiersInput = {
     dateCreated?: Date | string
-    public?: boolean
+    isPublic?: boolean
     ExcludedModifierOptions?: ModifierOptionCreateNestedManyWithoutModifierPackExcludedInput
     EncludedCustomChallengeModifiers?: ChallengeModifierCreateNestedManyWithoutModifierPackIncludedInput
     IncludedCustomModifierOptions?: ModifierOptionCreateNestedManyWithoutModifierPackIncludedInput
@@ -17230,7 +17230,7 @@ export namespace Prisma {
     id?: number
     dateCreated?: Date | string
     createdById?: string | null
-    public?: boolean
+    isPublic?: boolean
     ExcludedModifierOptions?: ModifierOptionUncheckedCreateNestedManyWithoutModifierPackExcludedInput
     EncludedCustomChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutModifierPackIncludedInput
     IncludedCustomModifierOptions?: ModifierOptionUncheckedCreateNestedManyWithoutModifierPackIncludedInput
@@ -17243,7 +17243,7 @@ export namespace Prisma {
 
   export type ModifierPackCreateWithoutEncludedCustomChallengeModifiersInput = {
     dateCreated?: Date | string
-    public?: boolean
+    isPublic?: boolean
     ExcludedChallengeModifiers?: ChallengeModifierCreateNestedManyWithoutModifierPackExcludedInput
     ExcludedModifierOptions?: ModifierOptionCreateNestedManyWithoutModifierPackExcludedInput
     IncludedCustomModifierOptions?: ModifierOptionCreateNestedManyWithoutModifierPackIncludedInput
@@ -17254,7 +17254,7 @@ export namespace Prisma {
     id?: number
     dateCreated?: Date | string
     createdById?: string | null
-    public?: boolean
+    isPublic?: boolean
     ExcludedChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutModifierPackExcludedInput
     ExcludedModifierOptions?: ModifierOptionUncheckedCreateNestedManyWithoutModifierPackExcludedInput
     IncludedCustomModifierOptions?: ModifierOptionUncheckedCreateNestedManyWithoutModifierPackIncludedInput
@@ -17693,7 +17693,7 @@ export namespace Prisma {
     hasOptions?: boolean
     explanatoryUrl?: string | null
     standard?: boolean
-    public?: boolean
+    isPublic?: boolean
     CreatedBy?: UserCreateNestedOneWithoutChallengeModifierInput
     Day?: DayCreateNestedManyWithoutChallengeModifierInput
     ModifierPackExcluded?: ModifierPackCreateNestedManyWithoutExcludedChallengeModifiersInput
@@ -17714,7 +17714,7 @@ export namespace Prisma {
     explanatoryUrl?: string | null
     standard?: boolean
     createdById?: string | null
-    public?: boolean
+    isPublic?: boolean
     Day?: DayUncheckedCreateNestedManyWithoutChallengeModifierInput
     ModifierPackExcluded?: ModifierPackUncheckedCreateNestedManyWithoutExcludedChallengeModifiersInput
     ModifierPackIncluded?: ModifierPackUncheckedCreateNestedManyWithoutEncludedCustomChallengeModifiersInput
@@ -17824,7 +17824,7 @@ export namespace Prisma {
 
   export type ModifierPackCreateWithoutExcludedModifierOptionsInput = {
     dateCreated?: Date | string
-    public?: boolean
+    isPublic?: boolean
     ExcludedChallengeModifiers?: ChallengeModifierCreateNestedManyWithoutModifierPackExcludedInput
     EncludedCustomChallengeModifiers?: ChallengeModifierCreateNestedManyWithoutModifierPackIncludedInput
     IncludedCustomModifierOptions?: ModifierOptionCreateNestedManyWithoutModifierPackIncludedInput
@@ -17835,7 +17835,7 @@ export namespace Prisma {
     id?: number
     dateCreated?: Date | string
     createdById?: string | null
-    public?: boolean
+    isPublic?: boolean
     ExcludedChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutModifierPackExcludedInput
     EncludedCustomChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutModifierPackIncludedInput
     IncludedCustomModifierOptions?: ModifierOptionUncheckedCreateNestedManyWithoutModifierPackIncludedInput
@@ -17848,7 +17848,7 @@ export namespace Prisma {
 
   export type ModifierPackCreateWithoutIncludedCustomModifierOptionsInput = {
     dateCreated?: Date | string
-    public?: boolean
+    isPublic?: boolean
     ExcludedChallengeModifiers?: ChallengeModifierCreateNestedManyWithoutModifierPackExcludedInput
     ExcludedModifierOptions?: ModifierOptionCreateNestedManyWithoutModifierPackExcludedInput
     EncludedCustomChallengeModifiers?: ChallengeModifierCreateNestedManyWithoutModifierPackIncludedInput
@@ -17859,7 +17859,7 @@ export namespace Prisma {
     id?: number
     dateCreated?: Date | string
     createdById?: string | null
-    public?: boolean
+    isPublic?: boolean
     ExcludedChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutModifierPackExcludedInput
     ExcludedModifierOptions?: ModifierOptionUncheckedCreateNestedManyWithoutModifierPackExcludedInput
     EncludedCustomChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutModifierPackIncludedInput
@@ -18111,7 +18111,7 @@ export namespace Prisma {
     hasOptions?: BoolFieldUpdateOperationsInput | boolean
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
-    public?: BoolFieldUpdateOperationsInput | boolean
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
     CreatedBy?: UserUpdateOneWithoutChallengeModifierNestedInput
     Day?: DayUpdateManyWithoutChallengeModifierNestedInput
     ModifierPackExcluded?: ModifierPackUpdateManyWithoutExcludedChallengeModifiersNestedInput
@@ -18132,7 +18132,7 @@ export namespace Prisma {
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
     createdById?: NullableStringFieldUpdateOperationsInput | string | null
-    public?: BoolFieldUpdateOperationsInput | boolean
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
     Day?: DayUncheckedUpdateManyWithoutChallengeModifierNestedInput
     ModifierPackExcluded?: ModifierPackUncheckedUpdateManyWithoutExcludedChallengeModifiersNestedInput
     ModifierPackIncluded?: ModifierPackUncheckedUpdateManyWithoutEncludedCustomChallengeModifiersNestedInput
@@ -18315,7 +18315,7 @@ export namespace Prisma {
     hasOptions?: boolean
     explanatoryUrl?: string | null
     standard?: boolean
-    public?: boolean
+    isPublic?: boolean
     CreatedBy?: UserCreateNestedOneWithoutChallengeModifierInput
     ModifierOption?: ModifierOptionCreateNestedManyWithoutChallengeModifierInput
     Day?: DayCreateNestedManyWithoutChallengeModifierInput
@@ -18336,7 +18336,7 @@ export namespace Prisma {
     explanatoryUrl?: string | null
     standard?: boolean
     createdById?: string | null
-    public?: boolean
+    isPublic?: boolean
     ModifierOption?: ModifierOptionUncheckedCreateNestedManyWithoutChallengeModifierInput
     Day?: DayUncheckedCreateNestedManyWithoutChallengeModifierInput
     ModifierPackIncluded?: ModifierPackUncheckedCreateNestedManyWithoutEncludedCustomChallengeModifiersInput
@@ -18358,7 +18358,7 @@ export namespace Prisma {
     text: string
     explanatoryUrl?: string | null
     standard?: boolean
-    public?: boolean
+    isPublic?: boolean
     ChallengeModifier: ChallengeModifierCreateNestedOneWithoutModifierOptionInput
     CreatedBy?: UserCreateNestedOneWithoutModifierOptionInput
     Day?: DayCreateNestedManyWithoutModifierOptionInput
@@ -18379,7 +18379,7 @@ export namespace Prisma {
     explanatoryUrl?: string | null
     standard?: boolean
     createdById?: string | null
-    public?: boolean
+    isPublic?: boolean
     Day?: DayUncheckedCreateNestedManyWithoutModifierOptionInput
     ModifierPackIncluded?: ModifierPackUncheckedCreateNestedManyWithoutIncludedCustomModifierOptionsInput
     UserExcluded?: UserUncheckedCreateNestedManyWithoutDefaultExcludedModifierOptionsInput
@@ -18401,7 +18401,7 @@ export namespace Prisma {
     hasOptions?: boolean
     explanatoryUrl?: string | null
     standard?: boolean
-    public?: boolean
+    isPublic?: boolean
     CreatedBy?: UserCreateNestedOneWithoutChallengeModifierInput
     ModifierOption?: ModifierOptionCreateNestedManyWithoutChallengeModifierInput
     Day?: DayCreateNestedManyWithoutChallengeModifierInput
@@ -18422,7 +18422,7 @@ export namespace Prisma {
     explanatoryUrl?: string | null
     standard?: boolean
     createdById?: string | null
-    public?: boolean
+    isPublic?: boolean
     ModifierOption?: ModifierOptionUncheckedCreateNestedManyWithoutChallengeModifierInput
     Day?: DayUncheckedCreateNestedManyWithoutChallengeModifierInput
     ModifierPackExcluded?: ModifierPackUncheckedCreateNestedManyWithoutExcludedChallengeModifiersInput
@@ -18444,7 +18444,7 @@ export namespace Prisma {
     text: string
     explanatoryUrl?: string | null
     standard?: boolean
-    public?: boolean
+    isPublic?: boolean
     ChallengeModifier: ChallengeModifierCreateNestedOneWithoutModifierOptionInput
     CreatedBy?: UserCreateNestedOneWithoutModifierOptionInput
     Day?: DayCreateNestedManyWithoutModifierOptionInput
@@ -18465,7 +18465,7 @@ export namespace Prisma {
     explanatoryUrl?: string | null
     standard?: boolean
     createdById?: string | null
-    public?: boolean
+    isPublic?: boolean
     Day?: DayUncheckedCreateNestedManyWithoutModifierOptionInput
     ModifierPackExcluded?: ModifierPackUncheckedCreateNestedManyWithoutExcludedModifierOptionsInput
     UserExcluded?: UserUncheckedCreateNestedManyWithoutDefaultExcludedModifierOptionsInput
@@ -18633,7 +18633,7 @@ export namespace Prisma {
     rerollTokensSpentDuringPart2Limited?: number
     repositoryLink?: string | null
     progressSheetLink?: string | null
-    public?: boolean
+    isPublic?: boolean
     publicProfileId?: number | null
     score?: number
     rankId?: number | null
@@ -18654,7 +18654,7 @@ export namespace Prisma {
     hasOptions?: boolean
     explanatoryUrl?: string | null
     standard?: boolean
-    public?: boolean
+    isPublic?: boolean
   }
 
   export type ModifierOptionCreateManyCreatedByInput = {
@@ -18665,13 +18665,13 @@ export namespace Prisma {
     text: string
     explanatoryUrl?: string | null
     standard?: boolean
-    public?: boolean
+    isPublic?: boolean
   }
 
   export type ModifierPackCreateManyCreatedByInput = {
     id?: number
     dateCreated?: Date | string
-    public?: boolean
+    isPublic?: boolean
   }
 
   export type GameUpdateWithoutUserInput = {
@@ -18688,7 +18688,7 @@ export namespace Prisma {
     rerollTokensSpentDuringPart2Limited?: IntFieldUpdateOperationsInput | number
     repositoryLink?: NullableStringFieldUpdateOperationsInput | string | null
     progressSheetLink?: NullableStringFieldUpdateOperationsInput | string | null
-    public?: BoolFieldUpdateOperationsInput | boolean
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
     score?: IntFieldUpdateOperationsInput | number
     dateCompleted?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     Rank?: RankUpdateOneWithoutGameNestedInput
@@ -18711,7 +18711,7 @@ export namespace Prisma {
     rerollTokensSpentDuringPart2Limited?: IntFieldUpdateOperationsInput | number
     repositoryLink?: NullableStringFieldUpdateOperationsInput | string | null
     progressSheetLink?: NullableStringFieldUpdateOperationsInput | string | null
-    public?: BoolFieldUpdateOperationsInput | boolean
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
     publicProfileId?: NullableIntFieldUpdateOperationsInput | number | null
     score?: IntFieldUpdateOperationsInput | number
     rankId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -18734,7 +18734,7 @@ export namespace Prisma {
     rerollTokensSpentDuringPart2Limited?: IntFieldUpdateOperationsInput | number
     repositoryLink?: NullableStringFieldUpdateOperationsInput | string | null
     progressSheetLink?: NullableStringFieldUpdateOperationsInput | string | null
-    public?: BoolFieldUpdateOperationsInput | boolean
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
     publicProfileId?: NullableIntFieldUpdateOperationsInput | number | null
     score?: IntFieldUpdateOperationsInput | number
     rankId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -18767,7 +18767,7 @@ export namespace Prisma {
     hasOptions?: BoolFieldUpdateOperationsInput | boolean
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
-    public?: BoolFieldUpdateOperationsInput | boolean
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
     ModifierOption?: ModifierOptionUpdateManyWithoutChallengeModifierNestedInput
     Day?: DayUpdateManyWithoutChallengeModifierNestedInput
     ModifierPackExcluded?: ModifierPackUpdateManyWithoutExcludedChallengeModifiersNestedInput
@@ -18787,7 +18787,7 @@ export namespace Prisma {
     hasOptions?: BoolFieldUpdateOperationsInput | boolean
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
-    public?: BoolFieldUpdateOperationsInput | boolean
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
     ModifierOption?: ModifierOptionUncheckedUpdateManyWithoutChallengeModifierNestedInput
     Day?: DayUncheckedUpdateManyWithoutChallengeModifierNestedInput
     ModifierPackExcluded?: ModifierPackUncheckedUpdateManyWithoutExcludedChallengeModifiersNestedInput
@@ -18807,7 +18807,7 @@ export namespace Prisma {
     hasOptions?: BoolFieldUpdateOperationsInput | boolean
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
-    public?: BoolFieldUpdateOperationsInput | boolean
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type ModifierOptionUpdateWithoutCreatedByInput = {
@@ -18816,7 +18816,7 @@ export namespace Prisma {
     text?: StringFieldUpdateOperationsInput | string
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
-    public?: BoolFieldUpdateOperationsInput | boolean
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
     ChallengeModifier?: ChallengeModifierUpdateOneRequiredWithoutModifierOptionNestedInput
     Day?: DayUpdateManyWithoutModifierOptionNestedInput
     ModifierPackExcluded?: ModifierPackUpdateManyWithoutExcludedModifierOptionsNestedInput
@@ -18836,7 +18836,7 @@ export namespace Prisma {
     text?: StringFieldUpdateOperationsInput | string
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
-    public?: BoolFieldUpdateOperationsInput | boolean
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
     Day?: DayUncheckedUpdateManyWithoutModifierOptionNestedInput
     ModifierPackExcluded?: ModifierPackUncheckedUpdateManyWithoutExcludedModifierOptionsNestedInput
     ModifierPackIncluded?: ModifierPackUncheckedUpdateManyWithoutIncludedCustomModifierOptionsNestedInput
@@ -18855,7 +18855,7 @@ export namespace Prisma {
     text?: StringFieldUpdateOperationsInput | string
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
-    public?: BoolFieldUpdateOperationsInput | boolean
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type ChallengeModifierUpdateWithoutUserExcludedInput = {
@@ -18865,7 +18865,7 @@ export namespace Prisma {
     hasOptions?: BoolFieldUpdateOperationsInput | boolean
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
-    public?: BoolFieldUpdateOperationsInput | boolean
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
     CreatedBy?: UserUpdateOneWithoutChallengeModifierNestedInput
     ModifierOption?: ModifierOptionUpdateManyWithoutChallengeModifierNestedInput
     Day?: DayUpdateManyWithoutChallengeModifierNestedInput
@@ -18886,7 +18886,7 @@ export namespace Prisma {
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
     createdById?: NullableStringFieldUpdateOperationsInput | string | null
-    public?: BoolFieldUpdateOperationsInput | boolean
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
     ModifierOption?: ModifierOptionUncheckedUpdateManyWithoutChallengeModifierNestedInput
     Day?: DayUncheckedUpdateManyWithoutChallengeModifierNestedInput
     ModifierPackExcluded?: ModifierPackUncheckedUpdateManyWithoutExcludedChallengeModifiersNestedInput
@@ -18906,7 +18906,7 @@ export namespace Prisma {
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
     createdById?: NullableStringFieldUpdateOperationsInput | string | null
-    public?: BoolFieldUpdateOperationsInput | boolean
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type ModifierOptionUpdateWithoutUserExcludedInput = {
@@ -18915,7 +18915,7 @@ export namespace Prisma {
     text?: StringFieldUpdateOperationsInput | string
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
-    public?: BoolFieldUpdateOperationsInput | boolean
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
     ChallengeModifier?: ChallengeModifierUpdateOneRequiredWithoutModifierOptionNestedInput
     CreatedBy?: UserUpdateOneWithoutModifierOptionNestedInput
     Day?: DayUpdateManyWithoutModifierOptionNestedInput
@@ -18936,7 +18936,7 @@ export namespace Prisma {
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
     createdById?: NullableStringFieldUpdateOperationsInput | string | null
-    public?: BoolFieldUpdateOperationsInput | boolean
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
     Day?: DayUncheckedUpdateManyWithoutModifierOptionNestedInput
     ModifierPackExcluded?: ModifierPackUncheckedUpdateManyWithoutExcludedModifierOptionsNestedInput
     ModifierPackIncluded?: ModifierPackUncheckedUpdateManyWithoutIncludedCustomModifierOptionsNestedInput
@@ -18955,7 +18955,7 @@ export namespace Prisma {
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
     createdById?: NullableStringFieldUpdateOperationsInput | string | null
-    public?: BoolFieldUpdateOperationsInput | boolean
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type ChallengeModifierUpdateWithoutUserIncludedInput = {
@@ -18965,7 +18965,7 @@ export namespace Prisma {
     hasOptions?: BoolFieldUpdateOperationsInput | boolean
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
-    public?: BoolFieldUpdateOperationsInput | boolean
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
     CreatedBy?: UserUpdateOneWithoutChallengeModifierNestedInput
     ModifierOption?: ModifierOptionUpdateManyWithoutChallengeModifierNestedInput
     Day?: DayUpdateManyWithoutChallengeModifierNestedInput
@@ -18986,7 +18986,7 @@ export namespace Prisma {
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
     createdById?: NullableStringFieldUpdateOperationsInput | string | null
-    public?: BoolFieldUpdateOperationsInput | boolean
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
     ModifierOption?: ModifierOptionUncheckedUpdateManyWithoutChallengeModifierNestedInput
     Day?: DayUncheckedUpdateManyWithoutChallengeModifierNestedInput
     ModifierPackExcluded?: ModifierPackUncheckedUpdateManyWithoutExcludedChallengeModifiersNestedInput
@@ -19006,7 +19006,7 @@ export namespace Prisma {
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
     createdById?: NullableStringFieldUpdateOperationsInput | string | null
-    public?: BoolFieldUpdateOperationsInput | boolean
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type ModifierOptionUpdateWithoutUserIncludedInput = {
@@ -19015,7 +19015,7 @@ export namespace Prisma {
     text?: StringFieldUpdateOperationsInput | string
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
-    public?: BoolFieldUpdateOperationsInput | boolean
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
     ChallengeModifier?: ChallengeModifierUpdateOneRequiredWithoutModifierOptionNestedInput
     CreatedBy?: UserUpdateOneWithoutModifierOptionNestedInput
     Day?: DayUpdateManyWithoutModifierOptionNestedInput
@@ -19036,7 +19036,7 @@ export namespace Prisma {
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
     createdById?: NullableStringFieldUpdateOperationsInput | string | null
-    public?: BoolFieldUpdateOperationsInput | boolean
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
     Day?: DayUncheckedUpdateManyWithoutModifierOptionNestedInput
     ModifierPackExcluded?: ModifierPackUncheckedUpdateManyWithoutExcludedModifierOptionsNestedInput
     ModifierPackIncluded?: ModifierPackUncheckedUpdateManyWithoutIncludedCustomModifierOptionsNestedInput
@@ -19055,12 +19055,12 @@ export namespace Prisma {
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
     createdById?: NullableStringFieldUpdateOperationsInput | string | null
-    public?: BoolFieldUpdateOperationsInput | boolean
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type ModifierPackUpdateWithoutCreatedByInput = {
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    public?: BoolFieldUpdateOperationsInput | boolean
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
     ExcludedChallengeModifiers?: ChallengeModifierUpdateManyWithoutModifierPackExcludedNestedInput
     ExcludedModifierOptions?: ModifierOptionUpdateManyWithoutModifierPackExcludedNestedInput
     EncludedCustomChallengeModifiers?: ChallengeModifierUpdateManyWithoutModifierPackIncludedNestedInput
@@ -19070,7 +19070,7 @@ export namespace Prisma {
   export type ModifierPackUncheckedUpdateWithoutCreatedByInput = {
     id?: IntFieldUpdateOperationsInput | number
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    public?: BoolFieldUpdateOperationsInput | boolean
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
     ExcludedChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutModifierPackExcludedNestedInput
     ExcludedModifierOptions?: ModifierOptionUncheckedUpdateManyWithoutModifierPackExcludedNestedInput
     EncludedCustomChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutModifierPackIncludedNestedInput
@@ -19080,7 +19080,7 @@ export namespace Prisma {
   export type ModifierPackUncheckedUpdateManyWithoutModifierPackInput = {
     id?: IntFieldUpdateOperationsInput | number
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    public?: BoolFieldUpdateOperationsInput | boolean
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type GameCreateManyPublicProfileInput = {
@@ -19099,7 +19099,7 @@ export namespace Prisma {
     rerollTokensSpentDuringPart2Limited?: number
     repositoryLink?: string | null
     progressSheetLink?: string | null
-    public?: boolean
+    isPublic?: boolean
     score?: number
     rankId?: number | null
     dateCompleted?: Date | string | null
@@ -19119,7 +19119,7 @@ export namespace Prisma {
     rerollTokensSpentDuringPart2Limited?: IntFieldUpdateOperationsInput | number
     repositoryLink?: NullableStringFieldUpdateOperationsInput | string | null
     progressSheetLink?: NullableStringFieldUpdateOperationsInput | string | null
-    public?: BoolFieldUpdateOperationsInput | boolean
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
     score?: IntFieldUpdateOperationsInput | number
     dateCompleted?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     User?: UserUpdateOneRequiredWithoutGameNestedInput
@@ -19143,7 +19143,7 @@ export namespace Prisma {
     rerollTokensSpentDuringPart2Limited?: IntFieldUpdateOperationsInput | number
     repositoryLink?: NullableStringFieldUpdateOperationsInput | string | null
     progressSheetLink?: NullableStringFieldUpdateOperationsInput | string | null
-    public?: BoolFieldUpdateOperationsInput | boolean
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
     score?: IntFieldUpdateOperationsInput | number
     rankId?: NullableIntFieldUpdateOperationsInput | number | null
     dateCompleted?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -19249,7 +19249,7 @@ export namespace Prisma {
     rerollTokensSpentDuringPart2Limited?: number
     repositoryLink?: string | null
     progressSheetLink?: string | null
-    public?: boolean
+    isPublic?: boolean
     publicProfileId?: number | null
     score?: number
     dateCompleted?: Date | string | null
@@ -19269,7 +19269,7 @@ export namespace Prisma {
     rerollTokensSpentDuringPart2Limited?: IntFieldUpdateOperationsInput | number
     repositoryLink?: NullableStringFieldUpdateOperationsInput | string | null
     progressSheetLink?: NullableStringFieldUpdateOperationsInput | string | null
-    public?: BoolFieldUpdateOperationsInput | boolean
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
     score?: IntFieldUpdateOperationsInput | number
     dateCompleted?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     User?: UserUpdateOneRequiredWithoutGameNestedInput
@@ -19293,7 +19293,7 @@ export namespace Prisma {
     rerollTokensSpentDuringPart2Limited?: IntFieldUpdateOperationsInput | number
     repositoryLink?: NullableStringFieldUpdateOperationsInput | string | null
     progressSheetLink?: NullableStringFieldUpdateOperationsInput | string | null
-    public?: BoolFieldUpdateOperationsInput | boolean
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
     publicProfileId?: NullableIntFieldUpdateOperationsInput | number | null
     score?: IntFieldUpdateOperationsInput | number
     dateCompleted?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -19307,7 +19307,7 @@ export namespace Prisma {
     hasOptions?: BoolFieldUpdateOperationsInput | boolean
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
-    public?: BoolFieldUpdateOperationsInput | boolean
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
     CreatedBy?: UserUpdateOneWithoutChallengeModifierNestedInput
     ModifierOption?: ModifierOptionUpdateManyWithoutChallengeModifierNestedInput
     Day?: DayUpdateManyWithoutChallengeModifierNestedInput
@@ -19328,7 +19328,7 @@ export namespace Prisma {
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
     createdById?: NullableStringFieldUpdateOperationsInput | string | null
-    public?: BoolFieldUpdateOperationsInput | boolean
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
     ModifierOption?: ModifierOptionUncheckedUpdateManyWithoutChallengeModifierNestedInput
     Day?: DayUncheckedUpdateManyWithoutChallengeModifierNestedInput
     ModifierPackExcluded?: ModifierPackUncheckedUpdateManyWithoutExcludedChallengeModifiersNestedInput
@@ -19348,7 +19348,7 @@ export namespace Prisma {
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
     createdById?: NullableStringFieldUpdateOperationsInput | string | null
-    public?: BoolFieldUpdateOperationsInput | boolean
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type ModifierOptionUpdateWithoutExcludedFromDayInput = {
@@ -19357,7 +19357,7 @@ export namespace Prisma {
     text?: StringFieldUpdateOperationsInput | string
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
-    public?: BoolFieldUpdateOperationsInput | boolean
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
     ChallengeModifier?: ChallengeModifierUpdateOneRequiredWithoutModifierOptionNestedInput
     CreatedBy?: UserUpdateOneWithoutModifierOptionNestedInput
     Day?: DayUpdateManyWithoutModifierOptionNestedInput
@@ -19378,7 +19378,7 @@ export namespace Prisma {
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
     createdById?: NullableStringFieldUpdateOperationsInput | string | null
-    public?: BoolFieldUpdateOperationsInput | boolean
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
     Day?: DayUncheckedUpdateManyWithoutModifierOptionNestedInput
     ModifierPackExcluded?: ModifierPackUncheckedUpdateManyWithoutExcludedModifierOptionsNestedInput
     ModifierPackIncluded?: ModifierPackUncheckedUpdateManyWithoutIncludedCustomModifierOptionsNestedInput
@@ -19397,7 +19397,7 @@ export namespace Prisma {
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
     createdById?: NullableStringFieldUpdateOperationsInput | string | null
-    public?: BoolFieldUpdateOperationsInput | boolean
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type ChallengeModifierUpdateWithoutIncludedInDayInput = {
@@ -19407,7 +19407,7 @@ export namespace Prisma {
     hasOptions?: BoolFieldUpdateOperationsInput | boolean
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
-    public?: BoolFieldUpdateOperationsInput | boolean
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
     CreatedBy?: UserUpdateOneWithoutChallengeModifierNestedInput
     ModifierOption?: ModifierOptionUpdateManyWithoutChallengeModifierNestedInput
     Day?: DayUpdateManyWithoutChallengeModifierNestedInput
@@ -19428,7 +19428,7 @@ export namespace Prisma {
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
     createdById?: NullableStringFieldUpdateOperationsInput | string | null
-    public?: BoolFieldUpdateOperationsInput | boolean
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
     ModifierOption?: ModifierOptionUncheckedUpdateManyWithoutChallengeModifierNestedInput
     Day?: DayUncheckedUpdateManyWithoutChallengeModifierNestedInput
     ModifierPackExcluded?: ModifierPackUncheckedUpdateManyWithoutExcludedChallengeModifiersNestedInput
@@ -19448,7 +19448,7 @@ export namespace Prisma {
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
     createdById?: NullableStringFieldUpdateOperationsInput | string | null
-    public?: BoolFieldUpdateOperationsInput | boolean
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type ModifierOptionUpdateWithoutIncludedInDayInput = {
@@ -19457,7 +19457,7 @@ export namespace Prisma {
     text?: StringFieldUpdateOperationsInput | string
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
-    public?: BoolFieldUpdateOperationsInput | boolean
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
     ChallengeModifier?: ChallengeModifierUpdateOneRequiredWithoutModifierOptionNestedInput
     CreatedBy?: UserUpdateOneWithoutModifierOptionNestedInput
     Day?: DayUpdateManyWithoutModifierOptionNestedInput
@@ -19478,7 +19478,7 @@ export namespace Prisma {
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
     createdById?: NullableStringFieldUpdateOperationsInput | string | null
-    public?: BoolFieldUpdateOperationsInput | boolean
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
     Day?: DayUncheckedUpdateManyWithoutModifierOptionNestedInput
     ModifierPackExcluded?: ModifierPackUncheckedUpdateManyWithoutExcludedModifierOptionsNestedInput
     ModifierPackIncluded?: ModifierPackUncheckedUpdateManyWithoutIncludedCustomModifierOptionsNestedInput
@@ -19497,7 +19497,7 @@ export namespace Prisma {
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
     createdById?: NullableStringFieldUpdateOperationsInput | string | null
-    public?: BoolFieldUpdateOperationsInput | boolean
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type ModifierOptionCreateManyChallengeModifierInput = {
@@ -19508,7 +19508,7 @@ export namespace Prisma {
     explanatoryUrl?: string | null
     standard?: boolean
     createdById?: string | null
-    public?: boolean
+    isPublic?: boolean
   }
 
   export type DayCreateManyChallengeModifierInput = {
@@ -19555,7 +19555,7 @@ export namespace Prisma {
     text?: StringFieldUpdateOperationsInput | string
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
-    public?: BoolFieldUpdateOperationsInput | boolean
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
     CreatedBy?: UserUpdateOneWithoutModifierOptionNestedInput
     Day?: DayUpdateManyWithoutModifierOptionNestedInput
     ModifierPackExcluded?: ModifierPackUpdateManyWithoutExcludedModifierOptionsNestedInput
@@ -19575,7 +19575,7 @@ export namespace Prisma {
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
     createdById?: NullableStringFieldUpdateOperationsInput | string | null
-    public?: BoolFieldUpdateOperationsInput | boolean
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
     Day?: DayUncheckedUpdateManyWithoutModifierOptionNestedInput
     ModifierPackExcluded?: ModifierPackUncheckedUpdateManyWithoutExcludedModifierOptionsNestedInput
     ModifierPackIncluded?: ModifierPackUncheckedUpdateManyWithoutIncludedCustomModifierOptionsNestedInput
@@ -19633,7 +19633,7 @@ export namespace Prisma {
 
   export type ModifierPackUpdateWithoutExcludedChallengeModifiersInput = {
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    public?: BoolFieldUpdateOperationsInput | boolean
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
     ExcludedModifierOptions?: ModifierOptionUpdateManyWithoutModifierPackExcludedNestedInput
     EncludedCustomChallengeModifiers?: ChallengeModifierUpdateManyWithoutModifierPackIncludedNestedInput
     IncludedCustomModifierOptions?: ModifierOptionUpdateManyWithoutModifierPackIncludedNestedInput
@@ -19644,7 +19644,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     createdById?: NullableStringFieldUpdateOperationsInput | string | null
-    public?: BoolFieldUpdateOperationsInput | boolean
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
     ExcludedModifierOptions?: ModifierOptionUncheckedUpdateManyWithoutModifierPackExcludedNestedInput
     EncludedCustomChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutModifierPackIncludedNestedInput
     IncludedCustomModifierOptions?: ModifierOptionUncheckedUpdateManyWithoutModifierPackIncludedNestedInput
@@ -19654,12 +19654,12 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     createdById?: NullableStringFieldUpdateOperationsInput | string | null
-    public?: BoolFieldUpdateOperationsInput | boolean
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type ModifierPackUpdateWithoutEncludedCustomChallengeModifiersInput = {
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    public?: BoolFieldUpdateOperationsInput | boolean
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
     ExcludedChallengeModifiers?: ChallengeModifierUpdateManyWithoutModifierPackExcludedNestedInput
     ExcludedModifierOptions?: ModifierOptionUpdateManyWithoutModifierPackExcludedNestedInput
     IncludedCustomModifierOptions?: ModifierOptionUpdateManyWithoutModifierPackIncludedNestedInput
@@ -19670,7 +19670,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     createdById?: NullableStringFieldUpdateOperationsInput | string | null
-    public?: BoolFieldUpdateOperationsInput | boolean
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
     ExcludedChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutModifierPackExcludedNestedInput
     ExcludedModifierOptions?: ModifierOptionUncheckedUpdateManyWithoutModifierPackExcludedNestedInput
     IncludedCustomModifierOptions?: ModifierOptionUncheckedUpdateManyWithoutModifierPackIncludedNestedInput
@@ -19680,7 +19680,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     createdById?: NullableStringFieldUpdateOperationsInput | string | null
-    public?: BoolFieldUpdateOperationsInput | boolean
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type UserUpdateWithoutDefaultExcludedChallengeModifiersInput = {
@@ -20042,7 +20042,7 @@ export namespace Prisma {
 
   export type ModifierPackUpdateWithoutExcludedModifierOptionsInput = {
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    public?: BoolFieldUpdateOperationsInput | boolean
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
     ExcludedChallengeModifiers?: ChallengeModifierUpdateManyWithoutModifierPackExcludedNestedInput
     EncludedCustomChallengeModifiers?: ChallengeModifierUpdateManyWithoutModifierPackIncludedNestedInput
     IncludedCustomModifierOptions?: ModifierOptionUpdateManyWithoutModifierPackIncludedNestedInput
@@ -20053,7 +20053,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     createdById?: NullableStringFieldUpdateOperationsInput | string | null
-    public?: BoolFieldUpdateOperationsInput | boolean
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
     ExcludedChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutModifierPackExcludedNestedInput
     EncludedCustomChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutModifierPackIncludedNestedInput
     IncludedCustomModifierOptions?: ModifierOptionUncheckedUpdateManyWithoutModifierPackIncludedNestedInput
@@ -20061,7 +20061,7 @@ export namespace Prisma {
 
   export type ModifierPackUpdateWithoutIncludedCustomModifierOptionsInput = {
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    public?: BoolFieldUpdateOperationsInput | boolean
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
     ExcludedChallengeModifiers?: ChallengeModifierUpdateManyWithoutModifierPackExcludedNestedInput
     ExcludedModifierOptions?: ModifierOptionUpdateManyWithoutModifierPackExcludedNestedInput
     EncludedCustomChallengeModifiers?: ChallengeModifierUpdateManyWithoutModifierPackIncludedNestedInput
@@ -20072,7 +20072,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     createdById?: NullableStringFieldUpdateOperationsInput | string | null
-    public?: BoolFieldUpdateOperationsInput | boolean
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
     ExcludedChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutModifierPackExcludedNestedInput
     ExcludedModifierOptions?: ModifierOptionUncheckedUpdateManyWithoutModifierPackExcludedNestedInput
     EncludedCustomChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutModifierPackIncludedNestedInput
@@ -20284,7 +20284,7 @@ export namespace Prisma {
     hasOptions?: BoolFieldUpdateOperationsInput | boolean
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
-    public?: BoolFieldUpdateOperationsInput | boolean
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
     CreatedBy?: UserUpdateOneWithoutChallengeModifierNestedInput
     ModifierOption?: ModifierOptionUpdateManyWithoutChallengeModifierNestedInput
     Day?: DayUpdateManyWithoutChallengeModifierNestedInput
@@ -20305,7 +20305,7 @@ export namespace Prisma {
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
     createdById?: NullableStringFieldUpdateOperationsInput | string | null
-    public?: BoolFieldUpdateOperationsInput | boolean
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
     ModifierOption?: ModifierOptionUncheckedUpdateManyWithoutChallengeModifierNestedInput
     Day?: DayUncheckedUpdateManyWithoutChallengeModifierNestedInput
     ModifierPackIncluded?: ModifierPackUncheckedUpdateManyWithoutEncludedCustomChallengeModifiersNestedInput
@@ -20322,7 +20322,7 @@ export namespace Prisma {
     text?: StringFieldUpdateOperationsInput | string
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
-    public?: BoolFieldUpdateOperationsInput | boolean
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
     ChallengeModifier?: ChallengeModifierUpdateOneRequiredWithoutModifierOptionNestedInput
     CreatedBy?: UserUpdateOneWithoutModifierOptionNestedInput
     Day?: DayUpdateManyWithoutModifierOptionNestedInput
@@ -20343,7 +20343,7 @@ export namespace Prisma {
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
     createdById?: NullableStringFieldUpdateOperationsInput | string | null
-    public?: BoolFieldUpdateOperationsInput | boolean
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
     Day?: DayUncheckedUpdateManyWithoutModifierOptionNestedInput
     ModifierPackIncluded?: ModifierPackUncheckedUpdateManyWithoutIncludedCustomModifierOptionsNestedInput
     UserExcluded?: UserUncheckedUpdateManyWithoutDefaultExcludedModifierOptionsNestedInput
@@ -20360,7 +20360,7 @@ export namespace Prisma {
     hasOptions?: BoolFieldUpdateOperationsInput | boolean
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
-    public?: BoolFieldUpdateOperationsInput | boolean
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
     CreatedBy?: UserUpdateOneWithoutChallengeModifierNestedInput
     ModifierOption?: ModifierOptionUpdateManyWithoutChallengeModifierNestedInput
     Day?: DayUpdateManyWithoutChallengeModifierNestedInput
@@ -20381,7 +20381,7 @@ export namespace Prisma {
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
     createdById?: NullableStringFieldUpdateOperationsInput | string | null
-    public?: BoolFieldUpdateOperationsInput | boolean
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
     ModifierOption?: ModifierOptionUncheckedUpdateManyWithoutChallengeModifierNestedInput
     Day?: DayUncheckedUpdateManyWithoutChallengeModifierNestedInput
     ModifierPackExcluded?: ModifierPackUncheckedUpdateManyWithoutExcludedChallengeModifiersNestedInput
@@ -20401,7 +20401,7 @@ export namespace Prisma {
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
     createdById?: NullableStringFieldUpdateOperationsInput | string | null
-    public?: BoolFieldUpdateOperationsInput | boolean
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type ModifierOptionUpdateWithoutModifierPackIncludedInput = {
@@ -20410,7 +20410,7 @@ export namespace Prisma {
     text?: StringFieldUpdateOperationsInput | string
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
-    public?: BoolFieldUpdateOperationsInput | boolean
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
     ChallengeModifier?: ChallengeModifierUpdateOneRequiredWithoutModifierOptionNestedInput
     CreatedBy?: UserUpdateOneWithoutModifierOptionNestedInput
     Day?: DayUpdateManyWithoutModifierOptionNestedInput
@@ -20431,7 +20431,7 @@ export namespace Prisma {
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
     createdById?: NullableStringFieldUpdateOperationsInput | string | null
-    public?: BoolFieldUpdateOperationsInput | boolean
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
     Day?: DayUncheckedUpdateManyWithoutModifierOptionNestedInput
     ModifierPackExcluded?: ModifierPackUncheckedUpdateManyWithoutExcludedModifierOptionsNestedInput
     UserExcluded?: UserUncheckedUpdateManyWithoutDefaultExcludedModifierOptionsNestedInput
