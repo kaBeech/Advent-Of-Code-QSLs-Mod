@@ -153,6 +153,18 @@ export async function getAllGames() {
   return games;
 }
 
+export async function getAllPublicGamesWithRepositoryLinks() {
+  const games = await prisma.game.findMany({
+    where: {
+      public: true,
+      repositoryLink: {
+        not: null,
+      },
+    },
+  });
+  return games;
+}
+
 export async function getGameById(id: number) {
   const game = await prisma.game.findUniqueOrThrow({
     where: {
