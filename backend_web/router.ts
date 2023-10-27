@@ -21,6 +21,7 @@ import { logInWithOAuth } from "./routes/user/logInWithOAuth.ts";
 import { getOAuthData } from "./routes/user/getOAuthData.ts";
 import { getOrCreateUser } from "./routes/user/getOrCreateUser.ts";
 import { getGameData } from "./routes/game/getGameData.ts";
+import { getLeaderboardGames } from "./routes/leaderboard/getLeaderboardGames.ts";
 
 type AppState = {
   session: Session;
@@ -37,6 +38,7 @@ router
   .get("/userdata", authenticate, getUserData)
   .get("/gamedata/:gameNumber", authenticate, getGameData)
   .get("/modifier", getChallengeModifiers)
+  .get("/leaderboard", getLeaderboardGames)
   .get("/game", authenticate, getGames)
   .get("/game/:gameNumber", authenticate, getGame)
   .put("/game/:gameNumber", authenticate, startNewGame)

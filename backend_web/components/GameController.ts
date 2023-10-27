@@ -1,3 +1,4 @@
+import { getAllRanks } from "../db.ts";
 import { Game } from "../generated/client/deno/index.d.ts";
 
 interface GameControllerState {
@@ -48,12 +49,28 @@ const currentDayCompletionStatusSetter = (state: GameControllerState) => ({
   },
 });
 
+const rankAwarder = (state: GameControllerState) => ({
+  awardRank: async () => {
+    const ranks = await getAllRanks();
+    const sortedRanks = ranks.sort((a, b) => b.minimumScore - a.minimumScore);
+    for (let i = 0; state.game.rankId === null; i++) {
+      if (state.game.score >= sortedRanks[i].minimumScore) {
+        state.game.rankId = sortedRanks[i].id;
+      }
+    }
+    return state.game;
+  },
+});
+
 const currentDayCompleter = (state: GameControllerState) => ({
   completeCurrentDay: () => {
     if (state.game.currentDayCompleted === true) {
       throw new Error(
         `Current day (${state.game.currentDay}) already completed`,
       );
+    }
+    if (state.game.currentDay === 25) {
+      rankAwarder(state).awardRank();
     }
     state.game = currentDayCompletionStatusSetter(state)
       .setCurrentDayCompletionStatus(true);

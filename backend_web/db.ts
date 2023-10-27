@@ -153,6 +153,21 @@ export async function getAllGames() {
   return games;
 }
 
+export async function getAllPublicGamesWithRepositoryLinks() {
+  const games = await prisma.game.findMany({
+    where: {
+      public: true,
+      repositoryLink: {
+        not: null,
+      },
+    },
+    include: {
+      Rank: true,
+    },
+  });
+  return games;
+}
+
 export async function getGameById(id: number) {
   const game = await prisma.game.findUniqueOrThrow({
     where: {
@@ -325,4 +340,13 @@ export async function getModifierOptionsByChallengeModifierId(
     },
   });
   return modifierOptions;
+}
+
+/**
+ * Rank CRUD
+ */
+
+export async function getAllRanks() {
+  const ranks = await prisma.rank.findMany();
+  return ranks;
 }
