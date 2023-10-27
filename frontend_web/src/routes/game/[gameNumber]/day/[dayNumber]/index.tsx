@@ -365,7 +365,8 @@ export default component$(() => {
                 <li>
                   Current Day: <strong>{xtremeXmasData.currentDay}</strong>{" "}
                   {!xtremeXmasData.currentDayCompleted ||
-                  xtremeXmasData.currentDay != +state.dayNumber ? (
+                  xtremeXmasData.currentDay != +state.dayNumber ||
+                  xtremeXmasData.currentDay === 25 ? (
                     <></>
                   ) : (
                     <a
