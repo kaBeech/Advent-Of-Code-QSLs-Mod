@@ -405,7 +405,7 @@ export default component$(() => {
                     <>
                       <br />
                       <strong>
-                        {new Date(xtremeXmasData.part2Completed).toString()}
+                        {new Date(xtremeXmasData.part1Completed).toString()}
                       </strong>
                     </>
                   ) : null}
