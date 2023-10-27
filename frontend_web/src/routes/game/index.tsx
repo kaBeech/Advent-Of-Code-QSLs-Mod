@@ -8,13 +8,15 @@ export const onRequest: RequestHandler = (event) => {
 
 export default component$(() => {
   return (
-    <div>
-      Oh! Looks like the redirect didn't work. Maybe try{" "}
-      <a class="link" href="game/1">
-        this link
-      </a>
-      ?
-    </div>
+    <article>
+      <p>
+        Oh! Looks like the redirect didn't work. Maybe try{" "}
+        <a class="link" href="game/1">
+          this link
+        </a>
+        ?
+      </p>
+    </article>
   );
 });
 

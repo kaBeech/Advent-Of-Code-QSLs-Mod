@@ -135,7 +135,6 @@ export default component$(() => {
 
           return (
             <>
-              {/* <div class="flex column"> */}
               <ul class="flex column">
                 <li>
                   Reroll Tokens Earned:{" "}

@@ -49,48 +49,44 @@ export default component$(() => {
   );
 
   return (
-    <div>
-      <div>
-        <h1 class="title">Current Games</h1>
-        <Resource
-          value={xtremeXmasUserDataResource}
-          onPending={() => {
+    <article>
+      <h1 class="title">Current Games</h1>
+      <Resource
+        value={xtremeXmasUserDataResource}
+        onPending={() => {
+          return (
+            <p>
+              <strong>Loading...</strong>
+            </p>
+          );
+        }}
+        onResolved={(xtremeXmasData) => {
+          if (+xtremeXmasData.numberOfGames < 1) {
             return (
-              <div>
-                <strong>Loading...</strong>
-              </div>
+              <h2>
+                Please <a href="/new">[Start a New Game!]</a>
+              </h2>
             );
-          }}
-          onResolved={(xtremeXmasData) => {
-            if (+xtremeXmasData.numberOfGames < 1) {
-              return (
-                <div>
-                  <h2>
-                    Please <a href="/new">[Start a New Game!]</a>
-                  </h2>
-                </div>
-              );
-            }
+          }
 
-            return (
-              <>
-                {xtremeXmasData.userData.Game.map(
-                  (game: { name: string; number: number; year: number }) => (
-                    <div key={`game-${game.number}`}>
-                      <a href={`/game/${game.number}`}>
-                        {game.year}
-                        <span class="textMedium"> - {game.name}</span>
-                      </a>
-                    </div>
-                  )
-                )}
-                <a href="/new">[New Game]</a>
-              </>
-            );
-          }}
-        />
-      </div>
-    </div>
+          return (
+            <ul>
+              {xtremeXmasData.userData.Game.map(
+                (game: { name: string; number: number; year: number }) => (
+                  <li key={`game-${game.number}`}>
+                    <a href={`/game/${game.number}`}>
+                      {game.year}
+                      <span class="textMedium"> - {game.name}</span>
+                    </a>
+                  </li>
+                )
+              )}
+              <a href="/new">[New Game]</a>
+            </ul>
+          );
+        }}
+      />
+    </article>
   );
 });
 
