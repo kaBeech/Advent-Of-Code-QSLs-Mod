@@ -118,34 +118,124 @@ export default component$(() => {
           return (
             <ul>
               <li>
-                Reroll Tokens Earned: <strong>Loading...</strong>
+                Reroll Tokens Earned:{" "}
+                <strong>
+                  {state.gameInfo?.part2Completed
+                    ? "**"
+                    : state.gameInfo?.part1Completed
+                    ? "*"
+                    : ""}
+                </strong>
               </li>
               <li>
-                Reroll Tokens Spent During Part 1: <strong>Loading...</strong>
+                Reroll Tokens Spent During Part 1:{" "}
+                <strong>
+                  {(state.gameInfo?.rerollTokensSpentDuringPart1 || 0) > 9
+                    ? state.gameInfo?.rerollTokensSpentDuringPart1 + "*"
+                    : "﹡".repeat(
+                        state.gameInfo?.rerollTokensSpentDuringPart1 || 0
+                      )}
+                </strong>
               </li>
               <li>
-                Reroll Tokens Spent During Part 2: <strong>Loading...</strong>
+                Reroll Tokens Spent During Part 2:{" "}
+                <strong>
+                  {" "}
+                  {(state.gameInfo?.rerollTokensSpentDuringPart2 || 0) > 9
+                    ? state.gameInfo?.rerollTokensSpentDuringPart2 + "*"
+                    : "﹡".repeat(
+                        state.gameInfo?.rerollTokensSpentDuringPart2 || 0
+                      )}
+                </strong>
               </li>
               <li>
-                Current Reroll Tokens: <strong>Loading...</strong>
+                Current Reroll Tokens:{" "}
+                <strong>
+                  {" "}
+                  {(state.gameInfo?.currentRerollTokens || 0) > 9
+                    ? state.gameInfo?.currentRerollTokens + "*"
+                    : "﹡".repeat(state.gameInfo?.currentRerollTokens || 0)}
+                </strong>
               </li>
               <li>
-                Estimated Net Score: <strong>Loading...</strong>
+                Estimated Net Score:{" "}
+                <strong>
+                  {!state.gameInfo ? (
+                    `Loading...`
+                  ) : state.gameInfo.netScore > 0 ? (
+                    <strong class="token">+{state.gameInfo.netScore}</strong>
+                  ) : (
+                    <strong class="tokenSpent">
+                      {state.gameInfo.netScore}
+                    </strong>
+                  )}
+                </strong>
               </li>
               <li>
-                Challenge Modifier: <strong>Loading...</strong>
+                Challenge Modifier:{" "}
+                <strong>
+                  {!state.gameInfo
+                    ? `Loading...`
+                    : state.gameInfo.challengeModifier === "None"
+                    ? "None"
+                    : "You must complete this challenge " +
+                      state.gameInfo.challengeModifier +
+                      (state.gameInfo.modifierOption !== "None" &&
+                        state.gameInfo.modifierOption)}
+                </strong>
               </li>
               <li>
-                Current Day: <strong>Loading...</strong>
+                Current Day:{" "}
+                <strong>
+                  {!state.gameInfo ? `Loading...` : state.gameInfo.currentDay}
+                </strong>
               </li>
               <li>
-                Current Day Completed?: <strong>Loading...</strong>
+                Current Day Completed?:{" "}
+                <strong>
+                  {!state.gameInfo
+                    ? `Loading...`
+                    : state.gameInfo.part1Completed
+                    ? `Yes`
+                    : `No`}
+                </strong>
               </li>
               <li>
-                Selected Day Part 1 Completed?: <strong>Loading...</strong>
+                Selected Day Part 1 Completed?:{" "}
+                <strong>
+                  {" "}
+                  {!state.gameInfo
+                    ? `Loading...`
+                    : state.gameInfo.part1Completed
+                    ? `Yes`
+                    : `No`}
+                </strong>
+                {!state.gameInfo?.part1Completed ? null : (
+                  <>
+                    <br />
+                    <strong>
+                      {new Date(state.gameInfo.part1Completed).toString()}
+                    </strong>
+                  </>
+                )}
               </li>
               <li>
-                Selected Day Part 2 Completed?: <strong>Loading...</strong>
+                Selected Day Part 2 Completed?:{" "}
+                <strong>
+                  {!state.gameInfo
+                    ? `Loading...`
+                    : state.gameInfo.part2Completed
+                    ? `Yes`
+                    : `No`}
+                </strong>
+                {!state.gameInfo?.part2Completed ? null : (
+                  <>
+                    <br />
+                    <strong>
+                      {new Date(state.gameInfo.part2Completed).toString()}
+                    </strong>
+                  </>
+                )}
               </li>
             </ul>
           );
@@ -317,7 +407,9 @@ export default component$(() => {
                 </li>
                 <li>
                   Current Day Completed?{" "}
-                  <strong>{xtremeXmasData.currentDayCompleted}</strong>{" "}
+                  <strong>
+                    {xtremeXmasData.currentDayCompleted ? `Yes` : `No`}
+                  </strong>{" "}
                 </li>
                 <li>
                   Selected Day Part 1 Completed?{" "}
