@@ -323,7 +323,15 @@ export default component$(() => {
                   Selected Day Part 1 Completed?{" "}
                   <strong>
                     {xtremeXmasData.part1Completed ? `Yes` : `No`}
-                  </strong>{" "}
+                  </strong>
+                  {xtremeXmasData.part2Completed ? (
+                    <>
+                      <br />
+                      <strong>
+                        {new Date(xtremeXmasData.part2Completed).toString()}
+                      </strong>
+                    </>
+                  ) : null}
                   {xtremeXmasData.challengeModifier === "None" ||
                   xtremeXmasData.part1Completed ? (
                     <></>
@@ -368,6 +376,14 @@ export default component$(() => {
                   <strong>
                     {xtremeXmasData.part2Completed ? `Yes` : `No`}
                   </strong>{" "}
+                  {xtremeXmasData.part2Completed ? (
+                    <>
+                      <br />
+                      <strong>
+                        {new Date(xtremeXmasData.part2Completed).toString()}
+                      </strong>
+                    </>
+                  ) : null}
                   {!xtremeXmasData.part1Completed ||
                   xtremeXmasData.part2Completed ? (
                     <></>
