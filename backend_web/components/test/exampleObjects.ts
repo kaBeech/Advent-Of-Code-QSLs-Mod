@@ -21,7 +21,7 @@ export const exampleGame = {
   "rerollTokensSpentDuringPart2Limited": 0,
   "repositoryLink": null,
   "progressSheetLink": null,
-  "isPsPublic": false,
+  "isPublic": false,
   "publicProfileId": null,
   "score": 0,
   "rankId": null,
@@ -42,7 +42,7 @@ export const exampleGameDay1 = {
   "rerollTokensSpent": 0,
   "repositoryLink": null,
   "progressSheetLink": null,
-  "isPsPublic": false,
+  "isPublic": false,
   "publicProfileId": null,
   "score": 0,
   "rankId": null,
@@ -82,7 +82,7 @@ export const exampleChallengeModifiers = [
   //   "explanatoryUrl": null,
   //   "standard": true,
   //   "createdById": null,
-  //   "isPsPublic": true,
+  //   "isPublic": true,
   // },
   // {
   //   "id": 2,
@@ -93,7 +93,7 @@ export const exampleChallengeModifiers = [
   //   "explanatoryUrl": null,
   //   "standard": true,
   //   "createdById": null,
-  //   "isPsPublic": true,
+  //   "isPublic": true,
   // },
   // {
   //   "id": 3,
@@ -104,7 +104,7 @@ export const exampleChallengeModifiers = [
   //   "explanatoryUrl": null,
   //   "standard": true,
   //   "createdById": null,
-  //   "isPsPublic": true,
+  //   "isPublic": true,
   // },
   // {
   //   "id": 4,
@@ -115,7 +115,7 @@ export const exampleChallengeModifiers = [
   //   "explanatoryUrl": null,
   //   "standard": true,
   //   "createdById": null,
-  //   "isPsPublic": true,
+  //   "isPublic": true,
   // },
   {
     "id": 5,
@@ -126,7 +126,7 @@ export const exampleChallengeModifiers = [
     "explanatoryUrl": null,
     "standard": true,
     "createdById": null,
-    "isPsPublic": true,
+    "isPublic": true,
   },
   // {
   //   "id": 6,
@@ -137,7 +137,7 @@ export const exampleChallengeModifiers = [
   //   "explanatoryUrl": null,
   //   "standard": true,
   //   "createdById": null,
-  //   "isPsPublic": true,
+  //   "isPublic": true,
   // },
   {
     "id": 7,
@@ -148,7 +148,7 @@ export const exampleChallengeModifiers = [
     "explanatoryUrl": null,
     "standard": true,
     "createdById": null,
-    "isPsPublic": true,
+    "isPublic": true,
   },
 ];
 
@@ -162,7 +162,7 @@ export const exampleModifierOptions = [
   //   "explanatoryUrl": null,
   //   "standard": true,
   //   "createdById": null,
-  //   "isPsPublic": true,
+  //   "isPublic": true,
   // },
   // {
   //   "id": 2,
@@ -173,7 +173,7 @@ export const exampleModifierOptions = [
   //   "explanatoryUrl": null,
   //   "standard": true,
   //   "createdById": null,
-  //   "isPsPublic": true,
+  //   "isPublic": true,
   // },
   // {
   //   "id": 3,
@@ -184,7 +184,7 @@ export const exampleModifierOptions = [
   //   "explanatoryUrl": null,
   //   "standard": true,
   //   "createdById": null,
-  //   "isPsPublic": true,
+  //   "isPublic": true,
   // },
   // {
   //   "id": 4,
@@ -195,7 +195,7 @@ export const exampleModifierOptions = [
   //   "explanatoryUrl": null,
   //   "standard": true,
   //   "createdById": null,
-  //   "isPsPublic": true,
+  //   "isPublic": true,
   // },
   // {
   //   "id": 5,
@@ -206,7 +206,7 @@ export const exampleModifierOptions = [
   //   "explanatoryUrl": null,
   //   "standard": true,
   //   "createdById": null,
-  //   "isPsPublic": true,
+  //   "isPublic": true,
   // },
   // {
   //   "id": 6,
@@ -217,7 +217,7 @@ export const exampleModifierOptions = [
   //   "explanatoryUrl": null,
   //   "standard": true,
   //   "createdById": null,
-  //   "isPsPublic": true,
+  //   "isPublic": true,
   // },
   // {
   //   "id": 7,
@@ -228,7 +228,7 @@ export const exampleModifierOptions = [
   //   "explanatoryUrl": null,
   //   "standard": true,
   //   "createdById": null,
-  //   "isPsPublic": true,
+  //   "isPublic": true,
   // },
   // {
   //   "id": 8,
@@ -239,7 +239,7 @@ export const exampleModifierOptions = [
   //   "explanatoryUrl": null,
   //   "standard": true,
   //   "createdById": null,
-  //   "isPsPublic": true,
+  //   "isPublic": true,
   // },
   {
     "id": 9,
@@ -250,7 +250,7 @@ export const exampleModifierOptions = [
     "explanatoryUrl": null,
     "standard": true,
     "createdById": null,
-    "isPsPublic": true,
+    "isPublic": true,
   },
   {
     "id": 10,
@@ -261,6 +261,93 @@ export const exampleModifierOptions = [
     "explanatoryUrl": null,
     "standard": true,
     "createdById": null,
-    "isPsPublic": true,
+    "isPublic": true,
+  },
+];
+
+[
+  {
+    name: "Champion",
+    minimumScore: 0,
+  },
+  {
+    name: "Gnarly Champion",
+    minimumScore: 200,
+  },
+  {
+    name: "Radical Champion",
+    minimumScore: 400,
+  },
+  {
+    name: "Righteous Champion",
+    minimumScore: 600,
+  },
+  {
+    name: "Epic Champion",
+    minimumScore: 800,
+  },
+  {
+    name: "Flawless Champion",
+    minimumScore: 920,
+  },
+  {
+    name: "Legendary Champion",
+    minimumScore: 1000,
+  },
+  {
+    name: "Santaic Champion",
+    minimumScore: 1100,
+  },
+  {
+    name: "Godlike Champion",
+    minimumScore: 1240,
+  },
+];
+
+export const exampleRanks = [
+  {
+    id: 1,
+    name: "Champion",
+    minimumScore: 0,
+  },
+  {
+    id: 2,
+    name: "Gnarly Champion",
+    minimumScore: 200,
+  },
+  {
+    id: 3,
+    name: "Radical Champion",
+    minimumScore: 400,
+  },
+  {
+    id: 4,
+    name: "Righteous Champion",
+    minimumScore: 600,
+  },
+  {
+    id: 5,
+    name: "Epic Champion",
+    minimumScore: 800,
+  },
+  {
+    id: 6,
+    name: "Flawless Champion",
+    minimumScore: 920,
+  },
+  {
+    id: 7,
+    name: "Legendary Champion",
+    minimumScore: 1000,
+  },
+  {
+    id: 8,
+    name: "Santaic Champion",
+    minimumScore: 1120,
+  },
+  {
+    id: 9,
+    name: "Godlike Champion",
+    minimumScore: 1240,
   },
 ];
