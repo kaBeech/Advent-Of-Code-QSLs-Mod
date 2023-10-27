@@ -15,9 +15,9 @@ import { getGithubUserIdFromUserImage } from "~/util/getGithubUserIdFromUserImag
 import type { Session } from "@auth/core/types";
 import { useAuthSession } from "~/routes/plugin@auth";
 import styles from "./day.css?inline";
-import type { GameInfo } from "~/types";
+import type { DayInfo } from "~/types";
 
-let gameInfo: GameInfo | null;
+let dayInfo: DayInfo | null;
 
 export const onRequest: RequestHandler = (event) => {
   const session: Session | null = event.sharedMap.get("session");
@@ -28,9 +28,9 @@ export const onRequest: RequestHandler = (event) => {
     path: "/",
     secure: true,
   });
-  const gameInfoString = event.cookie.get("gameInfo")?.value || null;
-  if (gameInfoString) {
-    gameInfo = JSON.parse(gameInfoString);
+  const dayInfoString = event.cookie.get("dayInfo")?.value || null;
+  if (dayInfoString) {
+    dayInfo = JSON.parse(dayInfoString);
   }
 };
 
@@ -46,7 +46,7 @@ export default component$(() => {
     dayNumber,
     buttonPresses: 0,
     loading: false,
-    gameInfo,
+    dayInfo,
   });
 
   const xtremeXmasUserDataResource = useResource$<any>(
@@ -90,7 +90,7 @@ export default component$(() => {
         optionWhenPart1Completed: dayData.optionWhenPart1Completed || null,
         part2Completed: dayData.part2Completed || null,
       };
-      state.gameInfo = returnData;
+      state.dayInfo = returnData;
       return returnData;
     }
   );
@@ -107,9 +107,9 @@ export default component$(() => {
               <li>
                 Reroll Tokens Earned:{" "}
                 <strong>
-                  {state.gameInfo?.part2Completed
+                  {state.dayInfo?.part2Completed
                     ? "**"
-                    : state.gameInfo?.part1Completed
+                    : state.dayInfo?.part1Completed
                     ? "*"
                     : ""}
                 </strong>
@@ -117,10 +117,10 @@ export default component$(() => {
               <li>
                 Reroll Tokens Spent During Part 1:{" "}
                 <strong>
-                  {(state.gameInfo?.rerollTokensSpentDuringPart1 || 0) > 9
-                    ? state.gameInfo?.rerollTokensSpentDuringPart1 + "*"
+                  {(state.dayInfo?.rerollTokensSpentDuringPart1 || 0) > 9
+                    ? state.dayInfo?.rerollTokensSpentDuringPart1 + "*"
                     : "﹡".repeat(
-                        state.gameInfo?.rerollTokensSpentDuringPart1 || 0
+                        state.dayInfo?.rerollTokensSpentDuringPart1 || 0
                       )}
                 </strong>
               </li>
@@ -128,10 +128,10 @@ export default component$(() => {
                 Reroll Tokens Spent During Part 2:{" "}
                 <strong>
                   {" "}
-                  {(state.gameInfo?.rerollTokensSpentDuringPart2 || 0) > 9
-                    ? state.gameInfo?.rerollTokensSpentDuringPart2 + "*"
+                  {(state.dayInfo?.rerollTokensSpentDuringPart2 || 0) > 9
+                    ? state.dayInfo?.rerollTokensSpentDuringPart2 + "*"
                     : "﹡".repeat(
-                        state.gameInfo?.rerollTokensSpentDuringPart2 || 0
+                        state.dayInfo?.rerollTokensSpentDuringPart2 || 0
                       )}
                 </strong>
               </li>
@@ -139,50 +139,48 @@ export default component$(() => {
                 Current Reroll Tokens:{" "}
                 <strong>
                   {" "}
-                  {(state.gameInfo?.currentRerollTokens || 0) > 9
-                    ? state.gameInfo?.currentRerollTokens + "*"
-                    : "﹡".repeat(state.gameInfo?.currentRerollTokens || 0)}
+                  {(state.dayInfo?.currentRerollTokens || 0) > 9
+                    ? state.dayInfo?.currentRerollTokens + "*"
+                    : "﹡".repeat(state.dayInfo?.currentRerollTokens || 0)}
                 </strong>
               </li>
               <li>
                 Estimated Net Score:{" "}
                 <strong>
-                  {!state.gameInfo ? (
+                  {!state.dayInfo ? (
                     `Loading...`
-                  ) : state.gameInfo.netScore > 0 ? (
-                    <strong class="token">+{state.gameInfo.netScore}</strong>
+                  ) : state.dayInfo.netScore > 0 ? (
+                    <strong class="token">+{state.dayInfo.netScore}</strong>
                   ) : (
-                    <strong class="tokenSpent">
-                      {state.gameInfo.netScore}
-                    </strong>
+                    <strong class="tokenSpent">{state.dayInfo.netScore}</strong>
                   )}
                 </strong>
               </li>
               <li>
                 Challenge Modifier:{" "}
                 <strong>
-                  {!state.gameInfo
+                  {!state.dayInfo
                     ? `Loading...`
-                    : state.gameInfo.challengeModifier === "None"
+                    : state.dayInfo.challengeModifier === "None"
                     ? "None"
                     : "You must complete this challenge " +
-                      state.gameInfo.challengeModifier +
-                      (state.gameInfo.modifierOption !== "None" &&
-                        state.gameInfo.modifierOption)}
+                      state.dayInfo.challengeModifier +
+                      (state.dayInfo.modifierOption !== "None" &&
+                        state.dayInfo.modifierOption)}
                 </strong>
               </li>
               <li>
                 Current Day:{" "}
                 <strong>
-                  {!state.gameInfo ? `Loading...` : state.gameInfo.currentDay}
+                  {!state.dayInfo ? `Loading...` : state.dayInfo.currentDay}
                 </strong>
               </li>
               <li>
                 Current Day Completed?:{" "}
                 <strong>
-                  {!state.gameInfo
+                  {!state.dayInfo
                     ? `Loading...`
-                    : state.gameInfo.part1Completed
+                    : state.dayInfo.part1Completed
                     ? `Yes`
                     : `No`}
                 </strong>
@@ -191,17 +189,17 @@ export default component$(() => {
                 Selected Day Part 1 Completed?:{" "}
                 <strong>
                   {" "}
-                  {!state.gameInfo
+                  {!state.dayInfo
                     ? `Loading...`
-                    : state.gameInfo.part1Completed
+                    : state.dayInfo.part1Completed
                     ? `Yes`
                     : `No`}
                 </strong>
-                {!state.gameInfo?.part1Completed ? null : (
+                {!state.dayInfo?.part1Completed ? null : (
                   <>
                     <br />
                     <strong>
-                      {new Date(state.gameInfo.part1Completed).toString()}
+                      {new Date(state.dayInfo.part1Completed).toString()}
                     </strong>
                   </>
                 )}
@@ -209,17 +207,17 @@ export default component$(() => {
               <li>
                 Selected Day Part 2 Completed?:{" "}
                 <strong>
-                  {!state.gameInfo
+                  {!state.dayInfo
                     ? `Loading...`
-                    : state.gameInfo.part2Completed
+                    : state.dayInfo.part2Completed
                     ? `Yes`
                     : `No`}
                 </strong>
-                {!state.gameInfo?.part2Completed ? null : (
+                {!state.dayInfo?.part2Completed ? null : (
                   <>
                     <br />
                     <strong>
-                      {new Date(state.gameInfo.part2Completed).toString()}
+                      {new Date(state.dayInfo.part2Completed).toString()}
                     </strong>
                   </>
                 )}

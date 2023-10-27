@@ -1,4 +1,4 @@
-export interface GameInfo {
+export interface DayInfo {
   numberOfGames: string;
   challengeModifier: string;
   modifierOption: string;
