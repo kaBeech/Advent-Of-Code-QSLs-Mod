@@ -860,7 +860,7 @@ const rankData: Prisma.RankCreateInput[] = [
   },
   {
     name: "Santaic Champion",
-    minimumScore: 1100,
+    minimumScore: 1120,
   },
   {
     name: "Godlike Champion",
