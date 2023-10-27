@@ -1,4 +1,4 @@
-import { Resource, component$, useResource$ } from "@builder.io/qwik";
+import { Resource, component$, useResource$, useStore } from "@builder.io/qwik";
 import {
   useLocation,
   type DocumentHead,
@@ -10,6 +10,8 @@ import { getGithubUserIdFromUserImage } from "~/util/getGithubUserIdFromUserImag
 import type { Session } from "@auth/core/types";
 import DayLink from "~/components/game/dayLink/dayLink";
 
+let gameInfo;
+
 export const onRequest: RequestHandler = (event) => {
   const session: Session | null = event.sharedMap.get("session");
   if (!session || new Date(session.expires) < new Date()) {
@@ -19,9 +21,16 @@ export const onRequest: RequestHandler = (event) => {
     path: "/",
     secure: true,
   });
+  const gameInfoString = event.cookie.get("gameInfo")?.value || null;
+  if (gameInfoString) {
+    gameInfo = JSON.parse(gameInfoString);
+  }
 };
 
 export default component$(() => {
+  const state = useStore({
+    gameInfo,
+  });
   const session = useAuthSession();
   const userId = getGithubUserIdFromUserImage(session.value!.user!.image!);
   const gameNumber = useLocation().params.gameNumber;
@@ -52,7 +61,10 @@ export default component$(() => {
           return (
             <>
               <ul>
-                <li>Game Name: Loading...</li>
+                <li>
+                  Game Name:{" "}
+                  {!state.numberOfGames ? `Loading...` : state.numberOfGames}
+                </li>
                 <li>Player: Loading...</li>
                 <li>Year: Loading...</li>
                 <li>Score: Loading...</li>
