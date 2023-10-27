@@ -23,6 +23,17 @@ export interface GameInfo {
   rank: number | null;
 }
 
+export interface LeaderboardGame {
+  id: string;
+  playerName: string;
+  name: string;
+  number: number;
+  year: number;
+  score: number;
+  rank: number;
+  repositoryLink: string;
+}
+
 export interface UserData {
   Game: {
     name: string;
