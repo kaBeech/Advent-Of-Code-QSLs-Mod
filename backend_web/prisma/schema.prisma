@@ -53,7 +53,7 @@ model Game {
   rerollTokensSpentDuringPart2Raw     Int            @default(0)
   rerollTokensSpentDuringPart2Limited Int            @default(0)
   repositoryLink                      String?
-  progressSheetLink                   String?
+  progressSheetLink                   String         @default("/game/public/${id}")
   isPublic                            Boolean        @default(false)
   publicProfileId                     Int?
   score                               Int            @default(0)
