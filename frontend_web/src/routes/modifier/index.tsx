@@ -16,9 +16,9 @@ export default component$(() => {
       const abortController = new AbortController();
       cleanup(() => abortController.abort("cleanup"));
       const userData = await serverFetcher(`modifier`, "GET");
-      const numberOfGames = JSON.stringify(userData);
+      const modifiers = JSON.stringify(userData);
       return {
-        numberOfGames: numberOfGames ? numberOfGames : "None",
+        modifiers: modifiers ? modifiers : "None",
       };
     }
   );
@@ -33,14 +33,14 @@ export default component$(() => {
         onPending={() => {
           return (
             <p>
-              Number Of Games: <strong>Loading...</strong>
+              Modifiers: <strong>Loading...</strong>
             </p>
           );
         }}
         onResolved={(xtremeXmasData) => {
           return (
             <p>
-              Number Of Games: <strong>{xtremeXmasData.numberOfGames}</strong>
+              Modifiers: <strong>{xtremeXmasData.modifiers}</strong>
             </p>
           );
         }}
