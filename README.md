@@ -1,6 +1,6 @@
 # Advent Of Code: Xtreme Xmas
 
-\*\*UNDER CONSTRUCTION - [Demo Page](https://xmas-frontend-test.vercel.app/)\*\*
+\*\*UNDER CONSTRUCTION\*\*
 
 \*\*CURRENT STATUS: Basic functionality built out. Next step - build Public Links and Leaderboards\*\*
 
