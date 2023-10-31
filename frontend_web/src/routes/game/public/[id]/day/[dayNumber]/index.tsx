@@ -217,7 +217,7 @@ export default component$(() => {
             return (
               <p>
                 Day not found - please try again or{" "}
-                <a href="/new">[start a new game!]</a>
+                <a href="/new">start a new game!</a>
               </p>
             );
           }

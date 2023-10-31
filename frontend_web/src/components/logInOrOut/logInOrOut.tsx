@@ -22,7 +22,7 @@ export default component$((props: LoginProps) => {
             state.isLoggedIn = false;
           }}
         >
-          [Log Out]
+          Log Out
         </a>
       ) : (
         <a
@@ -33,7 +33,7 @@ export default component$((props: LoginProps) => {
             state.isLoggedIn = true;
           }}
         >
-          [Log In]
+          Log In
         </a>
       )}
     </>

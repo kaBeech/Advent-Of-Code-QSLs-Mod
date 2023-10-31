@@ -1,4 +1,4 @@
-# Advent Of Code: Xtreme Xmas
+# Xtreme Xmas Code
 
 \*\*UNDER CONSTRUCTION\*\*
 
