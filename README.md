@@ -8,7 +8,7 @@ Have you ever been savoring your [Advent Of Code](https://adventofcode.com/) cal
 
 Well ho-ho-hold that thought because this is the mod for you!
 
-Advent Of Code: Xtreme Xmas adds randomized challenge modifiers for the Advent Of Code puzzle series. It will also track your progress
+Xtreme Xmas Code adds randomized challenge modifiers for the Advent Of Code puzzle series. It will also track your progress
 
 Each day you will get to roll for a randomized challenge modifier such as "Complete this puzzle in a language you've never used before" or "Complete this puzzle without reassigning any variables."
 
