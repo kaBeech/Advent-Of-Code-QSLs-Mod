@@ -240,14 +240,14 @@ export default component$(() => {
           world by marking your game as Public. TBA...
         </p>
         <h2> Frequently Asked Questions </h2>
-        <p>
+        {/* <p>
           <em>
             I find the text on the site hard to read. Is there a high contrast
             mode?
           </em>
           There will be a high contrast alternate stylesheet. Firefox supports
           these by default (View -{">"} Page Style -{">"} High Contrast).
-        </p>
+        </p> */}
         <p>
           <em>Why make a mod for Advent of Code?</em> Because it's fun! Using
           randomized challenges to push our boundaries and encourage us to think
