@@ -200,10 +200,10 @@ export default component$(() => {
           to a maximum of 2), and <em>P1</em> is the number of{" "}
           <em>tokens spent during Part 1</em>.
         </p>
-        <h2> Ranks </h2>
+        <h2> Titles </h2>
         <p>
-          Upon completing Day 25 of a game you will be awarded a <em>Rank</em>{" "}
-          based on your score. The ranks are:
+          Upon completing Day 25 of a game you will be awarded a <em>Title</em>{" "}
+          based on your score. The titles are:
         </p>
         <ul>
           <li>
