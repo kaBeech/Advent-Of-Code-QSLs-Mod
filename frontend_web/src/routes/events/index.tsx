@@ -73,7 +73,7 @@ export default component$(() => {
                   `Loading...`
                 ) : state.numberOfGames < 1 ? (
                   <h2>
-                    Please <a href="/new">[Start a New Game!]</a>
+                    Please <a href="/new">Start a New Game!</a>
                   </h2>
                 ) : (
                   <ul>
@@ -91,7 +91,7 @@ export default component$(() => {
                         </li>
                       )
                     )}
-                    <a href="/new">[New Game]</a>
+                    <a href="/new">New Game</a>
                   </ul>
                 )}
               </strong>
@@ -102,7 +102,7 @@ export default component$(() => {
           if (+xtremeXmasData.numberOfGames < 1) {
             return (
               <h2>
-                Please <a href="/new">[Start a New Game!]</a>
+                Please <a href="/new">Start a New Game!</a>
               </h2>
             );
           }
@@ -119,7 +119,7 @@ export default component$(() => {
                   </li>
                 )
               )}
-              <a href="/new">[New Game]</a>
+              <a href="/new">New Game</a>
             </ul>
           );
         }}

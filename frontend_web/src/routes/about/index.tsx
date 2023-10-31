@@ -66,7 +66,7 @@ export default component$(() => {
           If you'd like to support Xtreme Xmas Code, you can do so indirectly by
           helping to{" "}
           {/* <span class="link">
-            [Share
+            Share
             <span class="clickShow">
               {" "}
               via{" "}
@@ -77,7 +77,6 @@ export default component$(() => {
                 BlueSky
               </a>
             </span>
-            ]
           </span>{" "} */}
           share it with others, or more directly by visiting{" "}
           <a href="/support" class="link">
@@ -360,7 +359,7 @@ export default component$(() => {
           </a>{" "}
           to verify and remember your identity. You choose a{" "}
           {/* <span class="clickable">
-            [Service
+            Service
             <span class="clickShow">
               {" "}
               like{" "}
@@ -373,7 +372,7 @@ export default component$(() => {
               <a href="" class="link">
                 Google
               </a>
-            </span>]
+            </span>
           </span> */}
           service like{" "}
           <a

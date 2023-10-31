@@ -232,7 +232,7 @@ export default component$(() => {
             return (
               <p>
                 Day not found - please try again or{" "}
-                <a href="/new">[start a new game!]</a>
+                <a href="/new">start a new game!</a>
               </p>
             );
           }
@@ -315,7 +315,7 @@ export default component$(() => {
                         state.buttonPresses++;
                       }}
                     >
-                      [Roll Initial Challenge Modifier]
+                      Roll Initial Challenge Modifier
                     </a>
                   ) : (
                     <li>
@@ -333,7 +333,7 @@ export default component$(() => {
                           state.buttonPresses++;
                         }}
                       >
-                        [Reroll Challenge Modifier]
+                        Reroll Challenge Modifier
                       </a>{" "}
                       for <strong class="tokenSpent">﹡﹡</strong>
                     </li>
@@ -355,7 +355,7 @@ export default component$(() => {
                             state.buttonPresses++;
                           }}
                         >
-                          [Reroll Modifier Option]
+                          Reroll Modifier Option
                         </a>{" "}
                         ({xtremeXmasData.modifierOption}) for{" "}
                         <strong class="tokenSpent">﹡</strong>
@@ -388,7 +388,7 @@ export default component$(() => {
                         }/day/${+res.number}`;
                       }}
                     >
-                      [ Start Next Day]
+                      Start Next Day
                     </a>
                   )}
                 </li>
@@ -429,7 +429,7 @@ export default component$(() => {
                         state.buttonPresses++;
                       }}
                     >
-                      [Complete Part 1]
+                      Complete Part 1
                     </a>
                   )}
                 </li>
@@ -481,19 +481,19 @@ export default component$(() => {
                         state.buttonPresses++;
                       }}
                     >
-                      [Complete Part 2]
+                      Complete Part 2
                     </a>
                   )}
                 </li>{" "}
               </ul>
               {+dayNumber > 1 && (
                 <a href={`/game/${gameNumber}/day/${+dayNumber - 1}/`}>
-                  [Previous Day]
+                  Previous Day
                 </a>
               )}{" "}
               {dayNumber < xtremeXmasData.currentDay && (
                 <a href={`/game/${gameNumber}/day/${+dayNumber + 1}/`}>
-                  [Next Day]
+                  Next Day
                 </a>
               )}
             </>

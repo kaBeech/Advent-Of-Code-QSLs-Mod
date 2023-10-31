@@ -99,7 +99,7 @@ export default component$(() => {
                   />
                 ))}
                 <br />
-                <a href="/new">[Start a New Game!]</a>
+                <a href="/new">Start a New Game!</a>
               </>
             );
           }

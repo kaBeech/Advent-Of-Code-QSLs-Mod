@@ -11,7 +11,7 @@ export default component$(() => {
         });
       }}
     >
-      [Log In]
+      Log In
     </a>
   );
 });
