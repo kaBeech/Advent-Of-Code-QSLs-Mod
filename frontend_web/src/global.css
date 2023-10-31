@@ -70,7 +70,8 @@ em {
 }
 
 a {
-  color: var(--xxmas-text-green);
+  /* color: var(--xxmas-text-green); */
+  color: hsl(12, 15, 42);
   text-decoration: none;
   cursor: pointer;
 }
