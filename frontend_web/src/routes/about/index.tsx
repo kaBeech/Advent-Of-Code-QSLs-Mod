@@ -249,9 +249,26 @@ export default component$(() => {
           these by default (View -{">"} Page Style -{">"} High Contrast).
         </p> */}
         <p>
-          <em>Why make a mod for Advent of Code?</em> Because it's fun! Using
-          randomized challenges to push our boundaries and encourage us to think
-          outside the box is a great way to help keep our brains in shape!
+          <em>Are you affiliated with Advent of Code?</em>
+        </p>
+        <p>Nope!</p>
+        <p>
+          I'm a big fan of{" "}
+          <a href="https://adventofcode.com/" class="link">
+            {" "}
+            Advent of Code{" "}
+          </a>{" "}
+          and I encourage you to support its creator{" "}
+          <a href="https://adventofcode.com/support">Eric Wastl</a>, but I'm not
+          affiliated with him or Advent of Code in any way.
+        </p>
+        <p>
+          <em>Why make a mod for Advent of Code?</em>
+        </p>
+        <p>
+          Because it's fun! Using randomized challenges to push our boundaries
+          and encourage us to think outside the box is a great way to help keep
+          our brains in shape!
         </p>
         <p>
           Additionally, XXC adds to AoC leaderboard options. Being a worldwide
@@ -293,32 +310,41 @@ export default component$(() => {
           and lateral thinking.
         </p>
         <p>
-          <em>How do the leaderboards work?</em> The leaderboards are opt-in;
-          you must post your game manually for it to show up. Games on the
-          boards are ranked by score. There are two boards for each year:
-          In-Season and All-Time. To qualify for the In-Season board, your game
-          must be completed and posted during the specified year. For example,
-          to qualify for the 2023 In-Season board your game must be completed
-          and posted before January 1, 2024.
+          <em>How do the leaderboards work?</em>
         </p>
         <p>
-          <em>How can I post to the leaderboards?</em> To post a game to the
-          leaderboards, you must first mark your game as Public and add a
-          Repository Link. TBA... If you mark your game as Private or remove its
-          Repository Link, it will automatically be removed from the
-          leaderboards. TBA...
+          The leaderboards are opt-in; you must post your game manually for it
+          to show up. Games on the boards are ranked by score. There are two
+          boards for each year: In-Season and All-Time. To qualify for the
+          In-Season board, your game must be completed and posted during the
+          specified year. For example, to qualify for the 2023 In-Season board
+          your game must be completed and posted before January 1, 2024.
         </p>
         <p>
-          <em>Can I use AI to get on the leaderboards?</em> Please don't post
-          games that use AI to do most or all of your puzzle solving to the
-          leaderboards. The leaderboards are built on a principle of good faith
-          and I would like them to remain useful as a way for humans to interact
-          and compete with each other. That being said, mild use of AI tools is
-          permitted and some challenge modifiers may even require the use of AI.
-          Just use your best judgement and be a good sport =)
+          <em>How can I post to the leaderboards?</em>
+        </p>
+        <p>
+          To post a game to the leaderboards, you must first mark your game as
+          Public and add a Repository Link. TBA... If you mark your game as
+          Private or remove its Repository Link, it will automatically be
+          removed from the leaderboards. TBA...
+        </p>
+        <p>
+          <em>Can I use AI to get on the leaderboards?</em>
+        </p>
+        <p>
+          Please don't post games that use AI to do most or all of your puzzle
+          solving to the leaderboards. The leaderboards are built on a principle
+          of good faith and I would like them to remain useful as a way for
+          humans to interact and compete with each other. That being said, mild
+          use of AI tools is permitted and some challenge modifiers may even
+          require the use of AI. Just use your best judgement and be a good
+          sport =)
         </p>
         <p>
           <em>How do you deter cheating? </em>
+        </p>
+        <p>
           We use a community-based reputation system and focus on showing our
           work as players. Each game posted to the leaderboards must include a
           link to a public repository showing the code used to solve each
@@ -337,7 +363,10 @@ export default component$(() => {
           including being banned from voting in or posting to the leaderboards.
         </p>
         <p>
-          <em>How does authentication work?</em> Xtreme Xmas Code uses{" "}
+          <em>How does authentication work?</em>
+        </p>
+        <p>
+          Xtreme Xmas Code uses{" "}
           <a href="https://en.wikipedia.org/wiki/OAuth" class="link">
             OAuth
           </a>{" "}
