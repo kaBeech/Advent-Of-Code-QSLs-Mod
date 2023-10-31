@@ -2,19 +2,9 @@
 
 /* Fonts */
 
-@font-face {
-  font-family: "Source Code Pro";
-  src: url("/fonts/SourceCodePro-Light.ttf");
-}
-
-@font-face {
-  font-family: "Source Code Xtreme";
-  src: url("/fonts/SourceCodeXtreme-Light.otf");
-}
-
 /* Colors */
 
-:root {
+/* :root {
   --xxmas-background-dark: hsl(240, 24%, 8%);
   --xxmas-background-dim: hsl(240, 40%, 10%);
   --xxmas-border-medium: hsl(240, 11%, 23%);
@@ -26,7 +16,7 @@
   --xxmas-text-green: hsl(120, 100%, 30%);
   --xxmas-text-green-glow: hsl(120, 100%, 40%);
   --xxmas-text-gold: hsl(63, 100%, 69%);
-}
+} */
 
 /* Elements */
 
@@ -37,8 +27,6 @@ html {
   -o-tab-size: 4;
   tab-size: 4;
   font-family:
-    "Source Code Xtreme",
-    "Source Code Pro",
     monospace,
     ui-sans-serif,
     system-ui,
@@ -79,7 +67,6 @@ h2 {
 em {
   color: var(--xxmas-text-bright);
   font-style: normal;
-  text-shadow: 0 0 5px;
 }
 
 a {
@@ -167,7 +154,4 @@ code {
 
 .glowGreen {
   color: var(--xxmas-text-green-glow);
-  text-shadow:
-    0 0 2px var(--xxmas-text-green-glow),
-    0 0 5px var(--xxmas-text-green-glow);
 }
