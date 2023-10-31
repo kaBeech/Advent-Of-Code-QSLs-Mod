@@ -40,7 +40,6 @@ export default component$((props: HeaderProps) => {
               {" "}
               <a href="/calendar">Calendar</a> <a href="/support">Support</a>{" "}
               <a href="/sponsors">Sponsors</a>{" "}
-              <a href="/leaderboard">Leaderboard</a> <a href="/stats">Stats</a>
             </div>
           </div>
         </div>
