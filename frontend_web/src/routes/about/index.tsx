@@ -7,30 +7,14 @@ export default component$(() => {
   return (
     <>
       <article>
-        <h1 class="visualHide">--- About ---</h1>
+        <h1 class="visualHide"> Xtreme Xmas Code </h1>
         <p>
-          Hi! I'm{" "}
-          <a href="https://www.kabeech.com/" class="link">
-            Kyle Beechly
-          </a>
-          . I make Xtreme Xmas Code. I hope you like it! You can find me on{" "}
-          <a href="https://github.com/kaBeech" class="link">
-            GitHub
-          </a>
-          ,{" "}
-          <a href="https://www.linkedin.com/in/kyle-beechly/" class="link">
-            LinkedIn
-          </a>
-          ,{" "}
-          <a href="https://bsky.app/profile/kabeech.com" class="link">
-            Bluesky
-          </a>
-          , and{" "}
-          <a href="https://hachyderm.io/@kaBeech" class="link">
-            Mastodon
-          </a>
-          .
+          Have you ever been savoring your Advent Of Code calendar, keyboard
+          dusted with sugar cookie crumbles, reindeer curled at your feet, and
+          found yourself wishing the puzzles were wilder? More challenging? MORE
+          XTREME??
         </p>
+        <p>Well ho-ho-hold that thought because this is the mod for you!</p>
         <p>
           <em>Xtreme Xmas Code</em> is a mod/companion app for{" "}
           <a href="https://adventofcode.com/" class="link">
@@ -62,55 +46,55 @@ export default component$(() => {
           </a>
           .
         </p>
+        <h2> About Me </h2>
         <p>
-          If you'd like to support Xtreme Xmas Code, you can do so indirectly by
-          helping to{" "}
-          {/* <span class="link">
-            Share
-            <span class="clickShow">
-              {" "}
-              via{" "}
-              <a href="" class="link">
-                Mastodon
-              </a>{" "}
-              <a href="" class="link">
-                BlueSky
-              </a>
-            </span>
-          </span>{" "} */}
-          share it with others, or more directly by visiting{" "}
-          <a href="/support" class="link">
-            my support page
+          I'm{" "}
+          <a href="https://www.kabeech.com/" class="link">
+            Kyle Beechly
           </a>{" "}
-          (you won't find any donate buttons over there, though). You can also
-          support me by supporting{" "}
-          <a href="https://adventofcode.com/support" class="link">
-            Eric Wastl
-          </a>
-          , creator of Advent of Code (if you want to throw money at someone for
-          this, he's the guy).
-        </p>
-        <p>
-          I'm also <em>#OpenToWork</em>, so if you're looking to work with a fun
-          nerd you may contact me via{" "}
-          <a href="https://www.linkedin.com/in/kyle-beechly/" class="link">
-            LinkedIn
+          - web developer, language lover, and maker of Xtreme Xmas Code. I hope
+          you like it! You can find me on{" "}
+          <a href="https://github.com/kaBeech" class="link">
+            GitHub
           </a>
           ,{" "}
-          <a href="mailto:contact@kabeech.com" class="link">
-            Email
+          <a href="https://www.linkedin.com/in/kyle-beechly/" class="link">
+            LinkedIn
           </a>
           ,{" "}
           <a href="https://bsky.app/profile/kabeech.com" class="link">
             Bluesky
           </a>
-          , or{" "}
+          , and{" "}
           <a href="https://hachyderm.io/@kaBeech" class="link">
             Mastodon
           </a>
+          .
+        </p>
+        <p>
+          I'm also <em>#OpenToWork</em>, so if you're looking to work with a fun
+          nerd you may contact me via one of the above options or{" "}
+          <a href="mailto:contact@kabeech.com" class="link">
+            Email
+          </a>
           !
         </p>
-        <h2>--- Disclaimer ---</h2>
+        <p>
+          If you'd like to support Xtreme Xmas Code, you can do so by sharing it
+          with a friend, supporting our{" "}
+          <a href="/support" class="link">
+            sponsors
+          </a>{" "}
+          , or supporting{" "}
+          <a href="https://adventofcode.com/support" class="link">
+            Eric Wastl
+          </a>
+          , creator of Advent of Code. You can find more information on{" "}
+          <a href="/support" class="link">
+            my support page
+          </a>{" "}
+        </p>
+        <h2> Disclaimer </h2>
         <p>
           <em>Xtreme Xmas Code is under construction</em> and has not officially
           launched.
@@ -129,7 +113,7 @@ export default component$(() => {
           </a>{" "}
           and I'll see what I can do.
         </p>
-        <h2>--- Rules ---</h2>
+        <h2> Rules </h2>
         <p>
           Each day you may roll a new <em>Challenge Modifier</em>. Our example
           Challenge Modifier will be{" "}
@@ -186,7 +170,7 @@ export default component$(() => {
           which combined with the 12 we started with gives us 11 Reroll Tokens
           at the start of Day 2.
         </p>
-        <h2>--- Scoring ---</h2>
+        <h2> Scoring </h2>
         <p>
           The <em>Basic Scoring Formula</em> is{" "}
           <code>10 * T + 20 * P2 + B</code> where <em>T</em> is the number of{" "}
@@ -216,7 +200,7 @@ export default component$(() => {
           to a maximum of 2), and <em>P1</em> is the number of{" "}
           <em>tokens spent during Part 1</em>.
         </p>
-        <h2>--- Ranks ---</h2>
+        <h2> Ranks </h2>
         <p>
           Upon completing Day 25 of a game you will be awarded a <em>Rank</em>{" "}
           based on your score. The ranks are:
@@ -250,12 +234,12 @@ export default component$(() => {
             1240+ points: <em>Godlike Champion</em>
           </li>
         </ul>
-        <h2>--- Public Links ---</h2>
+        <h2> Public Links </h2>
         <p>
           You can generate a <em>Public Link</em> to share your work with the
           world by marking your game as Public. TBA...
         </p>
-        <h2>--- Frequently Asked Questions ---</h2>
+        <h2> Frequently Asked Questions </h2>
         <p>
           <em>
             I find the text on the site hard to read. Is there a high contrast
@@ -398,7 +382,7 @@ export default component$(() => {
           . Xtreme Xmas Code will remember your unique ID, names, URL, and image
           from the service you use to authenticate.
         </p>
-        <h2>--- Credits ---</h2>
+        <h2> Credits </h2>
         <p>
           Xtreme Xmas Code:{" "}
           <a href="https://www.kabeech.com/" class="link">
@@ -424,8 +408,6 @@ export default component$(() => {
           </li>
         </ul>
         <p>Playing: You!</p>
-        <h2>--- Legal ---</h2>
-        <p>TBA</p>
       </article>
     </>
   );
