@@ -98,7 +98,7 @@ export default component$(() => {
 
   return (
     <article>
-      <h1 class="title">---Day {dayNumber}---</h1>
+      <h1 class="title">Day {dayNumber}</h1>
       <Resource
         value={xtremeXmasUserDataResource}
         onPending={() => {

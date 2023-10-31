@@ -65,12 +65,14 @@ h2 {
 }
 
 em {
-  color: var(--xxmas-text-bright);
+  /* color: var(--xxmas-text-bright); */
+  color: hsl(100, 100%, 29%);
   font-style: normal;
 }
 
 a {
-  color: var(--xxmas-text-green);
+  /* color: var(--xxmas-text-green); */
+  color: hsl(0, 100%, 42%);
   text-decoration: none;
   cursor: pointer;
 }
