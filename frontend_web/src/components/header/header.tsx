@@ -39,7 +39,8 @@ export default component$((props: HeaderProps) => {
             <div class="flex gap1 marginTBPoint2">
               {" "}
               <a href="/calendar">Calendar</a> | <a href="/support">Support</a>{" "}
-              |<a href="/sponsors">Sponsors</a>{" "}
+              |<a href="/sponsors">Sponsors</a> |
+              <a href="/leaderboard">Leaderboards</a>{" "}
             </div>
           </div>
         </div>
