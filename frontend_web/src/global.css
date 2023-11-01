@@ -124,8 +124,16 @@ code {
   flex-direction: column;
 }
 
+.alignCenter {
+  align-items: center;
+}
+
 .alignEnd {
   align-items: flex-end;
+}
+
+.justifyCenter {
+  justify-content: center;
 }
 
 .gap1 {

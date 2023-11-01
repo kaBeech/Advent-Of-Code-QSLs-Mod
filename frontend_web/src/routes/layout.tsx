@@ -49,7 +49,7 @@ export default component$(() => {
     <>
       <Header isLoggedIn={isLoggedIn} toggleLoggedIn={toggleLoggedIn} />
       {/* <Sidebar /> */}
-      <main>
+      <main class="flex column alignCenter">
         <Slot />
       </main>
     </>
