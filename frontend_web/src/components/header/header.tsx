@@ -20,7 +20,7 @@ export default component$((props: HeaderProps) => {
     <header>
       <div class={`flex gap1`}>
         <div class="flex column alignEnd">
-          <a href="/" class="glowGreen marginTBPoint2">
+          <a href="/" class="marginTBPoint2">
             Xtreme Xmas Code
           </a>
 

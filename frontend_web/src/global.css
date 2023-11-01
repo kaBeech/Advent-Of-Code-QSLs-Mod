@@ -2,21 +2,37 @@
 
 /* Fonts */
 
-/* Colors */
+/* Color Palette */
 
-/* :root {
-  --xxmas-background-dark: hsl(240, 24%, 8%);
-  --xxmas-background-dim: hsl(240, 40%, 10%);
-  --xxmas-border-medium: hsl(240, 11%, 23%);
-  --xxmas-text-dim: hsl(0, 0%, 40%);
-  --xxmas-text-medium: hsl(0, 0%, 80%);
-  --xxmas-text-bright: hsl(0, 0%, 100%);
-  --xxmas-text-red-bright: hsl(0, 100%, 48%);
-  --xxmas-text-red: hsl(0, 100%, 44%);
-  --xxmas-text-green: hsl(120, 100%, 30%);
-  --xxmas-text-green-glow: hsl(120, 100%, 40%);
-  --xxmas-text-gold: hsl(63, 100%, 69%);
-} */
+:root {
+  --xxmas-palette-grey-dark: hsl(0, 0%, 28%);
+  --xxmas-palette-grey-dim: hsl(0, 0%, 58%);
+  --xxmas-palette-grey-medium: hsl(0, 0%, 71%);
+  --xxmas-palette-grey-bright: hsl(0, 0%, 90%);
+  --xxmas-palette-white-bright: hsl(0, 0%, 100%);
+  --xxmas-palette-green-medium: hsl(100, 100%, 29%);
+  --xxmas-palette-green-dark: hsl(104, 100%, 3%);
+  --xxmas-palette-green-black: hsl(100, 100%, 2%);
+  --xxmas-palette-red-medium: hsl(0, 100%, 42%);
+  --xxmas-palette-gold-medium: hsl(52, 100%, 42%);
+}
+
+/* Color Assignments*/
+
+:root {
+  --xxmas-background-black: var(--xxmas-palette-green-black);
+  --xxmas-background-dark: var(--xxmas-palette-green-dark);
+  --xxmas-border-medium: var(--xxmas-palette-grey-dark);
+  --xxmas-text-dim: var(--xxmas-palette-grey-dim);
+  --xxmas-text-medium: var(--xxmas-palette-grey-medium);
+  --xxmas-text-bright: var(--xxmas-palette-grey-bright);
+  --xxmas-text-red: var(--xxmas-palette-red-medium);
+  --xxmas-text-medium: var(--xxmas-palette-grey-bright);
+  --xxmas-text-bright: var(--xxmas-palette-white-bright);
+  --xxmas-text-emphasis: var(--xxmas-palette-gold-medium);
+  --xxmas-text-link-unvisited: var(--xxmas-palette-red-medium);
+  --xxmas-text-link-visited: var(--xxmas-palette-red-medium);
+}
 
 /* Elements */
 
@@ -49,7 +65,7 @@ body {
   padding: 0;
   margin: 0.5rem;
   line-height: inherit;
-  background: var(--xxmas-background-dim);
+  background: var(--xxmas-background-dark);
   color: var(--xxmas-text-medium);
 }
 
@@ -65,21 +81,19 @@ h2 {
 }
 
 em {
-  /* color: var(--xxmas-text-bright); */
-  color: hsl(100, 100%, 29%);
+  color: var(--xxmas-text-emphasis);
   font-style: normal;
 }
 
 a {
-  /* color: var(--xxmas-text-green); */
-  color: hsl(0, 100%, 42%);
+  color: var(--xxmas-text-link-unvisited);
   text-decoration: none;
   cursor: pointer;
 }
 
 code {
   border: 1px solid var(--xxmas-border-medium);
-  background: var(--xxmas-background-dark);
+  background: var(--xxmas-background-black);
   font-size: 0.92rem !important;
 }
 
@@ -152,8 +166,4 @@ code {
 
 .textDim {
   color: var(--xxmas-text-dim);
-}
-
-.glowGreen {
-  color: var(--xxmas-text-green-glow);
 }
