@@ -28,7 +28,6 @@ export default component$((props: HeaderProps) => {
             <div class="flex gap1 marginTBPoint2">
               {" "}
               <a href="/about">About</a> | <a href="/events">Games</a> |
-              <a href="https://adventofcode.com">AoC</a> |
               <a href="/settings">Settings</a> |
               <LogInOrOut
                 isLoggedIn={state.isLoggedIn}
