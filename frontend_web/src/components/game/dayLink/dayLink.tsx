@@ -57,8 +57,8 @@ export default component$((props: DayLinkProps) => {
     challengeModifier.length < 26
       ? " ".repeat(26 - challengeModifier.length)
       : ""
-  }d${modifierOption}${
-    modifierOption.length < 18 && " ".repeat(18 - modifierOption.length)
+  }${modifierOption}${
+    modifierOption.length < 19 && " ".repeat(19 - modifierOption.length)
   }${score} points${score.length < 6 && " ".repeat(6 - score.length)} `;
 
   return (
