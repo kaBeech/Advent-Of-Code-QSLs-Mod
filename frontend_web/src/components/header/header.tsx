@@ -1,6 +1,8 @@
+/* eslint-disable no-irregular-whitespace */
 import { $, component$, useStore } from "@builder.io/qwik";
 import LogInOrOut from "../logInOrOut/logInOrOut";
 import { useAuthSession } from "~/routes/plugin@auth";
+import XmasLights from "../xmasLights/xmasLights";
 
 interface HeaderProps {
   isLoggedIn: boolean;
@@ -24,7 +26,19 @@ export default component$((props: HeaderProps) => {
           <span class="logoGreen">^</span> Xmas <span class="logoWhite">§</span>{" "}
           Code <span class="logoBrown">»</span>
         </a>
-
+        <br />
+        {/* <XmasLights
+          numberOfLights={44}
+          firstLightStartingColorNumber={7}
+          rotation={"0"}
+          alternateColors={true}
+        /> */}
+        <XmasLights
+          numberOfLights={42}
+          firstLightStartingColorNumber={1}
+          alternateColors={true}
+        />
+        <br />
         <div class="flex column alignCenter">
           <div class="flex gap1 marginTBPoint2">
             {" "}
@@ -41,12 +55,7 @@ export default component$((props: HeaderProps) => {
             <a href="/calendar">Calendar</a> ¦ <a href="/support">Support</a> ¦
             <a href="/sponsors">Sponsors</a> ¦
             <a href="/leaderboard">Leaderboards</a>{" "}
-          </div>
-        </div>
-        <br />
-        <div class="rotate180 xmasLight">
-                                            
-                  
+          </div>{" "}
         </div>
       </div>
     </header>
