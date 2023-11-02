@@ -323,6 +323,10 @@ code {
   color: var(--xxmas-palette-gold-medium);
 }
 
+.logoRed {
+  color: var(--xxmas-palette-red-medium);
+}
+
 .logoWhite {
   color: var(--xxmas-palette-white-bright);
 }
