@@ -6,7 +6,7 @@ export default component$(() => {
     <div id="footer" class="sponsor flex column gap1 alignCenter">
       <div class="textDim">
         <XmasLights
-          numberOfLights={20}
+          numberOfLights={19}
           firstLightStartingColorNumber={1}
           alternateColors={true}
         />
@@ -15,7 +15,7 @@ export default component$(() => {
         </a>
 
         <XmasLights
-          numberOfLights={20}
+          numberOfLights={19}
           firstLightStartingColorNumber={1}
           alternateColors={true}
         />
@@ -27,7 +27,7 @@ export default component$(() => {
         to work with me!
       </div>
       <XmasLights
-        numberOfLights={44}
+        numberOfLights={42}
         firstLightStartingColorNumber={1}
         alternateColors={true}
       />
