@@ -100,10 +100,7 @@ body {
   margin: 0.5rem;
   line-height: inherit;
   background-color: var(--xxmas-background-dark);
-  /* background-color: #001202; */
-
   background-image: url("/patterns/subtle-dark-vertical.png");
-
   color: var(--xxmas-text-medium);
   letter-spacing: 0.15rem;
 }
@@ -130,12 +127,6 @@ a {
   text-decoration: none;
   cursor: pointer;
 }
-
-/* code {
-  border: 1px solid var(--xxmas-border-medium);
-  background: var(--xxmas-background-black);
-  font-size: 0.92rem !important;
-} */
 
 code {
   background: var(--xxmas-background-black);
