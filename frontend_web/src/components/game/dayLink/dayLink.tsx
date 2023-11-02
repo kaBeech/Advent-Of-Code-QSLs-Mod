@@ -37,10 +37,10 @@ export default component$((props: DayLinkProps) => {
   }
 
   const challengeModifier = props.dayLinkData.ChallengeModifier
-    ? props.dayLinkData.ChallengeModifier.name + ", "
+    ? props.dayLinkData.ChallengeModifier.name
     : "";
   const modifierOption = props.dayLinkData.ModifierOption?.text
-    ? props.dayLinkData.ModifierOption.text + ", "
+    ? props.dayLinkData.ModifierOption.text
     : "";
   let score = String(props.dayLinkData.netScore);
   if (+score >= 0) {
@@ -53,28 +53,20 @@ export default component$((props: DayLinkProps) => {
   tokensSpent += props.dayLinkData.challengeModifierRerollsUsed * 2;
   tokensSpent += props.dayLinkData.modifierOptionRerollsUsed;
 
-  const dayDataString = ` ${challengeModifier}${modifierOption}${score} points `;
-  let frontPadding = "";
-  let endPadding = "";
-  if (dayDataString.length < 55) {
-    const frontPaddingDiff = (55 - dayDataString.length) / 2;
-    let endPaddingDiff = Math.floor(frontPaddingDiff);
-    if (frontPaddingDiff !== endPaddingDiff) {
-      endPaddingDiff += 1;
-    }
-    frontPadding = "#".repeat(frontPaddingDiff);
-    endPadding = "#".repeat(endPaddingDiff) + " ";
-  }
+  const dayDataString = ` ${challengeModifier}${
+    challengeModifier.length < 24
+      ? " ".repeat(24 - challengeModifier.length)
+      : ""
+  }${modifierOption}${
+    modifierOption.length < 19 && " ".repeat(19 - modifierOption.length)
+  }${score} points${score.length < 7 && " ".repeat(7 - score.length)} `;
 
   return (
     <div>
-      <a href={`day/${props.dayNumber}`}>
-        <span class="textMedium">{frontPadding}</span>
-        {dayDataString}
-        <span class="textMedium">{endPadding}</span>
-      </a>
+      <a href={`day/${props.dayNumber}`}>{dayDataString}</a>
       <span class="textBright">
-        {props.dayNumber < 10 ? " " + props.dayNumber : props.dayNumber}{" "}
+        {props.dayNumber < 10 ? " " + props.dayNumber : props.dayNumber}
+        {"    "}
       </span>
       <span class="token stitch">{renderTokens(tokensGained)}</span>
       <span class="tokenSpent stitch">{renderSpentTokens(tokensSpent)}</span>

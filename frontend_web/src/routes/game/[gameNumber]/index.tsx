@@ -195,7 +195,7 @@ export default component$(() => {
                 --------------------------------------------------------------------
               </div>
               <div>
-                Challenge Modifier {`  `}¦ Modifier Option {`  `} ¦ Est Score ¦
+                Challenge Modifier {`   `}¦ Modifier Option ¦ Est Score {` `} ¦
                 Day ¦ Tokens
               </div>
 
