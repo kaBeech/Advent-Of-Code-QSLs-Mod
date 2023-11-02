@@ -85,7 +85,7 @@ export default component$(() => {
                       }) => (
                         <li key={`game-${game.number}`}>
                           <a href={`/game/${game.number}`}>
-                            {game.year}
+                            °{game.year}°
                             <span class="textMedium"> - {game.name}</span>
                           </a>
                         </li>
@@ -113,7 +113,7 @@ export default component$(() => {
                 (game: { name: string; number: number; year: number }) => (
                   <li key={`game-${game.number}`}>
                     <a href={`/game/${game.number}`}>
-                      {game.year}
+                      °{game.year}°
                       <span class="textMedium"> - {game.name}</span>
                     </a>
                   </li>
