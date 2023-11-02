@@ -100,10 +100,7 @@ body {
   margin: 0.5rem;
   line-height: inherit;
   background-color: var(--xxmas-background-dark);
-  /* background-color: #001202; */
-
   background-image: url("/patterns/subtle-dark-vertical.png");
-
   color: var(--xxmas-text-medium);
   letter-spacing: 0.15rem;
 }
@@ -131,16 +128,10 @@ a {
   cursor: pointer;
 }
 
-/* code {
-  border: 1px solid var(--xxmas-border-medium);
-  background: var(--xxmas-background-black);
-  font-size: 0.92rem !important;
-} */
-
 code {
   background: var(--xxmas-background-black);
   border-radius: 0.3rem;
-  padding: 0.5rem;
+  padding: 0.2rem 0.5rem;
   font-weight: bold;
   font-family:
     "Gohu 11",
@@ -311,12 +302,20 @@ code {
   color: var(--xxmas-text-dim);
 }
 
+.textGold {
+  color: var(--xxmas-palette-gold-medium);
+}
+
 .logoGreen {
   color: var(--xxmas-palette-green-medium);
 }
 
 .logoGold {
   color: var(--xxmas-palette-gold-medium);
+}
+
+.logoRed {
+  color: var(--xxmas-palette-red-medium);
 }
 
 .logoWhite {
