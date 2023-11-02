@@ -11,7 +11,7 @@ export default component$(() => {
           alternateColors={true}
         />
         <a href="/sponsors" class="">
-          Sponsor
+          °Sponsor°
         </a>
 
         <XmasLights
@@ -21,13 +21,13 @@ export default component$(() => {
         />
       </div>
       <div class="sponsor textCenter">
-        <a href="/about">Kyle Beechly</a> - I'm the creator of Xtreme Xmas Code;
-        I hope you like it! <br />
-        Please reach out if you have any questions or comments or if you'd like
-        to work with me!
+        <a href="/about">°Kyle Beechly°</a> - I'm the creator of Xtreme Xmas
+        Code; I hope you like it! <br />
+        Please reach out if you have any questions/comments or if you'd like to
+        work with me!
       </div>
       <XmasLights
-        numberOfLights={42}
+        numberOfLights={43}
         firstLightStartingColorNumber={1}
         alternateColors={true}
       />

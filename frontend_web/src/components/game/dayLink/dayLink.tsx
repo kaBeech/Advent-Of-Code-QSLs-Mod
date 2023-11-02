@@ -62,14 +62,14 @@ export default component$((props: DayLinkProps) => {
   tokensSpent += props.dayLinkData.challengeModifierRerollsUsed * 2;
   tokensSpent += props.dayLinkData.modifierOptionRerollsUsed;
 
-  const challengeModifierString = `${challengeModifier}${
-    challengeModifier.length < 26
-      ? " ".repeat(26 - challengeModifier.length)
+  const challengeModifierString = `°${challengeModifier}°${
+    challengeModifier.length < 23
+      ? " ".repeat(23 - challengeModifier.length)
       : ""
   }`;
 
-  const modifierOptionString = `${modifierOption}${
-    modifierOption.length < 19 && " ".repeat(19 - modifierOption.length)
+  const modifierOptionString = `°${modifierOption}°${
+    modifierOption.length < 17 && " ".repeat(17 - modifierOption.length)
   }`;
 
   const scoreString = `${score} points${

@@ -18,15 +18,15 @@ export default component$(() => {
         <p>
           <em>Xtreme Xmas Code</em> is a mod/companion app for{" "}
           <a href="https://adventofcode.com/" class="link">
-            Advent of Code
+            °Advent of Code°
           </a>
           , a delightful{" "}
           <a href="https://en.wikipedia.org/wiki/Advent_calendar" class="link">
-            Advent calendar
+            °Advent calendar°
           </a>{" "}
           of small programming puzzles created by{" "}
           <a href="http://was.tl/" class="link">
-            Eric Wastl
+            °Eric Wastl°
           </a>
           . With it you can record your Advent of Code progress and each day get
           an additional modifier to that day's AoC puzzle. For example, you may
@@ -42,7 +42,7 @@ export default component$(() => {
             href="https://www.reddit.com/r/adventofcode/comments/e2wjhf/comment/f90ksek/"
             class="link"
           >
-            that isn't tied to a strict time schedule
+            °that isn't tied to a strict time schedule°
           </a>
           .
         </p>
@@ -56,24 +56,24 @@ export default component$(() => {
         <p>
           I'm{" "}
           <a href="https://www.kabeech.com/" class="link">
-            Kyle Beechly
+            °Kyle Beechly°
           </a>{" "}
           - web developer, language lover, and maker of Xtreme Xmas Code. I hope
           you like it! You can find me on{" "}
           <a href="https://github.com/kaBeech" class="link">
-            GitHub
+            °GitHub°
           </a>
           ,{" "}
           <a href="https://www.linkedin.com/in/kyle-beechly/" class="link">
-            LinkedIn
+            °LinkedIn°
           </a>
           ,{" "}
           <a href="https://bsky.app/profile/kabeech.com" class="link">
-            Bluesky
+            °Bluesky°
           </a>
           , and{" "}
           <a href="https://hachyderm.io/@kaBeech" class="link">
-            Mastodon
+            °Mastodon°
           </a>
           .
         </p>
@@ -81,7 +81,7 @@ export default component$(() => {
           I'm also <em>#OpenToWork</em>, so if you're looking to work with a fun
           nerd you may contact me via one of the above options or{" "}
           <a href="mailto:contact@kabeech.com" class="link">
-            Email
+            °Email°
           </a>
           !
         </p>
@@ -89,15 +89,15 @@ export default component$(() => {
           If you'd like to support Xtreme Xmas Code, you can do so by sharing it
           with a friend, supporting our{" "}
           <a href="/support" class="link">
-            sponsors
+            °sponsors°
           </a>{" "}
           , or supporting{" "}
           <a href="https://adventofcode.com/support" class="link">
-            Eric Wastl
+            °Eric Wastl°
           </a>
           , creator of Advent of Code. You can find more information on{" "}
           <a href="/support" class="link">
-            my support page
+            °my support page°
           </a>
           .{" "}
         </p>
@@ -122,7 +122,7 @@ export default component$(() => {
           . If you're eager to start using XXC for more permanent projects and
           it hasn't launched yet, please{" "}
           <a href="mailto:contact@kabeech.com" class="link">
-            send me an email
+            °send me an email°
           </a>{" "}
           and I'll see what I can do.
         </p>{" "}
@@ -301,11 +301,11 @@ export default component$(() => {
           I'm a big fan of{" "}
           <a href="https://adventofcode.com/" class="link">
             {" "}
-            Advent of Code{" "}
+            °Advent of Code°
           </a>{" "}
           and I encourage you to support its creator{" "}
-          <a href="https://adventofcode.com/support">Eric Wastl</a>, but I'm not
-          affiliated with him or Advent of Code in any way.
+          <a href="https://adventofcode.com/support">°Eric Wastl°</a>, but I'm
+          not affiliated with him or Advent of Code in any way.
         </p>
         <p>
           <em>Why make a mod for Advent of Code?</em>
@@ -319,36 +319,36 @@ export default component$(() => {
           Additionally, XXC adds to AoC leaderboard options. Being a worldwide
           speed-based competition, the race to get on{" "}
           <a href="https://adventofcode.com/leaderboard" class="link">
-            Advent of Code
-          </a>
-          's global leaderboard{" "}
+            °Advent of Code's°
+          </a>{" "}
+          global leaderboard{" "}
           <a
             href="https://adventofcode.com/2022/about#faq_compete"
             class="link"
           >
-            encourages
+            °encourages°
           </a>{" "}
           <a href="https://blog.vero.site/post/advent-leaderboard" class="link">
-            some
+            °some°
           </a>{" "}
           <a
             href="https://kevinyap.ca/2019/12/going-fast-in-advent-of-code/"
             class="link"
           >
-            particular
+            °particular°
           </a>{" "}
           <a
             href="https://gist.github.com/mcpower/87427528b9ba5cac6f0c679370789661"
             class="link"
           >
-            techniques
+            °techniques°
           </a>{" "}
           and{" "}
           <a
             href="https://adventofcode.com/2022/about#faq_unlocktime"
             class="link"
           >
-            isn't convenient for all players' schedules
+            °isn't convenient for all players' schedules°
           </a>
           . I'm hoping that the score-based Xtreme Xmas Code leaderboards will
           provide an accessible alternative that rewards new learning, courage,
@@ -413,7 +413,7 @@ export default component$(() => {
         <p>
           Xtreme Xmas Code uses{" "}
           <a href="https://en.wikipedia.org/wiki/OAuth" class="link">
-            OAuth
+            °OAuth°
           </a>{" "}
           to verify and remember your identity. You choose a{" "}
           {/* <span class="clickable">
@@ -422,13 +422,13 @@ export default component$(() => {
               {" "}
               like{" "}
               <a href="" class="link">
-                GitHub
+                °GitHub°
               </a>{" "}
               <a href="" class="link">
-                Mastodon
+                °Mastodon°
               </a>{" "}
               <a href="" class="link">
-                Google
+                °Google°
               </a>
             </span>
           </span> */}
@@ -441,17 +441,17 @@ export default component$(() => {
             }}
             class="link"
           >
-            GitHub
+            °GitHub°
           </a>{" "}
           to log in with and Xtreme Xmas Code receives information to remember
           who you are. This is generally public information; here are examples
           from{" "}
           <a href="https://api.reddit.com/user/reddit/about" class="link">
-            Reddit
+            °Reddit°
           </a>{" "}
           and{" "}
           <a href="https://api.github.com/users/octocat" class="link">
-            GitHub
+            °GitHub°
           </a>
           . Xtreme Xmas Code will remember your unique ID, names, URL, and image
           from the service you use to authenticate.
@@ -466,13 +466,13 @@ export default component$(() => {
         <p>
           Xtreme Xmas Code:{" "}
           <a href="https://www.kabeech.com/" class="link">
-            Kyle Beechly
+            °Kyle Beechly°
           </a>
         </p>
         <p>
           Advent of Code:{" "}
           <a href="http://was.tl/" class="link">
-            Eric Wastl
+            °Eric Wastl°
           </a>
         </p>
         <p>XXC Beta Testing:</p>
@@ -483,7 +483,7 @@ export default component$(() => {
               href="mailto:contact@kabeech.com?subject=Xtreme%20Xmas%20Beta%20Testing"
               class="link"
             >
-              Your name here!
+              °Your name here!°
             </a>
           </li>
         </ul>

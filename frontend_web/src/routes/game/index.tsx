@@ -12,7 +12,7 @@ export default component$(() => {
       <p>
         Oh! Looks like the redirect didn't work. Maybe try{" "}
         <a class="link" href="game/1">
-          this link
+          °this link°
         </a>
         ?
       </p>
