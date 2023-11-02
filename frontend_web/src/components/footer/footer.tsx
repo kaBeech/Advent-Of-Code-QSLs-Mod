@@ -20,12 +20,12 @@ export default component$(() => {
           alternateColors={true}
         />
       </div>
-      <div class="sponsor textCenter">
+      <p class="sponsor textCenter">
         <a href="/about">°Kyle Beechly°</a> - I'm the creator of Xtreme Xmas
         Code; I hope you like it! <br />
         Please reach out if you have any questions/comments or if you'd like to
         work with me!
-      </div>
+      </p>
       <XmasLights
         numberOfLights={43}
         firstLightStartingColorNumber={1}

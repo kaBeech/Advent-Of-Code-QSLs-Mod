@@ -415,24 +415,7 @@ export default component$(() => {
           <a href="https://en.wikipedia.org/wiki/OAuth" class="link">
             °OAuth°
           </a>{" "}
-          to verify and remember your identity. You choose a{" "}
-          {/* <span class="clickable">
-            Service
-            <span class="clickShow">
-              {" "}
-              like{" "}
-              <a href="" class="link">
-                °GitHub°
-              </a>{" "}
-              <a href="" class="link">
-                °Mastodon°
-              </a>{" "}
-              <a href="" class="link">
-                °Google°
-              </a>
-            </span>
-          </span> */}
-          service like{" "}
+          to verify and remember your identity. You choose a service like{" "}
           <a
             onClick$={() => {
               signIn.submit({
