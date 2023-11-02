@@ -152,7 +152,7 @@ export default component$(() => {
           }
           const sortedDays = gameData.Day.sort(
             (a: { number: number }, b: { number: number }) => {
-              return b.number - a.number;
+              return a.number - b.number;
             }
           );
           return (
