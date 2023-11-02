@@ -92,7 +92,8 @@ export default component$(() => {
           , creator of Advent of Code. You can find more information on{" "}
           <a href="/support" class="link">
             my support page
-          </a>{" "}
+          </a>
+          .{" "}
         </p>
         <h2> Disclaimer </h2>
         <p>
@@ -179,12 +180,12 @@ export default component$(() => {
           the number of{" "}
           <em class="bold textBright">tokens spent during Part 2</em> (up to a
           maximum of 2 per day), and <em class="bold textBright">B</em> is the{" "}
-          <em class="bold textBright">end-of-game Bonus</em>
+          <em class="bold textBright">end-of-game Bonus.</em>
         </p>
         <p>
           The <em>End-Game Bonus Formula</em> is <code>300 - 10 * S</code>, to a
           minimum of 0, where <em class="bold textBright">S</em> is the{" "}
-          <em class="bold textBright">total number of tokens Spent</em>
+          <em class="bold textBright">total number of tokens Spent.</em>
         </p>
         <p>
           If you spend at least 2 reroll tokens during Part 2 of every day, the{" "}
@@ -193,7 +194,7 @@ export default component$(() => {
           <em class="bold textBright">T</em> is the number of{" "}
           <em class="bold textBright">unspent reroll Tokens</em> and{" "}
           <em class="bold textBright">P1</em> is the number of{" "}
-          <em class="bold textBright">tokens spent during Part 1</em>
+          <em class="bold textBright">tokens spent during Part 1.</em>
         </p>{" "}
         <p>
           Each day's individual score is a rough estimation of that day's effect
