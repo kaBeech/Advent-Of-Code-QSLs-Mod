@@ -140,6 +140,17 @@ export default component$(() => {
                   </>
                 )}
               </ul>
+              <div>
+                --------------------------------------------------------------------
+              </div>
+              <div>
+                Challenge Modifier {`   `}¦ Modifier Option ¦ Est Score {` `} ¦
+                Day ¦ Tokens
+              </div>
+
+              <div>
+                --------------------------------------------------------------------
+              </div>
               {lockedDays.map((day: { number: number }) => (
                 <DayLink
                   key={`lockedDay-${day.number}`}
