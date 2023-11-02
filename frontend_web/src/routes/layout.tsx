@@ -53,6 +53,7 @@ export default component$(() => {
       <main class="flex column alignCenter">
         <Slot />
       </main>
+      <br />
       <Footer />
     </>
   );
