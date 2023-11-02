@@ -91,7 +91,7 @@
   }
 
   75% {
-    color: var(--full-sat-pink);
+    color: var(--full-sat-rose);
   }
 
   83% {
@@ -141,7 +141,7 @@
   }
 
   67% {
-    color: var(--full-sat-pink);
+    color: var(--full-sat-rose);
   }
 
   75% {
@@ -191,7 +191,7 @@
   }
 
   58% {
-    color: var(--full-sat-pink);
+    color: var(--full-sat-rose);
   }
 
   67% {
@@ -241,7 +241,7 @@
   }
 
   50% {
-    color: var(--full-sat-pink);
+    color: var(--full-sat-rose);
   }
 
   58% {
@@ -291,7 +291,7 @@
   }
 
   42% {
-    color: var(--full-sat-pink);
+    color: var(--full-sat-rose);
   }
 
   50% {
@@ -341,7 +341,7 @@
   }
 
   33% {
-    color: var(--full-sat-pink);
+    color: var(--full-sat-rose);
   }
 
   42% {
@@ -391,7 +391,7 @@
   }
 
   25% {
-    color: var(--full-sat-pink);
+    color: var(--full-sat-rose);
   }
 
   33% {
@@ -441,7 +441,7 @@
   }
 
   17% {
-    color: var(--full-sat-pink);
+    color: var(--full-sat-rose);
   }
 
   25% {
@@ -491,7 +491,7 @@
   }
 
   8% {
-    color: var(--full-sat-pink);
+    color: var(--full-sat-rose);
   }
 
   17% {
@@ -541,7 +541,7 @@
 
 @keyframes colorShift10 {
   from {
-    color: var(--full-sat-pink);
+    color: var(--full-sat-rose);
   }
 
   8% {
@@ -589,7 +589,7 @@
   }
 
   to {
-    color: var(--full-sat-pink);
+    color: var(--full-sat-rose);
   }
 }
 
@@ -639,7 +639,7 @@
   }
 
   92% {
-    color: var(--full-sat-pink);
+    color: var(--full-sat-rose);
   }
 
   to {
@@ -689,7 +689,7 @@
   }
 
   83% {
-    color: var(--full-sat-pink);
+    color: var(--full-sat-rose);
   }
 
   92% {

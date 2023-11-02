@@ -5,6 +5,7 @@ import type { RequestHandler } from "@builder.io/qwik-city";
 import styles from "./styles.css?inline";
 import Header from "~/components/header/header";
 import type { Session } from "@auth/core/types";
+import Footer from "~/components/footer/footer";
 // import Sidebar from "~/components/sidebar/sidebar";
 
 let isLoggedIn = false;
@@ -52,6 +53,7 @@ export default component$(() => {
       <main class="flex column alignCenter">
         <Slot />
       </main>
+      <Footer />
     </>
   );
 });
