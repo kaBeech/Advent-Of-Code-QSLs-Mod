@@ -155,18 +155,6 @@ code {
 
 /* IDs */
 
-#sidebar {
-  width: 12.5rem;
-  float: right;
-  margin: 1rem 2rem 2em 2em;
-  position: relative;
-  z-index: 10;
-}
-
-/* #footer {
-  width: 50em;
-} */
-
 /* Util Classes */
 
 .bold {
