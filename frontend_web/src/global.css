@@ -1,4 +1,5 @@
 @import "reset.css";
+@import "xmasLights.css";
 
 /* Fonts */
 
@@ -7,19 +8,44 @@
   src: url("/fonts/BigBlueTermPlusNerdFontMono-Regular.ttf");
 }
 
+@font-face {
+  font-family: "Gohu 11";
+  src: url("/fonts/GohuFont11NFM.otf");
+}
+
+@font-face {
+  font-family: "Xmas Sweater Stitch";
+  src: url("/fonts/XmasSweaterStitch.otf");
+}
+
 /* Color Palette */
 
 :root {
+  --xxmas-palette-black-dark: hsl(0, 0%, 0%);
   --xxmas-palette-grey-dark: hsl(0, 0%, 28%);
-  --xxmas-palette-grey-dim: hsl(0, 0%, 58%);
+  --xxmas-palette-grey-dim: hsl(0, 0%, 36%);
   --xxmas-palette-grey-medium: hsl(0, 0%, 71%);
   --xxmas-palette-grey-bright: hsl(0, 2%, 83%);
   --xxmas-palette-white-bright: hsl(0, 0%, 100%);
   --xxmas-palette-green-medium: hsl(100, 100%, 29%);
-  --xxmas-palette-green-dark: hsl(104, 100%, 3%);
+  --xxmas-palette-green-bright: hsl(124, 100%, 39%);
+  --xxmas-palette-green-dark: hsl(105, 100%, 4%);
   --xxmas-palette-green-black: hsl(100, 100%, 2%);
   --xxmas-palette-red-medium: hsl(0, 100%, 47%);
   --xxmas-palette-gold-medium: hsl(52, 100%, 42%);
+  --xxmas-palette-brown-medium: rgb(132, 65, 24);
+  --full-sat-blue: hsl(240, 100%, 50%);
+  --full-sat-cerulean: hsl(210, 100%, 50%);
+  --full-sat-cyan: hsl(180, 100%, 50%);
+  --full-sat-turquoise: hsl(150, 100%, 50%);
+  --full-sat-green: hsl(120, 100%, 50%);
+  --full-sat-lime: hsl(90, 100%, 50%);
+  --full-sat-yellow: hsl(60, 100%, 50%);
+  --full-sat-orange: hsl(30, 100%, 50%);
+  --full-sat-red: hsl(0, 100%, 50%);
+  --full-sat-pink: hsl(330, 100%, 50%);
+  --full-sat-magenta: hsl(300, 100%, 50%);
+  --full-sat-purple: hsl(270, 100%, 50%);
 }
 
 /* Color Assignments*/
@@ -33,21 +59,23 @@
   --xxmas-text-bright: var(--xxmas-palette-grey-bright);
   --xxmas-text-red: var(--xxmas-palette-red-medium);
   --xxmas-text-medium: var(--xxmas-palette-grey-bright);
-  --xxmas-text-bright: var(--xxmas-palette-white-bright);
-  --xxmas-text-emphasis: var(--xxmas-palette-gold-medium);
+  --xxmas-text-emphasis: var(--xxmas-palette-green-bright);
   --xxmas-text-link-unvisited: var(--xxmas-palette-red-medium);
   --xxmas-text-link-visited: var(--xxmas-palette-red-medium);
+  --xxmas-token-unspent: var(--xxmas-palette-gold-medium);
+  --xxmas-token-spent: var(--xxmas-palette-red-medium);
 }
 
 /* Elements */
 
 html {
-  line-height: 1;
+  line-height: 1.2;
   -webkit-text-size-adjust: 100%;
   -moz-tab-size: 4;
   -o-tab-size: 4;
   tab-size: 4;
   font-family:
+    "Gohu 11",
     "Big Blue Term",
     monospace,
     ui-sans-serif,
@@ -77,7 +105,7 @@ body {
 }
 
 article {
-  width: 45em;
+  width: 50em;
   margin-bottom: 2em;
 }
 
@@ -90,6 +118,7 @@ h2 {
 em {
   color: var(--xxmas-text-emphasis);
   font-style: normal;
+  font-weight: bold;
 }
 
 a {
@@ -98,10 +127,35 @@ a {
   cursor: pointer;
 }
 
-code {
+/* code {
   border: 1px solid var(--xxmas-border-medium);
   background: var(--xxmas-background-black);
   font-size: 0.92rem !important;
+} */
+
+code {
+  background: var(--xxmas-background-black);
+  border-radius: 0.3rem;
+  padding: 0.5rem;
+  font-weight: bold;
+  font-family:
+    "Gohu 11",
+    "Big Blue Term",
+    monospace,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    "Helvetica Neue",
+    Arial,
+    "Noto Sans",
+    sans-serif,
+    "Apple Color Emoji",
+    "Segoe UI Emoji",
+    "Segoe UI Symbol",
+    "Noto Color Emoji";
 }
 
 /* IDs */
@@ -115,6 +169,10 @@ code {
 }
 
 /* Util Classes */
+
+.bold {
+  font-weight: bold;
+}
 
 .flex {
   display: flex;
@@ -145,6 +203,22 @@ code {
   margin-bottom: 0.2rem;
 }
 
+.rotate0 {
+  transform: rotate(0deg);
+}
+
+.rotate90 {
+  transform: rotate(90deg);
+}
+
+.rotate180 {
+  transform: rotate(180deg);
+}
+
+.rotate270 {
+  transform: rotate(270deg);
+}
+
 .visualHide:not(:focus):not(:active) {
   clip: rect(0 0 0 0);
   clip-path: inset(50%);
@@ -163,12 +237,58 @@ code {
 
 /* Custom Classes */
 
+.logo {
+  font-size: 6rem;
+}
+
+.stitch {
+  font-family:
+    "Xmas Sweater Stitch",
+    "Big Blue Term",
+    monospace,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    "Helvetica Neue",
+    Arial,
+    "Noto Sans",
+    sans-serif,
+    "Apple Color Emoji",
+    "Segoe UI Emoji",
+    "Segoe UI Symbol",
+    "Noto Color Emoji";
+}
+
+.stitchLettering {
+  font-family:
+    "Gohu 11",
+    "Big Blue Term",
+    monospace,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    "Helvetica Neue",
+    Arial,
+    "Noto Sans",
+    sans-serif,
+    "Apple Color Emoji",
+    "Segoe UI Emoji",
+    "Segoe UI Symbol",
+    "Noto Color Emoji";
+}
+
 .token {
-  color: var(--xxmas-text-gold);
+  color: var(--xxmas-token-unspent);
 }
 
 .tokenSpent {
-  color: var(--xxmas-text-red);
+  color: var(--xxmas-token-spent);
 }
 
 .textBright {
@@ -181,4 +301,20 @@ code {
 
 .textDim {
   color: var(--xxmas-text-dim);
+}
+
+.logoGreen {
+  color: var(--xxmas-palette-green-medium);
+}
+
+.logoGold {
+  color: var(--xxmas-palette-gold-medium);
+}
+
+.logoWhite {
+  color: var(--xxmas-palette-white-bright);
+}
+
+.logoBrown {
+  color: var(--xxmas-palette-brown-medium);
 }

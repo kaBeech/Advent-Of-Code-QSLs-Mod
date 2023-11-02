@@ -117,7 +117,7 @@ export default component$(() => {
         <p>
           Each day you may roll a new <em>Challenge Modifier</em>. Our example
           Challenge Modifier will be{" "}
-          <em>
+          <em class="bold textBright">
             "...using a random language from the Functional Programming Box."
           </em>
         </p>
@@ -127,12 +127,12 @@ export default component$(() => {
           Functional Programming Language Box. If you roll a Challenge Modifier
           that has Modifier Options, a Modifier Option will be automatically
           rolled as well. Our example Modifier Option will be{" "}
-          <em>"Haskell."</em>
+          <em class="bold textBright">"Haskell."</em>
         </p>
         <p>
           Therefore the full text of our example Challenge Modifier including
           its Modifier Option will be{" "}
-          <em>
+          <em class="bold textBright">
             "You must complete this challenge using this language from the
             Functional Programming Box: Haskell."
           </em>
@@ -151,7 +151,7 @@ export default component$(() => {
           In our example, say we are in Day 1 and are dissatisfied with our
           Challenge Modifier. We decide to reroll our Modifier Option for one
           Reroll Token, giving us{" "}
-          <em>
+          <em class="bold textBright">
             "You must complete this challenge using this language from the
             Functional Programming Box: Erlang."
           </em>
@@ -159,7 +159,7 @@ export default component$(() => {
         <p>
           We don't want to use Erlang either, so we choose to reroll the whole
           Challenge Modifier for 2 Reroll Tokens. This gives us{" "}
-          <em>
+          <em class="bold textBright">
             "You must complete this challenge making declarations in a natural
             language not yet used in this codebase (e.g. Spanish)."
           </em>{" "}
@@ -173,32 +173,38 @@ export default component$(() => {
         <h2> Scoring </h2>
         <p>
           The <em>Basic Scoring Formula</em> is{" "}
-          <code>10 * T + 20 * P2 + B</code> where <em>T</em> is the number of{" "}
-          <em>unspent reroll Tokens</em>, <em>P2</em> is the number of{" "}
-          <em>tokens spent during Part 2</em>
-          (up to a maximum of 2 per day), and <em>B</em> is the{" "}
-          <em>end-of-game Bonus</em>
+          <code>10 * T + 20 * P2 + B</code> where{" "}
+          <em class="bold textBright">T</em> is the number of{" "}
+          <em class="bold textBright">unspent reroll Tokens</em>, <em>P2</em> is
+          the number of{" "}
+          <em class="bold textBright">tokens spent during Part 2</em> (up to a
+          maximum of 2 per day), and <em class="bold textBright">B</em> is the{" "}
+          <em class="bold textBright">end-of-game Bonus</em>
         </p>
         <p>
           The <em>End-Game Bonus Formula</em> is <code>300 - 10 * S</code>, to a
-          minimum of 0, where <em>S</em> is the{" "}
-          <em>total number of tokens Spent</em>
+          minimum of 0, where <em class="bold textBright">S</em> is the{" "}
+          <em class="bold textBright">total number of tokens Spent</em>
         </p>
         <p>
           If you spend at least 2 reroll tokens during Part 2 of every day, the{" "}
           <em>Virtuoso Scoring Formula</em> is used instead. It is{" "}
-          <code>1120 + 10 * T - 10 * P1</code> where <em>T</em> is the number of{" "}
-          <em>unspent reroll Tokens</em> and <em>P1</em> is the number of{" "}
-          <em>tokens spent during Part 1</em>
+          <code>1120 + 10 * T - 10 * P1</code> where{" "}
+          <em class="bold textBright">T</em> is the number of{" "}
+          <em class="bold textBright">unspent reroll Tokens</em> and{" "}
+          <em class="bold textBright">P1</em> is the number of{" "}
+          <em class="bold textBright">tokens spent during Part 1</em>
         </p>{" "}
         <p>
           Each day's individual score is a rough estimation of that day's effect
           on the overall score, assuming use of the Basic Scoring Formula. The{" "}
           <em>Day Score Formula</em> is <code>10 * T + 20 * P2 - 10 * P1</code>,
-          where <em>T</em> is the number of <em>unspent reroll Tokens</em>,{" "}
-          <em>P2</em> is the number of <em>tokens spent during Part 2</em> (up
-          to a maximum of 2), and <em>P1</em> is the number of{" "}
-          <em>tokens spent during Part 1</em>.
+          where <em class="bold textBright">T</em> is the number of{" "}
+          <em class="bold textBright">unspent reroll Tokens</em>,{" "}
+          <em class="bold textBright">P2</em> is the number of{" "}
+          <em class="bold textBright">tokens spent during Part 2</em> (up to a
+          maximum of 2), and <em class="bold textBright">P1</em> is the number
+          of <em class="bold textBright">tokens spent during Part 1</em>.
         </p>
         <h2> Titles </h2>
         <p>

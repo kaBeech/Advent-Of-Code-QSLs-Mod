@@ -6,6 +6,8 @@ export default component$(() => {
       <h1>Stars!</h1>
       <p>﹡</p>
       <p>*</p>
+      <p></p>
+      <p class="stitch">»</p>
     </>
   );
 });

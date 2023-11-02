@@ -1,3 +1,4 @@
+/* eslint-disable no-irregular-whitespace */
 import { Resource, component$, useResource$, useStore } from "@builder.io/qwik";
 import {
   useLocation,
@@ -87,11 +88,13 @@ export default component$(() => {
                 </li>
                 <li>
                   Current Reroll Tokens:{" "}
-                  {!state.gameInfo
-                    ? `Loading...`
-                    : state.gameInfo.currentRerollTokens > 9
-                    ? state.gameInfo.currentRerollTokens + "*"
-                    : "*".repeat(state.gameInfo.currentRerollTokens)}
+                  <strong class="token">
+                    {!state.gameInfo
+                      ? `Loading...`
+                      : state.gameInfo.currentRerollTokens > 9
+                      ? state.gameInfo.currentRerollTokens + ""
+                      : "".repeat(state.gameInfo.currentRerollTokens)}
+                  </strong>
                 </li>
                 {state.gameInfo?.dateCompleted && (
                   <>
@@ -144,12 +147,12 @@ export default component$(() => {
             );
           }
           const lockedDays = [];
-          for (let i = 25; i > gameData.currentDay; i--) {
+          for (let i = gameData.currentDay + 1; i <= 25; i++) {
             lockedDays.push({ number: i });
           }
           const sortedDays = gameData.Day.sort(
             (a: { number: number }, b: { number: number }) => {
-              return b.number - a.number;
+              return a.number - b.number;
             }
           );
           return (
@@ -172,8 +175,8 @@ export default component$(() => {
                   Current Reroll Tokens:{" "}
                   <strong class="token">
                     {gameData.currentRerollTokens > 9
-                      ? gameData.currentRerollTokens + "*"
-                      : "*".repeat(gameData.currentRerollTokens)}
+                      ? gameData.currentRerollTokens + ""
+                      : "".repeat(gameData.currentRerollTokens)}
                   </strong>
                 </li>
                 {gameData.dateCompleted && (
@@ -189,12 +192,17 @@ export default component$(() => {
                   </>
                 )}
               </ul>
-              {lockedDays.map((day: { number: number }) => (
-                <DayLink
-                  key={`lockedDay-${day.number}`}
-                  dayNumber={day.number}
-                />
-              ))}
+              <div>
+                --------------------------------------------------------------------
+              </div>
+              <div>
+                Challenge Modifier {`   `}¦ Modifier Option ¦ Est Score {` `} ¦
+                Day ¦ Tokens
+              </div>
+
+              <div>
+                --------------------------------------------------------------------
+              </div>
               {sortedDays.map(
                 (day: {
                   number: number;
@@ -231,6 +239,12 @@ export default component$(() => {
                   />
                 )
               )}
+              {lockedDays.map((day: { number: number }) => (
+                <DayLink
+                  key={`lockedDay-${day.number}`}
+                  dayNumber={day.number}
+                />
+              ))}
             </>
           );
         }}
