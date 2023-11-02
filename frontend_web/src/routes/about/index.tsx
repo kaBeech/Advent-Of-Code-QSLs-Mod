@@ -281,7 +281,13 @@ export default component$(() => {
             1240+ points: <em class="fsYellow">Godlike Champion</em>
           </li>
         </ul>
+        <div>
+          ----------------------------------------------------------------------------
+        </div>{" "}
         <h2> Public Links </h2>
+        <div>
+          ----------------------------------------------------------------------------
+        </div>{" "}
         <p>
           You can generate a <em>Public Link</em> to share your work with the
           world by marking your game as Public. TBA...
