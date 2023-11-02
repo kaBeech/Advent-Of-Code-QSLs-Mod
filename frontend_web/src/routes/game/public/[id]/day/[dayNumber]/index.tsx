@@ -94,9 +94,9 @@ export default component$(() => {
                 Reroll Tokens Earned:{" "}
                 <strong>
                   {state.dayInfo?.part2Completed
-                    ? "**"
+                    ? ""
                     : state.dayInfo?.part1Completed
-                    ? "*"
+                    ? ""
                     : ""}
                 </strong>
               </li>
@@ -104,8 +104,8 @@ export default component$(() => {
                 Reroll Tokens Spent During Part 1:{" "}
                 <strong>
                   {(state.dayInfo?.rerollTokensSpentDuringPart1 || 0) > 9
-                    ? state.dayInfo?.rerollTokensSpentDuringPart1 + "*"
-                    : "﹡".repeat(
+                    ? state.dayInfo?.rerollTokensSpentDuringPart1 + ""
+                    : "".repeat(
                         state.dayInfo?.rerollTokensSpentDuringPart1 || 0
                       )}
                 </strong>
@@ -115,8 +115,8 @@ export default component$(() => {
                 <strong>
                   {" "}
                   {(state.dayInfo?.rerollTokensSpentDuringPart2 || 0) > 9
-                    ? state.dayInfo?.rerollTokensSpentDuringPart2 + "*"
-                    : "﹡".repeat(
+                    ? state.dayInfo?.rerollTokensSpentDuringPart2 + ""
+                    : "".repeat(
                         state.dayInfo?.rerollTokensSpentDuringPart2 || 0
                       )}
                 </strong>
@@ -126,8 +126,8 @@ export default component$(() => {
                 <strong>
                   {" "}
                   {(state.dayInfo?.currentRerollTokens || 0) > 9
-                    ? state.dayInfo?.currentRerollTokens + "*"
-                    : "﹡".repeat(state.dayInfo?.currentRerollTokens || 0)}
+                    ? state.dayInfo?.currentRerollTokens + ""
+                    : "".repeat(state.dayInfo?.currentRerollTokens || 0)}
                 </strong>
               </li>
               <li>
@@ -136,9 +136,13 @@ export default component$(() => {
                   {!state.dayInfo ? (
                     `Loading...`
                   ) : state.dayInfo.netScore > 0 ? (
-                    <strong class="token">+{state.dayInfo.netScore}</strong>
+                    <strong class="token stitch">
+                      +{state.dayInfo.netScore}
+                    </strong>
                   ) : (
-                    <strong class="tokenSpent">{state.dayInfo.netScore}</strong>
+                    <strong class="tokenSpent stitch">
+                      {state.dayInfo.netScore}
+                    </strong>
                   )}
                 </strong>
               </li>
@@ -229,46 +233,44 @@ export default component$(() => {
                   Reroll Tokens Earned:{" "}
                   <strong class="token">
                     {xtremeXmasData.part2Completed
-                      ? "**"
+                      ? ""
                       : xtremeXmasData.part1Completed
-                      ? "*"
+                      ? ""
                       : ""}
                   </strong>
                 </li>
                 <li>
                   Reroll Tokens Spent During Part 1:{" "}
-                  <strong class="tokenSpent">
+                  <strong class="tokenSpent stitch">
                     {xtremeXmasData.rerollTokensSpentDuringPart1 > 9
-                      ? xtremeXmasData.rerollTokensSpentDuringPart1 + "*"
-                      : "﹡".repeat(
-                          xtremeXmasData.rerollTokensSpentDuringPart1
-                        )}
+                      ? xtremeXmasData.rerollTokensSpentDuringPart1 + ""
+                      : "".repeat(xtremeXmasData.rerollTokensSpentDuringPart1)}
                   </strong>
                 </li>
                 <li>
                   Reroll Tokens Spent During Part 2:{" "}
-                  <strong class="tokenSpent">
+                  <strong class="tokenSpent stitch">
                     {xtremeXmasData.rerollTokensSpentDuringPart2 > 9
-                      ? xtremeXmasData.rerollTokensSpentDuringPart2 + "*"
-                      : "﹡".repeat(
-                          xtremeXmasData.rerollTokensSpentDuringPart2
-                        )}
+                      ? xtremeXmasData.rerollTokensSpentDuringPart2 + ""
+                      : "".repeat(xtremeXmasData.rerollTokensSpentDuringPart2)}
                   </strong>
                 </li>
                 <li>
                   Current Reroll Tokens:{" "}
-                  <strong class="token">
+                  <strong class="token stitch">
                     {xtremeXmasData.currentRerollTokens > 9
-                      ? xtremeXmasData.currentRerollTokens + "*"
-                      : "*".repeat(xtremeXmasData.currentRerollTokens)}
+                      ? xtremeXmasData.currentRerollTokens + ""
+                      : "".repeat(xtremeXmasData.currentRerollTokens)}
                   </strong>
                 </li>
                 <li>
                   Estimated Net Score:{" "}
                   {xtremeXmasData.netScore > 0 ? (
-                    <strong class="token">+{xtremeXmasData.netScore}</strong>
+                    <strong class="token stitch">
+                      +{xtremeXmasData.netScore}
+                    </strong>
                   ) : (
-                    <strong class="tokenSpent">
+                    <strong class="tokenSpent stitch">
                       {xtremeXmasData.netScore}
                     </strong>
                   )}

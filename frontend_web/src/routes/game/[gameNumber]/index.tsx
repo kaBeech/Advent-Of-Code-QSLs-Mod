@@ -87,11 +87,13 @@ export default component$(() => {
                 </li>
                 <li>
                   Current Reroll Tokens:{" "}
-                  {!state.gameInfo
-                    ? `Loading...`
-                    : state.gameInfo.currentRerollTokens > 9
-                    ? state.gameInfo.currentRerollTokens + "*"
-                    : "*".repeat(state.gameInfo.currentRerollTokens)}
+                  <strong class="token">
+                    {!state.gameInfo
+                      ? `Loading...`
+                      : state.gameInfo.currentRerollTokens > 9
+                      ? state.gameInfo.currentRerollTokens + ""
+                      : "".repeat(state.gameInfo.currentRerollTokens)}
+                  </strong>
                 </li>
                 {state.gameInfo?.dateCompleted && (
                   <>
@@ -172,8 +174,8 @@ export default component$(() => {
                   Current Reroll Tokens:{" "}
                   <strong class="token">
                     {gameData.currentRerollTokens > 9
-                      ? gameData.currentRerollTokens + "*"
-                      : "*".repeat(gameData.currentRerollTokens)}
+                      ? gameData.currentRerollTokens + ""
+                      : "".repeat(gameData.currentRerollTokens)}
                   </strong>
                 </li>
                 {gameData.dateCompleted && (
