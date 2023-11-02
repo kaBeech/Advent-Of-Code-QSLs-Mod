@@ -6,7 +6,7 @@ export default component$(() => {
 
   return (
     <>
-      <article class="textCenter">
+      <article class="bigHeaders textCenter">
         <h1 class="visualHide"> Xtreme Xmas Code </h1>
         <p>
           Have you ever been savoring your Advent Of Code calendar, keyboard
@@ -46,7 +46,13 @@ export default component$(() => {
           </a>
           .
         </p>
+        <div>
+          ----------------------------------------------------------------------------
+        </div>
         <h2> About Me </h2>
+        <div>
+          ----------------------------------------------------------------------------
+        </div>
         <p>
           I'm{" "}
           <a href="https://www.kabeech.com/" class="link">
@@ -95,7 +101,13 @@ export default component$(() => {
           </a>
           .{" "}
         </p>
+        <div>
+          ----------------------------------------------------------------------------
+        </div>
         <h2> Disclaimer </h2>
+        <div>
+          ----------------------------------------------------------------------------
+        </div>{" "}
         <p>
           <em>Xtreme Xmas Code is under construction</em> and has not officially
           launched.
@@ -113,8 +125,14 @@ export default component$(() => {
             send me an email
           </a>{" "}
           and I'll see what I can do.
-        </p>
+        </p>{" "}
+        <div>
+          ----------------------------------------------------------------------------
+        </div>
         <h2> Rules </h2>
+        <div>
+          ----------------------------------------------------------------------------
+        </div>{" "}
         <p>
           Each day you may roll a new <em>Challenge Modifier</em>. Our example
           Challenge Modifier will be{" "}
@@ -171,7 +189,13 @@ export default component$(() => {
           which combined with the 12 we started with gives us 11 Reroll Tokens
           at the start of Day 2.
         </p>
-        <h2> Scoring </h2>
+        <div>
+          ----------------------------------------------------------------------------
+        </div>{" "}
+        <h2> Scoring </h2>{" "}
+        <div>
+          ----------------------------------------------------------------------------
+        </div>{" "}
         <p>
           The <em>Basic Scoring Formula</em> is{" "}
           <code>10 * T + 20 * P2 + B</code> where{" "}
@@ -207,7 +231,13 @@ export default component$(() => {
           maximum of 2), and <em class="bold textBright">P1</em> is the number
           of <em class="bold textBright">tokens spent during Part 1</em>.
         </p>
+        <div>
+          ----------------------------------------------------------------------------
+        </div>{" "}
         <h2> Titles </h2>
+        <div>
+          ----------------------------------------------------------------------------
+        </div>{" "}
         <p>
           Upon completing Day 25 of a game you will be awarded a <em>Title</em>{" "}
           based on your score. The titles are:
@@ -246,7 +276,13 @@ export default component$(() => {
           You can generate a <em>Public Link</em> to share your work with the
           world by marking your game as Public. TBA...
         </p>
+        <div>
+          ----------------------------------------------------------------------------
+        </div>{" "}
         <h2> Frequently Asked Questions </h2>
+        <div>
+          ----------------------------------------------------------------------------
+        </div>
         <p>
           <em>
             I find the text on the site hard to read. Is there a high contrast
@@ -420,7 +456,13 @@ export default component$(() => {
           . Xtreme Xmas Code will remember your unique ID, names, URL, and image
           from the service you use to authenticate.
         </p>
+        <div>
+          ----------------------------------------------------------------------------
+        </div>{" "}
         <h2> Credits </h2>
+        <div>
+          ----------------------------------------------------------------------------
+        </div>
         <p>
           Xtreme Xmas Code:{" "}
           <a href="https://www.kabeech.com/" class="link">

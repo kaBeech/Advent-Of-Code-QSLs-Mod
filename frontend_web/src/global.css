@@ -240,6 +240,11 @@ code {
 
 /* Custom Classes */
 
+.bigHeaders h2 {
+  font-size: larger;
+  margin: 0.5rem;
+}
+
 .logo {
   font-size: 6rem;
 }
