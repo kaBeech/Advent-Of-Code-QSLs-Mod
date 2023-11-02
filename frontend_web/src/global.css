@@ -306,6 +306,10 @@ code {
   color: var(--xxmas-palette-gold-medium);
 }
 
+.textGreen {
+  color: var(--xxmas-palette-green-bright);
+}
+
 .logoGreen {
   color: var(--xxmas-palette-green-medium);
 }

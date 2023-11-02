@@ -42,19 +42,29 @@ export default component$((props: HeaderProps) => {
         <div class="flex column alignCenter">
           <div class="flex gap1 marginTBPoint2">
             {" "}
-            <a href="/about">About</a> ¦ <a href="/events">Games</a> ¦
-            <a href="/settings">Settings</a> ¦{" "}
-            <a href="/leaderboard">Leaderboards</a>
+            <a href="/about">About</a> ¦{" "}
+            <a href="/events" class="textGreen">
+              Games
+            </a>{" "}
+            ¦<a href="/settings">Settings</a> ¦{" "}
+            <a href="/leaderboard" class="textGreen">
+              Leaderboards
+            </a>
           </div>
           <div class="flex gap1 marginTBPoint2">
             {" "}
-            <a href="/calendar">Calendar</a> ¦ <a href="/support">Support</a> ¦
-            <a href="https://adventofcode.com/">AoC</a> ¦
-            <a href="/sponsors">Sponsors</a>
+            <a href="/calendar" class="textGreen">
+              Calendar
+            </a>{" "}
+            ¦ <a href="/support">Support</a> ¦
+            <a href="https://adventofcode.com/" class="textGreen">
+              AoC
+            </a>{" "}
+            ¦<a href="/sponsors">Sponsors</a>
           </div>{" "}
           <div class="flex gap1 marginTBPoint2">
             {" "}
-            <span class="textGold">{session.value?.user?.name}</span>
+            <span class="textGreen">{session.value?.user?.name}</span>
             <LogInOrOut
               isLoggedIn={state.isLoggedIn}
               toggleLoggedIn={toggleLoggedIn}
