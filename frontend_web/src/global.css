@@ -20,6 +20,7 @@
 /* Color Palette */
 
 :root {
+  --xxmas-palette-black-dark: hsl(0, 0%, 0%);
   --xxmas-palette-grey-dark: hsl(0, 0%, 28%);
   --xxmas-palette-grey-dim: hsl(0, 0%, 58%);
   --xxmas-palette-grey-medium: hsl(0, 0%, 71%);
@@ -31,6 +32,7 @@
   --xxmas-palette-green-black: hsl(100, 100%, 2%);
   --xxmas-palette-red-medium: hsl(0, 100%, 47%);
   --xxmas-palette-gold-medium: hsl(52, 100%, 42%);
+  --xxmas-palette-brown-medium: rgb(132, 65, 24);
 }
 
 /* Color Assignments*/
@@ -241,4 +243,24 @@ code {
 
 .textDim {
   color: var(--xxmas-text-dim);
+}
+
+.textGreen {
+  color: var(--xxmas-palette-green-medium);
+}
+
+.textGold {
+  color: var(--xxmas-palette-gold-medium);
+}
+
+.textBlack {
+  color: var(--xxmas-palette-black-dark);
+}
+
+.textWhite {
+  color: var(--xxmas-palette-white-bright);
+}
+
+.textBrown {
+  color: var(--xxmas-palette-brown-medium);
 }
