@@ -311,6 +311,10 @@ code {
   color: var(--xxmas-text-dim);
 }
 
+.textGold {
+  color: var(--xxmas-palette-gold-medium);
+}
+
 .logoGreen {
   color: var(--xxmas-palette-green-medium);
 }
