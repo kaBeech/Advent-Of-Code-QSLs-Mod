@@ -99,7 +99,10 @@ body {
   padding: 0;
   margin: 0.5rem;
   line-height: inherit;
-  background: var(--xxmas-background-dark);
+  background-color: var(--xxmas-background-dark);
+  /* background-color: #001202; */
+
+  background-image: url("https://www.transparenttextures.com/patterns/subtle-dark-vertical.png");
   color: var(--xxmas-text-medium);
   letter-spacing: 0.15rem;
 }
