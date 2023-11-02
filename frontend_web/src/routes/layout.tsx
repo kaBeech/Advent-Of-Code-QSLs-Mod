@@ -49,7 +49,6 @@ export default component$(() => {
   return (
     <>
       <Header isLoggedIn={isLoggedIn} toggleLoggedIn={toggleLoggedIn} />
-      {/* <Sidebar /> */}
       <main class="flex column alignCenter">
         <Slot />
       </main>
