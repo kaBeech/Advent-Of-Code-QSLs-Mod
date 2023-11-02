@@ -26,7 +26,8 @@
   --xxmas-palette-grey-bright: hsl(0, 2%, 83%);
   --xxmas-palette-white-bright: hsl(0, 0%, 100%);
   --xxmas-palette-green-medium: hsl(100, 100%, 29%);
-  --xxmas-palette-green-dark: hsl(104, 100%, 6%);
+  --xxmas-palette-green-bright: hsl(124, 100%, 46%);
+  --xxmas-palette-green-dark: hsl(105, 100%, 4%);
   --xxmas-palette-green-black: hsl(100, 100%, 2%);
   --xxmas-palette-red-medium: hsl(0, 100%, 47%);
   --xxmas-palette-gold-medium: hsl(52, 100%, 42%);
@@ -44,9 +45,11 @@
   --xxmas-text-red: var(--xxmas-palette-red-medium);
   --xxmas-text-medium: var(--xxmas-palette-grey-bright);
   --xxmas-text-bright: var(--xxmas-palette-white-bright);
-  --xxmas-text-emphasis: var(--xxmas-palette-gold-medium);
+  --xxmas-text-emphasis: var(--xxmas-palette-green-bright);
   --xxmas-text-link-unvisited: var(--xxmas-palette-red-medium);
   --xxmas-text-link-visited: var(--xxmas-palette-red-medium);
+  --xxmas-token-unspent: var(--xxmas-palette-gold-medium);
+  --xxmas-token-spent: var(--xxmas-palette-red-medium);
 }
 
 /* Elements */
@@ -218,11 +221,11 @@ code {
 }
 
 .token {
-  color: var(--xxmas-text-gold);
+  color: var(--xxmas-token-unspent);
 }
 
 .tokenSpent {
-  color: var(--xxmas-text-red);
+  color: var(--xxmas-token-spent);
 }
 
 .textBright {
