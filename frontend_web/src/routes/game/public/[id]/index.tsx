@@ -105,7 +105,7 @@ export default component$(() => {
             );
           }
           const lockedDays = [];
-          for (let i = 25; i > gameData.currentDay; i--) {
+          for (let i = gameData.currentDay + 1; i <= 25; i++) {
             lockedDays.push({ number: i });
           }
           const sortedDays = gameData.Day.sort(
@@ -152,12 +152,6 @@ export default component$(() => {
               <div>
                 --------------------------------------------------------------------
               </div>
-              {lockedDays.map((day: { number: number }) => (
-                <DayLink
-                  key={`lockedDay-${day.number}`}
-                  dayNumber={day.number}
-                />
-              ))}
               {sortedDays.map(
                 (day: {
                   number: number;
@@ -194,6 +188,12 @@ export default component$(() => {
                   />
                 )
               )}
+              {lockedDays.map((day: { number: number }) => (
+                <DayLink
+                  key={`lockedDay-${day.number}`}
+                  dayNumber={day.number}
+                />
+              ))}
             </>
           );
         }}
