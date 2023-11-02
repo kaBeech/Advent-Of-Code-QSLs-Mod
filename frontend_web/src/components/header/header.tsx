@@ -30,8 +30,8 @@ export default component$((props: HeaderProps) => {
           <div class="flex column alignCenter">
             <div class="flex gap1 marginTBPoint2">
               {" "}
-              <a href="/about">About</a> | <a href="/events">Games</a> |
-              <a href="/settings">Settings</a> |
+              <a href="/about">About</a> ¦ <a href="/events">Games</a> ¦
+              <a href="/settings">Settings</a> ¦
               <LogInOrOut
                 isLoggedIn={state.isLoggedIn}
                 toggleLoggedIn={toggleLoggedIn}
@@ -40,8 +40,8 @@ export default component$((props: HeaderProps) => {
             </div>
             <div class="flex gap1 marginTBPoint2">
               {" "}
-              <a href="/calendar">Calendar</a> | <a href="/support">Support</a>{" "}
-              |<a href="/sponsors">Sponsors</a> |
+              <a href="/calendar">Calendar</a> ¦ <a href="/support">Support</a>{" "}
+              ¦<a href="/sponsors">Sponsors</a> ¦
               <a href="/leaderboard">Leaderboards</a>{" "}
             </div>
           </div>
