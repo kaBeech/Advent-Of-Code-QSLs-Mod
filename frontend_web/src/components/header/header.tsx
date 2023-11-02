@@ -54,7 +54,7 @@ export default component$((props: HeaderProps) => {
           </div>{" "}
           <div class="flex gap1 marginTBPoint2">
             {" "}
-            <span class="textGold">{session.value?.user?.name}</span> -
+            <span class="textGold">{session.value?.user?.name}</span>
             <LogInOrOut
               isLoggedIn={state.isLoggedIn}
               toggleLoggedIn={toggleLoggedIn}
