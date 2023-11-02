@@ -51,7 +51,6 @@ export default component$(() => {
 
   return (
     <article>
-      <br />
       <Resource
         value={gameDataResource}
         onPending={() => {

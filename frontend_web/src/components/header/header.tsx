@@ -60,6 +60,7 @@ export default component$((props: HeaderProps) => {
               toggleLoggedIn={toggleLoggedIn}
             />
           </div>
+          <br />
         </div>
       </div>
     </header>
