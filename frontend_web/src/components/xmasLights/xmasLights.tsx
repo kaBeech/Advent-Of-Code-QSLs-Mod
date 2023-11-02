@@ -36,7 +36,7 @@ export default component$((props: XmasLightsProps) => {
     }
   }
   return (
-    <div class={`rotate${direction}`}>
+    <span class={`rotate${direction}`}>
       <span class="logoGreen">{"~"}</span>
       {xmasLights.map(
         (xmasLight: { number: number; startingColorNumber: number }) => (
@@ -51,6 +51,6 @@ export default component$((props: XmasLightsProps) => {
           </>
         )
       )}
-    </div>
+    </span>
   );
 });
