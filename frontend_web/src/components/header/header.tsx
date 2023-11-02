@@ -42,25 +42,25 @@ export default component$((props: HeaderProps) => {
         <div class="flex column alignCenter">
           <div class="flex gap1 marginTBPoint2">
             {" "}
-            <a href="/about">About</a> ¦{" "}
+            <a href="/about">°About°</a> ¦{" "}
             <a href="/events" class="textGreen">
-              Games
+              °Games°
             </a>{" "}
-            ¦<a href="/settings">Settings</a> ¦{" "}
+            ¦<a href="/settings">°Settings°</a> ¦{" "}
             <a href="/leaderboard" class="textGreen">
-              Leaderboards
+              °Leaderboards°
             </a>
           </div>
           <div class="flex gap1 marginTBPoint2">
             {" "}
             <a href="/calendar" class="textGreen">
-              Calendar
+              °Calendar°
             </a>{" "}
-            ¦ <a href="/support">Support</a> ¦
+            ¦ <a href="/support">°Support°</a> ¦
             <a href="https://adventofcode.com/" class="textGreen">
-              AoC
+              °AoC°
             </a>{" "}
-            ¦<a href="/sponsors">Sponsors</a>
+            ¦<a href="/sponsors">°Sponsors°</a>
           </div>{" "}
           <div class="flex gap1 marginTBPoint2">
             {" "}
