@@ -173,6 +173,10 @@ code {
   font-weight: bold;
 }
 
+.textCenter {
+  text-align: center;
+}
+
 .flex {
   display: flex;
 }

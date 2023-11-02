@@ -20,7 +20,7 @@ export default component$(() => {
           alternateColors={true}
         />
       </div>
-      <div class="sponsor">
+      <div class="sponsor textCenter">
         <a href="/about">Kyle Beechly</a> - I'm the creator of Xtreme Xmas Code;
         I hope you like it! <br />
         Please reach out if you have any questions or comments or if you'd like
