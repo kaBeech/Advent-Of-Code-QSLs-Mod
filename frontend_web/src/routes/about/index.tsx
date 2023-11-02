@@ -198,8 +198,10 @@ export default component$(() => {
         </div>{" "}
         <p>
           The <em>Basic Scoring Formula</em> is{" "}
-          <code>10 * T + 20 * P2 + B</code> where{" "}
-          <em class="bold textBright">T</em> is the number of{" "}
+          <code>
+            {"{"}10 * T + 20 * P2 + B{"}"}
+          </code>{" "}
+          where <em class="bold textBright">T</em> is the number of{" "}
           <em class="bold textBright">unspent reroll Tokens</em>, <em>P2</em> is
           the number of{" "}
           <em class="bold textBright">tokens spent during Part 2</em> (up to a
@@ -207,15 +209,20 @@ export default component$(() => {
           <em class="bold textBright">end-of-game Bonus.</em>
         </p>
         <p>
-          The <em>End-Game Bonus Formula</em> is <code>300 - 10 * S</code>, to a
-          minimum of 0, where <em class="bold textBright">S</em> is the{" "}
+          The <em>End-Game Bonus Formula</em> is{" "}
+          <code>
+            {"{"}300 - 10 * S{"}"}
+          </code>
+          , to a minimum of 0, where <em class="bold textBright">S</em> is the{" "}
           <em class="bold textBright">total number of tokens Spent.</em>
         </p>
         <p>
           If you spend at least 2 reroll tokens during Part 2 of every day, the{" "}
           <em>Virtuoso Scoring Formula</em> is used instead. It is{" "}
-          <code>1120 + 10 * T - 10 * P1</code> where{" "}
-          <em class="bold textBright">T</em> is the number of{" "}
+          <code>
+            {"{"}1120 + 10 * T - 10 * P1{"}"}
+          </code>{" "}
+          where <em class="bold textBright">T</em> is the number of{" "}
           <em class="bold textBright">unspent reroll Tokens</em> and{" "}
           <em class="bold textBright">P1</em> is the number of{" "}
           <em class="bold textBright">tokens spent during Part 1.</em>
@@ -223,8 +230,11 @@ export default component$(() => {
         <p>
           Each day's individual score is a rough estimation of that day's effect
           on the overall score, assuming use of the Basic Scoring Formula. The{" "}
-          <em>Day Score Formula</em> is <code>10 * T + 20 * P2 - 10 * P1</code>,
-          where <em class="bold textBright">T</em> is the number of{" "}
+          <em>Day Score Formula</em> is{" "}
+          <code>
+            {"{"}10 * T + 20 * P2 - 10 * P1{"}"}
+          </code>
+          , where <em class="bold textBright">T</em> is the number of{" "}
           <em class="bold textBright">unspent reroll Tokens</em>,{" "}
           <em class="bold textBright">P2</em> is the number of{" "}
           <em class="bold textBright">tokens spent during Part 2</em> (up to a

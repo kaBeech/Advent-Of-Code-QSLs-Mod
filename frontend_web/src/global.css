@@ -133,28 +133,8 @@ a:hover {
 }
 
 code {
-  background: var(--xxmas-background-black);
-  border-radius: 0.3rem;
-  padding: 0.2rem 0.5rem;
   font-weight: bold;
-  font-family:
-    "Gohu 11",
-    "Big Blue Term",
-    monospace,
-    ui-sans-serif,
-    system-ui,
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    Roboto,
-    "Helvetica Neue",
-    Arial,
-    "Noto Sans",
-    sans-serif,
-    "Apple Color Emoji",
-    "Segoe UI Emoji",
-    "Segoe UI Symbol",
-    "Noto Color Emoji";
+  font-family: inherit;
 }
 
 /* IDs */
