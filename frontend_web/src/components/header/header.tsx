@@ -17,39 +17,36 @@ export default component$((props: HeaderProps) => {
   });
   const session = useAuthSession();
   return (
-    <header>
-      <div class={`flex justifyCenter gap1`}>
-        <div class="flex column alignCenter">
-          <a href="/" class="logo stitch marginTBPoint2">
-            <span class="logoGold">*</span> Xtreme{" "}
-            <span class="logoGreen">^</span> Xmas{" "}
-            <span class="logoWhite">§</span> Code{" "}
-            <span class="logoBrown">»</span>
-          </a>
+    <header class={`flex justifyCenter gap1`}>
+      <div class="flex column alignCenter">
+        <a href="/" class="logo stitch marginTBPoint2">
+          <span class="logoGold">*</span> Xtreme{" "}
+          <span class="logoGreen">^</span> Xmas <span class="logoWhite">§</span>{" "}
+          Code <span class="logoBrown">»</span>
+        </a>
 
-          <div class="flex column alignCenter">
-            <div class="flex gap1 marginTBPoint2">
-              {" "}
-              <a href="/about">About</a> ¦ <a href="/events">Games</a> ¦
-              <a href="/settings">Settings</a> ¦
-              <LogInOrOut
-                isLoggedIn={state.isLoggedIn}
-                toggleLoggedIn={toggleLoggedIn}
-              />
-              <div>{session.value?.user?.name}</div>
-            </div>
-            <div class="flex gap1 marginTBPoint2">
-              {" "}
-              <a href="/calendar">Calendar</a> ¦ <a href="/support">Support</a>{" "}
-              ¦<a href="/sponsors">Sponsors</a> ¦
-              <a href="/leaderboard">Leaderboards</a>{" "}
-            </div>
+        <div class="flex column alignCenter">
+          <div class="flex gap1 marginTBPoint2">
+            {" "}
+            <a href="/about">About</a> ¦ <a href="/events">Games</a> ¦
+            <a href="/settings">Settings</a> ¦
+            <LogInOrOut
+              isLoggedIn={state.isLoggedIn}
+              toggleLoggedIn={toggleLoggedIn}
+            />
+            <div>{session.value?.user?.name}</div>
           </div>
-          <br />
-          <div class="rotate180 xmasLight">
-                                             
-                     
+          <div class="flex gap1 marginTBPoint2">
+            {" "}
+            <a href="/calendar">Calendar</a> ¦ <a href="/support">Support</a> ¦
+            <a href="/sponsors">Sponsors</a> ¦
+            <a href="/leaderboard">Leaderboards</a>{" "}
           </div>
+        </div>
+        <br />
+        <div class="rotate180 xmasLight">
+                                            
+                  
         </div>
       </div>
     </header>
