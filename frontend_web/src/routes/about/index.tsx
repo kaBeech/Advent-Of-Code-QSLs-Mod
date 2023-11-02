@@ -213,31 +213,31 @@ export default component$(() => {
         </p>
         <ul>
           <li>
-            0+ points: <em>Champion</em>
+            0+ points: <em class="fsGreen">Champion</em>
           </li>
           <li>
-            200+ points: <em>Gnarly Champion</em>
+            200+ points: <em class="fsTurquoise">Gnarly Champion</em>
           </li>
           <li>
-            400+ points: <em>Radical Champion</em>
+            400+ points: <em class="fsCyan">Radical Champion</em>
           </li>
           <li>
-            600+ points: <em>Righteous Champion</em>
+            600+ points: <em class="fsCerulean">Righteous Champion</em>
           </li>
           <li>
-            800+ points: <em>Epic Champion</em>
+            800+ points: <em class="fsBlue">Epic Champion</em>
           </li>
           <li>
-            920+ points: <em>Flawless Champion</em>
+            920+ points: <em class="fsPurple">Flawless Champion</em>
           </li>
           <li>
-            1000+ points: <em>Legendary Champion</em>
+            1000+ points: <em class="fsRose">Legendary Champion</em>
           </li>
           <li>
-            1120+ points: <em>Santaic Champion</em>
+            1120+ points: <em class="fsRed">Santaic Champion</em>
           </li>
           <li>
-            1240+ points: <em>Godlike Champion</em>
+            1240+ points: <em class="fsYellow">Godlike Champion</em>
           </li>
         </ul>
         <h2> Public Links </h2>

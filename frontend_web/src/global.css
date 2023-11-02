@@ -325,3 +325,51 @@ code {
 .logoBrown {
   color: var(--xxmas-palette-brown-medium);
 }
+
+.fsGreen {
+  color: var(--full-sat-green);
+}
+
+.fsLime {
+  color: var(--full-sat-lime);
+}
+
+.fsYellow {
+  color: var(--full-sat-yellow);
+}
+
+.fsOrange {
+  color: var(--full-sat-orange);
+}
+
+.fsRed {
+  color: var(--full-sat-red);
+}
+
+.fsRose {
+  color: var(--full-sat-rose);
+}
+
+.fsMagenta {
+  color: var(--full-sat-magenta);
+}
+
+.fsPurple {
+  color: var(--full-sat-purple);
+}
+
+.fsBlue {
+  color: var(--full-sat-blue);
+}
+
+.fsCerulean {
+  color: var(--full-sat-cerulean);
+}
+
+.fsCyan {
+  color: var(--full-sat-cyan);
+}
+
+.fsTurquoise {
+  color: var(--full-sat-turquoise);
+}
