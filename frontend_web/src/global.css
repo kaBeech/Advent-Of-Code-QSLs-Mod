@@ -8,6 +8,11 @@
 }
 
 @font-face {
+  font-family: "Gohu 11";
+  src: url("/fonts/GohuFont11NFM.otf");
+}
+
+@font-face {
   font-family: "Xmas Sweater Stitch";
   src: url("/fonts/XmasSweaterStitch.otf");
 }
@@ -53,7 +58,7 @@ html {
   -o-tab-size: 4;
   tab-size: 4;
   font-family:
-    "Xmas Sweater Stitch",
+    "Gohu 11",
     "Big Blue Term",
     monospace,
     ui-sans-serif,
@@ -170,7 +175,25 @@ code {
 /* Custom Classes */
 
 .logo {
-  font-size: 4rem;
+  font-size: 6rem;
+  font-family:
+    "Xmas Sweater Stitch",
+    "Big Blue Term",
+    monospace,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    "Helvetica Neue",
+    Arial,
+    "Noto Sans",
+    sans-serif,
+    "Apple Color Emoji",
+    "Segoe UI Emoji",
+    "Segoe UI Symbol",
+    "Noto Color Emoji";
 }
 
 .token {
