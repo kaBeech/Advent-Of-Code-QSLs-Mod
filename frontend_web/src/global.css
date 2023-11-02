@@ -245,22 +245,18 @@ code {
   color: var(--xxmas-text-dim);
 }
 
-.textGreen {
+.logoGreen {
   color: var(--xxmas-palette-green-medium);
 }
 
-.textGold {
+.logoGold {
   color: var(--xxmas-palette-gold-medium);
 }
 
-.textBlack {
-  color: var(--xxmas-palette-black-dark);
-}
-
-.textWhite {
+.logoWhite {
   color: var(--xxmas-palette-white-bright);
 }
 
-.textBrown {
+.logoBrown {
   color: var(--xxmas-palette-brown-medium);
 }

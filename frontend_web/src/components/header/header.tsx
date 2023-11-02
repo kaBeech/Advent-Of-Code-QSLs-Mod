@@ -21,10 +21,10 @@ export default component$((props: HeaderProps) => {
       <div class={`flex justifyCenter gap1`}>
         <div class="flex column alignCenter">
           <a href="/" class="logo stitch marginTBPoint2">
-            <span class="textGold">*</span> Xtreme{" "}
-            <span class="textGreen">^</span> Xmas{" "}
-            <span class="textWhite">§</span> Code{" "}
-            <span class="textBrown">»</span>
+            <span class="logoGold">*</span> Xtreme{" "}
+            <span class="logoGreen">^</span> Xmas{" "}
+            <span class="logoWhite">§</span> Code{" "}
+            <span class="logoBrown">»</span>
           </a>
 
           <div class="flex column alignCenter">
