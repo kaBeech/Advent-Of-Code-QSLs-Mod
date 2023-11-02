@@ -33,6 +33,18 @@
   --xxmas-palette-red-medium: hsl(0, 100%, 47%);
   --xxmas-palette-gold-medium: hsl(52, 100%, 42%);
   --xxmas-palette-brown-medium: rgb(132, 65, 24);
+  --full-sat-blue: hsl(240, 100%, 50%);
+  --full-sat-cerulean: hsl(210, 100%, 50%);
+  --ful-sat-cyan: hsl(180, 100%, 50%);
+  --full-sat-turquoise: hsl(150, 100%, 50%);
+  --full-sat-green: hsl(120, 100%, 50%);
+  --full-sat-lime: hsl(90, 100%, 50%);
+  --full-sat-yellow: hsl(60, 100%, 50%);
+  --full-sat-orange: hsl(30, 100%, 50%);
+  --full-sat-red: hsl(0, 100%, 50%);
+  --full-sat-pink: hsl(330, 100%, 50%);
+  --full-sat-magenta: hsl(300, 100%, 50%);
+  --full-sat-purple: hsl(270, 100%, 50%);
 }
 
 /* Color Assignments*/
@@ -190,6 +202,10 @@ code {
   margin-bottom: 0.2rem;
 }
 
+.rotate180 {
+  transform: rotate(180deg);
+}
+
 .visualHide:not(:focus):not(:active) {
   clip: rect(0 0 0 0);
   clip-path: inset(50%);
@@ -210,6 +226,31 @@ code {
 
 .logo {
   font-size: 6rem;
+}
+
+.xmasLight {
+  animation-duration: 20s;
+  animation-name: change-color;
+  animation-iteration-count: infinite;
+  animation-direction: normal;
+}
+
+@keyframes change-color {
+  from {
+    color: var(--full-sat-blue);
+  }
+
+  33% {
+    color: var(--full-sat-green);
+  }
+
+  67% {
+    color: var(--full-sat-red);
+  }
+
+  to {
+    color: var(--full-sat-blue);
+  }
 }
 
 .stitch {

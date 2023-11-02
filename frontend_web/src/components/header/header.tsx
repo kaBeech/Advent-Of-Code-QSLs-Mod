@@ -45,6 +45,11 @@ export default component$((props: HeaderProps) => {
               <a href="/leaderboard">Leaderboards</a>{" "}
             </div>
           </div>
+          <br />
+          <div class="rotate180 xmasLight">
+                                             
+                     
+          </div>
         </div>
       </div>
     </header>
