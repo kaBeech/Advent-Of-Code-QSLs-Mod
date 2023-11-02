@@ -1,7 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/web-manifest-combined.json",
-  "name": "advent-od-code-xtreme-xmas-mod",
-  "short_name": "Advent Of Code Xtreme Xmas Mod",
+  "name": "xtreme-xmas-code",
+  "short_name": "Xtreme Xmas Code",
   "start_url": ".",
   "display": "standalone",
   "background_color": "#fff",
