@@ -1,3 +1,4 @@
+/* eslint-disable no-irregular-whitespace */
 import { Resource, component$, useResource$, useStore } from "@builder.io/qwik";
 import { useLocation, type DocumentHead } from "@builder.io/qwik-city";
 import { serverFetcher } from "~/util/serverFetcher";
