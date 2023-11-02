@@ -179,6 +179,9 @@ code {
 
 .logo {
   font-size: 6rem;
+}
+
+.stitch {
   font-family:
     "Xmas Sweater Stitch",
     "Big Blue Term",
@@ -199,9 +202,9 @@ code {
     "Noto Color Emoji";
 }
 
-.stitch {
+.stitchLettering {
   font-family:
-    "Xmas Sweater Stitch",
+    "Gohu 11",
     "Big Blue Term",
     monospace,
     ui-sans-serif,
