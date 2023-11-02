@@ -35,7 +35,7 @@
   --xxmas-palette-brown-medium: rgb(132, 65, 24);
   --full-sat-blue: hsl(240, 100%, 50%);
   --full-sat-cerulean: hsl(210, 100%, 50%);
-  --ful-sat-cyan: hsl(180, 100%, 50%);
+  --full-sat-cyan: hsl(180, 100%, 50%);
   --full-sat-turquoise: hsl(150, 100%, 50%);
   --full-sat-green: hsl(120, 100%, 50%);
   --full-sat-lime: hsl(90, 100%, 50%);
@@ -230,12 +230,59 @@ code {
 
 .xmasLight {
   animation-duration: 20s;
-  animation-name: change-color;
   animation-iteration-count: infinite;
   animation-direction: normal;
 }
 
-@keyframes change-color {
+.colorShift1 {
+  animation-name: colorShift1;
+}
+
+.colorShift2 {
+  animation-name: colorShift2;
+}
+
+.colorShift3 {
+  animation-name: colorShift3;
+}
+
+.colorShift4 {
+  animation-name: colorShift4;
+}
+
+.colorShift5 {
+  animation-name: colorShift5;
+}
+
+.colorShift6 {
+  animation-name: colorShift6;
+}
+
+.colorShift7 {
+  animation-name: colorShift7;
+}
+
+.colorShift8 {
+  animation-name: colorShift8;
+}
+
+.colorShift9 {
+  animation-name: colorShift9;
+}
+
+.colorShift10 {
+  animation-name: colorShift10;
+}
+
+.colorShift11 {
+  animation-name: colorShift11;
+}
+
+.colorShift12 {
+  animation-name: colorShift12;
+}
+
+@keyframes colorShift1 {
   from {
     color: var(--full-sat-blue);
   }
@@ -250,6 +297,204 @@ code {
 
   to {
     color: var(--full-sat-blue);
+  }
+}
+
+@keyframes colorShift2 {
+  from {
+    color: var(--full-sat-cerulean);
+  }
+
+  33% {
+    color: var(--full-sat-lime);
+  }
+
+  67% {
+    color: var(--full-sat-pink);
+  }
+
+  to {
+    color: var(--full-sat-cerulean);
+  }
+}
+
+@keyframes colorShift3 {
+  from {
+    color: var(--full-sat-cyan);
+  }
+
+  33% {
+    color: var(--full-sat-yellow);
+  }
+
+  67% {
+    color: var(--full-sat-magenta);
+  }
+
+  to {
+    color: var(--full-sat-cyan);
+  }
+}
+
+@keyframes colorShift4 {
+  from {
+    color: var(--full-sat-turquoise);
+  }
+
+  33% {
+    color: var(--full-sat-orange);
+  }
+
+  67% {
+    color: var(--full-sat-purple);
+  }
+
+  to {
+    color: var(--full-sat-turquoise);
+  }
+}
+
+@keyframes colorShift5 {
+  from {
+    color: var(--full-sat-green);
+  }
+
+  33% {
+    color: var(--full-sat-red);
+  }
+
+  67% {
+    color: var(--full-sat-blue);
+  }
+
+  to {
+    color: var(--full-sat-green);
+  }
+}
+
+@keyframes colorShift6 {
+  from {
+    color: var(--full-sat-lime);
+  }
+
+  33% {
+    color: var(--full-sat-pink);
+  }
+
+  67% {
+    color: var(--full-sat-cerulean);
+  }
+
+  to {
+    color: var(--full-sat-lime);
+  }
+}
+
+@keyframes colorShift7 {
+  from {
+    color: var(--full-sat-yellow);
+  }
+
+  33% {
+    color: var(--full-sat-magenta);
+  }
+
+  67% {
+    color: var(--full-sat-cyan);
+  }
+
+  to {
+    color: var(--full-sat-yellow);
+  }
+}
+
+@keyframes colorShift8 {
+  from {
+    color: var(--full-sat-orange);
+  }
+
+  33% {
+    color: var(--full-sat-purple);
+  }
+
+  67% {
+    color: var(--full-sat-turquoise);
+  }
+
+  to {
+    color: var(--full-sat-orange);
+  }
+}
+
+@keyframes colorShift9 {
+  from {
+    color: var(--full-sat-red);
+  }
+
+  33% {
+    color: var(--full-sat-blue);
+  }
+
+  67% {
+    color: var(--full-sat-green);
+  }
+
+  to {
+    color: var(--full-sat-red);
+  }
+}
+
+@keyframes colorShift10 {
+  from {
+    color: var(--full-sat-pink);
+  }
+
+  33% {
+    color: var(--full-sat-cerulean);
+  }
+
+  67% {
+    color: var(--full-sat-lime);
+  }
+
+  to {
+    color: var(--full-sat-pink);
+  }
+}
+
+@keyframes colorShift11 {
+  from {
+    color: var(--full-sat-magenta);
+  }
+
+  33% {
+    color: var(--full-sat-cyan);
+  }
+
+  67% {
+    color: var(--full-sat-yellow);
+  }
+
+  to {
+    color: var(--full-sat-magenta);
+  }
+}
+
+@keyframes colorShift12 {
+  from {
+    color: var(--full-sat-purple);
+  }
+
+  33% {
+    color: var(--full-sat-turquoise);
+  }
+
+  67% {
+    color: var(--full-sat-orange);
+  }
+
+  to {
+    color: var(--full-sat-purple);
   }
 }
 
