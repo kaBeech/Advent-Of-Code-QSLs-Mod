@@ -169,6 +169,10 @@ code {
 
 /* Custom Classes */
 
+.logo {
+  font-size: 3rem;
+}
+
 .token {
   color: var(--xxmas-text-gold);
 }
