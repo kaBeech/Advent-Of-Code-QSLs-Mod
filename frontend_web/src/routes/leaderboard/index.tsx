@@ -45,19 +45,22 @@ export default component$(() => {
       <p>
         <em>Under Construction!</em>
       </p>
-      <Resource
-        value={leaderboardGamesResource}
-        onPending={() => {
-          return (
-            <p>
-              <strong>
+      <ul>
+        <li>
+          Rank - Year - Game Name - Score - Title - Player Name - Repo Link
+        </li>
+        <Resource
+          value={leaderboardGamesResource}
+          onPending={() => {
+            return (
+              <>
                 {" "}
                 {!state.leaderboardGames ? (
-                  `Loading...`
+                  <li>Loading...</li>
                 ) : state.leaderboardGames.length < 1 ? (
-                  <h2>No games currently recorded for this leaderboard</h2>
+                  <li>No games currently recorded for this leaderboard</li>
                 ) : (
-                  <ul>
+                  <>
                     {state.leaderboardGames.map((game: LeaderboardGame) => (
                       <li key={`game-${game.id}`}>
                         {game.year} - {game.name} - {game.score} -{" "}
@@ -65,42 +68,36 @@ export default component$(() => {
                         <a href={`repositoryLink`}>°Repo Link°</a>
                       </li>
                     ))}
-                  </ul>
+                  </>
                 )}
-              </strong>
-            </p>
-          );
-        }}
-        onResolved={(leaderboardGamesData) => {
-          if (leaderboardGamesData.length < 1) {
-            return <h2>No games currently recorded for this leaderboard</h2>;
-          }
-
-          return (
-            <ul>
-              <li>
-                Rank - Year - Game Name - Score - Title - Player Name - Repo
-                Link
-              </li>
-              <br />
-              {leaderboardGamesData.map(
-                (game: LeaderboardGame, index: number) => (
-                  <li key={`game-${game.id}`}>
-                    <em>
-                      {index + 1} - {game.year} -{" "}
-                      <a href={`/game/public/${game.id}`}>°{game.name}°</a> -{" "}
-                      {game.score} -{" "}
-                      {game.Rank ? game.Rank.name : `Not Yet Completed`} -{" "}
-                      {game.playerName} -{" "}
-                      <a href={game.repositoryLink}>°Repo Link°</a>
-                    </em>
-                  </li>
-                )
-              )}
-            </ul>
-          );
-        }}
-      />
+              </>
+            );
+          }}
+          onResolved={(leaderboardGamesData) => {
+            if (leaderboardGamesData.length < 1) {
+              return <li>No games currently recorded for this leaderboard</li>;
+            }
+            return (
+              <>
+                {leaderboardGamesData.map(
+                  (game: LeaderboardGame, index: number) => (
+                    <li key={`game-${game.id}`}>
+                      <em>
+                        {index + 1} - {game.year} -{" "}
+                        <a href={`/game/public/${game.id}`}>°{game.name}°</a> -{" "}
+                        {game.score} -{" "}
+                        {game.Rank ? game.Rank.name : `Not Yet Completed`} -{" "}
+                        {game.playerName} -{" "}
+                        <a href={game.repositoryLink}>°Repo Link°</a>
+                      </em>
+                    </li>
+                  )
+                )}
+              </>
+            );
+          }}
+        />
+      </ul>
     </article>
   );
 });
