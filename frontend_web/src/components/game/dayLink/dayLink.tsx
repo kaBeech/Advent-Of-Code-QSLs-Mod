@@ -87,8 +87,13 @@ export default component$((props: DayLinkProps) => {
         {props.dayNumber < 10 ? " " + props.dayNumber : props.dayNumber}
         {"    "}
       </span>
-      <span class="token stitch">{renderTokens(tokensGained)}</span>
-      <span class="tokenSpent stitch">{renderSpentTokens(tokensSpent)}</span>
+      <span class="token">{renderTokens(tokensGained)}</span>
+      <span class="tokenSpent">
+        {tokensSpent > 9
+          ? renderSpentTokens(1) + "x" + tokensSpent
+          : renderSpentTokens(tokensSpent)}
+        {/* {renderSpentTokens(tokensSpent)} */}
+      </span>
     </li>
   );
 });
