@@ -1,3 +1,4 @@
+/* eslint-disable no-irregular-whitespace */
 // import type { Session } from "@auth/core/types";
 import { Resource, component$, useResource$, useStore } from "@builder.io/qwik";
 import type { RequestHandler } from "@builder.io/qwik-city";
@@ -45,19 +46,29 @@ export default component$(() => {
       <p>
         <em>Under Construction!</em>
       </p>
-      <Resource
-        value={leaderboardGamesResource}
-        onPending={() => {
-          return (
-            <p>
-              <strong>
+      <div>
+        -----------------------------------------------------------------------------
+      </div>
+      <div>
+        Rank ¦ Year ¦ Game Name        ¦ Score ¦ Title      ¦ Repo Link ¦ Player
+        Name
+      </div>
+      <div>
+        -----------------------------------------------------------------------------
+      </div>
+      <ul>
+        <Resource
+          value={leaderboardGamesResource}
+          onPending={() => {
+            return (
+              <>
                 {" "}
                 {!state.leaderboardGames ? (
-                  `Loading...`
+                  <li>Loading...</li>
                 ) : state.leaderboardGames.length < 1 ? (
-                  <h2>No games currently recorded for this leaderboard</h2>
+                  <li>No games currently recorded for this leaderboard</li>
                 ) : (
-                  <ul>
+                  <>
                     {state.leaderboardGames.map((game: LeaderboardGame) => (
                       <li key={`game-${game.id}`}>
                         {game.year} - {game.name} - {game.score} -{" "}
@@ -65,42 +76,96 @@ export default component$(() => {
                         <a href={`repositoryLink`}>°Repo Link°</a>
                       </li>
                     ))}
-                  </ul>
+                  </>
                 )}
-              </strong>
-            </p>
-          );
-        }}
-        onResolved={(leaderboardGamesData) => {
-          if (leaderboardGamesData.length < 1) {
-            return <h2>No games currently recorded for this leaderboard</h2>;
-          }
-
-          return (
-            <ul>
-              <li>
-                Rank - Year - Game Name - Score - Title - Player Name - Repo
-                Link
-              </li>
-              <br />
-              {leaderboardGamesData.map(
-                (game: LeaderboardGame, index: number) => (
-                  <li key={`game-${game.id}`}>
-                    <em>
-                      {index + 1} - {game.year} -{" "}
-                      <a href={`/game/public/${game.id}`}>°{game.name}°</a> -{" "}
-                      {game.score} -{" "}
-                      {game.Rank ? game.Rank.name : `Not Yet Completed`} -{" "}
-                      {game.playerName} -{" "}
-                      <a href={game.repositoryLink}>°Repo Link°</a>
-                    </em>
-                  </li>
-                )
-              )}
-            </ul>
-          );
-        }}
-      />
+              </>
+            );
+          }}
+          onResolved={(leaderboardGamesData) => {
+            if (leaderboardGamesData.length < 1) {
+              return <li>No games currently recorded for this leaderboard</li>;
+            }
+            return (
+              <>
+                {leaderboardGamesData.map(
+                  (game: LeaderboardGame, index: number) => {
+                    const rank = {
+                      string: String(index + 1),
+                      color: `xmasLight colorShift${(index % 12) + 1}`,
+                    };
+                    let gameNameString = `°${game.name}°`;
+                    let scoreString = String(game.score);
+                    const title = {
+                      string: game.Rank
+                        ? game.Rank.name.split(" ")[0]
+                        : `Incomplete`,
+                      color: "textBright",
+                    };
+                    switch (title.string) {
+                      case "Champion":
+                        title.color = "fsGreen";
+                        break;
+                      case "Gnarly":
+                        title.color = "fsTurquoise";
+                        break;
+                      case "Radical":
+                        title.color = "fsCyan";
+                        break;
+                      case "Righteous":
+                        title.color = "fsCerulean";
+                        break;
+                      case "Epic":
+                        title.color = "fsBlue";
+                        break;
+                      case "Flawless":
+                        title.color = "fsPurple";
+                        break;
+                      case "Legendary":
+                        title.color = "fsRose";
+                        break;
+                      case "Santaic":
+                        title.color = "fsRed";
+                        break;
+                      case "Godlike":
+                        title.color = "fsYellow";
+                        break;
+                      default:
+                        break;
+                    }
+                    rank.string.length < 6 &&
+                      (rank.string += " ".repeat(6 - rank.string.length));
+                    gameNameString.length < 19 &&
+                      (gameNameString += " ".repeat(
+                        19 - gameNameString.length
+                      ));
+                    scoreString.length < 7 &&
+                      (scoreString += " ".repeat(7 - scoreString.length));
+                    title.string.length < 11 &&
+                      (title.string += " ".repeat(11 - title.string.length));
+                    return (
+                      <li key={`game-${game.id}`}>
+                        <em>
+                          <span class={rank.color}>{rank.string}</span>{" "}
+                          {game.year}
+                          {"  "}
+                          <a href={`/game/public/${game.id}`}>
+                            {gameNameString}
+                          </a>{" "}
+                          <span class="textGold">{scoreString}</span>{" "}
+                          <span class={title.color}>{title.string}</span>
+                          <a href={game.repositoryLink}> °Repo Link°</a>
+                          {"  "}
+                          {game.playerName}{" "}
+                        </em>
+                      </li>
+                    );
+                  }
+                )}
+              </>
+            );
+          }}
+        />
+      </ul>
     </article>
   );
 });

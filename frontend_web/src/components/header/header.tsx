@@ -38,17 +38,26 @@ export default component$((props: HeaderProps) => {
         alternateColors={true}
       />
       <br />
+      <br />
       <div class="flex column alignCenter">
         <div class="flex gap1 marginTBPoint2">
           {" "}
           <a href="/about">°About°</a> ¦{" "}
-          <a href="/events" class="textGreen">
+          <a href="/games" class="textGreen">
             °Games°
           </a>{" "}
-          ¦<a href="/settings">°Settings°</a> ¦{" "}
-          <a href="/leaderboard" class="textGreen">
-            °Leaderboards°
+          ¦{" "}
+          <a href="/modifiers" class="textRed">
+            °Modifiers°
           </a>
+          ¦
+          <a href="/settings" class="textGreen">
+            °Settings°
+          </a>{" "}
+          ¦{" "}
+          <a href="https://adventofcode.com/" class="textRed">
+            °AoC°
+          </a>{" "}
         </div>
         <div class="flex gap1 marginTBPoint2">
           {" "}
@@ -56,9 +65,9 @@ export default component$((props: HeaderProps) => {
             °Calendar°
           </a>{" "}
           ¦ <a href="/support">°Support°</a> ¦
-          <a href="https://adventofcode.com/" class="textGreen">
-            °AoC°
-          </a>{" "}
+          <a href="/leaderboard" class="textGreen">
+            °Leaderboards°
+          </a>
           ¦<a href="/sponsors">°Sponsors°</a>
         </div>{" "}
         <div class="flex gap1 marginTBPoint2">
