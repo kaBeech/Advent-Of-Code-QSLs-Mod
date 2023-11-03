@@ -1,3 +1,4 @@
+/* eslint-disable no-irregular-whitespace */
 // import type { Session } from "@auth/core/types";
 import { Resource, component$, useResource$, useStore } from "@builder.io/qwik";
 import type { RequestHandler } from "@builder.io/qwik-city";
@@ -45,10 +46,17 @@ export default component$(() => {
       <p>
         <em>Under Construction!</em>
       </p>
+      <div>
+        -----------------------------------------------------------------------------
+      </div>
+      <div>
+        Rank ¦ Year ¦ Game Name        ¦ Score ¦ Title      ¦ Repo Link ¦ Player
+        Name
+      </div>
+      <div>
+        -----------------------------------------------------------------------------
+      </div>
       <ul>
-        <li>
-          Rank - Year - Game Name - Score - Title - Player Name - Repo Link
-        </li>
         <Resource
           value={leaderboardGamesResource}
           onPending={() => {
@@ -80,18 +88,39 @@ export default component$(() => {
             return (
               <>
                 {leaderboardGamesData.map(
-                  (game: LeaderboardGame, index: number) => (
-                    <li key={`game-${game.id}`}>
-                      <em>
-                        {index + 1} - {game.year} -{" "}
-                        <a href={`/game/public/${game.id}`}>°{game.name}°</a> -{" "}
-                        {game.score} -{" "}
-                        {game.Rank ? game.Rank.name : `Not Yet Completed`} -{" "}
-                        {game.playerName} -{" "}
-                        <a href={game.repositoryLink}>°Repo Link°</a>
-                      </em>
-                    </li>
-                  )
+                  (game: LeaderboardGame, index: number) => {
+                    let rankString = String(index + 1);
+                    let gameNameString = `°${game.name}°`;
+                    let scoreString = String(game.score);
+                    let titleString = game.Rank
+                      ? game.Rank.name.split(" ")[0]
+                      : `Incomplete`;
+                    rankString.length < 6 &&
+                      (rankString += " ".repeat(6 - rankString.length));
+                    gameNameString.length < 19 &&
+                      (gameNameString += " ".repeat(
+                        19 - gameNameString.length
+                      ));
+                    scoreString.length < 7 &&
+                      (scoreString += " ".repeat(7 - scoreString.length));
+                    titleString.length < 11 &&
+                      (titleString += " ".repeat(11 - titleString.length));
+                    return (
+                      <li key={`game-${game.id}`}>
+                        <em>
+                          {rankString} {game.year}
+                          {"  "}
+                          <a href={`/game/public/${game.id}`}>
+                            {gameNameString}
+                          </a>{" "}
+                          {scoreString} {titleString}
+                          <a href={game.repositoryLink}> °Repo Link°</a>
+                          {"  "}
+                          {game.playerName}{" "}
+                        </em>
+                      </li>
+                    );
+                  }
                 )}
               </>
             );
