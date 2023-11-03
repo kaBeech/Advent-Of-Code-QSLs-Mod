@@ -38,6 +38,7 @@ export default component$((props: HeaderProps) => {
         alternateColors={true}
       />
       <br />
+      <br />
       <div class="flex column alignCenter">
         <div class="flex gap1 marginTBPoint2">
           {" "}

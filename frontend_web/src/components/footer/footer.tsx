@@ -6,16 +6,15 @@ export default component$(() => {
     <footer id="footer" class="sponsor flex column gap1 alignCenter">
       <div>
         <XmasLights
-          numberOfLights={19}
+          numberOfLights={18}
           firstLightStartingColorNumber={1}
           alternateColors={true}
         />
         <a href="/sponsors" class="">
           °Sponsor°
         </a>
-
         <XmasLights
-          numberOfLights={19}
+          numberOfLights={18}
           firstLightStartingColorNumber={1}
           alternateColors={true}
         />
@@ -26,11 +25,11 @@ export default component$(() => {
         Please reach out if you have any questions/comments or if you'd like to
         work with me!
       </p>
-      <XmasLights
+      {/* <XmasLights
         numberOfLights={43}
         firstLightStartingColorNumber={1}
         alternateColors={true}
-      />
+      /> */}
     </footer>
   );
 });
