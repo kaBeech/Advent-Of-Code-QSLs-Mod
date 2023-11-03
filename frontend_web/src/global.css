@@ -74,6 +74,7 @@ html {
   -moz-tab-size: 4;
   -o-tab-size: 4;
   tab-size: 4;
+  min-height: 100vh;
   font-family:
     "Gohu 11",
     "Big Blue Term",
@@ -103,6 +104,14 @@ body {
   background-image: url("/patterns/subtle-dark-vertical.png");
   color: var(--xxmas-text-medium);
   letter-spacing: 0.15rem;
+  height: 100%;
+  min-height: 95vh;
+  display: flex;
+  flex-direction: column;
+}
+
+footer {
+  margin-top: auto;
 }
 
 article {
