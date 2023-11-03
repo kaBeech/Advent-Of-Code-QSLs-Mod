@@ -27,12 +27,12 @@ export interface DayLinkProps {
 export default component$((props: DayLinkProps) => {
   if (!props.dayLinkData) {
     return (
-      <div class="textDim">
+      <li class="textDim">
         #######################################################{" "}
         <span class="textBright">
           {props.dayNumber < 10 ? " " + props.dayNumber : props.dayNumber}
         </span>
-      </div>
+      </li>
     );
   }
 
@@ -77,7 +77,7 @@ export default component$((props: DayLinkProps) => {
   }`;
 
   return (
-    <div>
+    <li>
       <a href={`day/${props.dayNumber}`} class={modifierColor}>
         <span>{challengeModifierString}</span>
         <span>{modifierOptionString}</span>
@@ -89,6 +89,6 @@ export default component$((props: DayLinkProps) => {
       </span>
       <span class="token stitch">{renderTokens(tokensGained)}</span>
       <span class="tokenSpent stitch">{renderSpentTokens(tokensSpent)}</span>
-    </div>
+    </li>
   );
 });

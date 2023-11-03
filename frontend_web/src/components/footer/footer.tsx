@@ -3,8 +3,8 @@ import XmasLights from "../xmasLights/xmasLights";
 
 export default component$(() => {
   return (
-    <div id="footer" class="sponsor flex column gap1 alignCenter">
-      <div class="textDim">
+    <footer id="footer" class="sponsor flex column gap1 alignCenter">
+      <div>
         <XmasLights
           numberOfLights={19}
           firstLightStartingColorNumber={1}
@@ -31,6 +31,6 @@ export default component$(() => {
         firstLightStartingColorNumber={1}
         alternateColors={true}
       />
-    </div>
+    </footer>
   );
 });
