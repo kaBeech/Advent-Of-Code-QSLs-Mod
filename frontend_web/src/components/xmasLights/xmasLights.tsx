@@ -26,7 +26,7 @@ export default component$((props: XmasLightsProps) => {
   for (let i = 1; i <= props.numberOfLights; i++) {
     let startingColorNumber = i + props.firstLightStartingColorNumber - 1;
     if (alternateColors && startingColorNumber % 2 !== 0) {
-      startingColorNumber += 6;
+      startingColorNumber += 5;
     }
     startingColorNumber = (startingColorNumber % 12) + 1;
     if (direction === "0" || direction === "270") {
