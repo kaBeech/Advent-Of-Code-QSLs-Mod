@@ -6,7 +6,7 @@ export default component$(() => {
 
   return (
     <>
-      <article>
+      <article class="bigHeaders textCenter">
         <h1 class="visualHide"> Xtreme Xmas Code </h1>
         <p>
           Have you ever been savoring your Advent Of Code calendar, keyboard
@@ -18,15 +18,15 @@ export default component$(() => {
         <p>
           <em>Xtreme Xmas Code</em> is a mod/companion app for{" "}
           <a href="https://adventofcode.com/" class="link">
-            Advent of Code
+            °Advent of Code°
           </a>
           , a delightful{" "}
           <a href="https://en.wikipedia.org/wiki/Advent_calendar" class="link">
-            Advent calendar
+            °Advent calendar°
           </a>{" "}
           of small programming puzzles created by{" "}
           <a href="http://was.tl/" class="link">
-            Eric Wastl
+            °Eric Wastl°
           </a>
           . With it you can record your Advent of Code progress and each day get
           an additional modifier to that day's AoC puzzle. For example, you may
@@ -42,32 +42,38 @@ export default component$(() => {
             href="https://www.reddit.com/r/adventofcode/comments/e2wjhf/comment/f90ksek/"
             class="link"
           >
-            that isn't tied to a strict time schedule
+            °that isn't tied to a strict time schedule°
           </a>
           .
         </p>
+        <div>
+          ----------------------------------------------------------------------------
+        </div>
         <h2> About Me </h2>
+        <div>
+          ----------------------------------------------------------------------------
+        </div>
         <p>
           I'm{" "}
           <a href="https://www.kabeech.com/" class="link">
-            Kyle Beechly
+            °Kyle Beechly°
           </a>{" "}
           - web developer, language lover, and maker of Xtreme Xmas Code. I hope
           you like it! You can find me on{" "}
           <a href="https://github.com/kaBeech" class="link">
-            GitHub
+            °GitHub°
           </a>
           ,{" "}
           <a href="https://www.linkedin.com/in/kyle-beechly/" class="link">
-            LinkedIn
+            °LinkedIn°
           </a>
           ,{" "}
           <a href="https://bsky.app/profile/kabeech.com" class="link">
-            Bluesky
+            °Bluesky°
           </a>
           , and{" "}
           <a href="https://hachyderm.io/@kaBeech" class="link">
-            Mastodon
+            °Mastodon°
           </a>
           .
         </p>
@@ -75,7 +81,7 @@ export default component$(() => {
           I'm also <em>#OpenToWork</em>, so if you're looking to work with a fun
           nerd you may contact me via one of the above options or{" "}
           <a href="mailto:contact@kabeech.com" class="link">
-            Email
+            °Email°
           </a>
           !
         </p>
@@ -83,18 +89,25 @@ export default component$(() => {
           If you'd like to support Xtreme Xmas Code, you can do so by sharing it
           with a friend, supporting our{" "}
           <a href="/support" class="link">
-            sponsors
+            °sponsors°
           </a>{" "}
           , or supporting{" "}
           <a href="https://adventofcode.com/support" class="link">
-            Eric Wastl
+            °Eric Wastl°
           </a>
           , creator of Advent of Code. You can find more information on{" "}
           <a href="/support" class="link">
-            my support page
-          </a>{" "}
+            °my support page°
+          </a>
+          .{" "}
         </p>
+        <div>
+          ----------------------------------------------------------------------------
+        </div>
         <h2> Disclaimer </h2>
+        <div>
+          ----------------------------------------------------------------------------
+        </div>{" "}
         <p>
           <em>Xtreme Xmas Code is under construction</em> and has not officially
           launched.
@@ -109,11 +122,17 @@ export default component$(() => {
           . If you're eager to start using XXC for more permanent projects and
           it hasn't launched yet, please{" "}
           <a href="mailto:contact@kabeech.com" class="link">
-            send me an email
+            °send me an email°
           </a>{" "}
           and I'll see what I can do.
-        </p>
+        </p>{" "}
+        <div>
+          ----------------------------------------------------------------------------
+        </div>
         <h2> Rules </h2>
+        <div>
+          ----------------------------------------------------------------------------
+        </div>{" "}
         <p>
           Each day you may roll a new <em>Challenge Modifier</em>. Our example
           Challenge Modifier will be{" "}
@@ -170,82 +189,116 @@ export default component$(() => {
           which combined with the 12 we started with gives us 11 Reroll Tokens
           at the start of Day 2.
         </p>
-        <h2> Scoring </h2>
+        <div>
+          ----------------------------------------------------------------------------
+        </div>{" "}
+        <h2> Scoring </h2>{" "}
+        <div>
+          ----------------------------------------------------------------------------
+        </div>{" "}
         <p>
           The <em>Basic Scoring Formula</em> is{" "}
-          <code>10 * T + 20 * P2 + B</code> where{" "}
-          <em class="bold textBright">T</em> is the number of{" "}
+          <code>
+            {"{"}10 * T + 20 * P2 + B{"}"}
+          </code>{" "}
+          where <em class="bold textBright">T</em> is the number of{" "}
           <em class="bold textBright">unspent reroll Tokens</em>, <em>P2</em> is
           the number of{" "}
           <em class="bold textBright">tokens spent during Part 2</em> (up to a
           maximum of 2 per day), and <em class="bold textBright">B</em> is the{" "}
-          <em class="bold textBright">end-of-game Bonus</em>
+          <em class="bold textBright">end-of-game Bonus.</em>
         </p>
         <p>
-          The <em>End-Game Bonus Formula</em> is <code>300 - 10 * S</code>, to a
-          minimum of 0, where <em class="bold textBright">S</em> is the{" "}
-          <em class="bold textBright">total number of tokens Spent</em>
+          The <em>End-Game Bonus Formula</em> is{" "}
+          <code>
+            {"{"}300 - 10 * S{"}"}
+          </code>
+          , to a minimum of 0, where <em class="bold textBright">S</em> is the{" "}
+          <em class="bold textBright">total number of tokens Spent.</em>
         </p>
         <p>
           If you spend at least 2 reroll tokens during Part 2 of every day, the{" "}
           <em>Virtuoso Scoring Formula</em> is used instead. It is{" "}
-          <code>1120 + 10 * T - 10 * P1</code> where{" "}
-          <em class="bold textBright">T</em> is the number of{" "}
+          <code>
+            {"{"}1120 + 10 * T - 10 * P1{"}"}
+          </code>{" "}
+          where <em class="bold textBright">T</em> is the number of{" "}
           <em class="bold textBright">unspent reroll Tokens</em> and{" "}
           <em class="bold textBright">P1</em> is the number of{" "}
-          <em class="bold textBright">tokens spent during Part 1</em>
+          <em class="bold textBright">tokens spent during Part 1.</em>
         </p>{" "}
         <p>
           Each day's individual score is a rough estimation of that day's effect
           on the overall score, assuming use of the Basic Scoring Formula. The{" "}
-          <em>Day Score Formula</em> is <code>10 * T + 20 * P2 - 10 * P1</code>,
-          where <em class="bold textBright">T</em> is the number of{" "}
+          <em>Day Score Formula</em> is{" "}
+          <code>
+            {"{"}10 * T + 20 * P2 - 10 * P1{"}"}
+          </code>
+          , where <em class="bold textBright">T</em> is the number of{" "}
           <em class="bold textBright">unspent reroll Tokens</em>,{" "}
           <em class="bold textBright">P2</em> is the number of{" "}
           <em class="bold textBright">tokens spent during Part 2</em> (up to a
           maximum of 2), and <em class="bold textBright">P1</em> is the number
           of <em class="bold textBright">tokens spent during Part 1</em>.
         </p>
+        <div>
+          ----------------------------------------------------------------------------
+        </div>{" "}
         <h2> Titles </h2>
+        <div>
+          ----------------------------------------------------------------------------
+        </div>{" "}
         <p>
           Upon completing Day 25 of a game you will be awarded a <em>Title</em>{" "}
           based on your score. The titles are:
         </p>
         <ul>
           <li>
-            0+ points: <em>Champion</em>
+            0+ points: <em class="fsGreen">Champion</em>
           </li>
           <li>
-            200+ points: <em>Gnarly Champion</em>
+            200+ points: <em class="fsTurquoise">Gnarly Champion</em>
           </li>
           <li>
-            400+ points: <em>Radical Champion</em>
+            400+ points: <em class="fsCyan">Radical Champion</em>
           </li>
           <li>
-            600+ points: <em>Righteous Champion</em>
+            600+ points: <em class="fsCerulean">Righteous Champion</em>
           </li>
           <li>
-            800+ points: <em>Epic Champion</em>
+            800+ points: <em class="fsBlue">Epic Champion</em>
           </li>
           <li>
-            920+ points: <em>Flawless Champion</em>
+            920+ points: <em class="fsPurple">Flawless Champion</em>
           </li>
           <li>
-            1000+ points: <em>Legendary Champion</em>
+            1000+ points: <em class="fsRose">Legendary Champion</em>
           </li>
           <li>
-            1120+ points: <em>Santaic Champion</em>
+            1120+ points: <em class="fsRed">Santaic Champion</em>
           </li>
           <li>
-            1240+ points: <em>Godlike Champion</em>
+            1240+ points: <em class="fsYellow">Godlike Champion</em>
           </li>
         </ul>
+        <div>
+          ----------------------------------------------------------------------------
+        </div>{" "}
         <h2> Public Links </h2>
+        <div>
+          ----------------------------------------------------------------------------
+        </div>{" "}
         <p>
           You can generate a <em>Public Link</em> to share your work with the
           world by marking your game as Public. TBA...
         </p>
+        <div>
+          ----------------------------------------------------------------------------
+        </div>{" "}
         <h2> Frequently Asked Questions </h2>
+        <div>
+          ----------------------------------------------------------------------------
+        </div>
         <p>
           <em>
             I find the text on the site hard to read. Is there a high contrast
@@ -264,11 +317,11 @@ export default component$(() => {
           I'm a big fan of{" "}
           <a href="https://adventofcode.com/" class="link">
             {" "}
-            Advent of Code{" "}
+            °Advent of Code°
           </a>{" "}
           and I encourage you to support its creator{" "}
-          <a href="https://adventofcode.com/support">Eric Wastl</a>, but I'm not
-          affiliated with him or Advent of Code in any way.
+          <a href="https://adventofcode.com/support">°Eric Wastl°</a>, but I'm
+          not affiliated with him or Advent of Code in any way.
         </p>
         <p>
           <em>Why make a mod for Advent of Code?</em>
@@ -282,36 +335,36 @@ export default component$(() => {
           Additionally, XXC adds to AoC leaderboard options. Being a worldwide
           speed-based competition, the race to get on{" "}
           <a href="https://adventofcode.com/leaderboard" class="link">
-            Advent of Code
-          </a>
-          's global leaderboard{" "}
+            °Advent of Code's°
+          </a>{" "}
+          global leaderboard{" "}
           <a
             href="https://adventofcode.com/2022/about#faq_compete"
             class="link"
           >
-            encourages
+            °encourages°
           </a>{" "}
           <a href="https://blog.vero.site/post/advent-leaderboard" class="link">
-            some
+            °some°
           </a>{" "}
           <a
             href="https://kevinyap.ca/2019/12/going-fast-in-advent-of-code/"
             class="link"
           >
-            particular
+            °particular°
           </a>{" "}
           <a
             href="https://gist.github.com/mcpower/87427528b9ba5cac6f0c679370789661"
             class="link"
           >
-            techniques
+            °techniques°
           </a>{" "}
           and{" "}
           <a
             href="https://adventofcode.com/2022/about#faq_unlocktime"
             class="link"
           >
-            isn't convenient for all players' schedules
+            °isn't convenient for all players' schedules°
           </a>
           . I'm hoping that the score-based Xtreme Xmas Code leaderboards will
           provide an accessible alternative that rewards new learning, courage,
@@ -376,26 +429,9 @@ export default component$(() => {
         <p>
           Xtreme Xmas Code uses{" "}
           <a href="https://en.wikipedia.org/wiki/OAuth" class="link">
-            OAuth
+            °OAuth°
           </a>{" "}
-          to verify and remember your identity. You choose a{" "}
-          {/* <span class="clickable">
-            Service
-            <span class="clickShow">
-              {" "}
-              like{" "}
-              <a href="" class="link">
-                GitHub
-              </a>{" "}
-              <a href="" class="link">
-                Mastodon
-              </a>{" "}
-              <a href="" class="link">
-                Google
-              </a>
-            </span>
-          </span> */}
-          service like{" "}
+          to verify and remember your identity. You choose a service like{" "}
           <a
             onClick$={() => {
               signIn.submit({
@@ -404,32 +440,38 @@ export default component$(() => {
             }}
             class="link"
           >
-            GitHub
+            °GitHub°
           </a>{" "}
           to log in with and Xtreme Xmas Code receives information to remember
           who you are. This is generally public information; here are examples
           from{" "}
           <a href="https://api.reddit.com/user/reddit/about" class="link">
-            Reddit
+            °Reddit°
           </a>{" "}
           and{" "}
           <a href="https://api.github.com/users/octocat" class="link">
-            GitHub
+            °GitHub°
           </a>
           . Xtreme Xmas Code will remember your unique ID, names, URL, and image
           from the service you use to authenticate.
         </p>
+        <div>
+          ----------------------------------------------------------------------------
+        </div>{" "}
         <h2> Credits </h2>
+        <div>
+          ----------------------------------------------------------------------------
+        </div>
         <p>
           Xtreme Xmas Code:{" "}
           <a href="https://www.kabeech.com/" class="link">
-            Kyle Beechly
+            °Kyle Beechly°
           </a>
         </p>
         <p>
           Advent of Code:{" "}
           <a href="http://was.tl/" class="link">
-            Eric Wastl
+            °Eric Wastl°
           </a>
         </p>
         <p>XXC Beta Testing:</p>
@@ -440,7 +482,7 @@ export default component$(() => {
               href="mailto:contact@kabeech.com?subject=Xtreme%20Xmas%20Beta%20Testing"
               class="link"
             >
-              Your name here!
+              °Your name here!°
             </a>
           </li>
         </ul>

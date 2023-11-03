@@ -76,12 +76,14 @@ export default component$(() => {
                     : "No"}
                 </li>
               </ul>
-              {pendingDays.map((day: { number: number }) => (
-                <DayLink
-                  key={`pendingDay-${day.number}`}
-                  dayNumber={day.number}
-                />
-              ))}
+              <ul>
+                {pendingDays.map((day: { number: number }) => (
+                  <DayLink
+                    key={`pendingDay-${day.number}`}
+                    dayNumber={day.number}
+                  />
+                ))}
+              </ul>
             </>
           );
         }}
@@ -93,14 +95,17 @@ export default component$(() => {
             }
             return (
               <>
-                {dummyDays.map((day: { number: number }) => (
-                  <DayLink
-                    key={`lockedDay-${day.number}`}
-                    dayNumber={day.number}
-                  />
-                ))}
+                <ul>
+                  {" "}
+                  {dummyDays.map((day: { number: number }) => (
+                    <DayLink
+                      key={`lockedDay-${day.number}`}
+                      dayNumber={day.number}
+                    />
+                  ))}
+                </ul>
                 <br />
-                <a href="/new">Start a New Game!</a>
+                <a href="/new">°Start a New Game!°</a>
               </>
             );
           }
@@ -141,6 +146,7 @@ export default component$(() => {
                   </>
                 )}
               </ul>
+              <br />
               <div>
                 --------------------------------------------------------------------
               </div>
@@ -148,52 +154,56 @@ export default component$(() => {
                 Challenge Modifier {`   `}¦ Modifier Option ¦ Est Score {` `} ¦
                 Day ¦ Tokens
               </div>
-
               <div>
                 --------------------------------------------------------------------
               </div>
-              {sortedDays.map(
-                (day: {
-                  number: number;
-                  challengeModifierId: string;
-                  modifierOptionId: string;
-                  part1Completed: string | null;
-                  part2Completed: string | null;
-                  challengeModifierRerollsUsed: number;
-                  modifierOptionRerollsUsed: number;
-                  ChallengeModifier?: {
-                    name: string;
-                  };
-                  ModifierOption?: {
-                    name: string;
-                    text: string;
-                  };
-                  netScore: number;
-                }) => (
+              <ul>
+                {sortedDays.map(
+                  (day: {
+                    number: number;
+                    challengeModifierId: string;
+                    modifierOptionId: string;
+                    part1Completed: string | null;
+                    part2Completed: string | null;
+                    challengeModifierRerollsUsed: number;
+                    modifierOptionRerollsUsed: number;
+                    ChallengeModifier?: {
+                      name: string;
+                    };
+                    ModifierOption?: {
+                      name: string;
+                      text: string;
+                    };
+                    netScore: number;
+                  }) => (
+                    <DayLink
+                      key={`unlockedDay-${day.number}`}
+                      dayNumber={day.number}
+                      dayLinkData={{
+                        challengeModifierId: day.challengeModifierId,
+                        modifierOptionId: day.modifierOptionId,
+                        part1Completed: day.part1Completed,
+                        part2Completed: day.part2Completed,
+                        challengeModifierRerollsUsed:
+                          day.challengeModifierRerollsUsed,
+                        modifierOptionRerollsUsed:
+                          day.modifierOptionRerollsUsed,
+                        ChallengeModifier: day.ChallengeModifier,
+                        ModifierOption: day.ModifierOption,
+                        netScore: day.netScore,
+                      }}
+                    />
+                  )
+                )}
+              </ul>
+              <ul>
+                {lockedDays.map((day: { number: number }) => (
                   <DayLink
-                    key={`unlockedDay-${day.number}`}
+                    key={`lockedDay-${day.number}`}
                     dayNumber={day.number}
-                    dayLinkData={{
-                      challengeModifierId: day.challengeModifierId,
-                      modifierOptionId: day.modifierOptionId,
-                      part1Completed: day.part1Completed,
-                      part2Completed: day.part2Completed,
-                      challengeModifierRerollsUsed:
-                        day.challengeModifierRerollsUsed,
-                      modifierOptionRerollsUsed: day.modifierOptionRerollsUsed,
-                      ChallengeModifier: day.ChallengeModifier,
-                      ModifierOption: day.ModifierOption,
-                      netScore: day.netScore,
-                    }}
                   />
-                )
-              )}
-              {lockedDays.map((day: { number: number }) => (
-                <DayLink
-                  key={`lockedDay-${day.number}`}
-                  dayNumber={day.number}
-                />
-              ))}
+                ))}
+              </ul>
             </>
           );
         }}

@@ -128,49 +128,25 @@ a {
   cursor: pointer;
 }
 
+a:hover {
+  text-shadow: 0 0 0.5rem var(--xxmas-palette-gold-medium);
+}
+
 code {
-  background: var(--xxmas-background-black);
-  border-radius: 0.3rem;
-  padding: 0.2rem 0.5rem;
   font-weight: bold;
-  font-family:
-    "Gohu 11",
-    "Big Blue Term",
-    monospace,
-    ui-sans-serif,
-    system-ui,
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    Roboto,
-    "Helvetica Neue",
-    Arial,
-    "Noto Sans",
-    sans-serif,
-    "Apple Color Emoji",
-    "Segoe UI Emoji",
-    "Segoe UI Symbol",
-    "Noto Color Emoji";
+  font-family: inherit;
 }
 
 /* IDs */
-
-#sidebar {
-  width: 12.5rem;
-  float: right;
-  margin: 1rem 2rem 2em 2em;
-  position: relative;
-  z-index: 10;
-}
-
-/* #footer {
-  width: 50em;
-} */
 
 /* Util Classes */
 
 .bold {
   font-weight: bold;
+}
+
+.textCenter {
+  text-align: center;
 }
 
 .flex {
@@ -236,8 +212,17 @@ code {
 
 /* Custom Classes */
 
+.bigHeaders h2 {
+  font-size: larger;
+  margin: 0.5rem;
+}
+
 .logo {
   font-size: 6rem;
+}
+
+.logo:hover {
+  text-shadow: none;
 }
 
 .stitch {
@@ -306,6 +291,10 @@ code {
   color: var(--xxmas-palette-gold-medium);
 }
 
+.textGreen {
+  color: var(--xxmas-palette-green-bright);
+}
+
 .logoGreen {
   color: var(--xxmas-palette-green-medium);
 }
@@ -324,4 +313,52 @@ code {
 
 .logoBrown {
   color: var(--xxmas-palette-brown-medium);
+}
+
+.fsGreen {
+  color: var(--full-sat-green);
+}
+
+.fsLime {
+  color: var(--full-sat-lime);
+}
+
+.fsYellow {
+  color: var(--full-sat-yellow);
+}
+
+.fsOrange {
+  color: var(--full-sat-orange);
+}
+
+.fsRed {
+  color: var(--full-sat-red);
+}
+
+.fsRose {
+  color: var(--full-sat-rose);
+}
+
+.fsMagenta {
+  color: var(--full-sat-magenta);
+}
+
+.fsPurple {
+  color: var(--full-sat-purple);
+}
+
+.fsBlue {
+  color: var(--full-sat-blue);
+}
+
+.fsCerulean {
+  color: var(--full-sat-cerulean);
+}
+
+.fsCyan {
+  color: var(--full-sat-cyan);
+}
+
+.fsTurquoise {
+  color: var(--full-sat-turquoise);
 }

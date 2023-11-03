@@ -62,7 +62,7 @@ export default component$(() => {
                       <li key={`game-${game.id}`}>
                         {game.year} - {game.name} - {game.score} -{" "}
                         {game.Rank.name} - {game.playerName} -{" "}
-                        <a href={`repositoryLink`}>Repo Link</a>
+                        <a href={`repositoryLink`}>°Repo Link°</a>
                       </li>
                     ))}
                   </ul>
@@ -88,11 +88,11 @@ export default component$(() => {
                   <li key={`game-${game.id}`}>
                     <em>
                       {index + 1} - {game.year} -{" "}
-                      <a href={`/game/public/${game.id}`}>{game.name}</a> -{" "}
+                      <a href={`/game/public/${game.id}`}>°{game.name}°</a> -{" "}
                       {game.score} -{" "}
                       {game.Rank ? game.Rank.name : `Not Yet Completed`} -{" "}
                       {game.playerName} -{" "}
-                      <a href={game.repositoryLink}>Repo Link</a>
+                      <a href={game.repositoryLink}>°Repo Link°</a>
                     </em>
                   </li>
                 )

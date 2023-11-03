@@ -154,7 +154,7 @@ export default component$(() => {
                   window.location.href = `/game/${res.number}`;
                 }}
               >
-                Create New Game
+                °Create New Game°
               </a>
             </>
           );
