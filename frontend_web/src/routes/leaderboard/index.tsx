@@ -89,31 +89,70 @@ export default component$(() => {
               <>
                 {leaderboardGamesData.map(
                   (game: LeaderboardGame, index: number) => {
-                    let rankString = String(index + 1);
+                    const rank = {
+                      string: String(index + 1),
+                      color: `xmasLight colorShift${(index % 12) + 1}`,
+                    };
                     let gameNameString = `°${game.name}°`;
                     let scoreString = String(game.score);
-                    let titleString = game.Rank
-                      ? game.Rank.name.split(" ")[0]
-                      : `Incomplete`;
-                    rankString.length < 6 &&
-                      (rankString += " ".repeat(6 - rankString.length));
+                    const title = {
+                      string: game.Rank
+                        ? game.Rank.name.split(" ")[0]
+                        : `Incomplete`,
+                      color: "textBright",
+                    };
+                    switch (title.string) {
+                      case "Champion":
+                        title.color = "fsGreen";
+                        break;
+                      case "Gnarly":
+                        title.color = "fsTurquoise";
+                        break;
+                      case "Radical":
+                        title.color = "fsCyan";
+                        break;
+                      case "Righteous":
+                        title.color = "fsCerulean";
+                        break;
+                      case "Epic":
+                        title.color = "fsBlue";
+                        break;
+                      case "Flawless":
+                        title.color = "fsPurple";
+                        break;
+                      case "Legendary":
+                        title.color = "fsRose";
+                        break;
+                      case "Santaic":
+                        title.color = "fsRed";
+                        break;
+                      case "Godlike":
+                        title.color = "fsYellow";
+                        break;
+                      default:
+                        break;
+                    }
+                    rank.string.length < 6 &&
+                      (rank.string += " ".repeat(6 - rank.string.length));
                     gameNameString.length < 19 &&
                       (gameNameString += " ".repeat(
                         19 - gameNameString.length
                       ));
                     scoreString.length < 7 &&
                       (scoreString += " ".repeat(7 - scoreString.length));
-                    titleString.length < 11 &&
-                      (titleString += " ".repeat(11 - titleString.length));
+                    title.string.length < 11 &&
+                      (title.string += " ".repeat(11 - title.string.length));
                     return (
                       <li key={`game-${game.id}`}>
                         <em>
-                          {rankString} {game.year}
+                          <span class={rank.color}>{rank.string}</span>{" "}
+                          {game.year}
                           {"  "}
                           <a href={`/game/public/${game.id}`}>
                             {gameNameString}
                           </a>{" "}
-                          {scoreString} {titleString}
+                          <span class="textGold">{scoreString}</span>{" "}
+                          <span class={title.color}>{title.string}</span>
                           <a href={game.repositoryLink}> °Repo Link°</a>
                           {"  "}
                           {game.playerName}{" "}
