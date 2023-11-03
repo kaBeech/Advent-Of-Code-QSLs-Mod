@@ -42,7 +42,7 @@ export default component$((props: HeaderProps) => {
         <div class="flex gap1 marginTBPoint2">
           {" "}
           <a href="/about">°About°</a> ¦{" "}
-          <a href="/events" class="textGreen">
+          <a href="/games" class="textGreen">
             °Games°
           </a>{" "}
           ¦<a href="/settings">°Settings°</a> ¦{" "}

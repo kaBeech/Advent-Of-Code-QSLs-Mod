@@ -129,7 +129,7 @@ export default component$(() => {
 });
 
 export const head: DocumentHead = {
-  title: "Xtreme Xmas - Events",
+  title: "Xtreme Xmas - Games",
   meta: [
     {
       name: "description",
