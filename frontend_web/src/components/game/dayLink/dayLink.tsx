@@ -28,7 +28,7 @@ export default component$((props: DayLinkProps) => {
   if (!props.dayLinkData) {
     return (
       <li class="textDim">
-        #######################################################{" "}
+        ########################################################{" "}
         <span class="textBright">
           {props.dayNumber < 10 ? " " + props.dayNumber : props.dayNumber}
         </span>
@@ -63,17 +63,17 @@ export default component$((props: DayLinkProps) => {
   tokensSpent += props.dayLinkData.modifierOptionRerollsUsed;
 
   const challengeModifierString = `°${challengeModifier}°${
-    challengeModifier.length < 23
-      ? " ".repeat(23 - challengeModifier.length)
+    challengeModifier.length < 22
+      ? " ".repeat(22 - challengeModifier.length)
       : ""
   }`;
 
   const modifierOptionString = `°${modifierOption}°${
-    modifierOption.length < 17 && " ".repeat(17 - modifierOption.length)
+    modifierOption.length < 16 && " ".repeat(16 - modifierOption.length)
   }`;
 
   const scoreString = `${score} points${
-    score.length < 7 && " ".repeat(7 - score.length)
+    score.length < 8 && " ".repeat(8 - score.length)
   }`;
 
   return (
