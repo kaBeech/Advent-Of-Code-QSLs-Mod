@@ -37,6 +37,7 @@
   --xxmas-palette-green-dark: hsl(105, 100%, 4%);
   --xxmas-palette-green-black: hsl(100, 100%, 2%);
   --xxmas-palette-red-medium: hsl(0, 93%, 53%);
+  --xxmas-palette-red-dim: hsl(0, 86%, 41%);
   --xxmas-palette-gold-medium: hsl(52, 100%, 42%);
   --xxmas-palette-brown-medium: rgb(132, 65, 24);
   --full-sat-blue: hsl(240, 100%, 50%);
@@ -339,6 +340,10 @@ strong {
 
 .logoBrown {
   color: var(--xxmas-palette-brown-medium);
+}
+
+.dimRed {
+  color: var(--xxmas-palette-red-dim);
 }
 
 .fsGreen {

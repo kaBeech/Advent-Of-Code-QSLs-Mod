@@ -52,7 +52,7 @@ export default component$((props: XmasLightsProps) => {
       )}
       {props.hasLightSwitch && !props.isOn && (
         <span
-          class="logoRed pointer"
+          class="dimRed pointer"
           onClick$={() => {
             props.toggleLights();
           }}
