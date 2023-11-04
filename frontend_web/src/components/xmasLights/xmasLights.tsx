@@ -40,9 +40,19 @@ export default component$((props: XmasLightsProps) => {
   }
   return (
     <span class={`rotate${direction}`}>
-      {props.hasLightSwitch && (
+      {props.hasLightSwitch && props.isOn && (
         <span
-          class="logoGreen"
+          class="logoGreen pointer"
+          onClick$={() => {
+            props.toggleLights();
+          }}
+        >
+          {"󱨦"}
+        </span>
+      )}
+      {props.hasLightSwitch && !props.isOn && (
+        <span
+          class="logoRed pointer"
           onClick$={() => {
             props.toggleLights();
           }}

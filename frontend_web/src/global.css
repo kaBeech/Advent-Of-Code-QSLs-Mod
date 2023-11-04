@@ -153,6 +153,10 @@ strong {
 
 /* Util Classes */
 
+.pointer {
+  cursor: pointer;
+}
+
 .bold {
   font-weight: bold;
 }
@@ -204,6 +208,10 @@ strong {
 
 .rotate270 {
   transform: rotate(270deg);
+}
+
+.flipVertical {
+  transform: scale(1, -1);
 }
 
 .visualHide:not(:focus):not(:active) {
