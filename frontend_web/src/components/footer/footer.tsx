@@ -1,7 +1,12 @@
 import { component$ } from "@builder.io/qwik";
 import XmasLights from "../xmasLights/xmasLights";
 
-export default component$(() => {
+interface FooterProps {
+  areLightsOn: boolean;
+  toggleLights: Function | any;
+}
+
+export default component$((props: FooterProps) => {
   return (
     <footer id="footer" class="sponsor flex column gap1 alignCenter">
       <div>
@@ -9,6 +14,9 @@ export default component$(() => {
           numberOfLights={18}
           firstLightStartingColorNumber={1}
           alternateColors={true}
+          hasLightSwitch={false}
+          isOn={props.areLightsOn}
+          toggleLights={props.toggleLights}
         />
         <a href="/sponsors" class="">
           °Sponsor°
@@ -17,6 +25,9 @@ export default component$(() => {
           numberOfLights={18}
           firstLightStartingColorNumber={1}
           alternateColors={true}
+          hasLightSwitch={false}
+          isOn={props.areLightsOn}
+          toggleLights={props.toggleLights}
         />
       </div>
       <p class="sponsor textCenter">
@@ -25,11 +36,6 @@ export default component$(() => {
         Please reach out if you have any questions/comments or if you'd like to
         work with me!
       </p>
-      {/* <XmasLights
-        numberOfLights={43}
-        firstLightStartingColorNumber={1}
-        alternateColors={true}
-      /> */}
     </footer>
   );
 });

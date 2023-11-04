@@ -6,9 +6,9 @@ import styles from "./styles.css?inline";
 import Header from "~/components/header/header";
 import type { Session } from "@auth/core/types";
 import Footer from "~/components/footer/footer";
-// import Sidebar from "~/components/sidebar/sidebar";
 
 let isLoggedIn = false;
+const areLightsOn = true;
 
 export const onRequest: RequestHandler = (event) => {
   const session: Session | null = event.sharedMap.get("session");
@@ -41,18 +41,29 @@ export default component$(() => {
 
   const state = useStore({
     isLoggedIn,
+    areLightsOn,
   });
 
   const toggleLoggedIn = $(() => {
     state.isLoggedIn ? (state.isLoggedIn = false) : (state.isLoggedIn = true);
   });
+  const toggleLights = $(() => {
+    state.areLightsOn
+      ? (state.areLightsOn = false)
+      : (state.areLightsOn = true);
+  });
   return (
     <>
-      <Header isLoggedIn={isLoggedIn} toggleLoggedIn={toggleLoggedIn} />
+      <Header
+        isLoggedIn={isLoggedIn}
+        toggleLoggedIn={toggleLoggedIn}
+        areLightsOn={state.areLightsOn}
+        toggleLights={toggleLights}
+      />
       <main class="flex column alignCenter">
         <Slot />
       </main>
-      <Footer />
+      <Footer areLightsOn={state.areLightsOn} toggleLights={toggleLights} />
     </>
   );
 });

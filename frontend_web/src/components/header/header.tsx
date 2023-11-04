@@ -1,5 +1,5 @@
 /* eslint-disable no-irregular-whitespace */
-import { $, component$, useStore } from "@builder.io/qwik";
+import { component$ } from "@builder.io/qwik";
 import LogInOrOut from "../logInOrOut/logInOrOut";
 import { useAuthSession } from "~/routes/plugin@auth";
 import XmasLights from "../xmasLights/xmasLights";
@@ -7,16 +7,11 @@ import XmasLights from "../xmasLights/xmasLights";
 interface HeaderProps {
   isLoggedIn: boolean;
   toggleLoggedIn: Function | any;
+  areLightsOn: boolean;
+  toggleLights: Function | any;
 }
 
 export default component$((props: HeaderProps) => {
-  const toggleLoggedIn = $(() => {
-    props.toggleLoggedIn();
-  });
-
-  const state = useStore({
-    isLoggedIn: props.isLoggedIn,
-  });
   const session = useAuthSession();
   return (
     <header class="flex column alignCenter">
@@ -26,16 +21,13 @@ export default component$((props: HeaderProps) => {
         <span class="logoBrown">»</span>
       </a>
       <br />
-      {/* <XmasLights
-          numberOfLights={44}
-          firstLightStartingColorNumber={7}
-          rotation={"0"}
-          alternateColors={true}
-        /> */}
       <XmasLights
         numberOfLights={42}
         firstLightStartingColorNumber={1}
         alternateColors={true}
+        hasLightSwitch={true}
+        isOn={props.areLightsOn}
+        toggleLights={props.toggleLights}
       />
       <br />
       <br />
@@ -74,8 +66,8 @@ export default component$((props: HeaderProps) => {
           {" "}
           <span class="textGreen">{session.value?.user?.name}</span>
           <LogInOrOut
-            isLoggedIn={state.isLoggedIn}
-            toggleLoggedIn={toggleLoggedIn}
+            isLoggedIn={props.isLoggedIn}
+            toggleLoggedIn={props.toggleLoggedIn}
           />
         </div>
         <br />
