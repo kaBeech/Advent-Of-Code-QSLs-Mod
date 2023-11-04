@@ -14,6 +14,11 @@
 }
 
 @font-face {
+  font-family: "Gohu 11 Xpansion";
+  src: url("/fonts/GohuFontuni11NerdFontMono-Regular-Xpansion.ttf");
+}
+
+@font-face {
   font-family: "Xmas Sweater Stitch";
   src: url("/fonts/XmasSweaterStitch.otf");
 }
@@ -76,6 +81,7 @@ html {
   tab-size: 4;
   min-height: 100vh;
   font-family:
+    "Gohu 11 Xpansion",
     "Gohu 11",
     "Big Blue Term",
     monospace,
