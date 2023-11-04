@@ -69,7 +69,7 @@ export default component$((props: HeaderProps) => {
             °Leaderboards°
           </a>
           ¦<a href="/sponsors">°Sponsors°</a>
-        </div>{" "}
+        </div>
         <div class="flex gap1 marginTBPoint2">
           {" "}
           <span class="textGreen">{session.value?.user?.name}</span>
