@@ -324,6 +324,13 @@ export default component$(() => {
           not affiliated with him or Advent of Code in any way.
         </p>
         <p>
+          <em>I'm not enjoying the Christmas lights. Can I turn them off?</em>
+        </p>
+        <p>
+          Sure! Just click the light switch at the end of the string of lights
+          (at the upper right of the page).
+        </p>
+        <p>
           <em>Why make a mod for Advent of Code?</em>
         </p>
         <p>

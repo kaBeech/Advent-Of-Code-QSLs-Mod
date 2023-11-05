@@ -249,7 +249,7 @@ export default component$(() => {
                 </li>
                 <li>
                   Reroll Tokens Spent During Part 2:{" "}
-                  <strong class="tokenSpent stitch">
+                  <strong class="tokenSpent">
                     {xtremeXmasData.rerollTokensSpentDuringPart2 > 9
                       ? xtremeXmasData.rerollTokensSpentDuringPart2 + ""
                       : "".repeat(xtremeXmasData.rerollTokensSpentDuringPart2)}
@@ -257,7 +257,7 @@ export default component$(() => {
                 </li>
                 <li>
                   Current Reroll Tokens:{" "}
-                  <strong class="token stitch">
+                  <strong class="token">
                     {xtremeXmasData.currentRerollTokens > 9
                       ? xtremeXmasData.currentRerollTokens + ""
                       : "".repeat(xtremeXmasData.currentRerollTokens)}
@@ -266,11 +266,9 @@ export default component$(() => {
                 <li>
                   Estimated Net Score:{" "}
                   {xtremeXmasData.netScore > 0 ? (
-                    <strong class="token stitch">
-                      +{xtremeXmasData.netScore}
-                    </strong>
+                    <strong class="token">+{xtremeXmasData.netScore}</strong>
                   ) : (
-                    <strong class="tokenSpent stitch">
+                    <strong class="tokenSpent">
                       {xtremeXmasData.netScore}
                     </strong>
                   )}

@@ -32,6 +32,7 @@ export default component$((props: LoginProps) => {
             });
             state.isLoggedIn = true;
           }}
+          class="textGreen"
         >
           °Log In°
         </a>

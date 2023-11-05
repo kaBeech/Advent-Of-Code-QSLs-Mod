@@ -10,6 +10,7 @@ export default component$(() => {
           providerId: "github",
         });
       }}
+      class="textGreen"
     >
       °Log In°
     </a>

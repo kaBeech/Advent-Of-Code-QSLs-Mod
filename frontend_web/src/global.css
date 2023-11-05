@@ -4,13 +4,13 @@
 /* Fonts */
 
 @font-face {
-  font-family: "Big Blue Term";
-  src: url("/fonts/BigBlueTermPlusNerdFontMono-Regular.ttf");
+  font-family: "Gohu 11";
+  src: url("/fonts/GohuFontuni11NerdFontMono-Regular.ttf");
 }
 
 @font-face {
-  font-family: "Gohu 11";
-  src: url("/fonts/GohuFontuni11NerdFontMono-Regular.ttf");
+  font-family: "Gohu 11 Flipped Switches";
+  src: url("/fonts/GohuFontuni11NerdFontMono-Regular-Flipped-Switches2.ttf");
 }
 
 @font-face {
@@ -32,6 +32,7 @@
   --xxmas-palette-green-dark: hsl(105, 100%, 4%);
   --xxmas-palette-green-black: hsl(100, 100%, 2%);
   --xxmas-palette-red-medium: hsl(0, 93%, 53%);
+  --xxmas-palette-red-dim: hsl(0, 86%, 41%);
   --xxmas-palette-gold-medium: hsl(52, 100%, 42%);
   --xxmas-palette-brown-medium: rgb(132, 65, 24);
   --full-sat-blue: hsl(240, 100%, 50%);
@@ -76,8 +77,8 @@ html {
   tab-size: 4;
   min-height: 100vh;
   font-family:
+    "Gohu 11 Flipped Switches",
     "Gohu 11",
-    "Big Blue Term",
     monospace,
     ui-sans-serif,
     system-ui,
@@ -145,9 +146,17 @@ code {
   font-family: inherit;
 }
 
+strong {
+  font-weight: 600;
+}
+
 /* IDs */
 
 /* Util Classes */
+
+.pointer {
+  cursor: pointer;
+}
 
 .bold {
   font-weight: bold;
@@ -155,6 +164,10 @@ code {
 
 .textCenter {
   text-align: center;
+}
+
+.fontLarger {
+  font-size: larger;
 }
 
 .flex {
@@ -202,6 +215,10 @@ code {
   transform: rotate(270deg);
 }
 
+.flipVertical {
+  transform: scale(1, -1);
+}
+
 .visualHide:not(:focus):not(:active) {
   clip: rect(0 0 0 0);
   clip-path: inset(50%);
@@ -236,7 +253,6 @@ code {
 .stitch {
   font-family:
     "Xmas Sweater Stitch",
-    "Big Blue Term",
     monospace,
     ui-sans-serif,
     system-ui,
@@ -257,7 +273,6 @@ code {
 .stitchLettering {
   font-family:
     "Gohu 11",
-    "Big Blue Term",
     monospace,
     ui-sans-serif,
     system-ui,
@@ -321,6 +336,10 @@ code {
 
 .logoBrown {
   color: var(--xxmas-palette-brown-medium);
+}
+
+.dimRed {
+  color: var(--xxmas-palette-red-dim);
 }
 
 .fsGreen {

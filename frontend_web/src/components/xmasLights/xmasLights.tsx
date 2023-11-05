@@ -4,6 +4,9 @@ export interface XmasLightsProps {
   numberOfLights: number;
   firstLightStartingColorNumber: number;
   rotation?: "0" | "90" | "180" | "270";
+  isOn: boolean;
+  toggleLights: Function | any;
+  hasLightSwitch: boolean;
   alternateColors?: boolean;
 }
 
@@ -37,20 +40,57 @@ export default component$((props: XmasLightsProps) => {
   }
   return (
     <span class={`rotate${direction}`}>
-      <span class="logoGreen">{"~"}</span>
-      {xmasLights.map(
-        (xmasLight: { number: number; startingColorNumber: number }) => (
-          <>
-            <span
-              key={`xmasLight-${xmasLight.number}`}
-              class={`xmasLight colorShift${xmasLight.startingColorNumber}`}
-            >
-              
-            </span>
-            <span class="logoGreen">{"~"}</span>
-          </>
-        )
+      {props.hasLightSwitch && props.isOn && (
+        <>
+          <span class="logoGreen fontLarger"> {"󰛨"}</span>
+          <span
+            class="logoGreen pointer"
+            onClick$={() => {
+              props.toggleLights();
+            }}
+          >
+            {"󱨥"}
+          </span>
+        </>
       )}
+      {props.hasLightSwitch && !props.isOn && (
+        <>
+          <span class="dimRed fontLarger">{"󰛩"}</span>
+          <span
+            class="logoGreen pointer"
+            onClick$={() => {
+              props.toggleLights();
+            }}
+          >
+            {"󱨦"}
+          </span>
+        </>
+      )}
+      <span class="logoGreen">{"~"}</span>
+      {props.isOn
+        ? xmasLights.map(
+            (xmasLight: { number: number; startingColorNumber: number }) => (
+              <>
+                <span
+                  key={`xmasLight-${xmasLight.number}`}
+                  class={`xmasLight colorShift${xmasLight.startingColorNumber}`}
+                >
+                  
+                </span>
+                <span class="logoGreen">{"~"}</span>
+              </>
+            )
+          )
+        : xmasLights.map(
+            (xmasLight: { number: number; startingColorNumber: number }) => (
+              <>
+                <span key={`xmasLight-${xmasLight.number}`} class={`logoRed`}>
+                  ~
+                </span>
+                <span class="logoGreen">{"~"}</span>
+              </>
+            )
+          )}
     </span>
   );
 });
