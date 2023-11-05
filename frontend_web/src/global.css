@@ -4,18 +4,13 @@
 /* Fonts */
 
 @font-face {
-  font-family: "Big Blue Term";
-  src: url("/fonts/BigBlueTermPlusNerdFontMono-Regular.ttf");
-}
-
-@font-face {
   font-family: "Gohu 11";
   src: url("/fonts/GohuFontuni11NerdFontMono-Regular.ttf");
 }
 
 @font-face {
-  font-family: "Gohu 11 Xpansion";
-  src: url("/fonts/GohuFontuni11NerdFontMono-Regular-Xpansion.ttf");
+  font-family: "Gohu 11 Flipped Switches";
+  src: url("/fonts/GohuFontuni11NerdFontMono-Regular-Flipped-Switches.ttf");
 }
 
 @font-face {
@@ -82,9 +77,8 @@ html {
   tab-size: 4;
   min-height: 100vh;
   font-family:
-    "Gohu 11 Xpansion",
+    "Gohu 11 Flipped Switches",
     "Gohu 11",
-    "Big Blue Term",
     monospace,
     ui-sans-serif,
     system-ui,
@@ -255,7 +249,6 @@ strong {
 .stitch {
   font-family:
     "Xmas Sweater Stitch",
-    "Big Blue Term",
     monospace,
     ui-sans-serif,
     system-ui,
@@ -276,7 +269,6 @@ strong {
 .stitchLettering {
   font-family:
     "Gohu 11",
-    "Big Blue Term",
     monospace,
     ui-sans-serif,
     system-ui,

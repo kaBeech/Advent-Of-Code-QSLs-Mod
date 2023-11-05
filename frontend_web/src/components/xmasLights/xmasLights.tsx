@@ -47,7 +47,7 @@ export default component$((props: XmasLightsProps) => {
             props.toggleLights();
           }}
         >
-          {"Ɔ"}
+          {"󱨥"}
         </span>
       )}
       {props.hasLightSwitch && !props.isOn && (
@@ -57,7 +57,7 @@ export default component$((props: XmasLightsProps) => {
             props.toggleLights();
           }}
         >
-          {"Ƈ"}
+          {"󱨦"}
         </span>
       )}
       <span class="logoGreen">{"~"}</span>
