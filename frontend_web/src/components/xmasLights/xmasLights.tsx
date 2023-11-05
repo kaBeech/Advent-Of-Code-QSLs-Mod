@@ -41,24 +41,30 @@ export default component$((props: XmasLightsProps) => {
   return (
     <span class={`rotate${direction}`}>
       {props.hasLightSwitch && props.isOn && (
-        <span
-          class="logoGreen pointer"
-          onClick$={() => {
-            props.toggleLights();
-          }}
-        >
-          {"󱨥"}
-        </span>
+        <>
+          <span class="logoGreen fontLarger"> {"󰛨"}</span>
+          <span
+            class="logoGreen pointer"
+            onClick$={() => {
+              props.toggleLights();
+            }}
+          >
+            {"󱨥"}
+          </span>
+        </>
       )}
       {props.hasLightSwitch && !props.isOn && (
-        <span
-          class="dimRed pointer"
-          onClick$={() => {
-            props.toggleLights();
-          }}
-        >
-          {"󱨦"}
-        </span>
+        <>
+          <span class="dimRed fontLarger">{"󰛩"}</span>
+          <span
+            class="logoGreen pointer"
+            onClick$={() => {
+              props.toggleLights();
+            }}
+          >
+            {"󱨦"}
+          </span>
+        </>
       )}
       <span class="logoGreen">{"~"}</span>
       {props.isOn

@@ -8,7 +8,7 @@ import type { Session } from "@auth/core/types";
 import Footer from "~/components/footer/footer";
 
 let isLoggedIn = false;
-const areLightsOn = true;
+const areLightsOn = false;
 
 export const onRequest: RequestHandler = (event) => {
   const session: Session | null = event.sharedMap.get("session");

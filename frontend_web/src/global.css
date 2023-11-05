@@ -10,7 +10,7 @@
 
 @font-face {
   font-family: "Gohu 11 Flipped Switches";
-  src: url("/fonts/GohuFontuni11NerdFontMono-Regular-Flipped-Switches.ttf");
+  src: url("/fonts/GohuFontuni11NerdFontMono-Regular-Flipped-Switches2.ttf");
 }
 
 @font-face {
@@ -164,6 +164,10 @@ strong {
 
 .textCenter {
   text-align: center;
+}
+
+.fontLarger {
+  font-size: larger;
 }
 
 .flex {
