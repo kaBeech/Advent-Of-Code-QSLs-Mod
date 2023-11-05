@@ -134,10 +134,11 @@ export default component$(() => {
                     }
                     rank.string.length < 6 &&
                       (rank.string += " ".repeat(6 - rank.string.length));
-                    gameNameString.length < 19 &&
-                      (gameNameString += " ".repeat(
-                        19 - gameNameString.length
-                      ));
+                    gameNameString.length <= 19
+                      ? (gameNameString += " ".repeat(
+                          19 - gameNameString.length
+                        ))
+                      : (gameNameString = gameNameString.slice(0, 15) + "...°");
                     scoreString.length < 7 &&
                       (scoreString += " ".repeat(7 - scoreString.length));
                     title.string.length < 11 &&

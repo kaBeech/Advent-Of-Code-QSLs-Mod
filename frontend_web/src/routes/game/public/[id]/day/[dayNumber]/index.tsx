@@ -136,13 +136,9 @@ export default component$(() => {
                   {!state.dayInfo ? (
                     `Loading...`
                   ) : state.dayInfo.netScore > 0 ? (
-                    <strong class="token stitch">
-                      +{state.dayInfo.netScore}
-                    </strong>
+                    <strong class="token">+{state.dayInfo.netScore}</strong>
                   ) : (
-                    <strong class="tokenSpent stitch">
-                      {state.dayInfo.netScore}
-                    </strong>
+                    <strong class="tokenSpent">{state.dayInfo.netScore}</strong>
                   )}
                 </strong>
               </li>
@@ -241,7 +237,7 @@ export default component$(() => {
                 </li>
                 <li>
                   Reroll Tokens Spent During Part 1:{" "}
-                  <strong class="tokenSpent stitch">
+                  <strong class="tokenSpent">
                     {xtremeXmasData.rerollTokensSpentDuringPart1 > 9
                       ? xtremeXmasData.rerollTokensSpentDuringPart1 + ""
                       : "".repeat(xtremeXmasData.rerollTokensSpentDuringPart1)}

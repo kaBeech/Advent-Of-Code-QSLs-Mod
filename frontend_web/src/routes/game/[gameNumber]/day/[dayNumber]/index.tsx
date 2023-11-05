@@ -153,9 +153,7 @@ export default component$(() => {
                   ) : state.dayInfo.netScore > 0 ? (
                     <strong class="token">+{state.dayInfo.netScore}</strong>
                   ) : (
-                    <strong class="tokenSpent stitch">
-                      {state.dayInfo.netScore}
-                    </strong>
+                    <strong class="tokenSpent">{state.dayInfo.netScore}</strong>
                   )}
                 </strong>
               </li>
@@ -333,7 +331,7 @@ export default component$(() => {
                       >
                         °Reroll Challenge Modifier°
                       </a>{" "}
-                      for <strong class="tokenSpent stitch"></strong>
+                      for <strong class="tokenSpent"></strong>
                     </li>
                   )}{" "}
                   {xtremeXmasData.modifierOption !== "None" &&
@@ -356,7 +354,7 @@ export default component$(() => {
                           °Reroll Modifier Option°
                         </a>{" "}
                         ({xtremeXmasData.modifierOption}) for{" "}
-                        <strong class="tokenSpent stitch"></strong>
+                        <strong class="tokenSpent"></strong>
                       </li>
                     )}
                 </li>
