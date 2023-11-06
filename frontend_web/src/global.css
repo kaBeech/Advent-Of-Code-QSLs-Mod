@@ -138,7 +138,9 @@ a {
 }
 
 a:hover {
-  text-shadow: 0 0 0.5rem currentColor;
+  text-shadow:
+    0 0 0.5rem currentColor,
+    0 0 1rem currentColor;
 }
 
 code {

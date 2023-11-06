@@ -73,7 +73,7 @@ export default component$((props: XmasLightsProps) => {
               <>
                 <span
                   key={`xmasLight-${xmasLight.number}`}
-                  class={`xmasLight colorShift${xmasLight.startingColorNumber}`}
+                  class={`xmasLight brightLight colorShift${xmasLight.startingColorNumber}`}
                 >
                   
                 </span>
