@@ -28,6 +28,7 @@
   --xxmas-palette-grey-bright: hsl(0, 2%, 83%);
   --xxmas-palette-white-bright: hsl(0, 0%, 100%);
   --xxmas-palette-green-medium: hsl(100, 100%, 29%);
+  --xxmas-palette-green-vivid: hsl(100, 82%, 39%);
   --xxmas-palette-green-bright: hsl(124, 74%, 48%);
   --xxmas-palette-green-dark: hsl(105, 100%, 4%);
   --xxmas-palette-green-black: hsl(100, 100%, 2%);
@@ -317,7 +318,7 @@ strong {
 }
 
 .textGreen {
-  color: var(--xxmas-palette-green-bright);
+  color: var(--xxmas-palette-green-vivid);
 }
 
 .logoGreen {
