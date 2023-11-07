@@ -451,7 +451,13 @@ export default component$(() => {
                         state.buttonPresses++;
                       }}
                     >
-                      °Complete Part 1°
+                      °Complete Part 1°{" "}
+                      {xtremeXmasData.challengeModifier !== "None" && (
+                        <>
+                          <>for </>
+                          <span class="token"></span>
+                        </>
+                      )}
                     </a>
                   )}
                 </li>
@@ -503,7 +509,13 @@ export default component$(() => {
                         state.buttonPresses++;
                       }}
                     >
-                      °Complete Part 2°
+                      °Complete Part 2°{" "}
+                      {xtremeXmasData.challengeModifier !== "None" && (
+                        <>
+                          <>for </>
+                          <span class="token"></span>
+                        </>
+                      )}
                     </a>
                   )}
                 </li>{" "}
