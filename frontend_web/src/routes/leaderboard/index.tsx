@@ -93,6 +93,7 @@ export default component$(() => {
                     let gameNameString = `°${game.name}°`;
                     let scoreString = String(game.score);
                     const title = {
+                      // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
                       string: game.Rank
                         ? game.Rank.name.split(" ")[0]
                         : `Incomplete`,
