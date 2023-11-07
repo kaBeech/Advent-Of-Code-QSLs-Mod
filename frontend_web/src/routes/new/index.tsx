@@ -56,52 +56,70 @@ export default component$(() => {
   return (
     <article>
       <h1 class="title">Create New Game</h1>
-      <h2>Enter Title, Year, and Player Name:</h2>
-      <p>(Repository Link only required for leaderboards)</p>
-      <input
-        class="pointer"
-        type="text"
-        onInput$={(ev: any) => (state.title = ev.target.value)}
-        value={title}
-        minLength={1}
-        maxLength={256}
-        aria-labelledby="Title"
-      />
-      <input
-        class="pointer"
-        type="number"
-        onInput$={(ev: any) => (state.year = ev.target.value)}
-        value={year}
-        min="2014"
-        max="2023"
-        aria-labelledby="Year"
-      />
-      <input
-        class="pointer"
-        type="text"
-        onInput$={(ev: any) => (state.playerName = ev.target.value)}
-        value={playerName}
-        minLength={1}
-        maxLength={256}
-        aria-labelledby="Player Name"
-      />
-      <input
-        class="pointer"
-        type="text"
-        onInput$={(ev: any) => (state.repositoryLink = ev.target.value)}
-        value={repositoryLink}
-        minLength={1}
-        maxLength={256}
-        aria-labelledby="Repository Link"
-      />
-      <br />
-      <label for="publicCheckbox">Public?</label>
-      <input
-        class="pointer"
-        type="checkbox"
-        onInput$={(ev: any) => (state.isPublic = ev.target.value)}
-        id="publicCheckbox"
-      />
+      <ul>
+        <li>
+          <label for="title">Title:</label>
+          <input
+            id="title"
+            class="pointer"
+            type="text"
+            onInput$={(ev: any) => (state.title = ev.target.value)}
+            value={title}
+            minLength={1}
+            maxLength={256}
+            aria-labelledby="Title"
+          />
+        </li>
+        <li>
+          <label for="year">Year:</label>
+          <input
+            id="year"
+            class="pointer"
+            type="number"
+            onInput$={(ev: any) => (state.year = ev.target.value)}
+            value={year}
+            min="2014"
+            max="2023"
+            aria-labelledby="Year"
+          />
+        </li>
+        <li>
+          <label for="playerName">Player Name:</label>
+          <input
+            id="playerName"
+            class="pointer"
+            type="text"
+            onInput$={(ev: any) => (state.playerName = ev.target.value)}
+            value={playerName}
+            minLength={1}
+            maxLength={256}
+            aria-labelledby="Player Name"
+          />
+        </li>
+        <li>
+          <label for="repositoryLink">*Repository Link</label>
+          <input
+            id="repositoryLink"
+            class="pointer"
+            type="text"
+            onInput$={(ev: any) => (state.repositoryLink = ev.target.value)}
+            value={repositoryLink}
+            minLength={1}
+            maxLength={256}
+            aria-labelledby="Repository Link"
+          />
+        </li>
+        <li>
+          <label for="publicCheckbox">*Public?</label>
+          <input
+            class="pointer"
+            type="checkbox"
+            onInput$={(ev: any) => (state.isPublic = ev.target.value)}
+            id="publicCheckbox"
+          />
+        </li>
+      </ul>
+      <p>*Only required for Game to show on Leaderboards</p>
       <Resource
         value={xtremeXmasUserDataResource}
         onPending={() => {
