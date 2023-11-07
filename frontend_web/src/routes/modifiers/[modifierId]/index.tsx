@@ -19,7 +19,6 @@ export default component$(() => {
     const challengeModifier = modifiers.find(
       (modifier) => modifier.id === modifierId
     );
-    console.log(challengeModifier);
     return challengeModifier ? challengeModifier : "None";
   });
 

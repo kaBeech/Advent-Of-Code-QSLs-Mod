@@ -10,7 +10,6 @@ export default component$(() => {
     const userData = await serverFetcher(`modifier`, "GET");
     const modifiersString = JSON.stringify(userData);
     const modifiersData = JSON.parse(modifiersString);
-    console.log(modifiersData);
     const modifiers: ModifierOption[] = [];
     modifiersData.forEach((modifier: ModifierOption) => {
       modifiers.push(modifier);
