@@ -3,7 +3,7 @@ import { component$ } from "@builder.io/qwik";
 export default component$(() => {
   return (
     <article>
-      <h1 class="visualHide">Support</h1>
+      <h1>Support</h1>
       <p>
         If you'd like to support Xtreme Xmas Code, you can do so by sharing it
         with a friend, supporting our{" "}
