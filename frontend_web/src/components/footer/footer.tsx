@@ -35,7 +35,7 @@ export default component$((props: FooterProps) => {
         <a href="/about">°Kyle Beechly°</a> - I'm the creator of Xtreme Xmas
         Code; I hope you like it! <br />
         Please reach out if you have any questions/comments or if you'd like to
-        work with me!
+        work together!
       </p>
     </footer>
   );
