@@ -90,6 +90,7 @@ export default component$(() => {
         optionWhenPart1Completed: dayData.optionWhenPart1Completed || null,
         part2Completed: dayData.part2Completed || null,
         number: dayData.number,
+        dateFirstRolled: dayData.dateFirstRolled || null,
       };
       state.dayInfo = dayInfoData;
       return dayInfoData;
@@ -356,6 +357,27 @@ export default component$(() => {
                         ({xtremeXmasData.modifierOption}) for{" "}
                         <strong class="tokenSpent"></strong>
                       </li>
+                    )}{" "}
+                  {xtremeXmasData.challengeModifier !== "None" &&
+                    !xtremeXmasData.part2Completed && (
+                      <li>
+                        <a
+                          onClick$={async () => {
+                            if (state.loading) {
+                              return;
+                            }
+                            state.loading = true;
+                            await serverFetcher(
+                              `game/${state.gameNumber}/day/${state.dayNumber}/removeChallengeModifier`,
+                              "PUT",
+                              userId
+                            );
+                            state.buttonPresses++;
+                          }}
+                        >
+                          °Remove Challenge Modifier°
+                        </a>
+                      </li>
                     )}
                 </li>
                 <li>
@@ -407,7 +429,7 @@ export default component$(() => {
                       </strong>
                     </>
                   ) : null}
-                  {xtremeXmasData.challengeModifier === "None" ||
+                  {!xtremeXmasData.dateFirstRolled ||
                   xtremeXmasData.part1Completed ? (
                     <></>
                   ) : (
