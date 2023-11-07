@@ -34,6 +34,23 @@ export interface LeaderboardGame {
   repositoryLink: string;
 }
 
+export interface ChallengeModifier {
+  id: string;
+  name: string;
+  text: string;
+  hasOptions: boolean;
+  explanatoryUrl?: string;
+  ModifierOption: ModifierOption[];
+}
+
+export interface ModifierOption {
+  id: string;
+  name: string;
+  text: string;
+  challengeModiferId: number;
+  explanatoryUrl?: string;
+}
+
 export interface UserData {
   Game: {
     name: string;
