@@ -63,6 +63,9 @@ const challengeModifierReroller = (state: DayControllerState) => ({
     currentChallengeModifier?: ChallengeModifier,
   ) => {
     verifyDayIsCurrent(state.day.number, game.currentDay);
+    if (!state.day.dateFirstRolled) {
+      throw new Error("Roll initial challenge modifier first");
+    }
     if (game.currentRerollTokens < 2) {
       throw new Error("Not enough reroll tokens");
     }
