@@ -1,9 +1,10 @@
+import type { QRL } from "@builder.io/qwik";
 import { component$ } from "@builder.io/qwik";
 import XmasLights from "../xmasLights/xmasLights";
 
 interface FooterProps {
   areLightsOn: boolean;
-  toggleLights: Function | any;
+  toggleLights: QRL<() => void>;
 }
 
 export default component$((props: FooterProps) => {
@@ -31,10 +32,10 @@ export default component$((props: FooterProps) => {
         />
       </div>
       <p class="sponsor textCenter">
-        <a href="/about">°Kyle Beechly°</a> - I'm the creator of Xtreme Xmas
+        <a href="/support">°Kyle Beechly°</a> - I'm the creator of Xtreme Xmas
         Code; I hope you like it! <br />
         Please reach out if you have any questions/comments or if you'd like to
-        work with me!
+        work together!
       </p>
     </footer>
   );

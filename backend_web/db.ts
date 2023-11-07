@@ -344,7 +344,9 @@ export async function updateDay(day: Day) {
  */
 
 export async function getAllChallengeModifiers() {
-  const challengeModifiers = await prisma.challengeModifier.findMany();
+  const challengeModifiers = await prisma.challengeModifier.findMany({
+    include: { ModifierOption: true },
+  });
   return challengeModifiers;
 }
 

@@ -93,10 +93,11 @@ Deno.test("ChallengeModifier reroll throws error if day is not current", () => {
   );
 });
 
-Deno.test("ChallengeModifier reroll throws error if day does not have a ChallengeModifier", () => {
+Deno.test("ChallengeModifier reroll throws error if day does not have a First Rolled Date", () => {
   const dayController = DayController({
     ...exampleDay,
     challengeModifierId: null,
+    dateFirstRolled: null,
   });
   assertThrows(
     () => {
@@ -155,7 +156,7 @@ Deno.test("ModifierOption reroll throws error if day does not have a ChallengeMo
       );
     },
     Error,
-    "Roll initial challenge modifier first",
+    "Roll challenge modifier first",
   );
 });
 

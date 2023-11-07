@@ -24,6 +24,7 @@ import { getGameData } from "./routes/game/getGameData.ts";
 import { getLeaderboardGames } from "./routes/leaderboard/getLeaderboardGames.ts";
 import { getPublicGame } from "./routes/game/getPublicGame.ts";
 import { getPublicDay } from "./routes/day/getPublicDay.ts";
+import { removeChallengeModifier } from "./routes/day/removeChallengeModifier.ts";
 
 type AppState = {
   session: Session;
@@ -64,6 +65,11 @@ router
     "/game/:gameNumber/day/:dayNumber/reroll/option",
     authenticate,
     rerollModifierOption,
+  )
+  .put(
+    "/game/:gameNumber/day/:dayNumber/removeChallengeModifier",
+    authenticate,
+    removeChallengeModifier,
   )
   .put(
     "/game/:gameNumber/day/:dayNumber/complete/part1",

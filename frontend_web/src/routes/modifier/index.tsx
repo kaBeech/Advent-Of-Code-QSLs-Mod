@@ -1,35 +1,30 @@
-import { component$ } from "@builder.io/qwik";
-import { Resource, useResource$, useStore } from "@builder.io/qwik";
+import { Resource, component$, useResource$ } from "@builder.io/qwik";
 import type { DocumentHead } from "@builder.io/qwik-city";
+import type { ModifierOption } from "~/types";
 import { serverFetcher } from "~/util/serverFetcher";
 
 export default component$(() => {
-  const state = useStore({
-    buttonPresses: 0,
+  const challengeModifiersResource = useResource$<any>(async ({ cleanup }) => {
+    const abortController = new AbortController();
+    cleanup(() => abortController.abort("cleanup"));
+    const userData = await serverFetcher(`modifier`, "GET");
+    const modifiersString = JSON.stringify(userData);
+    const modifiersData = JSON.parse(modifiersString);
+    const modifiers: ModifierOption[] = [];
+    modifiersData.forEach((modifier: ModifierOption) => {
+      modifiers.push(modifier);
+    });
+    const challengeModifiers = {
+      modifiers: modifiers.length > 0 ? modifiers : "None",
+    };
+    return challengeModifiers;
   });
-
-  const xtremeXmasUserDataResource = useResource$<any>(
-    async ({ track, cleanup }) => {
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      const buttonPresses = track(() => state.buttonPresses);
-
-      const abortController = new AbortController();
-      cleanup(() => abortController.abort("cleanup"));
-      const userData = await serverFetcher(`modifier`, "GET");
-      const modifiers = JSON.stringify(userData);
-      return {
-        modifiers: modifiers ? modifiers : "None",
-      };
-    }
-  );
 
   return (
     <article>
-      <h1 class="title">Create New Game</h1>
-      <h2>Enter Title, Year, and Player Name:</h2>
-
+      <h1>Challenge Modifiers</h1>
       <Resource
-        value={xtremeXmasUserDataResource}
+        value={challengeModifiersResource}
         onPending={() => {
           return (
             <p>
@@ -37,11 +32,24 @@ export default component$(() => {
             </p>
           );
         }}
-        onResolved={(xtremeXmasData) => {
+        onResolved={(challengeModifiers) => {
           return (
-            <p>
-              Modifiers: <strong>{xtremeXmasData.modifiers}</strong>
-            </p>
+            <ul>
+              {challengeModifiers.modifiers.map(
+                (modifier: ModifierOption, index: number) => {
+                  return (
+                    <li key={`modifier-${modifier.id}`}>
+                      <a
+                        href={`${modifier.id}`}
+                        class={index % 2 !== 0 && "textGreen"}
+                      >
+                        °{modifier.name}°
+                      </a>
+                    </li>
+                  );
+                }
+              )}
+            </ul>
           );
         }}
       />
@@ -50,7 +58,7 @@ export default component$(() => {
 });
 
 export const head: DocumentHead = {
-  title: "Xtreme Xmas - New Game",
+  title: "Xtreme Xmas - Challenge Modifiers",
   meta: [
     {
       name: "description",

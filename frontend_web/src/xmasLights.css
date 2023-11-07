@@ -2,7 +2,14 @@
   animation-duration: 20s;
   animation-iteration-count: infinite;
   animation-direction: normal;
-  text-shadow: 0 0 0.5rem currentcolor;
+  text-shadow: 0 0 1rem currentcolor;
+}
+
+.brightLight {
+  text-shadow:
+    0 0 0.5rem currentcolor,
+    0 0 1rem currentColor,
+    0 0 1rem currentColor;
 }
 
 .colorShift1 {

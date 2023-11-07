@@ -1,7 +1,7 @@
 /* eslint-disable no-irregular-whitespace */
 // import type { Session } from "@auth/core/types";
 import { Resource, component$, useResource$, useStore } from "@builder.io/qwik";
-import type { RequestHandler } from "@builder.io/qwik-city";
+import type { DocumentHead, RequestHandler } from "@builder.io/qwik-city";
 import type { LeaderboardGame } from "~/types";
 import { serverFetcher } from "~/util/serverFetcher";
 // import { getGithubUserIdFromUserImage } from "~/util/getGithubUserIdFromUserImage";
@@ -43,9 +43,6 @@ export default component$(() => {
   return (
     <article>
       <h1>Leaderboard</h1>
-      <p>
-        <em>Under Construction!</em>
-      </p>
       <div>
         -----------------------------------------------------------------------------
       </div>
@@ -96,6 +93,7 @@ export default component$(() => {
                     let gameNameString = `°${game.name}°`;
                     let scoreString = String(game.score);
                     const title = {
+                      // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
                       string: game.Rank
                         ? game.Rank.name.split(" ")[0]
                         : `Incomplete`,
@@ -170,3 +168,14 @@ export default component$(() => {
     </article>
   );
 });
+
+export const head: DocumentHead = {
+  title: "Xtreme Xmas - Leaderboards",
+  meta: [
+    {
+      name: "description",
+      content:
+        "Xtreme Xmas - an invigorating twist on your favorite advent calendar",
+    },
+  ],
+};

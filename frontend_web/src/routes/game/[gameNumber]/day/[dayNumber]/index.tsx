@@ -68,6 +68,13 @@ export default component$(() => {
         (day: { number: number }) => day.number === +dayNumber
       );
       state.loading = false;
+      let rerollTokensEarned = 0;
+      if (dayData.modifierWhenPart1CompletedId) {
+        rerollTokensEarned += 1;
+      }
+      if (dayData.part2Completed && dayData.challengeModifierId) {
+        rerollTokensEarned += 1;
+      }
       const dayInfoData = {
         numberOfGames: JSON.stringify(userData.Game.length),
         challengeModifier: dayData.challengeModifierId
@@ -90,6 +97,8 @@ export default component$(() => {
         optionWhenPart1Completed: dayData.optionWhenPart1Completed || null,
         part2Completed: dayData.part2Completed || null,
         number: dayData.number,
+        dateFirstRolled: dayData.dateFirstRolled || null,
+        rerollTokensEarned,
       };
       state.dayInfo = dayInfoData;
       return dayInfoData;
@@ -243,11 +252,7 @@ export default component$(() => {
                 <li>
                   Reroll Tokens Earned:{" "}
                   <strong class="token">
-                    {xtremeXmasData.part2Completed
-                      ? ""
-                      : xtremeXmasData.part1Completed
-                      ? ""
-                      : ""}
+                    {"".repeat(xtremeXmasData.rerollTokensEarned)}
                   </strong>
                 </li>
                 <li>
@@ -296,7 +301,7 @@ export default component$(() => {
                   </strong>{" "}
                   {xtremeXmasData.part2Completed ? (
                     <></>
-                  ) : xtremeXmasData.challengeModifier === "None" ? (
+                  ) : !xtremeXmasData.dateFirstRolled ? (
                     <a
                       onClick$={async () => {
                         if (state.loading) {
@@ -356,6 +361,27 @@ export default component$(() => {
                         ({xtremeXmasData.modifierOption}) for{" "}
                         <strong class="tokenSpent"></strong>
                       </li>
+                    )}{" "}
+                  {xtremeXmasData.challengeModifier !== "None" &&
+                    !xtremeXmasData.part2Completed && (
+                      <li>
+                        <a
+                          onClick$={async () => {
+                            if (state.loading) {
+                              return;
+                            }
+                            state.loading = true;
+                            await serverFetcher(
+                              `game/${state.gameNumber}/day/${state.dayNumber}/removeChallengeModifier`,
+                              "PUT",
+                              userId
+                            );
+                            state.buttonPresses++;
+                          }}
+                        >
+                          °Remove Challenge Modifier°
+                        </a>
+                      </li>
                     )}
                 </li>
                 <li>
@@ -407,7 +433,7 @@ export default component$(() => {
                       </strong>
                     </>
                   ) : null}
-                  {xtremeXmasData.challengeModifier === "None" ||
+                  {!xtremeXmasData.dateFirstRolled ||
                   xtremeXmasData.part1Completed ? (
                     <></>
                   ) : (
@@ -425,7 +451,13 @@ export default component$(() => {
                         state.buttonPresses++;
                       }}
                     >
-                      °Complete Part 1°
+                      °Complete Part 1°{" "}
+                      {xtremeXmasData.challengeModifier !== "None" && (
+                        <>
+                          <>for </>
+                          <span class="token"></span>
+                        </>
+                      )}
                     </a>
                   )}
                 </li>
@@ -477,7 +509,13 @@ export default component$(() => {
                         state.buttonPresses++;
                       }}
                     >
-                      °Complete Part 2°
+                      °Complete Part 2°{" "}
+                      {xtremeXmasData.challengeModifier !== "None" && (
+                        <>
+                          <>for </>
+                          <span class="token"></span>
+                        </>
+                      )}
                     </a>
                   )}
                 </li>{" "}

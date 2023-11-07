@@ -1,4 +1,5 @@
 /* eslint-disable no-irregular-whitespace */
+import type { QRL } from "@builder.io/qwik";
 import { component$ } from "@builder.io/qwik";
 import LogInOrOut from "../logInOrOut/logInOrOut";
 import { useAuthSession } from "~/routes/plugin@auth";
@@ -8,7 +9,7 @@ interface HeaderProps {
   isLoggedIn: boolean;
   toggleLoggedIn: Function | any;
   areLightsOn: boolean;
-  toggleLights: Function | any;
+  toggleLights: QRL<() => void>;
 }
 
 export default component$((props: HeaderProps) => {
@@ -39,7 +40,7 @@ export default component$((props: HeaderProps) => {
             °Games°
           </a>{" "}
           ¦{" "}
-          <a href="/modifiers" class="textRed">
+          <a href="/modifier" class="textRed">
             °Modifiers°
           </a>
           ¦

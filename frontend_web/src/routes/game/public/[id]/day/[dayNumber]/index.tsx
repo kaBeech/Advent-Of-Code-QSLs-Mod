@@ -52,8 +52,14 @@ export default component$(() => {
       const dayData = gameData.Day.find(
         (day: DayInfo) => day.number === +dayNumber
       );
-
       state.loading = false;
+      let rerollTokensEarned = 0;
+      if (dayData.modifierWhenPart1CompletedId) {
+        rerollTokensEarned += 1;
+      }
+      if (dayData.part2Completed && dayData.challengeModifierId) {
+        rerollTokensEarned += 1;
+      }
       const dayInfoData = {
         challengeModifier: dayData.challengeModifierId
           ? dayData.ChallengeModifier.text
@@ -75,6 +81,8 @@ export default component$(() => {
         optionWhenPart1Completed: dayData.optionWhenPart1Completed || null,
         part2Completed: dayData.part2Completed || null,
         number: dayData.number,
+        dateFirstRolled: dayData.dateFirstRolled || null,
+        rerollTokensEarned,
       };
       state.dayInfo = dayInfoData;
       return dayInfoData;
@@ -228,11 +236,7 @@ export default component$(() => {
                 <li>
                   Reroll Tokens Earned:{" "}
                   <strong class="token">
-                    {xtremeXmasData.part2Completed
-                      ? ""
-                      : xtremeXmasData.part1Completed
-                      ? ""
-                      : ""}
+                    {"".repeat(xtremeXmasData.rerollTokensEarned)}
                   </strong>
                 </li>
                 <li>

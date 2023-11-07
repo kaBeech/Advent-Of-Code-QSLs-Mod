@@ -670,6 +670,17 @@ const modifierOptionData: Prisma.ModifierOptionCreateInput[] = [
         name: "esoteric_programming_box",
       },
     },
+    name: "esoteric_programming_box_golfscript",
+    text: "GolfScript",
+    standard: true,
+    isPublic: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "esoteric_programming_box",
+      },
+    },
     name: "esoteric_programming_box_intercal",
     text: "INTERCAL",
     standard: true,
@@ -681,8 +692,19 @@ const modifierOptionData: Prisma.ModifierOptionCreateInput[] = [
         name: "esoteric_programming_box",
       },
     },
-    name: "esoteric_programming_box_lolcode",
-    text: "LOLCODE",
+    name: "esoteric_programming_box_unlambda",
+    text: "Unlambda",
+    standard: true,
+    isPublic: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "esoteric_programming_box",
+      },
+    },
+    name: "esoteric_programming_box_piet",
+    text: "Piet",
     standard: true,
     isPublic: true,
   },
@@ -725,8 +747,63 @@ const modifierOptionData: Prisma.ModifierOptionCreateInput[] = [
         name: "esoteric_programming_box",
       },
     },
-    name: "esoteric_programming_box_piet",
-    text: "Piet",
+    name: "esoteric_programming_box_chicken",
+    text: "Chicken",
+    standard: true,
+    isPublic: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "esoteric_programming_box",
+      },
+    },
+    name: "esoteric_programming_box_shakespeare",
+    text: "Shakespeare",
+    standard: true,
+    isPublic: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "esoteric_programming_box",
+      },
+    },
+    name: "esoteric_programming_box_rockstar",
+    text: "Rockstar",
+    standard: true,
+    isPublic: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "esoteric_programming_box",
+      },
+    },
+    name: "esoteric_programming_box_storyteller",
+    text: "Storyteller",
+    standard: true,
+    isPublic: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "esoteric_programming_box",
+      },
+    },
+    name: "esoteric_programming_box_lolcode",
+    text: "LOLCODE",
+    standard: true,
+    isPublic: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "esoteric_programming_box",
+      },
+    },
+    name: "esoteric_programming_box_chef",
+    text: "Chef",
     standard: true,
     isPublic: true,
   },

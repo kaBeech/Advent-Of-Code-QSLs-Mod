@@ -68,10 +68,34 @@ const currentDayCompleter = (state: GameControllerState) => ({
       );
     }
     if (state.game.currentDay === 25) {
-      rankAwarder(state).awardRank(ranks);
+      gameCompleter(state).completeGame(ranks);
     }
     state.game = currentDayCompletionStatusSetter(state)
       .setCurrentDayCompletionStatus(true);
+    return state.game;
+  },
+});
+
+const gameCompleter = (state: GameControllerState) => ({
+  completeGame: (ranks: Rank[]) => {
+    if (state.game.dateCompleted) {
+      throw new Error(
+        `Game (${state.game.name}) already completed`,
+      );
+    }
+    if (!state.game.currentDayCompleted) {
+      throw new Error(
+        `Current Day not yet completed`,
+      );
+    }
+    if (state.game.currentDay !== 25) {
+      throw new Error(
+        `Current Day (${state.game.currentDay}) not yet Christmas (Day 25)`,
+      );
+    }
+    state.game.dateCompleted = new Date();
+    scoreCalculator(state).calculateScore();
+    rankAwarder(state).awardRank(ranks);
     return state.game;
   },
 });

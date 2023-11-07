@@ -23,6 +23,7 @@ export const DayController = (
     ...initialChallengeModifierRoller(state),
     ...challengeModifierReroller(state),
     ...modifierOptionReroller(state),
+    ...challengeModifierRemover(state),
     ...part1Completer(state),
     ...part2Completer(state),
   };
@@ -35,7 +36,7 @@ const initialChallengeModifierRoller = (state: DayControllerState) => ({
     modifierOptions: ModifierOption[],
   ) => {
     verifyDayIsCurrent(state.day.number, game!.currentDay);
-    if (state.day.challengeModifierId) {
+    if (state.day.dateFirstRolled) {
       throw new Error("Challenge modifier already rolled");
     }
     const selectedChallengeModifier = rollChallengeModifier(challengeModifiers);
@@ -62,7 +63,7 @@ const challengeModifierReroller = (state: DayControllerState) => ({
     currentChallengeModifier?: ChallengeModifier,
   ) => {
     verifyDayIsCurrent(state.day.number, game.currentDay);
-    if (!state.day.challengeModifierId) {
+    if (!state.day.dateFirstRolled) {
       throw new Error("Roll initial challenge modifier first");
     }
     if (game.currentRerollTokens < 2) {
@@ -101,7 +102,7 @@ const modifierOptionReroller = (state: DayControllerState) => ({
   ) => {
     verifyDayIsCurrent(state.day.number, currentDay);
     if (!state.day.challengeModifierId) {
-      throw new Error("Roll initial challenge modifier first");
+      throw new Error("Roll challenge modifier first");
     }
     if (!state.day.modifierOptionId || state.day.modifierOptionId === 0) {
       throw new Error("No modifier option to reroll");
@@ -125,6 +126,18 @@ const modifierOptionReroller = (state: DayControllerState) => ({
       state.day.rerollTokensSpentDuringPart2 += 1;
     }
     netScoreCalculator(state).calculateNetScore();
+    return state.day;
+  },
+});
+
+const challengeModifierRemover = (state: DayControllerState) => ({
+  removeChallengeModifier: (game: Game) => {
+    verifyDayIsCurrent(state.day.number, game.currentDay);
+    if (!state.day.challengeModifierId) {
+      throw new Error("No current Challenge Modifier to remove");
+    }
+    state.day.challengeModifierId = null;
+    state.day.modifierOptionId = null;
     return state.day;
   },
 });
@@ -161,8 +174,9 @@ const part2Completer = (state: DayControllerState) => ({
 const netScoreCalculator = (state: DayControllerState) => ({
   calculateNetScore: () => {
     let netTokensGained = 0;
-    state.day.part1Completed && netTokensGained++;
-    state.day.part2Completed && netTokensGained++;
+    state.day.modifierWhenPart1CompletedId && netTokensGained++;
+    state.day.part2Completed && state.day.challengeModifierId &&
+      netTokensGained++;
     netTokensGained -= state.day.challengeModifierRerollsUsed * 2;
     netTokensGained -= state.day.modifierOptionRerollsUsed;
     let part2RerollBonus = 20 * state.day.rerollTokensSpentDuringPart2;

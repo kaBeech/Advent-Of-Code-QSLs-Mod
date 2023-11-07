@@ -88,7 +88,7 @@ export default component$(() => {
         <p>
           If you'd like to support Xtreme Xmas Code, you can do so by sharing it
           with a friend, supporting our{" "}
-          <a href="/support" class="link">
+          <a href="/sponsors" class="link">
             °sponsors°
           </a>{" "}
           , or supporting{" "}
