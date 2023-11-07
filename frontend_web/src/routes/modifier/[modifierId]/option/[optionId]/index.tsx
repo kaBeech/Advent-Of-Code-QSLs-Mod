@@ -5,6 +5,7 @@ import { serverFetcher } from "~/util/serverFetcher";
 
 export default component$(() => {
   const modifierId = +useLocation().params.modifierId;
+  const optionId = +useLocation().params.optionId;
 
   const modifierOptionResource = useResource$<any>(async ({ cleanup }) => {
     const abortController = new AbortController();
@@ -20,7 +21,7 @@ export default component$(() => {
       (modifier) => modifier.id === modifierId
     );
     const modifierOption = challengeModifier!.ModifierOption.find(
-      (option) => option.id === modifierId
+      (option) => option.id === optionId
     );
     return modifierOption ? modifierOption : "None";
   });
