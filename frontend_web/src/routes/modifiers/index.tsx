@@ -41,8 +41,8 @@ export default component$(() => {
                   return (
                     <li key={`modifier-${modifier.id}`}>
                       <a
-                        href={modifier.id}
-                        class={index % 2 === 0 && "textGreen"}
+                        href={`${modifier.id}`}
+                        class={index % 2 !== 0 && "textGreen"}
                       >
                         °{modifier.name}°
                       </a>
