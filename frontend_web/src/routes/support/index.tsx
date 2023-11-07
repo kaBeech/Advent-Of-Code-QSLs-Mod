@@ -7,7 +7,7 @@ export default component$(() => {
       <p>
         If you'd like to support Xtreme Xmas Code, you can do so by sharing it
         with a friend, supporting our{" "}
-        <a href="/support" class="link">
+        <a href="/sponsors" class="link">
           °sponsors°
         </a>
         , or supporting{" "}
@@ -17,10 +17,10 @@ export default component$(() => {
         , creator of Advent of Code.
       </p>
       <p>
-        I'm also currently looking to move into a full-time software engineering
-        role (right now I'm daylighting in healthcare and freelancing in web
-        development), so if you're looking to work with a fun nerd you may
-        contact me via{" "}
+        I'm also <em>#OpenToWork</em> and currently looking to move into a
+        full-time software engineering role (right now I'm daylighting in
+        healthcare and freelancing in web development). If you're looking to
+        work with a fun nerd you may contact me via{" "}
         <a href="https://www.linkedin.com/in/kyle-beechly/" class="link">
           °LinkedIn°
         </a>
