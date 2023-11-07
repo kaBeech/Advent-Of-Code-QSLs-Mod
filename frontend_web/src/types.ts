@@ -35,7 +35,7 @@ export interface LeaderboardGame {
 }
 
 export interface ChallengeModifier {
-  id: string;
+  id: number;
   name: string;
   text: string;
   hasOptions: boolean;
@@ -44,7 +44,7 @@ export interface ChallengeModifier {
 }
 
 export interface ModifierOption {
-  id: string;
+  id: number;
   name: string;
   text: string;
   challengeModiferId: number;
