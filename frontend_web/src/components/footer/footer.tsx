@@ -1,9 +1,10 @@
+import type { QRL } from "@builder.io/qwik";
 import { component$ } from "@builder.io/qwik";
 import XmasLights from "../xmasLights/xmasLights";
 
 interface FooterProps {
   areLightsOn: boolean;
-  toggleLights: Function | any;
+  toggleLights: QRL<() => void>;
 }
 
 export default component$((props: FooterProps) => {

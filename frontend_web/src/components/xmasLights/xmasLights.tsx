@@ -1,3 +1,4 @@
+import type { QRL } from "@builder.io/qwik";
 import { component$ } from "@builder.io/qwik";
 
 export interface XmasLightsProps {
@@ -5,7 +6,7 @@ export interface XmasLightsProps {
   firstLightStartingColorNumber: number;
   rotation?: "0" | "90" | "180" | "270";
   isOn: boolean;
-  toggleLights: Function | any;
+  toggleLights: QRL<() => void>;
   hasLightSwitch: boolean;
   alternateColors?: boolean;
 }
