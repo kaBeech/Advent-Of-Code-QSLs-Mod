@@ -161,8 +161,9 @@ const part2Completer = (state: DayControllerState) => ({
 const netScoreCalculator = (state: DayControllerState) => ({
   calculateNetScore: () => {
     let netTokensGained = 0;
-    state.day.part1Completed && netTokensGained++;
-    state.day.part2Completed && netTokensGained++;
+    state.day.modifierWhenPart1CompletedId && netTokensGained++;
+    state.day.part2Completed && state.day.challengeModifierId &&
+      netTokensGained++;
     netTokensGained -= state.day.challengeModifierRerollsUsed * 2;
     netTokensGained -= state.day.modifierOptionRerollsUsed;
     let part2RerollBonus = 20 * state.day.rerollTokensSpentDuringPart2;
