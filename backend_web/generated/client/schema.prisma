@@ -27,6 +27,8 @@ model User {
   DefaultIncludedCustomChallengeModifiers ChallengeModifier[] @relation(name: "DefaultIncludedCustomChallengeModifiers")
   DefaultIncludedCustomModifierOptions    ModifierOption[]    @relation(name: "DefaultIncludedCustomModifierOptions")
   ModifierPack                            ModifierPack[]
+  Downvote                                Downvote[]
+  Upvote                                  Upvote[]
 }
 
 model PublicProfile {
@@ -53,7 +55,7 @@ model Game {
   rerollTokensSpentDuringPart2Raw     Int            @default(0)
   rerollTokensSpentDuringPart2Limited Int            @default(0)
   repositoryLink                      String?
-  progressSheetLink                   String?
+  progressSheetLink                   String         @default("/game/public/${id}")
   isPublic                            Boolean        @default(false)
   publicProfileId                     Int?
   score                               Int            @default(0)
@@ -63,6 +65,8 @@ model Game {
   Rank                                Rank?          @relation(fields: [rankId], references: [id])
   Day                                 Day[]
   PublicProfile                       PublicProfile? @relation(fields: [publicProfileId], references: [id])
+  Upvote                              Upvote[]
+  Downvote                            Downvote[]
 }
 
 model Rank {
@@ -155,4 +159,24 @@ model ModifierPack {
   EncludedCustomChallengeModifiers ChallengeModifier[] @relation(name: "IncludedCustomChallengeModifiers")
   IncludedCustomModifierOptions    ModifierOption[]    @relation(name: "IncludedCustomModifierOptions")
   CreatedBy                        User?               @relation(fields: [createdById], references: [id])
+}
+
+model Upvote {
+  id          Int      @id @default(autoincrement())
+  note        String?
+  dateCreated DateTime @default(now())
+  gameId      Int
+  createdById String
+  Game        Game     @relation(fields: [gameId], references: [id])
+  CreatedBy   User     @relation(fields: [createdById], references: [id])
+}
+
+model Downvote {
+  id          Int      @id @default(autoincrement())
+  note        String
+  dateCreated DateTime @default(now())
+  gameId      Int
+  createdById String
+  Game        Game     @relation(fields: [gameId], references: [id])
+  CreatedBy   User     @relation(fields: [createdById], references: [id])
 }
