@@ -40,7 +40,7 @@ export default component$((props: HeaderProps) => {
             °Games°
           </a>{" "}
           ¦{" "}
-          <a href="/modifiers" class="textRed">
+          <a href="/modifier" class="textRed">
             °Modifiers°
           </a>
           ¦
