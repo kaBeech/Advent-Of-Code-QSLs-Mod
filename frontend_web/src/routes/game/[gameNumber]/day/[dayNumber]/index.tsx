@@ -297,7 +297,7 @@ export default component$(() => {
                   </strong>{" "}
                   {xtremeXmasData.part2Completed ? (
                     <></>
-                  ) : xtremeXmasData.challengeModifier === "None" ? (
+                  ) : !xtremeXmasData.dateFirstRolled ? (
                     <a
                       onClick$={async () => {
                         if (state.loading) {
