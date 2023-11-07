@@ -43,9 +43,6 @@ export default component$(() => {
   return (
     <article>
       <h1>Leaderboard</h1>
-      <p>
-        <em>Under Construction!</em>
-      </p>
       <div>
         -----------------------------------------------------------------------------
       </div>
