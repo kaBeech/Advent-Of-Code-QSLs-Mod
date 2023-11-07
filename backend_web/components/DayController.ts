@@ -36,7 +36,7 @@ const initialChallengeModifierRoller = (state: DayControllerState) => ({
     modifierOptions: ModifierOption[],
   ) => {
     verifyDayIsCurrent(state.day.number, game!.currentDay);
-    if (state.day.challengeModifierId) {
+    if (state.day.dateFirstRolled) {
       throw new Error("Challenge modifier already rolled");
     }
     const selectedChallengeModifier = rollChallengeModifier(challengeModifiers);
