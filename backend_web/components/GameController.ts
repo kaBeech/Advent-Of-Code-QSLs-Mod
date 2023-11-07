@@ -67,11 +67,11 @@ const currentDayCompleter = (state: GameControllerState) => ({
         `Current day (${state.game.currentDay}) already completed`,
       );
     }
+    state.game = currentDayCompletionStatusSetter(state)
+      .setCurrentDayCompletionStatus(true);
     if (state.game.currentDay === 25) {
       gameCompleter(state).completeGame(ranks);
     }
-    state.game = currentDayCompletionStatusSetter(state)
-      .setCurrentDayCompletionStatus(true);
     return state.game;
   },
 });
