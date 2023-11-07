@@ -23,6 +23,7 @@ export const DayController = (
     ...initialChallengeModifierRoller(state),
     ...challengeModifierReroller(state),
     ...modifierOptionReroller(state),
+    ...challengeModifierRemover(state),
     ...part1Completer(state),
     ...part2Completer(state),
   };
@@ -62,9 +63,6 @@ const challengeModifierReroller = (state: DayControllerState) => ({
     currentChallengeModifier?: ChallengeModifier,
   ) => {
     verifyDayIsCurrent(state.day.number, game.currentDay);
-    if (!state.day.challengeModifierId) {
-      throw new Error("Roll initial challenge modifier first");
-    }
     if (game.currentRerollTokens < 2) {
       throw new Error("Not enough reroll tokens");
     }
@@ -101,7 +99,7 @@ const modifierOptionReroller = (state: DayControllerState) => ({
   ) => {
     verifyDayIsCurrent(state.day.number, currentDay);
     if (!state.day.challengeModifierId) {
-      throw new Error("Roll initial challenge modifier first");
+      throw new Error("Roll challenge modifier first");
     }
     if (!state.day.modifierOptionId || state.day.modifierOptionId === 0) {
       throw new Error("No modifier option to reroll");
@@ -125,6 +123,18 @@ const modifierOptionReroller = (state: DayControllerState) => ({
       state.day.rerollTokensSpentDuringPart2 += 1;
     }
     netScoreCalculator(state).calculateNetScore();
+    return state.day;
+  },
+});
+
+const challengeModifierRemover = (state: DayControllerState) => ({
+  removeChallengeModifier: (game: Game) => {
+    verifyDayIsCurrent(state.day.number, game.currentDay);
+    if (!state.day.challengeModifierId) {
+      throw new Error("No current Challenge Modifier to remove");
+    }
+    state.day.challengeModifierId = null;
+    state.day.modifierOptionId = null;
     return state.day;
   },
 });
