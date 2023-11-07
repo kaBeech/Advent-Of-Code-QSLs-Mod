@@ -26,7 +26,13 @@ export const completePart2 = async (
   const game = userData.Game.find((game) => game.number === +gameNumber);
   const day = game!.Day.find((day) => day.number === +dayNumber);
   const updatedDay = DayController(day!).completePart2(game!.currentDay);
-  let updatedGame = GameController(game!).adjustCurrentRerollTokens(1);
+  let rerollTokensEarned = 0;
+  if (day!.ChallengeModifier) {
+    rerollTokensEarned = 1;
+  }
+  let updatedGame = GameController(game!).adjustCurrentRerollTokens(
+    rerollTokensEarned,
+  );
   const ranks = await getAllRanks();
   updatedGame = GameController(game!).completeCurrentDay(ranks);
   await updateDay(updatedDay);
