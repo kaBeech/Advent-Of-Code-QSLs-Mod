@@ -68,6 +68,13 @@ export default component$(() => {
         (day: { number: number }) => day.number === +dayNumber
       );
       state.loading = false;
+      let rerollTokensEarned = 0;
+      if (dayData.modifierWhenPart1CompletedId) {
+        rerollTokensEarned += 1;
+      }
+      if (dayData.part2Completed && dayData.challengeModifierId) {
+        rerollTokensEarned += 1;
+      }
       const dayInfoData = {
         numberOfGames: JSON.stringify(userData.Game.length),
         challengeModifier: dayData.challengeModifierId
@@ -91,6 +98,7 @@ export default component$(() => {
         part2Completed: dayData.part2Completed || null,
         number: dayData.number,
         dateFirstRolled: dayData.dateFirstRolled || null,
+        rerollTokensEarned,
       };
       state.dayInfo = dayInfoData;
       return dayInfoData;
@@ -244,11 +252,7 @@ export default component$(() => {
                 <li>
                   Reroll Tokens Earned:{" "}
                   <strong class="token">
-                    {xtremeXmasData.part2Completed
-                      ? ""
-                      : xtremeXmasData.part1Completed
-                      ? ""
-                      : ""}
+                    {"".repeat(xtremeXmasData.rerollTokensEarned)}
                   </strong>
                 </li>
                 <li>
