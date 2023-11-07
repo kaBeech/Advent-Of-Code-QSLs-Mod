@@ -1,7 +1,7 @@
 /* eslint-disable no-irregular-whitespace */
 // import type { Session } from "@auth/core/types";
 import { Resource, component$, useResource$, useStore } from "@builder.io/qwik";
-import type { RequestHandler } from "@builder.io/qwik-city";
+import type { DocumentHead, RequestHandler } from "@builder.io/qwik-city";
 import type { LeaderboardGame } from "~/types";
 import { serverFetcher } from "~/util/serverFetcher";
 // import { getGithubUserIdFromUserImage } from "~/util/getGithubUserIdFromUserImage";
@@ -167,3 +167,14 @@ export default component$(() => {
     </article>
   );
 });
+
+export const head: DocumentHead = {
+  title: "Xtreme Xmas - Leaderboards",
+  meta: [
+    {
+      name: "description",
+      content:
+        "Xtreme Xmas - an invigorating twist on your favorite advent calendar",
+    },
+  ],
+};
