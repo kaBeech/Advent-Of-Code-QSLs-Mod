@@ -180,3 +180,10 @@ model Downvote {
   Game        Game     @relation(fields: [gameId], references: [id])
   CreatedBy   User     @relation(fields: [createdById], references: [id])
 }
+
+model TestTable {
+  id            Int      @id @default(autoincrement())
+  dateCreated   DateTime @default(now())
+  name          String
+  favoriteColor String
+}
