@@ -321,6 +321,10 @@ strong {
   color: var(--xxmas-palette-green-vivid);
 }
 
+.textRed {
+  color: var(--xxmas-palette-red-medium);
+}
+
 .logoGreen {
   color: var(--xxmas-palette-green-medium);
 }
