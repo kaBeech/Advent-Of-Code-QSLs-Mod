@@ -265,45 +265,6 @@ export const exampleModifierOptions = [
   },
 ];
 
-[
-  {
-    name: "Champion",
-    minimumScore: 0,
-  },
-  {
-    name: "Gnarly Champion",
-    minimumScore: 200,
-  },
-  {
-    name: "Radical Champion",
-    minimumScore: 400,
-  },
-  {
-    name: "Righteous Champion",
-    minimumScore: 600,
-  },
-  {
-    name: "Epic Champion",
-    minimumScore: 800,
-  },
-  {
-    name: "Flawless Champion",
-    minimumScore: 920,
-  },
-  {
-    name: "Legendary Champion",
-    minimumScore: 1000,
-  },
-  {
-    name: "Santaic Champion",
-    minimumScore: 1100,
-  },
-  {
-    name: "Godlike Champion",
-    minimumScore: 1240,
-  },
-];
-
 export const exampleRanks = [
   {
     id: 1,

@@ -179,7 +179,9 @@ const netScoreCalculator = (state: DayControllerState) => ({
       netTokensGained++;
     netTokensGained -= state.day.challengeModifierRerollsUsed * 2;
     netTokensGained -= state.day.modifierOptionRerollsUsed;
-    let part2RerollBonus = 20 * state.day.rerollTokensSpentDuringPart2;
+    let part2RerollBonus = state.day.modifierWhenPart1CompletedId
+      ? 20 * state.day.rerollTokensSpentDuringPart2
+      : 0;
     if (part2RerollBonus > 40) {
       part2RerollBonus = 40;
     }

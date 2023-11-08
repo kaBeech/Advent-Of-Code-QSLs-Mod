@@ -113,18 +113,21 @@ const rerollTokenSpender = (state: GameControllerState) => ({
     amount: number,
     round2: boolean,
     tokensAlreadySpentDuringRound2: number,
+    modifierWhenPart1CompletedId: number | null,
   ) => {
     currentRerollTokensAdjuster(state).adjustCurrentRerollTokens(-amount);
     state.game.rerollTokensSpent += amount;
     if (round2) {
       state.game.rerollTokensSpentDuringPart2Raw += amount;
-      state.game.rerollTokensSpentDuringPart2Limited += Math.min(
-        amount,
-        Math.max(
-          2 - tokensAlreadySpentDuringRound2,
-          0,
-        ),
-      );
+      if (modifierWhenPart1CompletedId) {
+        state.game.rerollTokensSpentDuringPart2Limited += Math.min(
+          amount,
+          Math.max(
+            2 - tokensAlreadySpentDuringRound2,
+            0,
+          ),
+        );
+      }
     }
     return state.game;
   },

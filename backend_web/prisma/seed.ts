@@ -913,24 +913,37 @@ const rankData: Prisma.RankCreateInput[] = [
   },
   {
     name: "Gnarly Champion",
+    minimumScore: 100,
+  },
+  {
+    name: "Tubular Champion",
     minimumScore: 200,
+  },
+  {
+    name: "Bodacious Champion",
+    minimumScore: 400,
   },
   {
     name: "Radical Champion",
     minimumScore: 400,
   },
   {
+    name: "Primo Champion",
+    minimumScore: 600,
+  },
+  {
     name: "Righteous Champion",
     minimumScore: 600,
   },
   {
-    name: "Epic Champion",
-    minimumScore: 800,
+    name: "Flawless Champion",
+    minimumScore: 740,
   },
   {
-    name: "Flawless Champion",
-    minimumScore: 920,
+    name: "Epic Champion",
+    minimumScore: 870,
   },
+
   {
     name: "Legendary Champion",
     minimumScore: 1000,
