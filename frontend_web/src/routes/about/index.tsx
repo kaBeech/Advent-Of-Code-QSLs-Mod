@@ -198,50 +198,53 @@ export default component$(() => {
           ----------------------------------------------------------------------------
         </div>{" "}
         <p>
-          The <em>Basic Scoring Formula</em> is{" "}
+          The <em>Scoring Formula</em> is{" "}
           <code>
-            {"{"}10 * T + 20 * P2 + B{"}"}
+            {"{"}10 * T + 20 * P2{"}"}
           </code>{" "}
-          where <em class="bold textBright">T</em> is the number of{" "}
-          <em class="bold textBright">unspent reroll Tokens</em>, <em>P2</em> is
-          the number of{" "}
-          <em class="bold textBright">tokens spent during Part 2</em> (up to a
-          maximum of 2 per day), and <em class="bold textBright">B</em> is the{" "}
-          <em class="bold textBright">end-of-game Bonus.</em>
+          where:
         </p>
+        <ul>
+          <li>
+            <em>T</em> = the number of{" "}
+            <em class="bold textBright">unspent reroll Tokens</em>
+          </li>
+          <br />
+          <li>
+            <em>P2</em> = the number of{" "}
+            <em class="bold textBright">tokens spent during Part 2</em> (up to a
+            maximum of 2 per day, only awarded if Part 1 was completed with a
+            Challenge Modifier assigned)
+          </li>
+        </ul>
         <p>
-          The <em>End-Game Bonus Formula</em> is{" "}
+          Each day's individual score is an estimation of that day's effect on
+          the overall game score. The <em>Day Score Formula</em> is{" "}
           <code>
-            {"{"}300 - 10 * S{"}"}
+            {"{"}10 * E + 20 * P2 - 10 * S{"}"}
           </code>
-          , to a minimum of 0, where <em class="bold textBright">S</em> is the{" "}
-          <em class="bold textBright">total number of tokens Spent.</em>
+          , where:
         </p>
-        <p>
-          If you spend at least 2 reroll tokens during Part 2 of every day, the{" "}
-          <em>Virtuoso Scoring Formula</em> is used instead. It is{" "}
-          <code>
-            {"{"}1120 + 10 * T - 10 * P1{"}"}
-          </code>{" "}
-          where <em class="bold textBright">T</em> is the number of{" "}
-          <em class="bold textBright">unspent reroll Tokens</em> and{" "}
-          <em class="bold textBright">P1</em> is the number of{" "}
-          <em class="bold textBright">tokens spent during Part 1.</em>
-        </p>{" "}
-        <p>
-          Each day's individual score is a rough estimation of that day's effect
-          on the overall score, assuming use of the Basic Scoring Formula. The{" "}
-          <em>Day Score Formula</em> is{" "}
-          <code>
-            {"{"}10 * T + 20 * P2 - 10 * P1{"}"}
-          </code>
-          , where <em class="bold textBright">T</em> is the number of{" "}
-          <em class="bold textBright">unspent reroll Tokens</em>,{" "}
-          <em class="bold textBright">P2</em> is the number of{" "}
-          <em class="bold textBright">tokens spent during Part 2</em> (up to a
-          maximum of 2), and <em class="bold textBright">P1</em> is the number
-          of <em class="bold textBright">tokens spent during Part 1</em>.
-        </p>
+        <ul>
+          <li>
+            <em>E</em> = the number of{" "}
+            <em class="bold textBright">reroll tokens Earned that day</em>
+          </li>
+          <br />
+          <li>
+            {" "}
+            <em>P2</em> = the number of{" "}
+            <em class="bold textBright">tokens spent during Part 2</em> (up to a
+            maximum of 2 per day, only awarded if Part 1 was completed with a
+            Challenge Modifier assigned),{" "}
+          </li>
+          <br />
+          <li>
+            <em>S</em> = the number of{" "}
+            <em class="bold textBright">tokens Spent that day</em>
+          </li>
+        </ul>
+        <br />
         <div>
           ----------------------------------------------------------------------------
         </div>{" "}
@@ -255,22 +258,31 @@ export default component$(() => {
         </p>
         <ul>
           <li>
-            0+ points: <em class="fsGreen">Champion</em>
+            0+ points: <em class="fsOrange">Champion</em>
           </li>
           <li>
-            200+ points: <em class="fsTurquoise">Gnarly Champion</em>
+            100+ points: <em class="fsLime">Gnarly Champion</em>
+          </li>{" "}
+          <li>
+            200+ points: <em class="fsGreen">Tubular Champion</em>
           </li>
+          <li>
+            300+ points: <em class="fsTurquoise">Bodacious Champion</em>
+          </li>{" "}
           <li>
             400+ points: <em class="fsCyan">Radical Champion</em>
           </li>
           <li>
-            600+ points: <em class="fsCerulean">Righteous Champion</em>
+            500+ points: <em class="fsCerulean">Primo Champion</em>
+          </li>{" "}
+          <li>
+            600+ points: <em class="fsBlue">Righteous Champion</em>
           </li>
           <li>
-            800+ points: <em class="fsBlue">Epic Champion</em>
+            740+ points: <em class="fsPurple">Flawless Champion</em>
           </li>
           <li>
-            920+ points: <em class="fsPurple">Flawless Champion</em>
+            870+ points: <em class="fsMagenta">Epic Champion</em>
           </li>
           <li>
             1000+ points: <em class="fsRose">Legendary Champion</em>
@@ -282,6 +294,7 @@ export default component$(() => {
             1240+ points: <em class="fsYellow">Godlike Champion</em>
           </li>
         </ul>
+        <br />
         <div>
           ----------------------------------------------------------------------------
         </div>{" "}
