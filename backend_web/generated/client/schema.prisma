@@ -8,8 +8,9 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_DB_URL")
 }
 
 model User {
@@ -179,4 +180,21 @@ model Downvote {
   createdById String
   Game        Game     @relation(fields: [gameId], references: [id])
   CreatedBy   User     @relation(fields: [createdById], references: [id])
+}
+
+model TestTable {
+  id            Int         @id @default(autoincrement())
+  dateCreated   DateTime    @default(now())
+  name          String
+  favoriteColor String
+  TestChair     TestChair[]
+}
+
+model TestChair {
+  id            Int       @id @default(autoincrement())
+  dateCreated   DateTime  @default(now())
+  name          String
+  favoriteColor String
+  tableId       Int
+  Table         TestTable @relation(fields: [tableId], references: [id])
 }
