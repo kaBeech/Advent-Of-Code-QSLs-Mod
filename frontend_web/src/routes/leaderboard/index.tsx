@@ -69,7 +69,7 @@ export default component$(() => {
                     {state.leaderboardGames.map((game: LeaderboardGame) => (
                       <li key={`game-${game.id}`}>
                         {game.year} - {game.name} - {game.score} -{" "}
-                        {game.Title.name} - {game.playerName} -{" "}
+                        {game.Title.name} - {game.User.username} -{" "}
                         <a href={`repositoryLink`}>°Repo Link°</a>
                       </li>
                     ))}

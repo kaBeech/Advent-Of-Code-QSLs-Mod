@@ -168,7 +168,6 @@ export async function createGame(
   name: string,
   year: number,
   isPublic: boolean,
-  playerName: string,
   repositoryLink?: string,
 ) {
   const result = await prisma.game.create({
@@ -177,7 +176,6 @@ export async function createGame(
       number,
       name,
       isPublic,
-      playerName,
       year,
       repositoryLink,
     },
