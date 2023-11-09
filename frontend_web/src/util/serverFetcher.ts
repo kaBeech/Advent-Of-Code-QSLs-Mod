@@ -19,7 +19,8 @@ export const serverFetcher = server$(async function (
       signal: abortController.signal,
       method,
       headers: {
-        Authorization: `Bearer ${xmasSecret} ${username}`,
+        Authorization: `Bearer ${xmasSecret}`,
+        UserId: `${username}`,
       },
       body: bodyFormData,
     });
@@ -30,7 +31,8 @@ export const serverFetcher = server$(async function (
       signal: abortController.signal,
       method,
       headers: {
-        Authorization: `Bearer ${xmasSecret} ${username}`,
+        Authorization: `Bearer ${xmasSecret}`,
+        UserId: `${username}`,
       },
     });
     const data = await res.json();

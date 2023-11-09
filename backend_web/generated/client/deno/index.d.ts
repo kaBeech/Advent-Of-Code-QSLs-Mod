@@ -2139,6 +2139,10 @@ export namespace Prisma {
     id: string | null
     serializedId: string | null
     username: string | null
+    oauthUrl: string | null
+    oauthUsername: string | null
+    oauthName: string | null
+    oauthAvatarUrl: string | null
     dateCreated: Date | null
     numberOfGames: number | null
   }
@@ -2147,6 +2151,10 @@ export namespace Prisma {
     id: string | null
     serializedId: string | null
     username: string | null
+    oauthUrl: string | null
+    oauthUsername: string | null
+    oauthName: string | null
+    oauthAvatarUrl: string | null
     dateCreated: Date | null
     numberOfGames: number | null
   }
@@ -2155,6 +2163,10 @@ export namespace Prisma {
     id: number
     serializedId: number
     username: number
+    oauthUrl: number
+    oauthUsername: number
+    oauthName: number
+    oauthAvatarUrl: number
     dateCreated: number
     numberOfGames: number
     _all: number
@@ -2173,6 +2185,10 @@ export namespace Prisma {
     id?: true
     serializedId?: true
     username?: true
+    oauthUrl?: true
+    oauthUsername?: true
+    oauthName?: true
+    oauthAvatarUrl?: true
     dateCreated?: true
     numberOfGames?: true
   }
@@ -2181,6 +2197,10 @@ export namespace Prisma {
     id?: true
     serializedId?: true
     username?: true
+    oauthUrl?: true
+    oauthUsername?: true
+    oauthName?: true
+    oauthAvatarUrl?: true
     dateCreated?: true
     numberOfGames?: true
   }
@@ -2189,6 +2209,10 @@ export namespace Prisma {
     id?: true
     serializedId?: true
     username?: true
+    oauthUrl?: true
+    oauthUsername?: true
+    oauthName?: true
+    oauthAvatarUrl?: true
     dateCreated?: true
     numberOfGames?: true
     _all?: true
@@ -2284,6 +2308,10 @@ export namespace Prisma {
     id: string
     serializedId: string | null
     username: string | null
+    oauthUrl: string | null
+    oauthUsername: string | null
+    oauthName: string | null
+    oauthAvatarUrl: string | null
     dateCreated: Date
     numberOfGames: number
     _count: UserCountAggregateOutputType | null
@@ -2311,6 +2339,10 @@ export namespace Prisma {
     id?: boolean
     serializedId?: boolean
     username?: boolean
+    oauthUrl?: boolean
+    oauthUsername?: boolean
+    oauthName?: boolean
+    oauthAvatarUrl?: boolean
     dateCreated?: boolean
     numberOfGames?: boolean
     ChallengeModifier?: boolean | User$ChallengeModifierArgs<ExtArgs>
@@ -2331,6 +2363,10 @@ export namespace Prisma {
     id?: boolean
     serializedId?: boolean
     username?: boolean
+    oauthUrl?: boolean
+    oauthUsername?: boolean
+    oauthName?: boolean
+    oauthAvatarUrl?: boolean
     dateCreated?: boolean
     numberOfGames?: boolean
   }
@@ -2370,6 +2406,10 @@ export namespace Prisma {
       id: string
       serializedId: string | null
       username: string | null
+      oauthUrl: string | null
+      oauthUsername: string | null
+      oauthName: string | null
+      oauthAvatarUrl: string | null
       dateCreated: Date
       numberOfGames: number
     }, ExtArgs["result"]["user"]>
@@ -2790,6 +2830,10 @@ export namespace Prisma {
     readonly id: FieldRef<"User", 'String'>
     readonly serializedId: FieldRef<"User", 'String'>
     readonly username: FieldRef<"User", 'String'>
+    readonly oauthUrl: FieldRef<"User", 'String'>
+    readonly oauthUsername: FieldRef<"User", 'String'>
+    readonly oauthName: FieldRef<"User", 'String'>
+    readonly oauthAvatarUrl: FieldRef<"User", 'String'>
     readonly dateCreated: FieldRef<"User", 'DateTime'>
     readonly numberOfGames: FieldRef<"User", 'Int'>
   }
@@ -13158,6 +13202,10 @@ export namespace Prisma {
     id: 'id',
     serializedId: 'serializedId',
     username: 'username',
+    oauthUrl: 'oauthUrl',
+    oauthUsername: 'oauthUsername',
+    oauthName: 'oauthName',
+    oauthAvatarUrl: 'oauthAvatarUrl',
     dateCreated: 'dateCreated',
     numberOfGames: 'numberOfGames'
   };
@@ -13398,6 +13446,10 @@ export namespace Prisma {
     id?: StringFilter<"User"> | string
     serializedId?: StringNullableFilter<"User"> | string | null
     username?: StringNullableFilter<"User"> | string | null
+    oauthUrl?: StringNullableFilter<"User"> | string | null
+    oauthUsername?: StringNullableFilter<"User"> | string | null
+    oauthName?: StringNullableFilter<"User"> | string | null
+    oauthAvatarUrl?: StringNullableFilter<"User"> | string | null
     dateCreated?: DateTimeFilter<"User"> | Date | string
     numberOfGames?: IntFilter<"User"> | number
     ChallengeModifier?: ChallengeModifierListRelationFilter
@@ -13417,6 +13469,10 @@ export namespace Prisma {
     id?: SortOrder
     serializedId?: SortOrderInput | SortOrder
     username?: SortOrderInput | SortOrder
+    oauthUrl?: SortOrderInput | SortOrder
+    oauthUsername?: SortOrderInput | SortOrder
+    oauthName?: SortOrderInput | SortOrder
+    oauthAvatarUrl?: SortOrderInput | SortOrder
     dateCreated?: SortOrder
     numberOfGames?: SortOrder
     ChallengeModifier?: ChallengeModifierOrderByRelationAggregateInput
@@ -13439,6 +13495,10 @@ export namespace Prisma {
     AND?: UserWhereInput | UserWhereInput[]
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
+    oauthUrl?: StringNullableFilter<"User"> | string | null
+    oauthUsername?: StringNullableFilter<"User"> | string | null
+    oauthName?: StringNullableFilter<"User"> | string | null
+    oauthAvatarUrl?: StringNullableFilter<"User"> | string | null
     dateCreated?: DateTimeFilter<"User"> | Date | string
     numberOfGames?: IntFilter<"User"> | number
     ChallengeModifier?: ChallengeModifierListRelationFilter
@@ -13458,6 +13518,10 @@ export namespace Prisma {
     id?: SortOrder
     serializedId?: SortOrderInput | SortOrder
     username?: SortOrderInput | SortOrder
+    oauthUrl?: SortOrderInput | SortOrder
+    oauthUsername?: SortOrderInput | SortOrder
+    oauthName?: SortOrderInput | SortOrder
+    oauthAvatarUrl?: SortOrderInput | SortOrder
     dateCreated?: SortOrder
     numberOfGames?: SortOrder
     _count?: UserCountOrderByAggregateInput
@@ -13474,6 +13538,10 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"User"> | string
     serializedId?: StringNullableWithAggregatesFilter<"User"> | string | null
     username?: StringNullableWithAggregatesFilter<"User"> | string | null
+    oauthUrl?: StringNullableWithAggregatesFilter<"User"> | string | null
+    oauthUsername?: StringNullableWithAggregatesFilter<"User"> | string | null
+    oauthName?: StringNullableWithAggregatesFilter<"User"> | string | null
+    oauthAvatarUrl?: StringNullableWithAggregatesFilter<"User"> | string | null
     dateCreated?: DateTimeWithAggregatesFilter<"User"> | Date | string
     numberOfGames?: IntWithAggregatesFilter<"User"> | number
   }
@@ -14245,6 +14313,10 @@ export namespace Prisma {
     id: string
     serializedId?: string | null
     username?: string | null
+    oauthUrl?: string | null
+    oauthUsername?: string | null
+    oauthName?: string | null
+    oauthAvatarUrl?: string | null
     dateCreated?: Date | string
     numberOfGames?: number
     ChallengeModifier?: ChallengeModifierCreateNestedManyWithoutCreatedByInput
@@ -14264,6 +14336,10 @@ export namespace Prisma {
     id: string
     serializedId?: string | null
     username?: string | null
+    oauthUrl?: string | null
+    oauthUsername?: string | null
+    oauthName?: string | null
+    oauthAvatarUrl?: string | null
     dateCreated?: Date | string
     numberOfGames?: number
     ChallengeModifier?: ChallengeModifierUncheckedCreateNestedManyWithoutCreatedByInput
@@ -14283,6 +14359,10 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     serializedId?: NullableStringFieldUpdateOperationsInput | string | null
     username?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthUsername?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthName?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthAvatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     numberOfGames?: IntFieldUpdateOperationsInput | number
     ChallengeModifier?: ChallengeModifierUpdateManyWithoutCreatedByNestedInput
@@ -14302,6 +14382,10 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     serializedId?: NullableStringFieldUpdateOperationsInput | string | null
     username?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthUsername?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthName?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthAvatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     numberOfGames?: IntFieldUpdateOperationsInput | number
     ChallengeModifier?: ChallengeModifierUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -14321,6 +14405,10 @@ export namespace Prisma {
     id: string
     serializedId?: string | null
     username?: string | null
+    oauthUrl?: string | null
+    oauthUsername?: string | null
+    oauthName?: string | null
+    oauthAvatarUrl?: string | null
     dateCreated?: Date | string
     numberOfGames?: number
   }
@@ -14329,6 +14417,10 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     serializedId?: NullableStringFieldUpdateOperationsInput | string | null
     username?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthUsername?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthName?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthAvatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     numberOfGames?: IntFieldUpdateOperationsInput | number
   }
@@ -14337,6 +14429,10 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     serializedId?: NullableStringFieldUpdateOperationsInput | string | null
     username?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthUsername?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthName?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthAvatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     numberOfGames?: IntFieldUpdateOperationsInput | number
   }
@@ -15244,6 +15340,10 @@ export namespace Prisma {
     id?: SortOrder
     serializedId?: SortOrder
     username?: SortOrder
+    oauthUrl?: SortOrder
+    oauthUsername?: SortOrder
+    oauthName?: SortOrder
+    oauthAvatarUrl?: SortOrder
     dateCreated?: SortOrder
     numberOfGames?: SortOrder
   }
@@ -15256,6 +15356,10 @@ export namespace Prisma {
     id?: SortOrder
     serializedId?: SortOrder
     username?: SortOrder
+    oauthUrl?: SortOrder
+    oauthUsername?: SortOrder
+    oauthName?: SortOrder
+    oauthAvatarUrl?: SortOrder
     dateCreated?: SortOrder
     numberOfGames?: SortOrder
   }
@@ -15264,6 +15368,10 @@ export namespace Prisma {
     id?: SortOrder
     serializedId?: SortOrder
     username?: SortOrder
+    oauthUrl?: SortOrder
+    oauthUsername?: SortOrder
+    oauthName?: SortOrder
+    oauthAvatarUrl?: SortOrder
     dateCreated?: SortOrder
     numberOfGames?: SortOrder
   }
@@ -18453,6 +18561,10 @@ export namespace Prisma {
     id: string
     serializedId?: string | null
     username?: string | null
+    oauthUrl?: string | null
+    oauthUsername?: string | null
+    oauthName?: string | null
+    oauthAvatarUrl?: string | null
     dateCreated?: Date | string
     numberOfGames?: number
     ChallengeModifier?: ChallengeModifierCreateNestedManyWithoutCreatedByInput
@@ -18471,6 +18583,10 @@ export namespace Prisma {
     id: string
     serializedId?: string | null
     username?: string | null
+    oauthUrl?: string | null
+    oauthUsername?: string | null
+    oauthName?: string | null
+    oauthAvatarUrl?: string | null
     dateCreated?: Date | string
     numberOfGames?: number
     ChallengeModifier?: ChallengeModifierUncheckedCreateNestedManyWithoutCreatedByInput
@@ -18521,6 +18637,10 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     serializedId?: NullableStringFieldUpdateOperationsInput | string | null
     username?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthUsername?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthName?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthAvatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     numberOfGames?: IntFieldUpdateOperationsInput | number
     ChallengeModifier?: ChallengeModifierUpdateManyWithoutCreatedByNestedInput
@@ -18539,6 +18659,10 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     serializedId?: NullableStringFieldUpdateOperationsInput | string | null
     username?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthUsername?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthName?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthAvatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     numberOfGames?: IntFieldUpdateOperationsInput | number
     ChallengeModifier?: ChallengeModifierUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -18665,6 +18789,10 @@ export namespace Prisma {
     id: string
     serializedId?: string | null
     username?: string | null
+    oauthUrl?: string | null
+    oauthUsername?: string | null
+    oauthName?: string | null
+    oauthAvatarUrl?: string | null
     dateCreated?: Date | string
     numberOfGames?: number
     ChallengeModifier?: ChallengeModifierCreateNestedManyWithoutCreatedByInput
@@ -18683,6 +18811,10 @@ export namespace Prisma {
     id: string
     serializedId?: string | null
     username?: string | null
+    oauthUrl?: string | null
+    oauthUsername?: string | null
+    oauthName?: string | null
+    oauthAvatarUrl?: string | null
     dateCreated?: Date | string
     numberOfGames?: number
     ChallengeModifier?: ChallengeModifierUncheckedCreateNestedManyWithoutCreatedByInput
@@ -18841,6 +18973,10 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     serializedId?: NullableStringFieldUpdateOperationsInput | string | null
     username?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthUsername?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthName?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthAvatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     numberOfGames?: IntFieldUpdateOperationsInput | number
     ChallengeModifier?: ChallengeModifierUpdateManyWithoutCreatedByNestedInput
@@ -18859,6 +18995,10 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     serializedId?: NullableStringFieldUpdateOperationsInput | string | null
     username?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthUsername?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthName?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthAvatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     numberOfGames?: IntFieldUpdateOperationsInput | number
     ChallengeModifier?: ChallengeModifierUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -19538,6 +19678,10 @@ export namespace Prisma {
     id: string
     serializedId?: string | null
     username?: string | null
+    oauthUrl?: string | null
+    oauthUsername?: string | null
+    oauthName?: string | null
+    oauthAvatarUrl?: string | null
     dateCreated?: Date | string
     numberOfGames?: number
     Downvote?: DownvoteCreateNestedManyWithoutCreatedByInput
@@ -19556,6 +19700,10 @@ export namespace Prisma {
     id: string
     serializedId?: string | null
     username?: string | null
+    oauthUrl?: string | null
+    oauthUsername?: string | null
+    oauthName?: string | null
+    oauthAvatarUrl?: string | null
     dateCreated?: Date | string
     numberOfGames?: number
     Downvote?: DownvoteUncheckedCreateNestedManyWithoutCreatedByInput
@@ -19726,6 +19874,10 @@ export namespace Prisma {
     id: string
     serializedId?: string | null
     username?: string | null
+    oauthUrl?: string | null
+    oauthUsername?: string | null
+    oauthName?: string | null
+    oauthAvatarUrl?: string | null
     dateCreated?: Date | string
     numberOfGames?: number
     ChallengeModifier?: ChallengeModifierCreateNestedManyWithoutCreatedByInput
@@ -19744,6 +19896,10 @@ export namespace Prisma {
     id: string
     serializedId?: string | null
     username?: string | null
+    oauthUrl?: string | null
+    oauthUsername?: string | null
+    oauthName?: string | null
+    oauthAvatarUrl?: string | null
     dateCreated?: Date | string
     numberOfGames?: number
     ChallengeModifier?: ChallengeModifierUncheckedCreateNestedManyWithoutCreatedByInput
@@ -19767,6 +19923,10 @@ export namespace Prisma {
     id: string
     serializedId?: string | null
     username?: string | null
+    oauthUrl?: string | null
+    oauthUsername?: string | null
+    oauthName?: string | null
+    oauthAvatarUrl?: string | null
     dateCreated?: Date | string
     numberOfGames?: number
     ChallengeModifier?: ChallengeModifierCreateNestedManyWithoutCreatedByInput
@@ -19785,6 +19945,10 @@ export namespace Prisma {
     id: string
     serializedId?: string | null
     username?: string | null
+    oauthUrl?: string | null
+    oauthUsername?: string | null
+    oauthName?: string | null
+    oauthAvatarUrl?: string | null
     dateCreated?: Date | string
     numberOfGames?: number
     ChallengeModifier?: ChallengeModifierUncheckedCreateNestedManyWithoutCreatedByInput
@@ -19911,6 +20075,10 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     serializedId?: NullableStringFieldUpdateOperationsInput | string | null
     username?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthUsername?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthName?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthAvatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     numberOfGames?: IntFieldUpdateOperationsInput | number
     Downvote?: DownvoteUpdateManyWithoutCreatedByNestedInput
@@ -19929,6 +20097,10 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     serializedId?: NullableStringFieldUpdateOperationsInput | string | null
     username?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthUsername?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthName?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthAvatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     numberOfGames?: IntFieldUpdateOperationsInput | number
     Downvote?: DownvoteUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -20014,6 +20186,10 @@ export namespace Prisma {
     id?: StringFilter<"User"> | string
     serializedId?: StringNullableFilter<"User"> | string | null
     username?: StringNullableFilter<"User"> | string | null
+    oauthUrl?: StringNullableFilter<"User"> | string | null
+    oauthUsername?: StringNullableFilter<"User"> | string | null
+    oauthName?: StringNullableFilter<"User"> | string | null
+    oauthAvatarUrl?: StringNullableFilter<"User"> | string | null
     dateCreated?: DateTimeFilter<"User"> | Date | string
     numberOfGames?: IntFilter<"User"> | number
   }
@@ -20212,6 +20388,10 @@ export namespace Prisma {
     id: string
     serializedId?: string | null
     username?: string | null
+    oauthUrl?: string | null
+    oauthUsername?: string | null
+    oauthName?: string | null
+    oauthAvatarUrl?: string | null
     dateCreated?: Date | string
     numberOfGames?: number
     ChallengeModifier?: ChallengeModifierCreateNestedManyWithoutCreatedByInput
@@ -20230,6 +20410,10 @@ export namespace Prisma {
     id: string
     serializedId?: string | null
     username?: string | null
+    oauthUrl?: string | null
+    oauthUsername?: string | null
+    oauthName?: string | null
+    oauthAvatarUrl?: string | null
     dateCreated?: Date | string
     numberOfGames?: number
     ChallengeModifier?: ChallengeModifierUncheckedCreateNestedManyWithoutCreatedByInput
@@ -20253,6 +20437,10 @@ export namespace Prisma {
     id: string
     serializedId?: string | null
     username?: string | null
+    oauthUrl?: string | null
+    oauthUsername?: string | null
+    oauthName?: string | null
+    oauthAvatarUrl?: string | null
     dateCreated?: Date | string
     numberOfGames?: number
     ChallengeModifier?: ChallengeModifierCreateNestedManyWithoutCreatedByInput
@@ -20271,6 +20459,10 @@ export namespace Prisma {
     id: string
     serializedId?: string | null
     username?: string | null
+    oauthUrl?: string | null
+    oauthUsername?: string | null
+    oauthName?: string | null
+    oauthAvatarUrl?: string | null
     dateCreated?: Date | string
     numberOfGames?: number
     ChallengeModifier?: ChallengeModifierUncheckedCreateNestedManyWithoutCreatedByInput
@@ -20294,6 +20486,10 @@ export namespace Prisma {
     id: string
     serializedId?: string | null
     username?: string | null
+    oauthUrl?: string | null
+    oauthUsername?: string | null
+    oauthName?: string | null
+    oauthAvatarUrl?: string | null
     dateCreated?: Date | string
     numberOfGames?: number
     ChallengeModifier?: ChallengeModifierCreateNestedManyWithoutCreatedByInput
@@ -20312,6 +20508,10 @@ export namespace Prisma {
     id: string
     serializedId?: string | null
     username?: string | null
+    oauthUrl?: string | null
+    oauthUsername?: string | null
+    oauthName?: string | null
+    oauthAvatarUrl?: string | null
     dateCreated?: Date | string
     numberOfGames?: number
     ChallengeModifier?: ChallengeModifierUncheckedCreateNestedManyWithoutCreatedByInput
@@ -20464,6 +20664,10 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     serializedId?: NullableStringFieldUpdateOperationsInput | string | null
     username?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthUsername?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthName?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthAvatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     numberOfGames?: IntFieldUpdateOperationsInput | number
     ChallengeModifier?: ChallengeModifierUpdateManyWithoutCreatedByNestedInput
@@ -20482,6 +20686,10 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     serializedId?: NullableStringFieldUpdateOperationsInput | string | null
     username?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthUsername?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthName?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthAvatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     numberOfGames?: IntFieldUpdateOperationsInput | number
     ChallengeModifier?: ChallengeModifierUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -20564,6 +20772,10 @@ export namespace Prisma {
     id: string
     serializedId?: string | null
     username?: string | null
+    oauthUrl?: string | null
+    oauthUsername?: string | null
+    oauthName?: string | null
+    oauthAvatarUrl?: string | null
     dateCreated?: Date | string
     numberOfGames?: number
     ChallengeModifier?: ChallengeModifierCreateNestedManyWithoutCreatedByInput
@@ -20582,6 +20794,10 @@ export namespace Prisma {
     id: string
     serializedId?: string | null
     username?: string | null
+    oauthUrl?: string | null
+    oauthUsername?: string | null
+    oauthName?: string | null
+    oauthAvatarUrl?: string | null
     dateCreated?: Date | string
     numberOfGames?: number
     ChallengeModifier?: ChallengeModifierUncheckedCreateNestedManyWithoutCreatedByInput
@@ -20696,6 +20912,10 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     serializedId?: NullableStringFieldUpdateOperationsInput | string | null
     username?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthUsername?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthName?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthAvatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     numberOfGames?: IntFieldUpdateOperationsInput | number
     ChallengeModifier?: ChallengeModifierUpdateManyWithoutCreatedByNestedInput
@@ -20714,6 +20934,10 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     serializedId?: NullableStringFieldUpdateOperationsInput | string | null
     username?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthUsername?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthName?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthAvatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     numberOfGames?: IntFieldUpdateOperationsInput | number
     ChallengeModifier?: ChallengeModifierUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -20764,6 +20988,10 @@ export namespace Prisma {
     id: string
     serializedId?: string | null
     username?: string | null
+    oauthUrl?: string | null
+    oauthUsername?: string | null
+    oauthName?: string | null
+    oauthAvatarUrl?: string | null
     dateCreated?: Date | string
     numberOfGames?: number
     ChallengeModifier?: ChallengeModifierCreateNestedManyWithoutCreatedByInput
@@ -20782,6 +21010,10 @@ export namespace Prisma {
     id: string
     serializedId?: string | null
     username?: string | null
+    oauthUrl?: string | null
+    oauthUsername?: string | null
+    oauthName?: string | null
+    oauthAvatarUrl?: string | null
     dateCreated?: Date | string
     numberOfGames?: number
     ChallengeModifier?: ChallengeModifierUncheckedCreateNestedManyWithoutCreatedByInput
@@ -20870,6 +21102,10 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     serializedId?: NullableStringFieldUpdateOperationsInput | string | null
     username?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthUsername?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthName?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthAvatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     numberOfGames?: IntFieldUpdateOperationsInput | number
     ChallengeModifier?: ChallengeModifierUpdateManyWithoutCreatedByNestedInput
@@ -20888,6 +21124,10 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     serializedId?: NullableStringFieldUpdateOperationsInput | string | null
     username?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthUsername?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthName?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthAvatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     numberOfGames?: IntFieldUpdateOperationsInput | number
     ChallengeModifier?: ChallengeModifierUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -20966,6 +21206,10 @@ export namespace Prisma {
     id: string
     serializedId?: string | null
     username?: string | null
+    oauthUrl?: string | null
+    oauthUsername?: string | null
+    oauthName?: string | null
+    oauthAvatarUrl?: string | null
     dateCreated?: Date | string
     numberOfGames?: number
     ChallengeModifier?: ChallengeModifierCreateNestedManyWithoutCreatedByInput
@@ -20984,6 +21228,10 @@ export namespace Prisma {
     id: string
     serializedId?: string | null
     username?: string | null
+    oauthUrl?: string | null
+    oauthUsername?: string | null
+    oauthName?: string | null
+    oauthAvatarUrl?: string | null
     dateCreated?: Date | string
     numberOfGames?: number
     ChallengeModifier?: ChallengeModifierUncheckedCreateNestedManyWithoutCreatedByInput
@@ -21072,6 +21320,10 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     serializedId?: NullableStringFieldUpdateOperationsInput | string | null
     username?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthUsername?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthName?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthAvatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     numberOfGames?: IntFieldUpdateOperationsInput | number
     ChallengeModifier?: ChallengeModifierUpdateManyWithoutCreatedByNestedInput
@@ -21090,6 +21342,10 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     serializedId?: NullableStringFieldUpdateOperationsInput | string | null
     username?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthUsername?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthName?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthAvatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     numberOfGames?: IntFieldUpdateOperationsInput | number
     ChallengeModifier?: ChallengeModifierUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -22303,6 +22559,10 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     serializedId?: NullableStringFieldUpdateOperationsInput | string | null
     username?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthUsername?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthName?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthAvatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     numberOfGames?: IntFieldUpdateOperationsInput | number
     ChallengeModifier?: ChallengeModifierUpdateManyWithoutCreatedByNestedInput
@@ -22321,6 +22581,10 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     serializedId?: NullableStringFieldUpdateOperationsInput | string | null
     username?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthUsername?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthName?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthAvatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     numberOfGames?: IntFieldUpdateOperationsInput | number
     ChallengeModifier?: ChallengeModifierUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -22339,6 +22603,10 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     serializedId?: NullableStringFieldUpdateOperationsInput | string | null
     username?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthUsername?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthName?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthAvatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     numberOfGames?: IntFieldUpdateOperationsInput | number
   }
@@ -22347,6 +22615,10 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     serializedId?: NullableStringFieldUpdateOperationsInput | string | null
     username?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthUsername?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthName?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthAvatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     numberOfGames?: IntFieldUpdateOperationsInput | number
     ChallengeModifier?: ChallengeModifierUpdateManyWithoutCreatedByNestedInput
@@ -22365,6 +22637,10 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     serializedId?: NullableStringFieldUpdateOperationsInput | string | null
     username?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthUsername?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthName?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthAvatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     numberOfGames?: IntFieldUpdateOperationsInput | number
     ChallengeModifier?: ChallengeModifierUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -22383,6 +22659,10 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     serializedId?: NullableStringFieldUpdateOperationsInput | string | null
     username?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthUsername?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthName?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthAvatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     numberOfGames?: IntFieldUpdateOperationsInput | number
   }
@@ -22671,6 +22951,10 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     serializedId?: NullableStringFieldUpdateOperationsInput | string | null
     username?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthUsername?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthName?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthAvatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     numberOfGames?: IntFieldUpdateOperationsInput | number
     ChallengeModifier?: ChallengeModifierUpdateManyWithoutCreatedByNestedInput
@@ -22689,6 +22973,10 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     serializedId?: NullableStringFieldUpdateOperationsInput | string | null
     username?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthUsername?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthName?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthAvatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     numberOfGames?: IntFieldUpdateOperationsInput | number
     ChallengeModifier?: ChallengeModifierUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -22707,6 +22995,10 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     serializedId?: NullableStringFieldUpdateOperationsInput | string | null
     username?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthUsername?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthName?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthAvatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     numberOfGames?: IntFieldUpdateOperationsInput | number
   }
@@ -22715,6 +23007,10 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     serializedId?: NullableStringFieldUpdateOperationsInput | string | null
     username?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthUsername?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthName?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthAvatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     numberOfGames?: IntFieldUpdateOperationsInput | number
     ChallengeModifier?: ChallengeModifierUpdateManyWithoutCreatedByNestedInput
@@ -22733,6 +23029,10 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     serializedId?: NullableStringFieldUpdateOperationsInput | string | null
     username?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthUsername?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthName?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthAvatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     numberOfGames?: IntFieldUpdateOperationsInput | number
     ChallengeModifier?: ChallengeModifierUncheckedUpdateManyWithoutCreatedByNestedInput
@@ -22751,6 +23051,10 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     serializedId?: NullableStringFieldUpdateOperationsInput | string | null
     username?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthUsername?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthName?: NullableStringFieldUpdateOperationsInput | string | null
+    oauthAvatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     numberOfGames?: IntFieldUpdateOperationsInput | number
   }

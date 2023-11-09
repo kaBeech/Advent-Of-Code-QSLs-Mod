@@ -11,7 +11,6 @@ export const authenticate = async (ctx: Context, next: Next) => {
       ctx.response.status = 401;
       return;
     }
-
     const xmasSecret = authorization.split(" ")[1];
     if (!xmasSecret) {
       ctx.response.status = 401;
@@ -20,8 +19,18 @@ export const authenticate = async (ctx: Context, next: Next) => {
     if (xmasSecret !== dotEnv.XMAS_SECRET) {
       throw new Error("XMAS_SECRET does not match");
     }
-    const userId = authorization.split(" ")[2];
+
+    const userId = headers.get("UserId");
     ctx.state.session.set("userId", userId);
+    const oauthURL = headers.get("OAuthURL");
+    ctx.state.session.set("oauthURL", oauthURL);
+    const oauthUsername = headers.get("OAuthUsername");
+    ctx.state.session.set("oauthUsername", oauthUsername);
+    const oauthName = headers.get("OAuthName");
+    ctx.state.session.set("oauthName", oauthName);
+    const oauthAvatarURL = headers.get("OAuthAvatarURL");
+    ctx.state.session.set("oauthAvatarURL", oauthAvatarURL);
+
     await next();
   } catch (error) {
     console.log(error);

@@ -116,6 +116,39 @@ export async function updateUser(user: User) {
   return result;
 }
 
+export async function updateUserName(id: string, username: string) {
+  const result = await prisma.user.update({
+    where: {
+      id,
+    },
+    data: {
+      username,
+    },
+  });
+  return result;
+}
+
+export async function updateUserOAuthInfo(
+  id: string,
+  oauthUrl: string,
+  oauthUsername: string,
+  oauthAvatarUrl: string,
+  oauthName?: string,
+) {
+  const result = await prisma.user.update({
+    where: {
+      id,
+    },
+    data: {
+      oauthUrl,
+      oauthUsername,
+      oauthAvatarUrl,
+      oauthName,
+    },
+  });
+  return result;
+}
+
 export async function deleteUser(id: string) {
   const result = await prisma.user.delete({
     where: {
@@ -135,7 +168,6 @@ export async function createGame(
   name: string,
   year: number,
   isPublic: boolean,
-  playerName: string,
   repositoryLink?: string,
 ) {
   const result = await prisma.game.create({
@@ -144,7 +176,6 @@ export async function createGame(
       number,
       name,
       isPublic,
-      playerName,
       year,
       repositoryLink,
     },
@@ -167,6 +198,11 @@ export async function getAllPublicGamesWithRepositoryLinks() {
     },
     include: {
       Title: true,
+      User: {
+        select: {
+          username: true,
+        },
+      },
     },
   });
   return games;

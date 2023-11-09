@@ -6,7 +6,6 @@ import { getGithubUserIdFromUserImage } from "~/util/getGithubUserIdFromUserImag
 
 const title = "Test Game";
 const year = 2022;
-const playerName = "Me!";
 const numberOfGames = 0;
 const isPublic: boolean = false;
 const repositoryLink = "https://github.com/octocat/Spoon-Knife";
@@ -19,7 +18,6 @@ export default component$(() => {
     numberOfGames,
     title,
     year,
-    playerName,
     buttonPresses: 0,
     loading: false,
     isPublic,
@@ -32,8 +30,6 @@ export default component$(() => {
       const title = track(() => state.title);
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const year = track(() => state.year);
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      const playerName = track(() => state.playerName);
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const buttonPresses = track(() => state.buttonPresses);
 
@@ -81,19 +77,6 @@ export default component$(() => {
             min="2014"
             max="2023"
             aria-labelledby="Year"
-          />
-        </li>
-        <li>
-          <label for="playerName">Player Name:</label>
-          <input
-            id="playerName"
-            class="pointer"
-            type="text"
-            onInput$={(ev: any) => (state.playerName = ev.target.value)}
-            value={playerName}
-            minLength={1}
-            maxLength={256}
-            aria-labelledby="Player Name"
           />
         </li>
         <li>
@@ -152,10 +135,6 @@ export default component$(() => {
                   ) {
                     repositoryLink = "";
                   }
-                  let playerName = state.playerName;
-                  if (playerName === "") {
-                    playerName = session.value!.user!.name!;
-                  }
                   const res = await serverFetcher(
                     `game/${+xtremeXmasData.numberOfGames + 1}`,
                     "PUT",
@@ -163,7 +142,6 @@ export default component$(() => {
                     {
                       name: state.title,
                       year: state.year,
-                      playerName,
                       isPublic: state.isPublic ? true : false,
                       repositoryLink,
                     }
