@@ -158,7 +158,7 @@ export default component$(() => {
           </em>
         </p>
         <p>
-          At the start of a new game you will be given 12 <em>Reroll Tokens</em>
+          At the start of a new game you will be given 24 <em>Reroll Tokens</em>
           . You may spent 2 Reroll Tokens to reroll your Challenge Modifier. If
           your Challenge Modifier has a Modifier Option, you may spend 1 Token
           to reroll the Modifier Option.
@@ -187,7 +187,7 @@ export default component$(() => {
         </p>
         <p>
           After completing Part 2 of Day 1 we have spent 3 Tokens and earned 2,
-          which combined with the 12 we started with gives us 11 Reroll Tokens
+          which combined with the 24 we started with gives us 23 Reroll Tokens
           at the start of Day 2.
         </p>
         <div>
