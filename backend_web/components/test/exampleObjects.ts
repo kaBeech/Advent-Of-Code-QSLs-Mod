@@ -251,6 +251,7 @@ export const exampleModifierOptions = [
     "standard": true,
     "createdById": null,
     "isPublic": true,
+    "shortText": "C++",
   },
   {
     "id": 10,
@@ -262,6 +263,7 @@ export const exampleModifierOptions = [
     "standard": true,
     "createdById": null,
     "isPublic": true,
+    "shortText": "Rust",
   },
 ];
 
