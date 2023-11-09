@@ -114,18 +114,20 @@ export default component$(() => {
           launched.
         </p>
         <p>
-          I'm planning to enter a public Beta Testing phase in early November
-          2023. Before then,{" "}
+          Xtreme Xmas Code is in public Beta Testing phase and will be
+          officially released on November 30, 2023. Until then,{" "}
           <em>
-            any data submitted to Xtreme Xmas Code is subject to modification or
-            deletion without notice
+            much of the site is subject to change and some features may not be
+            fully built out or optimized
           </em>
-          . If you're eager to start using XXC for more permanent projects and
-          it hasn't launched yet, please{" "}
-          <a href="mailto:contact@kabeech.com" class="link">
-            °send me an email°
-          </a>{" "}
-          and I'll see what I can do.
+          . If you'd like to participate in the public beta,{" "}
+          <a
+            href="mailto:contact@kabeech.com?subject=Xtreme%20Xmas%20Beta%20Testing"
+            class="link"
+          >
+            °send me an email with your feedback°
+          </a>
+          !
         </p>{" "}
         <div>
           ----------------------------------------------------------------------------
