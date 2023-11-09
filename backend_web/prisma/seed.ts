@@ -31,49 +31,49 @@ const challengeModifierData: Prisma.ChallengeModifierCreateInput[] = [
     isPublic: true,
   },
   {
-    name: "c_like_language_box",
+    name: "c_like_box",
     text: "using a random selection from the C-Like Languages Box: ",
     hasOptions: true,
     standard: true,
     isPublic: true,
   },
   {
-    name: "general_purpose_programming_box",
+    name: "gpp_box",
     text: "using a random selection from the General Purpose Programming Box: ",
     hasOptions: true,
     standard: true,
     isPublic: true,
   },
   {
-    name: "object_oriented_programming_box",
+    name: "oop_box",
     text: "using a random selection from the Object Oriented Programming Box: ",
     hasOptions: true,
     standard: true,
     isPublic: true,
   },
   {
-    name: "functional_programming_box",
+    name: "fp_box",
     text: "using a random selection from the Functional Programming Box: ",
     hasOptions: true,
     standard: true,
     isPublic: true,
   },
   {
-    name: "legacy_programming_box",
+    name: "legacy_box",
     text: "using a random selection from the Legacy Programming Box: ",
     hasOptions: true,
     standard: true,
     isPublic: true,
   },
   {
-    name: "visual_programming_box",
+    name: "visual_box",
     text: "using a random selection from the Visual Programming Box: ",
     hasOptions: true,
     standard: true,
     isPublic: true,
   },
   {
-    name: "esoteric_programming_box",
+    name: "esoteric_box",
     text: "using a random selection from the Esoteric Programming Box: ",
     hasOptions: true,
     standard: true,
@@ -235,57 +235,57 @@ for (const u of challengeModifierData) {
 }
 
 const modifierOptionData: Prisma.ModifierOptionCreateInput[] = [
-  // {
-  //   ChallengeModifier: {
-  //     connect: {
-  //       name: "language_box_1",
-  //     },
-  //   },
-  //   name: "language_box_1_r",
-  //   text: "R",
-  //   standard: true,
-  //   isPublic: true,
-  // },
-  // {
-  //   ChallengeModifier: {
-  //     connect: {
-  //       name: "language_box_2",
-  //     },
-  //   },
-  //   name: "language_box_2_prolog",
-  //   text: "Prolog",
-  //   standard: true,
-  //   isPublic: true,
-  // },
-  // {
-  //   ChallengeModifier: {
-  //     connect: {
-  //       name: "language_box_2",
-  //     },
-  //   },
-  //   name: "language_box_2_pascal",
-  //   text: "Pascal",
-  //   standard: true,
-  //   isPublic: true,
-  // },
-  // {
-  //   ChallengeModifier: {
-  //     connect: {
-  //       name: "language_box_3",
-  //     },
-  //   },
-  //   name: "language_box_3_webassembly",
-  //   text: "WebAssembly",
-  //   standard: true,
-  //   isPublic: true,
-  // },
+  //   // {
+  //   //   ChallengeModifier: {
+  //   //     connect: {
+  //   //       name: "language_box_1",
+  //   //     },
+  //   //   },
+  //   //   name: "language_box_1_r",
+  //   //   text: "R",
+  //   //   standard: true,
+  //   //   isPublic: true,
+  //   // },
+  //   // {
+  //   //   ChallengeModifier: {
+  //   //     connect: {
+  //   //       name: "language_box_2",
+  //   //     },
+  //   //   },
+  //   //   name: "language_box_2_prolog",
+  //   //   text: "Prolog",
+  //   //   standard: true,
+  //   //   isPublic: true,
+  //   // },
+  //   // {
+  //   //   ChallengeModifier: {
+  //   //     connect: {
+  //   //       name: "language_box_2",
+  //   //     },
+  //   //   },
+  //   //   name: "language_box_2_pascal",
+  //   //   text: "Pascal",
+  //   //   standard: true,
+  //   //   isPublic: true,
+  //   // },
+  //   // {
+  //   //   ChallengeModifier: {
+  //   //     connect: {
+  //   //       name: "language_box_3",
+  //   //     },
+  //   //   },
+  //   //   name: "language_box_3_webassembly",
+  //   //   text: "WebAssembly",
+  //   //   standard: true,
+  //   //   isPublic: true,
+  //   // },
   {
     ChallengeModifier: {
       connect: {
-        name: "c_like_language_box",
+        name: "c_like_box",
       },
     },
-    name: "c_like_language_box_c",
+    name: "c_like_box_c",
     text: "C",
     standard: true,
     isPublic: true,
@@ -293,10 +293,10 @@ const modifierOptionData: Prisma.ModifierOptionCreateInput[] = [
   {
     ChallengeModifier: {
       connect: {
-        name: "c_like_language_box",
+        name: "c_like_box",
       },
     },
-    name: "c_like_language_box_csharp",
+    name: "c_like_box_csharp",
     text: "C#",
     standard: true,
     isPublic: true,
@@ -304,10 +304,10 @@ const modifierOptionData: Prisma.ModifierOptionCreateInput[] = [
   {
     ChallengeModifier: {
       connect: {
-        name: "c_like_language_box",
+        name: "c_like_box",
       },
     },
-    name: "c_like_language_box_cpp",
+    name: "c_like_box_cpp",
     text: "C++",
     standard: true,
     isPublic: true,
@@ -315,10 +315,10 @@ const modifierOptionData: Prisma.ModifierOptionCreateInput[] = [
   {
     ChallengeModifier: {
       connect: {
-        name: "c_like_language_box",
+        name: "c_like_box",
       },
     },
-    name: "c_like_language_box_carbon",
+    name: "c_like_box_carbon",
     text: "Carbon",
     standard: true,
     isPublic: true,
@@ -326,10 +326,10 @@ const modifierOptionData: Prisma.ModifierOptionCreateInput[] = [
   {
     ChallengeModifier: {
       connect: {
-        name: "c_like_language_box",
+        name: "c_like_box",
       },
     },
-    name: "c_like_language_box_go",
+    name: "c_like_box_go",
     text: "Go",
     standard: true,
     isPublic: true,
@@ -337,10 +337,10 @@ const modifierOptionData: Prisma.ModifierOptionCreateInput[] = [
   {
     ChallengeModifier: {
       connect: {
-        name: "c_like_language_box",
+        name: "c_like_box",
       },
     },
-    name: "c_like_language_box_holyc",
+    name: "c_like_box_holyc",
     text: "HolyC",
     standard: true,
     isPublic: true,
@@ -348,10 +348,10 @@ const modifierOptionData: Prisma.ModifierOptionCreateInput[] = [
   {
     ChallengeModifier: {
       connect: {
-        name: "c_like_language_box",
+        name: "c_like_box",
       },
     },
-    name: "c_like_language_box_rust",
+    name: "c_like_box_rust",
     text: "Rust",
     standard: true,
     isPublic: true,
@@ -359,10 +359,10 @@ const modifierOptionData: Prisma.ModifierOptionCreateInput[] = [
   {
     ChallengeModifier: {
       connect: {
-        name: "c_like_language_box",
+        name: "c_like_box",
       },
     },
-    name: "c_like_language_box_zig",
+    name: "c_like_box_zig",
     text: "Zig",
     standard: true,
     isPublic: true,
@@ -370,10 +370,10 @@ const modifierOptionData: Prisma.ModifierOptionCreateInput[] = [
   {
     ChallengeModifier: {
       connect: {
-        name: "general_purpose_programming_box",
+        name: "gpp_box",
       },
     },
-    name: "general_purpose_programming_box_java",
+    name: "gpp_box_java",
     text: "Java",
     standard: true,
     isPublic: true,
@@ -381,10 +381,10 @@ const modifierOptionData: Prisma.ModifierOptionCreateInput[] = [
   {
     ChallengeModifier: {
       connect: {
-        name: "general_purpose_programming_box",
+        name: "gpp_box",
       },
     },
-    name: "general_purpose_programming_box_javascript",
+    name: "gpp_box_javascript",
     text: "JavaScript",
     standard: true,
     isPublic: true,
@@ -392,10 +392,10 @@ const modifierOptionData: Prisma.ModifierOptionCreateInput[] = [
   {
     ChallengeModifier: {
       connect: {
-        name: "general_purpose_programming_box",
+        name: "gpp_box",
       },
     },
-    name: "general_purpose_programming_box_typescript",
+    name: "gpp_box_typescript",
     text: "TypeScript",
     standard: true,
     isPublic: true,
@@ -403,10 +403,10 @@ const modifierOptionData: Prisma.ModifierOptionCreateInput[] = [
   {
     ChallengeModifier: {
       connect: {
-        name: "general_purpose_programming_box",
+        name: "gpp_box",
       },
     },
-    name: "general_purpose_programming_box_python",
+    name: "gpp_box_python",
     text: "Python",
     standard: true,
     isPublic: true,
@@ -414,10 +414,10 @@ const modifierOptionData: Prisma.ModifierOptionCreateInput[] = [
   {
     ChallengeModifier: {
       connect: {
-        name: "object_oriented_programming_box",
+        name: "oop_box",
       },
     },
-    name: "object_oriented_programming_box_ruby",
+    name: "oop_box_ruby",
     text: "Ruby",
     standard: true,
     isPublic: true,
@@ -425,10 +425,10 @@ const modifierOptionData: Prisma.ModifierOptionCreateInput[] = [
   {
     ChallengeModifier: {
       connect: {
-        name: "object_oriented_programming_box",
+        name: "oop_box",
       },
     },
-    name: "object_oriented_programming_box_smalltalk",
+    name: "oop_box_smalltalk",
     text: "Smalltalk",
     standard: true,
     isPublic: true,
@@ -436,10 +436,10 @@ const modifierOptionData: Prisma.ModifierOptionCreateInput[] = [
   {
     ChallengeModifier: {
       connect: {
-        name: "object_oriented_programming_box",
+        name: "oop_box",
       },
     },
-    name: "object_oriented_programming_box_scala",
+    name: "oop_box_scala",
     text: "Scala",
     standard: true,
     isPublic: true,
@@ -447,10 +447,10 @@ const modifierOptionData: Prisma.ModifierOptionCreateInput[] = [
   {
     ChallengeModifier: {
       connect: {
-        name: "functional_programming_box",
+        name: "fp_box",
       },
     },
-    name: "functional_programming_box_commonlisp",
+    name: "fp_box_commonlisp",
     text: "Common Lisp",
     standard: true,
     isPublic: true,
@@ -458,10 +458,10 @@ const modifierOptionData: Prisma.ModifierOptionCreateInput[] = [
   {
     ChallengeModifier: {
       connect: {
-        name: "functional_programming_box",
+        name: "fp_box",
       },
     },
-    name: "functional_programming_box_scheme",
+    name: "fp_box_scheme",
     text: "Scheme",
     standard: true,
     isPublic: true,
@@ -469,10 +469,10 @@ const modifierOptionData: Prisma.ModifierOptionCreateInput[] = [
   {
     ChallengeModifier: {
       connect: {
-        name: "functional_programming_box",
+        name: "fp_box",
       },
     },
-    name: "functional_programming_box_racket",
+    name: "fp_box_racket",
     text: "Racket",
     standard: true,
     isPublic: true,
@@ -480,10 +480,10 @@ const modifierOptionData: Prisma.ModifierOptionCreateInput[] = [
   {
     ChallengeModifier: {
       connect: {
-        name: "functional_programming_box",
+        name: "fp_box",
       },
     },
-    name: "functional_programming_box_clojure",
+    name: "fp_box_clojure",
     text: "Clojure",
     standard: true,
     isPublic: true,
@@ -491,10 +491,10 @@ const modifierOptionData: Prisma.ModifierOptionCreateInput[] = [
   {
     ChallengeModifier: {
       connect: {
-        name: "functional_programming_box",
+        name: "fp_box",
       },
     },
-    name: "functional_programming_box_erlang",
+    name: "fp_box_erlang",
     text: "Erlang",
     standard: true,
     isPublic: true,
@@ -502,10 +502,10 @@ const modifierOptionData: Prisma.ModifierOptionCreateInput[] = [
   {
     ChallengeModifier: {
       connect: {
-        name: "functional_programming_box",
+        name: "fp_box",
       },
     },
-    name: "functional_programming_box_elixir",
+    name: "fp_box_elixir",
     text: "Elixir",
     standard: true,
     isPublic: true,
@@ -513,10 +513,10 @@ const modifierOptionData: Prisma.ModifierOptionCreateInput[] = [
   {
     ChallengeModifier: {
       connect: {
-        name: "functional_programming_box",
+        name: "fp_box",
       },
     },
-    name: "functional_programming_box_haskell",
+    name: "fp_box_haskell",
     text: "Haskell",
     standard: true,
     isPublic: true,
@@ -524,10 +524,10 @@ const modifierOptionData: Prisma.ModifierOptionCreateInput[] = [
   {
     ChallengeModifier: {
       connect: {
-        name: "functional_programming_box",
+        name: "fp_box",
       },
     },
-    name: "functional_programming_box_ocaml",
+    name: "fp_box_ocaml",
     text: "OCaml",
     standard: true,
     isPublic: true,
@@ -535,10 +535,10 @@ const modifierOptionData: Prisma.ModifierOptionCreateInput[] = [
   {
     ChallengeModifier: {
       connect: {
-        name: "functional_programming_box",
+        name: "fp_box",
       },
     },
-    name: "functional_programming_box_elm",
+    name: "fp_box_elm",
     text: "Elm",
     standard: true,
     isPublic: true,
@@ -546,10 +546,10 @@ const modifierOptionData: Prisma.ModifierOptionCreateInput[] = [
   {
     ChallengeModifier: {
       connect: {
-        name: "functional_programming_box",
+        name: "fp_box",
       },
     },
-    name: "functional_programming_box_fsharp",
+    name: "fp_box_fsharp",
     text: "F#",
     standard: true,
     isPublic: true,
@@ -557,10 +557,10 @@ const modifierOptionData: Prisma.ModifierOptionCreateInput[] = [
   {
     ChallengeModifier: {
       connect: {
-        name: "legacy_programming_box",
+        name: "legacy_box",
       },
     },
-    name: "legacy_programming_box_algol",
+    name: "legacy_box_algol",
     text: "ALGOL",
     standard: true,
     isPublic: true,
@@ -568,10 +568,10 @@ const modifierOptionData: Prisma.ModifierOptionCreateInput[] = [
   {
     ChallengeModifier: {
       connect: {
-        name: "legacy_programming_box",
+        name: "legacy_box",
       },
     },
-    name: "legacy_programming_box_basic",
+    name: "legacy_box_basic",
     text: "BASIC",
     standard: true,
     isPublic: true,
@@ -579,10 +579,10 @@ const modifierOptionData: Prisma.ModifierOptionCreateInput[] = [
   {
     ChallengeModifier: {
       connect: {
-        name: "legacy_programming_box",
+        name: "legacy_box",
       },
     },
-    name: "legacy_programming_box_cobol",
+    name: "legacy_box_cobol",
     text: "COBOL",
     standard: true,
     isPublic: true,
@@ -590,10 +590,10 @@ const modifierOptionData: Prisma.ModifierOptionCreateInput[] = [
   {
     ChallengeModifier: {
       connect: {
-        name: "legacy_programming_box",
+        name: "legacy_box",
       },
     },
-    name: "legacy_programming_box_fortran",
+    name: "legacy_box_fortran",
     text: "FORTRAN",
     standard: true,
     isPublic: true,
@@ -601,10 +601,10 @@ const modifierOptionData: Prisma.ModifierOptionCreateInput[] = [
   {
     ChallengeModifier: {
       connect: {
-        name: "visual_programming_box",
+        name: "visual_box",
       },
     },
-    name: "visual_programming_box_scratch",
+    name: "visual_box_scratch",
     text: "Scratch",
     standard: true,
     isPublic: true,
@@ -612,10 +612,10 @@ const modifierOptionData: Prisma.ModifierOptionCreateInput[] = [
   {
     ChallengeModifier: {
       connect: {
-        name: "visual_programming_box",
+        name: "visual_box",
       },
     },
-    name: "visual_programming_box_blockly",
+    name: "visual_box_blockly",
     text: "Blockly",
     standard: true,
     isPublic: true,
@@ -623,10 +623,10 @@ const modifierOptionData: Prisma.ModifierOptionCreateInput[] = [
   {
     ChallengeModifier: {
       connect: {
-        name: "visual_programming_box",
+        name: "visual_box",
       },
     },
-    name: "visual_programming_box_greenfoot",
+    name: "visual_box_greenfoot",
     text: "Greenfoot",
     standard: true,
     isPublic: true,
@@ -634,10 +634,10 @@ const modifierOptionData: Prisma.ModifierOptionCreateInput[] = [
   {
     ChallengeModifier: {
       connect: {
-        name: "visual_programming_box",
+        name: "visual_box",
       },
     },
-    name: "visual_programming_box_puredata",
+    name: "visual_box_puredata",
     text: "Pure Data",
     standard: true,
     isPublic: true,
@@ -645,10 +645,10 @@ const modifierOptionData: Prisma.ModifierOptionCreateInput[] = [
   {
     ChallengeModifier: {
       connect: {
-        name: "visual_programming_box",
+        name: "visual_box",
       },
     },
-    name: "visual_programming_box_nodered",
+    name: "visual_box_nodered",
     text: "Node-RED",
     standard: true,
     isPublic: true,
@@ -656,10 +656,10 @@ const modifierOptionData: Prisma.ModifierOptionCreateInput[] = [
   {
     ChallengeModifier: {
       connect: {
-        name: "visual_programming_box",
+        name: "visual_box",
       },
     },
-    name: "visual_programming_box_drakon",
+    name: "visual_box_drakon",
     text: "DRAKON",
     standard: true,
     isPublic: true,
@@ -667,10 +667,10 @@ const modifierOptionData: Prisma.ModifierOptionCreateInput[] = [
   {
     ChallengeModifier: {
       connect: {
-        name: "esoteric_programming_box",
+        name: "esoteric_box",
       },
     },
-    name: "esoteric_programming_box_golfscript",
+    name: "esoteric_box_golfscript",
     text: "GolfScript",
     standard: true,
     isPublic: true,
@@ -678,10 +678,10 @@ const modifierOptionData: Prisma.ModifierOptionCreateInput[] = [
   {
     ChallengeModifier: {
       connect: {
-        name: "esoteric_programming_box",
+        name: "esoteric_box",
       },
     },
-    name: "esoteric_programming_box_intercal",
+    name: "esoteric_box_intercal",
     text: "INTERCAL",
     standard: true,
     isPublic: true,
@@ -689,10 +689,10 @@ const modifierOptionData: Prisma.ModifierOptionCreateInput[] = [
   {
     ChallengeModifier: {
       connect: {
-        name: "esoteric_programming_box",
+        name: "esoteric_box",
       },
     },
-    name: "esoteric_programming_box_unlambda",
+    name: "esoteric_box_unlambda",
     text: "Unlambda",
     standard: true,
     isPublic: true,
@@ -700,10 +700,10 @@ const modifierOptionData: Prisma.ModifierOptionCreateInput[] = [
   {
     ChallengeModifier: {
       connect: {
-        name: "esoteric_programming_box",
+        name: "esoteric_box",
       },
     },
-    name: "esoteric_programming_box_piet",
+    name: "esoteric_box_piet",
     text: "Piet",
     standard: true,
     isPublic: true,
@@ -711,10 +711,10 @@ const modifierOptionData: Prisma.ModifierOptionCreateInput[] = [
   {
     ChallengeModifier: {
       connect: {
-        name: "esoteric_programming_box",
+        name: "esoteric_box",
       },
     },
-    name: "esoteric_programming_box_befunge",
+    name: "esoteric_box_befunge",
     text: "Befunge",
     standard: true,
     isPublic: true,
@@ -722,10 +722,10 @@ const modifierOptionData: Prisma.ModifierOptionCreateInput[] = [
   {
     ChallengeModifier: {
       connect: {
-        name: "esoteric_programming_box",
+        name: "esoteric_box",
       },
     },
-    name: "esoteric_programming_box_brainfuck",
+    name: "esoteric_box_brainfuck",
     text: "Brainfuck",
     standard: true,
     isPublic: true,
@@ -733,10 +733,10 @@ const modifierOptionData: Prisma.ModifierOptionCreateInput[] = [
   {
     ChallengeModifier: {
       connect: {
-        name: "esoteric_programming_box",
+        name: "esoteric_box",
       },
     },
-    name: "esoteric_programming_box_jsfuck",
+    name: "esoteric_box_jsfuck",
     text: "JSFuck",
     standard: true,
     isPublic: true,
@@ -744,10 +744,10 @@ const modifierOptionData: Prisma.ModifierOptionCreateInput[] = [
   {
     ChallengeModifier: {
       connect: {
-        name: "esoteric_programming_box",
+        name: "esoteric_box",
       },
     },
-    name: "esoteric_programming_box_chicken",
+    name: "esoteric_box_chicken",
     text: "Chicken",
     standard: true,
     isPublic: true,
@@ -755,10 +755,10 @@ const modifierOptionData: Prisma.ModifierOptionCreateInput[] = [
   {
     ChallengeModifier: {
       connect: {
-        name: "esoteric_programming_box",
+        name: "esoteric_box",
       },
     },
-    name: "esoteric_programming_box_shakespeare",
+    name: "esoteric_box_shakespeare",
     text: "Shakespeare",
     standard: true,
     isPublic: true,
@@ -766,10 +766,10 @@ const modifierOptionData: Prisma.ModifierOptionCreateInput[] = [
   {
     ChallengeModifier: {
       connect: {
-        name: "esoteric_programming_box",
+        name: "esoteric_box",
       },
     },
-    name: "esoteric_programming_box_rockstar",
+    name: "esoteric_box_rockstar",
     text: "Rockstar",
     standard: true,
     isPublic: true,
@@ -777,10 +777,10 @@ const modifierOptionData: Prisma.ModifierOptionCreateInput[] = [
   {
     ChallengeModifier: {
       connect: {
-        name: "esoteric_programming_box",
+        name: "esoteric_box",
       },
     },
-    name: "esoteric_programming_box_storyteller",
+    name: "esoteric_box_storyteller",
     text: "Storyteller",
     standard: true,
     isPublic: true,
@@ -788,10 +788,10 @@ const modifierOptionData: Prisma.ModifierOptionCreateInput[] = [
   {
     ChallengeModifier: {
       connect: {
-        name: "esoteric_programming_box",
+        name: "esoteric_box",
       },
     },
-    name: "esoteric_programming_box_lolcode",
+    name: "esoteric_box_lolcode",
     text: "LOLCODE",
     standard: true,
     isPublic: true,
@@ -799,10 +799,10 @@ const modifierOptionData: Prisma.ModifierOptionCreateInput[] = [
   {
     ChallengeModifier: {
       connect: {
-        name: "esoteric_programming_box",
+        name: "esoteric_box",
       },
     },
-    name: "esoteric_programming_box_chef",
+    name: "esoteric_box_chef",
     text: "Chef",
     standard: true,
     isPublic: true,
@@ -892,6 +892,7 @@ const modifierOptionData: Prisma.ModifierOptionCreateInput[] = [
     },
     name: "text_editor_box_sysdef",
     text: "Your system default text editor (e.g. gedit, TextEdit, Notepad)",
+    shortText: "System Default",
     standard: true,
     isPublic: true,
   },
@@ -943,7 +944,6 @@ const titleData: Prisma.TitleCreateInput[] = [
     name: "Epic Champion",
     minimumScore: 870,
   },
-
   {
     name: "Legendary Champion",
     minimumScore: 1000,
@@ -965,17 +965,6 @@ for (const u of titleData) {
     create: u,
   });
   console.log(`Created title with id: ${user.id}`);
-}
-
-const userData: Prisma.UserCreateInput[] = [
-  { "id": "1", "numberOfGames": 0 },
-];
-
-for (const u of userData) {
-  const user = await prisma.user.create({
-    data: u,
-  });
-  console.log(`Created user with id: ${user.id}`);
 }
 
 console.log(`Seeding finished.`);

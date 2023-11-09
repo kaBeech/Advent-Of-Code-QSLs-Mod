@@ -189,6 +189,7 @@ exports.Prisma.ModifierOptionScalarFieldEnum = {
   challengeModifierId: 'challengeModifierId',
   name: 'name',
   text: 'text',
+  shortText: 'shortText',
   explanatoryUrl: 'explanatoryUrl',
   standard: 'standard',
   createdById: 'createdById',

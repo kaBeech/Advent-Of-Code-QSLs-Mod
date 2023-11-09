@@ -9045,6 +9045,7 @@ export namespace Prisma {
     challengeModifierId: number | null
     name: string | null
     text: string | null
+    shortText: string | null
     explanatoryUrl: string | null
     standard: boolean | null
     createdById: string | null
@@ -9057,6 +9058,7 @@ export namespace Prisma {
     challengeModifierId: number | null
     name: string | null
     text: string | null
+    shortText: string | null
     explanatoryUrl: string | null
     standard: boolean | null
     createdById: string | null
@@ -9069,6 +9071,7 @@ export namespace Prisma {
     challengeModifierId: number
     name: number
     text: number
+    shortText: number
     explanatoryUrl: number
     standard: number
     createdById: number
@@ -9093,6 +9096,7 @@ export namespace Prisma {
     challengeModifierId?: true
     name?: true
     text?: true
+    shortText?: true
     explanatoryUrl?: true
     standard?: true
     createdById?: true
@@ -9105,6 +9109,7 @@ export namespace Prisma {
     challengeModifierId?: true
     name?: true
     text?: true
+    shortText?: true
     explanatoryUrl?: true
     standard?: true
     createdById?: true
@@ -9117,6 +9122,7 @@ export namespace Prisma {
     challengeModifierId?: true
     name?: true
     text?: true
+    shortText?: true
     explanatoryUrl?: true
     standard?: true
     createdById?: true
@@ -9216,6 +9222,7 @@ export namespace Prisma {
     challengeModifierId: number
     name: string
     text: string
+    shortText: string | null
     explanatoryUrl: string | null
     standard: boolean
     createdById: string | null
@@ -9247,6 +9254,7 @@ export namespace Prisma {
     challengeModifierId?: boolean
     name?: boolean
     text?: boolean
+    shortText?: boolean
     explanatoryUrl?: boolean
     standard?: boolean
     createdById?: boolean
@@ -9268,6 +9276,7 @@ export namespace Prisma {
     challengeModifierId?: boolean
     name?: boolean
     text?: boolean
+    shortText?: boolean
     explanatoryUrl?: boolean
     standard?: boolean
     createdById?: boolean
@@ -9305,6 +9314,7 @@ export namespace Prisma {
       challengeModifierId: number
       name: string
       text: string
+      shortText: string | null
       explanatoryUrl: string | null
       standard: boolean
       createdById: string | null
@@ -9723,6 +9733,7 @@ export namespace Prisma {
     readonly challengeModifierId: FieldRef<"ModifierOption", 'Int'>
     readonly name: FieldRef<"ModifierOption", 'String'>
     readonly text: FieldRef<"ModifierOption", 'String'>
+    readonly shortText: FieldRef<"ModifierOption", 'String'>
     readonly explanatoryUrl: FieldRef<"ModifierOption", 'String'>
     readonly standard: FieldRef<"ModifierOption", 'Boolean'>
     readonly createdById: FieldRef<"ModifierOption", 'String'>
@@ -13243,6 +13254,7 @@ export namespace Prisma {
     challengeModifierId: 'challengeModifierId',
     name: 'name',
     text: 'text',
+    shortText: 'shortText',
     explanatoryUrl: 'explanatoryUrl',
     standard: 'standard',
     createdById: 'createdById',
@@ -13957,6 +13969,7 @@ export namespace Prisma {
     challengeModifierId?: IntFilter<"ModifierOption"> | number
     name?: StringFilter<"ModifierOption"> | string
     text?: StringFilter<"ModifierOption"> | string
+    shortText?: StringNullableFilter<"ModifierOption"> | string | null
     explanatoryUrl?: StringNullableFilter<"ModifierOption"> | string | null
     standard?: BoolFilter<"ModifierOption"> | boolean
     createdById?: StringNullableFilter<"ModifierOption"> | string | null
@@ -13977,6 +13990,7 @@ export namespace Prisma {
     challengeModifierId?: SortOrder
     name?: SortOrder
     text?: SortOrder
+    shortText?: SortOrderInput | SortOrder
     explanatoryUrl?: SortOrderInput | SortOrder
     standard?: SortOrder
     createdById?: SortOrderInput | SortOrder
@@ -14000,6 +14014,7 @@ export namespace Prisma {
     dateCreated?: DateTimeFilter<"ModifierOption"> | Date | string
     challengeModifierId?: IntFilter<"ModifierOption"> | number
     text?: StringFilter<"ModifierOption"> | string
+    shortText?: StringNullableFilter<"ModifierOption"> | string | null
     explanatoryUrl?: StringNullableFilter<"ModifierOption"> | string | null
     standard?: BoolFilter<"ModifierOption"> | boolean
     createdById?: StringNullableFilter<"ModifierOption"> | string | null
@@ -14020,6 +14035,7 @@ export namespace Prisma {
     challengeModifierId?: SortOrder
     name?: SortOrder
     text?: SortOrder
+    shortText?: SortOrderInput | SortOrder
     explanatoryUrl?: SortOrderInput | SortOrder
     standard?: SortOrder
     createdById?: SortOrderInput | SortOrder
@@ -14040,6 +14056,7 @@ export namespace Prisma {
     challengeModifierId?: IntWithAggregatesFilter<"ModifierOption"> | number
     name?: StringWithAggregatesFilter<"ModifierOption"> | string
     text?: StringWithAggregatesFilter<"ModifierOption"> | string
+    shortText?: StringNullableWithAggregatesFilter<"ModifierOption"> | string | null
     explanatoryUrl?: StringNullableWithAggregatesFilter<"ModifierOption"> | string | null
     standard?: BoolWithAggregatesFilter<"ModifierOption"> | boolean
     createdById?: StringNullableWithAggregatesFilter<"ModifierOption"> | string | null
@@ -14835,6 +14852,7 @@ export namespace Prisma {
     dateCreated?: Date | string
     name: string
     text: string
+    shortText?: string | null
     explanatoryUrl?: string | null
     standard?: boolean
     isPublic?: boolean
@@ -14854,6 +14872,7 @@ export namespace Prisma {
     challengeModifierId: number
     name: string
     text: string
+    shortText?: string | null
     explanatoryUrl?: string | null
     standard?: boolean
     createdById?: string | null
@@ -14870,6 +14889,7 @@ export namespace Prisma {
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     name?: StringFieldUpdateOperationsInput | string
     text?: StringFieldUpdateOperationsInput | string
+    shortText?: NullableStringFieldUpdateOperationsInput | string | null
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
     isPublic?: BoolFieldUpdateOperationsInput | boolean
@@ -14889,6 +14909,7 @@ export namespace Prisma {
     challengeModifierId?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     text?: StringFieldUpdateOperationsInput | string
+    shortText?: NullableStringFieldUpdateOperationsInput | string | null
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
     createdById?: NullableStringFieldUpdateOperationsInput | string | null
@@ -14907,6 +14928,7 @@ export namespace Prisma {
     challengeModifierId: number
     name: string
     text: string
+    shortText?: string | null
     explanatoryUrl?: string | null
     standard?: boolean
     createdById?: string | null
@@ -14917,6 +14939,7 @@ export namespace Prisma {
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     name?: StringFieldUpdateOperationsInput | string
     text?: StringFieldUpdateOperationsInput | string
+    shortText?: NullableStringFieldUpdateOperationsInput | string | null
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
     isPublic?: BoolFieldUpdateOperationsInput | boolean
@@ -14928,6 +14951,7 @@ export namespace Prisma {
     challengeModifierId?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     text?: StringFieldUpdateOperationsInput | string
+    shortText?: NullableStringFieldUpdateOperationsInput | string | null
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
     createdById?: NullableStringFieldUpdateOperationsInput | string | null
@@ -15733,6 +15757,7 @@ export namespace Prisma {
     challengeModifierId?: SortOrder
     name?: SortOrder
     text?: SortOrder
+    shortText?: SortOrder
     explanatoryUrl?: SortOrder
     standard?: SortOrder
     createdById?: SortOrder
@@ -15750,6 +15775,7 @@ export namespace Prisma {
     challengeModifierId?: SortOrder
     name?: SortOrder
     text?: SortOrder
+    shortText?: SortOrder
     explanatoryUrl?: SortOrder
     standard?: SortOrder
     createdById?: SortOrder
@@ -15762,6 +15788,7 @@ export namespace Prisma {
     challengeModifierId?: SortOrder
     name?: SortOrder
     text?: SortOrder
+    shortText?: SortOrder
     explanatoryUrl?: SortOrder
     standard?: SortOrder
     createdById?: SortOrder
@@ -17816,6 +17843,7 @@ export namespace Prisma {
     dateCreated?: Date | string
     name: string
     text: string
+    shortText?: string | null
     explanatoryUrl?: string | null
     standard?: boolean
     isPublic?: boolean
@@ -17834,6 +17862,7 @@ export namespace Prisma {
     challengeModifierId: number
     name: string
     text: string
+    shortText?: string | null
     explanatoryUrl?: string | null
     standard?: boolean
     isPublic?: boolean
@@ -17970,6 +17999,7 @@ export namespace Prisma {
     dateCreated?: Date | string
     name: string
     text: string
+    shortText?: string | null
     explanatoryUrl?: string | null
     standard?: boolean
     isPublic?: boolean
@@ -17988,6 +18018,7 @@ export namespace Prisma {
     challengeModifierId: number
     name: string
     text: string
+    shortText?: string | null
     explanatoryUrl?: string | null
     standard?: boolean
     createdById?: string | null
@@ -18048,6 +18079,7 @@ export namespace Prisma {
     dateCreated?: Date | string
     name: string
     text: string
+    shortText?: string | null
     explanatoryUrl?: string | null
     standard?: boolean
     isPublic?: boolean
@@ -18066,6 +18098,7 @@ export namespace Prisma {
     challengeModifierId: number
     name: string
     text: string
+    shortText?: string | null
     explanatoryUrl?: string | null
     standard?: boolean
     createdById?: string | null
@@ -18207,6 +18240,7 @@ export namespace Prisma {
     challengeModifierId?: IntFilter<"ModifierOption"> | number
     name?: StringFilter<"ModifierOption"> | string
     text?: StringFilter<"ModifierOption"> | string
+    shortText?: StringNullableFilter<"ModifierOption"> | string | null
     explanatoryUrl?: StringNullableFilter<"ModifierOption"> | string | null
     standard?: BoolFilter<"ModifierOption"> | boolean
     createdById?: StringNullableFilter<"ModifierOption"> | string | null
@@ -19028,6 +19062,7 @@ export namespace Prisma {
     dateCreated?: Date | string
     name: string
     text: string
+    shortText?: string | null
     explanatoryUrl?: string | null
     standard?: boolean
     isPublic?: boolean
@@ -19046,6 +19081,7 @@ export namespace Prisma {
     challengeModifierId: number
     name: string
     text: string
+    shortText?: string | null
     explanatoryUrl?: string | null
     standard?: boolean
     createdById?: string | null
@@ -19106,6 +19142,7 @@ export namespace Prisma {
     dateCreated?: Date | string
     name: string
     text: string
+    shortText?: string | null
     explanatoryUrl?: string | null
     standard?: boolean
     isPublic?: boolean
@@ -19124,6 +19161,7 @@ export namespace Prisma {
     challengeModifierId: number
     name: string
     text: string
+    shortText?: string | null
     explanatoryUrl?: string | null
     standard?: boolean
     createdById?: string | null
@@ -19341,6 +19379,7 @@ export namespace Prisma {
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     name?: StringFieldUpdateOperationsInput | string
     text?: StringFieldUpdateOperationsInput | string
+    shortText?: NullableStringFieldUpdateOperationsInput | string | null
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
     isPublic?: BoolFieldUpdateOperationsInput | boolean
@@ -19359,6 +19398,7 @@ export namespace Prisma {
     challengeModifierId?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     text?: StringFieldUpdateOperationsInput | string
+    shortText?: NullableStringFieldUpdateOperationsInput | string | null
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
     createdById?: NullableStringFieldUpdateOperationsInput | string | null
@@ -19431,6 +19471,7 @@ export namespace Prisma {
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     name?: StringFieldUpdateOperationsInput | string
     text?: StringFieldUpdateOperationsInput | string
+    shortText?: NullableStringFieldUpdateOperationsInput | string | null
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
     isPublic?: BoolFieldUpdateOperationsInput | boolean
@@ -19449,6 +19490,7 @@ export namespace Prisma {
     challengeModifierId?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     text?: StringFieldUpdateOperationsInput | string
+    shortText?: NullableStringFieldUpdateOperationsInput | string | null
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
     createdById?: NullableStringFieldUpdateOperationsInput | string | null
@@ -19639,6 +19681,7 @@ export namespace Prisma {
     dateCreated?: Date | string
     name: string
     text: string
+    shortText?: string | null
     explanatoryUrl?: string | null
     standard?: boolean
     isPublic?: boolean
@@ -19656,6 +19699,7 @@ export namespace Prisma {
     dateCreated?: Date | string
     name: string
     text: string
+    shortText?: string | null
     explanatoryUrl?: string | null
     standard?: boolean
     createdById?: string | null
@@ -20561,6 +20605,7 @@ export namespace Prisma {
     dateCreated?: Date | string
     name: string
     text: string
+    shortText?: string | null
     explanatoryUrl?: string | null
     standard?: boolean
     isPublic?: boolean
@@ -20579,6 +20624,7 @@ export namespace Prisma {
     challengeModifierId: number
     name: string
     text: string
+    shortText?: string | null
     explanatoryUrl?: string | null
     standard?: boolean
     createdById?: string | null
@@ -20599,6 +20645,7 @@ export namespace Prisma {
     dateCreated?: Date | string
     name: string
     text: string
+    shortText?: string | null
     explanatoryUrl?: string | null
     standard?: boolean
     isPublic?: boolean
@@ -20617,6 +20664,7 @@ export namespace Prisma {
     challengeModifierId: number
     name: string
     text: string
+    shortText?: string | null
     explanatoryUrl?: string | null
     standard?: boolean
     createdById?: string | null
@@ -21162,6 +21210,7 @@ export namespace Prisma {
     challengeModifierId: number
     name: string
     text: string
+    shortText?: string | null
     explanatoryUrl?: string | null
     standard?: boolean
     isPublic?: boolean
@@ -21327,6 +21376,7 @@ export namespace Prisma {
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     name?: StringFieldUpdateOperationsInput | string
     text?: StringFieldUpdateOperationsInput | string
+    shortText?: NullableStringFieldUpdateOperationsInput | string | null
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
     isPublic?: BoolFieldUpdateOperationsInput | boolean
@@ -21345,6 +21395,7 @@ export namespace Prisma {
     challengeModifierId?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     text?: StringFieldUpdateOperationsInput | string
+    shortText?: NullableStringFieldUpdateOperationsInput | string | null
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
     isPublic?: BoolFieldUpdateOperationsInput | boolean
@@ -21362,6 +21413,7 @@ export namespace Prisma {
     challengeModifierId?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     text?: StringFieldUpdateOperationsInput | string
+    shortText?: NullableStringFieldUpdateOperationsInput | string | null
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
     isPublic?: BoolFieldUpdateOperationsInput | boolean
@@ -21478,6 +21530,7 @@ export namespace Prisma {
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     name?: StringFieldUpdateOperationsInput | string
     text?: StringFieldUpdateOperationsInput | string
+    shortText?: NullableStringFieldUpdateOperationsInput | string | null
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
     isPublic?: BoolFieldUpdateOperationsInput | boolean
@@ -21496,6 +21549,7 @@ export namespace Prisma {
     challengeModifierId?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     text?: StringFieldUpdateOperationsInput | string
+    shortText?: NullableStringFieldUpdateOperationsInput | string | null
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
     createdById?: NullableStringFieldUpdateOperationsInput | string | null
@@ -21513,6 +21567,7 @@ export namespace Prisma {
     challengeModifierId?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     text?: StringFieldUpdateOperationsInput | string
+    shortText?: NullableStringFieldUpdateOperationsInput | string | null
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
     createdById?: NullableStringFieldUpdateOperationsInput | string | null
@@ -21570,6 +21625,7 @@ export namespace Prisma {
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     name?: StringFieldUpdateOperationsInput | string
     text?: StringFieldUpdateOperationsInput | string
+    shortText?: NullableStringFieldUpdateOperationsInput | string | null
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
     isPublic?: BoolFieldUpdateOperationsInput | boolean
@@ -21588,6 +21644,7 @@ export namespace Prisma {
     challengeModifierId?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     text?: StringFieldUpdateOperationsInput | string
+    shortText?: NullableStringFieldUpdateOperationsInput | string | null
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
     createdById?: NullableStringFieldUpdateOperationsInput | string | null
@@ -21605,6 +21662,7 @@ export namespace Prisma {
     challengeModifierId?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     text?: StringFieldUpdateOperationsInput | string
+    shortText?: NullableStringFieldUpdateOperationsInput | string | null
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
     createdById?: NullableStringFieldUpdateOperationsInput | string | null
@@ -22067,6 +22125,7 @@ export namespace Prisma {
     dateCreated?: Date | string
     name: string
     text: string
+    shortText?: string | null
     explanatoryUrl?: string | null
     standard?: boolean
     createdById?: string | null
@@ -22197,6 +22256,7 @@ export namespace Prisma {
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     name?: StringFieldUpdateOperationsInput | string
     text?: StringFieldUpdateOperationsInput | string
+    shortText?: NullableStringFieldUpdateOperationsInput | string | null
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
     isPublic?: BoolFieldUpdateOperationsInput | boolean
@@ -22214,6 +22274,7 @@ export namespace Prisma {
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     name?: StringFieldUpdateOperationsInput | string
     text?: StringFieldUpdateOperationsInput | string
+    shortText?: NullableStringFieldUpdateOperationsInput | string | null
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
     createdById?: NullableStringFieldUpdateOperationsInput | string | null
@@ -22231,6 +22292,7 @@ export namespace Prisma {
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     name?: StringFieldUpdateOperationsInput | string
     text?: StringFieldUpdateOperationsInput | string
+    shortText?: NullableStringFieldUpdateOperationsInput | string | null
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
     createdById?: NullableStringFieldUpdateOperationsInput | string | null
@@ -22741,6 +22803,7 @@ export namespace Prisma {
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     name?: StringFieldUpdateOperationsInput | string
     text?: StringFieldUpdateOperationsInput | string
+    shortText?: NullableStringFieldUpdateOperationsInput | string | null
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
     isPublic?: BoolFieldUpdateOperationsInput | boolean
@@ -22759,6 +22822,7 @@ export namespace Prisma {
     challengeModifierId?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     text?: StringFieldUpdateOperationsInput | string
+    shortText?: NullableStringFieldUpdateOperationsInput | string | null
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
     createdById?: NullableStringFieldUpdateOperationsInput | string | null
@@ -22776,6 +22840,7 @@ export namespace Prisma {
     challengeModifierId?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     text?: StringFieldUpdateOperationsInput | string
+    shortText?: NullableStringFieldUpdateOperationsInput | string | null
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
     createdById?: NullableStringFieldUpdateOperationsInput | string | null
@@ -22786,6 +22851,7 @@ export namespace Prisma {
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     name?: StringFieldUpdateOperationsInput | string
     text?: StringFieldUpdateOperationsInput | string
+    shortText?: NullableStringFieldUpdateOperationsInput | string | null
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
     isPublic?: BoolFieldUpdateOperationsInput | boolean
@@ -22804,6 +22870,7 @@ export namespace Prisma {
     challengeModifierId?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     text?: StringFieldUpdateOperationsInput | string
+    shortText?: NullableStringFieldUpdateOperationsInput | string | null
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
     createdById?: NullableStringFieldUpdateOperationsInput | string | null
@@ -22821,6 +22888,7 @@ export namespace Prisma {
     challengeModifierId?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     text?: StringFieldUpdateOperationsInput | string
+    shortText?: NullableStringFieldUpdateOperationsInput | string | null
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
     createdById?: NullableStringFieldUpdateOperationsInput | string | null

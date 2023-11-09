@@ -127,6 +127,7 @@ model ModifierOption {
   challengeModifierId           Int
   name                          String            @unique
   text                          String
+  shortText                     String?
   explanatoryUrl                String?
   standard                      Boolean           @default(false)
   createdById                   String?
