@@ -185,8 +185,8 @@ model TestChair {
   dateCreated   DateTime  @default(now())
   name          String
   favoriteColor String
-  height        Int
   tableId       Int
+  height        Int
   Table         TestTable @relation(fields: [tableId], references: [id])
 }
 

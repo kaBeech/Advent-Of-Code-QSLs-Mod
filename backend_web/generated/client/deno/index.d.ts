@@ -14423,14 +14423,14 @@ export namespace Prisma {
 
   export type TestChairAvgAggregateOutputType = {
     id: number | null
-    height: number | null
     tableId: number | null
+    height: number | null
   }
 
   export type TestChairSumAggregateOutputType = {
     id: number | null
-    height: number | null
     tableId: number | null
+    height: number | null
   }
 
   export type TestChairMinAggregateOutputType = {
@@ -14438,8 +14438,8 @@ export namespace Prisma {
     dateCreated: Date | null
     name: string | null
     favoriteColor: string | null
-    height: number | null
     tableId: number | null
+    height: number | null
   }
 
   export type TestChairMaxAggregateOutputType = {
@@ -14447,8 +14447,8 @@ export namespace Prisma {
     dateCreated: Date | null
     name: string | null
     favoriteColor: string | null
-    height: number | null
     tableId: number | null
+    height: number | null
   }
 
   export type TestChairCountAggregateOutputType = {
@@ -14456,22 +14456,22 @@ export namespace Prisma {
     dateCreated: number
     name: number
     favoriteColor: number
-    height: number
     tableId: number
+    height: number
     _all: number
   }
 
 
   export type TestChairAvgAggregateInputType = {
     id?: true
-    height?: true
     tableId?: true
+    height?: true
   }
 
   export type TestChairSumAggregateInputType = {
     id?: true
-    height?: true
     tableId?: true
+    height?: true
   }
 
   export type TestChairMinAggregateInputType = {
@@ -14479,8 +14479,8 @@ export namespace Prisma {
     dateCreated?: true
     name?: true
     favoriteColor?: true
-    height?: true
     tableId?: true
+    height?: true
   }
 
   export type TestChairMaxAggregateInputType = {
@@ -14488,8 +14488,8 @@ export namespace Prisma {
     dateCreated?: true
     name?: true
     favoriteColor?: true
-    height?: true
     tableId?: true
+    height?: true
   }
 
   export type TestChairCountAggregateInputType = {
@@ -14497,8 +14497,8 @@ export namespace Prisma {
     dateCreated?: true
     name?: true
     favoriteColor?: true
-    height?: true
     tableId?: true
+    height?: true
     _all?: true
   }
 
@@ -14593,8 +14593,8 @@ export namespace Prisma {
     dateCreated: Date
     name: string
     favoriteColor: string
-    height: number
     tableId: number
+    height: number
     _count: TestChairCountAggregateOutputType | null
     _avg: TestChairAvgAggregateOutputType | null
     _sum: TestChairSumAggregateOutputType | null
@@ -14621,8 +14621,8 @@ export namespace Prisma {
     dateCreated?: boolean
     name?: boolean
     favoriteColor?: boolean
-    height?: boolean
     tableId?: boolean
+    height?: boolean
     Table?: boolean | TestTableDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["testChair"]>
 
@@ -14631,8 +14631,8 @@ export namespace Prisma {
     dateCreated?: boolean
     name?: boolean
     favoriteColor?: boolean
-    height?: boolean
     tableId?: boolean
+    height?: boolean
   }
 
   export type TestChairInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -14650,8 +14650,8 @@ export namespace Prisma {
       dateCreated: Date
       name: string
       favoriteColor: string
-      height: number
       tableId: number
+      height: number
     }, ExtArgs["result"]["testChair"]>
     composites: {}
   }
@@ -15051,8 +15051,8 @@ export namespace Prisma {
     readonly dateCreated: FieldRef<"TestChair", 'DateTime'>
     readonly name: FieldRef<"TestChair", 'String'>
     readonly favoriteColor: FieldRef<"TestChair", 'String'>
-    readonly height: FieldRef<"TestChair", 'Int'>
     readonly tableId: FieldRef<"TestChair", 'Int'>
+    readonly height: FieldRef<"TestChair", 'Int'>
   }
     
 
@@ -16506,8 +16506,8 @@ export namespace Prisma {
     dateCreated: 'dateCreated',
     name: 'name',
     favoriteColor: 'favoriteColor',
-    height: 'height',
-    tableId: 'tableId'
+    tableId: 'tableId',
+    height: 'height'
   };
 
   export type TestChairScalarFieldEnum = (typeof TestChairScalarFieldEnum)[keyof typeof TestChairScalarFieldEnum]
@@ -17527,8 +17527,8 @@ export namespace Prisma {
     dateCreated?: DateTimeFilter<"TestChair"> | Date | string
     name?: StringFilter<"TestChair"> | string
     favoriteColor?: StringFilter<"TestChair"> | string
-    height?: IntFilter<"TestChair"> | number
     tableId?: IntFilter<"TestChair"> | number
+    height?: IntFilter<"TestChair"> | number
     Table?: XOR<TestTableRelationFilter, TestTableWhereInput>
   }
 
@@ -17537,8 +17537,8 @@ export namespace Prisma {
     dateCreated?: SortOrder
     name?: SortOrder
     favoriteColor?: SortOrder
-    height?: SortOrder
     tableId?: SortOrder
+    height?: SortOrder
     Table?: TestTableOrderByWithRelationInput
   }
 
@@ -17550,8 +17550,8 @@ export namespace Prisma {
     dateCreated?: DateTimeFilter<"TestChair"> | Date | string
     name?: StringFilter<"TestChair"> | string
     favoriteColor?: StringFilter<"TestChair"> | string
-    height?: IntFilter<"TestChair"> | number
     tableId?: IntFilter<"TestChair"> | number
+    height?: IntFilter<"TestChair"> | number
     Table?: XOR<TestTableRelationFilter, TestTableWhereInput>
   }, "id">
 
@@ -17560,8 +17560,8 @@ export namespace Prisma {
     dateCreated?: SortOrder
     name?: SortOrder
     favoriteColor?: SortOrder
-    height?: SortOrder
     tableId?: SortOrder
+    height?: SortOrder
     _count?: TestChairCountOrderByAggregateInput
     _avg?: TestChairAvgOrderByAggregateInput
     _max?: TestChairMaxOrderByAggregateInput
@@ -17577,8 +17577,8 @@ export namespace Prisma {
     dateCreated?: DateTimeWithAggregatesFilter<"TestChair"> | Date | string
     name?: StringWithAggregatesFilter<"TestChair"> | string
     favoriteColor?: StringWithAggregatesFilter<"TestChair"> | string
-    height?: IntWithAggregatesFilter<"TestChair"> | number
     tableId?: IntWithAggregatesFilter<"TestChair"> | number
+    height?: IntWithAggregatesFilter<"TestChair"> | number
   }
 
   export type TestPlateWhereInput = {
@@ -18570,8 +18570,8 @@ export namespace Prisma {
     dateCreated?: Date | string
     name: string
     favoriteColor: string
-    height: number
     tableId: number
+    height: number
   }
 
   export type TestChairUpdateInput = {
@@ -18587,8 +18587,8 @@ export namespace Prisma {
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     name?: StringFieldUpdateOperationsInput | string
     favoriteColor?: StringFieldUpdateOperationsInput | string
-    height?: IntFieldUpdateOperationsInput | number
     tableId?: IntFieldUpdateOperationsInput | number
+    height?: IntFieldUpdateOperationsInput | number
   }
 
   export type TestChairCreateManyInput = {
@@ -18596,8 +18596,8 @@ export namespace Prisma {
     dateCreated?: Date | string
     name: string
     favoriteColor: string
-    height: number
     tableId: number
+    height: number
   }
 
   export type TestChairUpdateManyMutationInput = {
@@ -18612,8 +18612,8 @@ export namespace Prisma {
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     name?: StringFieldUpdateOperationsInput | string
     favoriteColor?: StringFieldUpdateOperationsInput | string
-    height?: IntFieldUpdateOperationsInput | number
     tableId?: IntFieldUpdateOperationsInput | number
+    height?: IntFieldUpdateOperationsInput | number
   }
 
   export type TestPlateCreateInput = {
@@ -19508,14 +19508,14 @@ export namespace Prisma {
     dateCreated?: SortOrder
     name?: SortOrder
     favoriteColor?: SortOrder
-    height?: SortOrder
     tableId?: SortOrder
+    height?: SortOrder
   }
 
   export type TestChairAvgOrderByAggregateInput = {
     id?: SortOrder
-    height?: SortOrder
     tableId?: SortOrder
+    height?: SortOrder
   }
 
   export type TestChairMaxOrderByAggregateInput = {
@@ -19523,8 +19523,8 @@ export namespace Prisma {
     dateCreated?: SortOrder
     name?: SortOrder
     favoriteColor?: SortOrder
-    height?: SortOrder
     tableId?: SortOrder
+    height?: SortOrder
   }
 
   export type TestChairMinOrderByAggregateInput = {
@@ -19532,14 +19532,14 @@ export namespace Prisma {
     dateCreated?: SortOrder
     name?: SortOrder
     favoriteColor?: SortOrder
-    height?: SortOrder
     tableId?: SortOrder
+    height?: SortOrder
   }
 
   export type TestChairSumOrderByAggregateInput = {
     id?: SortOrder
-    height?: SortOrder
     tableId?: SortOrder
+    height?: SortOrder
   }
 
   export type TestPlateCountOrderByAggregateInput = {
@@ -25006,8 +25006,8 @@ export namespace Prisma {
     dateCreated?: DateTimeFilter<"TestChair"> | Date | string
     name?: StringFilter<"TestChair"> | string
     favoriteColor?: StringFilter<"TestChair"> | string
-    height?: IntFilter<"TestChair"> | number
     tableId?: IntFilter<"TestChair"> | number
+    height?: IntFilter<"TestChair"> | number
   }
 
   export type TestPlateUpsertWithWhereUniqueWithoutTableInput = {

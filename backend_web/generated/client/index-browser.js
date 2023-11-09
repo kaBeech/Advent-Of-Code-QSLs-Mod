@@ -230,8 +230,8 @@ exports.Prisma.TestChairScalarFieldEnum = {
   dateCreated: 'dateCreated',
   name: 'name',
   favoriteColor: 'favoriteColor',
-  height: 'height',
-  tableId: 'tableId'
+  tableId: 'tableId',
+  height: 'height'
 };
 
 exports.Prisma.TestPlateScalarFieldEnum = {
