@@ -73,6 +73,11 @@ export type TestTable = $Result.DefaultSelection<Prisma.$TestTablePayload>
  * 
  */
 export type TestChair = $Result.DefaultSelection<Prisma.$TestChairPayload>
+/**
+ * Model TestPlate
+ * 
+ */
+export type TestPlate = $Result.DefaultSelection<Prisma.$TestPlatePayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -315,6 +320,16 @@ export class PrismaClient<
     * ```
     */
   get testChair(): Prisma.TestChairDelegate<ExtArgs>;
+
+  /**
+   * `prisma.testPlate`: Exposes CRUD operations for the **TestPlate** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more TestPlates
+    * const testPlates = await prisma.testPlate.findMany()
+    * ```
+    */
+  get testPlate(): Prisma.TestPlateDelegate<ExtArgs>;
 }
 
 export namespace Prisma {
@@ -796,7 +811,8 @@ export namespace Prisma {
     Upvote: 'Upvote',
     Downvote: 'Downvote',
     TestTable: 'TestTable',
-    TestChair: 'TestChair'
+    TestChair: 'TestChair',
+    TestPlate: 'TestPlate'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -813,7 +829,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     meta: {
-      modelProps: 'user' | 'publicProfile' | 'game' | 'rank' | 'day' | 'challengeModifier' | 'modifierOption' | 'modifierPack' | 'upvote' | 'downvote' | 'testTable' | 'testChair'
+      modelProps: 'user' | 'publicProfile' | 'game' | 'rank' | 'day' | 'challengeModifier' | 'modifierOption' | 'modifierPack' | 'upvote' | 'downvote' | 'testTable' | 'testChair' | 'testPlate'
       txIsolationLevel: Prisma.TransactionIsolationLevel
     },
     model: {
@@ -1609,6 +1625,72 @@ export namespace Prisma {
           }
         }
       }
+      TestPlate: {
+        payload: Prisma.$TestPlatePayload<ExtArgs>
+        fields: Prisma.TestPlateFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.TestPlateFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$TestPlatePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.TestPlateFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$TestPlatePayload>
+          }
+          findFirst: {
+            args: Prisma.TestPlateFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$TestPlatePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.TestPlateFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$TestPlatePayload>
+          }
+          findMany: {
+            args: Prisma.TestPlateFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$TestPlatePayload>[]
+          }
+          create: {
+            args: Prisma.TestPlateCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$TestPlatePayload>
+          }
+          createMany: {
+            args: Prisma.TestPlateCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          delete: {
+            args: Prisma.TestPlateDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$TestPlatePayload>
+          }
+          update: {
+            args: Prisma.TestPlateUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$TestPlatePayload>
+          }
+          deleteMany: {
+            args: Prisma.TestPlateDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          updateMany: {
+            args: Prisma.TestPlateUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          upsert: {
+            args: Prisma.TestPlateUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$TestPlatePayload>
+          }
+          aggregate: {
+            args: Prisma.TestPlateAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateTestPlate>
+          }
+          groupBy: {
+            args: Prisma.TestPlateGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<TestPlateGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.TestPlateCountArgs<ExtArgs>,
+            result: $Utils.Optional<TestPlateCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1758,31 +1840,31 @@ export namespace Prisma {
    */
 
   export type UserCountOutputType = {
-    Game: number
-    PublicProfile: number
     ChallengeModifier: number
+    Downvote: number
+    Game: number
     ModifierOption: number
+    ModifierPack: number
+    PublicProfile: number
+    Upvote: number
     DefaultExcludedChallengeModifiers: number
     DefaultExcludedModifierOptions: number
     DefaultIncludedCustomChallengeModifiers: number
     DefaultIncludedCustomModifierOptions: number
-    ModifierPack: number
-    Downvote: number
-    Upvote: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    Game?: boolean | UserCountOutputTypeCountGameArgs
-    PublicProfile?: boolean | UserCountOutputTypeCountPublicProfileArgs
     ChallengeModifier?: boolean | UserCountOutputTypeCountChallengeModifierArgs
+    Downvote?: boolean | UserCountOutputTypeCountDownvoteArgs
+    Game?: boolean | UserCountOutputTypeCountGameArgs
     ModifierOption?: boolean | UserCountOutputTypeCountModifierOptionArgs
+    ModifierPack?: boolean | UserCountOutputTypeCountModifierPackArgs
+    PublicProfile?: boolean | UserCountOutputTypeCountPublicProfileArgs
+    Upvote?: boolean | UserCountOutputTypeCountUpvoteArgs
     DefaultExcludedChallengeModifiers?: boolean | UserCountOutputTypeCountDefaultExcludedChallengeModifiersArgs
     DefaultExcludedModifierOptions?: boolean | UserCountOutputTypeCountDefaultExcludedModifierOptionsArgs
     DefaultIncludedCustomChallengeModifiers?: boolean | UserCountOutputTypeCountDefaultIncludedCustomChallengeModifiersArgs
     DefaultIncludedCustomModifierOptions?: boolean | UserCountOutputTypeCountDefaultIncludedCustomModifierOptionsArgs
-    ModifierPack?: boolean | UserCountOutputTypeCountModifierPackArgs
-    Downvote?: boolean | UserCountOutputTypeCountDownvoteArgs
-    Upvote?: boolean | UserCountOutputTypeCountUpvoteArgs
   }
 
   // Custom InputTypes
@@ -1801,8 +1883,40 @@ export namespace Prisma {
   /**
    * UserCountOutputType without action
    */
+  export type UserCountOutputTypeCountChallengeModifierArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ChallengeModifierWhereInput
+  }
+
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountDownvoteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: DownvoteWhereInput
+  }
+
+
+  /**
+   * UserCountOutputType without action
+   */
   export type UserCountOutputTypeCountGameArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: GameWhereInput
+  }
+
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountModifierOptionArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ModifierOptionWhereInput
+  }
+
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountModifierPackArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ModifierPackWhereInput
   }
 
 
@@ -1817,16 +1931,8 @@ export namespace Prisma {
   /**
    * UserCountOutputType without action
    */
-  export type UserCountOutputTypeCountChallengeModifierArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: ChallengeModifierWhereInput
-  }
-
-
-  /**
-   * UserCountOutputType without action
-   */
-  export type UserCountOutputTypeCountModifierOptionArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: ModifierOptionWhereInput
+  export type UserCountOutputTypeCountUpvoteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: UpvoteWhereInput
   }
 
 
@@ -1859,30 +1965,6 @@ export namespace Prisma {
    */
   export type UserCountOutputTypeCountDefaultIncludedCustomModifierOptionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: ModifierOptionWhereInput
-  }
-
-
-  /**
-   * UserCountOutputType without action
-   */
-  export type UserCountOutputTypeCountModifierPackArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: ModifierPackWhereInput
-  }
-
-
-  /**
-   * UserCountOutputType without action
-   */
-  export type UserCountOutputTypeCountDownvoteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: DownvoteWhereInput
-  }
-
-
-  /**
-   * UserCountOutputType without action
-   */
-  export type UserCountOutputTypeCountUpvoteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: UpvoteWhereInput
   }
 
 
@@ -1927,14 +2009,14 @@ export namespace Prisma {
 
   export type GameCountOutputType = {
     Day: number
-    Upvote: number
     Downvote: number
+    Upvote: number
   }
 
   export type GameCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     Day?: boolean | GameCountOutputTypeCountDayArgs
-    Upvote?: boolean | GameCountOutputTypeCountUpvoteArgs
     Downvote?: boolean | GameCountOutputTypeCountDownvoteArgs
+    Upvote?: boolean | GameCountOutputTypeCountUpvoteArgs
   }
 
   // Custom InputTypes
@@ -1961,16 +2043,16 @@ export namespace Prisma {
   /**
    * GameCountOutputType without action
    */
-  export type GameCountOutputTypeCountUpvoteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: UpvoteWhereInput
+  export type GameCountOutputTypeCountDownvoteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: DownvoteWhereInput
   }
 
 
   /**
    * GameCountOutputType without action
    */
-  export type GameCountOutputTypeCountDownvoteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: DownvoteWhereInput
+  export type GameCountOutputTypeCountUpvoteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: UpvoteWhereInput
   }
 
 
@@ -2015,16 +2097,12 @@ export namespace Prisma {
 
   export type DayCountOutputType = {
     ExcludedChallengeModifiers: number
-    ExcludedModifierOptions: number
-    IncludedCustomChallengeModifiers: number
-    IncludedCustomModifierOptions: number
+    EncludedCustomChallengeModifiers: number
   }
 
   export type DayCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     ExcludedChallengeModifiers?: boolean | DayCountOutputTypeCountExcludedChallengeModifiersArgs
-    ExcludedModifierOptions?: boolean | DayCountOutputTypeCountExcludedModifierOptionsArgs
-    IncludedCustomChallengeModifiers?: boolean | DayCountOutputTypeCountIncludedCustomChallengeModifiersArgs
-    IncludedCustomModifierOptions?: boolean | DayCountOutputTypeCountIncludedCustomModifierOptionsArgs
+    EncludedCustomChallengeModifiers?: boolean | DayCountOutputTypeCountEncludedCustomChallengeModifiersArgs
   }
 
   // Custom InputTypes
@@ -2051,24 +2129,8 @@ export namespace Prisma {
   /**
    * DayCountOutputType without action
    */
-  export type DayCountOutputTypeCountExcludedModifierOptionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: ModifierOptionWhereInput
-  }
-
-
-  /**
-   * DayCountOutputType without action
-   */
-  export type DayCountOutputTypeCountIncludedCustomChallengeModifiersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type DayCountOutputTypeCountEncludedCustomChallengeModifiersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: ChallengeModifierWhereInput
-  }
-
-
-  /**
-   * DayCountOutputType without action
-   */
-  export type DayCountOutputTypeCountIncludedCustomModifierOptionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: ModifierOptionWhereInput
   }
 
 
@@ -2078,27 +2140,23 @@ export namespace Prisma {
    */
 
   export type ChallengeModifierCountOutputType = {
-    ModifierOption: number
     Day: number
-    ModifierPackExcluded: number
-    ModifierPackIncluded: number
+    DayCompletedInPart1: number
+    ModifierOption: number
     UserExcluded: number
     UserIncluded: number
-    ExcludedFromDay: number
-    IncludedInDay: number
-    DayCompletedInPart1: number
+    ModifierPackExcluded: number
+    ModifierPackIncluded: number
   }
 
   export type ChallengeModifierCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    ModifierOption?: boolean | ChallengeModifierCountOutputTypeCountModifierOptionArgs
     Day?: boolean | ChallengeModifierCountOutputTypeCountDayArgs
-    ModifierPackExcluded?: boolean | ChallengeModifierCountOutputTypeCountModifierPackExcludedArgs
-    ModifierPackIncluded?: boolean | ChallengeModifierCountOutputTypeCountModifierPackIncludedArgs
+    DayCompletedInPart1?: boolean | ChallengeModifierCountOutputTypeCountDayCompletedInPart1Args
+    ModifierOption?: boolean | ChallengeModifierCountOutputTypeCountModifierOptionArgs
     UserExcluded?: boolean | ChallengeModifierCountOutputTypeCountUserExcludedArgs
     UserIncluded?: boolean | ChallengeModifierCountOutputTypeCountUserIncludedArgs
-    ExcludedFromDay?: boolean | ChallengeModifierCountOutputTypeCountExcludedFromDayArgs
-    IncludedInDay?: boolean | ChallengeModifierCountOutputTypeCountIncludedInDayArgs
-    DayCompletedInPart1?: boolean | ChallengeModifierCountOutputTypeCountDayCompletedInPart1Args
+    ModifierPackExcluded?: boolean | ChallengeModifierCountOutputTypeCountModifierPackExcludedArgs
+    ModifierPackIncluded?: boolean | ChallengeModifierCountOutputTypeCountModifierPackIncludedArgs
   }
 
   // Custom InputTypes
@@ -2117,14 +2175,6 @@ export namespace Prisma {
   /**
    * ChallengeModifierCountOutputType without action
    */
-  export type ChallengeModifierCountOutputTypeCountModifierOptionArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: ModifierOptionWhereInput
-  }
-
-
-  /**
-   * ChallengeModifierCountOutputType without action
-   */
   export type ChallengeModifierCountOutputTypeCountDayArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: DayWhereInput
   }
@@ -2133,16 +2183,16 @@ export namespace Prisma {
   /**
    * ChallengeModifierCountOutputType without action
    */
-  export type ChallengeModifierCountOutputTypeCountModifierPackExcludedArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: ModifierPackWhereInput
+  export type ChallengeModifierCountOutputTypeCountDayCompletedInPart1Args<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: DayWhereInput
   }
 
 
   /**
    * ChallengeModifierCountOutputType without action
    */
-  export type ChallengeModifierCountOutputTypeCountModifierPackIncludedArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: ModifierPackWhereInput
+  export type ChallengeModifierCountOutputTypeCountModifierOptionArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ModifierOptionWhereInput
   }
 
 
@@ -2165,7 +2215,7 @@ export namespace Prisma {
   /**
    * ChallengeModifierCountOutputType without action
    */
-  export type ChallengeModifierCountOutputTypeCountExcludedFromDayArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ChallengeModifierCountOutputTypeCountModifierPackExcludedArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: DayWhereInput
   }
 
@@ -2173,15 +2223,7 @@ export namespace Prisma {
   /**
    * ChallengeModifierCountOutputType without action
    */
-  export type ChallengeModifierCountOutputTypeCountIncludedInDayArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: DayWhereInput
-  }
-
-
-  /**
-   * ChallengeModifierCountOutputType without action
-   */
-  export type ChallengeModifierCountOutputTypeCountDayCompletedInPart1Args<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ChallengeModifierCountOutputTypeCountModifierPackIncludedArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: DayWhereInput
   }
 
@@ -2193,24 +2235,20 @@ export namespace Prisma {
 
   export type ModifierOptionCountOutputType = {
     Day: number
-    ModifierPackExcluded: number
-    ModifierPackIncluded: number
+    DayCompletedInPart1: number
     UserExcluded: number
     UserIncluded: number
-    ExcludedFromDay: number
-    IncludedInDay: number
-    DayCompletedInPart1: number
+    ExcludedModifierOptions: number
+    IncludedCustomModifierOptions: number
   }
 
   export type ModifierOptionCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     Day?: boolean | ModifierOptionCountOutputTypeCountDayArgs
-    ModifierPackExcluded?: boolean | ModifierOptionCountOutputTypeCountModifierPackExcludedArgs
-    ModifierPackIncluded?: boolean | ModifierOptionCountOutputTypeCountModifierPackIncludedArgs
+    DayCompletedInPart1?: boolean | ModifierOptionCountOutputTypeCountDayCompletedInPart1Args
     UserExcluded?: boolean | ModifierOptionCountOutputTypeCountUserExcludedArgs
     UserIncluded?: boolean | ModifierOptionCountOutputTypeCountUserIncludedArgs
-    ExcludedFromDay?: boolean | ModifierOptionCountOutputTypeCountExcludedFromDayArgs
-    IncludedInDay?: boolean | ModifierOptionCountOutputTypeCountIncludedInDayArgs
-    DayCompletedInPart1?: boolean | ModifierOptionCountOutputTypeCountDayCompletedInPart1Args
+    ExcludedModifierOptions?: boolean | ModifierOptionCountOutputTypeCountExcludedModifierOptionsArgs
+    IncludedCustomModifierOptions?: boolean | ModifierOptionCountOutputTypeCountIncludedCustomModifierOptionsArgs
   }
 
   // Custom InputTypes
@@ -2237,16 +2275,8 @@ export namespace Prisma {
   /**
    * ModifierOptionCountOutputType without action
    */
-  export type ModifierOptionCountOutputTypeCountModifierPackExcludedArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: ModifierPackWhereInput
-  }
-
-
-  /**
-   * ModifierOptionCountOutputType without action
-   */
-  export type ModifierOptionCountOutputTypeCountModifierPackIncludedArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: ModifierPackWhereInput
+  export type ModifierOptionCountOutputTypeCountDayCompletedInPart1Args<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: DayWhereInput
   }
 
 
@@ -2269,24 +2299,16 @@ export namespace Prisma {
   /**
    * ModifierOptionCountOutputType without action
    */
-  export type ModifierOptionCountOutputTypeCountExcludedFromDayArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: DayWhereInput
+  export type ModifierOptionCountOutputTypeCountExcludedModifierOptionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ModifierPackWhereInput
   }
 
 
   /**
    * ModifierOptionCountOutputType without action
    */
-  export type ModifierOptionCountOutputTypeCountIncludedInDayArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: DayWhereInput
-  }
-
-
-  /**
-   * ModifierOptionCountOutputType without action
-   */
-  export type ModifierOptionCountOutputTypeCountDayCompletedInPart1Args<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: DayWhereInput
+  export type ModifierOptionCountOutputTypeCountIncludedCustomModifierOptionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ModifierPackWhereInput
   }
 
 
@@ -2296,17 +2318,13 @@ export namespace Prisma {
    */
 
   export type ModifierPackCountOutputType = {
-    ExcludedChallengeModifiers: number
-    ExcludedModifierOptions: number
-    EncludedCustomChallengeModifiers: number
-    IncludedCustomModifierOptions: number
+    ExcludedFromDay: number
+    IncludedInDay: number
   }
 
   export type ModifierPackCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    ExcludedChallengeModifiers?: boolean | ModifierPackCountOutputTypeCountExcludedChallengeModifiersArgs
-    ExcludedModifierOptions?: boolean | ModifierPackCountOutputTypeCountExcludedModifierOptionsArgs
-    EncludedCustomChallengeModifiers?: boolean | ModifierPackCountOutputTypeCountEncludedCustomChallengeModifiersArgs
-    IncludedCustomModifierOptions?: boolean | ModifierPackCountOutputTypeCountIncludedCustomModifierOptionsArgs
+    ExcludedFromDay?: boolean | ModifierPackCountOutputTypeCountExcludedFromDayArgs
+    IncludedInDay?: boolean | ModifierPackCountOutputTypeCountIncludedInDayArgs
   }
 
   // Custom InputTypes
@@ -2325,15 +2343,7 @@ export namespace Prisma {
   /**
    * ModifierPackCountOutputType without action
    */
-  export type ModifierPackCountOutputTypeCountExcludedChallengeModifiersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: ChallengeModifierWhereInput
-  }
-
-
-  /**
-   * ModifierPackCountOutputType without action
-   */
-  export type ModifierPackCountOutputTypeCountExcludedModifierOptionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ModifierPackCountOutputTypeCountExcludedFromDayArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: ModifierOptionWhereInput
   }
 
@@ -2341,15 +2351,7 @@ export namespace Prisma {
   /**
    * ModifierPackCountOutputType without action
    */
-  export type ModifierPackCountOutputTypeCountEncludedCustomChallengeModifiersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: ChallengeModifierWhereInput
-  }
-
-
-  /**
-   * ModifierPackCountOutputType without action
-   */
-  export type ModifierPackCountOutputTypeCountIncludedCustomModifierOptionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ModifierPackCountOutputTypeCountIncludedInDayArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: ModifierOptionWhereInput
   }
 
@@ -2361,10 +2363,12 @@ export namespace Prisma {
 
   export type TestTableCountOutputType = {
     TestChair: number
+    TestPlate: number
   }
 
   export type TestTableCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     TestChair?: boolean | TestTableCountOutputTypeCountTestChairArgs
+    TestPlate?: boolean | TestTableCountOutputTypeCountTestPlateArgs
   }
 
   // Custom InputTypes
@@ -2385,6 +2389,14 @@ export namespace Prisma {
    */
   export type TestTableCountOutputTypeCountTestChairArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: TestChairWhereInput
+  }
+
+
+  /**
+   * TestTableCountOutputType without action
+   */
+  export type TestTableCountOutputTypeCountTestPlateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TestPlateWhereInput
   }
 
 
@@ -2591,17 +2603,17 @@ export namespace Prisma {
     username?: boolean
     dateCreated?: boolean
     numberOfGames?: boolean
-    Game?: boolean | User$GameArgs<ExtArgs>
-    PublicProfile?: boolean | User$PublicProfileArgs<ExtArgs>
     ChallengeModifier?: boolean | User$ChallengeModifierArgs<ExtArgs>
+    Downvote?: boolean | User$DownvoteArgs<ExtArgs>
+    Game?: boolean | User$GameArgs<ExtArgs>
     ModifierOption?: boolean | User$ModifierOptionArgs<ExtArgs>
+    ModifierPack?: boolean | User$ModifierPackArgs<ExtArgs>
+    PublicProfile?: boolean | User$PublicProfileArgs<ExtArgs>
+    Upvote?: boolean | User$UpvoteArgs<ExtArgs>
     DefaultExcludedChallengeModifiers?: boolean | User$DefaultExcludedChallengeModifiersArgs<ExtArgs>
     DefaultExcludedModifierOptions?: boolean | User$DefaultExcludedModifierOptionsArgs<ExtArgs>
     DefaultIncludedCustomChallengeModifiers?: boolean | User$DefaultIncludedCustomChallengeModifiersArgs<ExtArgs>
     DefaultIncludedCustomModifierOptions?: boolean | User$DefaultIncludedCustomModifierOptionsArgs<ExtArgs>
-    ModifierPack?: boolean | User$ModifierPackArgs<ExtArgs>
-    Downvote?: boolean | User$DownvoteArgs<ExtArgs>
-    Upvote?: boolean | User$UpvoteArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -2614,17 +2626,17 @@ export namespace Prisma {
   }
 
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    Game?: boolean | User$GameArgs<ExtArgs>
-    PublicProfile?: boolean | User$PublicProfileArgs<ExtArgs>
     ChallengeModifier?: boolean | User$ChallengeModifierArgs<ExtArgs>
+    Downvote?: boolean | User$DownvoteArgs<ExtArgs>
+    Game?: boolean | User$GameArgs<ExtArgs>
     ModifierOption?: boolean | User$ModifierOptionArgs<ExtArgs>
+    ModifierPack?: boolean | User$ModifierPackArgs<ExtArgs>
+    PublicProfile?: boolean | User$PublicProfileArgs<ExtArgs>
+    Upvote?: boolean | User$UpvoteArgs<ExtArgs>
     DefaultExcludedChallengeModifiers?: boolean | User$DefaultExcludedChallengeModifiersArgs<ExtArgs>
     DefaultExcludedModifierOptions?: boolean | User$DefaultExcludedModifierOptionsArgs<ExtArgs>
     DefaultIncludedCustomChallengeModifiers?: boolean | User$DefaultIncludedCustomChallengeModifiersArgs<ExtArgs>
     DefaultIncludedCustomModifierOptions?: boolean | User$DefaultIncludedCustomModifierOptionsArgs<ExtArgs>
-    ModifierPack?: boolean | User$ModifierPackArgs<ExtArgs>
-    Downvote?: boolean | User$DownvoteArgs<ExtArgs>
-    Upvote?: boolean | User$UpvoteArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
 
@@ -2632,17 +2644,17 @@ export namespace Prisma {
   export type $UserPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "User"
     objects: {
-      Game: Prisma.$GamePayload<ExtArgs>[]
-      PublicProfile: Prisma.$PublicProfilePayload<ExtArgs>[]
       ChallengeModifier: Prisma.$ChallengeModifierPayload<ExtArgs>[]
+      Downvote: Prisma.$DownvotePayload<ExtArgs>[]
+      Game: Prisma.$GamePayload<ExtArgs>[]
       ModifierOption: Prisma.$ModifierOptionPayload<ExtArgs>[]
+      ModifierPack: Prisma.$ModifierPackPayload<ExtArgs>[]
+      PublicProfile: Prisma.$PublicProfilePayload<ExtArgs>[]
+      Upvote: Prisma.$UpvotePayload<ExtArgs>[]
       DefaultExcludedChallengeModifiers: Prisma.$ChallengeModifierPayload<ExtArgs>[]
       DefaultExcludedModifierOptions: Prisma.$ModifierOptionPayload<ExtArgs>[]
       DefaultIncludedCustomChallengeModifiers: Prisma.$ChallengeModifierPayload<ExtArgs>[]
       DefaultIncludedCustomModifierOptions: Prisma.$ModifierOptionPayload<ExtArgs>[]
-      ModifierPack: Prisma.$ModifierPackPayload<ExtArgs>[]
-      Downvote: Prisma.$DownvotePayload<ExtArgs>[]
-      Upvote: Prisma.$UpvotePayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -3015,13 +3027,19 @@ export namespace Prisma {
   export interface Prisma__UserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
 
+    ChallengeModifier<T extends User$ChallengeModifierArgs<ExtArgs> = {}>(args?: Subset<T, User$ChallengeModifierArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ChallengeModifierPayload<ExtArgs>, T, 'findMany'> | Null>;
+
+    Downvote<T extends User$DownvoteArgs<ExtArgs> = {}>(args?: Subset<T, User$DownvoteArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DownvotePayload<ExtArgs>, T, 'findMany'> | Null>;
+
     Game<T extends User$GameArgs<ExtArgs> = {}>(args?: Subset<T, User$GameArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GamePayload<ExtArgs>, T, 'findMany'> | Null>;
+
+    ModifierOption<T extends User$ModifierOptionArgs<ExtArgs> = {}>(args?: Subset<T, User$ModifierOptionArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ModifierOptionPayload<ExtArgs>, T, 'findMany'> | Null>;
+
+    ModifierPack<T extends User$ModifierPackArgs<ExtArgs> = {}>(args?: Subset<T, User$ModifierPackArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ModifierPackPayload<ExtArgs>, T, 'findMany'> | Null>;
 
     PublicProfile<T extends User$PublicProfileArgs<ExtArgs> = {}>(args?: Subset<T, User$PublicProfileArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PublicProfilePayload<ExtArgs>, T, 'findMany'> | Null>;
 
-    ChallengeModifier<T extends User$ChallengeModifierArgs<ExtArgs> = {}>(args?: Subset<T, User$ChallengeModifierArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ChallengeModifierPayload<ExtArgs>, T, 'findMany'> | Null>;
-
-    ModifierOption<T extends User$ModifierOptionArgs<ExtArgs> = {}>(args?: Subset<T, User$ModifierOptionArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ModifierOptionPayload<ExtArgs>, T, 'findMany'> | Null>;
+    Upvote<T extends User$UpvoteArgs<ExtArgs> = {}>(args?: Subset<T, User$UpvoteArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UpvotePayload<ExtArgs>, T, 'findMany'> | Null>;
 
     DefaultExcludedChallengeModifiers<T extends User$DefaultExcludedChallengeModifiersArgs<ExtArgs> = {}>(args?: Subset<T, User$DefaultExcludedChallengeModifiersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ChallengeModifierPayload<ExtArgs>, T, 'findMany'> | Null>;
 
@@ -3030,12 +3048,6 @@ export namespace Prisma {
     DefaultIncludedCustomChallengeModifiers<T extends User$DefaultIncludedCustomChallengeModifiersArgs<ExtArgs> = {}>(args?: Subset<T, User$DefaultIncludedCustomChallengeModifiersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ChallengeModifierPayload<ExtArgs>, T, 'findMany'> | Null>;
 
     DefaultIncludedCustomModifierOptions<T extends User$DefaultIncludedCustomModifierOptionsArgs<ExtArgs> = {}>(args?: Subset<T, User$DefaultIncludedCustomModifierOptionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ModifierOptionPayload<ExtArgs>, T, 'findMany'> | Null>;
-
-    ModifierPack<T extends User$ModifierPackArgs<ExtArgs> = {}>(args?: Subset<T, User$ModifierPackArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ModifierPackPayload<ExtArgs>, T, 'findMany'> | Null>;
-
-    Downvote<T extends User$DownvoteArgs<ExtArgs> = {}>(args?: Subset<T, User$DownvoteArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DownvotePayload<ExtArgs>, T, 'findMany'> | Null>;
-
-    Upvote<T extends User$UpvoteArgs<ExtArgs> = {}>(args?: Subset<T, User$UpvoteArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UpvotePayload<ExtArgs>, T, 'findMany'> | Null>;
 
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -3382,6 +3394,48 @@ export namespace Prisma {
 
 
   /**
+   * User.ChallengeModifier
+   */
+  export type User$ChallengeModifierArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ChallengeModifier
+     */
+    select?: ChallengeModifierSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: ChallengeModifierInclude<ExtArgs> | null
+    where?: ChallengeModifierWhereInput
+    orderBy?: ChallengeModifierOrderByWithRelationInput | ChallengeModifierOrderByWithRelationInput[]
+    cursor?: ChallengeModifierWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ChallengeModifierScalarFieldEnum | ChallengeModifierScalarFieldEnum[]
+  }
+
+
+  /**
+   * User.Downvote
+   */
+  export type User$DownvoteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Downvote
+     */
+    select?: DownvoteSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: DownvoteInclude<ExtArgs> | null
+    where?: DownvoteWhereInput
+    orderBy?: DownvoteOrderByWithRelationInput | DownvoteOrderByWithRelationInput[]
+    cursor?: DownvoteWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: DownvoteScalarFieldEnum | DownvoteScalarFieldEnum[]
+  }
+
+
+  /**
    * User.Game
    */
   export type User$GameArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3399,6 +3453,48 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: GameScalarFieldEnum | GameScalarFieldEnum[]
+  }
+
+
+  /**
+   * User.ModifierOption
+   */
+  export type User$ModifierOptionArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ModifierOption
+     */
+    select?: ModifierOptionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: ModifierOptionInclude<ExtArgs> | null
+    where?: ModifierOptionWhereInput
+    orderBy?: ModifierOptionOrderByWithRelationInput | ModifierOptionOrderByWithRelationInput[]
+    cursor?: ModifierOptionWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ModifierOptionScalarFieldEnum | ModifierOptionScalarFieldEnum[]
+  }
+
+
+  /**
+   * User.ModifierPack
+   */
+  export type User$ModifierPackArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ModifierPack
+     */
+    select?: ModifierPackSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: ModifierPackInclude<ExtArgs> | null
+    where?: ModifierPackWhereInput
+    orderBy?: ModifierPackOrderByWithRelationInput | ModifierPackOrderByWithRelationInput[]
+    cursor?: ModifierPackWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ModifierPackScalarFieldEnum | ModifierPackScalarFieldEnum[]
   }
 
 
@@ -3424,44 +3520,23 @@ export namespace Prisma {
 
 
   /**
-   * User.ChallengeModifier
+   * User.Upvote
    */
-  export type User$ChallengeModifierArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type User$UpvoteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the ChallengeModifier
+     * Select specific fields to fetch from the Upvote
      */
-    select?: ChallengeModifierSelect<ExtArgs> | null
+    select?: UpvoteSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well.
      */
-    include?: ChallengeModifierInclude<ExtArgs> | null
-    where?: ChallengeModifierWhereInput
-    orderBy?: ChallengeModifierOrderByWithRelationInput | ChallengeModifierOrderByWithRelationInput[]
-    cursor?: ChallengeModifierWhereUniqueInput
+    include?: UpvoteInclude<ExtArgs> | null
+    where?: UpvoteWhereInput
+    orderBy?: UpvoteOrderByWithRelationInput | UpvoteOrderByWithRelationInput[]
+    cursor?: UpvoteWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: ChallengeModifierScalarFieldEnum | ChallengeModifierScalarFieldEnum[]
-  }
-
-
-  /**
-   * User.ModifierOption
-   */
-  export type User$ModifierOptionArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ModifierOption
-     */
-    select?: ModifierOptionSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: ModifierOptionInclude<ExtArgs> | null
-    where?: ModifierOptionWhereInput
-    orderBy?: ModifierOptionOrderByWithRelationInput | ModifierOptionOrderByWithRelationInput[]
-    cursor?: ModifierOptionWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: ModifierOptionScalarFieldEnum | ModifierOptionScalarFieldEnum[]
+    distinct?: UpvoteScalarFieldEnum | UpvoteScalarFieldEnum[]
   }
 
 
@@ -3546,69 +3621,6 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: ModifierOptionScalarFieldEnum | ModifierOptionScalarFieldEnum[]
-  }
-
-
-  /**
-   * User.ModifierPack
-   */
-  export type User$ModifierPackArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ModifierPack
-     */
-    select?: ModifierPackSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: ModifierPackInclude<ExtArgs> | null
-    where?: ModifierPackWhereInput
-    orderBy?: ModifierPackOrderByWithRelationInput | ModifierPackOrderByWithRelationInput[]
-    cursor?: ModifierPackWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: ModifierPackScalarFieldEnum | ModifierPackScalarFieldEnum[]
-  }
-
-
-  /**
-   * User.Downvote
-   */
-  export type User$DownvoteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Downvote
-     */
-    select?: DownvoteSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: DownvoteInclude<ExtArgs> | null
-    where?: DownvoteWhereInput
-    orderBy?: DownvoteOrderByWithRelationInput | DownvoteOrderByWithRelationInput[]
-    cursor?: DownvoteWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: DownvoteScalarFieldEnum | DownvoteScalarFieldEnum[]
-  }
-
-
-  /**
-   * User.Upvote
-   */
-  export type User$UpvoteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Upvote
-     */
-    select?: UpvoteSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: UpvoteInclude<ExtArgs> | null
-    where?: UpvoteWhereInput
-    orderBy?: UpvoteOrderByWithRelationInput | UpvoteOrderByWithRelationInput[]
-    cursor?: UpvoteWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: UpvoteScalarFieldEnum | UpvoteScalarFieldEnum[]
   }
 
 
@@ -3818,8 +3830,8 @@ export namespace Prisma {
     dateCreated?: boolean
     name?: boolean
     userId?: boolean
-    User?: boolean | UserDefaultArgs<ExtArgs>
     Game?: boolean | PublicProfile$GameArgs<ExtArgs>
+    User?: boolean | UserDefaultArgs<ExtArgs>
     _count?: boolean | PublicProfileCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["publicProfile"]>
 
@@ -3831,8 +3843,8 @@ export namespace Prisma {
   }
 
   export type PublicProfileInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    User?: boolean | UserDefaultArgs<ExtArgs>
     Game?: boolean | PublicProfile$GameArgs<ExtArgs>
+    User?: boolean | UserDefaultArgs<ExtArgs>
     _count?: boolean | PublicProfileCountOutputTypeDefaultArgs<ExtArgs>
   }
 
@@ -3840,8 +3852,8 @@ export namespace Prisma {
   export type $PublicProfilePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "PublicProfile"
     objects: {
-      User: Prisma.$UserPayload<ExtArgs>
       Game: Prisma.$GamePayload<ExtArgs>[]
+      User: Prisma.$UserPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -4213,9 +4225,9 @@ export namespace Prisma {
   export interface Prisma__PublicProfileClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
 
-    User<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
-
     Game<T extends PublicProfile$GameArgs<ExtArgs> = {}>(args?: Subset<T, PublicProfile$GameArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GamePayload<ExtArgs>, T, 'findMany'> | Null>;
+
+    User<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
 
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -4955,12 +4967,12 @@ export namespace Prisma {
     score?: boolean
     rankId?: boolean
     dateCompleted?: boolean
-    User?: boolean | UserDefaultArgs<ExtArgs>
-    Rank?: boolean | Game$RankArgs<ExtArgs>
     Day?: boolean | Game$DayArgs<ExtArgs>
-    PublicProfile?: boolean | Game$PublicProfileArgs<ExtArgs>
-    Upvote?: boolean | Game$UpvoteArgs<ExtArgs>
     Downvote?: boolean | Game$DownvoteArgs<ExtArgs>
+    PublicProfile?: boolean | Game$PublicProfileArgs<ExtArgs>
+    Rank?: boolean | Game$RankArgs<ExtArgs>
+    User?: boolean | UserDefaultArgs<ExtArgs>
+    Upvote?: boolean | Game$UpvoteArgs<ExtArgs>
     _count?: boolean | GameCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["game"]>
 
@@ -4988,12 +5000,12 @@ export namespace Prisma {
   }
 
   export type GameInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    User?: boolean | UserDefaultArgs<ExtArgs>
-    Rank?: boolean | Game$RankArgs<ExtArgs>
     Day?: boolean | Game$DayArgs<ExtArgs>
-    PublicProfile?: boolean | Game$PublicProfileArgs<ExtArgs>
-    Upvote?: boolean | Game$UpvoteArgs<ExtArgs>
     Downvote?: boolean | Game$DownvoteArgs<ExtArgs>
+    PublicProfile?: boolean | Game$PublicProfileArgs<ExtArgs>
+    Rank?: boolean | Game$RankArgs<ExtArgs>
+    User?: boolean | UserDefaultArgs<ExtArgs>
+    Upvote?: boolean | Game$UpvoteArgs<ExtArgs>
     _count?: boolean | GameCountOutputTypeDefaultArgs<ExtArgs>
   }
 
@@ -5001,12 +5013,12 @@ export namespace Prisma {
   export type $GamePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Game"
     objects: {
-      User: Prisma.$UserPayload<ExtArgs>
-      Rank: Prisma.$RankPayload<ExtArgs> | null
       Day: Prisma.$DayPayload<ExtArgs>[]
-      PublicProfile: Prisma.$PublicProfilePayload<ExtArgs> | null
-      Upvote: Prisma.$UpvotePayload<ExtArgs>[]
       Downvote: Prisma.$DownvotePayload<ExtArgs>[]
+      PublicProfile: Prisma.$PublicProfilePayload<ExtArgs> | null
+      Rank: Prisma.$RankPayload<ExtArgs> | null
+      User: Prisma.$UserPayload<ExtArgs>
+      Upvote: Prisma.$UpvotePayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -5394,17 +5406,17 @@ export namespace Prisma {
   export interface Prisma__GameClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
 
-    User<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
-
-    Rank<T extends Game$RankArgs<ExtArgs> = {}>(args?: Subset<T, Game$RankArgs<ExtArgs>>): Prisma__RankClient<$Result.GetResult<Prisma.$RankPayload<ExtArgs>, T, 'findUniqueOrThrow'> | null, null, ExtArgs>;
-
     Day<T extends Game$DayArgs<ExtArgs> = {}>(args?: Subset<T, Game$DayArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DayPayload<ExtArgs>, T, 'findMany'> | Null>;
+
+    Downvote<T extends Game$DownvoteArgs<ExtArgs> = {}>(args?: Subset<T, Game$DownvoteArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DownvotePayload<ExtArgs>, T, 'findMany'> | Null>;
 
     PublicProfile<T extends Game$PublicProfileArgs<ExtArgs> = {}>(args?: Subset<T, Game$PublicProfileArgs<ExtArgs>>): Prisma__PublicProfileClient<$Result.GetResult<Prisma.$PublicProfilePayload<ExtArgs>, T, 'findUniqueOrThrow'> | null, null, ExtArgs>;
 
-    Upvote<T extends Game$UpvoteArgs<ExtArgs> = {}>(args?: Subset<T, Game$UpvoteArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UpvotePayload<ExtArgs>, T, 'findMany'> | Null>;
+    Rank<T extends Game$RankArgs<ExtArgs> = {}>(args?: Subset<T, Game$RankArgs<ExtArgs>>): Prisma__RankClient<$Result.GetResult<Prisma.$RankPayload<ExtArgs>, T, 'findUniqueOrThrow'> | null, null, ExtArgs>;
 
-    Downvote<T extends Game$DownvoteArgs<ExtArgs> = {}>(args?: Subset<T, Game$DownvoteArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DownvotePayload<ExtArgs>, T, 'findMany'> | Null>;
+    User<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
+
+    Upvote<T extends Game$UpvoteArgs<ExtArgs> = {}>(args?: Subset<T, Game$UpvoteArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UpvotePayload<ExtArgs>, T, 'findMany'> | Null>;
 
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -5766,22 +5778,6 @@ export namespace Prisma {
 
 
   /**
-   * Game.Rank
-   */
-  export type Game$RankArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Rank
-     */
-    select?: RankSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: RankInclude<ExtArgs> | null
-    where?: RankWhereInput
-  }
-
-
-  /**
    * Game.Day
    */
   export type Game$DayArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -5803,6 +5799,27 @@ export namespace Prisma {
 
 
   /**
+   * Game.Downvote
+   */
+  export type Game$DownvoteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Downvote
+     */
+    select?: DownvoteSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: DownvoteInclude<ExtArgs> | null
+    where?: DownvoteWhereInput
+    orderBy?: DownvoteOrderByWithRelationInput | DownvoteOrderByWithRelationInput[]
+    cursor?: DownvoteWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: DownvoteScalarFieldEnum | DownvoteScalarFieldEnum[]
+  }
+
+
+  /**
    * Game.PublicProfile
    */
   export type Game$PublicProfileArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -5815,6 +5832,22 @@ export namespace Prisma {
      */
     include?: PublicProfileInclude<ExtArgs> | null
     where?: PublicProfileWhereInput
+  }
+
+
+  /**
+   * Game.Rank
+   */
+  export type Game$RankArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Rank
+     */
+    select?: RankSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: RankInclude<ExtArgs> | null
+    where?: RankWhereInput
   }
 
 
@@ -5836,27 +5869,6 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: UpvoteScalarFieldEnum | UpvoteScalarFieldEnum[]
-  }
-
-
-  /**
-   * Game.Downvote
-   */
-  export type Game$DownvoteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Downvote
-     */
-    select?: DownvoteSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: DownvoteInclude<ExtArgs> | null
-    where?: DownvoteWhereInput
-    orderBy?: DownvoteOrderByWithRelationInput | DownvoteOrderByWithRelationInput[]
-    cursor?: DownvoteWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: DownvoteScalarFieldEnum | DownvoteScalarFieldEnum[]
   }
 
 
@@ -7171,15 +7183,13 @@ export namespace Prisma {
     modifierOptionRerollsUsed?: boolean
     rerollTokensSpentDuringPart2?: boolean
     netScore?: boolean
-    ExcludedChallengeModifiers?: boolean | Day$ExcludedChallengeModifiersArgs<ExtArgs>
-    ExcludedModifierOptions?: boolean | Day$ExcludedModifierOptionsArgs<ExtArgs>
-    IncludedCustomChallengeModifiers?: boolean | Day$IncludedCustomChallengeModifiersArgs<ExtArgs>
-    IncludedCustomModifierOptions?: boolean | Day$IncludedCustomModifierOptionsArgs<ExtArgs>
+    ChallengeModifier?: boolean | Day$ChallengeModifierArgs<ExtArgs>
     Game?: boolean | GameDefaultArgs<ExtArgs>
+    ModifierOption?: boolean | Day$ModifierOptionArgs<ExtArgs>
     ModifierWhenPart1Completed?: boolean | Day$ModifierWhenPart1CompletedArgs<ExtArgs>
     OptionWhenPart1Completed?: boolean | Day$OptionWhenPart1CompletedArgs<ExtArgs>
-    ChallengeModifier?: boolean | Day$ChallengeModifierArgs<ExtArgs>
-    ModifierOption?: boolean | Day$ModifierOptionArgs<ExtArgs>
+    ExcludedChallengeModifiers?: boolean | Day$ExcludedChallengeModifiersArgs<ExtArgs>
+    EncludedCustomChallengeModifiers?: boolean | Day$EncludedCustomChallengeModifiersArgs<ExtArgs>
     _count?: boolean | DayCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["day"]>
 
@@ -7204,15 +7214,13 @@ export namespace Prisma {
   }
 
   export type DayInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    ExcludedChallengeModifiers?: boolean | Day$ExcludedChallengeModifiersArgs<ExtArgs>
-    ExcludedModifierOptions?: boolean | Day$ExcludedModifierOptionsArgs<ExtArgs>
-    IncludedCustomChallengeModifiers?: boolean | Day$IncludedCustomChallengeModifiersArgs<ExtArgs>
-    IncludedCustomModifierOptions?: boolean | Day$IncludedCustomModifierOptionsArgs<ExtArgs>
+    ChallengeModifier?: boolean | Day$ChallengeModifierArgs<ExtArgs>
     Game?: boolean | GameDefaultArgs<ExtArgs>
+    ModifierOption?: boolean | Day$ModifierOptionArgs<ExtArgs>
     ModifierWhenPart1Completed?: boolean | Day$ModifierWhenPart1CompletedArgs<ExtArgs>
     OptionWhenPart1Completed?: boolean | Day$OptionWhenPart1CompletedArgs<ExtArgs>
-    ChallengeModifier?: boolean | Day$ChallengeModifierArgs<ExtArgs>
-    ModifierOption?: boolean | Day$ModifierOptionArgs<ExtArgs>
+    ExcludedChallengeModifiers?: boolean | Day$ExcludedChallengeModifiersArgs<ExtArgs>
+    EncludedCustomChallengeModifiers?: boolean | Day$EncludedCustomChallengeModifiersArgs<ExtArgs>
     _count?: boolean | DayCountOutputTypeDefaultArgs<ExtArgs>
   }
 
@@ -7220,15 +7228,13 @@ export namespace Prisma {
   export type $DayPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Day"
     objects: {
-      ExcludedChallengeModifiers: Prisma.$ChallengeModifierPayload<ExtArgs>[]
-      ExcludedModifierOptions: Prisma.$ModifierOptionPayload<ExtArgs>[]
-      IncludedCustomChallengeModifiers: Prisma.$ChallengeModifierPayload<ExtArgs>[]
-      IncludedCustomModifierOptions: Prisma.$ModifierOptionPayload<ExtArgs>[]
+      ChallengeModifier: Prisma.$ChallengeModifierPayload<ExtArgs> | null
       Game: Prisma.$GamePayload<ExtArgs>
+      ModifierOption: Prisma.$ModifierOptionPayload<ExtArgs> | null
       ModifierWhenPart1Completed: Prisma.$ChallengeModifierPayload<ExtArgs> | null
       OptionWhenPart1Completed: Prisma.$ModifierOptionPayload<ExtArgs> | null
-      ChallengeModifier: Prisma.$ChallengeModifierPayload<ExtArgs> | null
-      ModifierOption: Prisma.$ModifierOptionPayload<ExtArgs> | null
+      ExcludedChallengeModifiers: Prisma.$ChallengeModifierPayload<ExtArgs>[]
+      EncludedCustomChallengeModifiers: Prisma.$ChallengeModifierPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -7613,23 +7619,19 @@ export namespace Prisma {
   export interface Prisma__DayClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
 
-    ExcludedChallengeModifiers<T extends Day$ExcludedChallengeModifiersArgs<ExtArgs> = {}>(args?: Subset<T, Day$ExcludedChallengeModifiersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ChallengeModifierPayload<ExtArgs>, T, 'findMany'> | Null>;
-
-    ExcludedModifierOptions<T extends Day$ExcludedModifierOptionsArgs<ExtArgs> = {}>(args?: Subset<T, Day$ExcludedModifierOptionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ModifierOptionPayload<ExtArgs>, T, 'findMany'> | Null>;
-
-    IncludedCustomChallengeModifiers<T extends Day$IncludedCustomChallengeModifiersArgs<ExtArgs> = {}>(args?: Subset<T, Day$IncludedCustomChallengeModifiersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ChallengeModifierPayload<ExtArgs>, T, 'findMany'> | Null>;
-
-    IncludedCustomModifierOptions<T extends Day$IncludedCustomModifierOptionsArgs<ExtArgs> = {}>(args?: Subset<T, Day$IncludedCustomModifierOptionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ModifierOptionPayload<ExtArgs>, T, 'findMany'> | Null>;
+    ChallengeModifier<T extends Day$ChallengeModifierArgs<ExtArgs> = {}>(args?: Subset<T, Day$ChallengeModifierArgs<ExtArgs>>): Prisma__ChallengeModifierClient<$Result.GetResult<Prisma.$ChallengeModifierPayload<ExtArgs>, T, 'findUniqueOrThrow'> | null, null, ExtArgs>;
 
     Game<T extends GameDefaultArgs<ExtArgs> = {}>(args?: Subset<T, GameDefaultArgs<ExtArgs>>): Prisma__GameClient<$Result.GetResult<Prisma.$GamePayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
+
+    ModifierOption<T extends Day$ModifierOptionArgs<ExtArgs> = {}>(args?: Subset<T, Day$ModifierOptionArgs<ExtArgs>>): Prisma__ModifierOptionClient<$Result.GetResult<Prisma.$ModifierOptionPayload<ExtArgs>, T, 'findUniqueOrThrow'> | null, null, ExtArgs>;
 
     ModifierWhenPart1Completed<T extends Day$ModifierWhenPart1CompletedArgs<ExtArgs> = {}>(args?: Subset<T, Day$ModifierWhenPart1CompletedArgs<ExtArgs>>): Prisma__ChallengeModifierClient<$Result.GetResult<Prisma.$ChallengeModifierPayload<ExtArgs>, T, 'findUniqueOrThrow'> | null, null, ExtArgs>;
 
     OptionWhenPart1Completed<T extends Day$OptionWhenPart1CompletedArgs<ExtArgs> = {}>(args?: Subset<T, Day$OptionWhenPart1CompletedArgs<ExtArgs>>): Prisma__ModifierOptionClient<$Result.GetResult<Prisma.$ModifierOptionPayload<ExtArgs>, T, 'findUniqueOrThrow'> | null, null, ExtArgs>;
 
-    ChallengeModifier<T extends Day$ChallengeModifierArgs<ExtArgs> = {}>(args?: Subset<T, Day$ChallengeModifierArgs<ExtArgs>>): Prisma__ChallengeModifierClient<$Result.GetResult<Prisma.$ChallengeModifierPayload<ExtArgs>, T, 'findUniqueOrThrow'> | null, null, ExtArgs>;
+    ExcludedChallengeModifiers<T extends Day$ExcludedChallengeModifiersArgs<ExtArgs> = {}>(args?: Subset<T, Day$ExcludedChallengeModifiersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ChallengeModifierPayload<ExtArgs>, T, 'findMany'> | Null>;
 
-    ModifierOption<T extends Day$ModifierOptionArgs<ExtArgs> = {}>(args?: Subset<T, Day$ModifierOptionArgs<ExtArgs>>): Prisma__ModifierOptionClient<$Result.GetResult<Prisma.$ModifierOptionPayload<ExtArgs>, T, 'findUniqueOrThrow'> | null, null, ExtArgs>;
+    EncludedCustomChallengeModifiers<T extends Day$EncludedCustomChallengeModifiersArgs<ExtArgs> = {}>(args?: Subset<T, Day$EncludedCustomChallengeModifiersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ChallengeModifierPayload<ExtArgs>, T, 'findMany'> | Null>;
 
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -7988,9 +7990,9 @@ export namespace Prisma {
 
 
   /**
-   * Day.ExcludedChallengeModifiers
+   * Day.ChallengeModifier
    */
-  export type Day$ExcludedChallengeModifiersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Day$ChallengeModifierArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the ChallengeModifier
      */
@@ -8000,18 +8002,13 @@ export namespace Prisma {
      */
     include?: ChallengeModifierInclude<ExtArgs> | null
     where?: ChallengeModifierWhereInput
-    orderBy?: ChallengeModifierOrderByWithRelationInput | ChallengeModifierOrderByWithRelationInput[]
-    cursor?: ChallengeModifierWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: ChallengeModifierScalarFieldEnum | ChallengeModifierScalarFieldEnum[]
   }
 
 
   /**
-   * Day.ExcludedModifierOptions
+   * Day.ModifierOption
    */
-  export type Day$ExcludedModifierOptionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Day$ModifierOptionArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the ModifierOption
      */
@@ -8021,53 +8018,6 @@ export namespace Prisma {
      */
     include?: ModifierOptionInclude<ExtArgs> | null
     where?: ModifierOptionWhereInput
-    orderBy?: ModifierOptionOrderByWithRelationInput | ModifierOptionOrderByWithRelationInput[]
-    cursor?: ModifierOptionWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: ModifierOptionScalarFieldEnum | ModifierOptionScalarFieldEnum[]
-  }
-
-
-  /**
-   * Day.IncludedCustomChallengeModifiers
-   */
-  export type Day$IncludedCustomChallengeModifiersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ChallengeModifier
-     */
-    select?: ChallengeModifierSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: ChallengeModifierInclude<ExtArgs> | null
-    where?: ChallengeModifierWhereInput
-    orderBy?: ChallengeModifierOrderByWithRelationInput | ChallengeModifierOrderByWithRelationInput[]
-    cursor?: ChallengeModifierWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: ChallengeModifierScalarFieldEnum | ChallengeModifierScalarFieldEnum[]
-  }
-
-
-  /**
-   * Day.IncludedCustomModifierOptions
-   */
-  export type Day$IncludedCustomModifierOptionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ModifierOption
-     */
-    select?: ModifierOptionSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: ModifierOptionInclude<ExtArgs> | null
-    where?: ModifierOptionWhereInput
-    orderBy?: ModifierOptionOrderByWithRelationInput | ModifierOptionOrderByWithRelationInput[]
-    cursor?: ModifierOptionWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: ModifierOptionScalarFieldEnum | ModifierOptionScalarFieldEnum[]
   }
 
 
@@ -8104,9 +8054,9 @@ export namespace Prisma {
 
 
   /**
-   * Day.ChallengeModifier
+   * Day.ExcludedChallengeModifiers
    */
-  export type Day$ChallengeModifierArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Day$ExcludedChallengeModifiersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the ChallengeModifier
      */
@@ -8116,22 +8066,32 @@ export namespace Prisma {
      */
     include?: ChallengeModifierInclude<ExtArgs> | null
     where?: ChallengeModifierWhereInput
+    orderBy?: ChallengeModifierOrderByWithRelationInput | ChallengeModifierOrderByWithRelationInput[]
+    cursor?: ChallengeModifierWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ChallengeModifierScalarFieldEnum | ChallengeModifierScalarFieldEnum[]
   }
 
 
   /**
-   * Day.ModifierOption
+   * Day.EncludedCustomChallengeModifiers
    */
-  export type Day$ModifierOptionArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Day$EncludedCustomChallengeModifiersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the ModifierOption
+     * Select specific fields to fetch from the ChallengeModifier
      */
-    select?: ModifierOptionSelect<ExtArgs> | null
+    select?: ChallengeModifierSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well.
      */
-    include?: ModifierOptionInclude<ExtArgs> | null
-    where?: ModifierOptionWhereInput
+    include?: ChallengeModifierInclude<ExtArgs> | null
+    where?: ChallengeModifierWhereInput
+    orderBy?: ChallengeModifierOrderByWithRelationInput | ChallengeModifierOrderByWithRelationInput[]
+    cursor?: ChallengeModifierWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ChallengeModifierScalarFieldEnum | ChallengeModifierScalarFieldEnum[]
   }
 
 
@@ -8382,15 +8342,13 @@ export namespace Prisma {
     createdById?: boolean
     isPublic?: boolean
     CreatedBy?: boolean | ChallengeModifier$CreatedByArgs<ExtArgs>
-    ModifierOption?: boolean | ChallengeModifier$ModifierOptionArgs<ExtArgs>
     Day?: boolean | ChallengeModifier$DayArgs<ExtArgs>
-    ModifierPackExcluded?: boolean | ChallengeModifier$ModifierPackExcludedArgs<ExtArgs>
-    ModifierPackIncluded?: boolean | ChallengeModifier$ModifierPackIncludedArgs<ExtArgs>
+    DayCompletedInPart1?: boolean | ChallengeModifier$DayCompletedInPart1Args<ExtArgs>
+    ModifierOption?: boolean | ChallengeModifier$ModifierOptionArgs<ExtArgs>
     UserExcluded?: boolean | ChallengeModifier$UserExcludedArgs<ExtArgs>
     UserIncluded?: boolean | ChallengeModifier$UserIncludedArgs<ExtArgs>
-    ExcludedFromDay?: boolean | ChallengeModifier$ExcludedFromDayArgs<ExtArgs>
-    IncludedInDay?: boolean | ChallengeModifier$IncludedInDayArgs<ExtArgs>
-    DayCompletedInPart1?: boolean | ChallengeModifier$DayCompletedInPart1Args<ExtArgs>
+    ModifierPackExcluded?: boolean | ChallengeModifier$ModifierPackExcludedArgs<ExtArgs>
+    ModifierPackIncluded?: boolean | ChallengeModifier$ModifierPackIncludedArgs<ExtArgs>
     _count?: boolean | ChallengeModifierCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["challengeModifier"]>
 
@@ -8408,15 +8366,13 @@ export namespace Prisma {
 
   export type ChallengeModifierInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     CreatedBy?: boolean | ChallengeModifier$CreatedByArgs<ExtArgs>
-    ModifierOption?: boolean | ChallengeModifier$ModifierOptionArgs<ExtArgs>
     Day?: boolean | ChallengeModifier$DayArgs<ExtArgs>
-    ModifierPackExcluded?: boolean | ChallengeModifier$ModifierPackExcludedArgs<ExtArgs>
-    ModifierPackIncluded?: boolean | ChallengeModifier$ModifierPackIncludedArgs<ExtArgs>
+    DayCompletedInPart1?: boolean | ChallengeModifier$DayCompletedInPart1Args<ExtArgs>
+    ModifierOption?: boolean | ChallengeModifier$ModifierOptionArgs<ExtArgs>
     UserExcluded?: boolean | ChallengeModifier$UserExcludedArgs<ExtArgs>
     UserIncluded?: boolean | ChallengeModifier$UserIncludedArgs<ExtArgs>
-    ExcludedFromDay?: boolean | ChallengeModifier$ExcludedFromDayArgs<ExtArgs>
-    IncludedInDay?: boolean | ChallengeModifier$IncludedInDayArgs<ExtArgs>
-    DayCompletedInPart1?: boolean | ChallengeModifier$DayCompletedInPart1Args<ExtArgs>
+    ModifierPackExcluded?: boolean | ChallengeModifier$ModifierPackExcludedArgs<ExtArgs>
+    ModifierPackIncluded?: boolean | ChallengeModifier$ModifierPackIncludedArgs<ExtArgs>
     _count?: boolean | ChallengeModifierCountOutputTypeDefaultArgs<ExtArgs>
   }
 
@@ -8425,15 +8381,13 @@ export namespace Prisma {
     name: "ChallengeModifier"
     objects: {
       CreatedBy: Prisma.$UserPayload<ExtArgs> | null
-      ModifierOption: Prisma.$ModifierOptionPayload<ExtArgs>[]
       Day: Prisma.$DayPayload<ExtArgs>[]
-      ModifierPackExcluded: Prisma.$ModifierPackPayload<ExtArgs>[]
-      ModifierPackIncluded: Prisma.$ModifierPackPayload<ExtArgs>[]
+      DayCompletedInPart1: Prisma.$DayPayload<ExtArgs>[]
+      ModifierOption: Prisma.$ModifierOptionPayload<ExtArgs>[]
       UserExcluded: Prisma.$UserPayload<ExtArgs>[]
       UserIncluded: Prisma.$UserPayload<ExtArgs>[]
-      ExcludedFromDay: Prisma.$DayPayload<ExtArgs>[]
-      IncludedInDay: Prisma.$DayPayload<ExtArgs>[]
-      DayCompletedInPart1: Prisma.$DayPayload<ExtArgs>[]
+      ModifierPackExcluded: Prisma.$DayPayload<ExtArgs>[]
+      ModifierPackIncluded: Prisma.$DayPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -8812,23 +8766,19 @@ export namespace Prisma {
 
     CreatedBy<T extends ChallengeModifier$CreatedByArgs<ExtArgs> = {}>(args?: Subset<T, ChallengeModifier$CreatedByArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, 'findUniqueOrThrow'> | null, null, ExtArgs>;
 
-    ModifierOption<T extends ChallengeModifier$ModifierOptionArgs<ExtArgs> = {}>(args?: Subset<T, ChallengeModifier$ModifierOptionArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ModifierOptionPayload<ExtArgs>, T, 'findMany'> | Null>;
-
     Day<T extends ChallengeModifier$DayArgs<ExtArgs> = {}>(args?: Subset<T, ChallengeModifier$DayArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DayPayload<ExtArgs>, T, 'findMany'> | Null>;
 
-    ModifierPackExcluded<T extends ChallengeModifier$ModifierPackExcludedArgs<ExtArgs> = {}>(args?: Subset<T, ChallengeModifier$ModifierPackExcludedArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ModifierPackPayload<ExtArgs>, T, 'findMany'> | Null>;
+    DayCompletedInPart1<T extends ChallengeModifier$DayCompletedInPart1Args<ExtArgs> = {}>(args?: Subset<T, ChallengeModifier$DayCompletedInPart1Args<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DayPayload<ExtArgs>, T, 'findMany'> | Null>;
 
-    ModifierPackIncluded<T extends ChallengeModifier$ModifierPackIncludedArgs<ExtArgs> = {}>(args?: Subset<T, ChallengeModifier$ModifierPackIncludedArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ModifierPackPayload<ExtArgs>, T, 'findMany'> | Null>;
+    ModifierOption<T extends ChallengeModifier$ModifierOptionArgs<ExtArgs> = {}>(args?: Subset<T, ChallengeModifier$ModifierOptionArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ModifierOptionPayload<ExtArgs>, T, 'findMany'> | Null>;
 
     UserExcluded<T extends ChallengeModifier$UserExcludedArgs<ExtArgs> = {}>(args?: Subset<T, ChallengeModifier$UserExcludedArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, 'findMany'> | Null>;
 
     UserIncluded<T extends ChallengeModifier$UserIncludedArgs<ExtArgs> = {}>(args?: Subset<T, ChallengeModifier$UserIncludedArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, 'findMany'> | Null>;
 
-    ExcludedFromDay<T extends ChallengeModifier$ExcludedFromDayArgs<ExtArgs> = {}>(args?: Subset<T, ChallengeModifier$ExcludedFromDayArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DayPayload<ExtArgs>, T, 'findMany'> | Null>;
+    ModifierPackExcluded<T extends ChallengeModifier$ModifierPackExcludedArgs<ExtArgs> = {}>(args?: Subset<T, ChallengeModifier$ModifierPackExcludedArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DayPayload<ExtArgs>, T, 'findMany'> | Null>;
 
-    IncludedInDay<T extends ChallengeModifier$IncludedInDayArgs<ExtArgs> = {}>(args?: Subset<T, ChallengeModifier$IncludedInDayArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DayPayload<ExtArgs>, T, 'findMany'> | Null>;
-
-    DayCompletedInPart1<T extends ChallengeModifier$DayCompletedInPart1Args<ExtArgs> = {}>(args?: Subset<T, ChallengeModifier$DayCompletedInPart1Args<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DayPayload<ExtArgs>, T, 'findMany'> | Null>;
+    ModifierPackIncluded<T extends ChallengeModifier$ModifierPackIncludedArgs<ExtArgs> = {}>(args?: Subset<T, ChallengeModifier$ModifierPackIncludedArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DayPayload<ExtArgs>, T, 'findMany'> | Null>;
 
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -9195,27 +9145,6 @@ export namespace Prisma {
 
 
   /**
-   * ChallengeModifier.ModifierOption
-   */
-  export type ChallengeModifier$ModifierOptionArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ModifierOption
-     */
-    select?: ModifierOptionSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: ModifierOptionInclude<ExtArgs> | null
-    where?: ModifierOptionWhereInput
-    orderBy?: ModifierOptionOrderByWithRelationInput | ModifierOptionOrderByWithRelationInput[]
-    cursor?: ModifierOptionWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: ModifierOptionScalarFieldEnum | ModifierOptionScalarFieldEnum[]
-  }
-
-
-  /**
    * ChallengeModifier.Day
    */
   export type ChallengeModifier$DayArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -9237,44 +9166,44 @@ export namespace Prisma {
 
 
   /**
-   * ChallengeModifier.ModifierPackExcluded
+   * ChallengeModifier.DayCompletedInPart1
    */
-  export type ChallengeModifier$ModifierPackExcludedArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ChallengeModifier$DayCompletedInPart1Args<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the ModifierPack
+     * Select specific fields to fetch from the Day
      */
-    select?: ModifierPackSelect<ExtArgs> | null
+    select?: DaySelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well.
      */
-    include?: ModifierPackInclude<ExtArgs> | null
-    where?: ModifierPackWhereInput
-    orderBy?: ModifierPackOrderByWithRelationInput | ModifierPackOrderByWithRelationInput[]
-    cursor?: ModifierPackWhereUniqueInput
+    include?: DayInclude<ExtArgs> | null
+    where?: DayWhereInput
+    orderBy?: DayOrderByWithRelationInput | DayOrderByWithRelationInput[]
+    cursor?: DayWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: ModifierPackScalarFieldEnum | ModifierPackScalarFieldEnum[]
+    distinct?: DayScalarFieldEnum | DayScalarFieldEnum[]
   }
 
 
   /**
-   * ChallengeModifier.ModifierPackIncluded
+   * ChallengeModifier.ModifierOption
    */
-  export type ChallengeModifier$ModifierPackIncludedArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ChallengeModifier$ModifierOptionArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the ModifierPack
+     * Select specific fields to fetch from the ModifierOption
      */
-    select?: ModifierPackSelect<ExtArgs> | null
+    select?: ModifierOptionSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well.
      */
-    include?: ModifierPackInclude<ExtArgs> | null
-    where?: ModifierPackWhereInput
-    orderBy?: ModifierPackOrderByWithRelationInput | ModifierPackOrderByWithRelationInput[]
-    cursor?: ModifierPackWhereUniqueInput
+    include?: ModifierOptionInclude<ExtArgs> | null
+    where?: ModifierOptionWhereInput
+    orderBy?: ModifierOptionOrderByWithRelationInput | ModifierOptionOrderByWithRelationInput[]
+    cursor?: ModifierOptionWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: ModifierPackScalarFieldEnum | ModifierPackScalarFieldEnum[]
+    distinct?: ModifierOptionScalarFieldEnum | ModifierOptionScalarFieldEnum[]
   }
 
 
@@ -9321,9 +9250,9 @@ export namespace Prisma {
 
 
   /**
-   * ChallengeModifier.ExcludedFromDay
+   * ChallengeModifier.ModifierPackExcluded
    */
-  export type ChallengeModifier$ExcludedFromDayArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ChallengeModifier$ModifierPackExcludedArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Day
      */
@@ -9342,30 +9271,9 @@ export namespace Prisma {
 
 
   /**
-   * ChallengeModifier.IncludedInDay
+   * ChallengeModifier.ModifierPackIncluded
    */
-  export type ChallengeModifier$IncludedInDayArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Day
-     */
-    select?: DaySelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: DayInclude<ExtArgs> | null
-    where?: DayWhereInput
-    orderBy?: DayOrderByWithRelationInput | DayOrderByWithRelationInput[]
-    cursor?: DayWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: DayScalarFieldEnum | DayScalarFieldEnum[]
-  }
-
-
-  /**
-   * ChallengeModifier.DayCompletedInPart1
-   */
-  export type ChallengeModifier$DayCompletedInPart1Args<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ChallengeModifier$ModifierPackIncludedArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Day
      */
@@ -9633,16 +9541,14 @@ export namespace Prisma {
     standard?: boolean
     createdById?: boolean
     isPublic?: boolean
+    Day?: boolean | ModifierOption$DayArgs<ExtArgs>
+    DayCompletedInPart1?: boolean | ModifierOption$DayCompletedInPart1Args<ExtArgs>
     ChallengeModifier?: boolean | ChallengeModifierDefaultArgs<ExtArgs>
     CreatedBy?: boolean | ModifierOption$CreatedByArgs<ExtArgs>
-    Day?: boolean | ModifierOption$DayArgs<ExtArgs>
-    ModifierPackExcluded?: boolean | ModifierOption$ModifierPackExcludedArgs<ExtArgs>
-    ModifierPackIncluded?: boolean | ModifierOption$ModifierPackIncludedArgs<ExtArgs>
     UserExcluded?: boolean | ModifierOption$UserExcludedArgs<ExtArgs>
     UserIncluded?: boolean | ModifierOption$UserIncludedArgs<ExtArgs>
-    ExcludedFromDay?: boolean | ModifierOption$ExcludedFromDayArgs<ExtArgs>
-    IncludedInDay?: boolean | ModifierOption$IncludedInDayArgs<ExtArgs>
-    DayCompletedInPart1?: boolean | ModifierOption$DayCompletedInPart1Args<ExtArgs>
+    ExcludedModifierOptions?: boolean | ModifierOption$ExcludedModifierOptionsArgs<ExtArgs>
+    IncludedCustomModifierOptions?: boolean | ModifierOption$IncludedCustomModifierOptionsArgs<ExtArgs>
     _count?: boolean | ModifierOptionCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["modifierOption"]>
 
@@ -9659,16 +9565,14 @@ export namespace Prisma {
   }
 
   export type ModifierOptionInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    Day?: boolean | ModifierOption$DayArgs<ExtArgs>
+    DayCompletedInPart1?: boolean | ModifierOption$DayCompletedInPart1Args<ExtArgs>
     ChallengeModifier?: boolean | ChallengeModifierDefaultArgs<ExtArgs>
     CreatedBy?: boolean | ModifierOption$CreatedByArgs<ExtArgs>
-    Day?: boolean | ModifierOption$DayArgs<ExtArgs>
-    ModifierPackExcluded?: boolean | ModifierOption$ModifierPackExcludedArgs<ExtArgs>
-    ModifierPackIncluded?: boolean | ModifierOption$ModifierPackIncludedArgs<ExtArgs>
     UserExcluded?: boolean | ModifierOption$UserExcludedArgs<ExtArgs>
     UserIncluded?: boolean | ModifierOption$UserIncludedArgs<ExtArgs>
-    ExcludedFromDay?: boolean | ModifierOption$ExcludedFromDayArgs<ExtArgs>
-    IncludedInDay?: boolean | ModifierOption$IncludedInDayArgs<ExtArgs>
-    DayCompletedInPart1?: boolean | ModifierOption$DayCompletedInPart1Args<ExtArgs>
+    ExcludedModifierOptions?: boolean | ModifierOption$ExcludedModifierOptionsArgs<ExtArgs>
+    IncludedCustomModifierOptions?: boolean | ModifierOption$IncludedCustomModifierOptionsArgs<ExtArgs>
     _count?: boolean | ModifierOptionCountOutputTypeDefaultArgs<ExtArgs>
   }
 
@@ -9676,16 +9580,14 @@ export namespace Prisma {
   export type $ModifierOptionPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "ModifierOption"
     objects: {
+      Day: Prisma.$DayPayload<ExtArgs>[]
+      DayCompletedInPart1: Prisma.$DayPayload<ExtArgs>[]
       ChallengeModifier: Prisma.$ChallengeModifierPayload<ExtArgs>
       CreatedBy: Prisma.$UserPayload<ExtArgs> | null
-      Day: Prisma.$DayPayload<ExtArgs>[]
-      ModifierPackExcluded: Prisma.$ModifierPackPayload<ExtArgs>[]
-      ModifierPackIncluded: Prisma.$ModifierPackPayload<ExtArgs>[]
       UserExcluded: Prisma.$UserPayload<ExtArgs>[]
       UserIncluded: Prisma.$UserPayload<ExtArgs>[]
-      ExcludedFromDay: Prisma.$DayPayload<ExtArgs>[]
-      IncludedInDay: Prisma.$DayPayload<ExtArgs>[]
-      DayCompletedInPart1: Prisma.$DayPayload<ExtArgs>[]
+      ExcludedModifierOptions: Prisma.$ModifierPackPayload<ExtArgs>[]
+      IncludedCustomModifierOptions: Prisma.$ModifierPackPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -10062,25 +9964,21 @@ export namespace Prisma {
   export interface Prisma__ModifierOptionClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
 
+    Day<T extends ModifierOption$DayArgs<ExtArgs> = {}>(args?: Subset<T, ModifierOption$DayArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DayPayload<ExtArgs>, T, 'findMany'> | Null>;
+
+    DayCompletedInPart1<T extends ModifierOption$DayCompletedInPart1Args<ExtArgs> = {}>(args?: Subset<T, ModifierOption$DayCompletedInPart1Args<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DayPayload<ExtArgs>, T, 'findMany'> | Null>;
+
     ChallengeModifier<T extends ChallengeModifierDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ChallengeModifierDefaultArgs<ExtArgs>>): Prisma__ChallengeModifierClient<$Result.GetResult<Prisma.$ChallengeModifierPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
 
     CreatedBy<T extends ModifierOption$CreatedByArgs<ExtArgs> = {}>(args?: Subset<T, ModifierOption$CreatedByArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, 'findUniqueOrThrow'> | null, null, ExtArgs>;
-
-    Day<T extends ModifierOption$DayArgs<ExtArgs> = {}>(args?: Subset<T, ModifierOption$DayArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DayPayload<ExtArgs>, T, 'findMany'> | Null>;
-
-    ModifierPackExcluded<T extends ModifierOption$ModifierPackExcludedArgs<ExtArgs> = {}>(args?: Subset<T, ModifierOption$ModifierPackExcludedArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ModifierPackPayload<ExtArgs>, T, 'findMany'> | Null>;
-
-    ModifierPackIncluded<T extends ModifierOption$ModifierPackIncludedArgs<ExtArgs> = {}>(args?: Subset<T, ModifierOption$ModifierPackIncludedArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ModifierPackPayload<ExtArgs>, T, 'findMany'> | Null>;
 
     UserExcluded<T extends ModifierOption$UserExcludedArgs<ExtArgs> = {}>(args?: Subset<T, ModifierOption$UserExcludedArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, 'findMany'> | Null>;
 
     UserIncluded<T extends ModifierOption$UserIncludedArgs<ExtArgs> = {}>(args?: Subset<T, ModifierOption$UserIncludedArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, 'findMany'> | Null>;
 
-    ExcludedFromDay<T extends ModifierOption$ExcludedFromDayArgs<ExtArgs> = {}>(args?: Subset<T, ModifierOption$ExcludedFromDayArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DayPayload<ExtArgs>, T, 'findMany'> | Null>;
+    ExcludedModifierOptions<T extends ModifierOption$ExcludedModifierOptionsArgs<ExtArgs> = {}>(args?: Subset<T, ModifierOption$ExcludedModifierOptionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ModifierPackPayload<ExtArgs>, T, 'findMany'> | Null>;
 
-    IncludedInDay<T extends ModifierOption$IncludedInDayArgs<ExtArgs> = {}>(args?: Subset<T, ModifierOption$IncludedInDayArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DayPayload<ExtArgs>, T, 'findMany'> | Null>;
-
-    DayCompletedInPart1<T extends ModifierOption$DayCompletedInPart1Args<ExtArgs> = {}>(args?: Subset<T, ModifierOption$DayCompletedInPart1Args<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DayPayload<ExtArgs>, T, 'findMany'> | Null>;
+    IncludedCustomModifierOptions<T extends ModifierOption$IncludedCustomModifierOptionsArgs<ExtArgs> = {}>(args?: Subset<T, ModifierOption$IncludedCustomModifierOptionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ModifierPackPayload<ExtArgs>, T, 'findMany'> | Null>;
 
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -10431,22 +10329,6 @@ export namespace Prisma {
 
 
   /**
-   * ModifierOption.CreatedBy
-   */
-  export type ModifierOption$CreatedByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the User
-     */
-    select?: UserSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: UserInclude<ExtArgs> | null
-    where?: UserWhereInput
-  }
-
-
-  /**
    * ModifierOption.Day
    */
   export type ModifierOption$DayArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -10468,44 +10350,39 @@ export namespace Prisma {
 
 
   /**
-   * ModifierOption.ModifierPackExcluded
+   * ModifierOption.DayCompletedInPart1
    */
-  export type ModifierOption$ModifierPackExcludedArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ModifierOption$DayCompletedInPart1Args<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the ModifierPack
+     * Select specific fields to fetch from the Day
      */
-    select?: ModifierPackSelect<ExtArgs> | null
+    select?: DaySelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well.
      */
-    include?: ModifierPackInclude<ExtArgs> | null
-    where?: ModifierPackWhereInput
-    orderBy?: ModifierPackOrderByWithRelationInput | ModifierPackOrderByWithRelationInput[]
-    cursor?: ModifierPackWhereUniqueInput
+    include?: DayInclude<ExtArgs> | null
+    where?: DayWhereInput
+    orderBy?: DayOrderByWithRelationInput | DayOrderByWithRelationInput[]
+    cursor?: DayWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: ModifierPackScalarFieldEnum | ModifierPackScalarFieldEnum[]
+    distinct?: DayScalarFieldEnum | DayScalarFieldEnum[]
   }
 
 
   /**
-   * ModifierOption.ModifierPackIncluded
+   * ModifierOption.CreatedBy
    */
-  export type ModifierOption$ModifierPackIncludedArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ModifierOption$CreatedByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the ModifierPack
+     * Select specific fields to fetch from the User
      */
-    select?: ModifierPackSelect<ExtArgs> | null
+    select?: UserSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well.
      */
-    include?: ModifierPackInclude<ExtArgs> | null
-    where?: ModifierPackWhereInput
-    orderBy?: ModifierPackOrderByWithRelationInput | ModifierPackOrderByWithRelationInput[]
-    cursor?: ModifierPackWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: ModifierPackScalarFieldEnum | ModifierPackScalarFieldEnum[]
+    include?: UserInclude<ExtArgs> | null
+    where?: UserWhereInput
   }
 
 
@@ -10552,65 +10429,44 @@ export namespace Prisma {
 
 
   /**
-   * ModifierOption.ExcludedFromDay
+   * ModifierOption.ExcludedModifierOptions
    */
-  export type ModifierOption$ExcludedFromDayArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ModifierOption$ExcludedModifierOptionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Day
+     * Select specific fields to fetch from the ModifierPack
      */
-    select?: DaySelect<ExtArgs> | null
+    select?: ModifierPackSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well.
      */
-    include?: DayInclude<ExtArgs> | null
-    where?: DayWhereInput
-    orderBy?: DayOrderByWithRelationInput | DayOrderByWithRelationInput[]
-    cursor?: DayWhereUniqueInput
+    include?: ModifierPackInclude<ExtArgs> | null
+    where?: ModifierPackWhereInput
+    orderBy?: ModifierPackOrderByWithRelationInput | ModifierPackOrderByWithRelationInput[]
+    cursor?: ModifierPackWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: DayScalarFieldEnum | DayScalarFieldEnum[]
+    distinct?: ModifierPackScalarFieldEnum | ModifierPackScalarFieldEnum[]
   }
 
 
   /**
-   * ModifierOption.IncludedInDay
+   * ModifierOption.IncludedCustomModifierOptions
    */
-  export type ModifierOption$IncludedInDayArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ModifierOption$IncludedCustomModifierOptionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Day
+     * Select specific fields to fetch from the ModifierPack
      */
-    select?: DaySelect<ExtArgs> | null
+    select?: ModifierPackSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well.
      */
-    include?: DayInclude<ExtArgs> | null
-    where?: DayWhereInput
-    orderBy?: DayOrderByWithRelationInput | DayOrderByWithRelationInput[]
-    cursor?: DayWhereUniqueInput
+    include?: ModifierPackInclude<ExtArgs> | null
+    where?: ModifierPackWhereInput
+    orderBy?: ModifierPackOrderByWithRelationInput | ModifierPackOrderByWithRelationInput[]
+    cursor?: ModifierPackWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: DayScalarFieldEnum | DayScalarFieldEnum[]
-  }
-
-
-  /**
-   * ModifierOption.DayCompletedInPart1
-   */
-  export type ModifierOption$DayCompletedInPart1Args<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Day
-     */
-    select?: DaySelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: DayInclude<ExtArgs> | null
-    where?: DayWhereInput
-    orderBy?: DayOrderByWithRelationInput | DayOrderByWithRelationInput[]
-    cursor?: DayWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: DayScalarFieldEnum | DayScalarFieldEnum[]
+    distinct?: ModifierPackScalarFieldEnum | ModifierPackScalarFieldEnum[]
   }
 
 
@@ -10820,11 +10676,9 @@ export namespace Prisma {
     dateCreated?: boolean
     createdById?: boolean
     isPublic?: boolean
-    ExcludedChallengeModifiers?: boolean | ModifierPack$ExcludedChallengeModifiersArgs<ExtArgs>
-    ExcludedModifierOptions?: boolean | ModifierPack$ExcludedModifierOptionsArgs<ExtArgs>
-    EncludedCustomChallengeModifiers?: boolean | ModifierPack$EncludedCustomChallengeModifiersArgs<ExtArgs>
-    IncludedCustomModifierOptions?: boolean | ModifierPack$IncludedCustomModifierOptionsArgs<ExtArgs>
     CreatedBy?: boolean | ModifierPack$CreatedByArgs<ExtArgs>
+    ExcludedFromDay?: boolean | ModifierPack$ExcludedFromDayArgs<ExtArgs>
+    IncludedInDay?: boolean | ModifierPack$IncludedInDayArgs<ExtArgs>
     _count?: boolean | ModifierPackCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["modifierPack"]>
 
@@ -10836,11 +10690,9 @@ export namespace Prisma {
   }
 
   export type ModifierPackInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    ExcludedChallengeModifiers?: boolean | ModifierPack$ExcludedChallengeModifiersArgs<ExtArgs>
-    ExcludedModifierOptions?: boolean | ModifierPack$ExcludedModifierOptionsArgs<ExtArgs>
-    EncludedCustomChallengeModifiers?: boolean | ModifierPack$EncludedCustomChallengeModifiersArgs<ExtArgs>
-    IncludedCustomModifierOptions?: boolean | ModifierPack$IncludedCustomModifierOptionsArgs<ExtArgs>
     CreatedBy?: boolean | ModifierPack$CreatedByArgs<ExtArgs>
+    ExcludedFromDay?: boolean | ModifierPack$ExcludedFromDayArgs<ExtArgs>
+    IncludedInDay?: boolean | ModifierPack$IncludedInDayArgs<ExtArgs>
     _count?: boolean | ModifierPackCountOutputTypeDefaultArgs<ExtArgs>
   }
 
@@ -10848,11 +10700,9 @@ export namespace Prisma {
   export type $ModifierPackPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "ModifierPack"
     objects: {
-      ExcludedChallengeModifiers: Prisma.$ChallengeModifierPayload<ExtArgs>[]
-      ExcludedModifierOptions: Prisma.$ModifierOptionPayload<ExtArgs>[]
-      EncludedCustomChallengeModifiers: Prisma.$ChallengeModifierPayload<ExtArgs>[]
-      IncludedCustomModifierOptions: Prisma.$ModifierOptionPayload<ExtArgs>[]
       CreatedBy: Prisma.$UserPayload<ExtArgs> | null
+      ExcludedFromDay: Prisma.$ModifierOptionPayload<ExtArgs>[]
+      IncludedInDay: Prisma.$ModifierOptionPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -11224,15 +11074,11 @@ export namespace Prisma {
   export interface Prisma__ModifierPackClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
 
-    ExcludedChallengeModifiers<T extends ModifierPack$ExcludedChallengeModifiersArgs<ExtArgs> = {}>(args?: Subset<T, ModifierPack$ExcludedChallengeModifiersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ChallengeModifierPayload<ExtArgs>, T, 'findMany'> | Null>;
-
-    ExcludedModifierOptions<T extends ModifierPack$ExcludedModifierOptionsArgs<ExtArgs> = {}>(args?: Subset<T, ModifierPack$ExcludedModifierOptionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ModifierOptionPayload<ExtArgs>, T, 'findMany'> | Null>;
-
-    EncludedCustomChallengeModifiers<T extends ModifierPack$EncludedCustomChallengeModifiersArgs<ExtArgs> = {}>(args?: Subset<T, ModifierPack$EncludedCustomChallengeModifiersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ChallengeModifierPayload<ExtArgs>, T, 'findMany'> | Null>;
-
-    IncludedCustomModifierOptions<T extends ModifierPack$IncludedCustomModifierOptionsArgs<ExtArgs> = {}>(args?: Subset<T, ModifierPack$IncludedCustomModifierOptionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ModifierOptionPayload<ExtArgs>, T, 'findMany'> | Null>;
-
     CreatedBy<T extends ModifierPack$CreatedByArgs<ExtArgs> = {}>(args?: Subset<T, ModifierPack$CreatedByArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, 'findUniqueOrThrow'> | null, null, ExtArgs>;
+
+    ExcludedFromDay<T extends ModifierPack$ExcludedFromDayArgs<ExtArgs> = {}>(args?: Subset<T, ModifierPack$ExcludedFromDayArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ModifierOptionPayload<ExtArgs>, T, 'findMany'> | Null>;
+
+    IncludedInDay<T extends ModifierPack$IncludedInDayArgs<ExtArgs> = {}>(args?: Subset<T, ModifierPack$IncludedInDayArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ModifierOptionPayload<ExtArgs>, T, 'findMany'> | Null>;
 
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -11578,90 +11424,6 @@ export namespace Prisma {
 
 
   /**
-   * ModifierPack.ExcludedChallengeModifiers
-   */
-  export type ModifierPack$ExcludedChallengeModifiersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ChallengeModifier
-     */
-    select?: ChallengeModifierSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: ChallengeModifierInclude<ExtArgs> | null
-    where?: ChallengeModifierWhereInput
-    orderBy?: ChallengeModifierOrderByWithRelationInput | ChallengeModifierOrderByWithRelationInput[]
-    cursor?: ChallengeModifierWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: ChallengeModifierScalarFieldEnum | ChallengeModifierScalarFieldEnum[]
-  }
-
-
-  /**
-   * ModifierPack.ExcludedModifierOptions
-   */
-  export type ModifierPack$ExcludedModifierOptionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ModifierOption
-     */
-    select?: ModifierOptionSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: ModifierOptionInclude<ExtArgs> | null
-    where?: ModifierOptionWhereInput
-    orderBy?: ModifierOptionOrderByWithRelationInput | ModifierOptionOrderByWithRelationInput[]
-    cursor?: ModifierOptionWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: ModifierOptionScalarFieldEnum | ModifierOptionScalarFieldEnum[]
-  }
-
-
-  /**
-   * ModifierPack.EncludedCustomChallengeModifiers
-   */
-  export type ModifierPack$EncludedCustomChallengeModifiersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ChallengeModifier
-     */
-    select?: ChallengeModifierSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: ChallengeModifierInclude<ExtArgs> | null
-    where?: ChallengeModifierWhereInput
-    orderBy?: ChallengeModifierOrderByWithRelationInput | ChallengeModifierOrderByWithRelationInput[]
-    cursor?: ChallengeModifierWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: ChallengeModifierScalarFieldEnum | ChallengeModifierScalarFieldEnum[]
-  }
-
-
-  /**
-   * ModifierPack.IncludedCustomModifierOptions
-   */
-  export type ModifierPack$IncludedCustomModifierOptionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ModifierOption
-     */
-    select?: ModifierOptionSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: ModifierOptionInclude<ExtArgs> | null
-    where?: ModifierOptionWhereInput
-    orderBy?: ModifierOptionOrderByWithRelationInput | ModifierOptionOrderByWithRelationInput[]
-    cursor?: ModifierOptionWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: ModifierOptionScalarFieldEnum | ModifierOptionScalarFieldEnum[]
-  }
-
-
-  /**
    * ModifierPack.CreatedBy
    */
   export type ModifierPack$CreatedByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -11674,6 +11436,48 @@ export namespace Prisma {
      */
     include?: UserInclude<ExtArgs> | null
     where?: UserWhereInput
+  }
+
+
+  /**
+   * ModifierPack.ExcludedFromDay
+   */
+  export type ModifierPack$ExcludedFromDayArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ModifierOption
+     */
+    select?: ModifierOptionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: ModifierOptionInclude<ExtArgs> | null
+    where?: ModifierOptionWhereInput
+    orderBy?: ModifierOptionOrderByWithRelationInput | ModifierOptionOrderByWithRelationInput[]
+    cursor?: ModifierOptionWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ModifierOptionScalarFieldEnum | ModifierOptionScalarFieldEnum[]
+  }
+
+
+  /**
+   * ModifierPack.IncludedInDay
+   */
+  export type ModifierPack$IncludedInDayArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ModifierOption
+     */
+    select?: ModifierOptionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: ModifierOptionInclude<ExtArgs> | null
+    where?: ModifierOptionWhereInput
+    orderBy?: ModifierOptionOrderByWithRelationInput | ModifierOptionOrderByWithRelationInput[]
+    cursor?: ModifierOptionWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ModifierOptionScalarFieldEnum | ModifierOptionScalarFieldEnum[]
   }
 
 
@@ -11895,8 +11699,8 @@ export namespace Prisma {
     dateCreated?: boolean
     gameId?: boolean
     createdById?: boolean
-    Game?: boolean | GameDefaultArgs<ExtArgs>
     CreatedBy?: boolean | UserDefaultArgs<ExtArgs>
+    Game?: boolean | GameDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["upvote"]>
 
   export type UpvoteSelectScalar = {
@@ -11908,16 +11712,16 @@ export namespace Prisma {
   }
 
   export type UpvoteInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    Game?: boolean | GameDefaultArgs<ExtArgs>
     CreatedBy?: boolean | UserDefaultArgs<ExtArgs>
+    Game?: boolean | GameDefaultArgs<ExtArgs>
   }
 
 
   export type $UpvotePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Upvote"
     objects: {
-      Game: Prisma.$GamePayload<ExtArgs>
       CreatedBy: Prisma.$UserPayload<ExtArgs>
+      Game: Prisma.$GamePayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -12290,9 +12094,9 @@ export namespace Prisma {
   export interface Prisma__UpvoteClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
 
-    Game<T extends GameDefaultArgs<ExtArgs> = {}>(args?: Subset<T, GameDefaultArgs<ExtArgs>>): Prisma__GameClient<$Result.GetResult<Prisma.$GamePayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
-
     CreatedBy<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
+
+    Game<T extends GameDefaultArgs<ExtArgs> = {}>(args?: Subset<T, GameDefaultArgs<ExtArgs>>): Prisma__GameClient<$Result.GetResult<Prisma.$GamePayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
 
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -12856,8 +12660,8 @@ export namespace Prisma {
     dateCreated?: boolean
     gameId?: boolean
     createdById?: boolean
-    Game?: boolean | GameDefaultArgs<ExtArgs>
     CreatedBy?: boolean | UserDefaultArgs<ExtArgs>
+    Game?: boolean | GameDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["downvote"]>
 
   export type DownvoteSelectScalar = {
@@ -12869,16 +12673,16 @@ export namespace Prisma {
   }
 
   export type DownvoteInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    Game?: boolean | GameDefaultArgs<ExtArgs>
     CreatedBy?: boolean | UserDefaultArgs<ExtArgs>
+    Game?: boolean | GameDefaultArgs<ExtArgs>
   }
 
 
   export type $DownvotePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Downvote"
     objects: {
-      Game: Prisma.$GamePayload<ExtArgs>
       CreatedBy: Prisma.$UserPayload<ExtArgs>
+      Game: Prisma.$GamePayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -13251,9 +13055,9 @@ export namespace Prisma {
   export interface Prisma__DownvoteClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
 
-    Game<T extends GameDefaultArgs<ExtArgs> = {}>(args?: Subset<T, GameDefaultArgs<ExtArgs>>): Prisma__GameClient<$Result.GetResult<Prisma.$GamePayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
-
     CreatedBy<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
+
+    Game<T extends GameDefaultArgs<ExtArgs> = {}>(args?: Subset<T, GameDefaultArgs<ExtArgs>>): Prisma__GameClient<$Result.GetResult<Prisma.$GamePayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
 
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -13806,6 +13610,7 @@ export namespace Prisma {
     name?: boolean
     favoriteColor?: boolean
     TestChair?: boolean | TestTable$TestChairArgs<ExtArgs>
+    TestPlate?: boolean | TestTable$TestPlateArgs<ExtArgs>
     _count?: boolean | TestTableCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["testTable"]>
 
@@ -13818,6 +13623,7 @@ export namespace Prisma {
 
   export type TestTableInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     TestChair?: boolean | TestTable$TestChairArgs<ExtArgs>
+    TestPlate?: boolean | TestTable$TestPlateArgs<ExtArgs>
     _count?: boolean | TestTableCountOutputTypeDefaultArgs<ExtArgs>
   }
 
@@ -13826,6 +13632,7 @@ export namespace Prisma {
     name: "TestTable"
     objects: {
       TestChair: Prisma.$TestChairPayload<ExtArgs>[]
+      TestPlate: Prisma.$TestPlatePayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -14199,6 +14006,8 @@ export namespace Prisma {
 
     TestChair<T extends TestTable$TestChairArgs<ExtArgs> = {}>(args?: Subset<T, TestTable$TestChairArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TestChairPayload<ExtArgs>, T, 'findMany'> | Null>;
 
+    TestPlate<T extends TestTable$TestPlateArgs<ExtArgs> = {}>(args?: Subset<T, TestTable$TestPlateArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TestPlatePayload<ExtArgs>, T, 'findMany'> | Null>;
+
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -14564,6 +14373,27 @@ export namespace Prisma {
 
 
   /**
+   * TestTable.TestPlate
+   */
+  export type TestTable$TestPlateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TestPlate
+     */
+    select?: TestPlateSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: TestPlateInclude<ExtArgs> | null
+    where?: TestPlateWhereInput
+    orderBy?: TestPlateOrderByWithRelationInput | TestPlateOrderByWithRelationInput[]
+    cursor?: TestPlateWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: TestPlateScalarFieldEnum | TestPlateScalarFieldEnum[]
+  }
+
+
+  /**
    * TestTable without action
    */
   export type TestTableDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -14593,11 +14423,13 @@ export namespace Prisma {
 
   export type TestChairAvgAggregateOutputType = {
     id: number | null
+    height: number | null
     tableId: number | null
   }
 
   export type TestChairSumAggregateOutputType = {
     id: number | null
+    height: number | null
     tableId: number | null
   }
 
@@ -14606,6 +14438,7 @@ export namespace Prisma {
     dateCreated: Date | null
     name: string | null
     favoriteColor: string | null
+    height: number | null
     tableId: number | null
   }
 
@@ -14614,6 +14447,7 @@ export namespace Prisma {
     dateCreated: Date | null
     name: string | null
     favoriteColor: string | null
+    height: number | null
     tableId: number | null
   }
 
@@ -14622,6 +14456,7 @@ export namespace Prisma {
     dateCreated: number
     name: number
     favoriteColor: number
+    height: number
     tableId: number
     _all: number
   }
@@ -14629,11 +14464,13 @@ export namespace Prisma {
 
   export type TestChairAvgAggregateInputType = {
     id?: true
+    height?: true
     tableId?: true
   }
 
   export type TestChairSumAggregateInputType = {
     id?: true
+    height?: true
     tableId?: true
   }
 
@@ -14642,6 +14479,7 @@ export namespace Prisma {
     dateCreated?: true
     name?: true
     favoriteColor?: true
+    height?: true
     tableId?: true
   }
 
@@ -14650,6 +14488,7 @@ export namespace Prisma {
     dateCreated?: true
     name?: true
     favoriteColor?: true
+    height?: true
     tableId?: true
   }
 
@@ -14658,6 +14497,7 @@ export namespace Prisma {
     dateCreated?: true
     name?: true
     favoriteColor?: true
+    height?: true
     tableId?: true
     _all?: true
   }
@@ -14753,6 +14593,7 @@ export namespace Prisma {
     dateCreated: Date
     name: string
     favoriteColor: string
+    height: number
     tableId: number
     _count: TestChairCountAggregateOutputType | null
     _avg: TestChairAvgAggregateOutputType | null
@@ -14780,6 +14621,7 @@ export namespace Prisma {
     dateCreated?: boolean
     name?: boolean
     favoriteColor?: boolean
+    height?: boolean
     tableId?: boolean
     Table?: boolean | TestTableDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["testChair"]>
@@ -14789,6 +14631,7 @@ export namespace Prisma {
     dateCreated?: boolean
     name?: boolean
     favoriteColor?: boolean
+    height?: boolean
     tableId?: boolean
   }
 
@@ -14807,6 +14650,7 @@ export namespace Prisma {
       dateCreated: Date
       name: string
       favoriteColor: string
+      height: number
       tableId: number
     }, ExtArgs["result"]["testChair"]>
     composites: {}
@@ -15207,6 +15051,7 @@ export namespace Prisma {
     readonly dateCreated: FieldRef<"TestChair", 'DateTime'>
     readonly name: FieldRef<"TestChair", 'String'>
     readonly favoriteColor: FieldRef<"TestChair", 'String'>
+    readonly height: FieldRef<"TestChair", 'Int'>
     readonly tableId: FieldRef<"TestChair", 'Int'>
   }
     
@@ -15536,6 +15381,962 @@ export namespace Prisma {
 
 
   /**
+   * Model TestPlate
+   */
+
+  export type AggregateTestPlate = {
+    _count: TestPlateCountAggregateOutputType | null
+    _avg: TestPlateAvgAggregateOutputType | null
+    _sum: TestPlateSumAggregateOutputType | null
+    _min: TestPlateMinAggregateOutputType | null
+    _max: TestPlateMaxAggregateOutputType | null
+  }
+
+  export type TestPlateAvgAggregateOutputType = {
+    id: number | null
+    tableId: number | null
+  }
+
+  export type TestPlateSumAggregateOutputType = {
+    id: number | null
+    tableId: number | null
+  }
+
+  export type TestPlateMinAggregateOutputType = {
+    id: number | null
+    dateCreated: Date | null
+    name: string | null
+    color: string | null
+    tableId: number | null
+  }
+
+  export type TestPlateMaxAggregateOutputType = {
+    id: number | null
+    dateCreated: Date | null
+    name: string | null
+    color: string | null
+    tableId: number | null
+  }
+
+  export type TestPlateCountAggregateOutputType = {
+    id: number
+    dateCreated: number
+    name: number
+    color: number
+    tableId: number
+    _all: number
+  }
+
+
+  export type TestPlateAvgAggregateInputType = {
+    id?: true
+    tableId?: true
+  }
+
+  export type TestPlateSumAggregateInputType = {
+    id?: true
+    tableId?: true
+  }
+
+  export type TestPlateMinAggregateInputType = {
+    id?: true
+    dateCreated?: true
+    name?: true
+    color?: true
+    tableId?: true
+  }
+
+  export type TestPlateMaxAggregateInputType = {
+    id?: true
+    dateCreated?: true
+    name?: true
+    color?: true
+    tableId?: true
+  }
+
+  export type TestPlateCountAggregateInputType = {
+    id?: true
+    dateCreated?: true
+    name?: true
+    color?: true
+    tableId?: true
+    _all?: true
+  }
+
+  export type TestPlateAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which TestPlate to aggregate.
+     */
+    where?: TestPlateWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TestPlates to fetch.
+     */
+    orderBy?: TestPlateOrderByWithRelationInput | TestPlateOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: TestPlateWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TestPlates from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TestPlates.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned TestPlates
+    **/
+    _count?: true | TestPlateCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: TestPlateAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: TestPlateSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: TestPlateMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: TestPlateMaxAggregateInputType
+  }
+
+  export type GetTestPlateAggregateType<T extends TestPlateAggregateArgs> = {
+        [P in keyof T & keyof AggregateTestPlate]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateTestPlate[P]>
+      : GetScalarType<T[P], AggregateTestPlate[P]>
+  }
+
+
+
+
+  export type TestPlateGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TestPlateWhereInput
+    orderBy?: TestPlateOrderByWithAggregationInput | TestPlateOrderByWithAggregationInput[]
+    by: TestPlateScalarFieldEnum[] | TestPlateScalarFieldEnum
+    having?: TestPlateScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: TestPlateCountAggregateInputType | true
+    _avg?: TestPlateAvgAggregateInputType
+    _sum?: TestPlateSumAggregateInputType
+    _min?: TestPlateMinAggregateInputType
+    _max?: TestPlateMaxAggregateInputType
+  }
+
+  export type TestPlateGroupByOutputType = {
+    id: number
+    dateCreated: Date
+    name: string
+    color: string
+    tableId: number
+    _count: TestPlateCountAggregateOutputType | null
+    _avg: TestPlateAvgAggregateOutputType | null
+    _sum: TestPlateSumAggregateOutputType | null
+    _min: TestPlateMinAggregateOutputType | null
+    _max: TestPlateMaxAggregateOutputType | null
+  }
+
+  type GetTestPlateGroupByPayload<T extends TestPlateGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<TestPlateGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof TestPlateGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], TestPlateGroupByOutputType[P]>
+            : GetScalarType<T[P], TestPlateGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type TestPlateSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    dateCreated?: boolean
+    name?: boolean
+    color?: boolean
+    tableId?: boolean
+    Table?: boolean | TestTableDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["testPlate"]>
+
+  export type TestPlateSelectScalar = {
+    id?: boolean
+    dateCreated?: boolean
+    name?: boolean
+    color?: boolean
+    tableId?: boolean
+  }
+
+  export type TestPlateInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    Table?: boolean | TestTableDefaultArgs<ExtArgs>
+  }
+
+
+  export type $TestPlatePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "TestPlate"
+    objects: {
+      Table: Prisma.$TestTablePayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      dateCreated: Date
+      name: string
+      color: string
+      tableId: number
+    }, ExtArgs["result"]["testPlate"]>
+    composites: {}
+  }
+
+
+  type TestPlateGetPayload<S extends boolean | null | undefined | TestPlateDefaultArgs> = $Result.GetResult<Prisma.$TestPlatePayload, S>
+
+  type TestPlateCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<TestPlateFindManyArgs, 'select' | 'include' | 'distinct' > & {
+      select?: TestPlateCountAggregateInputType | true
+    }
+
+  export interface TestPlateDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['TestPlate'], meta: { name: 'TestPlate' } }
+    /**
+     * Find zero or one TestPlate that matches the filter.
+     * @param {TestPlateFindUniqueArgs} args - Arguments to find a TestPlate
+     * @example
+     * // Get one TestPlate
+     * const testPlate = await prisma.testPlate.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends TestPlateFindUniqueArgs<ExtArgs>>(
+      args: SelectSubset<T, TestPlateFindUniqueArgs<ExtArgs>>
+    ): Prisma__TestPlateClient<$Result.GetResult<Prisma.$TestPlatePayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
+
+    /**
+     * Find one TestPlate that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {TestPlateFindUniqueOrThrowArgs} args - Arguments to find a TestPlate
+     * @example
+     * // Get one TestPlate
+     * const testPlate = await prisma.testPlate.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends TestPlateFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, TestPlateFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__TestPlateClient<$Result.GetResult<Prisma.$TestPlatePayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find the first TestPlate that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TestPlateFindFirstArgs} args - Arguments to find a TestPlate
+     * @example
+     * // Get one TestPlate
+     * const testPlate = await prisma.testPlate.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends TestPlateFindFirstArgs<ExtArgs>>(
+      args?: SelectSubset<T, TestPlateFindFirstArgs<ExtArgs>>
+    ): Prisma__TestPlateClient<$Result.GetResult<Prisma.$TestPlatePayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
+
+    /**
+     * Find the first TestPlate that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TestPlateFindFirstOrThrowArgs} args - Arguments to find a TestPlate
+     * @example
+     * // Get one TestPlate
+     * const testPlate = await prisma.testPlate.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends TestPlateFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, TestPlateFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__TestPlateClient<$Result.GetResult<Prisma.$TestPlatePayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find zero or more TestPlates that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TestPlateFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all TestPlates
+     * const testPlates = await prisma.testPlate.findMany()
+     * 
+     * // Get first 10 TestPlates
+     * const testPlates = await prisma.testPlate.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const testPlateWithIdOnly = await prisma.testPlate.findMany({ select: { id: true } })
+     * 
+    **/
+    findMany<T extends TestPlateFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, TestPlateFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TestPlatePayload<ExtArgs>, T, 'findMany'>>
+
+    /**
+     * Create a TestPlate.
+     * @param {TestPlateCreateArgs} args - Arguments to create a TestPlate.
+     * @example
+     * // Create one TestPlate
+     * const TestPlate = await prisma.testPlate.create({
+     *   data: {
+     *     // ... data to create a TestPlate
+     *   }
+     * })
+     * 
+    **/
+    create<T extends TestPlateCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, TestPlateCreateArgs<ExtArgs>>
+    ): Prisma__TestPlateClient<$Result.GetResult<Prisma.$TestPlatePayload<ExtArgs>, T, 'create'>, never, ExtArgs>
+
+    /**
+     * Create many TestPlates.
+     *     @param {TestPlateCreateManyArgs} args - Arguments to create many TestPlates.
+     *     @example
+     *     // Create many TestPlates
+     *     const testPlate = await prisma.testPlate.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends TestPlateCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, TestPlateCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a TestPlate.
+     * @param {TestPlateDeleteArgs} args - Arguments to delete one TestPlate.
+     * @example
+     * // Delete one TestPlate
+     * const TestPlate = await prisma.testPlate.delete({
+     *   where: {
+     *     // ... filter to delete one TestPlate
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends TestPlateDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, TestPlateDeleteArgs<ExtArgs>>
+    ): Prisma__TestPlateClient<$Result.GetResult<Prisma.$TestPlatePayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
+
+    /**
+     * Update one TestPlate.
+     * @param {TestPlateUpdateArgs} args - Arguments to update one TestPlate.
+     * @example
+     * // Update one TestPlate
+     * const testPlate = await prisma.testPlate.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends TestPlateUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, TestPlateUpdateArgs<ExtArgs>>
+    ): Prisma__TestPlateClient<$Result.GetResult<Prisma.$TestPlatePayload<ExtArgs>, T, 'update'>, never, ExtArgs>
+
+    /**
+     * Delete zero or more TestPlates.
+     * @param {TestPlateDeleteManyArgs} args - Arguments to filter TestPlates to delete.
+     * @example
+     * // Delete a few TestPlates
+     * const { count } = await prisma.testPlate.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends TestPlateDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, TestPlateDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more TestPlates.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TestPlateUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many TestPlates
+     * const testPlate = await prisma.testPlate.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends TestPlateUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, TestPlateUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one TestPlate.
+     * @param {TestPlateUpsertArgs} args - Arguments to update or create a TestPlate.
+     * @example
+     * // Update or create a TestPlate
+     * const testPlate = await prisma.testPlate.upsert({
+     *   create: {
+     *     // ... data to create a TestPlate
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the TestPlate we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends TestPlateUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, TestPlateUpsertArgs<ExtArgs>>
+    ): Prisma__TestPlateClient<$Result.GetResult<Prisma.$TestPlatePayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
+
+    /**
+     * Count the number of TestPlates.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TestPlateCountArgs} args - Arguments to filter TestPlates to count.
+     * @example
+     * // Count the number of TestPlates
+     * const count = await prisma.testPlate.count({
+     *   where: {
+     *     // ... the filter for the TestPlates we want to count
+     *   }
+     * })
+    **/
+    count<T extends TestPlateCountArgs>(
+      args?: Subset<T, TestPlateCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], TestPlateCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a TestPlate.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TestPlateAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends TestPlateAggregateArgs>(args: Subset<T, TestPlateAggregateArgs>): Prisma.PrismaPromise<GetTestPlateAggregateType<T>>
+
+    /**
+     * Group by TestPlate.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TestPlateGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends TestPlateGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: TestPlateGroupByArgs['orderBy'] }
+        : { orderBy?: TestPlateGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, TestPlateGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTestPlateGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the TestPlate model
+   */
+  readonly fields: TestPlateFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for TestPlate.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__TestPlateClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+
+    Table<T extends TestTableDefaultArgs<ExtArgs> = {}>(args?: Subset<T, TestTableDefaultArgs<ExtArgs>>): Prisma__TestTableClient<$Result.GetResult<Prisma.$TestTablePayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
+
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
+  }
+
+
+
+  /**
+   * Fields of the TestPlate model
+   */ 
+  interface TestPlateFieldRefs {
+    readonly id: FieldRef<"TestPlate", 'Int'>
+    readonly dateCreated: FieldRef<"TestPlate", 'DateTime'>
+    readonly name: FieldRef<"TestPlate", 'String'>
+    readonly color: FieldRef<"TestPlate", 'String'>
+    readonly tableId: FieldRef<"TestPlate", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+
+  /**
+   * TestPlate findUnique
+   */
+  export type TestPlateFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TestPlate
+     */
+    select?: TestPlateSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: TestPlateInclude<ExtArgs> | null
+    /**
+     * Filter, which TestPlate to fetch.
+     */
+    where: TestPlateWhereUniqueInput
+  }
+
+
+  /**
+   * TestPlate findUniqueOrThrow
+   */
+  export type TestPlateFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TestPlate
+     */
+    select?: TestPlateSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: TestPlateInclude<ExtArgs> | null
+    /**
+     * Filter, which TestPlate to fetch.
+     */
+    where: TestPlateWhereUniqueInput
+  }
+
+
+  /**
+   * TestPlate findFirst
+   */
+  export type TestPlateFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TestPlate
+     */
+    select?: TestPlateSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: TestPlateInclude<ExtArgs> | null
+    /**
+     * Filter, which TestPlate to fetch.
+     */
+    where?: TestPlateWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TestPlates to fetch.
+     */
+    orderBy?: TestPlateOrderByWithRelationInput | TestPlateOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for TestPlates.
+     */
+    cursor?: TestPlateWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TestPlates from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TestPlates.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of TestPlates.
+     */
+    distinct?: TestPlateScalarFieldEnum | TestPlateScalarFieldEnum[]
+  }
+
+
+  /**
+   * TestPlate findFirstOrThrow
+   */
+  export type TestPlateFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TestPlate
+     */
+    select?: TestPlateSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: TestPlateInclude<ExtArgs> | null
+    /**
+     * Filter, which TestPlate to fetch.
+     */
+    where?: TestPlateWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TestPlates to fetch.
+     */
+    orderBy?: TestPlateOrderByWithRelationInput | TestPlateOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for TestPlates.
+     */
+    cursor?: TestPlateWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TestPlates from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TestPlates.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of TestPlates.
+     */
+    distinct?: TestPlateScalarFieldEnum | TestPlateScalarFieldEnum[]
+  }
+
+
+  /**
+   * TestPlate findMany
+   */
+  export type TestPlateFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TestPlate
+     */
+    select?: TestPlateSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: TestPlateInclude<ExtArgs> | null
+    /**
+     * Filter, which TestPlates to fetch.
+     */
+    where?: TestPlateWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TestPlates to fetch.
+     */
+    orderBy?: TestPlateOrderByWithRelationInput | TestPlateOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing TestPlates.
+     */
+    cursor?: TestPlateWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TestPlates from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TestPlates.
+     */
+    skip?: number
+    distinct?: TestPlateScalarFieldEnum | TestPlateScalarFieldEnum[]
+  }
+
+
+  /**
+   * TestPlate create
+   */
+  export type TestPlateCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TestPlate
+     */
+    select?: TestPlateSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: TestPlateInclude<ExtArgs> | null
+    /**
+     * The data needed to create a TestPlate.
+     */
+    data: XOR<TestPlateCreateInput, TestPlateUncheckedCreateInput>
+  }
+
+
+  /**
+   * TestPlate createMany
+   */
+  export type TestPlateCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many TestPlates.
+     */
+    data: TestPlateCreateManyInput | TestPlateCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+
+  /**
+   * TestPlate update
+   */
+  export type TestPlateUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TestPlate
+     */
+    select?: TestPlateSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: TestPlateInclude<ExtArgs> | null
+    /**
+     * The data needed to update a TestPlate.
+     */
+    data: XOR<TestPlateUpdateInput, TestPlateUncheckedUpdateInput>
+    /**
+     * Choose, which TestPlate to update.
+     */
+    where: TestPlateWhereUniqueInput
+  }
+
+
+  /**
+   * TestPlate updateMany
+   */
+  export type TestPlateUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update TestPlates.
+     */
+    data: XOR<TestPlateUpdateManyMutationInput, TestPlateUncheckedUpdateManyInput>
+    /**
+     * Filter which TestPlates to update
+     */
+    where?: TestPlateWhereInput
+  }
+
+
+  /**
+   * TestPlate upsert
+   */
+  export type TestPlateUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TestPlate
+     */
+    select?: TestPlateSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: TestPlateInclude<ExtArgs> | null
+    /**
+     * The filter to search for the TestPlate to update in case it exists.
+     */
+    where: TestPlateWhereUniqueInput
+    /**
+     * In case the TestPlate found by the `where` argument doesn't exist, create a new TestPlate with this data.
+     */
+    create: XOR<TestPlateCreateInput, TestPlateUncheckedCreateInput>
+    /**
+     * In case the TestPlate was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<TestPlateUpdateInput, TestPlateUncheckedUpdateInput>
+  }
+
+
+  /**
+   * TestPlate delete
+   */
+  export type TestPlateDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TestPlate
+     */
+    select?: TestPlateSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: TestPlateInclude<ExtArgs> | null
+    /**
+     * Filter which TestPlate to delete.
+     */
+    where: TestPlateWhereUniqueInput
+  }
+
+
+  /**
+   * TestPlate deleteMany
+   */
+  export type TestPlateDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which TestPlates to delete
+     */
+    where?: TestPlateWhereInput
+  }
+
+
+  /**
+   * TestPlate without action
+   */
+  export type TestPlateDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TestPlate
+     */
+    select?: TestPlateSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: TestPlateInclude<ExtArgs> | null
+  }
+
+
+
+  /**
    * Enums
    */
 
@@ -15705,10 +16506,22 @@ export namespace Prisma {
     dateCreated: 'dateCreated',
     name: 'name',
     favoriteColor: 'favoriteColor',
+    height: 'height',
     tableId: 'tableId'
   };
 
   export type TestChairScalarFieldEnum = (typeof TestChairScalarFieldEnum)[keyof typeof TestChairScalarFieldEnum]
+
+
+  export const TestPlateScalarFieldEnum: {
+    id: 'id',
+    dateCreated: 'dateCreated',
+    name: 'name',
+    color: 'color',
+    tableId: 'tableId'
+  };
+
+  export type TestPlateScalarFieldEnum = (typeof TestPlateScalarFieldEnum)[keyof typeof TestPlateScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -15815,17 +16628,17 @@ export namespace Prisma {
     username?: StringNullableFilter<"User"> | string | null
     dateCreated?: DateTimeFilter<"User"> | Date | string
     numberOfGames?: IntFilter<"User"> | number
-    Game?: GameListRelationFilter
-    PublicProfile?: PublicProfileListRelationFilter
     ChallengeModifier?: ChallengeModifierListRelationFilter
+    Downvote?: DownvoteListRelationFilter
+    Game?: GameListRelationFilter
     ModifierOption?: ModifierOptionListRelationFilter
+    ModifierPack?: ModifierPackListRelationFilter
+    PublicProfile?: PublicProfileListRelationFilter
+    Upvote?: UpvoteListRelationFilter
     DefaultExcludedChallengeModifiers?: ChallengeModifierListRelationFilter
     DefaultExcludedModifierOptions?: ModifierOptionListRelationFilter
     DefaultIncludedCustomChallengeModifiers?: ChallengeModifierListRelationFilter
     DefaultIncludedCustomModifierOptions?: ModifierOptionListRelationFilter
-    ModifierPack?: ModifierPackListRelationFilter
-    Downvote?: DownvoteListRelationFilter
-    Upvote?: UpvoteListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
@@ -15834,17 +16647,17 @@ export namespace Prisma {
     username?: SortOrderInput | SortOrder
     dateCreated?: SortOrder
     numberOfGames?: SortOrder
-    Game?: GameOrderByRelationAggregateInput
-    PublicProfile?: PublicProfileOrderByRelationAggregateInput
     ChallengeModifier?: ChallengeModifierOrderByRelationAggregateInput
+    Downvote?: DownvoteOrderByRelationAggregateInput
+    Game?: GameOrderByRelationAggregateInput
     ModifierOption?: ModifierOptionOrderByRelationAggregateInput
+    ModifierPack?: ModifierPackOrderByRelationAggregateInput
+    PublicProfile?: PublicProfileOrderByRelationAggregateInput
+    Upvote?: UpvoteOrderByRelationAggregateInput
     DefaultExcludedChallengeModifiers?: ChallengeModifierOrderByRelationAggregateInput
     DefaultExcludedModifierOptions?: ModifierOptionOrderByRelationAggregateInput
     DefaultIncludedCustomChallengeModifiers?: ChallengeModifierOrderByRelationAggregateInput
     DefaultIncludedCustomModifierOptions?: ModifierOptionOrderByRelationAggregateInput
-    ModifierPack?: ModifierPackOrderByRelationAggregateInput
-    Downvote?: DownvoteOrderByRelationAggregateInput
-    Upvote?: UpvoteOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -15856,17 +16669,17 @@ export namespace Prisma {
     NOT?: UserWhereInput | UserWhereInput[]
     dateCreated?: DateTimeFilter<"User"> | Date | string
     numberOfGames?: IntFilter<"User"> | number
-    Game?: GameListRelationFilter
-    PublicProfile?: PublicProfileListRelationFilter
     ChallengeModifier?: ChallengeModifierListRelationFilter
+    Downvote?: DownvoteListRelationFilter
+    Game?: GameListRelationFilter
     ModifierOption?: ModifierOptionListRelationFilter
+    ModifierPack?: ModifierPackListRelationFilter
+    PublicProfile?: PublicProfileListRelationFilter
+    Upvote?: UpvoteListRelationFilter
     DefaultExcludedChallengeModifiers?: ChallengeModifierListRelationFilter
     DefaultExcludedModifierOptions?: ModifierOptionListRelationFilter
     DefaultIncludedCustomChallengeModifiers?: ChallengeModifierListRelationFilter
     DefaultIncludedCustomModifierOptions?: ModifierOptionListRelationFilter
-    ModifierPack?: ModifierPackListRelationFilter
-    Downvote?: DownvoteListRelationFilter
-    Upvote?: UpvoteListRelationFilter
   }, "id" | "serializedId" | "username">
 
   export type UserOrderByWithAggregationInput = {
@@ -15901,8 +16714,8 @@ export namespace Prisma {
     dateCreated?: DateTimeFilter<"PublicProfile"> | Date | string
     name?: StringFilter<"PublicProfile"> | string
     userId?: StringFilter<"PublicProfile"> | string
-    User?: XOR<UserRelationFilter, UserWhereInput>
     Game?: GameListRelationFilter
+    User?: XOR<UserRelationFilter, UserWhereInput>
   }
 
   export type PublicProfileOrderByWithRelationInput = {
@@ -15910,8 +16723,8 @@ export namespace Prisma {
     dateCreated?: SortOrder
     name?: SortOrder
     userId?: SortOrder
-    User?: UserOrderByWithRelationInput
     Game?: GameOrderByRelationAggregateInput
+    User?: UserOrderByWithRelationInput
   }
 
   export type PublicProfileWhereUniqueInput = Prisma.AtLeast<{
@@ -15922,8 +16735,8 @@ export namespace Prisma {
     dateCreated?: DateTimeFilter<"PublicProfile"> | Date | string
     name?: StringFilter<"PublicProfile"> | string
     userId?: StringFilter<"PublicProfile"> | string
-    User?: XOR<UserRelationFilter, UserWhereInput>
     Game?: GameListRelationFilter
+    User?: XOR<UserRelationFilter, UserWhereInput>
   }, "id">
 
   export type PublicProfileOrderByWithAggregationInput = {
@@ -15972,12 +16785,12 @@ export namespace Prisma {
     score?: IntFilter<"Game"> | number
     rankId?: IntNullableFilter<"Game"> | number | null
     dateCompleted?: DateTimeNullableFilter<"Game"> | Date | string | null
-    User?: XOR<UserRelationFilter, UserWhereInput>
-    Rank?: XOR<RankNullableRelationFilter, RankWhereInput> | null
     Day?: DayListRelationFilter
-    PublicProfile?: XOR<PublicProfileNullableRelationFilter, PublicProfileWhereInput> | null
-    Upvote?: UpvoteListRelationFilter
     Downvote?: DownvoteListRelationFilter
+    PublicProfile?: XOR<PublicProfileNullableRelationFilter, PublicProfileWhereInput> | null
+    Rank?: XOR<RankNullableRelationFilter, RankWhereInput> | null
+    User?: XOR<UserRelationFilter, UserWhereInput>
+    Upvote?: UpvoteListRelationFilter
   }
 
   export type GameOrderByWithRelationInput = {
@@ -16001,12 +16814,12 @@ export namespace Prisma {
     score?: SortOrder
     rankId?: SortOrderInput | SortOrder
     dateCompleted?: SortOrderInput | SortOrder
-    User?: UserOrderByWithRelationInput
-    Rank?: RankOrderByWithRelationInput
     Day?: DayOrderByRelationAggregateInput
-    PublicProfile?: PublicProfileOrderByWithRelationInput
-    Upvote?: UpvoteOrderByRelationAggregateInput
     Downvote?: DownvoteOrderByRelationAggregateInput
+    PublicProfile?: PublicProfileOrderByWithRelationInput
+    Rank?: RankOrderByWithRelationInput
+    User?: UserOrderByWithRelationInput
+    Upvote?: UpvoteOrderByRelationAggregateInput
   }
 
   export type GameWhereUniqueInput = Prisma.AtLeast<{
@@ -16033,12 +16846,12 @@ export namespace Prisma {
     score?: IntFilter<"Game"> | number
     rankId?: IntNullableFilter<"Game"> | number | null
     dateCompleted?: DateTimeNullableFilter<"Game"> | Date | string | null
-    User?: XOR<UserRelationFilter, UserWhereInput>
-    Rank?: XOR<RankNullableRelationFilter, RankWhereInput> | null
     Day?: DayListRelationFilter
-    PublicProfile?: XOR<PublicProfileNullableRelationFilter, PublicProfileWhereInput> | null
-    Upvote?: UpvoteListRelationFilter
     Downvote?: DownvoteListRelationFilter
+    PublicProfile?: XOR<PublicProfileNullableRelationFilter, PublicProfileWhereInput> | null
+    Rank?: XOR<RankNullableRelationFilter, RankWhereInput> | null
+    User?: XOR<UserRelationFilter, UserWhereInput>
+    Upvote?: UpvoteListRelationFilter
   }, "id">
 
   export type GameOrderByWithAggregationInput = {
@@ -16163,15 +16976,13 @@ export namespace Prisma {
     modifierOptionRerollsUsed?: IntFilter<"Day"> | number
     rerollTokensSpentDuringPart2?: IntFilter<"Day"> | number
     netScore?: IntFilter<"Day"> | number
-    ExcludedChallengeModifiers?: ChallengeModifierListRelationFilter
-    ExcludedModifierOptions?: ModifierOptionListRelationFilter
-    IncludedCustomChallengeModifiers?: ChallengeModifierListRelationFilter
-    IncludedCustomModifierOptions?: ModifierOptionListRelationFilter
+    ChallengeModifier?: XOR<ChallengeModifierNullableRelationFilter, ChallengeModifierWhereInput> | null
     Game?: XOR<GameRelationFilter, GameWhereInput>
+    ModifierOption?: XOR<ModifierOptionNullableRelationFilter, ModifierOptionWhereInput> | null
     ModifierWhenPart1Completed?: XOR<ChallengeModifierNullableRelationFilter, ChallengeModifierWhereInput> | null
     OptionWhenPart1Completed?: XOR<ModifierOptionNullableRelationFilter, ModifierOptionWhereInput> | null
-    ChallengeModifier?: XOR<ChallengeModifierNullableRelationFilter, ChallengeModifierWhereInput> | null
-    ModifierOption?: XOR<ModifierOptionNullableRelationFilter, ModifierOptionWhereInput> | null
+    ExcludedChallengeModifiers?: ChallengeModifierListRelationFilter
+    EncludedCustomChallengeModifiers?: ChallengeModifierListRelationFilter
   }
 
   export type DayOrderByWithRelationInput = {
@@ -16192,15 +17003,13 @@ export namespace Prisma {
     modifierOptionRerollsUsed?: SortOrder
     rerollTokensSpentDuringPart2?: SortOrder
     netScore?: SortOrder
-    ExcludedChallengeModifiers?: ChallengeModifierOrderByRelationAggregateInput
-    ExcludedModifierOptions?: ModifierOptionOrderByRelationAggregateInput
-    IncludedCustomChallengeModifiers?: ChallengeModifierOrderByRelationAggregateInput
-    IncludedCustomModifierOptions?: ModifierOptionOrderByRelationAggregateInput
+    ChallengeModifier?: ChallengeModifierOrderByWithRelationInput
     Game?: GameOrderByWithRelationInput
+    ModifierOption?: ModifierOptionOrderByWithRelationInput
     ModifierWhenPart1Completed?: ChallengeModifierOrderByWithRelationInput
     OptionWhenPart1Completed?: ModifierOptionOrderByWithRelationInput
-    ChallengeModifier?: ChallengeModifierOrderByWithRelationInput
-    ModifierOption?: ModifierOptionOrderByWithRelationInput
+    ExcludedChallengeModifiers?: ChallengeModifierOrderByRelationAggregateInput
+    EncludedCustomChallengeModifiers?: ChallengeModifierOrderByRelationAggregateInput
   }
 
   export type DayWhereUniqueInput = Prisma.AtLeast<{
@@ -16224,15 +17033,13 @@ export namespace Prisma {
     modifierOptionRerollsUsed?: IntFilter<"Day"> | number
     rerollTokensSpentDuringPart2?: IntFilter<"Day"> | number
     netScore?: IntFilter<"Day"> | number
-    ExcludedChallengeModifiers?: ChallengeModifierListRelationFilter
-    ExcludedModifierOptions?: ModifierOptionListRelationFilter
-    IncludedCustomChallengeModifiers?: ChallengeModifierListRelationFilter
-    IncludedCustomModifierOptions?: ModifierOptionListRelationFilter
+    ChallengeModifier?: XOR<ChallengeModifierNullableRelationFilter, ChallengeModifierWhereInput> | null
     Game?: XOR<GameRelationFilter, GameWhereInput>
+    ModifierOption?: XOR<ModifierOptionNullableRelationFilter, ModifierOptionWhereInput> | null
     ModifierWhenPart1Completed?: XOR<ChallengeModifierNullableRelationFilter, ChallengeModifierWhereInput> | null
     OptionWhenPart1Completed?: XOR<ModifierOptionNullableRelationFilter, ModifierOptionWhereInput> | null
-    ChallengeModifier?: XOR<ChallengeModifierNullableRelationFilter, ChallengeModifierWhereInput> | null
-    ModifierOption?: XOR<ModifierOptionNullableRelationFilter, ModifierOptionWhereInput> | null
+    ExcludedChallengeModifiers?: ChallengeModifierListRelationFilter
+    EncludedCustomChallengeModifiers?: ChallengeModifierListRelationFilter
   }, "id">
 
   export type DayOrderByWithAggregationInput = {
@@ -16297,15 +17104,13 @@ export namespace Prisma {
     createdById?: StringNullableFilter<"ChallengeModifier"> | string | null
     isPublic?: BoolFilter<"ChallengeModifier"> | boolean
     CreatedBy?: XOR<UserNullableRelationFilter, UserWhereInput> | null
-    ModifierOption?: ModifierOptionListRelationFilter
     Day?: DayListRelationFilter
-    ModifierPackExcluded?: ModifierPackListRelationFilter
-    ModifierPackIncluded?: ModifierPackListRelationFilter
+    DayCompletedInPart1?: DayListRelationFilter
+    ModifierOption?: ModifierOptionListRelationFilter
     UserExcluded?: UserListRelationFilter
     UserIncluded?: UserListRelationFilter
-    ExcludedFromDay?: DayListRelationFilter
-    IncludedInDay?: DayListRelationFilter
-    DayCompletedInPart1?: DayListRelationFilter
+    ModifierPackExcluded?: DayListRelationFilter
+    ModifierPackIncluded?: DayListRelationFilter
   }
 
   export type ChallengeModifierOrderByWithRelationInput = {
@@ -16319,15 +17124,13 @@ export namespace Prisma {
     createdById?: SortOrderInput | SortOrder
     isPublic?: SortOrder
     CreatedBy?: UserOrderByWithRelationInput
-    ModifierOption?: ModifierOptionOrderByRelationAggregateInput
     Day?: DayOrderByRelationAggregateInput
-    ModifierPackExcluded?: ModifierPackOrderByRelationAggregateInput
-    ModifierPackIncluded?: ModifierPackOrderByRelationAggregateInput
+    DayCompletedInPart1?: DayOrderByRelationAggregateInput
+    ModifierOption?: ModifierOptionOrderByRelationAggregateInput
     UserExcluded?: UserOrderByRelationAggregateInput
     UserIncluded?: UserOrderByRelationAggregateInput
-    ExcludedFromDay?: DayOrderByRelationAggregateInput
-    IncludedInDay?: DayOrderByRelationAggregateInput
-    DayCompletedInPart1?: DayOrderByRelationAggregateInput
+    ModifierPackExcluded?: DayOrderByRelationAggregateInput
+    ModifierPackIncluded?: DayOrderByRelationAggregateInput
   }
 
   export type ChallengeModifierWhereUniqueInput = Prisma.AtLeast<{
@@ -16344,15 +17147,13 @@ export namespace Prisma {
     createdById?: StringNullableFilter<"ChallengeModifier"> | string | null
     isPublic?: BoolFilter<"ChallengeModifier"> | boolean
     CreatedBy?: XOR<UserNullableRelationFilter, UserWhereInput> | null
-    ModifierOption?: ModifierOptionListRelationFilter
     Day?: DayListRelationFilter
-    ModifierPackExcluded?: ModifierPackListRelationFilter
-    ModifierPackIncluded?: ModifierPackListRelationFilter
+    DayCompletedInPart1?: DayListRelationFilter
+    ModifierOption?: ModifierOptionListRelationFilter
     UserExcluded?: UserListRelationFilter
     UserIncluded?: UserListRelationFilter
-    ExcludedFromDay?: DayListRelationFilter
-    IncludedInDay?: DayListRelationFilter
-    DayCompletedInPart1?: DayListRelationFilter
+    ModifierPackExcluded?: DayListRelationFilter
+    ModifierPackIncluded?: DayListRelationFilter
   }, "id" | "name">
 
   export type ChallengeModifierOrderByWithAggregationInput = {
@@ -16400,16 +17201,14 @@ export namespace Prisma {
     standard?: BoolFilter<"ModifierOption"> | boolean
     createdById?: StringNullableFilter<"ModifierOption"> | string | null
     isPublic?: BoolFilter<"ModifierOption"> | boolean
+    Day?: DayListRelationFilter
+    DayCompletedInPart1?: DayListRelationFilter
     ChallengeModifier?: XOR<ChallengeModifierRelationFilter, ChallengeModifierWhereInput>
     CreatedBy?: XOR<UserNullableRelationFilter, UserWhereInput> | null
-    Day?: DayListRelationFilter
-    ModifierPackExcluded?: ModifierPackListRelationFilter
-    ModifierPackIncluded?: ModifierPackListRelationFilter
     UserExcluded?: UserListRelationFilter
     UserIncluded?: UserListRelationFilter
-    ExcludedFromDay?: DayListRelationFilter
-    IncludedInDay?: DayListRelationFilter
-    DayCompletedInPart1?: DayListRelationFilter
+    ExcludedModifierOptions?: ModifierPackListRelationFilter
+    IncludedCustomModifierOptions?: ModifierPackListRelationFilter
   }
 
   export type ModifierOptionOrderByWithRelationInput = {
@@ -16422,16 +17221,14 @@ export namespace Prisma {
     standard?: SortOrder
     createdById?: SortOrderInput | SortOrder
     isPublic?: SortOrder
+    Day?: DayOrderByRelationAggregateInput
+    DayCompletedInPart1?: DayOrderByRelationAggregateInput
     ChallengeModifier?: ChallengeModifierOrderByWithRelationInput
     CreatedBy?: UserOrderByWithRelationInput
-    Day?: DayOrderByRelationAggregateInput
-    ModifierPackExcluded?: ModifierPackOrderByRelationAggregateInput
-    ModifierPackIncluded?: ModifierPackOrderByRelationAggregateInput
     UserExcluded?: UserOrderByRelationAggregateInput
     UserIncluded?: UserOrderByRelationAggregateInput
-    ExcludedFromDay?: DayOrderByRelationAggregateInput
-    IncludedInDay?: DayOrderByRelationAggregateInput
-    DayCompletedInPart1?: DayOrderByRelationAggregateInput
+    ExcludedModifierOptions?: ModifierPackOrderByRelationAggregateInput
+    IncludedCustomModifierOptions?: ModifierPackOrderByRelationAggregateInput
   }
 
   export type ModifierOptionWhereUniqueInput = Prisma.AtLeast<{
@@ -16447,16 +17244,14 @@ export namespace Prisma {
     standard?: BoolFilter<"ModifierOption"> | boolean
     createdById?: StringNullableFilter<"ModifierOption"> | string | null
     isPublic?: BoolFilter<"ModifierOption"> | boolean
+    Day?: DayListRelationFilter
+    DayCompletedInPart1?: DayListRelationFilter
     ChallengeModifier?: XOR<ChallengeModifierRelationFilter, ChallengeModifierWhereInput>
     CreatedBy?: XOR<UserNullableRelationFilter, UserWhereInput> | null
-    Day?: DayListRelationFilter
-    ModifierPackExcluded?: ModifierPackListRelationFilter
-    ModifierPackIncluded?: ModifierPackListRelationFilter
     UserExcluded?: UserListRelationFilter
     UserIncluded?: UserListRelationFilter
-    ExcludedFromDay?: DayListRelationFilter
-    IncludedInDay?: DayListRelationFilter
-    DayCompletedInPart1?: DayListRelationFilter
+    ExcludedModifierOptions?: ModifierPackListRelationFilter
+    IncludedCustomModifierOptions?: ModifierPackListRelationFilter
   }, "id" | "name">
 
   export type ModifierOptionOrderByWithAggregationInput = {
@@ -16499,11 +17294,9 @@ export namespace Prisma {
     dateCreated?: DateTimeFilter<"ModifierPack"> | Date | string
     createdById?: StringNullableFilter<"ModifierPack"> | string | null
     isPublic?: BoolFilter<"ModifierPack"> | boolean
-    ExcludedChallengeModifiers?: ChallengeModifierListRelationFilter
-    ExcludedModifierOptions?: ModifierOptionListRelationFilter
-    EncludedCustomChallengeModifiers?: ChallengeModifierListRelationFilter
-    IncludedCustomModifierOptions?: ModifierOptionListRelationFilter
     CreatedBy?: XOR<UserNullableRelationFilter, UserWhereInput> | null
+    ExcludedFromDay?: ModifierOptionListRelationFilter
+    IncludedInDay?: ModifierOptionListRelationFilter
   }
 
   export type ModifierPackOrderByWithRelationInput = {
@@ -16511,11 +17304,9 @@ export namespace Prisma {
     dateCreated?: SortOrder
     createdById?: SortOrderInput | SortOrder
     isPublic?: SortOrder
-    ExcludedChallengeModifiers?: ChallengeModifierOrderByRelationAggregateInput
-    ExcludedModifierOptions?: ModifierOptionOrderByRelationAggregateInput
-    EncludedCustomChallengeModifiers?: ChallengeModifierOrderByRelationAggregateInput
-    IncludedCustomModifierOptions?: ModifierOptionOrderByRelationAggregateInput
     CreatedBy?: UserOrderByWithRelationInput
+    ExcludedFromDay?: ModifierOptionOrderByRelationAggregateInput
+    IncludedInDay?: ModifierOptionOrderByRelationAggregateInput
   }
 
   export type ModifierPackWhereUniqueInput = Prisma.AtLeast<{
@@ -16526,11 +17317,9 @@ export namespace Prisma {
     dateCreated?: DateTimeFilter<"ModifierPack"> | Date | string
     createdById?: StringNullableFilter<"ModifierPack"> | string | null
     isPublic?: BoolFilter<"ModifierPack"> | boolean
-    ExcludedChallengeModifiers?: ChallengeModifierListRelationFilter
-    ExcludedModifierOptions?: ModifierOptionListRelationFilter
-    EncludedCustomChallengeModifiers?: ChallengeModifierListRelationFilter
-    IncludedCustomModifierOptions?: ModifierOptionListRelationFilter
     CreatedBy?: XOR<UserNullableRelationFilter, UserWhereInput> | null
+    ExcludedFromDay?: ModifierOptionListRelationFilter
+    IncludedInDay?: ModifierOptionListRelationFilter
   }, "id">
 
   export type ModifierPackOrderByWithAggregationInput = {
@@ -16564,8 +17353,8 @@ export namespace Prisma {
     dateCreated?: DateTimeFilter<"Upvote"> | Date | string
     gameId?: IntFilter<"Upvote"> | number
     createdById?: StringFilter<"Upvote"> | string
-    Game?: XOR<GameRelationFilter, GameWhereInput>
     CreatedBy?: XOR<UserRelationFilter, UserWhereInput>
+    Game?: XOR<GameRelationFilter, GameWhereInput>
   }
 
   export type UpvoteOrderByWithRelationInput = {
@@ -16574,8 +17363,8 @@ export namespace Prisma {
     dateCreated?: SortOrder
     gameId?: SortOrder
     createdById?: SortOrder
-    Game?: GameOrderByWithRelationInput
     CreatedBy?: UserOrderByWithRelationInput
+    Game?: GameOrderByWithRelationInput
   }
 
   export type UpvoteWhereUniqueInput = Prisma.AtLeast<{
@@ -16587,8 +17376,8 @@ export namespace Prisma {
     dateCreated?: DateTimeFilter<"Upvote"> | Date | string
     gameId?: IntFilter<"Upvote"> | number
     createdById?: StringFilter<"Upvote"> | string
-    Game?: XOR<GameRelationFilter, GameWhereInput>
     CreatedBy?: XOR<UserRelationFilter, UserWhereInput>
+    Game?: XOR<GameRelationFilter, GameWhereInput>
   }, "id">
 
   export type UpvoteOrderByWithAggregationInput = {
@@ -16624,8 +17413,8 @@ export namespace Prisma {
     dateCreated?: DateTimeFilter<"Downvote"> | Date | string
     gameId?: IntFilter<"Downvote"> | number
     createdById?: StringFilter<"Downvote"> | string
-    Game?: XOR<GameRelationFilter, GameWhereInput>
     CreatedBy?: XOR<UserRelationFilter, UserWhereInput>
+    Game?: XOR<GameRelationFilter, GameWhereInput>
   }
 
   export type DownvoteOrderByWithRelationInput = {
@@ -16634,8 +17423,8 @@ export namespace Prisma {
     dateCreated?: SortOrder
     gameId?: SortOrder
     createdById?: SortOrder
-    Game?: GameOrderByWithRelationInput
     CreatedBy?: UserOrderByWithRelationInput
+    Game?: GameOrderByWithRelationInput
   }
 
   export type DownvoteWhereUniqueInput = Prisma.AtLeast<{
@@ -16647,8 +17436,8 @@ export namespace Prisma {
     dateCreated?: DateTimeFilter<"Downvote"> | Date | string
     gameId?: IntFilter<"Downvote"> | number
     createdById?: StringFilter<"Downvote"> | string
-    Game?: XOR<GameRelationFilter, GameWhereInput>
     CreatedBy?: XOR<UserRelationFilter, UserWhereInput>
+    Game?: XOR<GameRelationFilter, GameWhereInput>
   }, "id">
 
   export type DownvoteOrderByWithAggregationInput = {
@@ -16684,6 +17473,7 @@ export namespace Prisma {
     name?: StringFilter<"TestTable"> | string
     favoriteColor?: StringFilter<"TestTable"> | string
     TestChair?: TestChairListRelationFilter
+    TestPlate?: TestPlateListRelationFilter
   }
 
   export type TestTableOrderByWithRelationInput = {
@@ -16692,6 +17482,7 @@ export namespace Prisma {
     name?: SortOrder
     favoriteColor?: SortOrder
     TestChair?: TestChairOrderByRelationAggregateInput
+    TestPlate?: TestPlateOrderByRelationAggregateInput
   }
 
   export type TestTableWhereUniqueInput = Prisma.AtLeast<{
@@ -16703,6 +17494,7 @@ export namespace Prisma {
     name?: StringFilter<"TestTable"> | string
     favoriteColor?: StringFilter<"TestTable"> | string
     TestChair?: TestChairListRelationFilter
+    TestPlate?: TestPlateListRelationFilter
   }, "id">
 
   export type TestTableOrderByWithAggregationInput = {
@@ -16735,6 +17527,7 @@ export namespace Prisma {
     dateCreated?: DateTimeFilter<"TestChair"> | Date | string
     name?: StringFilter<"TestChair"> | string
     favoriteColor?: StringFilter<"TestChair"> | string
+    height?: IntFilter<"TestChair"> | number
     tableId?: IntFilter<"TestChair"> | number
     Table?: XOR<TestTableRelationFilter, TestTableWhereInput>
   }
@@ -16744,6 +17537,7 @@ export namespace Prisma {
     dateCreated?: SortOrder
     name?: SortOrder
     favoriteColor?: SortOrder
+    height?: SortOrder
     tableId?: SortOrder
     Table?: TestTableOrderByWithRelationInput
   }
@@ -16756,6 +17550,7 @@ export namespace Prisma {
     dateCreated?: DateTimeFilter<"TestChair"> | Date | string
     name?: StringFilter<"TestChair"> | string
     favoriteColor?: StringFilter<"TestChair"> | string
+    height?: IntFilter<"TestChair"> | number
     tableId?: IntFilter<"TestChair"> | number
     Table?: XOR<TestTableRelationFilter, TestTableWhereInput>
   }, "id">
@@ -16765,6 +17560,7 @@ export namespace Prisma {
     dateCreated?: SortOrder
     name?: SortOrder
     favoriteColor?: SortOrder
+    height?: SortOrder
     tableId?: SortOrder
     _count?: TestChairCountOrderByAggregateInput
     _avg?: TestChairAvgOrderByAggregateInput
@@ -16781,7 +17577,65 @@ export namespace Prisma {
     dateCreated?: DateTimeWithAggregatesFilter<"TestChair"> | Date | string
     name?: StringWithAggregatesFilter<"TestChair"> | string
     favoriteColor?: StringWithAggregatesFilter<"TestChair"> | string
+    height?: IntWithAggregatesFilter<"TestChair"> | number
     tableId?: IntWithAggregatesFilter<"TestChair"> | number
+  }
+
+  export type TestPlateWhereInput = {
+    AND?: TestPlateWhereInput | TestPlateWhereInput[]
+    OR?: TestPlateWhereInput[]
+    NOT?: TestPlateWhereInput | TestPlateWhereInput[]
+    id?: IntFilter<"TestPlate"> | number
+    dateCreated?: DateTimeFilter<"TestPlate"> | Date | string
+    name?: StringFilter<"TestPlate"> | string
+    color?: StringFilter<"TestPlate"> | string
+    tableId?: IntFilter<"TestPlate"> | number
+    Table?: XOR<TestTableRelationFilter, TestTableWhereInput>
+  }
+
+  export type TestPlateOrderByWithRelationInput = {
+    id?: SortOrder
+    dateCreated?: SortOrder
+    name?: SortOrder
+    color?: SortOrder
+    tableId?: SortOrder
+    Table?: TestTableOrderByWithRelationInput
+  }
+
+  export type TestPlateWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: TestPlateWhereInput | TestPlateWhereInput[]
+    OR?: TestPlateWhereInput[]
+    NOT?: TestPlateWhereInput | TestPlateWhereInput[]
+    dateCreated?: DateTimeFilter<"TestPlate"> | Date | string
+    name?: StringFilter<"TestPlate"> | string
+    color?: StringFilter<"TestPlate"> | string
+    tableId?: IntFilter<"TestPlate"> | number
+    Table?: XOR<TestTableRelationFilter, TestTableWhereInput>
+  }, "id">
+
+  export type TestPlateOrderByWithAggregationInput = {
+    id?: SortOrder
+    dateCreated?: SortOrder
+    name?: SortOrder
+    color?: SortOrder
+    tableId?: SortOrder
+    _count?: TestPlateCountOrderByAggregateInput
+    _avg?: TestPlateAvgOrderByAggregateInput
+    _max?: TestPlateMaxOrderByAggregateInput
+    _min?: TestPlateMinOrderByAggregateInput
+    _sum?: TestPlateSumOrderByAggregateInput
+  }
+
+  export type TestPlateScalarWhereWithAggregatesInput = {
+    AND?: TestPlateScalarWhereWithAggregatesInput | TestPlateScalarWhereWithAggregatesInput[]
+    OR?: TestPlateScalarWhereWithAggregatesInput[]
+    NOT?: TestPlateScalarWhereWithAggregatesInput | TestPlateScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"TestPlate"> | number
+    dateCreated?: DateTimeWithAggregatesFilter<"TestPlate"> | Date | string
+    name?: StringWithAggregatesFilter<"TestPlate"> | string
+    color?: StringWithAggregatesFilter<"TestPlate"> | string
+    tableId?: IntWithAggregatesFilter<"TestPlate"> | number
   }
 
   export type UserCreateInput = {
@@ -16790,17 +17644,17 @@ export namespace Prisma {
     username?: string | null
     dateCreated?: Date | string
     numberOfGames?: number
-    Game?: GameCreateNestedManyWithoutUserInput
-    PublicProfile?: PublicProfileCreateNestedManyWithoutUserInput
     ChallengeModifier?: ChallengeModifierCreateNestedManyWithoutCreatedByInput
+    Downvote?: DownvoteCreateNestedManyWithoutCreatedByInput
+    Game?: GameCreateNestedManyWithoutUserInput
     ModifierOption?: ModifierOptionCreateNestedManyWithoutCreatedByInput
+    ModifierPack?: ModifierPackCreateNestedManyWithoutCreatedByInput
+    PublicProfile?: PublicProfileCreateNestedManyWithoutUserInput
+    Upvote?: UpvoteCreateNestedManyWithoutCreatedByInput
     DefaultExcludedChallengeModifiers?: ChallengeModifierCreateNestedManyWithoutUserExcludedInput
     DefaultExcludedModifierOptions?: ModifierOptionCreateNestedManyWithoutUserExcludedInput
     DefaultIncludedCustomChallengeModifiers?: ChallengeModifierCreateNestedManyWithoutUserIncludedInput
     DefaultIncludedCustomModifierOptions?: ModifierOptionCreateNestedManyWithoutUserIncludedInput
-    ModifierPack?: ModifierPackCreateNestedManyWithoutCreatedByInput
-    Downvote?: DownvoteCreateNestedManyWithoutCreatedByInput
-    Upvote?: UpvoteCreateNestedManyWithoutCreatedByInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -16809,17 +17663,17 @@ export namespace Prisma {
     username?: string | null
     dateCreated?: Date | string
     numberOfGames?: number
-    Game?: GameUncheckedCreateNestedManyWithoutUserInput
-    PublicProfile?: PublicProfileUncheckedCreateNestedManyWithoutUserInput
     ChallengeModifier?: ChallengeModifierUncheckedCreateNestedManyWithoutCreatedByInput
+    Downvote?: DownvoteUncheckedCreateNestedManyWithoutCreatedByInput
+    Game?: GameUncheckedCreateNestedManyWithoutUserInput
     ModifierOption?: ModifierOptionUncheckedCreateNestedManyWithoutCreatedByInput
+    ModifierPack?: ModifierPackUncheckedCreateNestedManyWithoutCreatedByInput
+    PublicProfile?: PublicProfileUncheckedCreateNestedManyWithoutUserInput
+    Upvote?: UpvoteUncheckedCreateNestedManyWithoutCreatedByInput
     DefaultExcludedChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutUserExcludedInput
     DefaultExcludedModifierOptions?: ModifierOptionUncheckedCreateNestedManyWithoutUserExcludedInput
     DefaultIncludedCustomChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutUserIncludedInput
     DefaultIncludedCustomModifierOptions?: ModifierOptionUncheckedCreateNestedManyWithoutUserIncludedInput
-    ModifierPack?: ModifierPackUncheckedCreateNestedManyWithoutCreatedByInput
-    Downvote?: DownvoteUncheckedCreateNestedManyWithoutCreatedByInput
-    Upvote?: UpvoteUncheckedCreateNestedManyWithoutCreatedByInput
   }
 
   export type UserUpdateInput = {
@@ -16828,17 +17682,17 @@ export namespace Prisma {
     username?: NullableStringFieldUpdateOperationsInput | string | null
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     numberOfGames?: IntFieldUpdateOperationsInput | number
-    Game?: GameUpdateManyWithoutUserNestedInput
-    PublicProfile?: PublicProfileUpdateManyWithoutUserNestedInput
     ChallengeModifier?: ChallengeModifierUpdateManyWithoutCreatedByNestedInput
+    Downvote?: DownvoteUpdateManyWithoutCreatedByNestedInput
+    Game?: GameUpdateManyWithoutUserNestedInput
     ModifierOption?: ModifierOptionUpdateManyWithoutCreatedByNestedInput
+    ModifierPack?: ModifierPackUpdateManyWithoutCreatedByNestedInput
+    PublicProfile?: PublicProfileUpdateManyWithoutUserNestedInput
+    Upvote?: UpvoteUpdateManyWithoutCreatedByNestedInput
     DefaultExcludedChallengeModifiers?: ChallengeModifierUpdateManyWithoutUserExcludedNestedInput
     DefaultExcludedModifierOptions?: ModifierOptionUpdateManyWithoutUserExcludedNestedInput
     DefaultIncludedCustomChallengeModifiers?: ChallengeModifierUpdateManyWithoutUserIncludedNestedInput
     DefaultIncludedCustomModifierOptions?: ModifierOptionUpdateManyWithoutUserIncludedNestedInput
-    ModifierPack?: ModifierPackUpdateManyWithoutCreatedByNestedInput
-    Downvote?: DownvoteUpdateManyWithoutCreatedByNestedInput
-    Upvote?: UpvoteUpdateManyWithoutCreatedByNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -16847,17 +17701,17 @@ export namespace Prisma {
     username?: NullableStringFieldUpdateOperationsInput | string | null
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     numberOfGames?: IntFieldUpdateOperationsInput | number
-    Game?: GameUncheckedUpdateManyWithoutUserNestedInput
-    PublicProfile?: PublicProfileUncheckedUpdateManyWithoutUserNestedInput
     ChallengeModifier?: ChallengeModifierUncheckedUpdateManyWithoutCreatedByNestedInput
+    Downvote?: DownvoteUncheckedUpdateManyWithoutCreatedByNestedInput
+    Game?: GameUncheckedUpdateManyWithoutUserNestedInput
     ModifierOption?: ModifierOptionUncheckedUpdateManyWithoutCreatedByNestedInput
+    ModifierPack?: ModifierPackUncheckedUpdateManyWithoutCreatedByNestedInput
+    PublicProfile?: PublicProfileUncheckedUpdateManyWithoutUserNestedInput
+    Upvote?: UpvoteUncheckedUpdateManyWithoutCreatedByNestedInput
     DefaultExcludedChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutUserExcludedNestedInput
     DefaultExcludedModifierOptions?: ModifierOptionUncheckedUpdateManyWithoutUserExcludedNestedInput
     DefaultIncludedCustomChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutUserIncludedNestedInput
     DefaultIncludedCustomModifierOptions?: ModifierOptionUncheckedUpdateManyWithoutUserIncludedNestedInput
-    ModifierPack?: ModifierPackUncheckedUpdateManyWithoutCreatedByNestedInput
-    Downvote?: DownvoteUncheckedUpdateManyWithoutCreatedByNestedInput
-    Upvote?: UpvoteUncheckedUpdateManyWithoutCreatedByNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -16887,8 +17741,8 @@ export namespace Prisma {
   export type PublicProfileCreateInput = {
     dateCreated?: Date | string
     name: string
-    User: UserCreateNestedOneWithoutPublicProfileInput
     Game?: GameCreateNestedManyWithoutPublicProfileInput
+    User: UserCreateNestedOneWithoutPublicProfileInput
   }
 
   export type PublicProfileUncheckedCreateInput = {
@@ -16902,8 +17756,8 @@ export namespace Prisma {
   export type PublicProfileUpdateInput = {
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     name?: StringFieldUpdateOperationsInput | string
-    User?: UserUpdateOneRequiredWithoutPublicProfileNestedInput
     Game?: GameUpdateManyWithoutPublicProfileNestedInput
+    User?: UserUpdateOneRequiredWithoutPublicProfileNestedInput
   }
 
   export type PublicProfileUncheckedUpdateInput = {
@@ -16950,12 +17804,12 @@ export namespace Prisma {
     isPublic?: boolean
     score?: number
     dateCompleted?: Date | string | null
-    User: UserCreateNestedOneWithoutGameInput
-    Rank?: RankCreateNestedOneWithoutGameInput
     Day?: DayCreateNestedManyWithoutGameInput
-    PublicProfile?: PublicProfileCreateNestedOneWithoutGameInput
-    Upvote?: UpvoteCreateNestedManyWithoutGameInput
     Downvote?: DownvoteCreateNestedManyWithoutGameInput
+    PublicProfile?: PublicProfileCreateNestedOneWithoutGameInput
+    Rank?: RankCreateNestedOneWithoutGameInput
+    User: UserCreateNestedOneWithoutGameInput
+    Upvote?: UpvoteCreateNestedManyWithoutGameInput
   }
 
   export type GameUncheckedCreateInput = {
@@ -16980,8 +17834,8 @@ export namespace Prisma {
     rankId?: number | null
     dateCompleted?: Date | string | null
     Day?: DayUncheckedCreateNestedManyWithoutGameInput
-    Upvote?: UpvoteUncheckedCreateNestedManyWithoutGameInput
     Downvote?: DownvoteUncheckedCreateNestedManyWithoutGameInput
+    Upvote?: UpvoteUncheckedCreateNestedManyWithoutGameInput
   }
 
   export type GameUpdateInput = {
@@ -17001,12 +17855,12 @@ export namespace Prisma {
     isPublic?: BoolFieldUpdateOperationsInput | boolean
     score?: IntFieldUpdateOperationsInput | number
     dateCompleted?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    User?: UserUpdateOneRequiredWithoutGameNestedInput
-    Rank?: RankUpdateOneWithoutGameNestedInput
     Day?: DayUpdateManyWithoutGameNestedInput
-    PublicProfile?: PublicProfileUpdateOneWithoutGameNestedInput
-    Upvote?: UpvoteUpdateManyWithoutGameNestedInput
     Downvote?: DownvoteUpdateManyWithoutGameNestedInput
+    PublicProfile?: PublicProfileUpdateOneWithoutGameNestedInput
+    Rank?: RankUpdateOneWithoutGameNestedInput
+    User?: UserUpdateOneRequiredWithoutGameNestedInput
+    Upvote?: UpvoteUpdateManyWithoutGameNestedInput
   }
 
   export type GameUncheckedUpdateInput = {
@@ -17031,8 +17885,8 @@ export namespace Prisma {
     rankId?: NullableIntFieldUpdateOperationsInput | number | null
     dateCompleted?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     Day?: DayUncheckedUpdateManyWithoutGameNestedInput
-    Upvote?: UpvoteUncheckedUpdateManyWithoutGameNestedInput
     Downvote?: DownvoteUncheckedUpdateManyWithoutGameNestedInput
+    Upvote?: UpvoteUncheckedUpdateManyWithoutGameNestedInput
   }
 
   export type GameCreateManyInput = {
@@ -17155,15 +18009,13 @@ export namespace Prisma {
     modifierOptionRerollsUsed?: number
     rerollTokensSpentDuringPart2?: number
     netScore?: number
-    ExcludedChallengeModifiers?: ChallengeModifierCreateNestedManyWithoutExcludedFromDayInput
-    ExcludedModifierOptions?: ModifierOptionCreateNestedManyWithoutExcludedFromDayInput
-    IncludedCustomChallengeModifiers?: ChallengeModifierCreateNestedManyWithoutIncludedInDayInput
-    IncludedCustomModifierOptions?: ModifierOptionCreateNestedManyWithoutIncludedInDayInput
+    ChallengeModifier?: ChallengeModifierCreateNestedOneWithoutDayInput
     Game: GameCreateNestedOneWithoutDayInput
+    ModifierOption?: ModifierOptionCreateNestedOneWithoutDayInput
     ModifierWhenPart1Completed?: ChallengeModifierCreateNestedOneWithoutDayCompletedInPart1Input
     OptionWhenPart1Completed?: ModifierOptionCreateNestedOneWithoutDayCompletedInPart1Input
-    ChallengeModifier?: ChallengeModifierCreateNestedOneWithoutDayInput
-    ModifierOption?: ModifierOptionCreateNestedOneWithoutDayInput
+    ExcludedChallengeModifiers?: ChallengeModifierCreateNestedManyWithoutModifierPackExcludedInput
+    EncludedCustomChallengeModifiers?: ChallengeModifierCreateNestedManyWithoutModifierPackIncludedInput
   }
 
   export type DayUncheckedCreateInput = {
@@ -17184,10 +18036,8 @@ export namespace Prisma {
     modifierOptionRerollsUsed?: number
     rerollTokensSpentDuringPart2?: number
     netScore?: number
-    ExcludedChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutExcludedFromDayInput
-    ExcludedModifierOptions?: ModifierOptionUncheckedCreateNestedManyWithoutExcludedFromDayInput
-    IncludedCustomChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutIncludedInDayInput
-    IncludedCustomModifierOptions?: ModifierOptionUncheckedCreateNestedManyWithoutIncludedInDayInput
+    ExcludedChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutModifierPackExcludedInput
+    EncludedCustomChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutModifierPackIncludedInput
   }
 
   export type DayUpdateInput = {
@@ -17202,15 +18052,13 @@ export namespace Prisma {
     modifierOptionRerollsUsed?: IntFieldUpdateOperationsInput | number
     rerollTokensSpentDuringPart2?: IntFieldUpdateOperationsInput | number
     netScore?: IntFieldUpdateOperationsInput | number
-    ExcludedChallengeModifiers?: ChallengeModifierUpdateManyWithoutExcludedFromDayNestedInput
-    ExcludedModifierOptions?: ModifierOptionUpdateManyWithoutExcludedFromDayNestedInput
-    IncludedCustomChallengeModifiers?: ChallengeModifierUpdateManyWithoutIncludedInDayNestedInput
-    IncludedCustomModifierOptions?: ModifierOptionUpdateManyWithoutIncludedInDayNestedInput
+    ChallengeModifier?: ChallengeModifierUpdateOneWithoutDayNestedInput
     Game?: GameUpdateOneRequiredWithoutDayNestedInput
+    ModifierOption?: ModifierOptionUpdateOneWithoutDayNestedInput
     ModifierWhenPart1Completed?: ChallengeModifierUpdateOneWithoutDayCompletedInPart1NestedInput
     OptionWhenPart1Completed?: ModifierOptionUpdateOneWithoutDayCompletedInPart1NestedInput
-    ChallengeModifier?: ChallengeModifierUpdateOneWithoutDayNestedInput
-    ModifierOption?: ModifierOptionUpdateOneWithoutDayNestedInput
+    ExcludedChallengeModifiers?: ChallengeModifierUpdateManyWithoutModifierPackExcludedNestedInput
+    EncludedCustomChallengeModifiers?: ChallengeModifierUpdateManyWithoutModifierPackIncludedNestedInput
   }
 
   export type DayUncheckedUpdateInput = {
@@ -17231,10 +18079,8 @@ export namespace Prisma {
     modifierOptionRerollsUsed?: IntFieldUpdateOperationsInput | number
     rerollTokensSpentDuringPart2?: IntFieldUpdateOperationsInput | number
     netScore?: IntFieldUpdateOperationsInput | number
-    ExcludedChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutExcludedFromDayNestedInput
-    ExcludedModifierOptions?: ModifierOptionUncheckedUpdateManyWithoutExcludedFromDayNestedInput
-    IncludedCustomChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutIncludedInDayNestedInput
-    IncludedCustomModifierOptions?: ModifierOptionUncheckedUpdateManyWithoutIncludedInDayNestedInput
+    ExcludedChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutModifierPackExcludedNestedInput
+    EncludedCustomChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutModifierPackIncludedNestedInput
   }
 
   export type DayCreateManyInput = {
@@ -17300,15 +18146,13 @@ export namespace Prisma {
     standard?: boolean
     isPublic?: boolean
     CreatedBy?: UserCreateNestedOneWithoutChallengeModifierInput
-    ModifierOption?: ModifierOptionCreateNestedManyWithoutChallengeModifierInput
     Day?: DayCreateNestedManyWithoutChallengeModifierInput
-    ModifierPackExcluded?: ModifierPackCreateNestedManyWithoutExcludedChallengeModifiersInput
-    ModifierPackIncluded?: ModifierPackCreateNestedManyWithoutEncludedCustomChallengeModifiersInput
+    DayCompletedInPart1?: DayCreateNestedManyWithoutModifierWhenPart1CompletedInput
+    ModifierOption?: ModifierOptionCreateNestedManyWithoutChallengeModifierInput
     UserExcluded?: UserCreateNestedManyWithoutDefaultExcludedChallengeModifiersInput
     UserIncluded?: UserCreateNestedManyWithoutDefaultIncludedCustomChallengeModifiersInput
-    ExcludedFromDay?: DayCreateNestedManyWithoutExcludedChallengeModifiersInput
-    IncludedInDay?: DayCreateNestedManyWithoutIncludedCustomChallengeModifiersInput
-    DayCompletedInPart1?: DayCreateNestedManyWithoutModifierWhenPart1CompletedInput
+    ModifierPackExcluded?: DayCreateNestedManyWithoutExcludedChallengeModifiersInput
+    ModifierPackIncluded?: DayCreateNestedManyWithoutEncludedCustomChallengeModifiersInput
   }
 
   export type ChallengeModifierUncheckedCreateInput = {
@@ -17321,15 +18165,13 @@ export namespace Prisma {
     standard?: boolean
     createdById?: string | null
     isPublic?: boolean
-    ModifierOption?: ModifierOptionUncheckedCreateNestedManyWithoutChallengeModifierInput
     Day?: DayUncheckedCreateNestedManyWithoutChallengeModifierInput
-    ModifierPackExcluded?: ModifierPackUncheckedCreateNestedManyWithoutExcludedChallengeModifiersInput
-    ModifierPackIncluded?: ModifierPackUncheckedCreateNestedManyWithoutEncludedCustomChallengeModifiersInput
+    DayCompletedInPart1?: DayUncheckedCreateNestedManyWithoutModifierWhenPart1CompletedInput
+    ModifierOption?: ModifierOptionUncheckedCreateNestedManyWithoutChallengeModifierInput
     UserExcluded?: UserUncheckedCreateNestedManyWithoutDefaultExcludedChallengeModifiersInput
     UserIncluded?: UserUncheckedCreateNestedManyWithoutDefaultIncludedCustomChallengeModifiersInput
-    ExcludedFromDay?: DayUncheckedCreateNestedManyWithoutExcludedChallengeModifiersInput
-    IncludedInDay?: DayUncheckedCreateNestedManyWithoutIncludedCustomChallengeModifiersInput
-    DayCompletedInPart1?: DayUncheckedCreateNestedManyWithoutModifierWhenPart1CompletedInput
+    ModifierPackExcluded?: DayUncheckedCreateNestedManyWithoutExcludedChallengeModifiersInput
+    ModifierPackIncluded?: DayUncheckedCreateNestedManyWithoutEncludedCustomChallengeModifiersInput
   }
 
   export type ChallengeModifierUpdateInput = {
@@ -17341,15 +18183,13 @@ export namespace Prisma {
     standard?: BoolFieldUpdateOperationsInput | boolean
     isPublic?: BoolFieldUpdateOperationsInput | boolean
     CreatedBy?: UserUpdateOneWithoutChallengeModifierNestedInput
-    ModifierOption?: ModifierOptionUpdateManyWithoutChallengeModifierNestedInput
     Day?: DayUpdateManyWithoutChallengeModifierNestedInput
-    ModifierPackExcluded?: ModifierPackUpdateManyWithoutExcludedChallengeModifiersNestedInput
-    ModifierPackIncluded?: ModifierPackUpdateManyWithoutEncludedCustomChallengeModifiersNestedInput
+    DayCompletedInPart1?: DayUpdateManyWithoutModifierWhenPart1CompletedNestedInput
+    ModifierOption?: ModifierOptionUpdateManyWithoutChallengeModifierNestedInput
     UserExcluded?: UserUpdateManyWithoutDefaultExcludedChallengeModifiersNestedInput
     UserIncluded?: UserUpdateManyWithoutDefaultIncludedCustomChallengeModifiersNestedInput
-    ExcludedFromDay?: DayUpdateManyWithoutExcludedChallengeModifiersNestedInput
-    IncludedInDay?: DayUpdateManyWithoutIncludedCustomChallengeModifiersNestedInput
-    DayCompletedInPart1?: DayUpdateManyWithoutModifierWhenPart1CompletedNestedInput
+    ModifierPackExcluded?: DayUpdateManyWithoutExcludedChallengeModifiersNestedInput
+    ModifierPackIncluded?: DayUpdateManyWithoutEncludedCustomChallengeModifiersNestedInput
   }
 
   export type ChallengeModifierUncheckedUpdateInput = {
@@ -17362,15 +18202,13 @@ export namespace Prisma {
     standard?: BoolFieldUpdateOperationsInput | boolean
     createdById?: NullableStringFieldUpdateOperationsInput | string | null
     isPublic?: BoolFieldUpdateOperationsInput | boolean
-    ModifierOption?: ModifierOptionUncheckedUpdateManyWithoutChallengeModifierNestedInput
     Day?: DayUncheckedUpdateManyWithoutChallengeModifierNestedInput
-    ModifierPackExcluded?: ModifierPackUncheckedUpdateManyWithoutExcludedChallengeModifiersNestedInput
-    ModifierPackIncluded?: ModifierPackUncheckedUpdateManyWithoutEncludedCustomChallengeModifiersNestedInput
+    DayCompletedInPart1?: DayUncheckedUpdateManyWithoutModifierWhenPart1CompletedNestedInput
+    ModifierOption?: ModifierOptionUncheckedUpdateManyWithoutChallengeModifierNestedInput
     UserExcluded?: UserUncheckedUpdateManyWithoutDefaultExcludedChallengeModifiersNestedInput
     UserIncluded?: UserUncheckedUpdateManyWithoutDefaultIncludedCustomChallengeModifiersNestedInput
-    ExcludedFromDay?: DayUncheckedUpdateManyWithoutExcludedChallengeModifiersNestedInput
-    IncludedInDay?: DayUncheckedUpdateManyWithoutIncludedCustomChallengeModifiersNestedInput
-    DayCompletedInPart1?: DayUncheckedUpdateManyWithoutModifierWhenPart1CompletedNestedInput
+    ModifierPackExcluded?: DayUncheckedUpdateManyWithoutExcludedChallengeModifiersNestedInput
+    ModifierPackIncluded?: DayUncheckedUpdateManyWithoutEncludedCustomChallengeModifiersNestedInput
   }
 
   export type ChallengeModifierCreateManyInput = {
@@ -17414,16 +18252,14 @@ export namespace Prisma {
     explanatoryUrl?: string | null
     standard?: boolean
     isPublic?: boolean
+    Day?: DayCreateNestedManyWithoutModifierOptionInput
+    DayCompletedInPart1?: DayCreateNestedManyWithoutOptionWhenPart1CompletedInput
     ChallengeModifier: ChallengeModifierCreateNestedOneWithoutModifierOptionInput
     CreatedBy?: UserCreateNestedOneWithoutModifierOptionInput
-    Day?: DayCreateNestedManyWithoutModifierOptionInput
-    ModifierPackExcluded?: ModifierPackCreateNestedManyWithoutExcludedModifierOptionsInput
-    ModifierPackIncluded?: ModifierPackCreateNestedManyWithoutIncludedCustomModifierOptionsInput
     UserExcluded?: UserCreateNestedManyWithoutDefaultExcludedModifierOptionsInput
     UserIncluded?: UserCreateNestedManyWithoutDefaultIncludedCustomModifierOptionsInput
-    ExcludedFromDay?: DayCreateNestedManyWithoutExcludedModifierOptionsInput
-    IncludedInDay?: DayCreateNestedManyWithoutIncludedCustomModifierOptionsInput
-    DayCompletedInPart1?: DayCreateNestedManyWithoutOptionWhenPart1CompletedInput
+    ExcludedModifierOptions?: ModifierPackCreateNestedManyWithoutExcludedFromDayInput
+    IncludedCustomModifierOptions?: ModifierPackCreateNestedManyWithoutIncludedInDayInput
   }
 
   export type ModifierOptionUncheckedCreateInput = {
@@ -17437,13 +18273,11 @@ export namespace Prisma {
     createdById?: string | null
     isPublic?: boolean
     Day?: DayUncheckedCreateNestedManyWithoutModifierOptionInput
-    ModifierPackExcluded?: ModifierPackUncheckedCreateNestedManyWithoutExcludedModifierOptionsInput
-    ModifierPackIncluded?: ModifierPackUncheckedCreateNestedManyWithoutIncludedCustomModifierOptionsInput
+    DayCompletedInPart1?: DayUncheckedCreateNestedManyWithoutOptionWhenPart1CompletedInput
     UserExcluded?: UserUncheckedCreateNestedManyWithoutDefaultExcludedModifierOptionsInput
     UserIncluded?: UserUncheckedCreateNestedManyWithoutDefaultIncludedCustomModifierOptionsInput
-    ExcludedFromDay?: DayUncheckedCreateNestedManyWithoutExcludedModifierOptionsInput
-    IncludedInDay?: DayUncheckedCreateNestedManyWithoutIncludedCustomModifierOptionsInput
-    DayCompletedInPart1?: DayUncheckedCreateNestedManyWithoutOptionWhenPart1CompletedInput
+    ExcludedModifierOptions?: ModifierPackUncheckedCreateNestedManyWithoutExcludedFromDayInput
+    IncludedCustomModifierOptions?: ModifierPackUncheckedCreateNestedManyWithoutIncludedInDayInput
   }
 
   export type ModifierOptionUpdateInput = {
@@ -17453,16 +18287,14 @@ export namespace Prisma {
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
     isPublic?: BoolFieldUpdateOperationsInput | boolean
+    Day?: DayUpdateManyWithoutModifierOptionNestedInput
+    DayCompletedInPart1?: DayUpdateManyWithoutOptionWhenPart1CompletedNestedInput
     ChallengeModifier?: ChallengeModifierUpdateOneRequiredWithoutModifierOptionNestedInput
     CreatedBy?: UserUpdateOneWithoutModifierOptionNestedInput
-    Day?: DayUpdateManyWithoutModifierOptionNestedInput
-    ModifierPackExcluded?: ModifierPackUpdateManyWithoutExcludedModifierOptionsNestedInput
-    ModifierPackIncluded?: ModifierPackUpdateManyWithoutIncludedCustomModifierOptionsNestedInput
     UserExcluded?: UserUpdateManyWithoutDefaultExcludedModifierOptionsNestedInput
     UserIncluded?: UserUpdateManyWithoutDefaultIncludedCustomModifierOptionsNestedInput
-    ExcludedFromDay?: DayUpdateManyWithoutExcludedModifierOptionsNestedInput
-    IncludedInDay?: DayUpdateManyWithoutIncludedCustomModifierOptionsNestedInput
-    DayCompletedInPart1?: DayUpdateManyWithoutOptionWhenPart1CompletedNestedInput
+    ExcludedModifierOptions?: ModifierPackUpdateManyWithoutExcludedFromDayNestedInput
+    IncludedCustomModifierOptions?: ModifierPackUpdateManyWithoutIncludedInDayNestedInput
   }
 
   export type ModifierOptionUncheckedUpdateInput = {
@@ -17476,13 +18308,11 @@ export namespace Prisma {
     createdById?: NullableStringFieldUpdateOperationsInput | string | null
     isPublic?: BoolFieldUpdateOperationsInput | boolean
     Day?: DayUncheckedUpdateManyWithoutModifierOptionNestedInput
-    ModifierPackExcluded?: ModifierPackUncheckedUpdateManyWithoutExcludedModifierOptionsNestedInput
-    ModifierPackIncluded?: ModifierPackUncheckedUpdateManyWithoutIncludedCustomModifierOptionsNestedInput
+    DayCompletedInPart1?: DayUncheckedUpdateManyWithoutOptionWhenPart1CompletedNestedInput
     UserExcluded?: UserUncheckedUpdateManyWithoutDefaultExcludedModifierOptionsNestedInput
     UserIncluded?: UserUncheckedUpdateManyWithoutDefaultIncludedCustomModifierOptionsNestedInput
-    ExcludedFromDay?: DayUncheckedUpdateManyWithoutExcludedModifierOptionsNestedInput
-    IncludedInDay?: DayUncheckedUpdateManyWithoutIncludedCustomModifierOptionsNestedInput
-    DayCompletedInPart1?: DayUncheckedUpdateManyWithoutOptionWhenPart1CompletedNestedInput
+    ExcludedModifierOptions?: ModifierPackUncheckedUpdateManyWithoutExcludedFromDayNestedInput
+    IncludedCustomModifierOptions?: ModifierPackUncheckedUpdateManyWithoutIncludedInDayNestedInput
   }
 
   export type ModifierOptionCreateManyInput = {
@@ -17521,11 +18351,9 @@ export namespace Prisma {
   export type ModifierPackCreateInput = {
     dateCreated?: Date | string
     isPublic?: boolean
-    ExcludedChallengeModifiers?: ChallengeModifierCreateNestedManyWithoutModifierPackExcludedInput
-    ExcludedModifierOptions?: ModifierOptionCreateNestedManyWithoutModifierPackExcludedInput
-    EncludedCustomChallengeModifiers?: ChallengeModifierCreateNestedManyWithoutModifierPackIncludedInput
-    IncludedCustomModifierOptions?: ModifierOptionCreateNestedManyWithoutModifierPackIncludedInput
     CreatedBy?: UserCreateNestedOneWithoutModifierPackInput
+    ExcludedFromDay?: ModifierOptionCreateNestedManyWithoutExcludedModifierOptionsInput
+    IncludedInDay?: ModifierOptionCreateNestedManyWithoutIncludedCustomModifierOptionsInput
   }
 
   export type ModifierPackUncheckedCreateInput = {
@@ -17533,20 +18361,16 @@ export namespace Prisma {
     dateCreated?: Date | string
     createdById?: string | null
     isPublic?: boolean
-    ExcludedChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutModifierPackExcludedInput
-    ExcludedModifierOptions?: ModifierOptionUncheckedCreateNestedManyWithoutModifierPackExcludedInput
-    EncludedCustomChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutModifierPackIncludedInput
-    IncludedCustomModifierOptions?: ModifierOptionUncheckedCreateNestedManyWithoutModifierPackIncludedInput
+    ExcludedFromDay?: ModifierOptionUncheckedCreateNestedManyWithoutExcludedModifierOptionsInput
+    IncludedInDay?: ModifierOptionUncheckedCreateNestedManyWithoutIncludedCustomModifierOptionsInput
   }
 
   export type ModifierPackUpdateInput = {
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     isPublic?: BoolFieldUpdateOperationsInput | boolean
-    ExcludedChallengeModifiers?: ChallengeModifierUpdateManyWithoutModifierPackExcludedNestedInput
-    ExcludedModifierOptions?: ModifierOptionUpdateManyWithoutModifierPackExcludedNestedInput
-    EncludedCustomChallengeModifiers?: ChallengeModifierUpdateManyWithoutModifierPackIncludedNestedInput
-    IncludedCustomModifierOptions?: ModifierOptionUpdateManyWithoutModifierPackIncludedNestedInput
     CreatedBy?: UserUpdateOneWithoutModifierPackNestedInput
+    ExcludedFromDay?: ModifierOptionUpdateManyWithoutExcludedModifierOptionsNestedInput
+    IncludedInDay?: ModifierOptionUpdateManyWithoutIncludedCustomModifierOptionsNestedInput
   }
 
   export type ModifierPackUncheckedUpdateInput = {
@@ -17554,10 +18378,8 @@ export namespace Prisma {
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     createdById?: NullableStringFieldUpdateOperationsInput | string | null
     isPublic?: BoolFieldUpdateOperationsInput | boolean
-    ExcludedChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutModifierPackExcludedNestedInput
-    ExcludedModifierOptions?: ModifierOptionUncheckedUpdateManyWithoutModifierPackExcludedNestedInput
-    EncludedCustomChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutModifierPackIncludedNestedInput
-    IncludedCustomModifierOptions?: ModifierOptionUncheckedUpdateManyWithoutModifierPackIncludedNestedInput
+    ExcludedFromDay?: ModifierOptionUncheckedUpdateManyWithoutExcludedModifierOptionsNestedInput
+    IncludedInDay?: ModifierOptionUncheckedUpdateManyWithoutIncludedCustomModifierOptionsNestedInput
   }
 
   export type ModifierPackCreateManyInput = {
@@ -17582,8 +18404,8 @@ export namespace Prisma {
   export type UpvoteCreateInput = {
     note?: string | null
     dateCreated?: Date | string
-    Game: GameCreateNestedOneWithoutUpvoteInput
     CreatedBy: UserCreateNestedOneWithoutUpvoteInput
+    Game: GameCreateNestedOneWithoutUpvoteInput
   }
 
   export type UpvoteUncheckedCreateInput = {
@@ -17597,8 +18419,8 @@ export namespace Prisma {
   export type UpvoteUpdateInput = {
     note?: NullableStringFieldUpdateOperationsInput | string | null
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    Game?: GameUpdateOneRequiredWithoutUpvoteNestedInput
     CreatedBy?: UserUpdateOneRequiredWithoutUpvoteNestedInput
+    Game?: GameUpdateOneRequiredWithoutUpvoteNestedInput
   }
 
   export type UpvoteUncheckedUpdateInput = {
@@ -17633,8 +18455,8 @@ export namespace Prisma {
   export type DownvoteCreateInput = {
     note: string
     dateCreated?: Date | string
-    Game: GameCreateNestedOneWithoutDownvoteInput
     CreatedBy: UserCreateNestedOneWithoutDownvoteInput
+    Game: GameCreateNestedOneWithoutDownvoteInput
   }
 
   export type DownvoteUncheckedCreateInput = {
@@ -17648,8 +18470,8 @@ export namespace Prisma {
   export type DownvoteUpdateInput = {
     note?: StringFieldUpdateOperationsInput | string
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    Game?: GameUpdateOneRequiredWithoutDownvoteNestedInput
     CreatedBy?: UserUpdateOneRequiredWithoutDownvoteNestedInput
+    Game?: GameUpdateOneRequiredWithoutDownvoteNestedInput
   }
 
   export type DownvoteUncheckedUpdateInput = {
@@ -17686,6 +18508,7 @@ export namespace Prisma {
     name: string
     favoriteColor: string
     TestChair?: TestChairCreateNestedManyWithoutTableInput
+    TestPlate?: TestPlateCreateNestedManyWithoutTableInput
   }
 
   export type TestTableUncheckedCreateInput = {
@@ -17694,6 +18517,7 @@ export namespace Prisma {
     name: string
     favoriteColor: string
     TestChair?: TestChairUncheckedCreateNestedManyWithoutTableInput
+    TestPlate?: TestPlateUncheckedCreateNestedManyWithoutTableInput
   }
 
   export type TestTableUpdateInput = {
@@ -17701,6 +18525,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     favoriteColor?: StringFieldUpdateOperationsInput | string
     TestChair?: TestChairUpdateManyWithoutTableNestedInput
+    TestPlate?: TestPlateUpdateManyWithoutTableNestedInput
   }
 
   export type TestTableUncheckedUpdateInput = {
@@ -17709,6 +18534,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     favoriteColor?: StringFieldUpdateOperationsInput | string
     TestChair?: TestChairUncheckedUpdateManyWithoutTableNestedInput
+    TestPlate?: TestPlateUncheckedUpdateManyWithoutTableNestedInput
   }
 
   export type TestTableCreateManyInput = {
@@ -17735,6 +18561,7 @@ export namespace Prisma {
     dateCreated?: Date | string
     name: string
     favoriteColor: string
+    height: number
     Table: TestTableCreateNestedOneWithoutTestChairInput
   }
 
@@ -17743,6 +18570,7 @@ export namespace Prisma {
     dateCreated?: Date | string
     name: string
     favoriteColor: string
+    height: number
     tableId: number
   }
 
@@ -17750,6 +18578,7 @@ export namespace Prisma {
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     name?: StringFieldUpdateOperationsInput | string
     favoriteColor?: StringFieldUpdateOperationsInput | string
+    height?: IntFieldUpdateOperationsInput | number
     Table?: TestTableUpdateOneRequiredWithoutTestChairNestedInput
   }
 
@@ -17758,6 +18587,7 @@ export namespace Prisma {
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     name?: StringFieldUpdateOperationsInput | string
     favoriteColor?: StringFieldUpdateOperationsInput | string
+    height?: IntFieldUpdateOperationsInput | number
     tableId?: IntFieldUpdateOperationsInput | number
   }
 
@@ -17766,6 +18596,7 @@ export namespace Prisma {
     dateCreated?: Date | string
     name: string
     favoriteColor: string
+    height: number
     tableId: number
   }
 
@@ -17773,6 +18604,7 @@ export namespace Prisma {
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     name?: StringFieldUpdateOperationsInput | string
     favoriteColor?: StringFieldUpdateOperationsInput | string
+    height?: IntFieldUpdateOperationsInput | number
   }
 
   export type TestChairUncheckedUpdateManyInput = {
@@ -17780,6 +18612,59 @@ export namespace Prisma {
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     name?: StringFieldUpdateOperationsInput | string
     favoriteColor?: StringFieldUpdateOperationsInput | string
+    height?: IntFieldUpdateOperationsInput | number
+    tableId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type TestPlateCreateInput = {
+    dateCreated?: Date | string
+    name: string
+    color: string
+    Table: TestTableCreateNestedOneWithoutTestPlateInput
+  }
+
+  export type TestPlateUncheckedCreateInput = {
+    id?: number
+    dateCreated?: Date | string
+    name: string
+    color: string
+    tableId: number
+  }
+
+  export type TestPlateUpdateInput = {
+    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
+    name?: StringFieldUpdateOperationsInput | string
+    color?: StringFieldUpdateOperationsInput | string
+    Table?: TestTableUpdateOneRequiredWithoutTestPlateNestedInput
+  }
+
+  export type TestPlateUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
+    name?: StringFieldUpdateOperationsInput | string
+    color?: StringFieldUpdateOperationsInput | string
+    tableId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type TestPlateCreateManyInput = {
+    id?: number
+    dateCreated?: Date | string
+    name: string
+    color: string
+    tableId: number
+  }
+
+  export type TestPlateUpdateManyMutationInput = {
+    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
+    name?: StringFieldUpdateOperationsInput | string
+    color?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type TestPlateUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
+    name?: StringFieldUpdateOperationsInput | string
+    color?: StringFieldUpdateOperationsInput | string
     tableId?: IntFieldUpdateOperationsInput | number
   }
 
@@ -17835,22 +18720,22 @@ export namespace Prisma {
     not?: NestedIntFilter<$PrismaModel> | number
   }
 
-  export type GameListRelationFilter = {
-    every?: GameWhereInput
-    some?: GameWhereInput
-    none?: GameWhereInput
-  }
-
-  export type PublicProfileListRelationFilter = {
-    every?: PublicProfileWhereInput
-    some?: PublicProfileWhereInput
-    none?: PublicProfileWhereInput
-  }
-
   export type ChallengeModifierListRelationFilter = {
     every?: ChallengeModifierWhereInput
     some?: ChallengeModifierWhereInput
     none?: ChallengeModifierWhereInput
+  }
+
+  export type DownvoteListRelationFilter = {
+    every?: DownvoteWhereInput
+    some?: DownvoteWhereInput
+    none?: DownvoteWhereInput
+  }
+
+  export type GameListRelationFilter = {
+    every?: GameWhereInput
+    some?: GameWhereInput
+    none?: GameWhereInput
   }
 
   export type ModifierOptionListRelationFilter = {
@@ -17865,10 +18750,10 @@ export namespace Prisma {
     none?: ModifierPackWhereInput
   }
 
-  export type DownvoteListRelationFilter = {
-    every?: DownvoteWhereInput
-    some?: DownvoteWhereInput
-    none?: DownvoteWhereInput
+  export type PublicProfileListRelationFilter = {
+    every?: PublicProfileWhereInput
+    some?: PublicProfileWhereInput
+    none?: PublicProfileWhereInput
   }
 
   export type UpvoteListRelationFilter = {
@@ -17882,15 +18767,15 @@ export namespace Prisma {
     nulls?: NullsOrder
   }
 
-  export type GameOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
-  export type PublicProfileOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
   export type ChallengeModifierOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type DownvoteOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type GameOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -17902,7 +18787,7 @@ export namespace Prisma {
     _count?: SortOrder
   }
 
-  export type DownvoteOrderByRelationAggregateInput = {
+  export type PublicProfileOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -18069,11 +18954,6 @@ export namespace Prisma {
     not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
   }
 
-  export type RankNullableRelationFilter = {
-    is?: RankWhereInput | null
-    isNot?: RankWhereInput | null
-  }
-
   export type DayListRelationFilter = {
     every?: DayWhereInput
     some?: DayWhereInput
@@ -18083,6 +18963,11 @@ export namespace Prisma {
   export type PublicProfileNullableRelationFilter = {
     is?: PublicProfileWhereInput | null
     isNot?: PublicProfileWhereInput | null
+  }
+
+  export type RankNullableRelationFilter = {
+    is?: RankWhereInput | null
+    isNot?: RankWhereInput | null
   }
 
   export type DayOrderByRelationAggregateInput = {
@@ -18252,14 +19137,14 @@ export namespace Prisma {
     minimumScore?: SortOrder
   }
 
-  export type GameRelationFilter = {
-    is?: GameWhereInput
-    isNot?: GameWhereInput
-  }
-
   export type ChallengeModifierNullableRelationFilter = {
     is?: ChallengeModifierWhereInput | null
     isNot?: ChallengeModifierWhereInput | null
+  }
+
+  export type GameRelationFilter = {
+    is?: GameWhereInput
+    isNot?: GameWhereInput
   }
 
   export type ModifierOptionNullableRelationFilter = {
@@ -18570,7 +19455,17 @@ export namespace Prisma {
     none?: TestChairWhereInput
   }
 
+  export type TestPlateListRelationFilter = {
+    every?: TestPlateWhereInput
+    some?: TestPlateWhereInput
+    none?: TestPlateWhereInput
+  }
+
   export type TestChairOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type TestPlateOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -18613,11 +19508,13 @@ export namespace Prisma {
     dateCreated?: SortOrder
     name?: SortOrder
     favoriteColor?: SortOrder
+    height?: SortOrder
     tableId?: SortOrder
   }
 
   export type TestChairAvgOrderByAggregateInput = {
     id?: SortOrder
+    height?: SortOrder
     tableId?: SortOrder
   }
 
@@ -18626,6 +19523,7 @@ export namespace Prisma {
     dateCreated?: SortOrder
     name?: SortOrder
     favoriteColor?: SortOrder
+    height?: SortOrder
     tableId?: SortOrder
   }
 
@@ -18634,26 +19532,48 @@ export namespace Prisma {
     dateCreated?: SortOrder
     name?: SortOrder
     favoriteColor?: SortOrder
+    height?: SortOrder
     tableId?: SortOrder
   }
 
   export type TestChairSumOrderByAggregateInput = {
     id?: SortOrder
+    height?: SortOrder
     tableId?: SortOrder
   }
 
-  export type GameCreateNestedManyWithoutUserInput = {
-    create?: XOR<GameCreateWithoutUserInput, GameUncheckedCreateWithoutUserInput> | GameCreateWithoutUserInput[] | GameUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: GameCreateOrConnectWithoutUserInput | GameCreateOrConnectWithoutUserInput[]
-    createMany?: GameCreateManyUserInputEnvelope
-    connect?: GameWhereUniqueInput | GameWhereUniqueInput[]
+  export type TestPlateCountOrderByAggregateInput = {
+    id?: SortOrder
+    dateCreated?: SortOrder
+    name?: SortOrder
+    color?: SortOrder
+    tableId?: SortOrder
   }
 
-  export type PublicProfileCreateNestedManyWithoutUserInput = {
-    create?: XOR<PublicProfileCreateWithoutUserInput, PublicProfileUncheckedCreateWithoutUserInput> | PublicProfileCreateWithoutUserInput[] | PublicProfileUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: PublicProfileCreateOrConnectWithoutUserInput | PublicProfileCreateOrConnectWithoutUserInput[]
-    createMany?: PublicProfileCreateManyUserInputEnvelope
-    connect?: PublicProfileWhereUniqueInput | PublicProfileWhereUniqueInput[]
+  export type TestPlateAvgOrderByAggregateInput = {
+    id?: SortOrder
+    tableId?: SortOrder
+  }
+
+  export type TestPlateMaxOrderByAggregateInput = {
+    id?: SortOrder
+    dateCreated?: SortOrder
+    name?: SortOrder
+    color?: SortOrder
+    tableId?: SortOrder
+  }
+
+  export type TestPlateMinOrderByAggregateInput = {
+    id?: SortOrder
+    dateCreated?: SortOrder
+    name?: SortOrder
+    color?: SortOrder
+    tableId?: SortOrder
+  }
+
+  export type TestPlateSumOrderByAggregateInput = {
+    id?: SortOrder
+    tableId?: SortOrder
   }
 
   export type ChallengeModifierCreateNestedManyWithoutCreatedByInput = {
@@ -18663,11 +19583,46 @@ export namespace Prisma {
     connect?: ChallengeModifierWhereUniqueInput | ChallengeModifierWhereUniqueInput[]
   }
 
+  export type DownvoteCreateNestedManyWithoutCreatedByInput = {
+    create?: XOR<DownvoteCreateWithoutCreatedByInput, DownvoteUncheckedCreateWithoutCreatedByInput> | DownvoteCreateWithoutCreatedByInput[] | DownvoteUncheckedCreateWithoutCreatedByInput[]
+    connectOrCreate?: DownvoteCreateOrConnectWithoutCreatedByInput | DownvoteCreateOrConnectWithoutCreatedByInput[]
+    createMany?: DownvoteCreateManyCreatedByInputEnvelope
+    connect?: DownvoteWhereUniqueInput | DownvoteWhereUniqueInput[]
+  }
+
+  export type GameCreateNestedManyWithoutUserInput = {
+    create?: XOR<GameCreateWithoutUserInput, GameUncheckedCreateWithoutUserInput> | GameCreateWithoutUserInput[] | GameUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: GameCreateOrConnectWithoutUserInput | GameCreateOrConnectWithoutUserInput[]
+    createMany?: GameCreateManyUserInputEnvelope
+    connect?: GameWhereUniqueInput | GameWhereUniqueInput[]
+  }
+
   export type ModifierOptionCreateNestedManyWithoutCreatedByInput = {
     create?: XOR<ModifierOptionCreateWithoutCreatedByInput, ModifierOptionUncheckedCreateWithoutCreatedByInput> | ModifierOptionCreateWithoutCreatedByInput[] | ModifierOptionUncheckedCreateWithoutCreatedByInput[]
     connectOrCreate?: ModifierOptionCreateOrConnectWithoutCreatedByInput | ModifierOptionCreateOrConnectWithoutCreatedByInput[]
     createMany?: ModifierOptionCreateManyCreatedByInputEnvelope
     connect?: ModifierOptionWhereUniqueInput | ModifierOptionWhereUniqueInput[]
+  }
+
+  export type ModifierPackCreateNestedManyWithoutCreatedByInput = {
+    create?: XOR<ModifierPackCreateWithoutCreatedByInput, ModifierPackUncheckedCreateWithoutCreatedByInput> | ModifierPackCreateWithoutCreatedByInput[] | ModifierPackUncheckedCreateWithoutCreatedByInput[]
+    connectOrCreate?: ModifierPackCreateOrConnectWithoutCreatedByInput | ModifierPackCreateOrConnectWithoutCreatedByInput[]
+    createMany?: ModifierPackCreateManyCreatedByInputEnvelope
+    connect?: ModifierPackWhereUniqueInput | ModifierPackWhereUniqueInput[]
+  }
+
+  export type PublicProfileCreateNestedManyWithoutUserInput = {
+    create?: XOR<PublicProfileCreateWithoutUserInput, PublicProfileUncheckedCreateWithoutUserInput> | PublicProfileCreateWithoutUserInput[] | PublicProfileUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: PublicProfileCreateOrConnectWithoutUserInput | PublicProfileCreateOrConnectWithoutUserInput[]
+    createMany?: PublicProfileCreateManyUserInputEnvelope
+    connect?: PublicProfileWhereUniqueInput | PublicProfileWhereUniqueInput[]
+  }
+
+  export type UpvoteCreateNestedManyWithoutCreatedByInput = {
+    create?: XOR<UpvoteCreateWithoutCreatedByInput, UpvoteUncheckedCreateWithoutCreatedByInput> | UpvoteCreateWithoutCreatedByInput[] | UpvoteUncheckedCreateWithoutCreatedByInput[]
+    connectOrCreate?: UpvoteCreateOrConnectWithoutCreatedByInput | UpvoteCreateOrConnectWithoutCreatedByInput[]
+    createMany?: UpvoteCreateManyCreatedByInputEnvelope
+    connect?: UpvoteWhereUniqueInput | UpvoteWhereUniqueInput[]
   }
 
   export type ChallengeModifierCreateNestedManyWithoutUserExcludedInput = {
@@ -18694,25 +19649,18 @@ export namespace Prisma {
     connect?: ModifierOptionWhereUniqueInput | ModifierOptionWhereUniqueInput[]
   }
 
-  export type ModifierPackCreateNestedManyWithoutCreatedByInput = {
-    create?: XOR<ModifierPackCreateWithoutCreatedByInput, ModifierPackUncheckedCreateWithoutCreatedByInput> | ModifierPackCreateWithoutCreatedByInput[] | ModifierPackUncheckedCreateWithoutCreatedByInput[]
-    connectOrCreate?: ModifierPackCreateOrConnectWithoutCreatedByInput | ModifierPackCreateOrConnectWithoutCreatedByInput[]
-    createMany?: ModifierPackCreateManyCreatedByInputEnvelope
-    connect?: ModifierPackWhereUniqueInput | ModifierPackWhereUniqueInput[]
+  export type ChallengeModifierUncheckedCreateNestedManyWithoutCreatedByInput = {
+    create?: XOR<ChallengeModifierCreateWithoutCreatedByInput, ChallengeModifierUncheckedCreateWithoutCreatedByInput> | ChallengeModifierCreateWithoutCreatedByInput[] | ChallengeModifierUncheckedCreateWithoutCreatedByInput[]
+    connectOrCreate?: ChallengeModifierCreateOrConnectWithoutCreatedByInput | ChallengeModifierCreateOrConnectWithoutCreatedByInput[]
+    createMany?: ChallengeModifierCreateManyCreatedByInputEnvelope
+    connect?: ChallengeModifierWhereUniqueInput | ChallengeModifierWhereUniqueInput[]
   }
 
-  export type DownvoteCreateNestedManyWithoutCreatedByInput = {
+  export type DownvoteUncheckedCreateNestedManyWithoutCreatedByInput = {
     create?: XOR<DownvoteCreateWithoutCreatedByInput, DownvoteUncheckedCreateWithoutCreatedByInput> | DownvoteCreateWithoutCreatedByInput[] | DownvoteUncheckedCreateWithoutCreatedByInput[]
     connectOrCreate?: DownvoteCreateOrConnectWithoutCreatedByInput | DownvoteCreateOrConnectWithoutCreatedByInput[]
     createMany?: DownvoteCreateManyCreatedByInputEnvelope
     connect?: DownvoteWhereUniqueInput | DownvoteWhereUniqueInput[]
-  }
-
-  export type UpvoteCreateNestedManyWithoutCreatedByInput = {
-    create?: XOR<UpvoteCreateWithoutCreatedByInput, UpvoteUncheckedCreateWithoutCreatedByInput> | UpvoteCreateWithoutCreatedByInput[] | UpvoteUncheckedCreateWithoutCreatedByInput[]
-    connectOrCreate?: UpvoteCreateOrConnectWithoutCreatedByInput | UpvoteCreateOrConnectWithoutCreatedByInput[]
-    createMany?: UpvoteCreateManyCreatedByInputEnvelope
-    connect?: UpvoteWhereUniqueInput | UpvoteWhereUniqueInput[]
   }
 
   export type GameUncheckedCreateNestedManyWithoutUserInput = {
@@ -18722,6 +19670,20 @@ export namespace Prisma {
     connect?: GameWhereUniqueInput | GameWhereUniqueInput[]
   }
 
+  export type ModifierOptionUncheckedCreateNestedManyWithoutCreatedByInput = {
+    create?: XOR<ModifierOptionCreateWithoutCreatedByInput, ModifierOptionUncheckedCreateWithoutCreatedByInput> | ModifierOptionCreateWithoutCreatedByInput[] | ModifierOptionUncheckedCreateWithoutCreatedByInput[]
+    connectOrCreate?: ModifierOptionCreateOrConnectWithoutCreatedByInput | ModifierOptionCreateOrConnectWithoutCreatedByInput[]
+    createMany?: ModifierOptionCreateManyCreatedByInputEnvelope
+    connect?: ModifierOptionWhereUniqueInput | ModifierOptionWhereUniqueInput[]
+  }
+
+  export type ModifierPackUncheckedCreateNestedManyWithoutCreatedByInput = {
+    create?: XOR<ModifierPackCreateWithoutCreatedByInput, ModifierPackUncheckedCreateWithoutCreatedByInput> | ModifierPackCreateWithoutCreatedByInput[] | ModifierPackUncheckedCreateWithoutCreatedByInput[]
+    connectOrCreate?: ModifierPackCreateOrConnectWithoutCreatedByInput | ModifierPackCreateOrConnectWithoutCreatedByInput[]
+    createMany?: ModifierPackCreateManyCreatedByInputEnvelope
+    connect?: ModifierPackWhereUniqueInput | ModifierPackWhereUniqueInput[]
+  }
+
   export type PublicProfileUncheckedCreateNestedManyWithoutUserInput = {
     create?: XOR<PublicProfileCreateWithoutUserInput, PublicProfileUncheckedCreateWithoutUserInput> | PublicProfileCreateWithoutUserInput[] | PublicProfileUncheckedCreateWithoutUserInput[]
     connectOrCreate?: PublicProfileCreateOrConnectWithoutUserInput | PublicProfileCreateOrConnectWithoutUserInput[]
@@ -18729,18 +19691,11 @@ export namespace Prisma {
     connect?: PublicProfileWhereUniqueInput | PublicProfileWhereUniqueInput[]
   }
 
-  export type ChallengeModifierUncheckedCreateNestedManyWithoutCreatedByInput = {
-    create?: XOR<ChallengeModifierCreateWithoutCreatedByInput, ChallengeModifierUncheckedCreateWithoutCreatedByInput> | ChallengeModifierCreateWithoutCreatedByInput[] | ChallengeModifierUncheckedCreateWithoutCreatedByInput[]
-    connectOrCreate?: ChallengeModifierCreateOrConnectWithoutCreatedByInput | ChallengeModifierCreateOrConnectWithoutCreatedByInput[]
-    createMany?: ChallengeModifierCreateManyCreatedByInputEnvelope
-    connect?: ChallengeModifierWhereUniqueInput | ChallengeModifierWhereUniqueInput[]
-  }
-
-  export type ModifierOptionUncheckedCreateNestedManyWithoutCreatedByInput = {
-    create?: XOR<ModifierOptionCreateWithoutCreatedByInput, ModifierOptionUncheckedCreateWithoutCreatedByInput> | ModifierOptionCreateWithoutCreatedByInput[] | ModifierOptionUncheckedCreateWithoutCreatedByInput[]
-    connectOrCreate?: ModifierOptionCreateOrConnectWithoutCreatedByInput | ModifierOptionCreateOrConnectWithoutCreatedByInput[]
-    createMany?: ModifierOptionCreateManyCreatedByInputEnvelope
-    connect?: ModifierOptionWhereUniqueInput | ModifierOptionWhereUniqueInput[]
+  export type UpvoteUncheckedCreateNestedManyWithoutCreatedByInput = {
+    create?: XOR<UpvoteCreateWithoutCreatedByInput, UpvoteUncheckedCreateWithoutCreatedByInput> | UpvoteCreateWithoutCreatedByInput[] | UpvoteUncheckedCreateWithoutCreatedByInput[]
+    connectOrCreate?: UpvoteCreateOrConnectWithoutCreatedByInput | UpvoteCreateOrConnectWithoutCreatedByInput[]
+    createMany?: UpvoteCreateManyCreatedByInputEnvelope
+    connect?: UpvoteWhereUniqueInput | UpvoteWhereUniqueInput[]
   }
 
   export type ChallengeModifierUncheckedCreateNestedManyWithoutUserExcludedInput = {
@@ -18767,27 +19722,6 @@ export namespace Prisma {
     connect?: ModifierOptionWhereUniqueInput | ModifierOptionWhereUniqueInput[]
   }
 
-  export type ModifierPackUncheckedCreateNestedManyWithoutCreatedByInput = {
-    create?: XOR<ModifierPackCreateWithoutCreatedByInput, ModifierPackUncheckedCreateWithoutCreatedByInput> | ModifierPackCreateWithoutCreatedByInput[] | ModifierPackUncheckedCreateWithoutCreatedByInput[]
-    connectOrCreate?: ModifierPackCreateOrConnectWithoutCreatedByInput | ModifierPackCreateOrConnectWithoutCreatedByInput[]
-    createMany?: ModifierPackCreateManyCreatedByInputEnvelope
-    connect?: ModifierPackWhereUniqueInput | ModifierPackWhereUniqueInput[]
-  }
-
-  export type DownvoteUncheckedCreateNestedManyWithoutCreatedByInput = {
-    create?: XOR<DownvoteCreateWithoutCreatedByInput, DownvoteUncheckedCreateWithoutCreatedByInput> | DownvoteCreateWithoutCreatedByInput[] | DownvoteUncheckedCreateWithoutCreatedByInput[]
-    connectOrCreate?: DownvoteCreateOrConnectWithoutCreatedByInput | DownvoteCreateOrConnectWithoutCreatedByInput[]
-    createMany?: DownvoteCreateManyCreatedByInputEnvelope
-    connect?: DownvoteWhereUniqueInput | DownvoteWhereUniqueInput[]
-  }
-
-  export type UpvoteUncheckedCreateNestedManyWithoutCreatedByInput = {
-    create?: XOR<UpvoteCreateWithoutCreatedByInput, UpvoteUncheckedCreateWithoutCreatedByInput> | UpvoteCreateWithoutCreatedByInput[] | UpvoteUncheckedCreateWithoutCreatedByInput[]
-    connectOrCreate?: UpvoteCreateOrConnectWithoutCreatedByInput | UpvoteCreateOrConnectWithoutCreatedByInput[]
-    createMany?: UpvoteCreateManyCreatedByInputEnvelope
-    connect?: UpvoteWhereUniqueInput | UpvoteWhereUniqueInput[]
-  }
-
   export type StringFieldUpdateOperationsInput = {
     set?: string
   }
@@ -18808,6 +19742,34 @@ export namespace Prisma {
     divide?: number
   }
 
+  export type ChallengeModifierUpdateManyWithoutCreatedByNestedInput = {
+    create?: XOR<ChallengeModifierCreateWithoutCreatedByInput, ChallengeModifierUncheckedCreateWithoutCreatedByInput> | ChallengeModifierCreateWithoutCreatedByInput[] | ChallengeModifierUncheckedCreateWithoutCreatedByInput[]
+    connectOrCreate?: ChallengeModifierCreateOrConnectWithoutCreatedByInput | ChallengeModifierCreateOrConnectWithoutCreatedByInput[]
+    upsert?: ChallengeModifierUpsertWithWhereUniqueWithoutCreatedByInput | ChallengeModifierUpsertWithWhereUniqueWithoutCreatedByInput[]
+    createMany?: ChallengeModifierCreateManyCreatedByInputEnvelope
+    set?: ChallengeModifierWhereUniqueInput | ChallengeModifierWhereUniqueInput[]
+    disconnect?: ChallengeModifierWhereUniqueInput | ChallengeModifierWhereUniqueInput[]
+    delete?: ChallengeModifierWhereUniqueInput | ChallengeModifierWhereUniqueInput[]
+    connect?: ChallengeModifierWhereUniqueInput | ChallengeModifierWhereUniqueInput[]
+    update?: ChallengeModifierUpdateWithWhereUniqueWithoutCreatedByInput | ChallengeModifierUpdateWithWhereUniqueWithoutCreatedByInput[]
+    updateMany?: ChallengeModifierUpdateManyWithWhereWithoutCreatedByInput | ChallengeModifierUpdateManyWithWhereWithoutCreatedByInput[]
+    deleteMany?: ChallengeModifierScalarWhereInput | ChallengeModifierScalarWhereInput[]
+  }
+
+  export type DownvoteUpdateManyWithoutCreatedByNestedInput = {
+    create?: XOR<DownvoteCreateWithoutCreatedByInput, DownvoteUncheckedCreateWithoutCreatedByInput> | DownvoteCreateWithoutCreatedByInput[] | DownvoteUncheckedCreateWithoutCreatedByInput[]
+    connectOrCreate?: DownvoteCreateOrConnectWithoutCreatedByInput | DownvoteCreateOrConnectWithoutCreatedByInput[]
+    upsert?: DownvoteUpsertWithWhereUniqueWithoutCreatedByInput | DownvoteUpsertWithWhereUniqueWithoutCreatedByInput[]
+    createMany?: DownvoteCreateManyCreatedByInputEnvelope
+    set?: DownvoteWhereUniqueInput | DownvoteWhereUniqueInput[]
+    disconnect?: DownvoteWhereUniqueInput | DownvoteWhereUniqueInput[]
+    delete?: DownvoteWhereUniqueInput | DownvoteWhereUniqueInput[]
+    connect?: DownvoteWhereUniqueInput | DownvoteWhereUniqueInput[]
+    update?: DownvoteUpdateWithWhereUniqueWithoutCreatedByInput | DownvoteUpdateWithWhereUniqueWithoutCreatedByInput[]
+    updateMany?: DownvoteUpdateManyWithWhereWithoutCreatedByInput | DownvoteUpdateManyWithWhereWithoutCreatedByInput[]
+    deleteMany?: DownvoteScalarWhereInput | DownvoteScalarWhereInput[]
+  }
+
   export type GameUpdateManyWithoutUserNestedInput = {
     create?: XOR<GameCreateWithoutUserInput, GameUncheckedCreateWithoutUserInput> | GameCreateWithoutUserInput[] | GameUncheckedCreateWithoutUserInput[]
     connectOrCreate?: GameCreateOrConnectWithoutUserInput | GameCreateOrConnectWithoutUserInput[]
@@ -18820,6 +19782,34 @@ export namespace Prisma {
     update?: GameUpdateWithWhereUniqueWithoutUserInput | GameUpdateWithWhereUniqueWithoutUserInput[]
     updateMany?: GameUpdateManyWithWhereWithoutUserInput | GameUpdateManyWithWhereWithoutUserInput[]
     deleteMany?: GameScalarWhereInput | GameScalarWhereInput[]
+  }
+
+  export type ModifierOptionUpdateManyWithoutCreatedByNestedInput = {
+    create?: XOR<ModifierOptionCreateWithoutCreatedByInput, ModifierOptionUncheckedCreateWithoutCreatedByInput> | ModifierOptionCreateWithoutCreatedByInput[] | ModifierOptionUncheckedCreateWithoutCreatedByInput[]
+    connectOrCreate?: ModifierOptionCreateOrConnectWithoutCreatedByInput | ModifierOptionCreateOrConnectWithoutCreatedByInput[]
+    upsert?: ModifierOptionUpsertWithWhereUniqueWithoutCreatedByInput | ModifierOptionUpsertWithWhereUniqueWithoutCreatedByInput[]
+    createMany?: ModifierOptionCreateManyCreatedByInputEnvelope
+    set?: ModifierOptionWhereUniqueInput | ModifierOptionWhereUniqueInput[]
+    disconnect?: ModifierOptionWhereUniqueInput | ModifierOptionWhereUniqueInput[]
+    delete?: ModifierOptionWhereUniqueInput | ModifierOptionWhereUniqueInput[]
+    connect?: ModifierOptionWhereUniqueInput | ModifierOptionWhereUniqueInput[]
+    update?: ModifierOptionUpdateWithWhereUniqueWithoutCreatedByInput | ModifierOptionUpdateWithWhereUniqueWithoutCreatedByInput[]
+    updateMany?: ModifierOptionUpdateManyWithWhereWithoutCreatedByInput | ModifierOptionUpdateManyWithWhereWithoutCreatedByInput[]
+    deleteMany?: ModifierOptionScalarWhereInput | ModifierOptionScalarWhereInput[]
+  }
+
+  export type ModifierPackUpdateManyWithoutCreatedByNestedInput = {
+    create?: XOR<ModifierPackCreateWithoutCreatedByInput, ModifierPackUncheckedCreateWithoutCreatedByInput> | ModifierPackCreateWithoutCreatedByInput[] | ModifierPackUncheckedCreateWithoutCreatedByInput[]
+    connectOrCreate?: ModifierPackCreateOrConnectWithoutCreatedByInput | ModifierPackCreateOrConnectWithoutCreatedByInput[]
+    upsert?: ModifierPackUpsertWithWhereUniqueWithoutCreatedByInput | ModifierPackUpsertWithWhereUniqueWithoutCreatedByInput[]
+    createMany?: ModifierPackCreateManyCreatedByInputEnvelope
+    set?: ModifierPackWhereUniqueInput | ModifierPackWhereUniqueInput[]
+    disconnect?: ModifierPackWhereUniqueInput | ModifierPackWhereUniqueInput[]
+    delete?: ModifierPackWhereUniqueInput | ModifierPackWhereUniqueInput[]
+    connect?: ModifierPackWhereUniqueInput | ModifierPackWhereUniqueInput[]
+    update?: ModifierPackUpdateWithWhereUniqueWithoutCreatedByInput | ModifierPackUpdateWithWhereUniqueWithoutCreatedByInput[]
+    updateMany?: ModifierPackUpdateManyWithWhereWithoutCreatedByInput | ModifierPackUpdateManyWithWhereWithoutCreatedByInput[]
+    deleteMany?: ModifierPackScalarWhereInput | ModifierPackScalarWhereInput[]
   }
 
   export type PublicProfileUpdateManyWithoutUserNestedInput = {
@@ -18836,32 +19826,18 @@ export namespace Prisma {
     deleteMany?: PublicProfileScalarWhereInput | PublicProfileScalarWhereInput[]
   }
 
-  export type ChallengeModifierUpdateManyWithoutCreatedByNestedInput = {
-    create?: XOR<ChallengeModifierCreateWithoutCreatedByInput, ChallengeModifierUncheckedCreateWithoutCreatedByInput> | ChallengeModifierCreateWithoutCreatedByInput[] | ChallengeModifierUncheckedCreateWithoutCreatedByInput[]
-    connectOrCreate?: ChallengeModifierCreateOrConnectWithoutCreatedByInput | ChallengeModifierCreateOrConnectWithoutCreatedByInput[]
-    upsert?: ChallengeModifierUpsertWithWhereUniqueWithoutCreatedByInput | ChallengeModifierUpsertWithWhereUniqueWithoutCreatedByInput[]
-    createMany?: ChallengeModifierCreateManyCreatedByInputEnvelope
-    set?: ChallengeModifierWhereUniqueInput | ChallengeModifierWhereUniqueInput[]
-    disconnect?: ChallengeModifierWhereUniqueInput | ChallengeModifierWhereUniqueInput[]
-    delete?: ChallengeModifierWhereUniqueInput | ChallengeModifierWhereUniqueInput[]
-    connect?: ChallengeModifierWhereUniqueInput | ChallengeModifierWhereUniqueInput[]
-    update?: ChallengeModifierUpdateWithWhereUniqueWithoutCreatedByInput | ChallengeModifierUpdateWithWhereUniqueWithoutCreatedByInput[]
-    updateMany?: ChallengeModifierUpdateManyWithWhereWithoutCreatedByInput | ChallengeModifierUpdateManyWithWhereWithoutCreatedByInput[]
-    deleteMany?: ChallengeModifierScalarWhereInput | ChallengeModifierScalarWhereInput[]
-  }
-
-  export type ModifierOptionUpdateManyWithoutCreatedByNestedInput = {
-    create?: XOR<ModifierOptionCreateWithoutCreatedByInput, ModifierOptionUncheckedCreateWithoutCreatedByInput> | ModifierOptionCreateWithoutCreatedByInput[] | ModifierOptionUncheckedCreateWithoutCreatedByInput[]
-    connectOrCreate?: ModifierOptionCreateOrConnectWithoutCreatedByInput | ModifierOptionCreateOrConnectWithoutCreatedByInput[]
-    upsert?: ModifierOptionUpsertWithWhereUniqueWithoutCreatedByInput | ModifierOptionUpsertWithWhereUniqueWithoutCreatedByInput[]
-    createMany?: ModifierOptionCreateManyCreatedByInputEnvelope
-    set?: ModifierOptionWhereUniqueInput | ModifierOptionWhereUniqueInput[]
-    disconnect?: ModifierOptionWhereUniqueInput | ModifierOptionWhereUniqueInput[]
-    delete?: ModifierOptionWhereUniqueInput | ModifierOptionWhereUniqueInput[]
-    connect?: ModifierOptionWhereUniqueInput | ModifierOptionWhereUniqueInput[]
-    update?: ModifierOptionUpdateWithWhereUniqueWithoutCreatedByInput | ModifierOptionUpdateWithWhereUniqueWithoutCreatedByInput[]
-    updateMany?: ModifierOptionUpdateManyWithWhereWithoutCreatedByInput | ModifierOptionUpdateManyWithWhereWithoutCreatedByInput[]
-    deleteMany?: ModifierOptionScalarWhereInput | ModifierOptionScalarWhereInput[]
+  export type UpvoteUpdateManyWithoutCreatedByNestedInput = {
+    create?: XOR<UpvoteCreateWithoutCreatedByInput, UpvoteUncheckedCreateWithoutCreatedByInput> | UpvoteCreateWithoutCreatedByInput[] | UpvoteUncheckedCreateWithoutCreatedByInput[]
+    connectOrCreate?: UpvoteCreateOrConnectWithoutCreatedByInput | UpvoteCreateOrConnectWithoutCreatedByInput[]
+    upsert?: UpvoteUpsertWithWhereUniqueWithoutCreatedByInput | UpvoteUpsertWithWhereUniqueWithoutCreatedByInput[]
+    createMany?: UpvoteCreateManyCreatedByInputEnvelope
+    set?: UpvoteWhereUniqueInput | UpvoteWhereUniqueInput[]
+    disconnect?: UpvoteWhereUniqueInput | UpvoteWhereUniqueInput[]
+    delete?: UpvoteWhereUniqueInput | UpvoteWhereUniqueInput[]
+    connect?: UpvoteWhereUniqueInput | UpvoteWhereUniqueInput[]
+    update?: UpvoteUpdateWithWhereUniqueWithoutCreatedByInput | UpvoteUpdateWithWhereUniqueWithoutCreatedByInput[]
+    updateMany?: UpvoteUpdateManyWithWhereWithoutCreatedByInput | UpvoteUpdateManyWithWhereWithoutCreatedByInput[]
+    deleteMany?: UpvoteScalarWhereInput | UpvoteScalarWhereInput[]
   }
 
   export type ChallengeModifierUpdateManyWithoutUserExcludedNestedInput = {
@@ -18916,21 +19892,21 @@ export namespace Prisma {
     deleteMany?: ModifierOptionScalarWhereInput | ModifierOptionScalarWhereInput[]
   }
 
-  export type ModifierPackUpdateManyWithoutCreatedByNestedInput = {
-    create?: XOR<ModifierPackCreateWithoutCreatedByInput, ModifierPackUncheckedCreateWithoutCreatedByInput> | ModifierPackCreateWithoutCreatedByInput[] | ModifierPackUncheckedCreateWithoutCreatedByInput[]
-    connectOrCreate?: ModifierPackCreateOrConnectWithoutCreatedByInput | ModifierPackCreateOrConnectWithoutCreatedByInput[]
-    upsert?: ModifierPackUpsertWithWhereUniqueWithoutCreatedByInput | ModifierPackUpsertWithWhereUniqueWithoutCreatedByInput[]
-    createMany?: ModifierPackCreateManyCreatedByInputEnvelope
-    set?: ModifierPackWhereUniqueInput | ModifierPackWhereUniqueInput[]
-    disconnect?: ModifierPackWhereUniqueInput | ModifierPackWhereUniqueInput[]
-    delete?: ModifierPackWhereUniqueInput | ModifierPackWhereUniqueInput[]
-    connect?: ModifierPackWhereUniqueInput | ModifierPackWhereUniqueInput[]
-    update?: ModifierPackUpdateWithWhereUniqueWithoutCreatedByInput | ModifierPackUpdateWithWhereUniqueWithoutCreatedByInput[]
-    updateMany?: ModifierPackUpdateManyWithWhereWithoutCreatedByInput | ModifierPackUpdateManyWithWhereWithoutCreatedByInput[]
-    deleteMany?: ModifierPackScalarWhereInput | ModifierPackScalarWhereInput[]
+  export type ChallengeModifierUncheckedUpdateManyWithoutCreatedByNestedInput = {
+    create?: XOR<ChallengeModifierCreateWithoutCreatedByInput, ChallengeModifierUncheckedCreateWithoutCreatedByInput> | ChallengeModifierCreateWithoutCreatedByInput[] | ChallengeModifierUncheckedCreateWithoutCreatedByInput[]
+    connectOrCreate?: ChallengeModifierCreateOrConnectWithoutCreatedByInput | ChallengeModifierCreateOrConnectWithoutCreatedByInput[]
+    upsert?: ChallengeModifierUpsertWithWhereUniqueWithoutCreatedByInput | ChallengeModifierUpsertWithWhereUniqueWithoutCreatedByInput[]
+    createMany?: ChallengeModifierCreateManyCreatedByInputEnvelope
+    set?: ChallengeModifierWhereUniqueInput | ChallengeModifierWhereUniqueInput[]
+    disconnect?: ChallengeModifierWhereUniqueInput | ChallengeModifierWhereUniqueInput[]
+    delete?: ChallengeModifierWhereUniqueInput | ChallengeModifierWhereUniqueInput[]
+    connect?: ChallengeModifierWhereUniqueInput | ChallengeModifierWhereUniqueInput[]
+    update?: ChallengeModifierUpdateWithWhereUniqueWithoutCreatedByInput | ChallengeModifierUpdateWithWhereUniqueWithoutCreatedByInput[]
+    updateMany?: ChallengeModifierUpdateManyWithWhereWithoutCreatedByInput | ChallengeModifierUpdateManyWithWhereWithoutCreatedByInput[]
+    deleteMany?: ChallengeModifierScalarWhereInput | ChallengeModifierScalarWhereInput[]
   }
 
-  export type DownvoteUpdateManyWithoutCreatedByNestedInput = {
+  export type DownvoteUncheckedUpdateManyWithoutCreatedByNestedInput = {
     create?: XOR<DownvoteCreateWithoutCreatedByInput, DownvoteUncheckedCreateWithoutCreatedByInput> | DownvoteCreateWithoutCreatedByInput[] | DownvoteUncheckedCreateWithoutCreatedByInput[]
     connectOrCreate?: DownvoteCreateOrConnectWithoutCreatedByInput | DownvoteCreateOrConnectWithoutCreatedByInput[]
     upsert?: DownvoteUpsertWithWhereUniqueWithoutCreatedByInput | DownvoteUpsertWithWhereUniqueWithoutCreatedByInput[]
@@ -18942,20 +19918,6 @@ export namespace Prisma {
     update?: DownvoteUpdateWithWhereUniqueWithoutCreatedByInput | DownvoteUpdateWithWhereUniqueWithoutCreatedByInput[]
     updateMany?: DownvoteUpdateManyWithWhereWithoutCreatedByInput | DownvoteUpdateManyWithWhereWithoutCreatedByInput[]
     deleteMany?: DownvoteScalarWhereInput | DownvoteScalarWhereInput[]
-  }
-
-  export type UpvoteUpdateManyWithoutCreatedByNestedInput = {
-    create?: XOR<UpvoteCreateWithoutCreatedByInput, UpvoteUncheckedCreateWithoutCreatedByInput> | UpvoteCreateWithoutCreatedByInput[] | UpvoteUncheckedCreateWithoutCreatedByInput[]
-    connectOrCreate?: UpvoteCreateOrConnectWithoutCreatedByInput | UpvoteCreateOrConnectWithoutCreatedByInput[]
-    upsert?: UpvoteUpsertWithWhereUniqueWithoutCreatedByInput | UpvoteUpsertWithWhereUniqueWithoutCreatedByInput[]
-    createMany?: UpvoteCreateManyCreatedByInputEnvelope
-    set?: UpvoteWhereUniqueInput | UpvoteWhereUniqueInput[]
-    disconnect?: UpvoteWhereUniqueInput | UpvoteWhereUniqueInput[]
-    delete?: UpvoteWhereUniqueInput | UpvoteWhereUniqueInput[]
-    connect?: UpvoteWhereUniqueInput | UpvoteWhereUniqueInput[]
-    update?: UpvoteUpdateWithWhereUniqueWithoutCreatedByInput | UpvoteUpdateWithWhereUniqueWithoutCreatedByInput[]
-    updateMany?: UpvoteUpdateManyWithWhereWithoutCreatedByInput | UpvoteUpdateManyWithWhereWithoutCreatedByInput[]
-    deleteMany?: UpvoteScalarWhereInput | UpvoteScalarWhereInput[]
   }
 
   export type GameUncheckedUpdateManyWithoutUserNestedInput = {
@@ -18972,6 +19934,34 @@ export namespace Prisma {
     deleteMany?: GameScalarWhereInput | GameScalarWhereInput[]
   }
 
+  export type ModifierOptionUncheckedUpdateManyWithoutCreatedByNestedInput = {
+    create?: XOR<ModifierOptionCreateWithoutCreatedByInput, ModifierOptionUncheckedCreateWithoutCreatedByInput> | ModifierOptionCreateWithoutCreatedByInput[] | ModifierOptionUncheckedCreateWithoutCreatedByInput[]
+    connectOrCreate?: ModifierOptionCreateOrConnectWithoutCreatedByInput | ModifierOptionCreateOrConnectWithoutCreatedByInput[]
+    upsert?: ModifierOptionUpsertWithWhereUniqueWithoutCreatedByInput | ModifierOptionUpsertWithWhereUniqueWithoutCreatedByInput[]
+    createMany?: ModifierOptionCreateManyCreatedByInputEnvelope
+    set?: ModifierOptionWhereUniqueInput | ModifierOptionWhereUniqueInput[]
+    disconnect?: ModifierOptionWhereUniqueInput | ModifierOptionWhereUniqueInput[]
+    delete?: ModifierOptionWhereUniqueInput | ModifierOptionWhereUniqueInput[]
+    connect?: ModifierOptionWhereUniqueInput | ModifierOptionWhereUniqueInput[]
+    update?: ModifierOptionUpdateWithWhereUniqueWithoutCreatedByInput | ModifierOptionUpdateWithWhereUniqueWithoutCreatedByInput[]
+    updateMany?: ModifierOptionUpdateManyWithWhereWithoutCreatedByInput | ModifierOptionUpdateManyWithWhereWithoutCreatedByInput[]
+    deleteMany?: ModifierOptionScalarWhereInput | ModifierOptionScalarWhereInput[]
+  }
+
+  export type ModifierPackUncheckedUpdateManyWithoutCreatedByNestedInput = {
+    create?: XOR<ModifierPackCreateWithoutCreatedByInput, ModifierPackUncheckedCreateWithoutCreatedByInput> | ModifierPackCreateWithoutCreatedByInput[] | ModifierPackUncheckedCreateWithoutCreatedByInput[]
+    connectOrCreate?: ModifierPackCreateOrConnectWithoutCreatedByInput | ModifierPackCreateOrConnectWithoutCreatedByInput[]
+    upsert?: ModifierPackUpsertWithWhereUniqueWithoutCreatedByInput | ModifierPackUpsertWithWhereUniqueWithoutCreatedByInput[]
+    createMany?: ModifierPackCreateManyCreatedByInputEnvelope
+    set?: ModifierPackWhereUniqueInput | ModifierPackWhereUniqueInput[]
+    disconnect?: ModifierPackWhereUniqueInput | ModifierPackWhereUniqueInput[]
+    delete?: ModifierPackWhereUniqueInput | ModifierPackWhereUniqueInput[]
+    connect?: ModifierPackWhereUniqueInput | ModifierPackWhereUniqueInput[]
+    update?: ModifierPackUpdateWithWhereUniqueWithoutCreatedByInput | ModifierPackUpdateWithWhereUniqueWithoutCreatedByInput[]
+    updateMany?: ModifierPackUpdateManyWithWhereWithoutCreatedByInput | ModifierPackUpdateManyWithWhereWithoutCreatedByInput[]
+    deleteMany?: ModifierPackScalarWhereInput | ModifierPackScalarWhereInput[]
+  }
+
   export type PublicProfileUncheckedUpdateManyWithoutUserNestedInput = {
     create?: XOR<PublicProfileCreateWithoutUserInput, PublicProfileUncheckedCreateWithoutUserInput> | PublicProfileCreateWithoutUserInput[] | PublicProfileUncheckedCreateWithoutUserInput[]
     connectOrCreate?: PublicProfileCreateOrConnectWithoutUserInput | PublicProfileCreateOrConnectWithoutUserInput[]
@@ -18986,32 +19976,18 @@ export namespace Prisma {
     deleteMany?: PublicProfileScalarWhereInput | PublicProfileScalarWhereInput[]
   }
 
-  export type ChallengeModifierUncheckedUpdateManyWithoutCreatedByNestedInput = {
-    create?: XOR<ChallengeModifierCreateWithoutCreatedByInput, ChallengeModifierUncheckedCreateWithoutCreatedByInput> | ChallengeModifierCreateWithoutCreatedByInput[] | ChallengeModifierUncheckedCreateWithoutCreatedByInput[]
-    connectOrCreate?: ChallengeModifierCreateOrConnectWithoutCreatedByInput | ChallengeModifierCreateOrConnectWithoutCreatedByInput[]
-    upsert?: ChallengeModifierUpsertWithWhereUniqueWithoutCreatedByInput | ChallengeModifierUpsertWithWhereUniqueWithoutCreatedByInput[]
-    createMany?: ChallengeModifierCreateManyCreatedByInputEnvelope
-    set?: ChallengeModifierWhereUniqueInput | ChallengeModifierWhereUniqueInput[]
-    disconnect?: ChallengeModifierWhereUniqueInput | ChallengeModifierWhereUniqueInput[]
-    delete?: ChallengeModifierWhereUniqueInput | ChallengeModifierWhereUniqueInput[]
-    connect?: ChallengeModifierWhereUniqueInput | ChallengeModifierWhereUniqueInput[]
-    update?: ChallengeModifierUpdateWithWhereUniqueWithoutCreatedByInput | ChallengeModifierUpdateWithWhereUniqueWithoutCreatedByInput[]
-    updateMany?: ChallengeModifierUpdateManyWithWhereWithoutCreatedByInput | ChallengeModifierUpdateManyWithWhereWithoutCreatedByInput[]
-    deleteMany?: ChallengeModifierScalarWhereInput | ChallengeModifierScalarWhereInput[]
-  }
-
-  export type ModifierOptionUncheckedUpdateManyWithoutCreatedByNestedInput = {
-    create?: XOR<ModifierOptionCreateWithoutCreatedByInput, ModifierOptionUncheckedCreateWithoutCreatedByInput> | ModifierOptionCreateWithoutCreatedByInput[] | ModifierOptionUncheckedCreateWithoutCreatedByInput[]
-    connectOrCreate?: ModifierOptionCreateOrConnectWithoutCreatedByInput | ModifierOptionCreateOrConnectWithoutCreatedByInput[]
-    upsert?: ModifierOptionUpsertWithWhereUniqueWithoutCreatedByInput | ModifierOptionUpsertWithWhereUniqueWithoutCreatedByInput[]
-    createMany?: ModifierOptionCreateManyCreatedByInputEnvelope
-    set?: ModifierOptionWhereUniqueInput | ModifierOptionWhereUniqueInput[]
-    disconnect?: ModifierOptionWhereUniqueInput | ModifierOptionWhereUniqueInput[]
-    delete?: ModifierOptionWhereUniqueInput | ModifierOptionWhereUniqueInput[]
-    connect?: ModifierOptionWhereUniqueInput | ModifierOptionWhereUniqueInput[]
-    update?: ModifierOptionUpdateWithWhereUniqueWithoutCreatedByInput | ModifierOptionUpdateWithWhereUniqueWithoutCreatedByInput[]
-    updateMany?: ModifierOptionUpdateManyWithWhereWithoutCreatedByInput | ModifierOptionUpdateManyWithWhereWithoutCreatedByInput[]
-    deleteMany?: ModifierOptionScalarWhereInput | ModifierOptionScalarWhereInput[]
+  export type UpvoteUncheckedUpdateManyWithoutCreatedByNestedInput = {
+    create?: XOR<UpvoteCreateWithoutCreatedByInput, UpvoteUncheckedCreateWithoutCreatedByInput> | UpvoteCreateWithoutCreatedByInput[] | UpvoteUncheckedCreateWithoutCreatedByInput[]
+    connectOrCreate?: UpvoteCreateOrConnectWithoutCreatedByInput | UpvoteCreateOrConnectWithoutCreatedByInput[]
+    upsert?: UpvoteUpsertWithWhereUniqueWithoutCreatedByInput | UpvoteUpsertWithWhereUniqueWithoutCreatedByInput[]
+    createMany?: UpvoteCreateManyCreatedByInputEnvelope
+    set?: UpvoteWhereUniqueInput | UpvoteWhereUniqueInput[]
+    disconnect?: UpvoteWhereUniqueInput | UpvoteWhereUniqueInput[]
+    delete?: UpvoteWhereUniqueInput | UpvoteWhereUniqueInput[]
+    connect?: UpvoteWhereUniqueInput | UpvoteWhereUniqueInput[]
+    update?: UpvoteUpdateWithWhereUniqueWithoutCreatedByInput | UpvoteUpdateWithWhereUniqueWithoutCreatedByInput[]
+    updateMany?: UpvoteUpdateManyWithWhereWithoutCreatedByInput | UpvoteUpdateManyWithWhereWithoutCreatedByInput[]
+    deleteMany?: UpvoteScalarWhereInput | UpvoteScalarWhereInput[]
   }
 
   export type ChallengeModifierUncheckedUpdateManyWithoutUserExcludedNestedInput = {
@@ -19066,46 +20042,11 @@ export namespace Prisma {
     deleteMany?: ModifierOptionScalarWhereInput | ModifierOptionScalarWhereInput[]
   }
 
-  export type ModifierPackUncheckedUpdateManyWithoutCreatedByNestedInput = {
-    create?: XOR<ModifierPackCreateWithoutCreatedByInput, ModifierPackUncheckedCreateWithoutCreatedByInput> | ModifierPackCreateWithoutCreatedByInput[] | ModifierPackUncheckedCreateWithoutCreatedByInput[]
-    connectOrCreate?: ModifierPackCreateOrConnectWithoutCreatedByInput | ModifierPackCreateOrConnectWithoutCreatedByInput[]
-    upsert?: ModifierPackUpsertWithWhereUniqueWithoutCreatedByInput | ModifierPackUpsertWithWhereUniqueWithoutCreatedByInput[]
-    createMany?: ModifierPackCreateManyCreatedByInputEnvelope
-    set?: ModifierPackWhereUniqueInput | ModifierPackWhereUniqueInput[]
-    disconnect?: ModifierPackWhereUniqueInput | ModifierPackWhereUniqueInput[]
-    delete?: ModifierPackWhereUniqueInput | ModifierPackWhereUniqueInput[]
-    connect?: ModifierPackWhereUniqueInput | ModifierPackWhereUniqueInput[]
-    update?: ModifierPackUpdateWithWhereUniqueWithoutCreatedByInput | ModifierPackUpdateWithWhereUniqueWithoutCreatedByInput[]
-    updateMany?: ModifierPackUpdateManyWithWhereWithoutCreatedByInput | ModifierPackUpdateManyWithWhereWithoutCreatedByInput[]
-    deleteMany?: ModifierPackScalarWhereInput | ModifierPackScalarWhereInput[]
-  }
-
-  export type DownvoteUncheckedUpdateManyWithoutCreatedByNestedInput = {
-    create?: XOR<DownvoteCreateWithoutCreatedByInput, DownvoteUncheckedCreateWithoutCreatedByInput> | DownvoteCreateWithoutCreatedByInput[] | DownvoteUncheckedCreateWithoutCreatedByInput[]
-    connectOrCreate?: DownvoteCreateOrConnectWithoutCreatedByInput | DownvoteCreateOrConnectWithoutCreatedByInput[]
-    upsert?: DownvoteUpsertWithWhereUniqueWithoutCreatedByInput | DownvoteUpsertWithWhereUniqueWithoutCreatedByInput[]
-    createMany?: DownvoteCreateManyCreatedByInputEnvelope
-    set?: DownvoteWhereUniqueInput | DownvoteWhereUniqueInput[]
-    disconnect?: DownvoteWhereUniqueInput | DownvoteWhereUniqueInput[]
-    delete?: DownvoteWhereUniqueInput | DownvoteWhereUniqueInput[]
-    connect?: DownvoteWhereUniqueInput | DownvoteWhereUniqueInput[]
-    update?: DownvoteUpdateWithWhereUniqueWithoutCreatedByInput | DownvoteUpdateWithWhereUniqueWithoutCreatedByInput[]
-    updateMany?: DownvoteUpdateManyWithWhereWithoutCreatedByInput | DownvoteUpdateManyWithWhereWithoutCreatedByInput[]
-    deleteMany?: DownvoteScalarWhereInput | DownvoteScalarWhereInput[]
-  }
-
-  export type UpvoteUncheckedUpdateManyWithoutCreatedByNestedInput = {
-    create?: XOR<UpvoteCreateWithoutCreatedByInput, UpvoteUncheckedCreateWithoutCreatedByInput> | UpvoteCreateWithoutCreatedByInput[] | UpvoteUncheckedCreateWithoutCreatedByInput[]
-    connectOrCreate?: UpvoteCreateOrConnectWithoutCreatedByInput | UpvoteCreateOrConnectWithoutCreatedByInput[]
-    upsert?: UpvoteUpsertWithWhereUniqueWithoutCreatedByInput | UpvoteUpsertWithWhereUniqueWithoutCreatedByInput[]
-    createMany?: UpvoteCreateManyCreatedByInputEnvelope
-    set?: UpvoteWhereUniqueInput | UpvoteWhereUniqueInput[]
-    disconnect?: UpvoteWhereUniqueInput | UpvoteWhereUniqueInput[]
-    delete?: UpvoteWhereUniqueInput | UpvoteWhereUniqueInput[]
-    connect?: UpvoteWhereUniqueInput | UpvoteWhereUniqueInput[]
-    update?: UpvoteUpdateWithWhereUniqueWithoutCreatedByInput | UpvoteUpdateWithWhereUniqueWithoutCreatedByInput[]
-    updateMany?: UpvoteUpdateManyWithWhereWithoutCreatedByInput | UpvoteUpdateManyWithWhereWithoutCreatedByInput[]
-    deleteMany?: UpvoteScalarWhereInput | UpvoteScalarWhereInput[]
+  export type GameCreateNestedManyWithoutPublicProfileInput = {
+    create?: XOR<GameCreateWithoutPublicProfileInput, GameUncheckedCreateWithoutPublicProfileInput> | GameCreateWithoutPublicProfileInput[] | GameUncheckedCreateWithoutPublicProfileInput[]
+    connectOrCreate?: GameCreateOrConnectWithoutPublicProfileInput | GameCreateOrConnectWithoutPublicProfileInput[]
+    createMany?: GameCreateManyPublicProfileInputEnvelope
+    connect?: GameWhereUniqueInput | GameWhereUniqueInput[]
   }
 
   export type UserCreateNestedOneWithoutPublicProfileInput = {
@@ -19114,26 +20055,11 @@ export namespace Prisma {
     connect?: UserWhereUniqueInput
   }
 
-  export type GameCreateNestedManyWithoutPublicProfileInput = {
-    create?: XOR<GameCreateWithoutPublicProfileInput, GameUncheckedCreateWithoutPublicProfileInput> | GameCreateWithoutPublicProfileInput[] | GameUncheckedCreateWithoutPublicProfileInput[]
-    connectOrCreate?: GameCreateOrConnectWithoutPublicProfileInput | GameCreateOrConnectWithoutPublicProfileInput[]
-    createMany?: GameCreateManyPublicProfileInputEnvelope
-    connect?: GameWhereUniqueInput | GameWhereUniqueInput[]
-  }
-
   export type GameUncheckedCreateNestedManyWithoutPublicProfileInput = {
     create?: XOR<GameCreateWithoutPublicProfileInput, GameUncheckedCreateWithoutPublicProfileInput> | GameCreateWithoutPublicProfileInput[] | GameUncheckedCreateWithoutPublicProfileInput[]
     connectOrCreate?: GameCreateOrConnectWithoutPublicProfileInput | GameCreateOrConnectWithoutPublicProfileInput[]
     createMany?: GameCreateManyPublicProfileInputEnvelope
     connect?: GameWhereUniqueInput | GameWhereUniqueInput[]
-  }
-
-  export type UserUpdateOneRequiredWithoutPublicProfileNestedInput = {
-    create?: XOR<UserCreateWithoutPublicProfileInput, UserUncheckedCreateWithoutPublicProfileInput>
-    connectOrCreate?: UserCreateOrConnectWithoutPublicProfileInput
-    upsert?: UserUpsertWithoutPublicProfileInput
-    connect?: UserWhereUniqueInput
-    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutPublicProfileInput, UserUpdateWithoutPublicProfileInput>, UserUncheckedUpdateWithoutPublicProfileInput>
   }
 
   export type GameUpdateManyWithoutPublicProfileNestedInput = {
@@ -19150,6 +20076,14 @@ export namespace Prisma {
     deleteMany?: GameScalarWhereInput | GameScalarWhereInput[]
   }
 
+  export type UserUpdateOneRequiredWithoutPublicProfileNestedInput = {
+    create?: XOR<UserCreateWithoutPublicProfileInput, UserUncheckedCreateWithoutPublicProfileInput>
+    connectOrCreate?: UserCreateOrConnectWithoutPublicProfileInput
+    upsert?: UserUpsertWithoutPublicProfileInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutPublicProfileInput, UserUpdateWithoutPublicProfileInput>, UserUncheckedUpdateWithoutPublicProfileInput>
+  }
+
   export type GameUncheckedUpdateManyWithoutPublicProfileNestedInput = {
     create?: XOR<GameCreateWithoutPublicProfileInput, GameUncheckedCreateWithoutPublicProfileInput> | GameCreateWithoutPublicProfileInput[] | GameUncheckedCreateWithoutPublicProfileInput[]
     connectOrCreate?: GameCreateOrConnectWithoutPublicProfileInput | GameCreateOrConnectWithoutPublicProfileInput[]
@@ -19164,36 +20098,11 @@ export namespace Prisma {
     deleteMany?: GameScalarWhereInput | GameScalarWhereInput[]
   }
 
-  export type UserCreateNestedOneWithoutGameInput = {
-    create?: XOR<UserCreateWithoutGameInput, UserUncheckedCreateWithoutGameInput>
-    connectOrCreate?: UserCreateOrConnectWithoutGameInput
-    connect?: UserWhereUniqueInput
-  }
-
-  export type RankCreateNestedOneWithoutGameInput = {
-    create?: XOR<RankCreateWithoutGameInput, RankUncheckedCreateWithoutGameInput>
-    connectOrCreate?: RankCreateOrConnectWithoutGameInput
-    connect?: RankWhereUniqueInput
-  }
-
   export type DayCreateNestedManyWithoutGameInput = {
     create?: XOR<DayCreateWithoutGameInput, DayUncheckedCreateWithoutGameInput> | DayCreateWithoutGameInput[] | DayUncheckedCreateWithoutGameInput[]
     connectOrCreate?: DayCreateOrConnectWithoutGameInput | DayCreateOrConnectWithoutGameInput[]
     createMany?: DayCreateManyGameInputEnvelope
     connect?: DayWhereUniqueInput | DayWhereUniqueInput[]
-  }
-
-  export type PublicProfileCreateNestedOneWithoutGameInput = {
-    create?: XOR<PublicProfileCreateWithoutGameInput, PublicProfileUncheckedCreateWithoutGameInput>
-    connectOrCreate?: PublicProfileCreateOrConnectWithoutGameInput
-    connect?: PublicProfileWhereUniqueInput
-  }
-
-  export type UpvoteCreateNestedManyWithoutGameInput = {
-    create?: XOR<UpvoteCreateWithoutGameInput, UpvoteUncheckedCreateWithoutGameInput> | UpvoteCreateWithoutGameInput[] | UpvoteUncheckedCreateWithoutGameInput[]
-    connectOrCreate?: UpvoteCreateOrConnectWithoutGameInput | UpvoteCreateOrConnectWithoutGameInput[]
-    createMany?: UpvoteCreateManyGameInputEnvelope
-    connect?: UpvoteWhereUniqueInput | UpvoteWhereUniqueInput[]
   }
 
   export type DownvoteCreateNestedManyWithoutGameInput = {
@@ -19203,18 +20112,36 @@ export namespace Prisma {
     connect?: DownvoteWhereUniqueInput | DownvoteWhereUniqueInput[]
   }
 
+  export type PublicProfileCreateNestedOneWithoutGameInput = {
+    create?: XOR<PublicProfileCreateWithoutGameInput, PublicProfileUncheckedCreateWithoutGameInput>
+    connectOrCreate?: PublicProfileCreateOrConnectWithoutGameInput
+    connect?: PublicProfileWhereUniqueInput
+  }
+
+  export type RankCreateNestedOneWithoutGameInput = {
+    create?: XOR<RankCreateWithoutGameInput, RankUncheckedCreateWithoutGameInput>
+    connectOrCreate?: RankCreateOrConnectWithoutGameInput
+    connect?: RankWhereUniqueInput
+  }
+
+  export type UserCreateNestedOneWithoutGameInput = {
+    create?: XOR<UserCreateWithoutGameInput, UserUncheckedCreateWithoutGameInput>
+    connectOrCreate?: UserCreateOrConnectWithoutGameInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type UpvoteCreateNestedManyWithoutGameInput = {
+    create?: XOR<UpvoteCreateWithoutGameInput, UpvoteUncheckedCreateWithoutGameInput> | UpvoteCreateWithoutGameInput[] | UpvoteUncheckedCreateWithoutGameInput[]
+    connectOrCreate?: UpvoteCreateOrConnectWithoutGameInput | UpvoteCreateOrConnectWithoutGameInput[]
+    createMany?: UpvoteCreateManyGameInputEnvelope
+    connect?: UpvoteWhereUniqueInput | UpvoteWhereUniqueInput[]
+  }
+
   export type DayUncheckedCreateNestedManyWithoutGameInput = {
     create?: XOR<DayCreateWithoutGameInput, DayUncheckedCreateWithoutGameInput> | DayCreateWithoutGameInput[] | DayUncheckedCreateWithoutGameInput[]
     connectOrCreate?: DayCreateOrConnectWithoutGameInput | DayCreateOrConnectWithoutGameInput[]
     createMany?: DayCreateManyGameInputEnvelope
     connect?: DayWhereUniqueInput | DayWhereUniqueInput[]
-  }
-
-  export type UpvoteUncheckedCreateNestedManyWithoutGameInput = {
-    create?: XOR<UpvoteCreateWithoutGameInput, UpvoteUncheckedCreateWithoutGameInput> | UpvoteCreateWithoutGameInput[] | UpvoteUncheckedCreateWithoutGameInput[]
-    connectOrCreate?: UpvoteCreateOrConnectWithoutGameInput | UpvoteCreateOrConnectWithoutGameInput[]
-    createMany?: UpvoteCreateManyGameInputEnvelope
-    connect?: UpvoteWhereUniqueInput | UpvoteWhereUniqueInput[]
   }
 
   export type DownvoteUncheckedCreateNestedManyWithoutGameInput = {
@@ -19224,30 +20151,19 @@ export namespace Prisma {
     connect?: DownvoteWhereUniqueInput | DownvoteWhereUniqueInput[]
   }
 
+  export type UpvoteUncheckedCreateNestedManyWithoutGameInput = {
+    create?: XOR<UpvoteCreateWithoutGameInput, UpvoteUncheckedCreateWithoutGameInput> | UpvoteCreateWithoutGameInput[] | UpvoteUncheckedCreateWithoutGameInput[]
+    connectOrCreate?: UpvoteCreateOrConnectWithoutGameInput | UpvoteCreateOrConnectWithoutGameInput[]
+    createMany?: UpvoteCreateManyGameInputEnvelope
+    connect?: UpvoteWhereUniqueInput | UpvoteWhereUniqueInput[]
+  }
+
   export type BoolFieldUpdateOperationsInput = {
     set?: boolean
   }
 
   export type NullableDateTimeFieldUpdateOperationsInput = {
     set?: Date | string | null
-  }
-
-  export type UserUpdateOneRequiredWithoutGameNestedInput = {
-    create?: XOR<UserCreateWithoutGameInput, UserUncheckedCreateWithoutGameInput>
-    connectOrCreate?: UserCreateOrConnectWithoutGameInput
-    upsert?: UserUpsertWithoutGameInput
-    connect?: UserWhereUniqueInput
-    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutGameInput, UserUpdateWithoutGameInput>, UserUncheckedUpdateWithoutGameInput>
-  }
-
-  export type RankUpdateOneWithoutGameNestedInput = {
-    create?: XOR<RankCreateWithoutGameInput, RankUncheckedCreateWithoutGameInput>
-    connectOrCreate?: RankCreateOrConnectWithoutGameInput
-    upsert?: RankUpsertWithoutGameInput
-    disconnect?: RankWhereInput | boolean
-    delete?: RankWhereInput | boolean
-    connect?: RankWhereUniqueInput
-    update?: XOR<XOR<RankUpdateToOneWithWhereWithoutGameInput, RankUpdateWithoutGameInput>, RankUncheckedUpdateWithoutGameInput>
   }
 
   export type DayUpdateManyWithoutGameNestedInput = {
@@ -19264,6 +20180,20 @@ export namespace Prisma {
     deleteMany?: DayScalarWhereInput | DayScalarWhereInput[]
   }
 
+  export type DownvoteUpdateManyWithoutGameNestedInput = {
+    create?: XOR<DownvoteCreateWithoutGameInput, DownvoteUncheckedCreateWithoutGameInput> | DownvoteCreateWithoutGameInput[] | DownvoteUncheckedCreateWithoutGameInput[]
+    connectOrCreate?: DownvoteCreateOrConnectWithoutGameInput | DownvoteCreateOrConnectWithoutGameInput[]
+    upsert?: DownvoteUpsertWithWhereUniqueWithoutGameInput | DownvoteUpsertWithWhereUniqueWithoutGameInput[]
+    createMany?: DownvoteCreateManyGameInputEnvelope
+    set?: DownvoteWhereUniqueInput | DownvoteWhereUniqueInput[]
+    disconnect?: DownvoteWhereUniqueInput | DownvoteWhereUniqueInput[]
+    delete?: DownvoteWhereUniqueInput | DownvoteWhereUniqueInput[]
+    connect?: DownvoteWhereUniqueInput | DownvoteWhereUniqueInput[]
+    update?: DownvoteUpdateWithWhereUniqueWithoutGameInput | DownvoteUpdateWithWhereUniqueWithoutGameInput[]
+    updateMany?: DownvoteUpdateManyWithWhereWithoutGameInput | DownvoteUpdateManyWithWhereWithoutGameInput[]
+    deleteMany?: DownvoteScalarWhereInput | DownvoteScalarWhereInput[]
+  }
+
   export type PublicProfileUpdateOneWithoutGameNestedInput = {
     create?: XOR<PublicProfileCreateWithoutGameInput, PublicProfileUncheckedCreateWithoutGameInput>
     connectOrCreate?: PublicProfileCreateOrConnectWithoutGameInput
@@ -19272,6 +20202,24 @@ export namespace Prisma {
     delete?: PublicProfileWhereInput | boolean
     connect?: PublicProfileWhereUniqueInput
     update?: XOR<XOR<PublicProfileUpdateToOneWithWhereWithoutGameInput, PublicProfileUpdateWithoutGameInput>, PublicProfileUncheckedUpdateWithoutGameInput>
+  }
+
+  export type RankUpdateOneWithoutGameNestedInput = {
+    create?: XOR<RankCreateWithoutGameInput, RankUncheckedCreateWithoutGameInput>
+    connectOrCreate?: RankCreateOrConnectWithoutGameInput
+    upsert?: RankUpsertWithoutGameInput
+    disconnect?: RankWhereInput | boolean
+    delete?: RankWhereInput | boolean
+    connect?: RankWhereUniqueInput
+    update?: XOR<XOR<RankUpdateToOneWithWhereWithoutGameInput, RankUpdateWithoutGameInput>, RankUncheckedUpdateWithoutGameInput>
+  }
+
+  export type UserUpdateOneRequiredWithoutGameNestedInput = {
+    create?: XOR<UserCreateWithoutGameInput, UserUncheckedCreateWithoutGameInput>
+    connectOrCreate?: UserCreateOrConnectWithoutGameInput
+    upsert?: UserUpsertWithoutGameInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutGameInput, UserUpdateWithoutGameInput>, UserUncheckedUpdateWithoutGameInput>
   }
 
   export type UpvoteUpdateManyWithoutGameNestedInput = {
@@ -19286,20 +20234,6 @@ export namespace Prisma {
     update?: UpvoteUpdateWithWhereUniqueWithoutGameInput | UpvoteUpdateWithWhereUniqueWithoutGameInput[]
     updateMany?: UpvoteUpdateManyWithWhereWithoutGameInput | UpvoteUpdateManyWithWhereWithoutGameInput[]
     deleteMany?: UpvoteScalarWhereInput | UpvoteScalarWhereInput[]
-  }
-
-  export type DownvoteUpdateManyWithoutGameNestedInput = {
-    create?: XOR<DownvoteCreateWithoutGameInput, DownvoteUncheckedCreateWithoutGameInput> | DownvoteCreateWithoutGameInput[] | DownvoteUncheckedCreateWithoutGameInput[]
-    connectOrCreate?: DownvoteCreateOrConnectWithoutGameInput | DownvoteCreateOrConnectWithoutGameInput[]
-    upsert?: DownvoteUpsertWithWhereUniqueWithoutGameInput | DownvoteUpsertWithWhereUniqueWithoutGameInput[]
-    createMany?: DownvoteCreateManyGameInputEnvelope
-    set?: DownvoteWhereUniqueInput | DownvoteWhereUniqueInput[]
-    disconnect?: DownvoteWhereUniqueInput | DownvoteWhereUniqueInput[]
-    delete?: DownvoteWhereUniqueInput | DownvoteWhereUniqueInput[]
-    connect?: DownvoteWhereUniqueInput | DownvoteWhereUniqueInput[]
-    update?: DownvoteUpdateWithWhereUniqueWithoutGameInput | DownvoteUpdateWithWhereUniqueWithoutGameInput[]
-    updateMany?: DownvoteUpdateManyWithWhereWithoutGameInput | DownvoteUpdateManyWithWhereWithoutGameInput[]
-    deleteMany?: DownvoteScalarWhereInput | DownvoteScalarWhereInput[]
   }
 
   export type NullableIntFieldUpdateOperationsInput = {
@@ -19324,20 +20258,6 @@ export namespace Prisma {
     deleteMany?: DayScalarWhereInput | DayScalarWhereInput[]
   }
 
-  export type UpvoteUncheckedUpdateManyWithoutGameNestedInput = {
-    create?: XOR<UpvoteCreateWithoutGameInput, UpvoteUncheckedCreateWithoutGameInput> | UpvoteCreateWithoutGameInput[] | UpvoteUncheckedCreateWithoutGameInput[]
-    connectOrCreate?: UpvoteCreateOrConnectWithoutGameInput | UpvoteCreateOrConnectWithoutGameInput[]
-    upsert?: UpvoteUpsertWithWhereUniqueWithoutGameInput | UpvoteUpsertWithWhereUniqueWithoutGameInput[]
-    createMany?: UpvoteCreateManyGameInputEnvelope
-    set?: UpvoteWhereUniqueInput | UpvoteWhereUniqueInput[]
-    disconnect?: UpvoteWhereUniqueInput | UpvoteWhereUniqueInput[]
-    delete?: UpvoteWhereUniqueInput | UpvoteWhereUniqueInput[]
-    connect?: UpvoteWhereUniqueInput | UpvoteWhereUniqueInput[]
-    update?: UpvoteUpdateWithWhereUniqueWithoutGameInput | UpvoteUpdateWithWhereUniqueWithoutGameInput[]
-    updateMany?: UpvoteUpdateManyWithWhereWithoutGameInput | UpvoteUpdateManyWithWhereWithoutGameInput[]
-    deleteMany?: UpvoteScalarWhereInput | UpvoteScalarWhereInput[]
-  }
-
   export type DownvoteUncheckedUpdateManyWithoutGameNestedInput = {
     create?: XOR<DownvoteCreateWithoutGameInput, DownvoteUncheckedCreateWithoutGameInput> | DownvoteCreateWithoutGameInput[] | DownvoteUncheckedCreateWithoutGameInput[]
     connectOrCreate?: DownvoteCreateOrConnectWithoutGameInput | DownvoteCreateOrConnectWithoutGameInput[]
@@ -19350,6 +20270,20 @@ export namespace Prisma {
     update?: DownvoteUpdateWithWhereUniqueWithoutGameInput | DownvoteUpdateWithWhereUniqueWithoutGameInput[]
     updateMany?: DownvoteUpdateManyWithWhereWithoutGameInput | DownvoteUpdateManyWithWhereWithoutGameInput[]
     deleteMany?: DownvoteScalarWhereInput | DownvoteScalarWhereInput[]
+  }
+
+  export type UpvoteUncheckedUpdateManyWithoutGameNestedInput = {
+    create?: XOR<UpvoteCreateWithoutGameInput, UpvoteUncheckedCreateWithoutGameInput> | UpvoteCreateWithoutGameInput[] | UpvoteUncheckedCreateWithoutGameInput[]
+    connectOrCreate?: UpvoteCreateOrConnectWithoutGameInput | UpvoteCreateOrConnectWithoutGameInput[]
+    upsert?: UpvoteUpsertWithWhereUniqueWithoutGameInput | UpvoteUpsertWithWhereUniqueWithoutGameInput[]
+    createMany?: UpvoteCreateManyGameInputEnvelope
+    set?: UpvoteWhereUniqueInput | UpvoteWhereUniqueInput[]
+    disconnect?: UpvoteWhereUniqueInput | UpvoteWhereUniqueInput[]
+    delete?: UpvoteWhereUniqueInput | UpvoteWhereUniqueInput[]
+    connect?: UpvoteWhereUniqueInput | UpvoteWhereUniqueInput[]
+    update?: UpvoteUpdateWithWhereUniqueWithoutGameInput | UpvoteUpdateWithWhereUniqueWithoutGameInput[]
+    updateMany?: UpvoteUpdateManyWithWhereWithoutGameInput | UpvoteUpdateManyWithWhereWithoutGameInput[]
+    deleteMany?: UpvoteScalarWhereInput | UpvoteScalarWhereInput[]
   }
 
   export type GameCreateNestedManyWithoutRankInput = {
@@ -19394,34 +20328,22 @@ export namespace Prisma {
     deleteMany?: GameScalarWhereInput | GameScalarWhereInput[]
   }
 
-  export type ChallengeModifierCreateNestedManyWithoutExcludedFromDayInput = {
-    create?: XOR<ChallengeModifierCreateWithoutExcludedFromDayInput, ChallengeModifierUncheckedCreateWithoutExcludedFromDayInput> | ChallengeModifierCreateWithoutExcludedFromDayInput[] | ChallengeModifierUncheckedCreateWithoutExcludedFromDayInput[]
-    connectOrCreate?: ChallengeModifierCreateOrConnectWithoutExcludedFromDayInput | ChallengeModifierCreateOrConnectWithoutExcludedFromDayInput[]
-    connect?: ChallengeModifierWhereUniqueInput | ChallengeModifierWhereUniqueInput[]
-  }
-
-  export type ModifierOptionCreateNestedManyWithoutExcludedFromDayInput = {
-    create?: XOR<ModifierOptionCreateWithoutExcludedFromDayInput, ModifierOptionUncheckedCreateWithoutExcludedFromDayInput> | ModifierOptionCreateWithoutExcludedFromDayInput[] | ModifierOptionUncheckedCreateWithoutExcludedFromDayInput[]
-    connectOrCreate?: ModifierOptionCreateOrConnectWithoutExcludedFromDayInput | ModifierOptionCreateOrConnectWithoutExcludedFromDayInput[]
-    connect?: ModifierOptionWhereUniqueInput | ModifierOptionWhereUniqueInput[]
-  }
-
-  export type ChallengeModifierCreateNestedManyWithoutIncludedInDayInput = {
-    create?: XOR<ChallengeModifierCreateWithoutIncludedInDayInput, ChallengeModifierUncheckedCreateWithoutIncludedInDayInput> | ChallengeModifierCreateWithoutIncludedInDayInput[] | ChallengeModifierUncheckedCreateWithoutIncludedInDayInput[]
-    connectOrCreate?: ChallengeModifierCreateOrConnectWithoutIncludedInDayInput | ChallengeModifierCreateOrConnectWithoutIncludedInDayInput[]
-    connect?: ChallengeModifierWhereUniqueInput | ChallengeModifierWhereUniqueInput[]
-  }
-
-  export type ModifierOptionCreateNestedManyWithoutIncludedInDayInput = {
-    create?: XOR<ModifierOptionCreateWithoutIncludedInDayInput, ModifierOptionUncheckedCreateWithoutIncludedInDayInput> | ModifierOptionCreateWithoutIncludedInDayInput[] | ModifierOptionUncheckedCreateWithoutIncludedInDayInput[]
-    connectOrCreate?: ModifierOptionCreateOrConnectWithoutIncludedInDayInput | ModifierOptionCreateOrConnectWithoutIncludedInDayInput[]
-    connect?: ModifierOptionWhereUniqueInput | ModifierOptionWhereUniqueInput[]
+  export type ChallengeModifierCreateNestedOneWithoutDayInput = {
+    create?: XOR<ChallengeModifierCreateWithoutDayInput, ChallengeModifierUncheckedCreateWithoutDayInput>
+    connectOrCreate?: ChallengeModifierCreateOrConnectWithoutDayInput
+    connect?: ChallengeModifierWhereUniqueInput
   }
 
   export type GameCreateNestedOneWithoutDayInput = {
     create?: XOR<GameCreateWithoutDayInput, GameUncheckedCreateWithoutDayInput>
     connectOrCreate?: GameCreateOrConnectWithoutDayInput
     connect?: GameWhereUniqueInput
+  }
+
+  export type ModifierOptionCreateNestedOneWithoutDayInput = {
+    create?: XOR<ModifierOptionCreateWithoutDayInput, ModifierOptionUncheckedCreateWithoutDayInput>
+    connectOrCreate?: ModifierOptionCreateOrConnectWithoutDayInput
+    connect?: ModifierOptionWhereUniqueInput
   }
 
   export type ChallengeModifierCreateNestedOneWithoutDayCompletedInPart1Input = {
@@ -19436,92 +20358,38 @@ export namespace Prisma {
     connect?: ModifierOptionWhereUniqueInput
   }
 
-  export type ChallengeModifierCreateNestedOneWithoutDayInput = {
+  export type ChallengeModifierCreateNestedManyWithoutModifierPackExcludedInput = {
+    create?: XOR<ChallengeModifierCreateWithoutModifierPackExcludedInput, ChallengeModifierUncheckedCreateWithoutModifierPackExcludedInput> | ChallengeModifierCreateWithoutModifierPackExcludedInput[] | ChallengeModifierUncheckedCreateWithoutModifierPackExcludedInput[]
+    connectOrCreate?: ChallengeModifierCreateOrConnectWithoutModifierPackExcludedInput | ChallengeModifierCreateOrConnectWithoutModifierPackExcludedInput[]
+    connect?: ChallengeModifierWhereUniqueInput | ChallengeModifierWhereUniqueInput[]
+  }
+
+  export type ChallengeModifierCreateNestedManyWithoutModifierPackIncludedInput = {
+    create?: XOR<ChallengeModifierCreateWithoutModifierPackIncludedInput, ChallengeModifierUncheckedCreateWithoutModifierPackIncludedInput> | ChallengeModifierCreateWithoutModifierPackIncludedInput[] | ChallengeModifierUncheckedCreateWithoutModifierPackIncludedInput[]
+    connectOrCreate?: ChallengeModifierCreateOrConnectWithoutModifierPackIncludedInput | ChallengeModifierCreateOrConnectWithoutModifierPackIncludedInput[]
+    connect?: ChallengeModifierWhereUniqueInput | ChallengeModifierWhereUniqueInput[]
+  }
+
+  export type ChallengeModifierUncheckedCreateNestedManyWithoutModifierPackExcludedInput = {
+    create?: XOR<ChallengeModifierCreateWithoutModifierPackExcludedInput, ChallengeModifierUncheckedCreateWithoutModifierPackExcludedInput> | ChallengeModifierCreateWithoutModifierPackExcludedInput[] | ChallengeModifierUncheckedCreateWithoutModifierPackExcludedInput[]
+    connectOrCreate?: ChallengeModifierCreateOrConnectWithoutModifierPackExcludedInput | ChallengeModifierCreateOrConnectWithoutModifierPackExcludedInput[]
+    connect?: ChallengeModifierWhereUniqueInput | ChallengeModifierWhereUniqueInput[]
+  }
+
+  export type ChallengeModifierUncheckedCreateNestedManyWithoutModifierPackIncludedInput = {
+    create?: XOR<ChallengeModifierCreateWithoutModifierPackIncludedInput, ChallengeModifierUncheckedCreateWithoutModifierPackIncludedInput> | ChallengeModifierCreateWithoutModifierPackIncludedInput[] | ChallengeModifierUncheckedCreateWithoutModifierPackIncludedInput[]
+    connectOrCreate?: ChallengeModifierCreateOrConnectWithoutModifierPackIncludedInput | ChallengeModifierCreateOrConnectWithoutModifierPackIncludedInput[]
+    connect?: ChallengeModifierWhereUniqueInput | ChallengeModifierWhereUniqueInput[]
+  }
+
+  export type ChallengeModifierUpdateOneWithoutDayNestedInput = {
     create?: XOR<ChallengeModifierCreateWithoutDayInput, ChallengeModifierUncheckedCreateWithoutDayInput>
     connectOrCreate?: ChallengeModifierCreateOrConnectWithoutDayInput
+    upsert?: ChallengeModifierUpsertWithoutDayInput
+    disconnect?: ChallengeModifierWhereInput | boolean
+    delete?: ChallengeModifierWhereInput | boolean
     connect?: ChallengeModifierWhereUniqueInput
-  }
-
-  export type ModifierOptionCreateNestedOneWithoutDayInput = {
-    create?: XOR<ModifierOptionCreateWithoutDayInput, ModifierOptionUncheckedCreateWithoutDayInput>
-    connectOrCreate?: ModifierOptionCreateOrConnectWithoutDayInput
-    connect?: ModifierOptionWhereUniqueInput
-  }
-
-  export type ChallengeModifierUncheckedCreateNestedManyWithoutExcludedFromDayInput = {
-    create?: XOR<ChallengeModifierCreateWithoutExcludedFromDayInput, ChallengeModifierUncheckedCreateWithoutExcludedFromDayInput> | ChallengeModifierCreateWithoutExcludedFromDayInput[] | ChallengeModifierUncheckedCreateWithoutExcludedFromDayInput[]
-    connectOrCreate?: ChallengeModifierCreateOrConnectWithoutExcludedFromDayInput | ChallengeModifierCreateOrConnectWithoutExcludedFromDayInput[]
-    connect?: ChallengeModifierWhereUniqueInput | ChallengeModifierWhereUniqueInput[]
-  }
-
-  export type ModifierOptionUncheckedCreateNestedManyWithoutExcludedFromDayInput = {
-    create?: XOR<ModifierOptionCreateWithoutExcludedFromDayInput, ModifierOptionUncheckedCreateWithoutExcludedFromDayInput> | ModifierOptionCreateWithoutExcludedFromDayInput[] | ModifierOptionUncheckedCreateWithoutExcludedFromDayInput[]
-    connectOrCreate?: ModifierOptionCreateOrConnectWithoutExcludedFromDayInput | ModifierOptionCreateOrConnectWithoutExcludedFromDayInput[]
-    connect?: ModifierOptionWhereUniqueInput | ModifierOptionWhereUniqueInput[]
-  }
-
-  export type ChallengeModifierUncheckedCreateNestedManyWithoutIncludedInDayInput = {
-    create?: XOR<ChallengeModifierCreateWithoutIncludedInDayInput, ChallengeModifierUncheckedCreateWithoutIncludedInDayInput> | ChallengeModifierCreateWithoutIncludedInDayInput[] | ChallengeModifierUncheckedCreateWithoutIncludedInDayInput[]
-    connectOrCreate?: ChallengeModifierCreateOrConnectWithoutIncludedInDayInput | ChallengeModifierCreateOrConnectWithoutIncludedInDayInput[]
-    connect?: ChallengeModifierWhereUniqueInput | ChallengeModifierWhereUniqueInput[]
-  }
-
-  export type ModifierOptionUncheckedCreateNestedManyWithoutIncludedInDayInput = {
-    create?: XOR<ModifierOptionCreateWithoutIncludedInDayInput, ModifierOptionUncheckedCreateWithoutIncludedInDayInput> | ModifierOptionCreateWithoutIncludedInDayInput[] | ModifierOptionUncheckedCreateWithoutIncludedInDayInput[]
-    connectOrCreate?: ModifierOptionCreateOrConnectWithoutIncludedInDayInput | ModifierOptionCreateOrConnectWithoutIncludedInDayInput[]
-    connect?: ModifierOptionWhereUniqueInput | ModifierOptionWhereUniqueInput[]
-  }
-
-  export type ChallengeModifierUpdateManyWithoutExcludedFromDayNestedInput = {
-    create?: XOR<ChallengeModifierCreateWithoutExcludedFromDayInput, ChallengeModifierUncheckedCreateWithoutExcludedFromDayInput> | ChallengeModifierCreateWithoutExcludedFromDayInput[] | ChallengeModifierUncheckedCreateWithoutExcludedFromDayInput[]
-    connectOrCreate?: ChallengeModifierCreateOrConnectWithoutExcludedFromDayInput | ChallengeModifierCreateOrConnectWithoutExcludedFromDayInput[]
-    upsert?: ChallengeModifierUpsertWithWhereUniqueWithoutExcludedFromDayInput | ChallengeModifierUpsertWithWhereUniqueWithoutExcludedFromDayInput[]
-    set?: ChallengeModifierWhereUniqueInput | ChallengeModifierWhereUniqueInput[]
-    disconnect?: ChallengeModifierWhereUniqueInput | ChallengeModifierWhereUniqueInput[]
-    delete?: ChallengeModifierWhereUniqueInput | ChallengeModifierWhereUniqueInput[]
-    connect?: ChallengeModifierWhereUniqueInput | ChallengeModifierWhereUniqueInput[]
-    update?: ChallengeModifierUpdateWithWhereUniqueWithoutExcludedFromDayInput | ChallengeModifierUpdateWithWhereUniqueWithoutExcludedFromDayInput[]
-    updateMany?: ChallengeModifierUpdateManyWithWhereWithoutExcludedFromDayInput | ChallengeModifierUpdateManyWithWhereWithoutExcludedFromDayInput[]
-    deleteMany?: ChallengeModifierScalarWhereInput | ChallengeModifierScalarWhereInput[]
-  }
-
-  export type ModifierOptionUpdateManyWithoutExcludedFromDayNestedInput = {
-    create?: XOR<ModifierOptionCreateWithoutExcludedFromDayInput, ModifierOptionUncheckedCreateWithoutExcludedFromDayInput> | ModifierOptionCreateWithoutExcludedFromDayInput[] | ModifierOptionUncheckedCreateWithoutExcludedFromDayInput[]
-    connectOrCreate?: ModifierOptionCreateOrConnectWithoutExcludedFromDayInput | ModifierOptionCreateOrConnectWithoutExcludedFromDayInput[]
-    upsert?: ModifierOptionUpsertWithWhereUniqueWithoutExcludedFromDayInput | ModifierOptionUpsertWithWhereUniqueWithoutExcludedFromDayInput[]
-    set?: ModifierOptionWhereUniqueInput | ModifierOptionWhereUniqueInput[]
-    disconnect?: ModifierOptionWhereUniqueInput | ModifierOptionWhereUniqueInput[]
-    delete?: ModifierOptionWhereUniqueInput | ModifierOptionWhereUniqueInput[]
-    connect?: ModifierOptionWhereUniqueInput | ModifierOptionWhereUniqueInput[]
-    update?: ModifierOptionUpdateWithWhereUniqueWithoutExcludedFromDayInput | ModifierOptionUpdateWithWhereUniqueWithoutExcludedFromDayInput[]
-    updateMany?: ModifierOptionUpdateManyWithWhereWithoutExcludedFromDayInput | ModifierOptionUpdateManyWithWhereWithoutExcludedFromDayInput[]
-    deleteMany?: ModifierOptionScalarWhereInput | ModifierOptionScalarWhereInput[]
-  }
-
-  export type ChallengeModifierUpdateManyWithoutIncludedInDayNestedInput = {
-    create?: XOR<ChallengeModifierCreateWithoutIncludedInDayInput, ChallengeModifierUncheckedCreateWithoutIncludedInDayInput> | ChallengeModifierCreateWithoutIncludedInDayInput[] | ChallengeModifierUncheckedCreateWithoutIncludedInDayInput[]
-    connectOrCreate?: ChallengeModifierCreateOrConnectWithoutIncludedInDayInput | ChallengeModifierCreateOrConnectWithoutIncludedInDayInput[]
-    upsert?: ChallengeModifierUpsertWithWhereUniqueWithoutIncludedInDayInput | ChallengeModifierUpsertWithWhereUniqueWithoutIncludedInDayInput[]
-    set?: ChallengeModifierWhereUniqueInput | ChallengeModifierWhereUniqueInput[]
-    disconnect?: ChallengeModifierWhereUniqueInput | ChallengeModifierWhereUniqueInput[]
-    delete?: ChallengeModifierWhereUniqueInput | ChallengeModifierWhereUniqueInput[]
-    connect?: ChallengeModifierWhereUniqueInput | ChallengeModifierWhereUniqueInput[]
-    update?: ChallengeModifierUpdateWithWhereUniqueWithoutIncludedInDayInput | ChallengeModifierUpdateWithWhereUniqueWithoutIncludedInDayInput[]
-    updateMany?: ChallengeModifierUpdateManyWithWhereWithoutIncludedInDayInput | ChallengeModifierUpdateManyWithWhereWithoutIncludedInDayInput[]
-    deleteMany?: ChallengeModifierScalarWhereInput | ChallengeModifierScalarWhereInput[]
-  }
-
-  export type ModifierOptionUpdateManyWithoutIncludedInDayNestedInput = {
-    create?: XOR<ModifierOptionCreateWithoutIncludedInDayInput, ModifierOptionUncheckedCreateWithoutIncludedInDayInput> | ModifierOptionCreateWithoutIncludedInDayInput[] | ModifierOptionUncheckedCreateWithoutIncludedInDayInput[]
-    connectOrCreate?: ModifierOptionCreateOrConnectWithoutIncludedInDayInput | ModifierOptionCreateOrConnectWithoutIncludedInDayInput[]
-    upsert?: ModifierOptionUpsertWithWhereUniqueWithoutIncludedInDayInput | ModifierOptionUpsertWithWhereUniqueWithoutIncludedInDayInput[]
-    set?: ModifierOptionWhereUniqueInput | ModifierOptionWhereUniqueInput[]
-    disconnect?: ModifierOptionWhereUniqueInput | ModifierOptionWhereUniqueInput[]
-    delete?: ModifierOptionWhereUniqueInput | ModifierOptionWhereUniqueInput[]
-    connect?: ModifierOptionWhereUniqueInput | ModifierOptionWhereUniqueInput[]
-    update?: ModifierOptionUpdateWithWhereUniqueWithoutIncludedInDayInput | ModifierOptionUpdateWithWhereUniqueWithoutIncludedInDayInput[]
-    updateMany?: ModifierOptionUpdateManyWithWhereWithoutIncludedInDayInput | ModifierOptionUpdateManyWithWhereWithoutIncludedInDayInput[]
-    deleteMany?: ModifierOptionScalarWhereInput | ModifierOptionScalarWhereInput[]
+    update?: XOR<XOR<ChallengeModifierUpdateToOneWithWhereWithoutDayInput, ChallengeModifierUpdateWithoutDayInput>, ChallengeModifierUncheckedUpdateWithoutDayInput>
   }
 
   export type GameUpdateOneRequiredWithoutDayNestedInput = {
@@ -19530,6 +20398,16 @@ export namespace Prisma {
     upsert?: GameUpsertWithoutDayInput
     connect?: GameWhereUniqueInput
     update?: XOR<XOR<GameUpdateToOneWithWhereWithoutDayInput, GameUpdateWithoutDayInput>, GameUncheckedUpdateWithoutDayInput>
+  }
+
+  export type ModifierOptionUpdateOneWithoutDayNestedInput = {
+    create?: XOR<ModifierOptionCreateWithoutDayInput, ModifierOptionUncheckedCreateWithoutDayInput>
+    connectOrCreate?: ModifierOptionCreateOrConnectWithoutDayInput
+    upsert?: ModifierOptionUpsertWithoutDayInput
+    disconnect?: ModifierOptionWhereInput | boolean
+    delete?: ModifierOptionWhereInput | boolean
+    connect?: ModifierOptionWhereUniqueInput
+    update?: XOR<XOR<ModifierOptionUpdateToOneWithWhereWithoutDayInput, ModifierOptionUpdateWithoutDayInput>, ModifierOptionUncheckedUpdateWithoutDayInput>
   }
 
   export type ChallengeModifierUpdateOneWithoutDayCompletedInPart1NestedInput = {
@@ -19552,89 +20430,62 @@ export namespace Prisma {
     update?: XOR<XOR<ModifierOptionUpdateToOneWithWhereWithoutDayCompletedInPart1Input, ModifierOptionUpdateWithoutDayCompletedInPart1Input>, ModifierOptionUncheckedUpdateWithoutDayCompletedInPart1Input>
   }
 
-  export type ChallengeModifierUpdateOneWithoutDayNestedInput = {
-    create?: XOR<ChallengeModifierCreateWithoutDayInput, ChallengeModifierUncheckedCreateWithoutDayInput>
-    connectOrCreate?: ChallengeModifierCreateOrConnectWithoutDayInput
-    upsert?: ChallengeModifierUpsertWithoutDayInput
-    disconnect?: ChallengeModifierWhereInput | boolean
-    delete?: ChallengeModifierWhereInput | boolean
-    connect?: ChallengeModifierWhereUniqueInput
-    update?: XOR<XOR<ChallengeModifierUpdateToOneWithWhereWithoutDayInput, ChallengeModifierUpdateWithoutDayInput>, ChallengeModifierUncheckedUpdateWithoutDayInput>
-  }
-
-  export type ModifierOptionUpdateOneWithoutDayNestedInput = {
-    create?: XOR<ModifierOptionCreateWithoutDayInput, ModifierOptionUncheckedCreateWithoutDayInput>
-    connectOrCreate?: ModifierOptionCreateOrConnectWithoutDayInput
-    upsert?: ModifierOptionUpsertWithoutDayInput
-    disconnect?: ModifierOptionWhereInput | boolean
-    delete?: ModifierOptionWhereInput | boolean
-    connect?: ModifierOptionWhereUniqueInput
-    update?: XOR<XOR<ModifierOptionUpdateToOneWithWhereWithoutDayInput, ModifierOptionUpdateWithoutDayInput>, ModifierOptionUncheckedUpdateWithoutDayInput>
-  }
-
-  export type ChallengeModifierUncheckedUpdateManyWithoutExcludedFromDayNestedInput = {
-    create?: XOR<ChallengeModifierCreateWithoutExcludedFromDayInput, ChallengeModifierUncheckedCreateWithoutExcludedFromDayInput> | ChallengeModifierCreateWithoutExcludedFromDayInput[] | ChallengeModifierUncheckedCreateWithoutExcludedFromDayInput[]
-    connectOrCreate?: ChallengeModifierCreateOrConnectWithoutExcludedFromDayInput | ChallengeModifierCreateOrConnectWithoutExcludedFromDayInput[]
-    upsert?: ChallengeModifierUpsertWithWhereUniqueWithoutExcludedFromDayInput | ChallengeModifierUpsertWithWhereUniqueWithoutExcludedFromDayInput[]
+  export type ChallengeModifierUpdateManyWithoutModifierPackExcludedNestedInput = {
+    create?: XOR<ChallengeModifierCreateWithoutModifierPackExcludedInput, ChallengeModifierUncheckedCreateWithoutModifierPackExcludedInput> | ChallengeModifierCreateWithoutModifierPackExcludedInput[] | ChallengeModifierUncheckedCreateWithoutModifierPackExcludedInput[]
+    connectOrCreate?: ChallengeModifierCreateOrConnectWithoutModifierPackExcludedInput | ChallengeModifierCreateOrConnectWithoutModifierPackExcludedInput[]
+    upsert?: ChallengeModifierUpsertWithWhereUniqueWithoutModifierPackExcludedInput | ChallengeModifierUpsertWithWhereUniqueWithoutModifierPackExcludedInput[]
     set?: ChallengeModifierWhereUniqueInput | ChallengeModifierWhereUniqueInput[]
     disconnect?: ChallengeModifierWhereUniqueInput | ChallengeModifierWhereUniqueInput[]
     delete?: ChallengeModifierWhereUniqueInput | ChallengeModifierWhereUniqueInput[]
     connect?: ChallengeModifierWhereUniqueInput | ChallengeModifierWhereUniqueInput[]
-    update?: ChallengeModifierUpdateWithWhereUniqueWithoutExcludedFromDayInput | ChallengeModifierUpdateWithWhereUniqueWithoutExcludedFromDayInput[]
-    updateMany?: ChallengeModifierUpdateManyWithWhereWithoutExcludedFromDayInput | ChallengeModifierUpdateManyWithWhereWithoutExcludedFromDayInput[]
+    update?: ChallengeModifierUpdateWithWhereUniqueWithoutModifierPackExcludedInput | ChallengeModifierUpdateWithWhereUniqueWithoutModifierPackExcludedInput[]
+    updateMany?: ChallengeModifierUpdateManyWithWhereWithoutModifierPackExcludedInput | ChallengeModifierUpdateManyWithWhereWithoutModifierPackExcludedInput[]
     deleteMany?: ChallengeModifierScalarWhereInput | ChallengeModifierScalarWhereInput[]
   }
 
-  export type ModifierOptionUncheckedUpdateManyWithoutExcludedFromDayNestedInput = {
-    create?: XOR<ModifierOptionCreateWithoutExcludedFromDayInput, ModifierOptionUncheckedCreateWithoutExcludedFromDayInput> | ModifierOptionCreateWithoutExcludedFromDayInput[] | ModifierOptionUncheckedCreateWithoutExcludedFromDayInput[]
-    connectOrCreate?: ModifierOptionCreateOrConnectWithoutExcludedFromDayInput | ModifierOptionCreateOrConnectWithoutExcludedFromDayInput[]
-    upsert?: ModifierOptionUpsertWithWhereUniqueWithoutExcludedFromDayInput | ModifierOptionUpsertWithWhereUniqueWithoutExcludedFromDayInput[]
-    set?: ModifierOptionWhereUniqueInput | ModifierOptionWhereUniqueInput[]
-    disconnect?: ModifierOptionWhereUniqueInput | ModifierOptionWhereUniqueInput[]
-    delete?: ModifierOptionWhereUniqueInput | ModifierOptionWhereUniqueInput[]
-    connect?: ModifierOptionWhereUniqueInput | ModifierOptionWhereUniqueInput[]
-    update?: ModifierOptionUpdateWithWhereUniqueWithoutExcludedFromDayInput | ModifierOptionUpdateWithWhereUniqueWithoutExcludedFromDayInput[]
-    updateMany?: ModifierOptionUpdateManyWithWhereWithoutExcludedFromDayInput | ModifierOptionUpdateManyWithWhereWithoutExcludedFromDayInput[]
-    deleteMany?: ModifierOptionScalarWhereInput | ModifierOptionScalarWhereInput[]
-  }
-
-  export type ChallengeModifierUncheckedUpdateManyWithoutIncludedInDayNestedInput = {
-    create?: XOR<ChallengeModifierCreateWithoutIncludedInDayInput, ChallengeModifierUncheckedCreateWithoutIncludedInDayInput> | ChallengeModifierCreateWithoutIncludedInDayInput[] | ChallengeModifierUncheckedCreateWithoutIncludedInDayInput[]
-    connectOrCreate?: ChallengeModifierCreateOrConnectWithoutIncludedInDayInput | ChallengeModifierCreateOrConnectWithoutIncludedInDayInput[]
-    upsert?: ChallengeModifierUpsertWithWhereUniqueWithoutIncludedInDayInput | ChallengeModifierUpsertWithWhereUniqueWithoutIncludedInDayInput[]
+  export type ChallengeModifierUpdateManyWithoutModifierPackIncludedNestedInput = {
+    create?: XOR<ChallengeModifierCreateWithoutModifierPackIncludedInput, ChallengeModifierUncheckedCreateWithoutModifierPackIncludedInput> | ChallengeModifierCreateWithoutModifierPackIncludedInput[] | ChallengeModifierUncheckedCreateWithoutModifierPackIncludedInput[]
+    connectOrCreate?: ChallengeModifierCreateOrConnectWithoutModifierPackIncludedInput | ChallengeModifierCreateOrConnectWithoutModifierPackIncludedInput[]
+    upsert?: ChallengeModifierUpsertWithWhereUniqueWithoutModifierPackIncludedInput | ChallengeModifierUpsertWithWhereUniqueWithoutModifierPackIncludedInput[]
     set?: ChallengeModifierWhereUniqueInput | ChallengeModifierWhereUniqueInput[]
     disconnect?: ChallengeModifierWhereUniqueInput | ChallengeModifierWhereUniqueInput[]
     delete?: ChallengeModifierWhereUniqueInput | ChallengeModifierWhereUniqueInput[]
     connect?: ChallengeModifierWhereUniqueInput | ChallengeModifierWhereUniqueInput[]
-    update?: ChallengeModifierUpdateWithWhereUniqueWithoutIncludedInDayInput | ChallengeModifierUpdateWithWhereUniqueWithoutIncludedInDayInput[]
-    updateMany?: ChallengeModifierUpdateManyWithWhereWithoutIncludedInDayInput | ChallengeModifierUpdateManyWithWhereWithoutIncludedInDayInput[]
+    update?: ChallengeModifierUpdateWithWhereUniqueWithoutModifierPackIncludedInput | ChallengeModifierUpdateWithWhereUniqueWithoutModifierPackIncludedInput[]
+    updateMany?: ChallengeModifierUpdateManyWithWhereWithoutModifierPackIncludedInput | ChallengeModifierUpdateManyWithWhereWithoutModifierPackIncludedInput[]
     deleteMany?: ChallengeModifierScalarWhereInput | ChallengeModifierScalarWhereInput[]
   }
 
-  export type ModifierOptionUncheckedUpdateManyWithoutIncludedInDayNestedInput = {
-    create?: XOR<ModifierOptionCreateWithoutIncludedInDayInput, ModifierOptionUncheckedCreateWithoutIncludedInDayInput> | ModifierOptionCreateWithoutIncludedInDayInput[] | ModifierOptionUncheckedCreateWithoutIncludedInDayInput[]
-    connectOrCreate?: ModifierOptionCreateOrConnectWithoutIncludedInDayInput | ModifierOptionCreateOrConnectWithoutIncludedInDayInput[]
-    upsert?: ModifierOptionUpsertWithWhereUniqueWithoutIncludedInDayInput | ModifierOptionUpsertWithWhereUniqueWithoutIncludedInDayInput[]
-    set?: ModifierOptionWhereUniqueInput | ModifierOptionWhereUniqueInput[]
-    disconnect?: ModifierOptionWhereUniqueInput | ModifierOptionWhereUniqueInput[]
-    delete?: ModifierOptionWhereUniqueInput | ModifierOptionWhereUniqueInput[]
-    connect?: ModifierOptionWhereUniqueInput | ModifierOptionWhereUniqueInput[]
-    update?: ModifierOptionUpdateWithWhereUniqueWithoutIncludedInDayInput | ModifierOptionUpdateWithWhereUniqueWithoutIncludedInDayInput[]
-    updateMany?: ModifierOptionUpdateManyWithWhereWithoutIncludedInDayInput | ModifierOptionUpdateManyWithWhereWithoutIncludedInDayInput[]
-    deleteMany?: ModifierOptionScalarWhereInput | ModifierOptionScalarWhereInput[]
+  export type ChallengeModifierUncheckedUpdateManyWithoutModifierPackExcludedNestedInput = {
+    create?: XOR<ChallengeModifierCreateWithoutModifierPackExcludedInput, ChallengeModifierUncheckedCreateWithoutModifierPackExcludedInput> | ChallengeModifierCreateWithoutModifierPackExcludedInput[] | ChallengeModifierUncheckedCreateWithoutModifierPackExcludedInput[]
+    connectOrCreate?: ChallengeModifierCreateOrConnectWithoutModifierPackExcludedInput | ChallengeModifierCreateOrConnectWithoutModifierPackExcludedInput[]
+    upsert?: ChallengeModifierUpsertWithWhereUniqueWithoutModifierPackExcludedInput | ChallengeModifierUpsertWithWhereUniqueWithoutModifierPackExcludedInput[]
+    set?: ChallengeModifierWhereUniqueInput | ChallengeModifierWhereUniqueInput[]
+    disconnect?: ChallengeModifierWhereUniqueInput | ChallengeModifierWhereUniqueInput[]
+    delete?: ChallengeModifierWhereUniqueInput | ChallengeModifierWhereUniqueInput[]
+    connect?: ChallengeModifierWhereUniqueInput | ChallengeModifierWhereUniqueInput[]
+    update?: ChallengeModifierUpdateWithWhereUniqueWithoutModifierPackExcludedInput | ChallengeModifierUpdateWithWhereUniqueWithoutModifierPackExcludedInput[]
+    updateMany?: ChallengeModifierUpdateManyWithWhereWithoutModifierPackExcludedInput | ChallengeModifierUpdateManyWithWhereWithoutModifierPackExcludedInput[]
+    deleteMany?: ChallengeModifierScalarWhereInput | ChallengeModifierScalarWhereInput[]
+  }
+
+  export type ChallengeModifierUncheckedUpdateManyWithoutModifierPackIncludedNestedInput = {
+    create?: XOR<ChallengeModifierCreateWithoutModifierPackIncludedInput, ChallengeModifierUncheckedCreateWithoutModifierPackIncludedInput> | ChallengeModifierCreateWithoutModifierPackIncludedInput[] | ChallengeModifierUncheckedCreateWithoutModifierPackIncludedInput[]
+    connectOrCreate?: ChallengeModifierCreateOrConnectWithoutModifierPackIncludedInput | ChallengeModifierCreateOrConnectWithoutModifierPackIncludedInput[]
+    upsert?: ChallengeModifierUpsertWithWhereUniqueWithoutModifierPackIncludedInput | ChallengeModifierUpsertWithWhereUniqueWithoutModifierPackIncludedInput[]
+    set?: ChallengeModifierWhereUniqueInput | ChallengeModifierWhereUniqueInput[]
+    disconnect?: ChallengeModifierWhereUniqueInput | ChallengeModifierWhereUniqueInput[]
+    delete?: ChallengeModifierWhereUniqueInput | ChallengeModifierWhereUniqueInput[]
+    connect?: ChallengeModifierWhereUniqueInput | ChallengeModifierWhereUniqueInput[]
+    update?: ChallengeModifierUpdateWithWhereUniqueWithoutModifierPackIncludedInput | ChallengeModifierUpdateWithWhereUniqueWithoutModifierPackIncludedInput[]
+    updateMany?: ChallengeModifierUpdateManyWithWhereWithoutModifierPackIncludedInput | ChallengeModifierUpdateManyWithWhereWithoutModifierPackIncludedInput[]
+    deleteMany?: ChallengeModifierScalarWhereInput | ChallengeModifierScalarWhereInput[]
   }
 
   export type UserCreateNestedOneWithoutChallengeModifierInput = {
     create?: XOR<UserCreateWithoutChallengeModifierInput, UserUncheckedCreateWithoutChallengeModifierInput>
     connectOrCreate?: UserCreateOrConnectWithoutChallengeModifierInput
     connect?: UserWhereUniqueInput
-  }
-
-  export type ModifierOptionCreateNestedManyWithoutChallengeModifierInput = {
-    create?: XOR<ModifierOptionCreateWithoutChallengeModifierInput, ModifierOptionUncheckedCreateWithoutChallengeModifierInput> | ModifierOptionCreateWithoutChallengeModifierInput[] | ModifierOptionUncheckedCreateWithoutChallengeModifierInput[]
-    connectOrCreate?: ModifierOptionCreateOrConnectWithoutChallengeModifierInput | ModifierOptionCreateOrConnectWithoutChallengeModifierInput[]
-    createMany?: ModifierOptionCreateManyChallengeModifierInputEnvelope
-    connect?: ModifierOptionWhereUniqueInput | ModifierOptionWhereUniqueInput[]
   }
 
   export type DayCreateNestedManyWithoutChallengeModifierInput = {
@@ -19644,16 +20495,18 @@ export namespace Prisma {
     connect?: DayWhereUniqueInput | DayWhereUniqueInput[]
   }
 
-  export type ModifierPackCreateNestedManyWithoutExcludedChallengeModifiersInput = {
-    create?: XOR<ModifierPackCreateWithoutExcludedChallengeModifiersInput, ModifierPackUncheckedCreateWithoutExcludedChallengeModifiersInput> | ModifierPackCreateWithoutExcludedChallengeModifiersInput[] | ModifierPackUncheckedCreateWithoutExcludedChallengeModifiersInput[]
-    connectOrCreate?: ModifierPackCreateOrConnectWithoutExcludedChallengeModifiersInput | ModifierPackCreateOrConnectWithoutExcludedChallengeModifiersInput[]
-    connect?: ModifierPackWhereUniqueInput | ModifierPackWhereUniqueInput[]
+  export type DayCreateNestedManyWithoutModifierWhenPart1CompletedInput = {
+    create?: XOR<DayCreateWithoutModifierWhenPart1CompletedInput, DayUncheckedCreateWithoutModifierWhenPart1CompletedInput> | DayCreateWithoutModifierWhenPart1CompletedInput[] | DayUncheckedCreateWithoutModifierWhenPart1CompletedInput[]
+    connectOrCreate?: DayCreateOrConnectWithoutModifierWhenPart1CompletedInput | DayCreateOrConnectWithoutModifierWhenPart1CompletedInput[]
+    createMany?: DayCreateManyModifierWhenPart1CompletedInputEnvelope
+    connect?: DayWhereUniqueInput | DayWhereUniqueInput[]
   }
 
-  export type ModifierPackCreateNestedManyWithoutEncludedCustomChallengeModifiersInput = {
-    create?: XOR<ModifierPackCreateWithoutEncludedCustomChallengeModifiersInput, ModifierPackUncheckedCreateWithoutEncludedCustomChallengeModifiersInput> | ModifierPackCreateWithoutEncludedCustomChallengeModifiersInput[] | ModifierPackUncheckedCreateWithoutEncludedCustomChallengeModifiersInput[]
-    connectOrCreate?: ModifierPackCreateOrConnectWithoutEncludedCustomChallengeModifiersInput | ModifierPackCreateOrConnectWithoutEncludedCustomChallengeModifiersInput[]
-    connect?: ModifierPackWhereUniqueInput | ModifierPackWhereUniqueInput[]
+  export type ModifierOptionCreateNestedManyWithoutChallengeModifierInput = {
+    create?: XOR<ModifierOptionCreateWithoutChallengeModifierInput, ModifierOptionUncheckedCreateWithoutChallengeModifierInput> | ModifierOptionCreateWithoutChallengeModifierInput[] | ModifierOptionUncheckedCreateWithoutChallengeModifierInput[]
+    connectOrCreate?: ModifierOptionCreateOrConnectWithoutChallengeModifierInput | ModifierOptionCreateOrConnectWithoutChallengeModifierInput[]
+    createMany?: ModifierOptionCreateManyChallengeModifierInputEnvelope
+    connect?: ModifierOptionWhereUniqueInput | ModifierOptionWhereUniqueInput[]
   }
 
   export type UserCreateNestedManyWithoutDefaultExcludedChallengeModifiersInput = {
@@ -19674,13 +20527,20 @@ export namespace Prisma {
     connect?: DayWhereUniqueInput | DayWhereUniqueInput[]
   }
 
-  export type DayCreateNestedManyWithoutIncludedCustomChallengeModifiersInput = {
-    create?: XOR<DayCreateWithoutIncludedCustomChallengeModifiersInput, DayUncheckedCreateWithoutIncludedCustomChallengeModifiersInput> | DayCreateWithoutIncludedCustomChallengeModifiersInput[] | DayUncheckedCreateWithoutIncludedCustomChallengeModifiersInput[]
-    connectOrCreate?: DayCreateOrConnectWithoutIncludedCustomChallengeModifiersInput | DayCreateOrConnectWithoutIncludedCustomChallengeModifiersInput[]
+  export type DayCreateNestedManyWithoutEncludedCustomChallengeModifiersInput = {
+    create?: XOR<DayCreateWithoutEncludedCustomChallengeModifiersInput, DayUncheckedCreateWithoutEncludedCustomChallengeModifiersInput> | DayCreateWithoutEncludedCustomChallengeModifiersInput[] | DayUncheckedCreateWithoutEncludedCustomChallengeModifiersInput[]
+    connectOrCreate?: DayCreateOrConnectWithoutEncludedCustomChallengeModifiersInput | DayCreateOrConnectWithoutEncludedCustomChallengeModifiersInput[]
     connect?: DayWhereUniqueInput | DayWhereUniqueInput[]
   }
 
-  export type DayCreateNestedManyWithoutModifierWhenPart1CompletedInput = {
+  export type DayUncheckedCreateNestedManyWithoutChallengeModifierInput = {
+    create?: XOR<DayCreateWithoutChallengeModifierInput, DayUncheckedCreateWithoutChallengeModifierInput> | DayCreateWithoutChallengeModifierInput[] | DayUncheckedCreateWithoutChallengeModifierInput[]
+    connectOrCreate?: DayCreateOrConnectWithoutChallengeModifierInput | DayCreateOrConnectWithoutChallengeModifierInput[]
+    createMany?: DayCreateManyChallengeModifierInputEnvelope
+    connect?: DayWhereUniqueInput | DayWhereUniqueInput[]
+  }
+
+  export type DayUncheckedCreateNestedManyWithoutModifierWhenPart1CompletedInput = {
     create?: XOR<DayCreateWithoutModifierWhenPart1CompletedInput, DayUncheckedCreateWithoutModifierWhenPart1CompletedInput> | DayCreateWithoutModifierWhenPart1CompletedInput[] | DayUncheckedCreateWithoutModifierWhenPart1CompletedInput[]
     connectOrCreate?: DayCreateOrConnectWithoutModifierWhenPart1CompletedInput | DayCreateOrConnectWithoutModifierWhenPart1CompletedInput[]
     createMany?: DayCreateManyModifierWhenPart1CompletedInputEnvelope
@@ -19692,25 +20552,6 @@ export namespace Prisma {
     connectOrCreate?: ModifierOptionCreateOrConnectWithoutChallengeModifierInput | ModifierOptionCreateOrConnectWithoutChallengeModifierInput[]
     createMany?: ModifierOptionCreateManyChallengeModifierInputEnvelope
     connect?: ModifierOptionWhereUniqueInput | ModifierOptionWhereUniqueInput[]
-  }
-
-  export type DayUncheckedCreateNestedManyWithoutChallengeModifierInput = {
-    create?: XOR<DayCreateWithoutChallengeModifierInput, DayUncheckedCreateWithoutChallengeModifierInput> | DayCreateWithoutChallengeModifierInput[] | DayUncheckedCreateWithoutChallengeModifierInput[]
-    connectOrCreate?: DayCreateOrConnectWithoutChallengeModifierInput | DayCreateOrConnectWithoutChallengeModifierInput[]
-    createMany?: DayCreateManyChallengeModifierInputEnvelope
-    connect?: DayWhereUniqueInput | DayWhereUniqueInput[]
-  }
-
-  export type ModifierPackUncheckedCreateNestedManyWithoutExcludedChallengeModifiersInput = {
-    create?: XOR<ModifierPackCreateWithoutExcludedChallengeModifiersInput, ModifierPackUncheckedCreateWithoutExcludedChallengeModifiersInput> | ModifierPackCreateWithoutExcludedChallengeModifiersInput[] | ModifierPackUncheckedCreateWithoutExcludedChallengeModifiersInput[]
-    connectOrCreate?: ModifierPackCreateOrConnectWithoutExcludedChallengeModifiersInput | ModifierPackCreateOrConnectWithoutExcludedChallengeModifiersInput[]
-    connect?: ModifierPackWhereUniqueInput | ModifierPackWhereUniqueInput[]
-  }
-
-  export type ModifierPackUncheckedCreateNestedManyWithoutEncludedCustomChallengeModifiersInput = {
-    create?: XOR<ModifierPackCreateWithoutEncludedCustomChallengeModifiersInput, ModifierPackUncheckedCreateWithoutEncludedCustomChallengeModifiersInput> | ModifierPackCreateWithoutEncludedCustomChallengeModifiersInput[] | ModifierPackUncheckedCreateWithoutEncludedCustomChallengeModifiersInput[]
-    connectOrCreate?: ModifierPackCreateOrConnectWithoutEncludedCustomChallengeModifiersInput | ModifierPackCreateOrConnectWithoutEncludedCustomChallengeModifiersInput[]
-    connect?: ModifierPackWhereUniqueInput | ModifierPackWhereUniqueInput[]
   }
 
   export type UserUncheckedCreateNestedManyWithoutDefaultExcludedChallengeModifiersInput = {
@@ -19731,16 +20572,9 @@ export namespace Prisma {
     connect?: DayWhereUniqueInput | DayWhereUniqueInput[]
   }
 
-  export type DayUncheckedCreateNestedManyWithoutIncludedCustomChallengeModifiersInput = {
-    create?: XOR<DayCreateWithoutIncludedCustomChallengeModifiersInput, DayUncheckedCreateWithoutIncludedCustomChallengeModifiersInput> | DayCreateWithoutIncludedCustomChallengeModifiersInput[] | DayUncheckedCreateWithoutIncludedCustomChallengeModifiersInput[]
-    connectOrCreate?: DayCreateOrConnectWithoutIncludedCustomChallengeModifiersInput | DayCreateOrConnectWithoutIncludedCustomChallengeModifiersInput[]
-    connect?: DayWhereUniqueInput | DayWhereUniqueInput[]
-  }
-
-  export type DayUncheckedCreateNestedManyWithoutModifierWhenPart1CompletedInput = {
-    create?: XOR<DayCreateWithoutModifierWhenPart1CompletedInput, DayUncheckedCreateWithoutModifierWhenPart1CompletedInput> | DayCreateWithoutModifierWhenPart1CompletedInput[] | DayUncheckedCreateWithoutModifierWhenPart1CompletedInput[]
-    connectOrCreate?: DayCreateOrConnectWithoutModifierWhenPart1CompletedInput | DayCreateOrConnectWithoutModifierWhenPart1CompletedInput[]
-    createMany?: DayCreateManyModifierWhenPart1CompletedInputEnvelope
+  export type DayUncheckedCreateNestedManyWithoutEncludedCustomChallengeModifiersInput = {
+    create?: XOR<DayCreateWithoutEncludedCustomChallengeModifiersInput, DayUncheckedCreateWithoutEncludedCustomChallengeModifiersInput> | DayCreateWithoutEncludedCustomChallengeModifiersInput[] | DayUncheckedCreateWithoutEncludedCustomChallengeModifiersInput[]
+    connectOrCreate?: DayCreateOrConnectWithoutEncludedCustomChallengeModifiersInput | DayCreateOrConnectWithoutEncludedCustomChallengeModifiersInput[]
     connect?: DayWhereUniqueInput | DayWhereUniqueInput[]
   }
 
@@ -19752,20 +20586,6 @@ export namespace Prisma {
     delete?: UserWhereInput | boolean
     connect?: UserWhereUniqueInput
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutChallengeModifierInput, UserUpdateWithoutChallengeModifierInput>, UserUncheckedUpdateWithoutChallengeModifierInput>
-  }
-
-  export type ModifierOptionUpdateManyWithoutChallengeModifierNestedInput = {
-    create?: XOR<ModifierOptionCreateWithoutChallengeModifierInput, ModifierOptionUncheckedCreateWithoutChallengeModifierInput> | ModifierOptionCreateWithoutChallengeModifierInput[] | ModifierOptionUncheckedCreateWithoutChallengeModifierInput[]
-    connectOrCreate?: ModifierOptionCreateOrConnectWithoutChallengeModifierInput | ModifierOptionCreateOrConnectWithoutChallengeModifierInput[]
-    upsert?: ModifierOptionUpsertWithWhereUniqueWithoutChallengeModifierInput | ModifierOptionUpsertWithWhereUniqueWithoutChallengeModifierInput[]
-    createMany?: ModifierOptionCreateManyChallengeModifierInputEnvelope
-    set?: ModifierOptionWhereUniqueInput | ModifierOptionWhereUniqueInput[]
-    disconnect?: ModifierOptionWhereUniqueInput | ModifierOptionWhereUniqueInput[]
-    delete?: ModifierOptionWhereUniqueInput | ModifierOptionWhereUniqueInput[]
-    connect?: ModifierOptionWhereUniqueInput | ModifierOptionWhereUniqueInput[]
-    update?: ModifierOptionUpdateWithWhereUniqueWithoutChallengeModifierInput | ModifierOptionUpdateWithWhereUniqueWithoutChallengeModifierInput[]
-    updateMany?: ModifierOptionUpdateManyWithWhereWithoutChallengeModifierInput | ModifierOptionUpdateManyWithWhereWithoutChallengeModifierInput[]
-    deleteMany?: ModifierOptionScalarWhereInput | ModifierOptionScalarWhereInput[]
   }
 
   export type DayUpdateManyWithoutChallengeModifierNestedInput = {
@@ -19782,30 +20602,32 @@ export namespace Prisma {
     deleteMany?: DayScalarWhereInput | DayScalarWhereInput[]
   }
 
-  export type ModifierPackUpdateManyWithoutExcludedChallengeModifiersNestedInput = {
-    create?: XOR<ModifierPackCreateWithoutExcludedChallengeModifiersInput, ModifierPackUncheckedCreateWithoutExcludedChallengeModifiersInput> | ModifierPackCreateWithoutExcludedChallengeModifiersInput[] | ModifierPackUncheckedCreateWithoutExcludedChallengeModifiersInput[]
-    connectOrCreate?: ModifierPackCreateOrConnectWithoutExcludedChallengeModifiersInput | ModifierPackCreateOrConnectWithoutExcludedChallengeModifiersInput[]
-    upsert?: ModifierPackUpsertWithWhereUniqueWithoutExcludedChallengeModifiersInput | ModifierPackUpsertWithWhereUniqueWithoutExcludedChallengeModifiersInput[]
-    set?: ModifierPackWhereUniqueInput | ModifierPackWhereUniqueInput[]
-    disconnect?: ModifierPackWhereUniqueInput | ModifierPackWhereUniqueInput[]
-    delete?: ModifierPackWhereUniqueInput | ModifierPackWhereUniqueInput[]
-    connect?: ModifierPackWhereUniqueInput | ModifierPackWhereUniqueInput[]
-    update?: ModifierPackUpdateWithWhereUniqueWithoutExcludedChallengeModifiersInput | ModifierPackUpdateWithWhereUniqueWithoutExcludedChallengeModifiersInput[]
-    updateMany?: ModifierPackUpdateManyWithWhereWithoutExcludedChallengeModifiersInput | ModifierPackUpdateManyWithWhereWithoutExcludedChallengeModifiersInput[]
-    deleteMany?: ModifierPackScalarWhereInput | ModifierPackScalarWhereInput[]
+  export type DayUpdateManyWithoutModifierWhenPart1CompletedNestedInput = {
+    create?: XOR<DayCreateWithoutModifierWhenPart1CompletedInput, DayUncheckedCreateWithoutModifierWhenPart1CompletedInput> | DayCreateWithoutModifierWhenPart1CompletedInput[] | DayUncheckedCreateWithoutModifierWhenPart1CompletedInput[]
+    connectOrCreate?: DayCreateOrConnectWithoutModifierWhenPart1CompletedInput | DayCreateOrConnectWithoutModifierWhenPart1CompletedInput[]
+    upsert?: DayUpsertWithWhereUniqueWithoutModifierWhenPart1CompletedInput | DayUpsertWithWhereUniqueWithoutModifierWhenPart1CompletedInput[]
+    createMany?: DayCreateManyModifierWhenPart1CompletedInputEnvelope
+    set?: DayWhereUniqueInput | DayWhereUniqueInput[]
+    disconnect?: DayWhereUniqueInput | DayWhereUniqueInput[]
+    delete?: DayWhereUniqueInput | DayWhereUniqueInput[]
+    connect?: DayWhereUniqueInput | DayWhereUniqueInput[]
+    update?: DayUpdateWithWhereUniqueWithoutModifierWhenPart1CompletedInput | DayUpdateWithWhereUniqueWithoutModifierWhenPart1CompletedInput[]
+    updateMany?: DayUpdateManyWithWhereWithoutModifierWhenPart1CompletedInput | DayUpdateManyWithWhereWithoutModifierWhenPart1CompletedInput[]
+    deleteMany?: DayScalarWhereInput | DayScalarWhereInput[]
   }
 
-  export type ModifierPackUpdateManyWithoutEncludedCustomChallengeModifiersNestedInput = {
-    create?: XOR<ModifierPackCreateWithoutEncludedCustomChallengeModifiersInput, ModifierPackUncheckedCreateWithoutEncludedCustomChallengeModifiersInput> | ModifierPackCreateWithoutEncludedCustomChallengeModifiersInput[] | ModifierPackUncheckedCreateWithoutEncludedCustomChallengeModifiersInput[]
-    connectOrCreate?: ModifierPackCreateOrConnectWithoutEncludedCustomChallengeModifiersInput | ModifierPackCreateOrConnectWithoutEncludedCustomChallengeModifiersInput[]
-    upsert?: ModifierPackUpsertWithWhereUniqueWithoutEncludedCustomChallengeModifiersInput | ModifierPackUpsertWithWhereUniqueWithoutEncludedCustomChallengeModifiersInput[]
-    set?: ModifierPackWhereUniqueInput | ModifierPackWhereUniqueInput[]
-    disconnect?: ModifierPackWhereUniqueInput | ModifierPackWhereUniqueInput[]
-    delete?: ModifierPackWhereUniqueInput | ModifierPackWhereUniqueInput[]
-    connect?: ModifierPackWhereUniqueInput | ModifierPackWhereUniqueInput[]
-    update?: ModifierPackUpdateWithWhereUniqueWithoutEncludedCustomChallengeModifiersInput | ModifierPackUpdateWithWhereUniqueWithoutEncludedCustomChallengeModifiersInput[]
-    updateMany?: ModifierPackUpdateManyWithWhereWithoutEncludedCustomChallengeModifiersInput | ModifierPackUpdateManyWithWhereWithoutEncludedCustomChallengeModifiersInput[]
-    deleteMany?: ModifierPackScalarWhereInput | ModifierPackScalarWhereInput[]
+  export type ModifierOptionUpdateManyWithoutChallengeModifierNestedInput = {
+    create?: XOR<ModifierOptionCreateWithoutChallengeModifierInput, ModifierOptionUncheckedCreateWithoutChallengeModifierInput> | ModifierOptionCreateWithoutChallengeModifierInput[] | ModifierOptionUncheckedCreateWithoutChallengeModifierInput[]
+    connectOrCreate?: ModifierOptionCreateOrConnectWithoutChallengeModifierInput | ModifierOptionCreateOrConnectWithoutChallengeModifierInput[]
+    upsert?: ModifierOptionUpsertWithWhereUniqueWithoutChallengeModifierInput | ModifierOptionUpsertWithWhereUniqueWithoutChallengeModifierInput[]
+    createMany?: ModifierOptionCreateManyChallengeModifierInputEnvelope
+    set?: ModifierOptionWhereUniqueInput | ModifierOptionWhereUniqueInput[]
+    disconnect?: ModifierOptionWhereUniqueInput | ModifierOptionWhereUniqueInput[]
+    delete?: ModifierOptionWhereUniqueInput | ModifierOptionWhereUniqueInput[]
+    connect?: ModifierOptionWhereUniqueInput | ModifierOptionWhereUniqueInput[]
+    update?: ModifierOptionUpdateWithWhereUniqueWithoutChallengeModifierInput | ModifierOptionUpdateWithWhereUniqueWithoutChallengeModifierInput[]
+    updateMany?: ModifierOptionUpdateManyWithWhereWithoutChallengeModifierInput | ModifierOptionUpdateManyWithWhereWithoutChallengeModifierInput[]
+    deleteMany?: ModifierOptionScalarWhereInput | ModifierOptionScalarWhereInput[]
   }
 
   export type UserUpdateManyWithoutDefaultExcludedChallengeModifiersNestedInput = {
@@ -19847,20 +20669,34 @@ export namespace Prisma {
     deleteMany?: DayScalarWhereInput | DayScalarWhereInput[]
   }
 
-  export type DayUpdateManyWithoutIncludedCustomChallengeModifiersNestedInput = {
-    create?: XOR<DayCreateWithoutIncludedCustomChallengeModifiersInput, DayUncheckedCreateWithoutIncludedCustomChallengeModifiersInput> | DayCreateWithoutIncludedCustomChallengeModifiersInput[] | DayUncheckedCreateWithoutIncludedCustomChallengeModifiersInput[]
-    connectOrCreate?: DayCreateOrConnectWithoutIncludedCustomChallengeModifiersInput | DayCreateOrConnectWithoutIncludedCustomChallengeModifiersInput[]
-    upsert?: DayUpsertWithWhereUniqueWithoutIncludedCustomChallengeModifiersInput | DayUpsertWithWhereUniqueWithoutIncludedCustomChallengeModifiersInput[]
+  export type DayUpdateManyWithoutEncludedCustomChallengeModifiersNestedInput = {
+    create?: XOR<DayCreateWithoutEncludedCustomChallengeModifiersInput, DayUncheckedCreateWithoutEncludedCustomChallengeModifiersInput> | DayCreateWithoutEncludedCustomChallengeModifiersInput[] | DayUncheckedCreateWithoutEncludedCustomChallengeModifiersInput[]
+    connectOrCreate?: DayCreateOrConnectWithoutEncludedCustomChallengeModifiersInput | DayCreateOrConnectWithoutEncludedCustomChallengeModifiersInput[]
+    upsert?: DayUpsertWithWhereUniqueWithoutEncludedCustomChallengeModifiersInput | DayUpsertWithWhereUniqueWithoutEncludedCustomChallengeModifiersInput[]
     set?: DayWhereUniqueInput | DayWhereUniqueInput[]
     disconnect?: DayWhereUniqueInput | DayWhereUniqueInput[]
     delete?: DayWhereUniqueInput | DayWhereUniqueInput[]
     connect?: DayWhereUniqueInput | DayWhereUniqueInput[]
-    update?: DayUpdateWithWhereUniqueWithoutIncludedCustomChallengeModifiersInput | DayUpdateWithWhereUniqueWithoutIncludedCustomChallengeModifiersInput[]
-    updateMany?: DayUpdateManyWithWhereWithoutIncludedCustomChallengeModifiersInput | DayUpdateManyWithWhereWithoutIncludedCustomChallengeModifiersInput[]
+    update?: DayUpdateWithWhereUniqueWithoutEncludedCustomChallengeModifiersInput | DayUpdateWithWhereUniqueWithoutEncludedCustomChallengeModifiersInput[]
+    updateMany?: DayUpdateManyWithWhereWithoutEncludedCustomChallengeModifiersInput | DayUpdateManyWithWhereWithoutEncludedCustomChallengeModifiersInput[]
     deleteMany?: DayScalarWhereInput | DayScalarWhereInput[]
   }
 
-  export type DayUpdateManyWithoutModifierWhenPart1CompletedNestedInput = {
+  export type DayUncheckedUpdateManyWithoutChallengeModifierNestedInput = {
+    create?: XOR<DayCreateWithoutChallengeModifierInput, DayUncheckedCreateWithoutChallengeModifierInput> | DayCreateWithoutChallengeModifierInput[] | DayUncheckedCreateWithoutChallengeModifierInput[]
+    connectOrCreate?: DayCreateOrConnectWithoutChallengeModifierInput | DayCreateOrConnectWithoutChallengeModifierInput[]
+    upsert?: DayUpsertWithWhereUniqueWithoutChallengeModifierInput | DayUpsertWithWhereUniqueWithoutChallengeModifierInput[]
+    createMany?: DayCreateManyChallengeModifierInputEnvelope
+    set?: DayWhereUniqueInput | DayWhereUniqueInput[]
+    disconnect?: DayWhereUniqueInput | DayWhereUniqueInput[]
+    delete?: DayWhereUniqueInput | DayWhereUniqueInput[]
+    connect?: DayWhereUniqueInput | DayWhereUniqueInput[]
+    update?: DayUpdateWithWhereUniqueWithoutChallengeModifierInput | DayUpdateWithWhereUniqueWithoutChallengeModifierInput[]
+    updateMany?: DayUpdateManyWithWhereWithoutChallengeModifierInput | DayUpdateManyWithWhereWithoutChallengeModifierInput[]
+    deleteMany?: DayScalarWhereInput | DayScalarWhereInput[]
+  }
+
+  export type DayUncheckedUpdateManyWithoutModifierWhenPart1CompletedNestedInput = {
     create?: XOR<DayCreateWithoutModifierWhenPart1CompletedInput, DayUncheckedCreateWithoutModifierWhenPart1CompletedInput> | DayCreateWithoutModifierWhenPart1CompletedInput[] | DayUncheckedCreateWithoutModifierWhenPart1CompletedInput[]
     connectOrCreate?: DayCreateOrConnectWithoutModifierWhenPart1CompletedInput | DayCreateOrConnectWithoutModifierWhenPart1CompletedInput[]
     upsert?: DayUpsertWithWhereUniqueWithoutModifierWhenPart1CompletedInput | DayUpsertWithWhereUniqueWithoutModifierWhenPart1CompletedInput[]
@@ -19886,46 +20722,6 @@ export namespace Prisma {
     update?: ModifierOptionUpdateWithWhereUniqueWithoutChallengeModifierInput | ModifierOptionUpdateWithWhereUniqueWithoutChallengeModifierInput[]
     updateMany?: ModifierOptionUpdateManyWithWhereWithoutChallengeModifierInput | ModifierOptionUpdateManyWithWhereWithoutChallengeModifierInput[]
     deleteMany?: ModifierOptionScalarWhereInput | ModifierOptionScalarWhereInput[]
-  }
-
-  export type DayUncheckedUpdateManyWithoutChallengeModifierNestedInput = {
-    create?: XOR<DayCreateWithoutChallengeModifierInput, DayUncheckedCreateWithoutChallengeModifierInput> | DayCreateWithoutChallengeModifierInput[] | DayUncheckedCreateWithoutChallengeModifierInput[]
-    connectOrCreate?: DayCreateOrConnectWithoutChallengeModifierInput | DayCreateOrConnectWithoutChallengeModifierInput[]
-    upsert?: DayUpsertWithWhereUniqueWithoutChallengeModifierInput | DayUpsertWithWhereUniqueWithoutChallengeModifierInput[]
-    createMany?: DayCreateManyChallengeModifierInputEnvelope
-    set?: DayWhereUniqueInput | DayWhereUniqueInput[]
-    disconnect?: DayWhereUniqueInput | DayWhereUniqueInput[]
-    delete?: DayWhereUniqueInput | DayWhereUniqueInput[]
-    connect?: DayWhereUniqueInput | DayWhereUniqueInput[]
-    update?: DayUpdateWithWhereUniqueWithoutChallengeModifierInput | DayUpdateWithWhereUniqueWithoutChallengeModifierInput[]
-    updateMany?: DayUpdateManyWithWhereWithoutChallengeModifierInput | DayUpdateManyWithWhereWithoutChallengeModifierInput[]
-    deleteMany?: DayScalarWhereInput | DayScalarWhereInput[]
-  }
-
-  export type ModifierPackUncheckedUpdateManyWithoutExcludedChallengeModifiersNestedInput = {
-    create?: XOR<ModifierPackCreateWithoutExcludedChallengeModifiersInput, ModifierPackUncheckedCreateWithoutExcludedChallengeModifiersInput> | ModifierPackCreateWithoutExcludedChallengeModifiersInput[] | ModifierPackUncheckedCreateWithoutExcludedChallengeModifiersInput[]
-    connectOrCreate?: ModifierPackCreateOrConnectWithoutExcludedChallengeModifiersInput | ModifierPackCreateOrConnectWithoutExcludedChallengeModifiersInput[]
-    upsert?: ModifierPackUpsertWithWhereUniqueWithoutExcludedChallengeModifiersInput | ModifierPackUpsertWithWhereUniqueWithoutExcludedChallengeModifiersInput[]
-    set?: ModifierPackWhereUniqueInput | ModifierPackWhereUniqueInput[]
-    disconnect?: ModifierPackWhereUniqueInput | ModifierPackWhereUniqueInput[]
-    delete?: ModifierPackWhereUniqueInput | ModifierPackWhereUniqueInput[]
-    connect?: ModifierPackWhereUniqueInput | ModifierPackWhereUniqueInput[]
-    update?: ModifierPackUpdateWithWhereUniqueWithoutExcludedChallengeModifiersInput | ModifierPackUpdateWithWhereUniqueWithoutExcludedChallengeModifiersInput[]
-    updateMany?: ModifierPackUpdateManyWithWhereWithoutExcludedChallengeModifiersInput | ModifierPackUpdateManyWithWhereWithoutExcludedChallengeModifiersInput[]
-    deleteMany?: ModifierPackScalarWhereInput | ModifierPackScalarWhereInput[]
-  }
-
-  export type ModifierPackUncheckedUpdateManyWithoutEncludedCustomChallengeModifiersNestedInput = {
-    create?: XOR<ModifierPackCreateWithoutEncludedCustomChallengeModifiersInput, ModifierPackUncheckedCreateWithoutEncludedCustomChallengeModifiersInput> | ModifierPackCreateWithoutEncludedCustomChallengeModifiersInput[] | ModifierPackUncheckedCreateWithoutEncludedCustomChallengeModifiersInput[]
-    connectOrCreate?: ModifierPackCreateOrConnectWithoutEncludedCustomChallengeModifiersInput | ModifierPackCreateOrConnectWithoutEncludedCustomChallengeModifiersInput[]
-    upsert?: ModifierPackUpsertWithWhereUniqueWithoutEncludedCustomChallengeModifiersInput | ModifierPackUpsertWithWhereUniqueWithoutEncludedCustomChallengeModifiersInput[]
-    set?: ModifierPackWhereUniqueInput | ModifierPackWhereUniqueInput[]
-    disconnect?: ModifierPackWhereUniqueInput | ModifierPackWhereUniqueInput[]
-    delete?: ModifierPackWhereUniqueInput | ModifierPackWhereUniqueInput[]
-    connect?: ModifierPackWhereUniqueInput | ModifierPackWhereUniqueInput[]
-    update?: ModifierPackUpdateWithWhereUniqueWithoutEncludedCustomChallengeModifiersInput | ModifierPackUpdateWithWhereUniqueWithoutEncludedCustomChallengeModifiersInput[]
-    updateMany?: ModifierPackUpdateManyWithWhereWithoutEncludedCustomChallengeModifiersInput | ModifierPackUpdateManyWithWhereWithoutEncludedCustomChallengeModifiersInput[]
-    deleteMany?: ModifierPackScalarWhereInput | ModifierPackScalarWhereInput[]
   }
 
   export type UserUncheckedUpdateManyWithoutDefaultExcludedChallengeModifiersNestedInput = {
@@ -19967,31 +20763,31 @@ export namespace Prisma {
     deleteMany?: DayScalarWhereInput | DayScalarWhereInput[]
   }
 
-  export type DayUncheckedUpdateManyWithoutIncludedCustomChallengeModifiersNestedInput = {
-    create?: XOR<DayCreateWithoutIncludedCustomChallengeModifiersInput, DayUncheckedCreateWithoutIncludedCustomChallengeModifiersInput> | DayCreateWithoutIncludedCustomChallengeModifiersInput[] | DayUncheckedCreateWithoutIncludedCustomChallengeModifiersInput[]
-    connectOrCreate?: DayCreateOrConnectWithoutIncludedCustomChallengeModifiersInput | DayCreateOrConnectWithoutIncludedCustomChallengeModifiersInput[]
-    upsert?: DayUpsertWithWhereUniqueWithoutIncludedCustomChallengeModifiersInput | DayUpsertWithWhereUniqueWithoutIncludedCustomChallengeModifiersInput[]
+  export type DayUncheckedUpdateManyWithoutEncludedCustomChallengeModifiersNestedInput = {
+    create?: XOR<DayCreateWithoutEncludedCustomChallengeModifiersInput, DayUncheckedCreateWithoutEncludedCustomChallengeModifiersInput> | DayCreateWithoutEncludedCustomChallengeModifiersInput[] | DayUncheckedCreateWithoutEncludedCustomChallengeModifiersInput[]
+    connectOrCreate?: DayCreateOrConnectWithoutEncludedCustomChallengeModifiersInput | DayCreateOrConnectWithoutEncludedCustomChallengeModifiersInput[]
+    upsert?: DayUpsertWithWhereUniqueWithoutEncludedCustomChallengeModifiersInput | DayUpsertWithWhereUniqueWithoutEncludedCustomChallengeModifiersInput[]
     set?: DayWhereUniqueInput | DayWhereUniqueInput[]
     disconnect?: DayWhereUniqueInput | DayWhereUniqueInput[]
     delete?: DayWhereUniqueInput | DayWhereUniqueInput[]
     connect?: DayWhereUniqueInput | DayWhereUniqueInput[]
-    update?: DayUpdateWithWhereUniqueWithoutIncludedCustomChallengeModifiersInput | DayUpdateWithWhereUniqueWithoutIncludedCustomChallengeModifiersInput[]
-    updateMany?: DayUpdateManyWithWhereWithoutIncludedCustomChallengeModifiersInput | DayUpdateManyWithWhereWithoutIncludedCustomChallengeModifiersInput[]
+    update?: DayUpdateWithWhereUniqueWithoutEncludedCustomChallengeModifiersInput | DayUpdateWithWhereUniqueWithoutEncludedCustomChallengeModifiersInput[]
+    updateMany?: DayUpdateManyWithWhereWithoutEncludedCustomChallengeModifiersInput | DayUpdateManyWithWhereWithoutEncludedCustomChallengeModifiersInput[]
     deleteMany?: DayScalarWhereInput | DayScalarWhereInput[]
   }
 
-  export type DayUncheckedUpdateManyWithoutModifierWhenPart1CompletedNestedInput = {
-    create?: XOR<DayCreateWithoutModifierWhenPart1CompletedInput, DayUncheckedCreateWithoutModifierWhenPart1CompletedInput> | DayCreateWithoutModifierWhenPart1CompletedInput[] | DayUncheckedCreateWithoutModifierWhenPart1CompletedInput[]
-    connectOrCreate?: DayCreateOrConnectWithoutModifierWhenPart1CompletedInput | DayCreateOrConnectWithoutModifierWhenPart1CompletedInput[]
-    upsert?: DayUpsertWithWhereUniqueWithoutModifierWhenPart1CompletedInput | DayUpsertWithWhereUniqueWithoutModifierWhenPart1CompletedInput[]
-    createMany?: DayCreateManyModifierWhenPart1CompletedInputEnvelope
-    set?: DayWhereUniqueInput | DayWhereUniqueInput[]
-    disconnect?: DayWhereUniqueInput | DayWhereUniqueInput[]
-    delete?: DayWhereUniqueInput | DayWhereUniqueInput[]
+  export type DayCreateNestedManyWithoutModifierOptionInput = {
+    create?: XOR<DayCreateWithoutModifierOptionInput, DayUncheckedCreateWithoutModifierOptionInput> | DayCreateWithoutModifierOptionInput[] | DayUncheckedCreateWithoutModifierOptionInput[]
+    connectOrCreate?: DayCreateOrConnectWithoutModifierOptionInput | DayCreateOrConnectWithoutModifierOptionInput[]
+    createMany?: DayCreateManyModifierOptionInputEnvelope
     connect?: DayWhereUniqueInput | DayWhereUniqueInput[]
-    update?: DayUpdateWithWhereUniqueWithoutModifierWhenPart1CompletedInput | DayUpdateWithWhereUniqueWithoutModifierWhenPart1CompletedInput[]
-    updateMany?: DayUpdateManyWithWhereWithoutModifierWhenPart1CompletedInput | DayUpdateManyWithWhereWithoutModifierWhenPart1CompletedInput[]
-    deleteMany?: DayScalarWhereInput | DayScalarWhereInput[]
+  }
+
+  export type DayCreateNestedManyWithoutOptionWhenPart1CompletedInput = {
+    create?: XOR<DayCreateWithoutOptionWhenPart1CompletedInput, DayUncheckedCreateWithoutOptionWhenPart1CompletedInput> | DayCreateWithoutOptionWhenPart1CompletedInput[] | DayUncheckedCreateWithoutOptionWhenPart1CompletedInput[]
+    connectOrCreate?: DayCreateOrConnectWithoutOptionWhenPart1CompletedInput | DayCreateOrConnectWithoutOptionWhenPart1CompletedInput[]
+    createMany?: DayCreateManyOptionWhenPart1CompletedInputEnvelope
+    connect?: DayWhereUniqueInput | DayWhereUniqueInput[]
   }
 
   export type ChallengeModifierCreateNestedOneWithoutModifierOptionInput = {
@@ -20006,25 +20802,6 @@ export namespace Prisma {
     connect?: UserWhereUniqueInput
   }
 
-  export type DayCreateNestedManyWithoutModifierOptionInput = {
-    create?: XOR<DayCreateWithoutModifierOptionInput, DayUncheckedCreateWithoutModifierOptionInput> | DayCreateWithoutModifierOptionInput[] | DayUncheckedCreateWithoutModifierOptionInput[]
-    connectOrCreate?: DayCreateOrConnectWithoutModifierOptionInput | DayCreateOrConnectWithoutModifierOptionInput[]
-    createMany?: DayCreateManyModifierOptionInputEnvelope
-    connect?: DayWhereUniqueInput | DayWhereUniqueInput[]
-  }
-
-  export type ModifierPackCreateNestedManyWithoutExcludedModifierOptionsInput = {
-    create?: XOR<ModifierPackCreateWithoutExcludedModifierOptionsInput, ModifierPackUncheckedCreateWithoutExcludedModifierOptionsInput> | ModifierPackCreateWithoutExcludedModifierOptionsInput[] | ModifierPackUncheckedCreateWithoutExcludedModifierOptionsInput[]
-    connectOrCreate?: ModifierPackCreateOrConnectWithoutExcludedModifierOptionsInput | ModifierPackCreateOrConnectWithoutExcludedModifierOptionsInput[]
-    connect?: ModifierPackWhereUniqueInput | ModifierPackWhereUniqueInput[]
-  }
-
-  export type ModifierPackCreateNestedManyWithoutIncludedCustomModifierOptionsInput = {
-    create?: XOR<ModifierPackCreateWithoutIncludedCustomModifierOptionsInput, ModifierPackUncheckedCreateWithoutIncludedCustomModifierOptionsInput> | ModifierPackCreateWithoutIncludedCustomModifierOptionsInput[] | ModifierPackUncheckedCreateWithoutIncludedCustomModifierOptionsInput[]
-    connectOrCreate?: ModifierPackCreateOrConnectWithoutIncludedCustomModifierOptionsInput | ModifierPackCreateOrConnectWithoutIncludedCustomModifierOptionsInput[]
-    connect?: ModifierPackWhereUniqueInput | ModifierPackWhereUniqueInput[]
-  }
-
   export type UserCreateNestedManyWithoutDefaultExcludedModifierOptionsInput = {
     create?: XOR<UserCreateWithoutDefaultExcludedModifierOptionsInput, UserUncheckedCreateWithoutDefaultExcludedModifierOptionsInput> | UserCreateWithoutDefaultExcludedModifierOptionsInput[] | UserUncheckedCreateWithoutDefaultExcludedModifierOptionsInput[]
     connectOrCreate?: UserCreateOrConnectWithoutDefaultExcludedModifierOptionsInput | UserCreateOrConnectWithoutDefaultExcludedModifierOptionsInput[]
@@ -20037,23 +20814,16 @@ export namespace Prisma {
     connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
   }
 
-  export type DayCreateNestedManyWithoutExcludedModifierOptionsInput = {
-    create?: XOR<DayCreateWithoutExcludedModifierOptionsInput, DayUncheckedCreateWithoutExcludedModifierOptionsInput> | DayCreateWithoutExcludedModifierOptionsInput[] | DayUncheckedCreateWithoutExcludedModifierOptionsInput[]
-    connectOrCreate?: DayCreateOrConnectWithoutExcludedModifierOptionsInput | DayCreateOrConnectWithoutExcludedModifierOptionsInput[]
-    connect?: DayWhereUniqueInput | DayWhereUniqueInput[]
+  export type ModifierPackCreateNestedManyWithoutExcludedFromDayInput = {
+    create?: XOR<ModifierPackCreateWithoutExcludedFromDayInput, ModifierPackUncheckedCreateWithoutExcludedFromDayInput> | ModifierPackCreateWithoutExcludedFromDayInput[] | ModifierPackUncheckedCreateWithoutExcludedFromDayInput[]
+    connectOrCreate?: ModifierPackCreateOrConnectWithoutExcludedFromDayInput | ModifierPackCreateOrConnectWithoutExcludedFromDayInput[]
+    connect?: ModifierPackWhereUniqueInput | ModifierPackWhereUniqueInput[]
   }
 
-  export type DayCreateNestedManyWithoutIncludedCustomModifierOptionsInput = {
-    create?: XOR<DayCreateWithoutIncludedCustomModifierOptionsInput, DayUncheckedCreateWithoutIncludedCustomModifierOptionsInput> | DayCreateWithoutIncludedCustomModifierOptionsInput[] | DayUncheckedCreateWithoutIncludedCustomModifierOptionsInput[]
-    connectOrCreate?: DayCreateOrConnectWithoutIncludedCustomModifierOptionsInput | DayCreateOrConnectWithoutIncludedCustomModifierOptionsInput[]
-    connect?: DayWhereUniqueInput | DayWhereUniqueInput[]
-  }
-
-  export type DayCreateNestedManyWithoutOptionWhenPart1CompletedInput = {
-    create?: XOR<DayCreateWithoutOptionWhenPart1CompletedInput, DayUncheckedCreateWithoutOptionWhenPart1CompletedInput> | DayCreateWithoutOptionWhenPart1CompletedInput[] | DayUncheckedCreateWithoutOptionWhenPart1CompletedInput[]
-    connectOrCreate?: DayCreateOrConnectWithoutOptionWhenPart1CompletedInput | DayCreateOrConnectWithoutOptionWhenPart1CompletedInput[]
-    createMany?: DayCreateManyOptionWhenPart1CompletedInputEnvelope
-    connect?: DayWhereUniqueInput | DayWhereUniqueInput[]
+  export type ModifierPackCreateNestedManyWithoutIncludedInDayInput = {
+    create?: XOR<ModifierPackCreateWithoutIncludedInDayInput, ModifierPackUncheckedCreateWithoutIncludedInDayInput> | ModifierPackCreateWithoutIncludedInDayInput[] | ModifierPackUncheckedCreateWithoutIncludedInDayInput[]
+    connectOrCreate?: ModifierPackCreateOrConnectWithoutIncludedInDayInput | ModifierPackCreateOrConnectWithoutIncludedInDayInput[]
+    connect?: ModifierPackWhereUniqueInput | ModifierPackWhereUniqueInput[]
   }
 
   export type DayUncheckedCreateNestedManyWithoutModifierOptionInput = {
@@ -20063,16 +20833,11 @@ export namespace Prisma {
     connect?: DayWhereUniqueInput | DayWhereUniqueInput[]
   }
 
-  export type ModifierPackUncheckedCreateNestedManyWithoutExcludedModifierOptionsInput = {
-    create?: XOR<ModifierPackCreateWithoutExcludedModifierOptionsInput, ModifierPackUncheckedCreateWithoutExcludedModifierOptionsInput> | ModifierPackCreateWithoutExcludedModifierOptionsInput[] | ModifierPackUncheckedCreateWithoutExcludedModifierOptionsInput[]
-    connectOrCreate?: ModifierPackCreateOrConnectWithoutExcludedModifierOptionsInput | ModifierPackCreateOrConnectWithoutExcludedModifierOptionsInput[]
-    connect?: ModifierPackWhereUniqueInput | ModifierPackWhereUniqueInput[]
-  }
-
-  export type ModifierPackUncheckedCreateNestedManyWithoutIncludedCustomModifierOptionsInput = {
-    create?: XOR<ModifierPackCreateWithoutIncludedCustomModifierOptionsInput, ModifierPackUncheckedCreateWithoutIncludedCustomModifierOptionsInput> | ModifierPackCreateWithoutIncludedCustomModifierOptionsInput[] | ModifierPackUncheckedCreateWithoutIncludedCustomModifierOptionsInput[]
-    connectOrCreate?: ModifierPackCreateOrConnectWithoutIncludedCustomModifierOptionsInput | ModifierPackCreateOrConnectWithoutIncludedCustomModifierOptionsInput[]
-    connect?: ModifierPackWhereUniqueInput | ModifierPackWhereUniqueInput[]
+  export type DayUncheckedCreateNestedManyWithoutOptionWhenPart1CompletedInput = {
+    create?: XOR<DayCreateWithoutOptionWhenPart1CompletedInput, DayUncheckedCreateWithoutOptionWhenPart1CompletedInput> | DayCreateWithoutOptionWhenPart1CompletedInput[] | DayUncheckedCreateWithoutOptionWhenPart1CompletedInput[]
+    connectOrCreate?: DayCreateOrConnectWithoutOptionWhenPart1CompletedInput | DayCreateOrConnectWithoutOptionWhenPart1CompletedInput[]
+    createMany?: DayCreateManyOptionWhenPart1CompletedInputEnvelope
+    connect?: DayWhereUniqueInput | DayWhereUniqueInput[]
   }
 
   export type UserUncheckedCreateNestedManyWithoutDefaultExcludedModifierOptionsInput = {
@@ -20087,23 +20852,44 @@ export namespace Prisma {
     connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
   }
 
-  export type DayUncheckedCreateNestedManyWithoutExcludedModifierOptionsInput = {
-    create?: XOR<DayCreateWithoutExcludedModifierOptionsInput, DayUncheckedCreateWithoutExcludedModifierOptionsInput> | DayCreateWithoutExcludedModifierOptionsInput[] | DayUncheckedCreateWithoutExcludedModifierOptionsInput[]
-    connectOrCreate?: DayCreateOrConnectWithoutExcludedModifierOptionsInput | DayCreateOrConnectWithoutExcludedModifierOptionsInput[]
-    connect?: DayWhereUniqueInput | DayWhereUniqueInput[]
+  export type ModifierPackUncheckedCreateNestedManyWithoutExcludedFromDayInput = {
+    create?: XOR<ModifierPackCreateWithoutExcludedFromDayInput, ModifierPackUncheckedCreateWithoutExcludedFromDayInput> | ModifierPackCreateWithoutExcludedFromDayInput[] | ModifierPackUncheckedCreateWithoutExcludedFromDayInput[]
+    connectOrCreate?: ModifierPackCreateOrConnectWithoutExcludedFromDayInput | ModifierPackCreateOrConnectWithoutExcludedFromDayInput[]
+    connect?: ModifierPackWhereUniqueInput | ModifierPackWhereUniqueInput[]
   }
 
-  export type DayUncheckedCreateNestedManyWithoutIncludedCustomModifierOptionsInput = {
-    create?: XOR<DayCreateWithoutIncludedCustomModifierOptionsInput, DayUncheckedCreateWithoutIncludedCustomModifierOptionsInput> | DayCreateWithoutIncludedCustomModifierOptionsInput[] | DayUncheckedCreateWithoutIncludedCustomModifierOptionsInput[]
-    connectOrCreate?: DayCreateOrConnectWithoutIncludedCustomModifierOptionsInput | DayCreateOrConnectWithoutIncludedCustomModifierOptionsInput[]
-    connect?: DayWhereUniqueInput | DayWhereUniqueInput[]
+  export type ModifierPackUncheckedCreateNestedManyWithoutIncludedInDayInput = {
+    create?: XOR<ModifierPackCreateWithoutIncludedInDayInput, ModifierPackUncheckedCreateWithoutIncludedInDayInput> | ModifierPackCreateWithoutIncludedInDayInput[] | ModifierPackUncheckedCreateWithoutIncludedInDayInput[]
+    connectOrCreate?: ModifierPackCreateOrConnectWithoutIncludedInDayInput | ModifierPackCreateOrConnectWithoutIncludedInDayInput[]
+    connect?: ModifierPackWhereUniqueInput | ModifierPackWhereUniqueInput[]
   }
 
-  export type DayUncheckedCreateNestedManyWithoutOptionWhenPart1CompletedInput = {
+  export type DayUpdateManyWithoutModifierOptionNestedInput = {
+    create?: XOR<DayCreateWithoutModifierOptionInput, DayUncheckedCreateWithoutModifierOptionInput> | DayCreateWithoutModifierOptionInput[] | DayUncheckedCreateWithoutModifierOptionInput[]
+    connectOrCreate?: DayCreateOrConnectWithoutModifierOptionInput | DayCreateOrConnectWithoutModifierOptionInput[]
+    upsert?: DayUpsertWithWhereUniqueWithoutModifierOptionInput | DayUpsertWithWhereUniqueWithoutModifierOptionInput[]
+    createMany?: DayCreateManyModifierOptionInputEnvelope
+    set?: DayWhereUniqueInput | DayWhereUniqueInput[]
+    disconnect?: DayWhereUniqueInput | DayWhereUniqueInput[]
+    delete?: DayWhereUniqueInput | DayWhereUniqueInput[]
+    connect?: DayWhereUniqueInput | DayWhereUniqueInput[]
+    update?: DayUpdateWithWhereUniqueWithoutModifierOptionInput | DayUpdateWithWhereUniqueWithoutModifierOptionInput[]
+    updateMany?: DayUpdateManyWithWhereWithoutModifierOptionInput | DayUpdateManyWithWhereWithoutModifierOptionInput[]
+    deleteMany?: DayScalarWhereInput | DayScalarWhereInput[]
+  }
+
+  export type DayUpdateManyWithoutOptionWhenPart1CompletedNestedInput = {
     create?: XOR<DayCreateWithoutOptionWhenPart1CompletedInput, DayUncheckedCreateWithoutOptionWhenPart1CompletedInput> | DayCreateWithoutOptionWhenPart1CompletedInput[] | DayUncheckedCreateWithoutOptionWhenPart1CompletedInput[]
     connectOrCreate?: DayCreateOrConnectWithoutOptionWhenPart1CompletedInput | DayCreateOrConnectWithoutOptionWhenPart1CompletedInput[]
+    upsert?: DayUpsertWithWhereUniqueWithoutOptionWhenPart1CompletedInput | DayUpsertWithWhereUniqueWithoutOptionWhenPart1CompletedInput[]
     createMany?: DayCreateManyOptionWhenPart1CompletedInputEnvelope
+    set?: DayWhereUniqueInput | DayWhereUniqueInput[]
+    disconnect?: DayWhereUniqueInput | DayWhereUniqueInput[]
+    delete?: DayWhereUniqueInput | DayWhereUniqueInput[]
     connect?: DayWhereUniqueInput | DayWhereUniqueInput[]
+    update?: DayUpdateWithWhereUniqueWithoutOptionWhenPart1CompletedInput | DayUpdateWithWhereUniqueWithoutOptionWhenPart1CompletedInput[]
+    updateMany?: DayUpdateManyWithWhereWithoutOptionWhenPart1CompletedInput | DayUpdateManyWithWhereWithoutOptionWhenPart1CompletedInput[]
+    deleteMany?: DayScalarWhereInput | DayScalarWhereInput[]
   }
 
   export type ChallengeModifierUpdateOneRequiredWithoutModifierOptionNestedInput = {
@@ -20122,46 +20908,6 @@ export namespace Prisma {
     delete?: UserWhereInput | boolean
     connect?: UserWhereUniqueInput
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutModifierOptionInput, UserUpdateWithoutModifierOptionInput>, UserUncheckedUpdateWithoutModifierOptionInput>
-  }
-
-  export type DayUpdateManyWithoutModifierOptionNestedInput = {
-    create?: XOR<DayCreateWithoutModifierOptionInput, DayUncheckedCreateWithoutModifierOptionInput> | DayCreateWithoutModifierOptionInput[] | DayUncheckedCreateWithoutModifierOptionInput[]
-    connectOrCreate?: DayCreateOrConnectWithoutModifierOptionInput | DayCreateOrConnectWithoutModifierOptionInput[]
-    upsert?: DayUpsertWithWhereUniqueWithoutModifierOptionInput | DayUpsertWithWhereUniqueWithoutModifierOptionInput[]
-    createMany?: DayCreateManyModifierOptionInputEnvelope
-    set?: DayWhereUniqueInput | DayWhereUniqueInput[]
-    disconnect?: DayWhereUniqueInput | DayWhereUniqueInput[]
-    delete?: DayWhereUniqueInput | DayWhereUniqueInput[]
-    connect?: DayWhereUniqueInput | DayWhereUniqueInput[]
-    update?: DayUpdateWithWhereUniqueWithoutModifierOptionInput | DayUpdateWithWhereUniqueWithoutModifierOptionInput[]
-    updateMany?: DayUpdateManyWithWhereWithoutModifierOptionInput | DayUpdateManyWithWhereWithoutModifierOptionInput[]
-    deleteMany?: DayScalarWhereInput | DayScalarWhereInput[]
-  }
-
-  export type ModifierPackUpdateManyWithoutExcludedModifierOptionsNestedInput = {
-    create?: XOR<ModifierPackCreateWithoutExcludedModifierOptionsInput, ModifierPackUncheckedCreateWithoutExcludedModifierOptionsInput> | ModifierPackCreateWithoutExcludedModifierOptionsInput[] | ModifierPackUncheckedCreateWithoutExcludedModifierOptionsInput[]
-    connectOrCreate?: ModifierPackCreateOrConnectWithoutExcludedModifierOptionsInput | ModifierPackCreateOrConnectWithoutExcludedModifierOptionsInput[]
-    upsert?: ModifierPackUpsertWithWhereUniqueWithoutExcludedModifierOptionsInput | ModifierPackUpsertWithWhereUniqueWithoutExcludedModifierOptionsInput[]
-    set?: ModifierPackWhereUniqueInput | ModifierPackWhereUniqueInput[]
-    disconnect?: ModifierPackWhereUniqueInput | ModifierPackWhereUniqueInput[]
-    delete?: ModifierPackWhereUniqueInput | ModifierPackWhereUniqueInput[]
-    connect?: ModifierPackWhereUniqueInput | ModifierPackWhereUniqueInput[]
-    update?: ModifierPackUpdateWithWhereUniqueWithoutExcludedModifierOptionsInput | ModifierPackUpdateWithWhereUniqueWithoutExcludedModifierOptionsInput[]
-    updateMany?: ModifierPackUpdateManyWithWhereWithoutExcludedModifierOptionsInput | ModifierPackUpdateManyWithWhereWithoutExcludedModifierOptionsInput[]
-    deleteMany?: ModifierPackScalarWhereInput | ModifierPackScalarWhereInput[]
-  }
-
-  export type ModifierPackUpdateManyWithoutIncludedCustomModifierOptionsNestedInput = {
-    create?: XOR<ModifierPackCreateWithoutIncludedCustomModifierOptionsInput, ModifierPackUncheckedCreateWithoutIncludedCustomModifierOptionsInput> | ModifierPackCreateWithoutIncludedCustomModifierOptionsInput[] | ModifierPackUncheckedCreateWithoutIncludedCustomModifierOptionsInput[]
-    connectOrCreate?: ModifierPackCreateOrConnectWithoutIncludedCustomModifierOptionsInput | ModifierPackCreateOrConnectWithoutIncludedCustomModifierOptionsInput[]
-    upsert?: ModifierPackUpsertWithWhereUniqueWithoutIncludedCustomModifierOptionsInput | ModifierPackUpsertWithWhereUniqueWithoutIncludedCustomModifierOptionsInput[]
-    set?: ModifierPackWhereUniqueInput | ModifierPackWhereUniqueInput[]
-    disconnect?: ModifierPackWhereUniqueInput | ModifierPackWhereUniqueInput[]
-    delete?: ModifierPackWhereUniqueInput | ModifierPackWhereUniqueInput[]
-    connect?: ModifierPackWhereUniqueInput | ModifierPackWhereUniqueInput[]
-    update?: ModifierPackUpdateWithWhereUniqueWithoutIncludedCustomModifierOptionsInput | ModifierPackUpdateWithWhereUniqueWithoutIncludedCustomModifierOptionsInput[]
-    updateMany?: ModifierPackUpdateManyWithWhereWithoutIncludedCustomModifierOptionsInput | ModifierPackUpdateManyWithWhereWithoutIncludedCustomModifierOptionsInput[]
-    deleteMany?: ModifierPackScalarWhereInput | ModifierPackScalarWhereInput[]
   }
 
   export type UserUpdateManyWithoutDefaultExcludedModifierOptionsNestedInput = {
@@ -20190,44 +20936,30 @@ export namespace Prisma {
     deleteMany?: UserScalarWhereInput | UserScalarWhereInput[]
   }
 
-  export type DayUpdateManyWithoutExcludedModifierOptionsNestedInput = {
-    create?: XOR<DayCreateWithoutExcludedModifierOptionsInput, DayUncheckedCreateWithoutExcludedModifierOptionsInput> | DayCreateWithoutExcludedModifierOptionsInput[] | DayUncheckedCreateWithoutExcludedModifierOptionsInput[]
-    connectOrCreate?: DayCreateOrConnectWithoutExcludedModifierOptionsInput | DayCreateOrConnectWithoutExcludedModifierOptionsInput[]
-    upsert?: DayUpsertWithWhereUniqueWithoutExcludedModifierOptionsInput | DayUpsertWithWhereUniqueWithoutExcludedModifierOptionsInput[]
-    set?: DayWhereUniqueInput | DayWhereUniqueInput[]
-    disconnect?: DayWhereUniqueInput | DayWhereUniqueInput[]
-    delete?: DayWhereUniqueInput | DayWhereUniqueInput[]
-    connect?: DayWhereUniqueInput | DayWhereUniqueInput[]
-    update?: DayUpdateWithWhereUniqueWithoutExcludedModifierOptionsInput | DayUpdateWithWhereUniqueWithoutExcludedModifierOptionsInput[]
-    updateMany?: DayUpdateManyWithWhereWithoutExcludedModifierOptionsInput | DayUpdateManyWithWhereWithoutExcludedModifierOptionsInput[]
-    deleteMany?: DayScalarWhereInput | DayScalarWhereInput[]
+  export type ModifierPackUpdateManyWithoutExcludedFromDayNestedInput = {
+    create?: XOR<ModifierPackCreateWithoutExcludedFromDayInput, ModifierPackUncheckedCreateWithoutExcludedFromDayInput> | ModifierPackCreateWithoutExcludedFromDayInput[] | ModifierPackUncheckedCreateWithoutExcludedFromDayInput[]
+    connectOrCreate?: ModifierPackCreateOrConnectWithoutExcludedFromDayInput | ModifierPackCreateOrConnectWithoutExcludedFromDayInput[]
+    upsert?: ModifierPackUpsertWithWhereUniqueWithoutExcludedFromDayInput | ModifierPackUpsertWithWhereUniqueWithoutExcludedFromDayInput[]
+    set?: ModifierPackWhereUniqueInput | ModifierPackWhereUniqueInput[]
+    disconnect?: ModifierPackWhereUniqueInput | ModifierPackWhereUniqueInput[]
+    delete?: ModifierPackWhereUniqueInput | ModifierPackWhereUniqueInput[]
+    connect?: ModifierPackWhereUniqueInput | ModifierPackWhereUniqueInput[]
+    update?: ModifierPackUpdateWithWhereUniqueWithoutExcludedFromDayInput | ModifierPackUpdateWithWhereUniqueWithoutExcludedFromDayInput[]
+    updateMany?: ModifierPackUpdateManyWithWhereWithoutExcludedFromDayInput | ModifierPackUpdateManyWithWhereWithoutExcludedFromDayInput[]
+    deleteMany?: ModifierPackScalarWhereInput | ModifierPackScalarWhereInput[]
   }
 
-  export type DayUpdateManyWithoutIncludedCustomModifierOptionsNestedInput = {
-    create?: XOR<DayCreateWithoutIncludedCustomModifierOptionsInput, DayUncheckedCreateWithoutIncludedCustomModifierOptionsInput> | DayCreateWithoutIncludedCustomModifierOptionsInput[] | DayUncheckedCreateWithoutIncludedCustomModifierOptionsInput[]
-    connectOrCreate?: DayCreateOrConnectWithoutIncludedCustomModifierOptionsInput | DayCreateOrConnectWithoutIncludedCustomModifierOptionsInput[]
-    upsert?: DayUpsertWithWhereUniqueWithoutIncludedCustomModifierOptionsInput | DayUpsertWithWhereUniqueWithoutIncludedCustomModifierOptionsInput[]
-    set?: DayWhereUniqueInput | DayWhereUniqueInput[]
-    disconnect?: DayWhereUniqueInput | DayWhereUniqueInput[]
-    delete?: DayWhereUniqueInput | DayWhereUniqueInput[]
-    connect?: DayWhereUniqueInput | DayWhereUniqueInput[]
-    update?: DayUpdateWithWhereUniqueWithoutIncludedCustomModifierOptionsInput | DayUpdateWithWhereUniqueWithoutIncludedCustomModifierOptionsInput[]
-    updateMany?: DayUpdateManyWithWhereWithoutIncludedCustomModifierOptionsInput | DayUpdateManyWithWhereWithoutIncludedCustomModifierOptionsInput[]
-    deleteMany?: DayScalarWhereInput | DayScalarWhereInput[]
-  }
-
-  export type DayUpdateManyWithoutOptionWhenPart1CompletedNestedInput = {
-    create?: XOR<DayCreateWithoutOptionWhenPart1CompletedInput, DayUncheckedCreateWithoutOptionWhenPart1CompletedInput> | DayCreateWithoutOptionWhenPart1CompletedInput[] | DayUncheckedCreateWithoutOptionWhenPart1CompletedInput[]
-    connectOrCreate?: DayCreateOrConnectWithoutOptionWhenPart1CompletedInput | DayCreateOrConnectWithoutOptionWhenPart1CompletedInput[]
-    upsert?: DayUpsertWithWhereUniqueWithoutOptionWhenPart1CompletedInput | DayUpsertWithWhereUniqueWithoutOptionWhenPart1CompletedInput[]
-    createMany?: DayCreateManyOptionWhenPart1CompletedInputEnvelope
-    set?: DayWhereUniqueInput | DayWhereUniqueInput[]
-    disconnect?: DayWhereUniqueInput | DayWhereUniqueInput[]
-    delete?: DayWhereUniqueInput | DayWhereUniqueInput[]
-    connect?: DayWhereUniqueInput | DayWhereUniqueInput[]
-    update?: DayUpdateWithWhereUniqueWithoutOptionWhenPart1CompletedInput | DayUpdateWithWhereUniqueWithoutOptionWhenPart1CompletedInput[]
-    updateMany?: DayUpdateManyWithWhereWithoutOptionWhenPart1CompletedInput | DayUpdateManyWithWhereWithoutOptionWhenPart1CompletedInput[]
-    deleteMany?: DayScalarWhereInput | DayScalarWhereInput[]
+  export type ModifierPackUpdateManyWithoutIncludedInDayNestedInput = {
+    create?: XOR<ModifierPackCreateWithoutIncludedInDayInput, ModifierPackUncheckedCreateWithoutIncludedInDayInput> | ModifierPackCreateWithoutIncludedInDayInput[] | ModifierPackUncheckedCreateWithoutIncludedInDayInput[]
+    connectOrCreate?: ModifierPackCreateOrConnectWithoutIncludedInDayInput | ModifierPackCreateOrConnectWithoutIncludedInDayInput[]
+    upsert?: ModifierPackUpsertWithWhereUniqueWithoutIncludedInDayInput | ModifierPackUpsertWithWhereUniqueWithoutIncludedInDayInput[]
+    set?: ModifierPackWhereUniqueInput | ModifierPackWhereUniqueInput[]
+    disconnect?: ModifierPackWhereUniqueInput | ModifierPackWhereUniqueInput[]
+    delete?: ModifierPackWhereUniqueInput | ModifierPackWhereUniqueInput[]
+    connect?: ModifierPackWhereUniqueInput | ModifierPackWhereUniqueInput[]
+    update?: ModifierPackUpdateWithWhereUniqueWithoutIncludedInDayInput | ModifierPackUpdateWithWhereUniqueWithoutIncludedInDayInput[]
+    updateMany?: ModifierPackUpdateManyWithWhereWithoutIncludedInDayInput | ModifierPackUpdateManyWithWhereWithoutIncludedInDayInput[]
+    deleteMany?: ModifierPackScalarWhereInput | ModifierPackScalarWhereInput[]
   }
 
   export type DayUncheckedUpdateManyWithoutModifierOptionNestedInput = {
@@ -20244,30 +20976,18 @@ export namespace Prisma {
     deleteMany?: DayScalarWhereInput | DayScalarWhereInput[]
   }
 
-  export type ModifierPackUncheckedUpdateManyWithoutExcludedModifierOptionsNestedInput = {
-    create?: XOR<ModifierPackCreateWithoutExcludedModifierOptionsInput, ModifierPackUncheckedCreateWithoutExcludedModifierOptionsInput> | ModifierPackCreateWithoutExcludedModifierOptionsInput[] | ModifierPackUncheckedCreateWithoutExcludedModifierOptionsInput[]
-    connectOrCreate?: ModifierPackCreateOrConnectWithoutExcludedModifierOptionsInput | ModifierPackCreateOrConnectWithoutExcludedModifierOptionsInput[]
-    upsert?: ModifierPackUpsertWithWhereUniqueWithoutExcludedModifierOptionsInput | ModifierPackUpsertWithWhereUniqueWithoutExcludedModifierOptionsInput[]
-    set?: ModifierPackWhereUniqueInput | ModifierPackWhereUniqueInput[]
-    disconnect?: ModifierPackWhereUniqueInput | ModifierPackWhereUniqueInput[]
-    delete?: ModifierPackWhereUniqueInput | ModifierPackWhereUniqueInput[]
-    connect?: ModifierPackWhereUniqueInput | ModifierPackWhereUniqueInput[]
-    update?: ModifierPackUpdateWithWhereUniqueWithoutExcludedModifierOptionsInput | ModifierPackUpdateWithWhereUniqueWithoutExcludedModifierOptionsInput[]
-    updateMany?: ModifierPackUpdateManyWithWhereWithoutExcludedModifierOptionsInput | ModifierPackUpdateManyWithWhereWithoutExcludedModifierOptionsInput[]
-    deleteMany?: ModifierPackScalarWhereInput | ModifierPackScalarWhereInput[]
-  }
-
-  export type ModifierPackUncheckedUpdateManyWithoutIncludedCustomModifierOptionsNestedInput = {
-    create?: XOR<ModifierPackCreateWithoutIncludedCustomModifierOptionsInput, ModifierPackUncheckedCreateWithoutIncludedCustomModifierOptionsInput> | ModifierPackCreateWithoutIncludedCustomModifierOptionsInput[] | ModifierPackUncheckedCreateWithoutIncludedCustomModifierOptionsInput[]
-    connectOrCreate?: ModifierPackCreateOrConnectWithoutIncludedCustomModifierOptionsInput | ModifierPackCreateOrConnectWithoutIncludedCustomModifierOptionsInput[]
-    upsert?: ModifierPackUpsertWithWhereUniqueWithoutIncludedCustomModifierOptionsInput | ModifierPackUpsertWithWhereUniqueWithoutIncludedCustomModifierOptionsInput[]
-    set?: ModifierPackWhereUniqueInput | ModifierPackWhereUniqueInput[]
-    disconnect?: ModifierPackWhereUniqueInput | ModifierPackWhereUniqueInput[]
-    delete?: ModifierPackWhereUniqueInput | ModifierPackWhereUniqueInput[]
-    connect?: ModifierPackWhereUniqueInput | ModifierPackWhereUniqueInput[]
-    update?: ModifierPackUpdateWithWhereUniqueWithoutIncludedCustomModifierOptionsInput | ModifierPackUpdateWithWhereUniqueWithoutIncludedCustomModifierOptionsInput[]
-    updateMany?: ModifierPackUpdateManyWithWhereWithoutIncludedCustomModifierOptionsInput | ModifierPackUpdateManyWithWhereWithoutIncludedCustomModifierOptionsInput[]
-    deleteMany?: ModifierPackScalarWhereInput | ModifierPackScalarWhereInput[]
+  export type DayUncheckedUpdateManyWithoutOptionWhenPart1CompletedNestedInput = {
+    create?: XOR<DayCreateWithoutOptionWhenPart1CompletedInput, DayUncheckedCreateWithoutOptionWhenPart1CompletedInput> | DayCreateWithoutOptionWhenPart1CompletedInput[] | DayUncheckedCreateWithoutOptionWhenPart1CompletedInput[]
+    connectOrCreate?: DayCreateOrConnectWithoutOptionWhenPart1CompletedInput | DayCreateOrConnectWithoutOptionWhenPart1CompletedInput[]
+    upsert?: DayUpsertWithWhereUniqueWithoutOptionWhenPart1CompletedInput | DayUpsertWithWhereUniqueWithoutOptionWhenPart1CompletedInput[]
+    createMany?: DayCreateManyOptionWhenPart1CompletedInputEnvelope
+    set?: DayWhereUniqueInput | DayWhereUniqueInput[]
+    disconnect?: DayWhereUniqueInput | DayWhereUniqueInput[]
+    delete?: DayWhereUniqueInput | DayWhereUniqueInput[]
+    connect?: DayWhereUniqueInput | DayWhereUniqueInput[]
+    update?: DayUpdateWithWhereUniqueWithoutOptionWhenPart1CompletedInput | DayUpdateWithWhereUniqueWithoutOptionWhenPart1CompletedInput[]
+    updateMany?: DayUpdateManyWithWhereWithoutOptionWhenPart1CompletedInput | DayUpdateManyWithWhereWithoutOptionWhenPart1CompletedInput[]
+    deleteMany?: DayScalarWhereInput | DayScalarWhereInput[]
   }
 
   export type UserUncheckedUpdateManyWithoutDefaultExcludedModifierOptionsNestedInput = {
@@ -20296,68 +21016,30 @@ export namespace Prisma {
     deleteMany?: UserScalarWhereInput | UserScalarWhereInput[]
   }
 
-  export type DayUncheckedUpdateManyWithoutExcludedModifierOptionsNestedInput = {
-    create?: XOR<DayCreateWithoutExcludedModifierOptionsInput, DayUncheckedCreateWithoutExcludedModifierOptionsInput> | DayCreateWithoutExcludedModifierOptionsInput[] | DayUncheckedCreateWithoutExcludedModifierOptionsInput[]
-    connectOrCreate?: DayCreateOrConnectWithoutExcludedModifierOptionsInput | DayCreateOrConnectWithoutExcludedModifierOptionsInput[]
-    upsert?: DayUpsertWithWhereUniqueWithoutExcludedModifierOptionsInput | DayUpsertWithWhereUniqueWithoutExcludedModifierOptionsInput[]
-    set?: DayWhereUniqueInput | DayWhereUniqueInput[]
-    disconnect?: DayWhereUniqueInput | DayWhereUniqueInput[]
-    delete?: DayWhereUniqueInput | DayWhereUniqueInput[]
-    connect?: DayWhereUniqueInput | DayWhereUniqueInput[]
-    update?: DayUpdateWithWhereUniqueWithoutExcludedModifierOptionsInput | DayUpdateWithWhereUniqueWithoutExcludedModifierOptionsInput[]
-    updateMany?: DayUpdateManyWithWhereWithoutExcludedModifierOptionsInput | DayUpdateManyWithWhereWithoutExcludedModifierOptionsInput[]
-    deleteMany?: DayScalarWhereInput | DayScalarWhereInput[]
+  export type ModifierPackUncheckedUpdateManyWithoutExcludedFromDayNestedInput = {
+    create?: XOR<ModifierPackCreateWithoutExcludedFromDayInput, ModifierPackUncheckedCreateWithoutExcludedFromDayInput> | ModifierPackCreateWithoutExcludedFromDayInput[] | ModifierPackUncheckedCreateWithoutExcludedFromDayInput[]
+    connectOrCreate?: ModifierPackCreateOrConnectWithoutExcludedFromDayInput | ModifierPackCreateOrConnectWithoutExcludedFromDayInput[]
+    upsert?: ModifierPackUpsertWithWhereUniqueWithoutExcludedFromDayInput | ModifierPackUpsertWithWhereUniqueWithoutExcludedFromDayInput[]
+    set?: ModifierPackWhereUniqueInput | ModifierPackWhereUniqueInput[]
+    disconnect?: ModifierPackWhereUniqueInput | ModifierPackWhereUniqueInput[]
+    delete?: ModifierPackWhereUniqueInput | ModifierPackWhereUniqueInput[]
+    connect?: ModifierPackWhereUniqueInput | ModifierPackWhereUniqueInput[]
+    update?: ModifierPackUpdateWithWhereUniqueWithoutExcludedFromDayInput | ModifierPackUpdateWithWhereUniqueWithoutExcludedFromDayInput[]
+    updateMany?: ModifierPackUpdateManyWithWhereWithoutExcludedFromDayInput | ModifierPackUpdateManyWithWhereWithoutExcludedFromDayInput[]
+    deleteMany?: ModifierPackScalarWhereInput | ModifierPackScalarWhereInput[]
   }
 
-  export type DayUncheckedUpdateManyWithoutIncludedCustomModifierOptionsNestedInput = {
-    create?: XOR<DayCreateWithoutIncludedCustomModifierOptionsInput, DayUncheckedCreateWithoutIncludedCustomModifierOptionsInput> | DayCreateWithoutIncludedCustomModifierOptionsInput[] | DayUncheckedCreateWithoutIncludedCustomModifierOptionsInput[]
-    connectOrCreate?: DayCreateOrConnectWithoutIncludedCustomModifierOptionsInput | DayCreateOrConnectWithoutIncludedCustomModifierOptionsInput[]
-    upsert?: DayUpsertWithWhereUniqueWithoutIncludedCustomModifierOptionsInput | DayUpsertWithWhereUniqueWithoutIncludedCustomModifierOptionsInput[]
-    set?: DayWhereUniqueInput | DayWhereUniqueInput[]
-    disconnect?: DayWhereUniqueInput | DayWhereUniqueInput[]
-    delete?: DayWhereUniqueInput | DayWhereUniqueInput[]
-    connect?: DayWhereUniqueInput | DayWhereUniqueInput[]
-    update?: DayUpdateWithWhereUniqueWithoutIncludedCustomModifierOptionsInput | DayUpdateWithWhereUniqueWithoutIncludedCustomModifierOptionsInput[]
-    updateMany?: DayUpdateManyWithWhereWithoutIncludedCustomModifierOptionsInput | DayUpdateManyWithWhereWithoutIncludedCustomModifierOptionsInput[]
-    deleteMany?: DayScalarWhereInput | DayScalarWhereInput[]
-  }
-
-  export type DayUncheckedUpdateManyWithoutOptionWhenPart1CompletedNestedInput = {
-    create?: XOR<DayCreateWithoutOptionWhenPart1CompletedInput, DayUncheckedCreateWithoutOptionWhenPart1CompletedInput> | DayCreateWithoutOptionWhenPart1CompletedInput[] | DayUncheckedCreateWithoutOptionWhenPart1CompletedInput[]
-    connectOrCreate?: DayCreateOrConnectWithoutOptionWhenPart1CompletedInput | DayCreateOrConnectWithoutOptionWhenPart1CompletedInput[]
-    upsert?: DayUpsertWithWhereUniqueWithoutOptionWhenPart1CompletedInput | DayUpsertWithWhereUniqueWithoutOptionWhenPart1CompletedInput[]
-    createMany?: DayCreateManyOptionWhenPart1CompletedInputEnvelope
-    set?: DayWhereUniqueInput | DayWhereUniqueInput[]
-    disconnect?: DayWhereUniqueInput | DayWhereUniqueInput[]
-    delete?: DayWhereUniqueInput | DayWhereUniqueInput[]
-    connect?: DayWhereUniqueInput | DayWhereUniqueInput[]
-    update?: DayUpdateWithWhereUniqueWithoutOptionWhenPart1CompletedInput | DayUpdateWithWhereUniqueWithoutOptionWhenPart1CompletedInput[]
-    updateMany?: DayUpdateManyWithWhereWithoutOptionWhenPart1CompletedInput | DayUpdateManyWithWhereWithoutOptionWhenPart1CompletedInput[]
-    deleteMany?: DayScalarWhereInput | DayScalarWhereInput[]
-  }
-
-  export type ChallengeModifierCreateNestedManyWithoutModifierPackExcludedInput = {
-    create?: XOR<ChallengeModifierCreateWithoutModifierPackExcludedInput, ChallengeModifierUncheckedCreateWithoutModifierPackExcludedInput> | ChallengeModifierCreateWithoutModifierPackExcludedInput[] | ChallengeModifierUncheckedCreateWithoutModifierPackExcludedInput[]
-    connectOrCreate?: ChallengeModifierCreateOrConnectWithoutModifierPackExcludedInput | ChallengeModifierCreateOrConnectWithoutModifierPackExcludedInput[]
-    connect?: ChallengeModifierWhereUniqueInput | ChallengeModifierWhereUniqueInput[]
-  }
-
-  export type ModifierOptionCreateNestedManyWithoutModifierPackExcludedInput = {
-    create?: XOR<ModifierOptionCreateWithoutModifierPackExcludedInput, ModifierOptionUncheckedCreateWithoutModifierPackExcludedInput> | ModifierOptionCreateWithoutModifierPackExcludedInput[] | ModifierOptionUncheckedCreateWithoutModifierPackExcludedInput[]
-    connectOrCreate?: ModifierOptionCreateOrConnectWithoutModifierPackExcludedInput | ModifierOptionCreateOrConnectWithoutModifierPackExcludedInput[]
-    connect?: ModifierOptionWhereUniqueInput | ModifierOptionWhereUniqueInput[]
-  }
-
-  export type ChallengeModifierCreateNestedManyWithoutModifierPackIncludedInput = {
-    create?: XOR<ChallengeModifierCreateWithoutModifierPackIncludedInput, ChallengeModifierUncheckedCreateWithoutModifierPackIncludedInput> | ChallengeModifierCreateWithoutModifierPackIncludedInput[] | ChallengeModifierUncheckedCreateWithoutModifierPackIncludedInput[]
-    connectOrCreate?: ChallengeModifierCreateOrConnectWithoutModifierPackIncludedInput | ChallengeModifierCreateOrConnectWithoutModifierPackIncludedInput[]
-    connect?: ChallengeModifierWhereUniqueInput | ChallengeModifierWhereUniqueInput[]
-  }
-
-  export type ModifierOptionCreateNestedManyWithoutModifierPackIncludedInput = {
-    create?: XOR<ModifierOptionCreateWithoutModifierPackIncludedInput, ModifierOptionUncheckedCreateWithoutModifierPackIncludedInput> | ModifierOptionCreateWithoutModifierPackIncludedInput[] | ModifierOptionUncheckedCreateWithoutModifierPackIncludedInput[]
-    connectOrCreate?: ModifierOptionCreateOrConnectWithoutModifierPackIncludedInput | ModifierOptionCreateOrConnectWithoutModifierPackIncludedInput[]
-    connect?: ModifierOptionWhereUniqueInput | ModifierOptionWhereUniqueInput[]
+  export type ModifierPackUncheckedUpdateManyWithoutIncludedInDayNestedInput = {
+    create?: XOR<ModifierPackCreateWithoutIncludedInDayInput, ModifierPackUncheckedCreateWithoutIncludedInDayInput> | ModifierPackCreateWithoutIncludedInDayInput[] | ModifierPackUncheckedCreateWithoutIncludedInDayInput[]
+    connectOrCreate?: ModifierPackCreateOrConnectWithoutIncludedInDayInput | ModifierPackCreateOrConnectWithoutIncludedInDayInput[]
+    upsert?: ModifierPackUpsertWithWhereUniqueWithoutIncludedInDayInput | ModifierPackUpsertWithWhereUniqueWithoutIncludedInDayInput[]
+    set?: ModifierPackWhereUniqueInput | ModifierPackWhereUniqueInput[]
+    disconnect?: ModifierPackWhereUniqueInput | ModifierPackWhereUniqueInput[]
+    delete?: ModifierPackWhereUniqueInput | ModifierPackWhereUniqueInput[]
+    connect?: ModifierPackWhereUniqueInput | ModifierPackWhereUniqueInput[]
+    update?: ModifierPackUpdateWithWhereUniqueWithoutIncludedInDayInput | ModifierPackUpdateWithWhereUniqueWithoutIncludedInDayInput[]
+    updateMany?: ModifierPackUpdateManyWithWhereWithoutIncludedInDayInput | ModifierPackUpdateManyWithWhereWithoutIncludedInDayInput[]
+    deleteMany?: ModifierPackScalarWhereInput | ModifierPackScalarWhereInput[]
   }
 
   export type UserCreateNestedOneWithoutModifierPackInput = {
@@ -20366,80 +21048,28 @@ export namespace Prisma {
     connect?: UserWhereUniqueInput
   }
 
-  export type ChallengeModifierUncheckedCreateNestedManyWithoutModifierPackExcludedInput = {
-    create?: XOR<ChallengeModifierCreateWithoutModifierPackExcludedInput, ChallengeModifierUncheckedCreateWithoutModifierPackExcludedInput> | ChallengeModifierCreateWithoutModifierPackExcludedInput[] | ChallengeModifierUncheckedCreateWithoutModifierPackExcludedInput[]
-    connectOrCreate?: ChallengeModifierCreateOrConnectWithoutModifierPackExcludedInput | ChallengeModifierCreateOrConnectWithoutModifierPackExcludedInput[]
-    connect?: ChallengeModifierWhereUniqueInput | ChallengeModifierWhereUniqueInput[]
-  }
-
-  export type ModifierOptionUncheckedCreateNestedManyWithoutModifierPackExcludedInput = {
-    create?: XOR<ModifierOptionCreateWithoutModifierPackExcludedInput, ModifierOptionUncheckedCreateWithoutModifierPackExcludedInput> | ModifierOptionCreateWithoutModifierPackExcludedInput[] | ModifierOptionUncheckedCreateWithoutModifierPackExcludedInput[]
-    connectOrCreate?: ModifierOptionCreateOrConnectWithoutModifierPackExcludedInput | ModifierOptionCreateOrConnectWithoutModifierPackExcludedInput[]
+  export type ModifierOptionCreateNestedManyWithoutExcludedModifierOptionsInput = {
+    create?: XOR<ModifierOptionCreateWithoutExcludedModifierOptionsInput, ModifierOptionUncheckedCreateWithoutExcludedModifierOptionsInput> | ModifierOptionCreateWithoutExcludedModifierOptionsInput[] | ModifierOptionUncheckedCreateWithoutExcludedModifierOptionsInput[]
+    connectOrCreate?: ModifierOptionCreateOrConnectWithoutExcludedModifierOptionsInput | ModifierOptionCreateOrConnectWithoutExcludedModifierOptionsInput[]
     connect?: ModifierOptionWhereUniqueInput | ModifierOptionWhereUniqueInput[]
   }
 
-  export type ChallengeModifierUncheckedCreateNestedManyWithoutModifierPackIncludedInput = {
-    create?: XOR<ChallengeModifierCreateWithoutModifierPackIncludedInput, ChallengeModifierUncheckedCreateWithoutModifierPackIncludedInput> | ChallengeModifierCreateWithoutModifierPackIncludedInput[] | ChallengeModifierUncheckedCreateWithoutModifierPackIncludedInput[]
-    connectOrCreate?: ChallengeModifierCreateOrConnectWithoutModifierPackIncludedInput | ChallengeModifierCreateOrConnectWithoutModifierPackIncludedInput[]
-    connect?: ChallengeModifierWhereUniqueInput | ChallengeModifierWhereUniqueInput[]
-  }
-
-  export type ModifierOptionUncheckedCreateNestedManyWithoutModifierPackIncludedInput = {
-    create?: XOR<ModifierOptionCreateWithoutModifierPackIncludedInput, ModifierOptionUncheckedCreateWithoutModifierPackIncludedInput> | ModifierOptionCreateWithoutModifierPackIncludedInput[] | ModifierOptionUncheckedCreateWithoutModifierPackIncludedInput[]
-    connectOrCreate?: ModifierOptionCreateOrConnectWithoutModifierPackIncludedInput | ModifierOptionCreateOrConnectWithoutModifierPackIncludedInput[]
+  export type ModifierOptionCreateNestedManyWithoutIncludedCustomModifierOptionsInput = {
+    create?: XOR<ModifierOptionCreateWithoutIncludedCustomModifierOptionsInput, ModifierOptionUncheckedCreateWithoutIncludedCustomModifierOptionsInput> | ModifierOptionCreateWithoutIncludedCustomModifierOptionsInput[] | ModifierOptionUncheckedCreateWithoutIncludedCustomModifierOptionsInput[]
+    connectOrCreate?: ModifierOptionCreateOrConnectWithoutIncludedCustomModifierOptionsInput | ModifierOptionCreateOrConnectWithoutIncludedCustomModifierOptionsInput[]
     connect?: ModifierOptionWhereUniqueInput | ModifierOptionWhereUniqueInput[]
   }
 
-  export type ChallengeModifierUpdateManyWithoutModifierPackExcludedNestedInput = {
-    create?: XOR<ChallengeModifierCreateWithoutModifierPackExcludedInput, ChallengeModifierUncheckedCreateWithoutModifierPackExcludedInput> | ChallengeModifierCreateWithoutModifierPackExcludedInput[] | ChallengeModifierUncheckedCreateWithoutModifierPackExcludedInput[]
-    connectOrCreate?: ChallengeModifierCreateOrConnectWithoutModifierPackExcludedInput | ChallengeModifierCreateOrConnectWithoutModifierPackExcludedInput[]
-    upsert?: ChallengeModifierUpsertWithWhereUniqueWithoutModifierPackExcludedInput | ChallengeModifierUpsertWithWhereUniqueWithoutModifierPackExcludedInput[]
-    set?: ChallengeModifierWhereUniqueInput | ChallengeModifierWhereUniqueInput[]
-    disconnect?: ChallengeModifierWhereUniqueInput | ChallengeModifierWhereUniqueInput[]
-    delete?: ChallengeModifierWhereUniqueInput | ChallengeModifierWhereUniqueInput[]
-    connect?: ChallengeModifierWhereUniqueInput | ChallengeModifierWhereUniqueInput[]
-    update?: ChallengeModifierUpdateWithWhereUniqueWithoutModifierPackExcludedInput | ChallengeModifierUpdateWithWhereUniqueWithoutModifierPackExcludedInput[]
-    updateMany?: ChallengeModifierUpdateManyWithWhereWithoutModifierPackExcludedInput | ChallengeModifierUpdateManyWithWhereWithoutModifierPackExcludedInput[]
-    deleteMany?: ChallengeModifierScalarWhereInput | ChallengeModifierScalarWhereInput[]
-  }
-
-  export type ModifierOptionUpdateManyWithoutModifierPackExcludedNestedInput = {
-    create?: XOR<ModifierOptionCreateWithoutModifierPackExcludedInput, ModifierOptionUncheckedCreateWithoutModifierPackExcludedInput> | ModifierOptionCreateWithoutModifierPackExcludedInput[] | ModifierOptionUncheckedCreateWithoutModifierPackExcludedInput[]
-    connectOrCreate?: ModifierOptionCreateOrConnectWithoutModifierPackExcludedInput | ModifierOptionCreateOrConnectWithoutModifierPackExcludedInput[]
-    upsert?: ModifierOptionUpsertWithWhereUniqueWithoutModifierPackExcludedInput | ModifierOptionUpsertWithWhereUniqueWithoutModifierPackExcludedInput[]
-    set?: ModifierOptionWhereUniqueInput | ModifierOptionWhereUniqueInput[]
-    disconnect?: ModifierOptionWhereUniqueInput | ModifierOptionWhereUniqueInput[]
-    delete?: ModifierOptionWhereUniqueInput | ModifierOptionWhereUniqueInput[]
+  export type ModifierOptionUncheckedCreateNestedManyWithoutExcludedModifierOptionsInput = {
+    create?: XOR<ModifierOptionCreateWithoutExcludedModifierOptionsInput, ModifierOptionUncheckedCreateWithoutExcludedModifierOptionsInput> | ModifierOptionCreateWithoutExcludedModifierOptionsInput[] | ModifierOptionUncheckedCreateWithoutExcludedModifierOptionsInput[]
+    connectOrCreate?: ModifierOptionCreateOrConnectWithoutExcludedModifierOptionsInput | ModifierOptionCreateOrConnectWithoutExcludedModifierOptionsInput[]
     connect?: ModifierOptionWhereUniqueInput | ModifierOptionWhereUniqueInput[]
-    update?: ModifierOptionUpdateWithWhereUniqueWithoutModifierPackExcludedInput | ModifierOptionUpdateWithWhereUniqueWithoutModifierPackExcludedInput[]
-    updateMany?: ModifierOptionUpdateManyWithWhereWithoutModifierPackExcludedInput | ModifierOptionUpdateManyWithWhereWithoutModifierPackExcludedInput[]
-    deleteMany?: ModifierOptionScalarWhereInput | ModifierOptionScalarWhereInput[]
   }
 
-  export type ChallengeModifierUpdateManyWithoutModifierPackIncludedNestedInput = {
-    create?: XOR<ChallengeModifierCreateWithoutModifierPackIncludedInput, ChallengeModifierUncheckedCreateWithoutModifierPackIncludedInput> | ChallengeModifierCreateWithoutModifierPackIncludedInput[] | ChallengeModifierUncheckedCreateWithoutModifierPackIncludedInput[]
-    connectOrCreate?: ChallengeModifierCreateOrConnectWithoutModifierPackIncludedInput | ChallengeModifierCreateOrConnectWithoutModifierPackIncludedInput[]
-    upsert?: ChallengeModifierUpsertWithWhereUniqueWithoutModifierPackIncludedInput | ChallengeModifierUpsertWithWhereUniqueWithoutModifierPackIncludedInput[]
-    set?: ChallengeModifierWhereUniqueInput | ChallengeModifierWhereUniqueInput[]
-    disconnect?: ChallengeModifierWhereUniqueInput | ChallengeModifierWhereUniqueInput[]
-    delete?: ChallengeModifierWhereUniqueInput | ChallengeModifierWhereUniqueInput[]
-    connect?: ChallengeModifierWhereUniqueInput | ChallengeModifierWhereUniqueInput[]
-    update?: ChallengeModifierUpdateWithWhereUniqueWithoutModifierPackIncludedInput | ChallengeModifierUpdateWithWhereUniqueWithoutModifierPackIncludedInput[]
-    updateMany?: ChallengeModifierUpdateManyWithWhereWithoutModifierPackIncludedInput | ChallengeModifierUpdateManyWithWhereWithoutModifierPackIncludedInput[]
-    deleteMany?: ChallengeModifierScalarWhereInput | ChallengeModifierScalarWhereInput[]
-  }
-
-  export type ModifierOptionUpdateManyWithoutModifierPackIncludedNestedInput = {
-    create?: XOR<ModifierOptionCreateWithoutModifierPackIncludedInput, ModifierOptionUncheckedCreateWithoutModifierPackIncludedInput> | ModifierOptionCreateWithoutModifierPackIncludedInput[] | ModifierOptionUncheckedCreateWithoutModifierPackIncludedInput[]
-    connectOrCreate?: ModifierOptionCreateOrConnectWithoutModifierPackIncludedInput | ModifierOptionCreateOrConnectWithoutModifierPackIncludedInput[]
-    upsert?: ModifierOptionUpsertWithWhereUniqueWithoutModifierPackIncludedInput | ModifierOptionUpsertWithWhereUniqueWithoutModifierPackIncludedInput[]
-    set?: ModifierOptionWhereUniqueInput | ModifierOptionWhereUniqueInput[]
-    disconnect?: ModifierOptionWhereUniqueInput | ModifierOptionWhereUniqueInput[]
-    delete?: ModifierOptionWhereUniqueInput | ModifierOptionWhereUniqueInput[]
+  export type ModifierOptionUncheckedCreateNestedManyWithoutIncludedCustomModifierOptionsInput = {
+    create?: XOR<ModifierOptionCreateWithoutIncludedCustomModifierOptionsInput, ModifierOptionUncheckedCreateWithoutIncludedCustomModifierOptionsInput> | ModifierOptionCreateWithoutIncludedCustomModifierOptionsInput[] | ModifierOptionUncheckedCreateWithoutIncludedCustomModifierOptionsInput[]
+    connectOrCreate?: ModifierOptionCreateOrConnectWithoutIncludedCustomModifierOptionsInput | ModifierOptionCreateOrConnectWithoutIncludedCustomModifierOptionsInput[]
     connect?: ModifierOptionWhereUniqueInput | ModifierOptionWhereUniqueInput[]
-    update?: ModifierOptionUpdateWithWhereUniqueWithoutModifierPackIncludedInput | ModifierOptionUpdateWithWhereUniqueWithoutModifierPackIncludedInput[]
-    updateMany?: ModifierOptionUpdateManyWithWhereWithoutModifierPackIncludedInput | ModifierOptionUpdateManyWithWhereWithoutModifierPackIncludedInput[]
-    deleteMany?: ModifierOptionScalarWhereInput | ModifierOptionScalarWhereInput[]
   }
 
   export type UserUpdateOneWithoutModifierPackNestedInput = {
@@ -20452,62 +21082,56 @@ export namespace Prisma {
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutModifierPackInput, UserUpdateWithoutModifierPackInput>, UserUncheckedUpdateWithoutModifierPackInput>
   }
 
-  export type ChallengeModifierUncheckedUpdateManyWithoutModifierPackExcludedNestedInput = {
-    create?: XOR<ChallengeModifierCreateWithoutModifierPackExcludedInput, ChallengeModifierUncheckedCreateWithoutModifierPackExcludedInput> | ChallengeModifierCreateWithoutModifierPackExcludedInput[] | ChallengeModifierUncheckedCreateWithoutModifierPackExcludedInput[]
-    connectOrCreate?: ChallengeModifierCreateOrConnectWithoutModifierPackExcludedInput | ChallengeModifierCreateOrConnectWithoutModifierPackExcludedInput[]
-    upsert?: ChallengeModifierUpsertWithWhereUniqueWithoutModifierPackExcludedInput | ChallengeModifierUpsertWithWhereUniqueWithoutModifierPackExcludedInput[]
-    set?: ChallengeModifierWhereUniqueInput | ChallengeModifierWhereUniqueInput[]
-    disconnect?: ChallengeModifierWhereUniqueInput | ChallengeModifierWhereUniqueInput[]
-    delete?: ChallengeModifierWhereUniqueInput | ChallengeModifierWhereUniqueInput[]
-    connect?: ChallengeModifierWhereUniqueInput | ChallengeModifierWhereUniqueInput[]
-    update?: ChallengeModifierUpdateWithWhereUniqueWithoutModifierPackExcludedInput | ChallengeModifierUpdateWithWhereUniqueWithoutModifierPackExcludedInput[]
-    updateMany?: ChallengeModifierUpdateManyWithWhereWithoutModifierPackExcludedInput | ChallengeModifierUpdateManyWithWhereWithoutModifierPackExcludedInput[]
-    deleteMany?: ChallengeModifierScalarWhereInput | ChallengeModifierScalarWhereInput[]
-  }
-
-  export type ModifierOptionUncheckedUpdateManyWithoutModifierPackExcludedNestedInput = {
-    create?: XOR<ModifierOptionCreateWithoutModifierPackExcludedInput, ModifierOptionUncheckedCreateWithoutModifierPackExcludedInput> | ModifierOptionCreateWithoutModifierPackExcludedInput[] | ModifierOptionUncheckedCreateWithoutModifierPackExcludedInput[]
-    connectOrCreate?: ModifierOptionCreateOrConnectWithoutModifierPackExcludedInput | ModifierOptionCreateOrConnectWithoutModifierPackExcludedInput[]
-    upsert?: ModifierOptionUpsertWithWhereUniqueWithoutModifierPackExcludedInput | ModifierOptionUpsertWithWhereUniqueWithoutModifierPackExcludedInput[]
+  export type ModifierOptionUpdateManyWithoutExcludedModifierOptionsNestedInput = {
+    create?: XOR<ModifierOptionCreateWithoutExcludedModifierOptionsInput, ModifierOptionUncheckedCreateWithoutExcludedModifierOptionsInput> | ModifierOptionCreateWithoutExcludedModifierOptionsInput[] | ModifierOptionUncheckedCreateWithoutExcludedModifierOptionsInput[]
+    connectOrCreate?: ModifierOptionCreateOrConnectWithoutExcludedModifierOptionsInput | ModifierOptionCreateOrConnectWithoutExcludedModifierOptionsInput[]
+    upsert?: ModifierOptionUpsertWithWhereUniqueWithoutExcludedModifierOptionsInput | ModifierOptionUpsertWithWhereUniqueWithoutExcludedModifierOptionsInput[]
     set?: ModifierOptionWhereUniqueInput | ModifierOptionWhereUniqueInput[]
     disconnect?: ModifierOptionWhereUniqueInput | ModifierOptionWhereUniqueInput[]
     delete?: ModifierOptionWhereUniqueInput | ModifierOptionWhereUniqueInput[]
     connect?: ModifierOptionWhereUniqueInput | ModifierOptionWhereUniqueInput[]
-    update?: ModifierOptionUpdateWithWhereUniqueWithoutModifierPackExcludedInput | ModifierOptionUpdateWithWhereUniqueWithoutModifierPackExcludedInput[]
-    updateMany?: ModifierOptionUpdateManyWithWhereWithoutModifierPackExcludedInput | ModifierOptionUpdateManyWithWhereWithoutModifierPackExcludedInput[]
+    update?: ModifierOptionUpdateWithWhereUniqueWithoutExcludedModifierOptionsInput | ModifierOptionUpdateWithWhereUniqueWithoutExcludedModifierOptionsInput[]
+    updateMany?: ModifierOptionUpdateManyWithWhereWithoutExcludedModifierOptionsInput | ModifierOptionUpdateManyWithWhereWithoutExcludedModifierOptionsInput[]
     deleteMany?: ModifierOptionScalarWhereInput | ModifierOptionScalarWhereInput[]
   }
 
-  export type ChallengeModifierUncheckedUpdateManyWithoutModifierPackIncludedNestedInput = {
-    create?: XOR<ChallengeModifierCreateWithoutModifierPackIncludedInput, ChallengeModifierUncheckedCreateWithoutModifierPackIncludedInput> | ChallengeModifierCreateWithoutModifierPackIncludedInput[] | ChallengeModifierUncheckedCreateWithoutModifierPackIncludedInput[]
-    connectOrCreate?: ChallengeModifierCreateOrConnectWithoutModifierPackIncludedInput | ChallengeModifierCreateOrConnectWithoutModifierPackIncludedInput[]
-    upsert?: ChallengeModifierUpsertWithWhereUniqueWithoutModifierPackIncludedInput | ChallengeModifierUpsertWithWhereUniqueWithoutModifierPackIncludedInput[]
-    set?: ChallengeModifierWhereUniqueInput | ChallengeModifierWhereUniqueInput[]
-    disconnect?: ChallengeModifierWhereUniqueInput | ChallengeModifierWhereUniqueInput[]
-    delete?: ChallengeModifierWhereUniqueInput | ChallengeModifierWhereUniqueInput[]
-    connect?: ChallengeModifierWhereUniqueInput | ChallengeModifierWhereUniqueInput[]
-    update?: ChallengeModifierUpdateWithWhereUniqueWithoutModifierPackIncludedInput | ChallengeModifierUpdateWithWhereUniqueWithoutModifierPackIncludedInput[]
-    updateMany?: ChallengeModifierUpdateManyWithWhereWithoutModifierPackIncludedInput | ChallengeModifierUpdateManyWithWhereWithoutModifierPackIncludedInput[]
-    deleteMany?: ChallengeModifierScalarWhereInput | ChallengeModifierScalarWhereInput[]
-  }
-
-  export type ModifierOptionUncheckedUpdateManyWithoutModifierPackIncludedNestedInput = {
-    create?: XOR<ModifierOptionCreateWithoutModifierPackIncludedInput, ModifierOptionUncheckedCreateWithoutModifierPackIncludedInput> | ModifierOptionCreateWithoutModifierPackIncludedInput[] | ModifierOptionUncheckedCreateWithoutModifierPackIncludedInput[]
-    connectOrCreate?: ModifierOptionCreateOrConnectWithoutModifierPackIncludedInput | ModifierOptionCreateOrConnectWithoutModifierPackIncludedInput[]
-    upsert?: ModifierOptionUpsertWithWhereUniqueWithoutModifierPackIncludedInput | ModifierOptionUpsertWithWhereUniqueWithoutModifierPackIncludedInput[]
+  export type ModifierOptionUpdateManyWithoutIncludedCustomModifierOptionsNestedInput = {
+    create?: XOR<ModifierOptionCreateWithoutIncludedCustomModifierOptionsInput, ModifierOptionUncheckedCreateWithoutIncludedCustomModifierOptionsInput> | ModifierOptionCreateWithoutIncludedCustomModifierOptionsInput[] | ModifierOptionUncheckedCreateWithoutIncludedCustomModifierOptionsInput[]
+    connectOrCreate?: ModifierOptionCreateOrConnectWithoutIncludedCustomModifierOptionsInput | ModifierOptionCreateOrConnectWithoutIncludedCustomModifierOptionsInput[]
+    upsert?: ModifierOptionUpsertWithWhereUniqueWithoutIncludedCustomModifierOptionsInput | ModifierOptionUpsertWithWhereUniqueWithoutIncludedCustomModifierOptionsInput[]
     set?: ModifierOptionWhereUniqueInput | ModifierOptionWhereUniqueInput[]
     disconnect?: ModifierOptionWhereUniqueInput | ModifierOptionWhereUniqueInput[]
     delete?: ModifierOptionWhereUniqueInput | ModifierOptionWhereUniqueInput[]
     connect?: ModifierOptionWhereUniqueInput | ModifierOptionWhereUniqueInput[]
-    update?: ModifierOptionUpdateWithWhereUniqueWithoutModifierPackIncludedInput | ModifierOptionUpdateWithWhereUniqueWithoutModifierPackIncludedInput[]
-    updateMany?: ModifierOptionUpdateManyWithWhereWithoutModifierPackIncludedInput | ModifierOptionUpdateManyWithWhereWithoutModifierPackIncludedInput[]
+    update?: ModifierOptionUpdateWithWhereUniqueWithoutIncludedCustomModifierOptionsInput | ModifierOptionUpdateWithWhereUniqueWithoutIncludedCustomModifierOptionsInput[]
+    updateMany?: ModifierOptionUpdateManyWithWhereWithoutIncludedCustomModifierOptionsInput | ModifierOptionUpdateManyWithWhereWithoutIncludedCustomModifierOptionsInput[]
     deleteMany?: ModifierOptionScalarWhereInput | ModifierOptionScalarWhereInput[]
   }
 
-  export type GameCreateNestedOneWithoutUpvoteInput = {
-    create?: XOR<GameCreateWithoutUpvoteInput, GameUncheckedCreateWithoutUpvoteInput>
-    connectOrCreate?: GameCreateOrConnectWithoutUpvoteInput
-    connect?: GameWhereUniqueInput
+  export type ModifierOptionUncheckedUpdateManyWithoutExcludedModifierOptionsNestedInput = {
+    create?: XOR<ModifierOptionCreateWithoutExcludedModifierOptionsInput, ModifierOptionUncheckedCreateWithoutExcludedModifierOptionsInput> | ModifierOptionCreateWithoutExcludedModifierOptionsInput[] | ModifierOptionUncheckedCreateWithoutExcludedModifierOptionsInput[]
+    connectOrCreate?: ModifierOptionCreateOrConnectWithoutExcludedModifierOptionsInput | ModifierOptionCreateOrConnectWithoutExcludedModifierOptionsInput[]
+    upsert?: ModifierOptionUpsertWithWhereUniqueWithoutExcludedModifierOptionsInput | ModifierOptionUpsertWithWhereUniqueWithoutExcludedModifierOptionsInput[]
+    set?: ModifierOptionWhereUniqueInput | ModifierOptionWhereUniqueInput[]
+    disconnect?: ModifierOptionWhereUniqueInput | ModifierOptionWhereUniqueInput[]
+    delete?: ModifierOptionWhereUniqueInput | ModifierOptionWhereUniqueInput[]
+    connect?: ModifierOptionWhereUniqueInput | ModifierOptionWhereUniqueInput[]
+    update?: ModifierOptionUpdateWithWhereUniqueWithoutExcludedModifierOptionsInput | ModifierOptionUpdateWithWhereUniqueWithoutExcludedModifierOptionsInput[]
+    updateMany?: ModifierOptionUpdateManyWithWhereWithoutExcludedModifierOptionsInput | ModifierOptionUpdateManyWithWhereWithoutExcludedModifierOptionsInput[]
+    deleteMany?: ModifierOptionScalarWhereInput | ModifierOptionScalarWhereInput[]
+  }
+
+  export type ModifierOptionUncheckedUpdateManyWithoutIncludedCustomModifierOptionsNestedInput = {
+    create?: XOR<ModifierOptionCreateWithoutIncludedCustomModifierOptionsInput, ModifierOptionUncheckedCreateWithoutIncludedCustomModifierOptionsInput> | ModifierOptionCreateWithoutIncludedCustomModifierOptionsInput[] | ModifierOptionUncheckedCreateWithoutIncludedCustomModifierOptionsInput[]
+    connectOrCreate?: ModifierOptionCreateOrConnectWithoutIncludedCustomModifierOptionsInput | ModifierOptionCreateOrConnectWithoutIncludedCustomModifierOptionsInput[]
+    upsert?: ModifierOptionUpsertWithWhereUniqueWithoutIncludedCustomModifierOptionsInput | ModifierOptionUpsertWithWhereUniqueWithoutIncludedCustomModifierOptionsInput[]
+    set?: ModifierOptionWhereUniqueInput | ModifierOptionWhereUniqueInput[]
+    disconnect?: ModifierOptionWhereUniqueInput | ModifierOptionWhereUniqueInput[]
+    delete?: ModifierOptionWhereUniqueInput | ModifierOptionWhereUniqueInput[]
+    connect?: ModifierOptionWhereUniqueInput | ModifierOptionWhereUniqueInput[]
+    update?: ModifierOptionUpdateWithWhereUniqueWithoutIncludedCustomModifierOptionsInput | ModifierOptionUpdateWithWhereUniqueWithoutIncludedCustomModifierOptionsInput[]
+    updateMany?: ModifierOptionUpdateManyWithWhereWithoutIncludedCustomModifierOptionsInput | ModifierOptionUpdateManyWithWhereWithoutIncludedCustomModifierOptionsInput[]
+    deleteMany?: ModifierOptionScalarWhereInput | ModifierOptionScalarWhereInput[]
   }
 
   export type UserCreateNestedOneWithoutUpvoteInput = {
@@ -20516,12 +21140,10 @@ export namespace Prisma {
     connect?: UserWhereUniqueInput
   }
 
-  export type GameUpdateOneRequiredWithoutUpvoteNestedInput = {
+  export type GameCreateNestedOneWithoutUpvoteInput = {
     create?: XOR<GameCreateWithoutUpvoteInput, GameUncheckedCreateWithoutUpvoteInput>
     connectOrCreate?: GameCreateOrConnectWithoutUpvoteInput
-    upsert?: GameUpsertWithoutUpvoteInput
     connect?: GameWhereUniqueInput
-    update?: XOR<XOR<GameUpdateToOneWithWhereWithoutUpvoteInput, GameUpdateWithoutUpvoteInput>, GameUncheckedUpdateWithoutUpvoteInput>
   }
 
   export type UserUpdateOneRequiredWithoutUpvoteNestedInput = {
@@ -20532,10 +21154,12 @@ export namespace Prisma {
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutUpvoteInput, UserUpdateWithoutUpvoteInput>, UserUncheckedUpdateWithoutUpvoteInput>
   }
 
-  export type GameCreateNestedOneWithoutDownvoteInput = {
-    create?: XOR<GameCreateWithoutDownvoteInput, GameUncheckedCreateWithoutDownvoteInput>
-    connectOrCreate?: GameCreateOrConnectWithoutDownvoteInput
+  export type GameUpdateOneRequiredWithoutUpvoteNestedInput = {
+    create?: XOR<GameCreateWithoutUpvoteInput, GameUncheckedCreateWithoutUpvoteInput>
+    connectOrCreate?: GameCreateOrConnectWithoutUpvoteInput
+    upsert?: GameUpsertWithoutUpvoteInput
     connect?: GameWhereUniqueInput
+    update?: XOR<XOR<GameUpdateToOneWithWhereWithoutUpvoteInput, GameUpdateWithoutUpvoteInput>, GameUncheckedUpdateWithoutUpvoteInput>
   }
 
   export type UserCreateNestedOneWithoutDownvoteInput = {
@@ -20544,12 +21168,10 @@ export namespace Prisma {
     connect?: UserWhereUniqueInput
   }
 
-  export type GameUpdateOneRequiredWithoutDownvoteNestedInput = {
+  export type GameCreateNestedOneWithoutDownvoteInput = {
     create?: XOR<GameCreateWithoutDownvoteInput, GameUncheckedCreateWithoutDownvoteInput>
     connectOrCreate?: GameCreateOrConnectWithoutDownvoteInput
-    upsert?: GameUpsertWithoutDownvoteInput
     connect?: GameWhereUniqueInput
-    update?: XOR<XOR<GameUpdateToOneWithWhereWithoutDownvoteInput, GameUpdateWithoutDownvoteInput>, GameUncheckedUpdateWithoutDownvoteInput>
   }
 
   export type UserUpdateOneRequiredWithoutDownvoteNestedInput = {
@@ -20560,6 +21182,14 @@ export namespace Prisma {
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutDownvoteInput, UserUpdateWithoutDownvoteInput>, UserUncheckedUpdateWithoutDownvoteInput>
   }
 
+  export type GameUpdateOneRequiredWithoutDownvoteNestedInput = {
+    create?: XOR<GameCreateWithoutDownvoteInput, GameUncheckedCreateWithoutDownvoteInput>
+    connectOrCreate?: GameCreateOrConnectWithoutDownvoteInput
+    upsert?: GameUpsertWithoutDownvoteInput
+    connect?: GameWhereUniqueInput
+    update?: XOR<XOR<GameUpdateToOneWithWhereWithoutDownvoteInput, GameUpdateWithoutDownvoteInput>, GameUncheckedUpdateWithoutDownvoteInput>
+  }
+
   export type TestChairCreateNestedManyWithoutTableInput = {
     create?: XOR<TestChairCreateWithoutTableInput, TestChairUncheckedCreateWithoutTableInput> | TestChairCreateWithoutTableInput[] | TestChairUncheckedCreateWithoutTableInput[]
     connectOrCreate?: TestChairCreateOrConnectWithoutTableInput | TestChairCreateOrConnectWithoutTableInput[]
@@ -20567,11 +21197,25 @@ export namespace Prisma {
     connect?: TestChairWhereUniqueInput | TestChairWhereUniqueInput[]
   }
 
+  export type TestPlateCreateNestedManyWithoutTableInput = {
+    create?: XOR<TestPlateCreateWithoutTableInput, TestPlateUncheckedCreateWithoutTableInput> | TestPlateCreateWithoutTableInput[] | TestPlateUncheckedCreateWithoutTableInput[]
+    connectOrCreate?: TestPlateCreateOrConnectWithoutTableInput | TestPlateCreateOrConnectWithoutTableInput[]
+    createMany?: TestPlateCreateManyTableInputEnvelope
+    connect?: TestPlateWhereUniqueInput | TestPlateWhereUniqueInput[]
+  }
+
   export type TestChairUncheckedCreateNestedManyWithoutTableInput = {
     create?: XOR<TestChairCreateWithoutTableInput, TestChairUncheckedCreateWithoutTableInput> | TestChairCreateWithoutTableInput[] | TestChairUncheckedCreateWithoutTableInput[]
     connectOrCreate?: TestChairCreateOrConnectWithoutTableInput | TestChairCreateOrConnectWithoutTableInput[]
     createMany?: TestChairCreateManyTableInputEnvelope
     connect?: TestChairWhereUniqueInput | TestChairWhereUniqueInput[]
+  }
+
+  export type TestPlateUncheckedCreateNestedManyWithoutTableInput = {
+    create?: XOR<TestPlateCreateWithoutTableInput, TestPlateUncheckedCreateWithoutTableInput> | TestPlateCreateWithoutTableInput[] | TestPlateUncheckedCreateWithoutTableInput[]
+    connectOrCreate?: TestPlateCreateOrConnectWithoutTableInput | TestPlateCreateOrConnectWithoutTableInput[]
+    createMany?: TestPlateCreateManyTableInputEnvelope
+    connect?: TestPlateWhereUniqueInput | TestPlateWhereUniqueInput[]
   }
 
   export type TestChairUpdateManyWithoutTableNestedInput = {
@@ -20588,6 +21232,20 @@ export namespace Prisma {
     deleteMany?: TestChairScalarWhereInput | TestChairScalarWhereInput[]
   }
 
+  export type TestPlateUpdateManyWithoutTableNestedInput = {
+    create?: XOR<TestPlateCreateWithoutTableInput, TestPlateUncheckedCreateWithoutTableInput> | TestPlateCreateWithoutTableInput[] | TestPlateUncheckedCreateWithoutTableInput[]
+    connectOrCreate?: TestPlateCreateOrConnectWithoutTableInput | TestPlateCreateOrConnectWithoutTableInput[]
+    upsert?: TestPlateUpsertWithWhereUniqueWithoutTableInput | TestPlateUpsertWithWhereUniqueWithoutTableInput[]
+    createMany?: TestPlateCreateManyTableInputEnvelope
+    set?: TestPlateWhereUniqueInput | TestPlateWhereUniqueInput[]
+    disconnect?: TestPlateWhereUniqueInput | TestPlateWhereUniqueInput[]
+    delete?: TestPlateWhereUniqueInput | TestPlateWhereUniqueInput[]
+    connect?: TestPlateWhereUniqueInput | TestPlateWhereUniqueInput[]
+    update?: TestPlateUpdateWithWhereUniqueWithoutTableInput | TestPlateUpdateWithWhereUniqueWithoutTableInput[]
+    updateMany?: TestPlateUpdateManyWithWhereWithoutTableInput | TestPlateUpdateManyWithWhereWithoutTableInput[]
+    deleteMany?: TestPlateScalarWhereInput | TestPlateScalarWhereInput[]
+  }
+
   export type TestChairUncheckedUpdateManyWithoutTableNestedInput = {
     create?: XOR<TestChairCreateWithoutTableInput, TestChairUncheckedCreateWithoutTableInput> | TestChairCreateWithoutTableInput[] | TestChairUncheckedCreateWithoutTableInput[]
     connectOrCreate?: TestChairCreateOrConnectWithoutTableInput | TestChairCreateOrConnectWithoutTableInput[]
@@ -20602,6 +21260,20 @@ export namespace Prisma {
     deleteMany?: TestChairScalarWhereInput | TestChairScalarWhereInput[]
   }
 
+  export type TestPlateUncheckedUpdateManyWithoutTableNestedInput = {
+    create?: XOR<TestPlateCreateWithoutTableInput, TestPlateUncheckedCreateWithoutTableInput> | TestPlateCreateWithoutTableInput[] | TestPlateUncheckedCreateWithoutTableInput[]
+    connectOrCreate?: TestPlateCreateOrConnectWithoutTableInput | TestPlateCreateOrConnectWithoutTableInput[]
+    upsert?: TestPlateUpsertWithWhereUniqueWithoutTableInput | TestPlateUpsertWithWhereUniqueWithoutTableInput[]
+    createMany?: TestPlateCreateManyTableInputEnvelope
+    set?: TestPlateWhereUniqueInput | TestPlateWhereUniqueInput[]
+    disconnect?: TestPlateWhereUniqueInput | TestPlateWhereUniqueInput[]
+    delete?: TestPlateWhereUniqueInput | TestPlateWhereUniqueInput[]
+    connect?: TestPlateWhereUniqueInput | TestPlateWhereUniqueInput[]
+    update?: TestPlateUpdateWithWhereUniqueWithoutTableInput | TestPlateUpdateWithWhereUniqueWithoutTableInput[]
+    updateMany?: TestPlateUpdateManyWithWhereWithoutTableInput | TestPlateUpdateManyWithWhereWithoutTableInput[]
+    deleteMany?: TestPlateScalarWhereInput | TestPlateScalarWhereInput[]
+  }
+
   export type TestTableCreateNestedOneWithoutTestChairInput = {
     create?: XOR<TestTableCreateWithoutTestChairInput, TestTableUncheckedCreateWithoutTestChairInput>
     connectOrCreate?: TestTableCreateOrConnectWithoutTestChairInput
@@ -20614,6 +21286,20 @@ export namespace Prisma {
     upsert?: TestTableUpsertWithoutTestChairInput
     connect?: TestTableWhereUniqueInput
     update?: XOR<XOR<TestTableUpdateToOneWithWhereWithoutTestChairInput, TestTableUpdateWithoutTestChairInput>, TestTableUncheckedUpdateWithoutTestChairInput>
+  }
+
+  export type TestTableCreateNestedOneWithoutTestPlateInput = {
+    create?: XOR<TestTableCreateWithoutTestPlateInput, TestTableUncheckedCreateWithoutTestPlateInput>
+    connectOrCreate?: TestTableCreateOrConnectWithoutTestPlateInput
+    connect?: TestTableWhereUniqueInput
+  }
+
+  export type TestTableUpdateOneRequiredWithoutTestPlateNestedInput = {
+    create?: XOR<TestTableCreateWithoutTestPlateInput, TestTableUncheckedCreateWithoutTestPlateInput>
+    connectOrCreate?: TestTableCreateOrConnectWithoutTestPlateInput
+    upsert?: TestTableUpsertWithoutTestPlateInput
+    connect?: TestTableWhereUniqueInput
+    update?: XOR<XOR<TestTableUpdateToOneWithWhereWithoutTestPlateInput, TestTableUpdateWithoutTestPlateInput>, TestTableUncheckedUpdateWithoutTestPlateInput>
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -20817,88 +21503,6 @@ export namespace Prisma {
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
-  export type GameCreateWithoutUserInput = {
-    dateCreated?: Date | string
-    number: number
-    year: number
-    name: string
-    playerName?: string | null
-    currentDay?: number
-    currentDayCompleted?: boolean
-    currentRerollTokens?: number
-    rerollTokensSpent?: number
-    rerollTokensSpentDuringPart2Raw?: number
-    rerollTokensSpentDuringPart2Limited?: number
-    repositoryLink?: string | null
-    progressSheetLink?: string
-    isPublic?: boolean
-    score?: number
-    dateCompleted?: Date | string | null
-    Rank?: RankCreateNestedOneWithoutGameInput
-    Day?: DayCreateNestedManyWithoutGameInput
-    PublicProfile?: PublicProfileCreateNestedOneWithoutGameInput
-    Upvote?: UpvoteCreateNestedManyWithoutGameInput
-    Downvote?: DownvoteCreateNestedManyWithoutGameInput
-  }
-
-  export type GameUncheckedCreateWithoutUserInput = {
-    id?: number
-    dateCreated?: Date | string
-    number: number
-    year: number
-    name: string
-    playerName?: string | null
-    currentDay?: number
-    currentDayCompleted?: boolean
-    currentRerollTokens?: number
-    rerollTokensSpent?: number
-    rerollTokensSpentDuringPart2Raw?: number
-    rerollTokensSpentDuringPart2Limited?: number
-    repositoryLink?: string | null
-    progressSheetLink?: string
-    isPublic?: boolean
-    publicProfileId?: number | null
-    score?: number
-    rankId?: number | null
-    dateCompleted?: Date | string | null
-    Day?: DayUncheckedCreateNestedManyWithoutGameInput
-    Upvote?: UpvoteUncheckedCreateNestedManyWithoutGameInput
-    Downvote?: DownvoteUncheckedCreateNestedManyWithoutGameInput
-  }
-
-  export type GameCreateOrConnectWithoutUserInput = {
-    where: GameWhereUniqueInput
-    create: XOR<GameCreateWithoutUserInput, GameUncheckedCreateWithoutUserInput>
-  }
-
-  export type GameCreateManyUserInputEnvelope = {
-    data: GameCreateManyUserInput | GameCreateManyUserInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type PublicProfileCreateWithoutUserInput = {
-    dateCreated?: Date | string
-    name: string
-    Game?: GameCreateNestedManyWithoutPublicProfileInput
-  }
-
-  export type PublicProfileUncheckedCreateWithoutUserInput = {
-    id?: number
-    dateCreated?: Date | string
-    name: string
-    Game?: GameUncheckedCreateNestedManyWithoutPublicProfileInput
-  }
-
-  export type PublicProfileCreateOrConnectWithoutUserInput = {
-    where: PublicProfileWhereUniqueInput
-    create: XOR<PublicProfileCreateWithoutUserInput, PublicProfileUncheckedCreateWithoutUserInput>
-  }
-
-  export type PublicProfileCreateManyUserInputEnvelope = {
-    data: PublicProfileCreateManyUserInput | PublicProfileCreateManyUserInput[]
-    skipDuplicates?: boolean
-  }
-
   export type ChallengeModifierCreateWithoutCreatedByInput = {
     dateCreated?: Date | string
     name: string
@@ -20907,15 +21511,13 @@ export namespace Prisma {
     explanatoryUrl?: string | null
     standard?: boolean
     isPublic?: boolean
-    ModifierOption?: ModifierOptionCreateNestedManyWithoutChallengeModifierInput
     Day?: DayCreateNestedManyWithoutChallengeModifierInput
-    ModifierPackExcluded?: ModifierPackCreateNestedManyWithoutExcludedChallengeModifiersInput
-    ModifierPackIncluded?: ModifierPackCreateNestedManyWithoutEncludedCustomChallengeModifiersInput
+    DayCompletedInPart1?: DayCreateNestedManyWithoutModifierWhenPart1CompletedInput
+    ModifierOption?: ModifierOptionCreateNestedManyWithoutChallengeModifierInput
     UserExcluded?: UserCreateNestedManyWithoutDefaultExcludedChallengeModifiersInput
     UserIncluded?: UserCreateNestedManyWithoutDefaultIncludedCustomChallengeModifiersInput
-    ExcludedFromDay?: DayCreateNestedManyWithoutExcludedChallengeModifiersInput
-    IncludedInDay?: DayCreateNestedManyWithoutIncludedCustomChallengeModifiersInput
-    DayCompletedInPart1?: DayCreateNestedManyWithoutModifierWhenPart1CompletedInput
+    ModifierPackExcluded?: DayCreateNestedManyWithoutExcludedChallengeModifiersInput
+    ModifierPackIncluded?: DayCreateNestedManyWithoutEncludedCustomChallengeModifiersInput
   }
 
   export type ChallengeModifierUncheckedCreateWithoutCreatedByInput = {
@@ -20927,15 +21529,13 @@ export namespace Prisma {
     explanatoryUrl?: string | null
     standard?: boolean
     isPublic?: boolean
-    ModifierOption?: ModifierOptionUncheckedCreateNestedManyWithoutChallengeModifierInput
     Day?: DayUncheckedCreateNestedManyWithoutChallengeModifierInput
-    ModifierPackExcluded?: ModifierPackUncheckedCreateNestedManyWithoutExcludedChallengeModifiersInput
-    ModifierPackIncluded?: ModifierPackUncheckedCreateNestedManyWithoutEncludedCustomChallengeModifiersInput
+    DayCompletedInPart1?: DayUncheckedCreateNestedManyWithoutModifierWhenPart1CompletedInput
+    ModifierOption?: ModifierOptionUncheckedCreateNestedManyWithoutChallengeModifierInput
     UserExcluded?: UserUncheckedCreateNestedManyWithoutDefaultExcludedChallengeModifiersInput
     UserIncluded?: UserUncheckedCreateNestedManyWithoutDefaultIncludedCustomChallengeModifiersInput
-    ExcludedFromDay?: DayUncheckedCreateNestedManyWithoutExcludedChallengeModifiersInput
-    IncludedInDay?: DayUncheckedCreateNestedManyWithoutIncludedCustomChallengeModifiersInput
-    DayCompletedInPart1?: DayUncheckedCreateNestedManyWithoutModifierWhenPart1CompletedInput
+    ModifierPackExcluded?: DayUncheckedCreateNestedManyWithoutExcludedChallengeModifiersInput
+    ModifierPackIncluded?: DayUncheckedCreateNestedManyWithoutEncludedCustomChallengeModifiersInput
   }
 
   export type ChallengeModifierCreateOrConnectWithoutCreatedByInput = {
@@ -20945,254 +21545,6 @@ export namespace Prisma {
 
   export type ChallengeModifierCreateManyCreatedByInputEnvelope = {
     data: ChallengeModifierCreateManyCreatedByInput | ChallengeModifierCreateManyCreatedByInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type ModifierOptionCreateWithoutCreatedByInput = {
-    dateCreated?: Date | string
-    name: string
-    text: string
-    explanatoryUrl?: string | null
-    standard?: boolean
-    isPublic?: boolean
-    ChallengeModifier: ChallengeModifierCreateNestedOneWithoutModifierOptionInput
-    Day?: DayCreateNestedManyWithoutModifierOptionInput
-    ModifierPackExcluded?: ModifierPackCreateNestedManyWithoutExcludedModifierOptionsInput
-    ModifierPackIncluded?: ModifierPackCreateNestedManyWithoutIncludedCustomModifierOptionsInput
-    UserExcluded?: UserCreateNestedManyWithoutDefaultExcludedModifierOptionsInput
-    UserIncluded?: UserCreateNestedManyWithoutDefaultIncludedCustomModifierOptionsInput
-    ExcludedFromDay?: DayCreateNestedManyWithoutExcludedModifierOptionsInput
-    IncludedInDay?: DayCreateNestedManyWithoutIncludedCustomModifierOptionsInput
-    DayCompletedInPart1?: DayCreateNestedManyWithoutOptionWhenPart1CompletedInput
-  }
-
-  export type ModifierOptionUncheckedCreateWithoutCreatedByInput = {
-    id?: number
-    dateCreated?: Date | string
-    challengeModifierId: number
-    name: string
-    text: string
-    explanatoryUrl?: string | null
-    standard?: boolean
-    isPublic?: boolean
-    Day?: DayUncheckedCreateNestedManyWithoutModifierOptionInput
-    ModifierPackExcluded?: ModifierPackUncheckedCreateNestedManyWithoutExcludedModifierOptionsInput
-    ModifierPackIncluded?: ModifierPackUncheckedCreateNestedManyWithoutIncludedCustomModifierOptionsInput
-    UserExcluded?: UserUncheckedCreateNestedManyWithoutDefaultExcludedModifierOptionsInput
-    UserIncluded?: UserUncheckedCreateNestedManyWithoutDefaultIncludedCustomModifierOptionsInput
-    ExcludedFromDay?: DayUncheckedCreateNestedManyWithoutExcludedModifierOptionsInput
-    IncludedInDay?: DayUncheckedCreateNestedManyWithoutIncludedCustomModifierOptionsInput
-    DayCompletedInPart1?: DayUncheckedCreateNestedManyWithoutOptionWhenPart1CompletedInput
-  }
-
-  export type ModifierOptionCreateOrConnectWithoutCreatedByInput = {
-    where: ModifierOptionWhereUniqueInput
-    create: XOR<ModifierOptionCreateWithoutCreatedByInput, ModifierOptionUncheckedCreateWithoutCreatedByInput>
-  }
-
-  export type ModifierOptionCreateManyCreatedByInputEnvelope = {
-    data: ModifierOptionCreateManyCreatedByInput | ModifierOptionCreateManyCreatedByInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type ChallengeModifierCreateWithoutUserExcludedInput = {
-    dateCreated?: Date | string
-    name: string
-    text: string
-    hasOptions?: boolean
-    explanatoryUrl?: string | null
-    standard?: boolean
-    isPublic?: boolean
-    CreatedBy?: UserCreateNestedOneWithoutChallengeModifierInput
-    ModifierOption?: ModifierOptionCreateNestedManyWithoutChallengeModifierInput
-    Day?: DayCreateNestedManyWithoutChallengeModifierInput
-    ModifierPackExcluded?: ModifierPackCreateNestedManyWithoutExcludedChallengeModifiersInput
-    ModifierPackIncluded?: ModifierPackCreateNestedManyWithoutEncludedCustomChallengeModifiersInput
-    UserIncluded?: UserCreateNestedManyWithoutDefaultIncludedCustomChallengeModifiersInput
-    ExcludedFromDay?: DayCreateNestedManyWithoutExcludedChallengeModifiersInput
-    IncludedInDay?: DayCreateNestedManyWithoutIncludedCustomChallengeModifiersInput
-    DayCompletedInPart1?: DayCreateNestedManyWithoutModifierWhenPart1CompletedInput
-  }
-
-  export type ChallengeModifierUncheckedCreateWithoutUserExcludedInput = {
-    id?: number
-    dateCreated?: Date | string
-    name: string
-    text: string
-    hasOptions?: boolean
-    explanatoryUrl?: string | null
-    standard?: boolean
-    createdById?: string | null
-    isPublic?: boolean
-    ModifierOption?: ModifierOptionUncheckedCreateNestedManyWithoutChallengeModifierInput
-    Day?: DayUncheckedCreateNestedManyWithoutChallengeModifierInput
-    ModifierPackExcluded?: ModifierPackUncheckedCreateNestedManyWithoutExcludedChallengeModifiersInput
-    ModifierPackIncluded?: ModifierPackUncheckedCreateNestedManyWithoutEncludedCustomChallengeModifiersInput
-    UserIncluded?: UserUncheckedCreateNestedManyWithoutDefaultIncludedCustomChallengeModifiersInput
-    ExcludedFromDay?: DayUncheckedCreateNestedManyWithoutExcludedChallengeModifiersInput
-    IncludedInDay?: DayUncheckedCreateNestedManyWithoutIncludedCustomChallengeModifiersInput
-    DayCompletedInPart1?: DayUncheckedCreateNestedManyWithoutModifierWhenPart1CompletedInput
-  }
-
-  export type ChallengeModifierCreateOrConnectWithoutUserExcludedInput = {
-    where: ChallengeModifierWhereUniqueInput
-    create: XOR<ChallengeModifierCreateWithoutUserExcludedInput, ChallengeModifierUncheckedCreateWithoutUserExcludedInput>
-  }
-
-  export type ModifierOptionCreateWithoutUserExcludedInput = {
-    dateCreated?: Date | string
-    name: string
-    text: string
-    explanatoryUrl?: string | null
-    standard?: boolean
-    isPublic?: boolean
-    ChallengeModifier: ChallengeModifierCreateNestedOneWithoutModifierOptionInput
-    CreatedBy?: UserCreateNestedOneWithoutModifierOptionInput
-    Day?: DayCreateNestedManyWithoutModifierOptionInput
-    ModifierPackExcluded?: ModifierPackCreateNestedManyWithoutExcludedModifierOptionsInput
-    ModifierPackIncluded?: ModifierPackCreateNestedManyWithoutIncludedCustomModifierOptionsInput
-    UserIncluded?: UserCreateNestedManyWithoutDefaultIncludedCustomModifierOptionsInput
-    ExcludedFromDay?: DayCreateNestedManyWithoutExcludedModifierOptionsInput
-    IncludedInDay?: DayCreateNestedManyWithoutIncludedCustomModifierOptionsInput
-    DayCompletedInPart1?: DayCreateNestedManyWithoutOptionWhenPart1CompletedInput
-  }
-
-  export type ModifierOptionUncheckedCreateWithoutUserExcludedInput = {
-    id?: number
-    dateCreated?: Date | string
-    challengeModifierId: number
-    name: string
-    text: string
-    explanatoryUrl?: string | null
-    standard?: boolean
-    createdById?: string | null
-    isPublic?: boolean
-    Day?: DayUncheckedCreateNestedManyWithoutModifierOptionInput
-    ModifierPackExcluded?: ModifierPackUncheckedCreateNestedManyWithoutExcludedModifierOptionsInput
-    ModifierPackIncluded?: ModifierPackUncheckedCreateNestedManyWithoutIncludedCustomModifierOptionsInput
-    UserIncluded?: UserUncheckedCreateNestedManyWithoutDefaultIncludedCustomModifierOptionsInput
-    ExcludedFromDay?: DayUncheckedCreateNestedManyWithoutExcludedModifierOptionsInput
-    IncludedInDay?: DayUncheckedCreateNestedManyWithoutIncludedCustomModifierOptionsInput
-    DayCompletedInPart1?: DayUncheckedCreateNestedManyWithoutOptionWhenPart1CompletedInput
-  }
-
-  export type ModifierOptionCreateOrConnectWithoutUserExcludedInput = {
-    where: ModifierOptionWhereUniqueInput
-    create: XOR<ModifierOptionCreateWithoutUserExcludedInput, ModifierOptionUncheckedCreateWithoutUserExcludedInput>
-  }
-
-  export type ChallengeModifierCreateWithoutUserIncludedInput = {
-    dateCreated?: Date | string
-    name: string
-    text: string
-    hasOptions?: boolean
-    explanatoryUrl?: string | null
-    standard?: boolean
-    isPublic?: boolean
-    CreatedBy?: UserCreateNestedOneWithoutChallengeModifierInput
-    ModifierOption?: ModifierOptionCreateNestedManyWithoutChallengeModifierInput
-    Day?: DayCreateNestedManyWithoutChallengeModifierInput
-    ModifierPackExcluded?: ModifierPackCreateNestedManyWithoutExcludedChallengeModifiersInput
-    ModifierPackIncluded?: ModifierPackCreateNestedManyWithoutEncludedCustomChallengeModifiersInput
-    UserExcluded?: UserCreateNestedManyWithoutDefaultExcludedChallengeModifiersInput
-    ExcludedFromDay?: DayCreateNestedManyWithoutExcludedChallengeModifiersInput
-    IncludedInDay?: DayCreateNestedManyWithoutIncludedCustomChallengeModifiersInput
-    DayCompletedInPart1?: DayCreateNestedManyWithoutModifierWhenPart1CompletedInput
-  }
-
-  export type ChallengeModifierUncheckedCreateWithoutUserIncludedInput = {
-    id?: number
-    dateCreated?: Date | string
-    name: string
-    text: string
-    hasOptions?: boolean
-    explanatoryUrl?: string | null
-    standard?: boolean
-    createdById?: string | null
-    isPublic?: boolean
-    ModifierOption?: ModifierOptionUncheckedCreateNestedManyWithoutChallengeModifierInput
-    Day?: DayUncheckedCreateNestedManyWithoutChallengeModifierInput
-    ModifierPackExcluded?: ModifierPackUncheckedCreateNestedManyWithoutExcludedChallengeModifiersInput
-    ModifierPackIncluded?: ModifierPackUncheckedCreateNestedManyWithoutEncludedCustomChallengeModifiersInput
-    UserExcluded?: UserUncheckedCreateNestedManyWithoutDefaultExcludedChallengeModifiersInput
-    ExcludedFromDay?: DayUncheckedCreateNestedManyWithoutExcludedChallengeModifiersInput
-    IncludedInDay?: DayUncheckedCreateNestedManyWithoutIncludedCustomChallengeModifiersInput
-    DayCompletedInPart1?: DayUncheckedCreateNestedManyWithoutModifierWhenPart1CompletedInput
-  }
-
-  export type ChallengeModifierCreateOrConnectWithoutUserIncludedInput = {
-    where: ChallengeModifierWhereUniqueInput
-    create: XOR<ChallengeModifierCreateWithoutUserIncludedInput, ChallengeModifierUncheckedCreateWithoutUserIncludedInput>
-  }
-
-  export type ModifierOptionCreateWithoutUserIncludedInput = {
-    dateCreated?: Date | string
-    name: string
-    text: string
-    explanatoryUrl?: string | null
-    standard?: boolean
-    isPublic?: boolean
-    ChallengeModifier: ChallengeModifierCreateNestedOneWithoutModifierOptionInput
-    CreatedBy?: UserCreateNestedOneWithoutModifierOptionInput
-    Day?: DayCreateNestedManyWithoutModifierOptionInput
-    ModifierPackExcluded?: ModifierPackCreateNestedManyWithoutExcludedModifierOptionsInput
-    ModifierPackIncluded?: ModifierPackCreateNestedManyWithoutIncludedCustomModifierOptionsInput
-    UserExcluded?: UserCreateNestedManyWithoutDefaultExcludedModifierOptionsInput
-    ExcludedFromDay?: DayCreateNestedManyWithoutExcludedModifierOptionsInput
-    IncludedInDay?: DayCreateNestedManyWithoutIncludedCustomModifierOptionsInput
-    DayCompletedInPart1?: DayCreateNestedManyWithoutOptionWhenPart1CompletedInput
-  }
-
-  export type ModifierOptionUncheckedCreateWithoutUserIncludedInput = {
-    id?: number
-    dateCreated?: Date | string
-    challengeModifierId: number
-    name: string
-    text: string
-    explanatoryUrl?: string | null
-    standard?: boolean
-    createdById?: string | null
-    isPublic?: boolean
-    Day?: DayUncheckedCreateNestedManyWithoutModifierOptionInput
-    ModifierPackExcluded?: ModifierPackUncheckedCreateNestedManyWithoutExcludedModifierOptionsInput
-    ModifierPackIncluded?: ModifierPackUncheckedCreateNestedManyWithoutIncludedCustomModifierOptionsInput
-    UserExcluded?: UserUncheckedCreateNestedManyWithoutDefaultExcludedModifierOptionsInput
-    ExcludedFromDay?: DayUncheckedCreateNestedManyWithoutExcludedModifierOptionsInput
-    IncludedInDay?: DayUncheckedCreateNestedManyWithoutIncludedCustomModifierOptionsInput
-    DayCompletedInPart1?: DayUncheckedCreateNestedManyWithoutOptionWhenPart1CompletedInput
-  }
-
-  export type ModifierOptionCreateOrConnectWithoutUserIncludedInput = {
-    where: ModifierOptionWhereUniqueInput
-    create: XOR<ModifierOptionCreateWithoutUserIncludedInput, ModifierOptionUncheckedCreateWithoutUserIncludedInput>
-  }
-
-  export type ModifierPackCreateWithoutCreatedByInput = {
-    dateCreated?: Date | string
-    isPublic?: boolean
-    ExcludedChallengeModifiers?: ChallengeModifierCreateNestedManyWithoutModifierPackExcludedInput
-    ExcludedModifierOptions?: ModifierOptionCreateNestedManyWithoutModifierPackExcludedInput
-    EncludedCustomChallengeModifiers?: ChallengeModifierCreateNestedManyWithoutModifierPackIncludedInput
-    IncludedCustomModifierOptions?: ModifierOptionCreateNestedManyWithoutModifierPackIncludedInput
-  }
-
-  export type ModifierPackUncheckedCreateWithoutCreatedByInput = {
-    id?: number
-    dateCreated?: Date | string
-    isPublic?: boolean
-    ExcludedChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutModifierPackExcludedInput
-    ExcludedModifierOptions?: ModifierOptionUncheckedCreateNestedManyWithoutModifierPackExcludedInput
-    EncludedCustomChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutModifierPackIncludedInput
-    IncludedCustomModifierOptions?: ModifierOptionUncheckedCreateNestedManyWithoutModifierPackIncludedInput
-  }
-
-  export type ModifierPackCreateOrConnectWithoutCreatedByInput = {
-    where: ModifierPackWhereUniqueInput
-    create: XOR<ModifierPackCreateWithoutCreatedByInput, ModifierPackUncheckedCreateWithoutCreatedByInput>
-  }
-
-  export type ModifierPackCreateManyCreatedByInputEnvelope = {
-    data: ModifierPackCreateManyCreatedByInput | ModifierPackCreateManyCreatedByInput[]
     skipDuplicates?: boolean
   }
 
@@ -21219,6 +21571,156 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type GameCreateWithoutUserInput = {
+    dateCreated?: Date | string
+    number: number
+    year: number
+    name: string
+    playerName?: string | null
+    currentDay?: number
+    currentDayCompleted?: boolean
+    currentRerollTokens?: number
+    rerollTokensSpent?: number
+    rerollTokensSpentDuringPart2Raw?: number
+    rerollTokensSpentDuringPart2Limited?: number
+    repositoryLink?: string | null
+    progressSheetLink?: string
+    isPublic?: boolean
+    score?: number
+    dateCompleted?: Date | string | null
+    Day?: DayCreateNestedManyWithoutGameInput
+    Downvote?: DownvoteCreateNestedManyWithoutGameInput
+    PublicProfile?: PublicProfileCreateNestedOneWithoutGameInput
+    Rank?: RankCreateNestedOneWithoutGameInput
+    Upvote?: UpvoteCreateNestedManyWithoutGameInput
+  }
+
+  export type GameUncheckedCreateWithoutUserInput = {
+    id?: number
+    dateCreated?: Date | string
+    number: number
+    year: number
+    name: string
+    playerName?: string | null
+    currentDay?: number
+    currentDayCompleted?: boolean
+    currentRerollTokens?: number
+    rerollTokensSpent?: number
+    rerollTokensSpentDuringPart2Raw?: number
+    rerollTokensSpentDuringPart2Limited?: number
+    repositoryLink?: string | null
+    progressSheetLink?: string
+    isPublic?: boolean
+    publicProfileId?: number | null
+    score?: number
+    rankId?: number | null
+    dateCompleted?: Date | string | null
+    Day?: DayUncheckedCreateNestedManyWithoutGameInput
+    Downvote?: DownvoteUncheckedCreateNestedManyWithoutGameInput
+    Upvote?: UpvoteUncheckedCreateNestedManyWithoutGameInput
+  }
+
+  export type GameCreateOrConnectWithoutUserInput = {
+    where: GameWhereUniqueInput
+    create: XOR<GameCreateWithoutUserInput, GameUncheckedCreateWithoutUserInput>
+  }
+
+  export type GameCreateManyUserInputEnvelope = {
+    data: GameCreateManyUserInput | GameCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type ModifierOptionCreateWithoutCreatedByInput = {
+    dateCreated?: Date | string
+    name: string
+    text: string
+    explanatoryUrl?: string | null
+    standard?: boolean
+    isPublic?: boolean
+    Day?: DayCreateNestedManyWithoutModifierOptionInput
+    DayCompletedInPart1?: DayCreateNestedManyWithoutOptionWhenPart1CompletedInput
+    ChallengeModifier: ChallengeModifierCreateNestedOneWithoutModifierOptionInput
+    UserExcluded?: UserCreateNestedManyWithoutDefaultExcludedModifierOptionsInput
+    UserIncluded?: UserCreateNestedManyWithoutDefaultIncludedCustomModifierOptionsInput
+    ExcludedModifierOptions?: ModifierPackCreateNestedManyWithoutExcludedFromDayInput
+    IncludedCustomModifierOptions?: ModifierPackCreateNestedManyWithoutIncludedInDayInput
+  }
+
+  export type ModifierOptionUncheckedCreateWithoutCreatedByInput = {
+    id?: number
+    dateCreated?: Date | string
+    challengeModifierId: number
+    name: string
+    text: string
+    explanatoryUrl?: string | null
+    standard?: boolean
+    isPublic?: boolean
+    Day?: DayUncheckedCreateNestedManyWithoutModifierOptionInput
+    DayCompletedInPart1?: DayUncheckedCreateNestedManyWithoutOptionWhenPart1CompletedInput
+    UserExcluded?: UserUncheckedCreateNestedManyWithoutDefaultExcludedModifierOptionsInput
+    UserIncluded?: UserUncheckedCreateNestedManyWithoutDefaultIncludedCustomModifierOptionsInput
+    ExcludedModifierOptions?: ModifierPackUncheckedCreateNestedManyWithoutExcludedFromDayInput
+    IncludedCustomModifierOptions?: ModifierPackUncheckedCreateNestedManyWithoutIncludedInDayInput
+  }
+
+  export type ModifierOptionCreateOrConnectWithoutCreatedByInput = {
+    where: ModifierOptionWhereUniqueInput
+    create: XOR<ModifierOptionCreateWithoutCreatedByInput, ModifierOptionUncheckedCreateWithoutCreatedByInput>
+  }
+
+  export type ModifierOptionCreateManyCreatedByInputEnvelope = {
+    data: ModifierOptionCreateManyCreatedByInput | ModifierOptionCreateManyCreatedByInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type ModifierPackCreateWithoutCreatedByInput = {
+    dateCreated?: Date | string
+    isPublic?: boolean
+    ExcludedFromDay?: ModifierOptionCreateNestedManyWithoutExcludedModifierOptionsInput
+    IncludedInDay?: ModifierOptionCreateNestedManyWithoutIncludedCustomModifierOptionsInput
+  }
+
+  export type ModifierPackUncheckedCreateWithoutCreatedByInput = {
+    id?: number
+    dateCreated?: Date | string
+    isPublic?: boolean
+    ExcludedFromDay?: ModifierOptionUncheckedCreateNestedManyWithoutExcludedModifierOptionsInput
+    IncludedInDay?: ModifierOptionUncheckedCreateNestedManyWithoutIncludedCustomModifierOptionsInput
+  }
+
+  export type ModifierPackCreateOrConnectWithoutCreatedByInput = {
+    where: ModifierPackWhereUniqueInput
+    create: XOR<ModifierPackCreateWithoutCreatedByInput, ModifierPackUncheckedCreateWithoutCreatedByInput>
+  }
+
+  export type ModifierPackCreateManyCreatedByInputEnvelope = {
+    data: ModifierPackCreateManyCreatedByInput | ModifierPackCreateManyCreatedByInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type PublicProfileCreateWithoutUserInput = {
+    dateCreated?: Date | string
+    name: string
+    Game?: GameCreateNestedManyWithoutPublicProfileInput
+  }
+
+  export type PublicProfileUncheckedCreateWithoutUserInput = {
+    id?: number
+    dateCreated?: Date | string
+    name: string
+    Game?: GameUncheckedCreateNestedManyWithoutPublicProfileInput
+  }
+
+  export type PublicProfileCreateOrConnectWithoutUserInput = {
+    where: PublicProfileWhereUniqueInput
+    create: XOR<PublicProfileCreateWithoutUserInput, PublicProfileUncheckedCreateWithoutUserInput>
+  }
+
+  export type PublicProfileCreateManyUserInputEnvelope = {
+    data: PublicProfileCreateManyUserInput | PublicProfileCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
   export type UpvoteCreateWithoutCreatedByInput = {
     note?: string | null
     dateCreated?: Date | string
@@ -21240,6 +21742,220 @@ export namespace Prisma {
   export type UpvoteCreateManyCreatedByInputEnvelope = {
     data: UpvoteCreateManyCreatedByInput | UpvoteCreateManyCreatedByInput[]
     skipDuplicates?: boolean
+  }
+
+  export type ChallengeModifierCreateWithoutUserExcludedInput = {
+    dateCreated?: Date | string
+    name: string
+    text: string
+    hasOptions?: boolean
+    explanatoryUrl?: string | null
+    standard?: boolean
+    isPublic?: boolean
+    CreatedBy?: UserCreateNestedOneWithoutChallengeModifierInput
+    Day?: DayCreateNestedManyWithoutChallengeModifierInput
+    DayCompletedInPart1?: DayCreateNestedManyWithoutModifierWhenPart1CompletedInput
+    ModifierOption?: ModifierOptionCreateNestedManyWithoutChallengeModifierInput
+    UserIncluded?: UserCreateNestedManyWithoutDefaultIncludedCustomChallengeModifiersInput
+    ModifierPackExcluded?: DayCreateNestedManyWithoutExcludedChallengeModifiersInput
+    ModifierPackIncluded?: DayCreateNestedManyWithoutEncludedCustomChallengeModifiersInput
+  }
+
+  export type ChallengeModifierUncheckedCreateWithoutUserExcludedInput = {
+    id?: number
+    dateCreated?: Date | string
+    name: string
+    text: string
+    hasOptions?: boolean
+    explanatoryUrl?: string | null
+    standard?: boolean
+    createdById?: string | null
+    isPublic?: boolean
+    Day?: DayUncheckedCreateNestedManyWithoutChallengeModifierInput
+    DayCompletedInPart1?: DayUncheckedCreateNestedManyWithoutModifierWhenPart1CompletedInput
+    ModifierOption?: ModifierOptionUncheckedCreateNestedManyWithoutChallengeModifierInput
+    UserIncluded?: UserUncheckedCreateNestedManyWithoutDefaultIncludedCustomChallengeModifiersInput
+    ModifierPackExcluded?: DayUncheckedCreateNestedManyWithoutExcludedChallengeModifiersInput
+    ModifierPackIncluded?: DayUncheckedCreateNestedManyWithoutEncludedCustomChallengeModifiersInput
+  }
+
+  export type ChallengeModifierCreateOrConnectWithoutUserExcludedInput = {
+    where: ChallengeModifierWhereUniqueInput
+    create: XOR<ChallengeModifierCreateWithoutUserExcludedInput, ChallengeModifierUncheckedCreateWithoutUserExcludedInput>
+  }
+
+  export type ModifierOptionCreateWithoutUserExcludedInput = {
+    dateCreated?: Date | string
+    name: string
+    text: string
+    explanatoryUrl?: string | null
+    standard?: boolean
+    isPublic?: boolean
+    Day?: DayCreateNestedManyWithoutModifierOptionInput
+    DayCompletedInPart1?: DayCreateNestedManyWithoutOptionWhenPart1CompletedInput
+    ChallengeModifier: ChallengeModifierCreateNestedOneWithoutModifierOptionInput
+    CreatedBy?: UserCreateNestedOneWithoutModifierOptionInput
+    UserIncluded?: UserCreateNestedManyWithoutDefaultIncludedCustomModifierOptionsInput
+    ExcludedModifierOptions?: ModifierPackCreateNestedManyWithoutExcludedFromDayInput
+    IncludedCustomModifierOptions?: ModifierPackCreateNestedManyWithoutIncludedInDayInput
+  }
+
+  export type ModifierOptionUncheckedCreateWithoutUserExcludedInput = {
+    id?: number
+    dateCreated?: Date | string
+    challengeModifierId: number
+    name: string
+    text: string
+    explanatoryUrl?: string | null
+    standard?: boolean
+    createdById?: string | null
+    isPublic?: boolean
+    Day?: DayUncheckedCreateNestedManyWithoutModifierOptionInput
+    DayCompletedInPart1?: DayUncheckedCreateNestedManyWithoutOptionWhenPart1CompletedInput
+    UserIncluded?: UserUncheckedCreateNestedManyWithoutDefaultIncludedCustomModifierOptionsInput
+    ExcludedModifierOptions?: ModifierPackUncheckedCreateNestedManyWithoutExcludedFromDayInput
+    IncludedCustomModifierOptions?: ModifierPackUncheckedCreateNestedManyWithoutIncludedInDayInput
+  }
+
+  export type ModifierOptionCreateOrConnectWithoutUserExcludedInput = {
+    where: ModifierOptionWhereUniqueInput
+    create: XOR<ModifierOptionCreateWithoutUserExcludedInput, ModifierOptionUncheckedCreateWithoutUserExcludedInput>
+  }
+
+  export type ChallengeModifierCreateWithoutUserIncludedInput = {
+    dateCreated?: Date | string
+    name: string
+    text: string
+    hasOptions?: boolean
+    explanatoryUrl?: string | null
+    standard?: boolean
+    isPublic?: boolean
+    CreatedBy?: UserCreateNestedOneWithoutChallengeModifierInput
+    Day?: DayCreateNestedManyWithoutChallengeModifierInput
+    DayCompletedInPart1?: DayCreateNestedManyWithoutModifierWhenPart1CompletedInput
+    ModifierOption?: ModifierOptionCreateNestedManyWithoutChallengeModifierInput
+    UserExcluded?: UserCreateNestedManyWithoutDefaultExcludedChallengeModifiersInput
+    ModifierPackExcluded?: DayCreateNestedManyWithoutExcludedChallengeModifiersInput
+    ModifierPackIncluded?: DayCreateNestedManyWithoutEncludedCustomChallengeModifiersInput
+  }
+
+  export type ChallengeModifierUncheckedCreateWithoutUserIncludedInput = {
+    id?: number
+    dateCreated?: Date | string
+    name: string
+    text: string
+    hasOptions?: boolean
+    explanatoryUrl?: string | null
+    standard?: boolean
+    createdById?: string | null
+    isPublic?: boolean
+    Day?: DayUncheckedCreateNestedManyWithoutChallengeModifierInput
+    DayCompletedInPart1?: DayUncheckedCreateNestedManyWithoutModifierWhenPart1CompletedInput
+    ModifierOption?: ModifierOptionUncheckedCreateNestedManyWithoutChallengeModifierInput
+    UserExcluded?: UserUncheckedCreateNestedManyWithoutDefaultExcludedChallengeModifiersInput
+    ModifierPackExcluded?: DayUncheckedCreateNestedManyWithoutExcludedChallengeModifiersInput
+    ModifierPackIncluded?: DayUncheckedCreateNestedManyWithoutEncludedCustomChallengeModifiersInput
+  }
+
+  export type ChallengeModifierCreateOrConnectWithoutUserIncludedInput = {
+    where: ChallengeModifierWhereUniqueInput
+    create: XOR<ChallengeModifierCreateWithoutUserIncludedInput, ChallengeModifierUncheckedCreateWithoutUserIncludedInput>
+  }
+
+  export type ModifierOptionCreateWithoutUserIncludedInput = {
+    dateCreated?: Date | string
+    name: string
+    text: string
+    explanatoryUrl?: string | null
+    standard?: boolean
+    isPublic?: boolean
+    Day?: DayCreateNestedManyWithoutModifierOptionInput
+    DayCompletedInPart1?: DayCreateNestedManyWithoutOptionWhenPart1CompletedInput
+    ChallengeModifier: ChallengeModifierCreateNestedOneWithoutModifierOptionInput
+    CreatedBy?: UserCreateNestedOneWithoutModifierOptionInput
+    UserExcluded?: UserCreateNestedManyWithoutDefaultExcludedModifierOptionsInput
+    ExcludedModifierOptions?: ModifierPackCreateNestedManyWithoutExcludedFromDayInput
+    IncludedCustomModifierOptions?: ModifierPackCreateNestedManyWithoutIncludedInDayInput
+  }
+
+  export type ModifierOptionUncheckedCreateWithoutUserIncludedInput = {
+    id?: number
+    dateCreated?: Date | string
+    challengeModifierId: number
+    name: string
+    text: string
+    explanatoryUrl?: string | null
+    standard?: boolean
+    createdById?: string | null
+    isPublic?: boolean
+    Day?: DayUncheckedCreateNestedManyWithoutModifierOptionInput
+    DayCompletedInPart1?: DayUncheckedCreateNestedManyWithoutOptionWhenPart1CompletedInput
+    UserExcluded?: UserUncheckedCreateNestedManyWithoutDefaultExcludedModifierOptionsInput
+    ExcludedModifierOptions?: ModifierPackUncheckedCreateNestedManyWithoutExcludedFromDayInput
+    IncludedCustomModifierOptions?: ModifierPackUncheckedCreateNestedManyWithoutIncludedInDayInput
+  }
+
+  export type ModifierOptionCreateOrConnectWithoutUserIncludedInput = {
+    where: ModifierOptionWhereUniqueInput
+    create: XOR<ModifierOptionCreateWithoutUserIncludedInput, ModifierOptionUncheckedCreateWithoutUserIncludedInput>
+  }
+
+  export type ChallengeModifierUpsertWithWhereUniqueWithoutCreatedByInput = {
+    where: ChallengeModifierWhereUniqueInput
+    update: XOR<ChallengeModifierUpdateWithoutCreatedByInput, ChallengeModifierUncheckedUpdateWithoutCreatedByInput>
+    create: XOR<ChallengeModifierCreateWithoutCreatedByInput, ChallengeModifierUncheckedCreateWithoutCreatedByInput>
+  }
+
+  export type ChallengeModifierUpdateWithWhereUniqueWithoutCreatedByInput = {
+    where: ChallengeModifierWhereUniqueInput
+    data: XOR<ChallengeModifierUpdateWithoutCreatedByInput, ChallengeModifierUncheckedUpdateWithoutCreatedByInput>
+  }
+
+  export type ChallengeModifierUpdateManyWithWhereWithoutCreatedByInput = {
+    where: ChallengeModifierScalarWhereInput
+    data: XOR<ChallengeModifierUpdateManyMutationInput, ChallengeModifierUncheckedUpdateManyWithoutCreatedByInput>
+  }
+
+  export type ChallengeModifierScalarWhereInput = {
+    AND?: ChallengeModifierScalarWhereInput | ChallengeModifierScalarWhereInput[]
+    OR?: ChallengeModifierScalarWhereInput[]
+    NOT?: ChallengeModifierScalarWhereInput | ChallengeModifierScalarWhereInput[]
+    id?: IntFilter<"ChallengeModifier"> | number
+    dateCreated?: DateTimeFilter<"ChallengeModifier"> | Date | string
+    name?: StringFilter<"ChallengeModifier"> | string
+    text?: StringFilter<"ChallengeModifier"> | string
+    hasOptions?: BoolFilter<"ChallengeModifier"> | boolean
+    explanatoryUrl?: StringNullableFilter<"ChallengeModifier"> | string | null
+    standard?: BoolFilter<"ChallengeModifier"> | boolean
+    createdById?: StringNullableFilter<"ChallengeModifier"> | string | null
+    isPublic?: BoolFilter<"ChallengeModifier"> | boolean
+  }
+
+  export type DownvoteUpsertWithWhereUniqueWithoutCreatedByInput = {
+    where: DownvoteWhereUniqueInput
+    update: XOR<DownvoteUpdateWithoutCreatedByInput, DownvoteUncheckedUpdateWithoutCreatedByInput>
+    create: XOR<DownvoteCreateWithoutCreatedByInput, DownvoteUncheckedCreateWithoutCreatedByInput>
+  }
+
+  export type DownvoteUpdateWithWhereUniqueWithoutCreatedByInput = {
+    where: DownvoteWhereUniqueInput
+    data: XOR<DownvoteUpdateWithoutCreatedByInput, DownvoteUncheckedUpdateWithoutCreatedByInput>
+  }
+
+  export type DownvoteUpdateManyWithWhereWithoutCreatedByInput = {
+    where: DownvoteScalarWhereInput
+    data: XOR<DownvoteUpdateManyMutationInput, DownvoteUncheckedUpdateManyWithoutCreatedByInput>
+  }
+
+  export type DownvoteScalarWhereInput = {
+    AND?: DownvoteScalarWhereInput | DownvoteScalarWhereInput[]
+    OR?: DownvoteScalarWhereInput[]
+    NOT?: DownvoteScalarWhereInput | DownvoteScalarWhereInput[]
+    id?: IntFilter<"Downvote"> | number
+    note?: StringFilter<"Downvote"> | string
+    dateCreated?: DateTimeFilter<"Downvote"> | Date | string
+    gameId?: IntFilter<"Downvote"> | number
+    createdById?: StringFilter<"Downvote"> | string
   }
 
   export type GameUpsertWithWhereUniqueWithoutUserInput = {
@@ -21284,63 +22000,6 @@ export namespace Prisma {
     dateCompleted?: DateTimeNullableFilter<"Game"> | Date | string | null
   }
 
-  export type PublicProfileUpsertWithWhereUniqueWithoutUserInput = {
-    where: PublicProfileWhereUniqueInput
-    update: XOR<PublicProfileUpdateWithoutUserInput, PublicProfileUncheckedUpdateWithoutUserInput>
-    create: XOR<PublicProfileCreateWithoutUserInput, PublicProfileUncheckedCreateWithoutUserInput>
-  }
-
-  export type PublicProfileUpdateWithWhereUniqueWithoutUserInput = {
-    where: PublicProfileWhereUniqueInput
-    data: XOR<PublicProfileUpdateWithoutUserInput, PublicProfileUncheckedUpdateWithoutUserInput>
-  }
-
-  export type PublicProfileUpdateManyWithWhereWithoutUserInput = {
-    where: PublicProfileScalarWhereInput
-    data: XOR<PublicProfileUpdateManyMutationInput, PublicProfileUncheckedUpdateManyWithoutUserInput>
-  }
-
-  export type PublicProfileScalarWhereInput = {
-    AND?: PublicProfileScalarWhereInput | PublicProfileScalarWhereInput[]
-    OR?: PublicProfileScalarWhereInput[]
-    NOT?: PublicProfileScalarWhereInput | PublicProfileScalarWhereInput[]
-    id?: IntFilter<"PublicProfile"> | number
-    dateCreated?: DateTimeFilter<"PublicProfile"> | Date | string
-    name?: StringFilter<"PublicProfile"> | string
-    userId?: StringFilter<"PublicProfile"> | string
-  }
-
-  export type ChallengeModifierUpsertWithWhereUniqueWithoutCreatedByInput = {
-    where: ChallengeModifierWhereUniqueInput
-    update: XOR<ChallengeModifierUpdateWithoutCreatedByInput, ChallengeModifierUncheckedUpdateWithoutCreatedByInput>
-    create: XOR<ChallengeModifierCreateWithoutCreatedByInput, ChallengeModifierUncheckedCreateWithoutCreatedByInput>
-  }
-
-  export type ChallengeModifierUpdateWithWhereUniqueWithoutCreatedByInput = {
-    where: ChallengeModifierWhereUniqueInput
-    data: XOR<ChallengeModifierUpdateWithoutCreatedByInput, ChallengeModifierUncheckedUpdateWithoutCreatedByInput>
-  }
-
-  export type ChallengeModifierUpdateManyWithWhereWithoutCreatedByInput = {
-    where: ChallengeModifierScalarWhereInput
-    data: XOR<ChallengeModifierUpdateManyMutationInput, ChallengeModifierUncheckedUpdateManyWithoutCreatedByInput>
-  }
-
-  export type ChallengeModifierScalarWhereInput = {
-    AND?: ChallengeModifierScalarWhereInput | ChallengeModifierScalarWhereInput[]
-    OR?: ChallengeModifierScalarWhereInput[]
-    NOT?: ChallengeModifierScalarWhereInput | ChallengeModifierScalarWhereInput[]
-    id?: IntFilter<"ChallengeModifier"> | number
-    dateCreated?: DateTimeFilter<"ChallengeModifier"> | Date | string
-    name?: StringFilter<"ChallengeModifier"> | string
-    text?: StringFilter<"ChallengeModifier"> | string
-    hasOptions?: BoolFilter<"ChallengeModifier"> | boolean
-    explanatoryUrl?: StringNullableFilter<"ChallengeModifier"> | string | null
-    standard?: BoolFilter<"ChallengeModifier"> | boolean
-    createdById?: StringNullableFilter<"ChallengeModifier"> | string | null
-    isPublic?: BoolFilter<"ChallengeModifier"> | boolean
-  }
-
   export type ModifierOptionUpsertWithWhereUniqueWithoutCreatedByInput = {
     where: ModifierOptionWhereUniqueInput
     update: XOR<ModifierOptionUpdateWithoutCreatedByInput, ModifierOptionUncheckedUpdateWithoutCreatedByInput>
@@ -21370,6 +22029,85 @@ export namespace Prisma {
     standard?: BoolFilter<"ModifierOption"> | boolean
     createdById?: StringNullableFilter<"ModifierOption"> | string | null
     isPublic?: BoolFilter<"ModifierOption"> | boolean
+  }
+
+  export type ModifierPackUpsertWithWhereUniqueWithoutCreatedByInput = {
+    where: ModifierPackWhereUniqueInput
+    update: XOR<ModifierPackUpdateWithoutCreatedByInput, ModifierPackUncheckedUpdateWithoutCreatedByInput>
+    create: XOR<ModifierPackCreateWithoutCreatedByInput, ModifierPackUncheckedCreateWithoutCreatedByInput>
+  }
+
+  export type ModifierPackUpdateWithWhereUniqueWithoutCreatedByInput = {
+    where: ModifierPackWhereUniqueInput
+    data: XOR<ModifierPackUpdateWithoutCreatedByInput, ModifierPackUncheckedUpdateWithoutCreatedByInput>
+  }
+
+  export type ModifierPackUpdateManyWithWhereWithoutCreatedByInput = {
+    where: ModifierPackScalarWhereInput
+    data: XOR<ModifierPackUpdateManyMutationInput, ModifierPackUncheckedUpdateManyWithoutCreatedByInput>
+  }
+
+  export type ModifierPackScalarWhereInput = {
+    AND?: ModifierPackScalarWhereInput | ModifierPackScalarWhereInput[]
+    OR?: ModifierPackScalarWhereInput[]
+    NOT?: ModifierPackScalarWhereInput | ModifierPackScalarWhereInput[]
+    id?: IntFilter<"ModifierPack"> | number
+    dateCreated?: DateTimeFilter<"ModifierPack"> | Date | string
+    createdById?: StringNullableFilter<"ModifierPack"> | string | null
+    isPublic?: BoolFilter<"ModifierPack"> | boolean
+  }
+
+  export type PublicProfileUpsertWithWhereUniqueWithoutUserInput = {
+    where: PublicProfileWhereUniqueInput
+    update: XOR<PublicProfileUpdateWithoutUserInput, PublicProfileUncheckedUpdateWithoutUserInput>
+    create: XOR<PublicProfileCreateWithoutUserInput, PublicProfileUncheckedCreateWithoutUserInput>
+  }
+
+  export type PublicProfileUpdateWithWhereUniqueWithoutUserInput = {
+    where: PublicProfileWhereUniqueInput
+    data: XOR<PublicProfileUpdateWithoutUserInput, PublicProfileUncheckedUpdateWithoutUserInput>
+  }
+
+  export type PublicProfileUpdateManyWithWhereWithoutUserInput = {
+    where: PublicProfileScalarWhereInput
+    data: XOR<PublicProfileUpdateManyMutationInput, PublicProfileUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type PublicProfileScalarWhereInput = {
+    AND?: PublicProfileScalarWhereInput | PublicProfileScalarWhereInput[]
+    OR?: PublicProfileScalarWhereInput[]
+    NOT?: PublicProfileScalarWhereInput | PublicProfileScalarWhereInput[]
+    id?: IntFilter<"PublicProfile"> | number
+    dateCreated?: DateTimeFilter<"PublicProfile"> | Date | string
+    name?: StringFilter<"PublicProfile"> | string
+    userId?: StringFilter<"PublicProfile"> | string
+  }
+
+  export type UpvoteUpsertWithWhereUniqueWithoutCreatedByInput = {
+    where: UpvoteWhereUniqueInput
+    update: XOR<UpvoteUpdateWithoutCreatedByInput, UpvoteUncheckedUpdateWithoutCreatedByInput>
+    create: XOR<UpvoteCreateWithoutCreatedByInput, UpvoteUncheckedCreateWithoutCreatedByInput>
+  }
+
+  export type UpvoteUpdateWithWhereUniqueWithoutCreatedByInput = {
+    where: UpvoteWhereUniqueInput
+    data: XOR<UpvoteUpdateWithoutCreatedByInput, UpvoteUncheckedUpdateWithoutCreatedByInput>
+  }
+
+  export type UpvoteUpdateManyWithWhereWithoutCreatedByInput = {
+    where: UpvoteScalarWhereInput
+    data: XOR<UpvoteUpdateManyMutationInput, UpvoteUncheckedUpdateManyWithoutCreatedByInput>
+  }
+
+  export type UpvoteScalarWhereInput = {
+    AND?: UpvoteScalarWhereInput | UpvoteScalarWhereInput[]
+    OR?: UpvoteScalarWhereInput[]
+    NOT?: UpvoteScalarWhereInput | UpvoteScalarWhereInput[]
+    id?: IntFilter<"Upvote"> | number
+    note?: StringNullableFilter<"Upvote"> | string | null
+    dateCreated?: DateTimeFilter<"Upvote"> | Date | string
+    gameId?: IntFilter<"Upvote"> | number
+    createdById?: StringFilter<"Upvote"> | string
   }
 
   export type ChallengeModifierUpsertWithWhereUniqueWithoutUserExcludedInput = {
@@ -21436,127 +22174,6 @@ export namespace Prisma {
     data: XOR<ModifierOptionUpdateManyMutationInput, ModifierOptionUncheckedUpdateManyWithoutUserIncludedInput>
   }
 
-  export type ModifierPackUpsertWithWhereUniqueWithoutCreatedByInput = {
-    where: ModifierPackWhereUniqueInput
-    update: XOR<ModifierPackUpdateWithoutCreatedByInput, ModifierPackUncheckedUpdateWithoutCreatedByInput>
-    create: XOR<ModifierPackCreateWithoutCreatedByInput, ModifierPackUncheckedCreateWithoutCreatedByInput>
-  }
-
-  export type ModifierPackUpdateWithWhereUniqueWithoutCreatedByInput = {
-    where: ModifierPackWhereUniqueInput
-    data: XOR<ModifierPackUpdateWithoutCreatedByInput, ModifierPackUncheckedUpdateWithoutCreatedByInput>
-  }
-
-  export type ModifierPackUpdateManyWithWhereWithoutCreatedByInput = {
-    where: ModifierPackScalarWhereInput
-    data: XOR<ModifierPackUpdateManyMutationInput, ModifierPackUncheckedUpdateManyWithoutCreatedByInput>
-  }
-
-  export type ModifierPackScalarWhereInput = {
-    AND?: ModifierPackScalarWhereInput | ModifierPackScalarWhereInput[]
-    OR?: ModifierPackScalarWhereInput[]
-    NOT?: ModifierPackScalarWhereInput | ModifierPackScalarWhereInput[]
-    id?: IntFilter<"ModifierPack"> | number
-    dateCreated?: DateTimeFilter<"ModifierPack"> | Date | string
-    createdById?: StringNullableFilter<"ModifierPack"> | string | null
-    isPublic?: BoolFilter<"ModifierPack"> | boolean
-  }
-
-  export type DownvoteUpsertWithWhereUniqueWithoutCreatedByInput = {
-    where: DownvoteWhereUniqueInput
-    update: XOR<DownvoteUpdateWithoutCreatedByInput, DownvoteUncheckedUpdateWithoutCreatedByInput>
-    create: XOR<DownvoteCreateWithoutCreatedByInput, DownvoteUncheckedCreateWithoutCreatedByInput>
-  }
-
-  export type DownvoteUpdateWithWhereUniqueWithoutCreatedByInput = {
-    where: DownvoteWhereUniqueInput
-    data: XOR<DownvoteUpdateWithoutCreatedByInput, DownvoteUncheckedUpdateWithoutCreatedByInput>
-  }
-
-  export type DownvoteUpdateManyWithWhereWithoutCreatedByInput = {
-    where: DownvoteScalarWhereInput
-    data: XOR<DownvoteUpdateManyMutationInput, DownvoteUncheckedUpdateManyWithoutCreatedByInput>
-  }
-
-  export type DownvoteScalarWhereInput = {
-    AND?: DownvoteScalarWhereInput | DownvoteScalarWhereInput[]
-    OR?: DownvoteScalarWhereInput[]
-    NOT?: DownvoteScalarWhereInput | DownvoteScalarWhereInput[]
-    id?: IntFilter<"Downvote"> | number
-    note?: StringFilter<"Downvote"> | string
-    dateCreated?: DateTimeFilter<"Downvote"> | Date | string
-    gameId?: IntFilter<"Downvote"> | number
-    createdById?: StringFilter<"Downvote"> | string
-  }
-
-  export type UpvoteUpsertWithWhereUniqueWithoutCreatedByInput = {
-    where: UpvoteWhereUniqueInput
-    update: XOR<UpvoteUpdateWithoutCreatedByInput, UpvoteUncheckedUpdateWithoutCreatedByInput>
-    create: XOR<UpvoteCreateWithoutCreatedByInput, UpvoteUncheckedCreateWithoutCreatedByInput>
-  }
-
-  export type UpvoteUpdateWithWhereUniqueWithoutCreatedByInput = {
-    where: UpvoteWhereUniqueInput
-    data: XOR<UpvoteUpdateWithoutCreatedByInput, UpvoteUncheckedUpdateWithoutCreatedByInput>
-  }
-
-  export type UpvoteUpdateManyWithWhereWithoutCreatedByInput = {
-    where: UpvoteScalarWhereInput
-    data: XOR<UpvoteUpdateManyMutationInput, UpvoteUncheckedUpdateManyWithoutCreatedByInput>
-  }
-
-  export type UpvoteScalarWhereInput = {
-    AND?: UpvoteScalarWhereInput | UpvoteScalarWhereInput[]
-    OR?: UpvoteScalarWhereInput[]
-    NOT?: UpvoteScalarWhereInput | UpvoteScalarWhereInput[]
-    id?: IntFilter<"Upvote"> | number
-    note?: StringNullableFilter<"Upvote"> | string | null
-    dateCreated?: DateTimeFilter<"Upvote"> | Date | string
-    gameId?: IntFilter<"Upvote"> | number
-    createdById?: StringFilter<"Upvote"> | string
-  }
-
-  export type UserCreateWithoutPublicProfileInput = {
-    id: string
-    serializedId?: string | null
-    username?: string | null
-    dateCreated?: Date | string
-    numberOfGames?: number
-    Game?: GameCreateNestedManyWithoutUserInput
-    ChallengeModifier?: ChallengeModifierCreateNestedManyWithoutCreatedByInput
-    ModifierOption?: ModifierOptionCreateNestedManyWithoutCreatedByInput
-    DefaultExcludedChallengeModifiers?: ChallengeModifierCreateNestedManyWithoutUserExcludedInput
-    DefaultExcludedModifierOptions?: ModifierOptionCreateNestedManyWithoutUserExcludedInput
-    DefaultIncludedCustomChallengeModifiers?: ChallengeModifierCreateNestedManyWithoutUserIncludedInput
-    DefaultIncludedCustomModifierOptions?: ModifierOptionCreateNestedManyWithoutUserIncludedInput
-    ModifierPack?: ModifierPackCreateNestedManyWithoutCreatedByInput
-    Downvote?: DownvoteCreateNestedManyWithoutCreatedByInput
-    Upvote?: UpvoteCreateNestedManyWithoutCreatedByInput
-  }
-
-  export type UserUncheckedCreateWithoutPublicProfileInput = {
-    id: string
-    serializedId?: string | null
-    username?: string | null
-    dateCreated?: Date | string
-    numberOfGames?: number
-    Game?: GameUncheckedCreateNestedManyWithoutUserInput
-    ChallengeModifier?: ChallengeModifierUncheckedCreateNestedManyWithoutCreatedByInput
-    ModifierOption?: ModifierOptionUncheckedCreateNestedManyWithoutCreatedByInput
-    DefaultExcludedChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutUserExcludedInput
-    DefaultExcludedModifierOptions?: ModifierOptionUncheckedCreateNestedManyWithoutUserExcludedInput
-    DefaultIncludedCustomChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutUserIncludedInput
-    DefaultIncludedCustomModifierOptions?: ModifierOptionUncheckedCreateNestedManyWithoutUserIncludedInput
-    ModifierPack?: ModifierPackUncheckedCreateNestedManyWithoutCreatedByInput
-    Downvote?: DownvoteUncheckedCreateNestedManyWithoutCreatedByInput
-    Upvote?: UpvoteUncheckedCreateNestedManyWithoutCreatedByInput
-  }
-
-  export type UserCreateOrConnectWithoutPublicProfileInput = {
-    where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutPublicProfileInput, UserUncheckedCreateWithoutPublicProfileInput>
-  }
-
   export type GameCreateWithoutPublicProfileInput = {
     dateCreated?: Date | string
     number: number
@@ -21574,11 +22191,11 @@ export namespace Prisma {
     isPublic?: boolean
     score?: number
     dateCompleted?: Date | string | null
-    User: UserCreateNestedOneWithoutGameInput
-    Rank?: RankCreateNestedOneWithoutGameInput
     Day?: DayCreateNestedManyWithoutGameInput
-    Upvote?: UpvoteCreateNestedManyWithoutGameInput
     Downvote?: DownvoteCreateNestedManyWithoutGameInput
+    Rank?: RankCreateNestedOneWithoutGameInput
+    User: UserCreateNestedOneWithoutGameInput
+    Upvote?: UpvoteCreateNestedManyWithoutGameInput
   }
 
   export type GameUncheckedCreateWithoutPublicProfileInput = {
@@ -21602,8 +22219,8 @@ export namespace Prisma {
     rankId?: number | null
     dateCompleted?: Date | string | null
     Day?: DayUncheckedCreateNestedManyWithoutGameInput
-    Upvote?: UpvoteUncheckedCreateNestedManyWithoutGameInput
     Downvote?: DownvoteUncheckedCreateNestedManyWithoutGameInput
+    Upvote?: UpvoteUncheckedCreateNestedManyWithoutGameInput
   }
 
   export type GameCreateOrConnectWithoutPublicProfileInput = {
@@ -21614,6 +22231,63 @@ export namespace Prisma {
   export type GameCreateManyPublicProfileInputEnvelope = {
     data: GameCreateManyPublicProfileInput | GameCreateManyPublicProfileInput[]
     skipDuplicates?: boolean
+  }
+
+  export type UserCreateWithoutPublicProfileInput = {
+    id: string
+    serializedId?: string | null
+    username?: string | null
+    dateCreated?: Date | string
+    numberOfGames?: number
+    ChallengeModifier?: ChallengeModifierCreateNestedManyWithoutCreatedByInput
+    Downvote?: DownvoteCreateNestedManyWithoutCreatedByInput
+    Game?: GameCreateNestedManyWithoutUserInput
+    ModifierOption?: ModifierOptionCreateNestedManyWithoutCreatedByInput
+    ModifierPack?: ModifierPackCreateNestedManyWithoutCreatedByInput
+    Upvote?: UpvoteCreateNestedManyWithoutCreatedByInput
+    DefaultExcludedChallengeModifiers?: ChallengeModifierCreateNestedManyWithoutUserExcludedInput
+    DefaultExcludedModifierOptions?: ModifierOptionCreateNestedManyWithoutUserExcludedInput
+    DefaultIncludedCustomChallengeModifiers?: ChallengeModifierCreateNestedManyWithoutUserIncludedInput
+    DefaultIncludedCustomModifierOptions?: ModifierOptionCreateNestedManyWithoutUserIncludedInput
+  }
+
+  export type UserUncheckedCreateWithoutPublicProfileInput = {
+    id: string
+    serializedId?: string | null
+    username?: string | null
+    dateCreated?: Date | string
+    numberOfGames?: number
+    ChallengeModifier?: ChallengeModifierUncheckedCreateNestedManyWithoutCreatedByInput
+    Downvote?: DownvoteUncheckedCreateNestedManyWithoutCreatedByInput
+    Game?: GameUncheckedCreateNestedManyWithoutUserInput
+    ModifierOption?: ModifierOptionUncheckedCreateNestedManyWithoutCreatedByInput
+    ModifierPack?: ModifierPackUncheckedCreateNestedManyWithoutCreatedByInput
+    Upvote?: UpvoteUncheckedCreateNestedManyWithoutCreatedByInput
+    DefaultExcludedChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutUserExcludedInput
+    DefaultExcludedModifierOptions?: ModifierOptionUncheckedCreateNestedManyWithoutUserExcludedInput
+    DefaultIncludedCustomChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutUserIncludedInput
+    DefaultIncludedCustomModifierOptions?: ModifierOptionUncheckedCreateNestedManyWithoutUserIncludedInput
+  }
+
+  export type UserCreateOrConnectWithoutPublicProfileInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutPublicProfileInput, UserUncheckedCreateWithoutPublicProfileInput>
+  }
+
+  export type GameUpsertWithWhereUniqueWithoutPublicProfileInput = {
+    where: GameWhereUniqueInput
+    update: XOR<GameUpdateWithoutPublicProfileInput, GameUncheckedUpdateWithoutPublicProfileInput>
+    create: XOR<GameCreateWithoutPublicProfileInput, GameUncheckedCreateWithoutPublicProfileInput>
+  }
+
+  export type GameUpdateWithWhereUniqueWithoutPublicProfileInput = {
+    where: GameWhereUniqueInput
+    data: XOR<GameUpdateWithoutPublicProfileInput, GameUncheckedUpdateWithoutPublicProfileInput>
+  }
+
+  export type GameUpdateManyWithWhereWithoutPublicProfileInput = {
+    where: GameScalarWhereInput
+    data: XOR<GameUpdateManyMutationInput, GameUncheckedUpdateManyWithoutPublicProfileInput>
   }
 
   export type UserUpsertWithoutPublicProfileInput = {
@@ -21633,16 +22307,16 @@ export namespace Prisma {
     username?: NullableStringFieldUpdateOperationsInput | string | null
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     numberOfGames?: IntFieldUpdateOperationsInput | number
-    Game?: GameUpdateManyWithoutUserNestedInput
     ChallengeModifier?: ChallengeModifierUpdateManyWithoutCreatedByNestedInput
+    Downvote?: DownvoteUpdateManyWithoutCreatedByNestedInput
+    Game?: GameUpdateManyWithoutUserNestedInput
     ModifierOption?: ModifierOptionUpdateManyWithoutCreatedByNestedInput
+    ModifierPack?: ModifierPackUpdateManyWithoutCreatedByNestedInput
+    Upvote?: UpvoteUpdateManyWithoutCreatedByNestedInput
     DefaultExcludedChallengeModifiers?: ChallengeModifierUpdateManyWithoutUserExcludedNestedInput
     DefaultExcludedModifierOptions?: ModifierOptionUpdateManyWithoutUserExcludedNestedInput
     DefaultIncludedCustomChallengeModifiers?: ChallengeModifierUpdateManyWithoutUserIncludedNestedInput
     DefaultIncludedCustomModifierOptions?: ModifierOptionUpdateManyWithoutUserIncludedNestedInput
-    ModifierPack?: ModifierPackUpdateManyWithoutCreatedByNestedInput
-    Downvote?: DownvoteUpdateManyWithoutCreatedByNestedInput
-    Upvote?: UpvoteUpdateManyWithoutCreatedByNestedInput
   }
 
   export type UserUncheckedUpdateWithoutPublicProfileInput = {
@@ -21651,89 +22325,16 @@ export namespace Prisma {
     username?: NullableStringFieldUpdateOperationsInput | string | null
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     numberOfGames?: IntFieldUpdateOperationsInput | number
-    Game?: GameUncheckedUpdateManyWithoutUserNestedInput
     ChallengeModifier?: ChallengeModifierUncheckedUpdateManyWithoutCreatedByNestedInput
+    Downvote?: DownvoteUncheckedUpdateManyWithoutCreatedByNestedInput
+    Game?: GameUncheckedUpdateManyWithoutUserNestedInput
     ModifierOption?: ModifierOptionUncheckedUpdateManyWithoutCreatedByNestedInput
+    ModifierPack?: ModifierPackUncheckedUpdateManyWithoutCreatedByNestedInput
+    Upvote?: UpvoteUncheckedUpdateManyWithoutCreatedByNestedInput
     DefaultExcludedChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutUserExcludedNestedInput
     DefaultExcludedModifierOptions?: ModifierOptionUncheckedUpdateManyWithoutUserExcludedNestedInput
     DefaultIncludedCustomChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutUserIncludedNestedInput
     DefaultIncludedCustomModifierOptions?: ModifierOptionUncheckedUpdateManyWithoutUserIncludedNestedInput
-    ModifierPack?: ModifierPackUncheckedUpdateManyWithoutCreatedByNestedInput
-    Downvote?: DownvoteUncheckedUpdateManyWithoutCreatedByNestedInput
-    Upvote?: UpvoteUncheckedUpdateManyWithoutCreatedByNestedInput
-  }
-
-  export type GameUpsertWithWhereUniqueWithoutPublicProfileInput = {
-    where: GameWhereUniqueInput
-    update: XOR<GameUpdateWithoutPublicProfileInput, GameUncheckedUpdateWithoutPublicProfileInput>
-    create: XOR<GameCreateWithoutPublicProfileInput, GameUncheckedCreateWithoutPublicProfileInput>
-  }
-
-  export type GameUpdateWithWhereUniqueWithoutPublicProfileInput = {
-    where: GameWhereUniqueInput
-    data: XOR<GameUpdateWithoutPublicProfileInput, GameUncheckedUpdateWithoutPublicProfileInput>
-  }
-
-  export type GameUpdateManyWithWhereWithoutPublicProfileInput = {
-    where: GameScalarWhereInput
-    data: XOR<GameUpdateManyMutationInput, GameUncheckedUpdateManyWithoutPublicProfileInput>
-  }
-
-  export type UserCreateWithoutGameInput = {
-    id: string
-    serializedId?: string | null
-    username?: string | null
-    dateCreated?: Date | string
-    numberOfGames?: number
-    PublicProfile?: PublicProfileCreateNestedManyWithoutUserInput
-    ChallengeModifier?: ChallengeModifierCreateNestedManyWithoutCreatedByInput
-    ModifierOption?: ModifierOptionCreateNestedManyWithoutCreatedByInput
-    DefaultExcludedChallengeModifiers?: ChallengeModifierCreateNestedManyWithoutUserExcludedInput
-    DefaultExcludedModifierOptions?: ModifierOptionCreateNestedManyWithoutUserExcludedInput
-    DefaultIncludedCustomChallengeModifiers?: ChallengeModifierCreateNestedManyWithoutUserIncludedInput
-    DefaultIncludedCustomModifierOptions?: ModifierOptionCreateNestedManyWithoutUserIncludedInput
-    ModifierPack?: ModifierPackCreateNestedManyWithoutCreatedByInput
-    Downvote?: DownvoteCreateNestedManyWithoutCreatedByInput
-    Upvote?: UpvoteCreateNestedManyWithoutCreatedByInput
-  }
-
-  export type UserUncheckedCreateWithoutGameInput = {
-    id: string
-    serializedId?: string | null
-    username?: string | null
-    dateCreated?: Date | string
-    numberOfGames?: number
-    PublicProfile?: PublicProfileUncheckedCreateNestedManyWithoutUserInput
-    ChallengeModifier?: ChallengeModifierUncheckedCreateNestedManyWithoutCreatedByInput
-    ModifierOption?: ModifierOptionUncheckedCreateNestedManyWithoutCreatedByInput
-    DefaultExcludedChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutUserExcludedInput
-    DefaultExcludedModifierOptions?: ModifierOptionUncheckedCreateNestedManyWithoutUserExcludedInput
-    DefaultIncludedCustomChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutUserIncludedInput
-    DefaultIncludedCustomModifierOptions?: ModifierOptionUncheckedCreateNestedManyWithoutUserIncludedInput
-    ModifierPack?: ModifierPackUncheckedCreateNestedManyWithoutCreatedByInput
-    Downvote?: DownvoteUncheckedCreateNestedManyWithoutCreatedByInput
-    Upvote?: UpvoteUncheckedCreateNestedManyWithoutCreatedByInput
-  }
-
-  export type UserCreateOrConnectWithoutGameInput = {
-    where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutGameInput, UserUncheckedCreateWithoutGameInput>
-  }
-
-  export type RankCreateWithoutGameInput = {
-    name: string
-    minimumScore: number
-  }
-
-  export type RankUncheckedCreateWithoutGameInput = {
-    id?: number
-    name: string
-    minimumScore: number
-  }
-
-  export type RankCreateOrConnectWithoutGameInput = {
-    where: RankWhereUniqueInput
-    create: XOR<RankCreateWithoutGameInput, RankUncheckedCreateWithoutGameInput>
   }
 
   export type DayCreateWithoutGameInput = {
@@ -21748,14 +22349,12 @@ export namespace Prisma {
     modifierOptionRerollsUsed?: number
     rerollTokensSpentDuringPart2?: number
     netScore?: number
-    ExcludedChallengeModifiers?: ChallengeModifierCreateNestedManyWithoutExcludedFromDayInput
-    ExcludedModifierOptions?: ModifierOptionCreateNestedManyWithoutExcludedFromDayInput
-    IncludedCustomChallengeModifiers?: ChallengeModifierCreateNestedManyWithoutIncludedInDayInput
-    IncludedCustomModifierOptions?: ModifierOptionCreateNestedManyWithoutIncludedInDayInput
-    ModifierWhenPart1Completed?: ChallengeModifierCreateNestedOneWithoutDayCompletedInPart1Input
-    OptionWhenPart1Completed?: ModifierOptionCreateNestedOneWithoutDayCompletedInPart1Input
     ChallengeModifier?: ChallengeModifierCreateNestedOneWithoutDayInput
     ModifierOption?: ModifierOptionCreateNestedOneWithoutDayInput
+    ModifierWhenPart1Completed?: ChallengeModifierCreateNestedOneWithoutDayCompletedInPart1Input
+    OptionWhenPart1Completed?: ModifierOptionCreateNestedOneWithoutDayCompletedInPart1Input
+    ExcludedChallengeModifiers?: ChallengeModifierCreateNestedManyWithoutModifierPackExcludedInput
+    EncludedCustomChallengeModifiers?: ChallengeModifierCreateNestedManyWithoutModifierPackIncludedInput
   }
 
   export type DayUncheckedCreateWithoutGameInput = {
@@ -21775,10 +22374,8 @@ export namespace Prisma {
     modifierOptionRerollsUsed?: number
     rerollTokensSpentDuringPart2?: number
     netScore?: number
-    ExcludedChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutExcludedFromDayInput
-    ExcludedModifierOptions?: ModifierOptionUncheckedCreateNestedManyWithoutExcludedFromDayInput
-    IncludedCustomChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutIncludedInDayInput
-    IncludedCustomModifierOptions?: ModifierOptionUncheckedCreateNestedManyWithoutIncludedInDayInput
+    ExcludedChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutModifierPackExcludedInput
+    EncludedCustomChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutModifierPackIncludedInput
   }
 
   export type DayCreateOrConnectWithoutGameInput = {
@@ -21788,47 +22385,6 @@ export namespace Prisma {
 
   export type DayCreateManyGameInputEnvelope = {
     data: DayCreateManyGameInput | DayCreateManyGameInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type PublicProfileCreateWithoutGameInput = {
-    dateCreated?: Date | string
-    name: string
-    User: UserCreateNestedOneWithoutPublicProfileInput
-  }
-
-  export type PublicProfileUncheckedCreateWithoutGameInput = {
-    id?: number
-    dateCreated?: Date | string
-    name: string
-    userId: string
-  }
-
-  export type PublicProfileCreateOrConnectWithoutGameInput = {
-    where: PublicProfileWhereUniqueInput
-    create: XOR<PublicProfileCreateWithoutGameInput, PublicProfileUncheckedCreateWithoutGameInput>
-  }
-
-  export type UpvoteCreateWithoutGameInput = {
-    note?: string | null
-    dateCreated?: Date | string
-    CreatedBy: UserCreateNestedOneWithoutUpvoteInput
-  }
-
-  export type UpvoteUncheckedCreateWithoutGameInput = {
-    id?: number
-    note?: string | null
-    dateCreated?: Date | string
-    createdById: string
-  }
-
-  export type UpvoteCreateOrConnectWithoutGameInput = {
-    where: UpvoteWhereUniqueInput
-    create: XOR<UpvoteCreateWithoutGameInput, UpvoteUncheckedCreateWithoutGameInput>
-  }
-
-  export type UpvoteCreateManyGameInputEnvelope = {
-    data: UpvoteCreateManyGameInput | UpvoteCreateManyGameInput[]
     skipDuplicates?: boolean
   }
 
@@ -21855,73 +22411,102 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type UserUpsertWithoutGameInput = {
-    update: XOR<UserUpdateWithoutGameInput, UserUncheckedUpdateWithoutGameInput>
-    create: XOR<UserCreateWithoutGameInput, UserUncheckedCreateWithoutGameInput>
-    where?: UserWhereInput
+  export type PublicProfileCreateWithoutGameInput = {
+    dateCreated?: Date | string
+    name: string
+    User: UserCreateNestedOneWithoutPublicProfileInput
   }
 
-  export type UserUpdateToOneWithWhereWithoutGameInput = {
-    where?: UserWhereInput
-    data: XOR<UserUpdateWithoutGameInput, UserUncheckedUpdateWithoutGameInput>
+  export type PublicProfileUncheckedCreateWithoutGameInput = {
+    id?: number
+    dateCreated?: Date | string
+    name: string
+    userId: string
   }
 
-  export type UserUpdateWithoutGameInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    serializedId?: NullableStringFieldUpdateOperationsInput | string | null
-    username?: NullableStringFieldUpdateOperationsInput | string | null
-    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    numberOfGames?: IntFieldUpdateOperationsInput | number
-    PublicProfile?: PublicProfileUpdateManyWithoutUserNestedInput
-    ChallengeModifier?: ChallengeModifierUpdateManyWithoutCreatedByNestedInput
-    ModifierOption?: ModifierOptionUpdateManyWithoutCreatedByNestedInput
-    DefaultExcludedChallengeModifiers?: ChallengeModifierUpdateManyWithoutUserExcludedNestedInput
-    DefaultExcludedModifierOptions?: ModifierOptionUpdateManyWithoutUserExcludedNestedInput
-    DefaultIncludedCustomChallengeModifiers?: ChallengeModifierUpdateManyWithoutUserIncludedNestedInput
-    DefaultIncludedCustomModifierOptions?: ModifierOptionUpdateManyWithoutUserIncludedNestedInput
-    ModifierPack?: ModifierPackUpdateManyWithoutCreatedByNestedInput
-    Downvote?: DownvoteUpdateManyWithoutCreatedByNestedInput
-    Upvote?: UpvoteUpdateManyWithoutCreatedByNestedInput
+  export type PublicProfileCreateOrConnectWithoutGameInput = {
+    where: PublicProfileWhereUniqueInput
+    create: XOR<PublicProfileCreateWithoutGameInput, PublicProfileUncheckedCreateWithoutGameInput>
   }
 
-  export type UserUncheckedUpdateWithoutGameInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    serializedId?: NullableStringFieldUpdateOperationsInput | string | null
-    username?: NullableStringFieldUpdateOperationsInput | string | null
-    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    numberOfGames?: IntFieldUpdateOperationsInput | number
-    PublicProfile?: PublicProfileUncheckedUpdateManyWithoutUserNestedInput
-    ChallengeModifier?: ChallengeModifierUncheckedUpdateManyWithoutCreatedByNestedInput
-    ModifierOption?: ModifierOptionUncheckedUpdateManyWithoutCreatedByNestedInput
-    DefaultExcludedChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutUserExcludedNestedInput
-    DefaultExcludedModifierOptions?: ModifierOptionUncheckedUpdateManyWithoutUserExcludedNestedInput
-    DefaultIncludedCustomChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutUserIncludedNestedInput
-    DefaultIncludedCustomModifierOptions?: ModifierOptionUncheckedUpdateManyWithoutUserIncludedNestedInput
-    ModifierPack?: ModifierPackUncheckedUpdateManyWithoutCreatedByNestedInput
-    Downvote?: DownvoteUncheckedUpdateManyWithoutCreatedByNestedInput
-    Upvote?: UpvoteUncheckedUpdateManyWithoutCreatedByNestedInput
+  export type RankCreateWithoutGameInput = {
+    name: string
+    minimumScore: number
   }
 
-  export type RankUpsertWithoutGameInput = {
-    update: XOR<RankUpdateWithoutGameInput, RankUncheckedUpdateWithoutGameInput>
+  export type RankUncheckedCreateWithoutGameInput = {
+    id?: number
+    name: string
+    minimumScore: number
+  }
+
+  export type RankCreateOrConnectWithoutGameInput = {
+    where: RankWhereUniqueInput
     create: XOR<RankCreateWithoutGameInput, RankUncheckedCreateWithoutGameInput>
-    where?: RankWhereInput
   }
 
-  export type RankUpdateToOneWithWhereWithoutGameInput = {
-    where?: RankWhereInput
-    data: XOR<RankUpdateWithoutGameInput, RankUncheckedUpdateWithoutGameInput>
+  export type UserCreateWithoutGameInput = {
+    id: string
+    serializedId?: string | null
+    username?: string | null
+    dateCreated?: Date | string
+    numberOfGames?: number
+    ChallengeModifier?: ChallengeModifierCreateNestedManyWithoutCreatedByInput
+    Downvote?: DownvoteCreateNestedManyWithoutCreatedByInput
+    ModifierOption?: ModifierOptionCreateNestedManyWithoutCreatedByInput
+    ModifierPack?: ModifierPackCreateNestedManyWithoutCreatedByInput
+    PublicProfile?: PublicProfileCreateNestedManyWithoutUserInput
+    Upvote?: UpvoteCreateNestedManyWithoutCreatedByInput
+    DefaultExcludedChallengeModifiers?: ChallengeModifierCreateNestedManyWithoutUserExcludedInput
+    DefaultExcludedModifierOptions?: ModifierOptionCreateNestedManyWithoutUserExcludedInput
+    DefaultIncludedCustomChallengeModifiers?: ChallengeModifierCreateNestedManyWithoutUserIncludedInput
+    DefaultIncludedCustomModifierOptions?: ModifierOptionCreateNestedManyWithoutUserIncludedInput
   }
 
-  export type RankUpdateWithoutGameInput = {
-    name?: StringFieldUpdateOperationsInput | string
-    minimumScore?: IntFieldUpdateOperationsInput | number
+  export type UserUncheckedCreateWithoutGameInput = {
+    id: string
+    serializedId?: string | null
+    username?: string | null
+    dateCreated?: Date | string
+    numberOfGames?: number
+    ChallengeModifier?: ChallengeModifierUncheckedCreateNestedManyWithoutCreatedByInput
+    Downvote?: DownvoteUncheckedCreateNestedManyWithoutCreatedByInput
+    ModifierOption?: ModifierOptionUncheckedCreateNestedManyWithoutCreatedByInput
+    ModifierPack?: ModifierPackUncheckedCreateNestedManyWithoutCreatedByInput
+    PublicProfile?: PublicProfileUncheckedCreateNestedManyWithoutUserInput
+    Upvote?: UpvoteUncheckedCreateNestedManyWithoutCreatedByInput
+    DefaultExcludedChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutUserExcludedInput
+    DefaultExcludedModifierOptions?: ModifierOptionUncheckedCreateNestedManyWithoutUserExcludedInput
+    DefaultIncludedCustomChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutUserIncludedInput
+    DefaultIncludedCustomModifierOptions?: ModifierOptionUncheckedCreateNestedManyWithoutUserIncludedInput
   }
 
-  export type RankUncheckedUpdateWithoutGameInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    name?: StringFieldUpdateOperationsInput | string
-    minimumScore?: IntFieldUpdateOperationsInput | number
+  export type UserCreateOrConnectWithoutGameInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutGameInput, UserUncheckedCreateWithoutGameInput>
+  }
+
+  export type UpvoteCreateWithoutGameInput = {
+    note?: string | null
+    dateCreated?: Date | string
+    CreatedBy: UserCreateNestedOneWithoutUpvoteInput
+  }
+
+  export type UpvoteUncheckedCreateWithoutGameInput = {
+    id?: number
+    note?: string | null
+    dateCreated?: Date | string
+    createdById: string
+  }
+
+  export type UpvoteCreateOrConnectWithoutGameInput = {
+    where: UpvoteWhereUniqueInput
+    create: XOR<UpvoteCreateWithoutGameInput, UpvoteUncheckedCreateWithoutGameInput>
+  }
+
+  export type UpvoteCreateManyGameInputEnvelope = {
+    data: UpvoteCreateManyGameInput | UpvoteCreateManyGameInput[]
+    skipDuplicates?: boolean
   }
 
   export type DayUpsertWithWhereUniqueWithoutGameInput = {
@@ -21963,6 +22548,22 @@ export namespace Prisma {
     netScore?: IntFilter<"Day"> | number
   }
 
+  export type DownvoteUpsertWithWhereUniqueWithoutGameInput = {
+    where: DownvoteWhereUniqueInput
+    update: XOR<DownvoteUpdateWithoutGameInput, DownvoteUncheckedUpdateWithoutGameInput>
+    create: XOR<DownvoteCreateWithoutGameInput, DownvoteUncheckedCreateWithoutGameInput>
+  }
+
+  export type DownvoteUpdateWithWhereUniqueWithoutGameInput = {
+    where: DownvoteWhereUniqueInput
+    data: XOR<DownvoteUpdateWithoutGameInput, DownvoteUncheckedUpdateWithoutGameInput>
+  }
+
+  export type DownvoteUpdateManyWithWhereWithoutGameInput = {
+    where: DownvoteScalarWhereInput
+    data: XOR<DownvoteUpdateManyMutationInput, DownvoteUncheckedUpdateManyWithoutGameInput>
+  }
+
   export type PublicProfileUpsertWithoutGameInput = {
     update: XOR<PublicProfileUpdateWithoutGameInput, PublicProfileUncheckedUpdateWithoutGameInput>
     create: XOR<PublicProfileCreateWithoutGameInput, PublicProfileUncheckedCreateWithoutGameInput>
@@ -21987,6 +22588,75 @@ export namespace Prisma {
     userId?: StringFieldUpdateOperationsInput | string
   }
 
+  export type RankUpsertWithoutGameInput = {
+    update: XOR<RankUpdateWithoutGameInput, RankUncheckedUpdateWithoutGameInput>
+    create: XOR<RankCreateWithoutGameInput, RankUncheckedCreateWithoutGameInput>
+    where?: RankWhereInput
+  }
+
+  export type RankUpdateToOneWithWhereWithoutGameInput = {
+    where?: RankWhereInput
+    data: XOR<RankUpdateWithoutGameInput, RankUncheckedUpdateWithoutGameInput>
+  }
+
+  export type RankUpdateWithoutGameInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    minimumScore?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type RankUncheckedUpdateWithoutGameInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    minimumScore?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type UserUpsertWithoutGameInput = {
+    update: XOR<UserUpdateWithoutGameInput, UserUncheckedUpdateWithoutGameInput>
+    create: XOR<UserCreateWithoutGameInput, UserUncheckedCreateWithoutGameInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutGameInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutGameInput, UserUncheckedUpdateWithoutGameInput>
+  }
+
+  export type UserUpdateWithoutGameInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    serializedId?: NullableStringFieldUpdateOperationsInput | string | null
+    username?: NullableStringFieldUpdateOperationsInput | string | null
+    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
+    numberOfGames?: IntFieldUpdateOperationsInput | number
+    ChallengeModifier?: ChallengeModifierUpdateManyWithoutCreatedByNestedInput
+    Downvote?: DownvoteUpdateManyWithoutCreatedByNestedInput
+    ModifierOption?: ModifierOptionUpdateManyWithoutCreatedByNestedInput
+    ModifierPack?: ModifierPackUpdateManyWithoutCreatedByNestedInput
+    PublicProfile?: PublicProfileUpdateManyWithoutUserNestedInput
+    Upvote?: UpvoteUpdateManyWithoutCreatedByNestedInput
+    DefaultExcludedChallengeModifiers?: ChallengeModifierUpdateManyWithoutUserExcludedNestedInput
+    DefaultExcludedModifierOptions?: ModifierOptionUpdateManyWithoutUserExcludedNestedInput
+    DefaultIncludedCustomChallengeModifiers?: ChallengeModifierUpdateManyWithoutUserIncludedNestedInput
+    DefaultIncludedCustomModifierOptions?: ModifierOptionUpdateManyWithoutUserIncludedNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutGameInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    serializedId?: NullableStringFieldUpdateOperationsInput | string | null
+    username?: NullableStringFieldUpdateOperationsInput | string | null
+    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
+    numberOfGames?: IntFieldUpdateOperationsInput | number
+    ChallengeModifier?: ChallengeModifierUncheckedUpdateManyWithoutCreatedByNestedInput
+    Downvote?: DownvoteUncheckedUpdateManyWithoutCreatedByNestedInput
+    ModifierOption?: ModifierOptionUncheckedUpdateManyWithoutCreatedByNestedInput
+    ModifierPack?: ModifierPackUncheckedUpdateManyWithoutCreatedByNestedInput
+    PublicProfile?: PublicProfileUncheckedUpdateManyWithoutUserNestedInput
+    Upvote?: UpvoteUncheckedUpdateManyWithoutCreatedByNestedInput
+    DefaultExcludedChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutUserExcludedNestedInput
+    DefaultExcludedModifierOptions?: ModifierOptionUncheckedUpdateManyWithoutUserExcludedNestedInput
+    DefaultIncludedCustomChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutUserIncludedNestedInput
+    DefaultIncludedCustomModifierOptions?: ModifierOptionUncheckedUpdateManyWithoutUserIncludedNestedInput
+  }
+
   export type UpvoteUpsertWithWhereUniqueWithoutGameInput = {
     where: UpvoteWhereUniqueInput
     update: XOR<UpvoteUpdateWithoutGameInput, UpvoteUncheckedUpdateWithoutGameInput>
@@ -22001,22 +22671,6 @@ export namespace Prisma {
   export type UpvoteUpdateManyWithWhereWithoutGameInput = {
     where: UpvoteScalarWhereInput
     data: XOR<UpvoteUpdateManyMutationInput, UpvoteUncheckedUpdateManyWithoutGameInput>
-  }
-
-  export type DownvoteUpsertWithWhereUniqueWithoutGameInput = {
-    where: DownvoteWhereUniqueInput
-    update: XOR<DownvoteUpdateWithoutGameInput, DownvoteUncheckedUpdateWithoutGameInput>
-    create: XOR<DownvoteCreateWithoutGameInput, DownvoteUncheckedCreateWithoutGameInput>
-  }
-
-  export type DownvoteUpdateWithWhereUniqueWithoutGameInput = {
-    where: DownvoteWhereUniqueInput
-    data: XOR<DownvoteUpdateWithoutGameInput, DownvoteUncheckedUpdateWithoutGameInput>
-  }
-
-  export type DownvoteUpdateManyWithWhereWithoutGameInput = {
-    where: DownvoteScalarWhereInput
-    data: XOR<DownvoteUpdateManyMutationInput, DownvoteUncheckedUpdateManyWithoutGameInput>
   }
 
   export type GameCreateWithoutRankInput = {
@@ -22036,11 +22690,11 @@ export namespace Prisma {
     isPublic?: boolean
     score?: number
     dateCompleted?: Date | string | null
-    User: UserCreateNestedOneWithoutGameInput
     Day?: DayCreateNestedManyWithoutGameInput
-    PublicProfile?: PublicProfileCreateNestedOneWithoutGameInput
-    Upvote?: UpvoteCreateNestedManyWithoutGameInput
     Downvote?: DownvoteCreateNestedManyWithoutGameInput
+    PublicProfile?: PublicProfileCreateNestedOneWithoutGameInput
+    User: UserCreateNestedOneWithoutGameInput
+    Upvote?: UpvoteCreateNestedManyWithoutGameInput
   }
 
   export type GameUncheckedCreateWithoutRankInput = {
@@ -22064,8 +22718,8 @@ export namespace Prisma {
     score?: number
     dateCompleted?: Date | string | null
     Day?: DayUncheckedCreateNestedManyWithoutGameInput
-    Upvote?: UpvoteUncheckedCreateNestedManyWithoutGameInput
     Downvote?: DownvoteUncheckedCreateNestedManyWithoutGameInput
+    Upvote?: UpvoteUncheckedCreateNestedManyWithoutGameInput
   }
 
   export type GameCreateOrConnectWithoutRankInput = {
@@ -22094,7 +22748,7 @@ export namespace Prisma {
     data: XOR<GameUpdateManyMutationInput, GameUncheckedUpdateManyWithoutRankInput>
   }
 
-  export type ChallengeModifierCreateWithoutExcludedFromDayInput = {
+  export type ChallengeModifierCreateWithoutDayInput = {
     dateCreated?: Date | string
     name: string
     text: string
@@ -22103,17 +22757,15 @@ export namespace Prisma {
     standard?: boolean
     isPublic?: boolean
     CreatedBy?: UserCreateNestedOneWithoutChallengeModifierInput
+    DayCompletedInPart1?: DayCreateNestedManyWithoutModifierWhenPart1CompletedInput
     ModifierOption?: ModifierOptionCreateNestedManyWithoutChallengeModifierInput
-    Day?: DayCreateNestedManyWithoutChallengeModifierInput
-    ModifierPackExcluded?: ModifierPackCreateNestedManyWithoutExcludedChallengeModifiersInput
-    ModifierPackIncluded?: ModifierPackCreateNestedManyWithoutEncludedCustomChallengeModifiersInput
     UserExcluded?: UserCreateNestedManyWithoutDefaultExcludedChallengeModifiersInput
     UserIncluded?: UserCreateNestedManyWithoutDefaultIncludedCustomChallengeModifiersInput
-    IncludedInDay?: DayCreateNestedManyWithoutIncludedCustomChallengeModifiersInput
-    DayCompletedInPart1?: DayCreateNestedManyWithoutModifierWhenPart1CompletedInput
+    ModifierPackExcluded?: DayCreateNestedManyWithoutExcludedChallengeModifiersInput
+    ModifierPackIncluded?: DayCreateNestedManyWithoutEncludedCustomChallengeModifiersInput
   }
 
-  export type ChallengeModifierUncheckedCreateWithoutExcludedFromDayInput = {
+  export type ChallengeModifierUncheckedCreateWithoutDayInput = {
     id?: number
     dateCreated?: Date | string
     name: string
@@ -22123,147 +22775,17 @@ export namespace Prisma {
     standard?: boolean
     createdById?: string | null
     isPublic?: boolean
+    DayCompletedInPart1?: DayUncheckedCreateNestedManyWithoutModifierWhenPart1CompletedInput
     ModifierOption?: ModifierOptionUncheckedCreateNestedManyWithoutChallengeModifierInput
-    Day?: DayUncheckedCreateNestedManyWithoutChallengeModifierInput
-    ModifierPackExcluded?: ModifierPackUncheckedCreateNestedManyWithoutExcludedChallengeModifiersInput
-    ModifierPackIncluded?: ModifierPackUncheckedCreateNestedManyWithoutEncludedCustomChallengeModifiersInput
     UserExcluded?: UserUncheckedCreateNestedManyWithoutDefaultExcludedChallengeModifiersInput
     UserIncluded?: UserUncheckedCreateNestedManyWithoutDefaultIncludedCustomChallengeModifiersInput
-    IncludedInDay?: DayUncheckedCreateNestedManyWithoutIncludedCustomChallengeModifiersInput
-    DayCompletedInPart1?: DayUncheckedCreateNestedManyWithoutModifierWhenPart1CompletedInput
+    ModifierPackExcluded?: DayUncheckedCreateNestedManyWithoutExcludedChallengeModifiersInput
+    ModifierPackIncluded?: DayUncheckedCreateNestedManyWithoutEncludedCustomChallengeModifiersInput
   }
 
-  export type ChallengeModifierCreateOrConnectWithoutExcludedFromDayInput = {
+  export type ChallengeModifierCreateOrConnectWithoutDayInput = {
     where: ChallengeModifierWhereUniqueInput
-    create: XOR<ChallengeModifierCreateWithoutExcludedFromDayInput, ChallengeModifierUncheckedCreateWithoutExcludedFromDayInput>
-  }
-
-  export type ModifierOptionCreateWithoutExcludedFromDayInput = {
-    dateCreated?: Date | string
-    name: string
-    text: string
-    explanatoryUrl?: string | null
-    standard?: boolean
-    isPublic?: boolean
-    ChallengeModifier: ChallengeModifierCreateNestedOneWithoutModifierOptionInput
-    CreatedBy?: UserCreateNestedOneWithoutModifierOptionInput
-    Day?: DayCreateNestedManyWithoutModifierOptionInput
-    ModifierPackExcluded?: ModifierPackCreateNestedManyWithoutExcludedModifierOptionsInput
-    ModifierPackIncluded?: ModifierPackCreateNestedManyWithoutIncludedCustomModifierOptionsInput
-    UserExcluded?: UserCreateNestedManyWithoutDefaultExcludedModifierOptionsInput
-    UserIncluded?: UserCreateNestedManyWithoutDefaultIncludedCustomModifierOptionsInput
-    IncludedInDay?: DayCreateNestedManyWithoutIncludedCustomModifierOptionsInput
-    DayCompletedInPart1?: DayCreateNestedManyWithoutOptionWhenPart1CompletedInput
-  }
-
-  export type ModifierOptionUncheckedCreateWithoutExcludedFromDayInput = {
-    id?: number
-    dateCreated?: Date | string
-    challengeModifierId: number
-    name: string
-    text: string
-    explanatoryUrl?: string | null
-    standard?: boolean
-    createdById?: string | null
-    isPublic?: boolean
-    Day?: DayUncheckedCreateNestedManyWithoutModifierOptionInput
-    ModifierPackExcluded?: ModifierPackUncheckedCreateNestedManyWithoutExcludedModifierOptionsInput
-    ModifierPackIncluded?: ModifierPackUncheckedCreateNestedManyWithoutIncludedCustomModifierOptionsInput
-    UserExcluded?: UserUncheckedCreateNestedManyWithoutDefaultExcludedModifierOptionsInput
-    UserIncluded?: UserUncheckedCreateNestedManyWithoutDefaultIncludedCustomModifierOptionsInput
-    IncludedInDay?: DayUncheckedCreateNestedManyWithoutIncludedCustomModifierOptionsInput
-    DayCompletedInPart1?: DayUncheckedCreateNestedManyWithoutOptionWhenPart1CompletedInput
-  }
-
-  export type ModifierOptionCreateOrConnectWithoutExcludedFromDayInput = {
-    where: ModifierOptionWhereUniqueInput
-    create: XOR<ModifierOptionCreateWithoutExcludedFromDayInput, ModifierOptionUncheckedCreateWithoutExcludedFromDayInput>
-  }
-
-  export type ChallengeModifierCreateWithoutIncludedInDayInput = {
-    dateCreated?: Date | string
-    name: string
-    text: string
-    hasOptions?: boolean
-    explanatoryUrl?: string | null
-    standard?: boolean
-    isPublic?: boolean
-    CreatedBy?: UserCreateNestedOneWithoutChallengeModifierInput
-    ModifierOption?: ModifierOptionCreateNestedManyWithoutChallengeModifierInput
-    Day?: DayCreateNestedManyWithoutChallengeModifierInput
-    ModifierPackExcluded?: ModifierPackCreateNestedManyWithoutExcludedChallengeModifiersInput
-    ModifierPackIncluded?: ModifierPackCreateNestedManyWithoutEncludedCustomChallengeModifiersInput
-    UserExcluded?: UserCreateNestedManyWithoutDefaultExcludedChallengeModifiersInput
-    UserIncluded?: UserCreateNestedManyWithoutDefaultIncludedCustomChallengeModifiersInput
-    ExcludedFromDay?: DayCreateNestedManyWithoutExcludedChallengeModifiersInput
-    DayCompletedInPart1?: DayCreateNestedManyWithoutModifierWhenPart1CompletedInput
-  }
-
-  export type ChallengeModifierUncheckedCreateWithoutIncludedInDayInput = {
-    id?: number
-    dateCreated?: Date | string
-    name: string
-    text: string
-    hasOptions?: boolean
-    explanatoryUrl?: string | null
-    standard?: boolean
-    createdById?: string | null
-    isPublic?: boolean
-    ModifierOption?: ModifierOptionUncheckedCreateNestedManyWithoutChallengeModifierInput
-    Day?: DayUncheckedCreateNestedManyWithoutChallengeModifierInput
-    ModifierPackExcluded?: ModifierPackUncheckedCreateNestedManyWithoutExcludedChallengeModifiersInput
-    ModifierPackIncluded?: ModifierPackUncheckedCreateNestedManyWithoutEncludedCustomChallengeModifiersInput
-    UserExcluded?: UserUncheckedCreateNestedManyWithoutDefaultExcludedChallengeModifiersInput
-    UserIncluded?: UserUncheckedCreateNestedManyWithoutDefaultIncludedCustomChallengeModifiersInput
-    ExcludedFromDay?: DayUncheckedCreateNestedManyWithoutExcludedChallengeModifiersInput
-    DayCompletedInPart1?: DayUncheckedCreateNestedManyWithoutModifierWhenPart1CompletedInput
-  }
-
-  export type ChallengeModifierCreateOrConnectWithoutIncludedInDayInput = {
-    where: ChallengeModifierWhereUniqueInput
-    create: XOR<ChallengeModifierCreateWithoutIncludedInDayInput, ChallengeModifierUncheckedCreateWithoutIncludedInDayInput>
-  }
-
-  export type ModifierOptionCreateWithoutIncludedInDayInput = {
-    dateCreated?: Date | string
-    name: string
-    text: string
-    explanatoryUrl?: string | null
-    standard?: boolean
-    isPublic?: boolean
-    ChallengeModifier: ChallengeModifierCreateNestedOneWithoutModifierOptionInput
-    CreatedBy?: UserCreateNestedOneWithoutModifierOptionInput
-    Day?: DayCreateNestedManyWithoutModifierOptionInput
-    ModifierPackExcluded?: ModifierPackCreateNestedManyWithoutExcludedModifierOptionsInput
-    ModifierPackIncluded?: ModifierPackCreateNestedManyWithoutIncludedCustomModifierOptionsInput
-    UserExcluded?: UserCreateNestedManyWithoutDefaultExcludedModifierOptionsInput
-    UserIncluded?: UserCreateNestedManyWithoutDefaultIncludedCustomModifierOptionsInput
-    ExcludedFromDay?: DayCreateNestedManyWithoutExcludedModifierOptionsInput
-    DayCompletedInPart1?: DayCreateNestedManyWithoutOptionWhenPart1CompletedInput
-  }
-
-  export type ModifierOptionUncheckedCreateWithoutIncludedInDayInput = {
-    id?: number
-    dateCreated?: Date | string
-    challengeModifierId: number
-    name: string
-    text: string
-    explanatoryUrl?: string | null
-    standard?: boolean
-    createdById?: string | null
-    isPublic?: boolean
-    Day?: DayUncheckedCreateNestedManyWithoutModifierOptionInput
-    ModifierPackExcluded?: ModifierPackUncheckedCreateNestedManyWithoutExcludedModifierOptionsInput
-    ModifierPackIncluded?: ModifierPackUncheckedCreateNestedManyWithoutIncludedCustomModifierOptionsInput
-    UserExcluded?: UserUncheckedCreateNestedManyWithoutDefaultExcludedModifierOptionsInput
-    UserIncluded?: UserUncheckedCreateNestedManyWithoutDefaultIncludedCustomModifierOptionsInput
-    ExcludedFromDay?: DayUncheckedCreateNestedManyWithoutExcludedModifierOptionsInput
-    DayCompletedInPart1?: DayUncheckedCreateNestedManyWithoutOptionWhenPart1CompletedInput
-  }
-
-  export type ModifierOptionCreateOrConnectWithoutIncludedInDayInput = {
-    where: ModifierOptionWhereUniqueInput
-    create: XOR<ModifierOptionCreateWithoutIncludedInDayInput, ModifierOptionUncheckedCreateWithoutIncludedInDayInput>
+    create: XOR<ChallengeModifierCreateWithoutDayInput, ChallengeModifierUncheckedCreateWithoutDayInput>
   }
 
   export type GameCreateWithoutDayInput = {
@@ -22283,11 +22805,11 @@ export namespace Prisma {
     isPublic?: boolean
     score?: number
     dateCompleted?: Date | string | null
-    User: UserCreateNestedOneWithoutGameInput
-    Rank?: RankCreateNestedOneWithoutGameInput
-    PublicProfile?: PublicProfileCreateNestedOneWithoutGameInput
-    Upvote?: UpvoteCreateNestedManyWithoutGameInput
     Downvote?: DownvoteCreateNestedManyWithoutGameInput
+    PublicProfile?: PublicProfileCreateNestedOneWithoutGameInput
+    Rank?: RankCreateNestedOneWithoutGameInput
+    User: UserCreateNestedOneWithoutGameInput
+    Upvote?: UpvoteCreateNestedManyWithoutGameInput
   }
 
   export type GameUncheckedCreateWithoutDayInput = {
@@ -22311,13 +22833,51 @@ export namespace Prisma {
     score?: number
     rankId?: number | null
     dateCompleted?: Date | string | null
-    Upvote?: UpvoteUncheckedCreateNestedManyWithoutGameInput
     Downvote?: DownvoteUncheckedCreateNestedManyWithoutGameInput
+    Upvote?: UpvoteUncheckedCreateNestedManyWithoutGameInput
   }
 
   export type GameCreateOrConnectWithoutDayInput = {
     where: GameWhereUniqueInput
     create: XOR<GameCreateWithoutDayInput, GameUncheckedCreateWithoutDayInput>
+  }
+
+  export type ModifierOptionCreateWithoutDayInput = {
+    dateCreated?: Date | string
+    name: string
+    text: string
+    explanatoryUrl?: string | null
+    standard?: boolean
+    isPublic?: boolean
+    DayCompletedInPart1?: DayCreateNestedManyWithoutOptionWhenPart1CompletedInput
+    ChallengeModifier: ChallengeModifierCreateNestedOneWithoutModifierOptionInput
+    CreatedBy?: UserCreateNestedOneWithoutModifierOptionInput
+    UserExcluded?: UserCreateNestedManyWithoutDefaultExcludedModifierOptionsInput
+    UserIncluded?: UserCreateNestedManyWithoutDefaultIncludedCustomModifierOptionsInput
+    ExcludedModifierOptions?: ModifierPackCreateNestedManyWithoutExcludedFromDayInput
+    IncludedCustomModifierOptions?: ModifierPackCreateNestedManyWithoutIncludedInDayInput
+  }
+
+  export type ModifierOptionUncheckedCreateWithoutDayInput = {
+    id?: number
+    dateCreated?: Date | string
+    challengeModifierId: number
+    name: string
+    text: string
+    explanatoryUrl?: string | null
+    standard?: boolean
+    createdById?: string | null
+    isPublic?: boolean
+    DayCompletedInPart1?: DayUncheckedCreateNestedManyWithoutOptionWhenPart1CompletedInput
+    UserExcluded?: UserUncheckedCreateNestedManyWithoutDefaultExcludedModifierOptionsInput
+    UserIncluded?: UserUncheckedCreateNestedManyWithoutDefaultIncludedCustomModifierOptionsInput
+    ExcludedModifierOptions?: ModifierPackUncheckedCreateNestedManyWithoutExcludedFromDayInput
+    IncludedCustomModifierOptions?: ModifierPackUncheckedCreateNestedManyWithoutIncludedInDayInput
+  }
+
+  export type ModifierOptionCreateOrConnectWithoutDayInput = {
+    where: ModifierOptionWhereUniqueInput
+    create: XOR<ModifierOptionCreateWithoutDayInput, ModifierOptionUncheckedCreateWithoutDayInput>
   }
 
   export type ChallengeModifierCreateWithoutDayCompletedInPart1Input = {
@@ -22329,14 +22889,12 @@ export namespace Prisma {
     standard?: boolean
     isPublic?: boolean
     CreatedBy?: UserCreateNestedOneWithoutChallengeModifierInput
-    ModifierOption?: ModifierOptionCreateNestedManyWithoutChallengeModifierInput
     Day?: DayCreateNestedManyWithoutChallengeModifierInput
-    ModifierPackExcluded?: ModifierPackCreateNestedManyWithoutExcludedChallengeModifiersInput
-    ModifierPackIncluded?: ModifierPackCreateNestedManyWithoutEncludedCustomChallengeModifiersInput
+    ModifierOption?: ModifierOptionCreateNestedManyWithoutChallengeModifierInput
     UserExcluded?: UserCreateNestedManyWithoutDefaultExcludedChallengeModifiersInput
     UserIncluded?: UserCreateNestedManyWithoutDefaultIncludedCustomChallengeModifiersInput
-    ExcludedFromDay?: DayCreateNestedManyWithoutExcludedChallengeModifiersInput
-    IncludedInDay?: DayCreateNestedManyWithoutIncludedCustomChallengeModifiersInput
+    ModifierPackExcluded?: DayCreateNestedManyWithoutExcludedChallengeModifiersInput
+    ModifierPackIncluded?: DayCreateNestedManyWithoutEncludedCustomChallengeModifiersInput
   }
 
   export type ChallengeModifierUncheckedCreateWithoutDayCompletedInPart1Input = {
@@ -22349,14 +22907,12 @@ export namespace Prisma {
     standard?: boolean
     createdById?: string | null
     isPublic?: boolean
-    ModifierOption?: ModifierOptionUncheckedCreateNestedManyWithoutChallengeModifierInput
     Day?: DayUncheckedCreateNestedManyWithoutChallengeModifierInput
-    ModifierPackExcluded?: ModifierPackUncheckedCreateNestedManyWithoutExcludedChallengeModifiersInput
-    ModifierPackIncluded?: ModifierPackUncheckedCreateNestedManyWithoutEncludedCustomChallengeModifiersInput
+    ModifierOption?: ModifierOptionUncheckedCreateNestedManyWithoutChallengeModifierInput
     UserExcluded?: UserUncheckedCreateNestedManyWithoutDefaultExcludedChallengeModifiersInput
     UserIncluded?: UserUncheckedCreateNestedManyWithoutDefaultIncludedCustomChallengeModifiersInput
-    ExcludedFromDay?: DayUncheckedCreateNestedManyWithoutExcludedChallengeModifiersInput
-    IncludedInDay?: DayUncheckedCreateNestedManyWithoutIncludedCustomChallengeModifiersInput
+    ModifierPackExcluded?: DayUncheckedCreateNestedManyWithoutExcludedChallengeModifiersInput
+    ModifierPackIncluded?: DayUncheckedCreateNestedManyWithoutEncludedCustomChallengeModifiersInput
   }
 
   export type ChallengeModifierCreateOrConnectWithoutDayCompletedInPart1Input = {
@@ -22371,15 +22927,13 @@ export namespace Prisma {
     explanatoryUrl?: string | null
     standard?: boolean
     isPublic?: boolean
+    Day?: DayCreateNestedManyWithoutModifierOptionInput
     ChallengeModifier: ChallengeModifierCreateNestedOneWithoutModifierOptionInput
     CreatedBy?: UserCreateNestedOneWithoutModifierOptionInput
-    Day?: DayCreateNestedManyWithoutModifierOptionInput
-    ModifierPackExcluded?: ModifierPackCreateNestedManyWithoutExcludedModifierOptionsInput
-    ModifierPackIncluded?: ModifierPackCreateNestedManyWithoutIncludedCustomModifierOptionsInput
     UserExcluded?: UserCreateNestedManyWithoutDefaultExcludedModifierOptionsInput
     UserIncluded?: UserCreateNestedManyWithoutDefaultIncludedCustomModifierOptionsInput
-    ExcludedFromDay?: DayCreateNestedManyWithoutExcludedModifierOptionsInput
-    IncludedInDay?: DayCreateNestedManyWithoutIncludedCustomModifierOptionsInput
+    ExcludedModifierOptions?: ModifierPackCreateNestedManyWithoutExcludedFromDayInput
+    IncludedCustomModifierOptions?: ModifierPackCreateNestedManyWithoutIncludedInDayInput
   }
 
   export type ModifierOptionUncheckedCreateWithoutDayCompletedInPart1Input = {
@@ -22393,12 +22947,10 @@ export namespace Prisma {
     createdById?: string | null
     isPublic?: boolean
     Day?: DayUncheckedCreateNestedManyWithoutModifierOptionInput
-    ModifierPackExcluded?: ModifierPackUncheckedCreateNestedManyWithoutExcludedModifierOptionsInput
-    ModifierPackIncluded?: ModifierPackUncheckedCreateNestedManyWithoutIncludedCustomModifierOptionsInput
     UserExcluded?: UserUncheckedCreateNestedManyWithoutDefaultExcludedModifierOptionsInput
     UserIncluded?: UserUncheckedCreateNestedManyWithoutDefaultIncludedCustomModifierOptionsInput
-    ExcludedFromDay?: DayUncheckedCreateNestedManyWithoutExcludedModifierOptionsInput
-    IncludedInDay?: DayUncheckedCreateNestedManyWithoutIncludedCustomModifierOptionsInput
+    ExcludedModifierOptions?: ModifierPackUncheckedCreateNestedManyWithoutExcludedFromDayInput
+    IncludedCustomModifierOptions?: ModifierPackUncheckedCreateNestedManyWithoutIncludedInDayInput
   }
 
   export type ModifierOptionCreateOrConnectWithoutDayCompletedInPart1Input = {
@@ -22406,7 +22958,7 @@ export namespace Prisma {
     create: XOR<ModifierOptionCreateWithoutDayCompletedInPart1Input, ModifierOptionUncheckedCreateWithoutDayCompletedInPart1Input>
   }
 
-  export type ChallengeModifierCreateWithoutDayInput = {
+  export type ChallengeModifierCreateWithoutModifierPackExcludedInput = {
     dateCreated?: Date | string
     name: string
     text: string
@@ -22415,17 +22967,15 @@ export namespace Prisma {
     standard?: boolean
     isPublic?: boolean
     CreatedBy?: UserCreateNestedOneWithoutChallengeModifierInput
+    Day?: DayCreateNestedManyWithoutChallengeModifierInput
+    DayCompletedInPart1?: DayCreateNestedManyWithoutModifierWhenPart1CompletedInput
     ModifierOption?: ModifierOptionCreateNestedManyWithoutChallengeModifierInput
-    ModifierPackExcluded?: ModifierPackCreateNestedManyWithoutExcludedChallengeModifiersInput
-    ModifierPackIncluded?: ModifierPackCreateNestedManyWithoutEncludedCustomChallengeModifiersInput
     UserExcluded?: UserCreateNestedManyWithoutDefaultExcludedChallengeModifiersInput
     UserIncluded?: UserCreateNestedManyWithoutDefaultIncludedCustomChallengeModifiersInput
-    ExcludedFromDay?: DayCreateNestedManyWithoutExcludedChallengeModifiersInput
-    IncludedInDay?: DayCreateNestedManyWithoutIncludedCustomChallengeModifiersInput
-    DayCompletedInPart1?: DayCreateNestedManyWithoutModifierWhenPart1CompletedInput
+    ModifierPackIncluded?: DayCreateNestedManyWithoutEncludedCustomChallengeModifiersInput
   }
 
-  export type ChallengeModifierUncheckedCreateWithoutDayInput = {
+  export type ChallengeModifierUncheckedCreateWithoutModifierPackExcludedInput = {
     id?: number
     dateCreated?: Date | string
     name: string
@@ -22435,125 +22985,103 @@ export namespace Prisma {
     standard?: boolean
     createdById?: string | null
     isPublic?: boolean
+    Day?: DayUncheckedCreateNestedManyWithoutChallengeModifierInput
+    DayCompletedInPart1?: DayUncheckedCreateNestedManyWithoutModifierWhenPart1CompletedInput
     ModifierOption?: ModifierOptionUncheckedCreateNestedManyWithoutChallengeModifierInput
-    ModifierPackExcluded?: ModifierPackUncheckedCreateNestedManyWithoutExcludedChallengeModifiersInput
-    ModifierPackIncluded?: ModifierPackUncheckedCreateNestedManyWithoutEncludedCustomChallengeModifiersInput
     UserExcluded?: UserUncheckedCreateNestedManyWithoutDefaultExcludedChallengeModifiersInput
     UserIncluded?: UserUncheckedCreateNestedManyWithoutDefaultIncludedCustomChallengeModifiersInput
-    ExcludedFromDay?: DayUncheckedCreateNestedManyWithoutExcludedChallengeModifiersInput
-    IncludedInDay?: DayUncheckedCreateNestedManyWithoutIncludedCustomChallengeModifiersInput
-    DayCompletedInPart1?: DayUncheckedCreateNestedManyWithoutModifierWhenPart1CompletedInput
+    ModifierPackIncluded?: DayUncheckedCreateNestedManyWithoutEncludedCustomChallengeModifiersInput
   }
 
-  export type ChallengeModifierCreateOrConnectWithoutDayInput = {
+  export type ChallengeModifierCreateOrConnectWithoutModifierPackExcludedInput = {
     where: ChallengeModifierWhereUniqueInput
-    create: XOR<ChallengeModifierCreateWithoutDayInput, ChallengeModifierUncheckedCreateWithoutDayInput>
+    create: XOR<ChallengeModifierCreateWithoutModifierPackExcludedInput, ChallengeModifierUncheckedCreateWithoutModifierPackExcludedInput>
   }
 
-  export type ModifierOptionCreateWithoutDayInput = {
+  export type ChallengeModifierCreateWithoutModifierPackIncludedInput = {
     dateCreated?: Date | string
     name: string
     text: string
+    hasOptions?: boolean
     explanatoryUrl?: string | null
     standard?: boolean
     isPublic?: boolean
-    ChallengeModifier: ChallengeModifierCreateNestedOneWithoutModifierOptionInput
-    CreatedBy?: UserCreateNestedOneWithoutModifierOptionInput
-    ModifierPackExcluded?: ModifierPackCreateNestedManyWithoutExcludedModifierOptionsInput
-    ModifierPackIncluded?: ModifierPackCreateNestedManyWithoutIncludedCustomModifierOptionsInput
-    UserExcluded?: UserCreateNestedManyWithoutDefaultExcludedModifierOptionsInput
-    UserIncluded?: UserCreateNestedManyWithoutDefaultIncludedCustomModifierOptionsInput
-    ExcludedFromDay?: DayCreateNestedManyWithoutExcludedModifierOptionsInput
-    IncludedInDay?: DayCreateNestedManyWithoutIncludedCustomModifierOptionsInput
-    DayCompletedInPart1?: DayCreateNestedManyWithoutOptionWhenPart1CompletedInput
+    CreatedBy?: UserCreateNestedOneWithoutChallengeModifierInput
+    Day?: DayCreateNestedManyWithoutChallengeModifierInput
+    DayCompletedInPart1?: DayCreateNestedManyWithoutModifierWhenPart1CompletedInput
+    ModifierOption?: ModifierOptionCreateNestedManyWithoutChallengeModifierInput
+    UserExcluded?: UserCreateNestedManyWithoutDefaultExcludedChallengeModifiersInput
+    UserIncluded?: UserCreateNestedManyWithoutDefaultIncludedCustomChallengeModifiersInput
+    ModifierPackExcluded?: DayCreateNestedManyWithoutExcludedChallengeModifiersInput
   }
 
-  export type ModifierOptionUncheckedCreateWithoutDayInput = {
+  export type ChallengeModifierUncheckedCreateWithoutModifierPackIncludedInput = {
     id?: number
     dateCreated?: Date | string
-    challengeModifierId: number
     name: string
     text: string
+    hasOptions?: boolean
     explanatoryUrl?: string | null
     standard?: boolean
     createdById?: string | null
     isPublic?: boolean
-    ModifierPackExcluded?: ModifierPackUncheckedCreateNestedManyWithoutExcludedModifierOptionsInput
-    ModifierPackIncluded?: ModifierPackUncheckedCreateNestedManyWithoutIncludedCustomModifierOptionsInput
-    UserExcluded?: UserUncheckedCreateNestedManyWithoutDefaultExcludedModifierOptionsInput
-    UserIncluded?: UserUncheckedCreateNestedManyWithoutDefaultIncludedCustomModifierOptionsInput
-    ExcludedFromDay?: DayUncheckedCreateNestedManyWithoutExcludedModifierOptionsInput
-    IncludedInDay?: DayUncheckedCreateNestedManyWithoutIncludedCustomModifierOptionsInput
-    DayCompletedInPart1?: DayUncheckedCreateNestedManyWithoutOptionWhenPart1CompletedInput
+    Day?: DayUncheckedCreateNestedManyWithoutChallengeModifierInput
+    DayCompletedInPart1?: DayUncheckedCreateNestedManyWithoutModifierWhenPart1CompletedInput
+    ModifierOption?: ModifierOptionUncheckedCreateNestedManyWithoutChallengeModifierInput
+    UserExcluded?: UserUncheckedCreateNestedManyWithoutDefaultExcludedChallengeModifiersInput
+    UserIncluded?: UserUncheckedCreateNestedManyWithoutDefaultIncludedCustomChallengeModifiersInput
+    ModifierPackExcluded?: DayUncheckedCreateNestedManyWithoutExcludedChallengeModifiersInput
   }
 
-  export type ModifierOptionCreateOrConnectWithoutDayInput = {
-    where: ModifierOptionWhereUniqueInput
-    create: XOR<ModifierOptionCreateWithoutDayInput, ModifierOptionUncheckedCreateWithoutDayInput>
-  }
-
-  export type ChallengeModifierUpsertWithWhereUniqueWithoutExcludedFromDayInput = {
+  export type ChallengeModifierCreateOrConnectWithoutModifierPackIncludedInput = {
     where: ChallengeModifierWhereUniqueInput
-    update: XOR<ChallengeModifierUpdateWithoutExcludedFromDayInput, ChallengeModifierUncheckedUpdateWithoutExcludedFromDayInput>
-    create: XOR<ChallengeModifierCreateWithoutExcludedFromDayInput, ChallengeModifierUncheckedCreateWithoutExcludedFromDayInput>
+    create: XOR<ChallengeModifierCreateWithoutModifierPackIncludedInput, ChallengeModifierUncheckedCreateWithoutModifierPackIncludedInput>
   }
 
-  export type ChallengeModifierUpdateWithWhereUniqueWithoutExcludedFromDayInput = {
-    where: ChallengeModifierWhereUniqueInput
-    data: XOR<ChallengeModifierUpdateWithoutExcludedFromDayInput, ChallengeModifierUncheckedUpdateWithoutExcludedFromDayInput>
+  export type ChallengeModifierUpsertWithoutDayInput = {
+    update: XOR<ChallengeModifierUpdateWithoutDayInput, ChallengeModifierUncheckedUpdateWithoutDayInput>
+    create: XOR<ChallengeModifierCreateWithoutDayInput, ChallengeModifierUncheckedCreateWithoutDayInput>
+    where?: ChallengeModifierWhereInput
   }
 
-  export type ChallengeModifierUpdateManyWithWhereWithoutExcludedFromDayInput = {
-    where: ChallengeModifierScalarWhereInput
-    data: XOR<ChallengeModifierUpdateManyMutationInput, ChallengeModifierUncheckedUpdateManyWithoutExcludedFromDayInput>
+  export type ChallengeModifierUpdateToOneWithWhereWithoutDayInput = {
+    where?: ChallengeModifierWhereInput
+    data: XOR<ChallengeModifierUpdateWithoutDayInput, ChallengeModifierUncheckedUpdateWithoutDayInput>
   }
 
-  export type ModifierOptionUpsertWithWhereUniqueWithoutExcludedFromDayInput = {
-    where: ModifierOptionWhereUniqueInput
-    update: XOR<ModifierOptionUpdateWithoutExcludedFromDayInput, ModifierOptionUncheckedUpdateWithoutExcludedFromDayInput>
-    create: XOR<ModifierOptionCreateWithoutExcludedFromDayInput, ModifierOptionUncheckedCreateWithoutExcludedFromDayInput>
+  export type ChallengeModifierUpdateWithoutDayInput = {
+    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
+    name?: StringFieldUpdateOperationsInput | string
+    text?: StringFieldUpdateOperationsInput | string
+    hasOptions?: BoolFieldUpdateOperationsInput | boolean
+    explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    standard?: BoolFieldUpdateOperationsInput | boolean
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
+    CreatedBy?: UserUpdateOneWithoutChallengeModifierNestedInput
+    DayCompletedInPart1?: DayUpdateManyWithoutModifierWhenPart1CompletedNestedInput
+    ModifierOption?: ModifierOptionUpdateManyWithoutChallengeModifierNestedInput
+    UserExcluded?: UserUpdateManyWithoutDefaultExcludedChallengeModifiersNestedInput
+    UserIncluded?: UserUpdateManyWithoutDefaultIncludedCustomChallengeModifiersNestedInput
+    ModifierPackExcluded?: DayUpdateManyWithoutExcludedChallengeModifiersNestedInput
+    ModifierPackIncluded?: DayUpdateManyWithoutEncludedCustomChallengeModifiersNestedInput
   }
 
-  export type ModifierOptionUpdateWithWhereUniqueWithoutExcludedFromDayInput = {
-    where: ModifierOptionWhereUniqueInput
-    data: XOR<ModifierOptionUpdateWithoutExcludedFromDayInput, ModifierOptionUncheckedUpdateWithoutExcludedFromDayInput>
-  }
-
-  export type ModifierOptionUpdateManyWithWhereWithoutExcludedFromDayInput = {
-    where: ModifierOptionScalarWhereInput
-    data: XOR<ModifierOptionUpdateManyMutationInput, ModifierOptionUncheckedUpdateManyWithoutExcludedFromDayInput>
-  }
-
-  export type ChallengeModifierUpsertWithWhereUniqueWithoutIncludedInDayInput = {
-    where: ChallengeModifierWhereUniqueInput
-    update: XOR<ChallengeModifierUpdateWithoutIncludedInDayInput, ChallengeModifierUncheckedUpdateWithoutIncludedInDayInput>
-    create: XOR<ChallengeModifierCreateWithoutIncludedInDayInput, ChallengeModifierUncheckedCreateWithoutIncludedInDayInput>
-  }
-
-  export type ChallengeModifierUpdateWithWhereUniqueWithoutIncludedInDayInput = {
-    where: ChallengeModifierWhereUniqueInput
-    data: XOR<ChallengeModifierUpdateWithoutIncludedInDayInput, ChallengeModifierUncheckedUpdateWithoutIncludedInDayInput>
-  }
-
-  export type ChallengeModifierUpdateManyWithWhereWithoutIncludedInDayInput = {
-    where: ChallengeModifierScalarWhereInput
-    data: XOR<ChallengeModifierUpdateManyMutationInput, ChallengeModifierUncheckedUpdateManyWithoutIncludedInDayInput>
-  }
-
-  export type ModifierOptionUpsertWithWhereUniqueWithoutIncludedInDayInput = {
-    where: ModifierOptionWhereUniqueInput
-    update: XOR<ModifierOptionUpdateWithoutIncludedInDayInput, ModifierOptionUncheckedUpdateWithoutIncludedInDayInput>
-    create: XOR<ModifierOptionCreateWithoutIncludedInDayInput, ModifierOptionUncheckedCreateWithoutIncludedInDayInput>
-  }
-
-  export type ModifierOptionUpdateWithWhereUniqueWithoutIncludedInDayInput = {
-    where: ModifierOptionWhereUniqueInput
-    data: XOR<ModifierOptionUpdateWithoutIncludedInDayInput, ModifierOptionUncheckedUpdateWithoutIncludedInDayInput>
-  }
-
-  export type ModifierOptionUpdateManyWithWhereWithoutIncludedInDayInput = {
-    where: ModifierOptionScalarWhereInput
-    data: XOR<ModifierOptionUpdateManyMutationInput, ModifierOptionUncheckedUpdateManyWithoutIncludedInDayInput>
+  export type ChallengeModifierUncheckedUpdateWithoutDayInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
+    name?: StringFieldUpdateOperationsInput | string
+    text?: StringFieldUpdateOperationsInput | string
+    hasOptions?: BoolFieldUpdateOperationsInput | boolean
+    explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    standard?: BoolFieldUpdateOperationsInput | boolean
+    createdById?: NullableStringFieldUpdateOperationsInput | string | null
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
+    DayCompletedInPart1?: DayUncheckedUpdateManyWithoutModifierWhenPart1CompletedNestedInput
+    ModifierOption?: ModifierOptionUncheckedUpdateManyWithoutChallengeModifierNestedInput
+    UserExcluded?: UserUncheckedUpdateManyWithoutDefaultExcludedChallengeModifiersNestedInput
+    UserIncluded?: UserUncheckedUpdateManyWithoutDefaultIncludedCustomChallengeModifiersNestedInput
+    ModifierPackExcluded?: DayUncheckedUpdateManyWithoutExcludedChallengeModifiersNestedInput
+    ModifierPackIncluded?: DayUncheckedUpdateManyWithoutEncludedCustomChallengeModifiersNestedInput
   }
 
   export type GameUpsertWithoutDayInput = {
@@ -22584,11 +23112,11 @@ export namespace Prisma {
     isPublic?: BoolFieldUpdateOperationsInput | boolean
     score?: IntFieldUpdateOperationsInput | number
     dateCompleted?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    User?: UserUpdateOneRequiredWithoutGameNestedInput
-    Rank?: RankUpdateOneWithoutGameNestedInput
-    PublicProfile?: PublicProfileUpdateOneWithoutGameNestedInput
-    Upvote?: UpvoteUpdateManyWithoutGameNestedInput
     Downvote?: DownvoteUpdateManyWithoutGameNestedInput
+    PublicProfile?: PublicProfileUpdateOneWithoutGameNestedInput
+    Rank?: RankUpdateOneWithoutGameNestedInput
+    User?: UserUpdateOneRequiredWithoutGameNestedInput
+    Upvote?: UpvoteUpdateManyWithoutGameNestedInput
   }
 
   export type GameUncheckedUpdateWithoutDayInput = {
@@ -22612,8 +23140,52 @@ export namespace Prisma {
     score?: IntFieldUpdateOperationsInput | number
     rankId?: NullableIntFieldUpdateOperationsInput | number | null
     dateCompleted?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    Upvote?: UpvoteUncheckedUpdateManyWithoutGameNestedInput
     Downvote?: DownvoteUncheckedUpdateManyWithoutGameNestedInput
+    Upvote?: UpvoteUncheckedUpdateManyWithoutGameNestedInput
+  }
+
+  export type ModifierOptionUpsertWithoutDayInput = {
+    update: XOR<ModifierOptionUpdateWithoutDayInput, ModifierOptionUncheckedUpdateWithoutDayInput>
+    create: XOR<ModifierOptionCreateWithoutDayInput, ModifierOptionUncheckedCreateWithoutDayInput>
+    where?: ModifierOptionWhereInput
+  }
+
+  export type ModifierOptionUpdateToOneWithWhereWithoutDayInput = {
+    where?: ModifierOptionWhereInput
+    data: XOR<ModifierOptionUpdateWithoutDayInput, ModifierOptionUncheckedUpdateWithoutDayInput>
+  }
+
+  export type ModifierOptionUpdateWithoutDayInput = {
+    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
+    name?: StringFieldUpdateOperationsInput | string
+    text?: StringFieldUpdateOperationsInput | string
+    explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    standard?: BoolFieldUpdateOperationsInput | boolean
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
+    DayCompletedInPart1?: DayUpdateManyWithoutOptionWhenPart1CompletedNestedInput
+    ChallengeModifier?: ChallengeModifierUpdateOneRequiredWithoutModifierOptionNestedInput
+    CreatedBy?: UserUpdateOneWithoutModifierOptionNestedInput
+    UserExcluded?: UserUpdateManyWithoutDefaultExcludedModifierOptionsNestedInput
+    UserIncluded?: UserUpdateManyWithoutDefaultIncludedCustomModifierOptionsNestedInput
+    ExcludedModifierOptions?: ModifierPackUpdateManyWithoutExcludedFromDayNestedInput
+    IncludedCustomModifierOptions?: ModifierPackUpdateManyWithoutIncludedInDayNestedInput
+  }
+
+  export type ModifierOptionUncheckedUpdateWithoutDayInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
+    challengeModifierId?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    text?: StringFieldUpdateOperationsInput | string
+    explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    standard?: BoolFieldUpdateOperationsInput | boolean
+    createdById?: NullableStringFieldUpdateOperationsInput | string | null
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
+    DayCompletedInPart1?: DayUncheckedUpdateManyWithoutOptionWhenPart1CompletedNestedInput
+    UserExcluded?: UserUncheckedUpdateManyWithoutDefaultExcludedModifierOptionsNestedInput
+    UserIncluded?: UserUncheckedUpdateManyWithoutDefaultIncludedCustomModifierOptionsNestedInput
+    ExcludedModifierOptions?: ModifierPackUncheckedUpdateManyWithoutExcludedFromDayNestedInput
+    IncludedCustomModifierOptions?: ModifierPackUncheckedUpdateManyWithoutIncludedInDayNestedInput
   }
 
   export type ChallengeModifierUpsertWithoutDayCompletedInPart1Input = {
@@ -22636,14 +23208,12 @@ export namespace Prisma {
     standard?: BoolFieldUpdateOperationsInput | boolean
     isPublic?: BoolFieldUpdateOperationsInput | boolean
     CreatedBy?: UserUpdateOneWithoutChallengeModifierNestedInput
-    ModifierOption?: ModifierOptionUpdateManyWithoutChallengeModifierNestedInput
     Day?: DayUpdateManyWithoutChallengeModifierNestedInput
-    ModifierPackExcluded?: ModifierPackUpdateManyWithoutExcludedChallengeModifiersNestedInput
-    ModifierPackIncluded?: ModifierPackUpdateManyWithoutEncludedCustomChallengeModifiersNestedInput
+    ModifierOption?: ModifierOptionUpdateManyWithoutChallengeModifierNestedInput
     UserExcluded?: UserUpdateManyWithoutDefaultExcludedChallengeModifiersNestedInput
     UserIncluded?: UserUpdateManyWithoutDefaultIncludedCustomChallengeModifiersNestedInput
-    ExcludedFromDay?: DayUpdateManyWithoutExcludedChallengeModifiersNestedInput
-    IncludedInDay?: DayUpdateManyWithoutIncludedCustomChallengeModifiersNestedInput
+    ModifierPackExcluded?: DayUpdateManyWithoutExcludedChallengeModifiersNestedInput
+    ModifierPackIncluded?: DayUpdateManyWithoutEncludedCustomChallengeModifiersNestedInput
   }
 
   export type ChallengeModifierUncheckedUpdateWithoutDayCompletedInPart1Input = {
@@ -22656,14 +23226,12 @@ export namespace Prisma {
     standard?: BoolFieldUpdateOperationsInput | boolean
     createdById?: NullableStringFieldUpdateOperationsInput | string | null
     isPublic?: BoolFieldUpdateOperationsInput | boolean
-    ModifierOption?: ModifierOptionUncheckedUpdateManyWithoutChallengeModifierNestedInput
     Day?: DayUncheckedUpdateManyWithoutChallengeModifierNestedInput
-    ModifierPackExcluded?: ModifierPackUncheckedUpdateManyWithoutExcludedChallengeModifiersNestedInput
-    ModifierPackIncluded?: ModifierPackUncheckedUpdateManyWithoutEncludedCustomChallengeModifiersNestedInput
+    ModifierOption?: ModifierOptionUncheckedUpdateManyWithoutChallengeModifierNestedInput
     UserExcluded?: UserUncheckedUpdateManyWithoutDefaultExcludedChallengeModifiersNestedInput
     UserIncluded?: UserUncheckedUpdateManyWithoutDefaultIncludedCustomChallengeModifiersNestedInput
-    ExcludedFromDay?: DayUncheckedUpdateManyWithoutExcludedChallengeModifiersNestedInput
-    IncludedInDay?: DayUncheckedUpdateManyWithoutIncludedCustomChallengeModifiersNestedInput
+    ModifierPackExcluded?: DayUncheckedUpdateManyWithoutExcludedChallengeModifiersNestedInput
+    ModifierPackIncluded?: DayUncheckedUpdateManyWithoutEncludedCustomChallengeModifiersNestedInput
   }
 
   export type ModifierOptionUpsertWithoutDayCompletedInPart1Input = {
@@ -22684,15 +23252,13 @@ export namespace Prisma {
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
     isPublic?: BoolFieldUpdateOperationsInput | boolean
+    Day?: DayUpdateManyWithoutModifierOptionNestedInput
     ChallengeModifier?: ChallengeModifierUpdateOneRequiredWithoutModifierOptionNestedInput
     CreatedBy?: UserUpdateOneWithoutModifierOptionNestedInput
-    Day?: DayUpdateManyWithoutModifierOptionNestedInput
-    ModifierPackExcluded?: ModifierPackUpdateManyWithoutExcludedModifierOptionsNestedInput
-    ModifierPackIncluded?: ModifierPackUpdateManyWithoutIncludedCustomModifierOptionsNestedInput
     UserExcluded?: UserUpdateManyWithoutDefaultExcludedModifierOptionsNestedInput
     UserIncluded?: UserUpdateManyWithoutDefaultIncludedCustomModifierOptionsNestedInput
-    ExcludedFromDay?: DayUpdateManyWithoutExcludedModifierOptionsNestedInput
-    IncludedInDay?: DayUpdateManyWithoutIncludedCustomModifierOptionsNestedInput
+    ExcludedModifierOptions?: ModifierPackUpdateManyWithoutExcludedFromDayNestedInput
+    IncludedCustomModifierOptions?: ModifierPackUpdateManyWithoutIncludedInDayNestedInput
   }
 
   export type ModifierOptionUncheckedUpdateWithoutDayCompletedInPart1Input = {
@@ -22706,110 +23272,42 @@ export namespace Prisma {
     createdById?: NullableStringFieldUpdateOperationsInput | string | null
     isPublic?: BoolFieldUpdateOperationsInput | boolean
     Day?: DayUncheckedUpdateManyWithoutModifierOptionNestedInput
-    ModifierPackExcluded?: ModifierPackUncheckedUpdateManyWithoutExcludedModifierOptionsNestedInput
-    ModifierPackIncluded?: ModifierPackUncheckedUpdateManyWithoutIncludedCustomModifierOptionsNestedInput
     UserExcluded?: UserUncheckedUpdateManyWithoutDefaultExcludedModifierOptionsNestedInput
     UserIncluded?: UserUncheckedUpdateManyWithoutDefaultIncludedCustomModifierOptionsNestedInput
-    ExcludedFromDay?: DayUncheckedUpdateManyWithoutExcludedModifierOptionsNestedInput
-    IncludedInDay?: DayUncheckedUpdateManyWithoutIncludedCustomModifierOptionsNestedInput
+    ExcludedModifierOptions?: ModifierPackUncheckedUpdateManyWithoutExcludedFromDayNestedInput
+    IncludedCustomModifierOptions?: ModifierPackUncheckedUpdateManyWithoutIncludedInDayNestedInput
   }
 
-  export type ChallengeModifierUpsertWithoutDayInput = {
-    update: XOR<ChallengeModifierUpdateWithoutDayInput, ChallengeModifierUncheckedUpdateWithoutDayInput>
-    create: XOR<ChallengeModifierCreateWithoutDayInput, ChallengeModifierUncheckedCreateWithoutDayInput>
-    where?: ChallengeModifierWhereInput
+  export type ChallengeModifierUpsertWithWhereUniqueWithoutModifierPackExcludedInput = {
+    where: ChallengeModifierWhereUniqueInput
+    update: XOR<ChallengeModifierUpdateWithoutModifierPackExcludedInput, ChallengeModifierUncheckedUpdateWithoutModifierPackExcludedInput>
+    create: XOR<ChallengeModifierCreateWithoutModifierPackExcludedInput, ChallengeModifierUncheckedCreateWithoutModifierPackExcludedInput>
   }
 
-  export type ChallengeModifierUpdateToOneWithWhereWithoutDayInput = {
-    where?: ChallengeModifierWhereInput
-    data: XOR<ChallengeModifierUpdateWithoutDayInput, ChallengeModifierUncheckedUpdateWithoutDayInput>
+  export type ChallengeModifierUpdateWithWhereUniqueWithoutModifierPackExcludedInput = {
+    where: ChallengeModifierWhereUniqueInput
+    data: XOR<ChallengeModifierUpdateWithoutModifierPackExcludedInput, ChallengeModifierUncheckedUpdateWithoutModifierPackExcludedInput>
   }
 
-  export type ChallengeModifierUpdateWithoutDayInput = {
-    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    name?: StringFieldUpdateOperationsInput | string
-    text?: StringFieldUpdateOperationsInput | string
-    hasOptions?: BoolFieldUpdateOperationsInput | boolean
-    explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    standard?: BoolFieldUpdateOperationsInput | boolean
-    isPublic?: BoolFieldUpdateOperationsInput | boolean
-    CreatedBy?: UserUpdateOneWithoutChallengeModifierNestedInput
-    ModifierOption?: ModifierOptionUpdateManyWithoutChallengeModifierNestedInput
-    ModifierPackExcluded?: ModifierPackUpdateManyWithoutExcludedChallengeModifiersNestedInput
-    ModifierPackIncluded?: ModifierPackUpdateManyWithoutEncludedCustomChallengeModifiersNestedInput
-    UserExcluded?: UserUpdateManyWithoutDefaultExcludedChallengeModifiersNestedInput
-    UserIncluded?: UserUpdateManyWithoutDefaultIncludedCustomChallengeModifiersNestedInput
-    ExcludedFromDay?: DayUpdateManyWithoutExcludedChallengeModifiersNestedInput
-    IncludedInDay?: DayUpdateManyWithoutIncludedCustomChallengeModifiersNestedInput
-    DayCompletedInPart1?: DayUpdateManyWithoutModifierWhenPart1CompletedNestedInput
+  export type ChallengeModifierUpdateManyWithWhereWithoutModifierPackExcludedInput = {
+    where: ChallengeModifierScalarWhereInput
+    data: XOR<ChallengeModifierUpdateManyMutationInput, ChallengeModifierUncheckedUpdateManyWithoutModifierPackExcludedInput>
   }
 
-  export type ChallengeModifierUncheckedUpdateWithoutDayInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    name?: StringFieldUpdateOperationsInput | string
-    text?: StringFieldUpdateOperationsInput | string
-    hasOptions?: BoolFieldUpdateOperationsInput | boolean
-    explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    standard?: BoolFieldUpdateOperationsInput | boolean
-    createdById?: NullableStringFieldUpdateOperationsInput | string | null
-    isPublic?: BoolFieldUpdateOperationsInput | boolean
-    ModifierOption?: ModifierOptionUncheckedUpdateManyWithoutChallengeModifierNestedInput
-    ModifierPackExcluded?: ModifierPackUncheckedUpdateManyWithoutExcludedChallengeModifiersNestedInput
-    ModifierPackIncluded?: ModifierPackUncheckedUpdateManyWithoutEncludedCustomChallengeModifiersNestedInput
-    UserExcluded?: UserUncheckedUpdateManyWithoutDefaultExcludedChallengeModifiersNestedInput
-    UserIncluded?: UserUncheckedUpdateManyWithoutDefaultIncludedCustomChallengeModifiersNestedInput
-    ExcludedFromDay?: DayUncheckedUpdateManyWithoutExcludedChallengeModifiersNestedInput
-    IncludedInDay?: DayUncheckedUpdateManyWithoutIncludedCustomChallengeModifiersNestedInput
-    DayCompletedInPart1?: DayUncheckedUpdateManyWithoutModifierWhenPart1CompletedNestedInput
+  export type ChallengeModifierUpsertWithWhereUniqueWithoutModifierPackIncludedInput = {
+    where: ChallengeModifierWhereUniqueInput
+    update: XOR<ChallengeModifierUpdateWithoutModifierPackIncludedInput, ChallengeModifierUncheckedUpdateWithoutModifierPackIncludedInput>
+    create: XOR<ChallengeModifierCreateWithoutModifierPackIncludedInput, ChallengeModifierUncheckedCreateWithoutModifierPackIncludedInput>
   }
 
-  export type ModifierOptionUpsertWithoutDayInput = {
-    update: XOR<ModifierOptionUpdateWithoutDayInput, ModifierOptionUncheckedUpdateWithoutDayInput>
-    create: XOR<ModifierOptionCreateWithoutDayInput, ModifierOptionUncheckedCreateWithoutDayInput>
-    where?: ModifierOptionWhereInput
+  export type ChallengeModifierUpdateWithWhereUniqueWithoutModifierPackIncludedInput = {
+    where: ChallengeModifierWhereUniqueInput
+    data: XOR<ChallengeModifierUpdateWithoutModifierPackIncludedInput, ChallengeModifierUncheckedUpdateWithoutModifierPackIncludedInput>
   }
 
-  export type ModifierOptionUpdateToOneWithWhereWithoutDayInput = {
-    where?: ModifierOptionWhereInput
-    data: XOR<ModifierOptionUpdateWithoutDayInput, ModifierOptionUncheckedUpdateWithoutDayInput>
-  }
-
-  export type ModifierOptionUpdateWithoutDayInput = {
-    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    name?: StringFieldUpdateOperationsInput | string
-    text?: StringFieldUpdateOperationsInput | string
-    explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    standard?: BoolFieldUpdateOperationsInput | boolean
-    isPublic?: BoolFieldUpdateOperationsInput | boolean
-    ChallengeModifier?: ChallengeModifierUpdateOneRequiredWithoutModifierOptionNestedInput
-    CreatedBy?: UserUpdateOneWithoutModifierOptionNestedInput
-    ModifierPackExcluded?: ModifierPackUpdateManyWithoutExcludedModifierOptionsNestedInput
-    ModifierPackIncluded?: ModifierPackUpdateManyWithoutIncludedCustomModifierOptionsNestedInput
-    UserExcluded?: UserUpdateManyWithoutDefaultExcludedModifierOptionsNestedInput
-    UserIncluded?: UserUpdateManyWithoutDefaultIncludedCustomModifierOptionsNestedInput
-    ExcludedFromDay?: DayUpdateManyWithoutExcludedModifierOptionsNestedInput
-    IncludedInDay?: DayUpdateManyWithoutIncludedCustomModifierOptionsNestedInput
-    DayCompletedInPart1?: DayUpdateManyWithoutOptionWhenPart1CompletedNestedInput
-  }
-
-  export type ModifierOptionUncheckedUpdateWithoutDayInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    challengeModifierId?: IntFieldUpdateOperationsInput | number
-    name?: StringFieldUpdateOperationsInput | string
-    text?: StringFieldUpdateOperationsInput | string
-    explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    standard?: BoolFieldUpdateOperationsInput | boolean
-    createdById?: NullableStringFieldUpdateOperationsInput | string | null
-    isPublic?: BoolFieldUpdateOperationsInput | boolean
-    ModifierPackExcluded?: ModifierPackUncheckedUpdateManyWithoutExcludedModifierOptionsNestedInput
-    ModifierPackIncluded?: ModifierPackUncheckedUpdateManyWithoutIncludedCustomModifierOptionsNestedInput
-    UserExcluded?: UserUncheckedUpdateManyWithoutDefaultExcludedModifierOptionsNestedInput
-    UserIncluded?: UserUncheckedUpdateManyWithoutDefaultIncludedCustomModifierOptionsNestedInput
-    ExcludedFromDay?: DayUncheckedUpdateManyWithoutExcludedModifierOptionsNestedInput
-    IncludedInDay?: DayUncheckedUpdateManyWithoutIncludedCustomModifierOptionsNestedInput
-    DayCompletedInPart1?: DayUncheckedUpdateManyWithoutOptionWhenPart1CompletedNestedInput
+  export type ChallengeModifierUpdateManyWithWhereWithoutModifierPackIncludedInput = {
+    where: ChallengeModifierScalarWhereInput
+    data: XOR<ChallengeModifierUpdateManyMutationInput, ChallengeModifierUncheckedUpdateManyWithoutModifierPackIncludedInput>
   }
 
   export type UserCreateWithoutChallengeModifierInput = {
@@ -22818,16 +23316,16 @@ export namespace Prisma {
     username?: string | null
     dateCreated?: Date | string
     numberOfGames?: number
+    Downvote?: DownvoteCreateNestedManyWithoutCreatedByInput
     Game?: GameCreateNestedManyWithoutUserInput
-    PublicProfile?: PublicProfileCreateNestedManyWithoutUserInput
     ModifierOption?: ModifierOptionCreateNestedManyWithoutCreatedByInput
+    ModifierPack?: ModifierPackCreateNestedManyWithoutCreatedByInput
+    PublicProfile?: PublicProfileCreateNestedManyWithoutUserInput
+    Upvote?: UpvoteCreateNestedManyWithoutCreatedByInput
     DefaultExcludedChallengeModifiers?: ChallengeModifierCreateNestedManyWithoutUserExcludedInput
     DefaultExcludedModifierOptions?: ModifierOptionCreateNestedManyWithoutUserExcludedInput
     DefaultIncludedCustomChallengeModifiers?: ChallengeModifierCreateNestedManyWithoutUserIncludedInput
     DefaultIncludedCustomModifierOptions?: ModifierOptionCreateNestedManyWithoutUserIncludedInput
-    ModifierPack?: ModifierPackCreateNestedManyWithoutCreatedByInput
-    Downvote?: DownvoteCreateNestedManyWithoutCreatedByInput
-    Upvote?: UpvoteCreateNestedManyWithoutCreatedByInput
   }
 
   export type UserUncheckedCreateWithoutChallengeModifierInput = {
@@ -22836,68 +23334,21 @@ export namespace Prisma {
     username?: string | null
     dateCreated?: Date | string
     numberOfGames?: number
+    Downvote?: DownvoteUncheckedCreateNestedManyWithoutCreatedByInput
     Game?: GameUncheckedCreateNestedManyWithoutUserInput
-    PublicProfile?: PublicProfileUncheckedCreateNestedManyWithoutUserInput
     ModifierOption?: ModifierOptionUncheckedCreateNestedManyWithoutCreatedByInput
+    ModifierPack?: ModifierPackUncheckedCreateNestedManyWithoutCreatedByInput
+    PublicProfile?: PublicProfileUncheckedCreateNestedManyWithoutUserInput
+    Upvote?: UpvoteUncheckedCreateNestedManyWithoutCreatedByInput
     DefaultExcludedChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutUserExcludedInput
     DefaultExcludedModifierOptions?: ModifierOptionUncheckedCreateNestedManyWithoutUserExcludedInput
     DefaultIncludedCustomChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutUserIncludedInput
     DefaultIncludedCustomModifierOptions?: ModifierOptionUncheckedCreateNestedManyWithoutUserIncludedInput
-    ModifierPack?: ModifierPackUncheckedCreateNestedManyWithoutCreatedByInput
-    Downvote?: DownvoteUncheckedCreateNestedManyWithoutCreatedByInput
-    Upvote?: UpvoteUncheckedCreateNestedManyWithoutCreatedByInput
   }
 
   export type UserCreateOrConnectWithoutChallengeModifierInput = {
     where: UserWhereUniqueInput
     create: XOR<UserCreateWithoutChallengeModifierInput, UserUncheckedCreateWithoutChallengeModifierInput>
-  }
-
-  export type ModifierOptionCreateWithoutChallengeModifierInput = {
-    dateCreated?: Date | string
-    name: string
-    text: string
-    explanatoryUrl?: string | null
-    standard?: boolean
-    isPublic?: boolean
-    CreatedBy?: UserCreateNestedOneWithoutModifierOptionInput
-    Day?: DayCreateNestedManyWithoutModifierOptionInput
-    ModifierPackExcluded?: ModifierPackCreateNestedManyWithoutExcludedModifierOptionsInput
-    ModifierPackIncluded?: ModifierPackCreateNestedManyWithoutIncludedCustomModifierOptionsInput
-    UserExcluded?: UserCreateNestedManyWithoutDefaultExcludedModifierOptionsInput
-    UserIncluded?: UserCreateNestedManyWithoutDefaultIncludedCustomModifierOptionsInput
-    ExcludedFromDay?: DayCreateNestedManyWithoutExcludedModifierOptionsInput
-    IncludedInDay?: DayCreateNestedManyWithoutIncludedCustomModifierOptionsInput
-    DayCompletedInPart1?: DayCreateNestedManyWithoutOptionWhenPart1CompletedInput
-  }
-
-  export type ModifierOptionUncheckedCreateWithoutChallengeModifierInput = {
-    id?: number
-    dateCreated?: Date | string
-    name: string
-    text: string
-    explanatoryUrl?: string | null
-    standard?: boolean
-    createdById?: string | null
-    isPublic?: boolean
-    Day?: DayUncheckedCreateNestedManyWithoutModifierOptionInput
-    ModifierPackExcluded?: ModifierPackUncheckedCreateNestedManyWithoutExcludedModifierOptionsInput
-    ModifierPackIncluded?: ModifierPackUncheckedCreateNestedManyWithoutIncludedCustomModifierOptionsInput
-    UserExcluded?: UserUncheckedCreateNestedManyWithoutDefaultExcludedModifierOptionsInput
-    UserIncluded?: UserUncheckedCreateNestedManyWithoutDefaultIncludedCustomModifierOptionsInput
-    ExcludedFromDay?: DayUncheckedCreateNestedManyWithoutExcludedModifierOptionsInput
-    IncludedInDay?: DayUncheckedCreateNestedManyWithoutIncludedCustomModifierOptionsInput
-    DayCompletedInPart1?: DayUncheckedCreateNestedManyWithoutOptionWhenPart1CompletedInput
-  }
-
-  export type ModifierOptionCreateOrConnectWithoutChallengeModifierInput = {
-    where: ModifierOptionWhereUniqueInput
-    create: XOR<ModifierOptionCreateWithoutChallengeModifierInput, ModifierOptionUncheckedCreateWithoutChallengeModifierInput>
-  }
-
-  export type ModifierOptionCreateManyChallengeModifierInputEnvelope = {
-    data: ModifierOptionCreateManyChallengeModifierInput | ModifierOptionCreateManyChallengeModifierInput[]
-    skipDuplicates?: boolean
   }
 
   export type DayCreateWithoutChallengeModifierInput = {
@@ -22912,14 +23363,12 @@ export namespace Prisma {
     modifierOptionRerollsUsed?: number
     rerollTokensSpentDuringPart2?: number
     netScore?: number
-    ExcludedChallengeModifiers?: ChallengeModifierCreateNestedManyWithoutExcludedFromDayInput
-    ExcludedModifierOptions?: ModifierOptionCreateNestedManyWithoutExcludedFromDayInput
-    IncludedCustomChallengeModifiers?: ChallengeModifierCreateNestedManyWithoutIncludedInDayInput
-    IncludedCustomModifierOptions?: ModifierOptionCreateNestedManyWithoutIncludedInDayInput
     Game: GameCreateNestedOneWithoutDayInput
+    ModifierOption?: ModifierOptionCreateNestedOneWithoutDayInput
     ModifierWhenPart1Completed?: ChallengeModifierCreateNestedOneWithoutDayCompletedInPart1Input
     OptionWhenPart1Completed?: ModifierOptionCreateNestedOneWithoutDayCompletedInPart1Input
-    ModifierOption?: ModifierOptionCreateNestedOneWithoutDayInput
+    ExcludedChallengeModifiers?: ChallengeModifierCreateNestedManyWithoutModifierPackExcludedInput
+    EncludedCustomChallengeModifiers?: ChallengeModifierCreateNestedManyWithoutModifierPackIncludedInput
   }
 
   export type DayUncheckedCreateWithoutChallengeModifierInput = {
@@ -22939,10 +23388,8 @@ export namespace Prisma {
     modifierOptionRerollsUsed?: number
     rerollTokensSpentDuringPart2?: number
     netScore?: number
-    ExcludedChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutExcludedFromDayInput
-    ExcludedModifierOptions?: ModifierOptionUncheckedCreateNestedManyWithoutExcludedFromDayInput
-    IncludedCustomChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutIncludedInDayInput
-    IncludedCustomModifierOptions?: ModifierOptionUncheckedCreateNestedManyWithoutIncludedInDayInput
+    ExcludedChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutModifierPackExcludedInput
+    EncludedCustomChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutModifierPackIncludedInput
   }
 
   export type DayCreateOrConnectWithoutChallengeModifierInput = {
@@ -22955,52 +23402,98 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type ModifierPackCreateWithoutExcludedChallengeModifiersInput = {
+  export type DayCreateWithoutModifierWhenPart1CompletedInput = {
     dateCreated?: Date | string
-    isPublic?: boolean
-    ExcludedModifierOptions?: ModifierOptionCreateNestedManyWithoutModifierPackExcludedInput
-    EncludedCustomChallengeModifiers?: ChallengeModifierCreateNestedManyWithoutModifierPackIncludedInput
-    IncludedCustomModifierOptions?: ModifierOptionCreateNestedManyWithoutModifierPackIncludedInput
-    CreatedBy?: UserCreateNestedOneWithoutModifierPackInput
-  }
-
-  export type ModifierPackUncheckedCreateWithoutExcludedChallengeModifiersInput = {
-    id?: number
-    dateCreated?: Date | string
-    createdById?: string | null
-    isPublic?: boolean
-    ExcludedModifierOptions?: ModifierOptionUncheckedCreateNestedManyWithoutModifierPackExcludedInput
-    EncludedCustomChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutModifierPackIncludedInput
-    IncludedCustomModifierOptions?: ModifierOptionUncheckedCreateNestedManyWithoutModifierPackIncludedInput
-  }
-
-  export type ModifierPackCreateOrConnectWithoutExcludedChallengeModifiersInput = {
-    where: ModifierPackWhereUniqueInput
-    create: XOR<ModifierPackCreateWithoutExcludedChallengeModifiersInput, ModifierPackUncheckedCreateWithoutExcludedChallengeModifiersInput>
-  }
-
-  export type ModifierPackCreateWithoutEncludedCustomChallengeModifiersInput = {
-    dateCreated?: Date | string
-    isPublic?: boolean
+    userId: string
+    gameNumber: number
+    number: number
+    dateFirstRolled?: Date | string | null
+    part1Completed?: Date | string | null
+    part2Completed?: Date | string | null
+    challengeModifierRerollsUsed?: number
+    modifierOptionRerollsUsed?: number
+    rerollTokensSpentDuringPart2?: number
+    netScore?: number
+    ChallengeModifier?: ChallengeModifierCreateNestedOneWithoutDayInput
+    Game: GameCreateNestedOneWithoutDayInput
+    ModifierOption?: ModifierOptionCreateNestedOneWithoutDayInput
+    OptionWhenPart1Completed?: ModifierOptionCreateNestedOneWithoutDayCompletedInPart1Input
     ExcludedChallengeModifiers?: ChallengeModifierCreateNestedManyWithoutModifierPackExcludedInput
-    ExcludedModifierOptions?: ModifierOptionCreateNestedManyWithoutModifierPackExcludedInput
-    IncludedCustomModifierOptions?: ModifierOptionCreateNestedManyWithoutModifierPackIncludedInput
-    CreatedBy?: UserCreateNestedOneWithoutModifierPackInput
+    EncludedCustomChallengeModifiers?: ChallengeModifierCreateNestedManyWithoutModifierPackIncludedInput
   }
 
-  export type ModifierPackUncheckedCreateWithoutEncludedCustomChallengeModifiersInput = {
+  export type DayUncheckedCreateWithoutModifierWhenPart1CompletedInput = {
     id?: number
     dateCreated?: Date | string
-    createdById?: string | null
-    isPublic?: boolean
+    gameId: number
+    userId: string
+    gameNumber: number
+    number: number
+    challengeModifierId?: number | null
+    modifierOptionId?: number | null
+    dateFirstRolled?: Date | string | null
+    part1Completed?: Date | string | null
+    optionWhenPart1CompletedId?: number | null
+    part2Completed?: Date | string | null
+    challengeModifierRerollsUsed?: number
+    modifierOptionRerollsUsed?: number
+    rerollTokensSpentDuringPart2?: number
+    netScore?: number
     ExcludedChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutModifierPackExcludedInput
-    ExcludedModifierOptions?: ModifierOptionUncheckedCreateNestedManyWithoutModifierPackExcludedInput
-    IncludedCustomModifierOptions?: ModifierOptionUncheckedCreateNestedManyWithoutModifierPackIncludedInput
+    EncludedCustomChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutModifierPackIncludedInput
   }
 
-  export type ModifierPackCreateOrConnectWithoutEncludedCustomChallengeModifiersInput = {
-    where: ModifierPackWhereUniqueInput
-    create: XOR<ModifierPackCreateWithoutEncludedCustomChallengeModifiersInput, ModifierPackUncheckedCreateWithoutEncludedCustomChallengeModifiersInput>
+  export type DayCreateOrConnectWithoutModifierWhenPart1CompletedInput = {
+    where: DayWhereUniqueInput
+    create: XOR<DayCreateWithoutModifierWhenPart1CompletedInput, DayUncheckedCreateWithoutModifierWhenPart1CompletedInput>
+  }
+
+  export type DayCreateManyModifierWhenPart1CompletedInputEnvelope = {
+    data: DayCreateManyModifierWhenPart1CompletedInput | DayCreateManyModifierWhenPart1CompletedInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type ModifierOptionCreateWithoutChallengeModifierInput = {
+    dateCreated?: Date | string
+    name: string
+    text: string
+    explanatoryUrl?: string | null
+    standard?: boolean
+    isPublic?: boolean
+    Day?: DayCreateNestedManyWithoutModifierOptionInput
+    DayCompletedInPart1?: DayCreateNestedManyWithoutOptionWhenPart1CompletedInput
+    CreatedBy?: UserCreateNestedOneWithoutModifierOptionInput
+    UserExcluded?: UserCreateNestedManyWithoutDefaultExcludedModifierOptionsInput
+    UserIncluded?: UserCreateNestedManyWithoutDefaultIncludedCustomModifierOptionsInput
+    ExcludedModifierOptions?: ModifierPackCreateNestedManyWithoutExcludedFromDayInput
+    IncludedCustomModifierOptions?: ModifierPackCreateNestedManyWithoutIncludedInDayInput
+  }
+
+  export type ModifierOptionUncheckedCreateWithoutChallengeModifierInput = {
+    id?: number
+    dateCreated?: Date | string
+    name: string
+    text: string
+    explanatoryUrl?: string | null
+    standard?: boolean
+    createdById?: string | null
+    isPublic?: boolean
+    Day?: DayUncheckedCreateNestedManyWithoutModifierOptionInput
+    DayCompletedInPart1?: DayUncheckedCreateNestedManyWithoutOptionWhenPart1CompletedInput
+    UserExcluded?: UserUncheckedCreateNestedManyWithoutDefaultExcludedModifierOptionsInput
+    UserIncluded?: UserUncheckedCreateNestedManyWithoutDefaultIncludedCustomModifierOptionsInput
+    ExcludedModifierOptions?: ModifierPackUncheckedCreateNestedManyWithoutExcludedFromDayInput
+    IncludedCustomModifierOptions?: ModifierPackUncheckedCreateNestedManyWithoutIncludedInDayInput
+  }
+
+  export type ModifierOptionCreateOrConnectWithoutChallengeModifierInput = {
+    where: ModifierOptionWhereUniqueInput
+    create: XOR<ModifierOptionCreateWithoutChallengeModifierInput, ModifierOptionUncheckedCreateWithoutChallengeModifierInput>
+  }
+
+  export type ModifierOptionCreateManyChallengeModifierInputEnvelope = {
+    data: ModifierOptionCreateManyChallengeModifierInput | ModifierOptionCreateManyChallengeModifierInput[]
+    skipDuplicates?: boolean
   }
 
   export type UserCreateWithoutDefaultExcludedChallengeModifiersInput = {
@@ -23009,16 +23502,16 @@ export namespace Prisma {
     username?: string | null
     dateCreated?: Date | string
     numberOfGames?: number
-    Game?: GameCreateNestedManyWithoutUserInput
-    PublicProfile?: PublicProfileCreateNestedManyWithoutUserInput
     ChallengeModifier?: ChallengeModifierCreateNestedManyWithoutCreatedByInput
+    Downvote?: DownvoteCreateNestedManyWithoutCreatedByInput
+    Game?: GameCreateNestedManyWithoutUserInput
     ModifierOption?: ModifierOptionCreateNestedManyWithoutCreatedByInput
+    ModifierPack?: ModifierPackCreateNestedManyWithoutCreatedByInput
+    PublicProfile?: PublicProfileCreateNestedManyWithoutUserInput
+    Upvote?: UpvoteCreateNestedManyWithoutCreatedByInput
     DefaultExcludedModifierOptions?: ModifierOptionCreateNestedManyWithoutUserExcludedInput
     DefaultIncludedCustomChallengeModifiers?: ChallengeModifierCreateNestedManyWithoutUserIncludedInput
     DefaultIncludedCustomModifierOptions?: ModifierOptionCreateNestedManyWithoutUserIncludedInput
-    ModifierPack?: ModifierPackCreateNestedManyWithoutCreatedByInput
-    Downvote?: DownvoteCreateNestedManyWithoutCreatedByInput
-    Upvote?: UpvoteCreateNestedManyWithoutCreatedByInput
   }
 
   export type UserUncheckedCreateWithoutDefaultExcludedChallengeModifiersInput = {
@@ -23027,16 +23520,16 @@ export namespace Prisma {
     username?: string | null
     dateCreated?: Date | string
     numberOfGames?: number
-    Game?: GameUncheckedCreateNestedManyWithoutUserInput
-    PublicProfile?: PublicProfileUncheckedCreateNestedManyWithoutUserInput
     ChallengeModifier?: ChallengeModifierUncheckedCreateNestedManyWithoutCreatedByInput
+    Downvote?: DownvoteUncheckedCreateNestedManyWithoutCreatedByInput
+    Game?: GameUncheckedCreateNestedManyWithoutUserInput
     ModifierOption?: ModifierOptionUncheckedCreateNestedManyWithoutCreatedByInput
+    ModifierPack?: ModifierPackUncheckedCreateNestedManyWithoutCreatedByInput
+    PublicProfile?: PublicProfileUncheckedCreateNestedManyWithoutUserInput
+    Upvote?: UpvoteUncheckedCreateNestedManyWithoutCreatedByInput
     DefaultExcludedModifierOptions?: ModifierOptionUncheckedCreateNestedManyWithoutUserExcludedInput
     DefaultIncludedCustomChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutUserIncludedInput
     DefaultIncludedCustomModifierOptions?: ModifierOptionUncheckedCreateNestedManyWithoutUserIncludedInput
-    ModifierPack?: ModifierPackUncheckedCreateNestedManyWithoutCreatedByInput
-    Downvote?: DownvoteUncheckedCreateNestedManyWithoutCreatedByInput
-    Upvote?: UpvoteUncheckedCreateNestedManyWithoutCreatedByInput
   }
 
   export type UserCreateOrConnectWithoutDefaultExcludedChallengeModifiersInput = {
@@ -23050,16 +23543,16 @@ export namespace Prisma {
     username?: string | null
     dateCreated?: Date | string
     numberOfGames?: number
-    Game?: GameCreateNestedManyWithoutUserInput
-    PublicProfile?: PublicProfileCreateNestedManyWithoutUserInput
     ChallengeModifier?: ChallengeModifierCreateNestedManyWithoutCreatedByInput
+    Downvote?: DownvoteCreateNestedManyWithoutCreatedByInput
+    Game?: GameCreateNestedManyWithoutUserInput
     ModifierOption?: ModifierOptionCreateNestedManyWithoutCreatedByInput
+    ModifierPack?: ModifierPackCreateNestedManyWithoutCreatedByInput
+    PublicProfile?: PublicProfileCreateNestedManyWithoutUserInput
+    Upvote?: UpvoteCreateNestedManyWithoutCreatedByInput
     DefaultExcludedChallengeModifiers?: ChallengeModifierCreateNestedManyWithoutUserExcludedInput
     DefaultExcludedModifierOptions?: ModifierOptionCreateNestedManyWithoutUserExcludedInput
     DefaultIncludedCustomModifierOptions?: ModifierOptionCreateNestedManyWithoutUserIncludedInput
-    ModifierPack?: ModifierPackCreateNestedManyWithoutCreatedByInput
-    Downvote?: DownvoteCreateNestedManyWithoutCreatedByInput
-    Upvote?: UpvoteCreateNestedManyWithoutCreatedByInput
   }
 
   export type UserUncheckedCreateWithoutDefaultIncludedCustomChallengeModifiersInput = {
@@ -23068,16 +23561,16 @@ export namespace Prisma {
     username?: string | null
     dateCreated?: Date | string
     numberOfGames?: number
-    Game?: GameUncheckedCreateNestedManyWithoutUserInput
-    PublicProfile?: PublicProfileUncheckedCreateNestedManyWithoutUserInput
     ChallengeModifier?: ChallengeModifierUncheckedCreateNestedManyWithoutCreatedByInput
+    Downvote?: DownvoteUncheckedCreateNestedManyWithoutCreatedByInput
+    Game?: GameUncheckedCreateNestedManyWithoutUserInput
     ModifierOption?: ModifierOptionUncheckedCreateNestedManyWithoutCreatedByInput
+    ModifierPack?: ModifierPackUncheckedCreateNestedManyWithoutCreatedByInput
+    PublicProfile?: PublicProfileUncheckedCreateNestedManyWithoutUserInput
+    Upvote?: UpvoteUncheckedCreateNestedManyWithoutCreatedByInput
     DefaultExcludedChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutUserExcludedInput
     DefaultExcludedModifierOptions?: ModifierOptionUncheckedCreateNestedManyWithoutUserExcludedInput
     DefaultIncludedCustomModifierOptions?: ModifierOptionUncheckedCreateNestedManyWithoutUserIncludedInput
-    ModifierPack?: ModifierPackUncheckedCreateNestedManyWithoutCreatedByInput
-    Downvote?: DownvoteUncheckedCreateNestedManyWithoutCreatedByInput
-    Upvote?: UpvoteUncheckedCreateNestedManyWithoutCreatedByInput
   }
 
   export type UserCreateOrConnectWithoutDefaultIncludedCustomChallengeModifiersInput = {
@@ -23097,14 +23590,12 @@ export namespace Prisma {
     modifierOptionRerollsUsed?: number
     rerollTokensSpentDuringPart2?: number
     netScore?: number
-    ExcludedModifierOptions?: ModifierOptionCreateNestedManyWithoutExcludedFromDayInput
-    IncludedCustomChallengeModifiers?: ChallengeModifierCreateNestedManyWithoutIncludedInDayInput
-    IncludedCustomModifierOptions?: ModifierOptionCreateNestedManyWithoutIncludedInDayInput
+    ChallengeModifier?: ChallengeModifierCreateNestedOneWithoutDayInput
     Game: GameCreateNestedOneWithoutDayInput
+    ModifierOption?: ModifierOptionCreateNestedOneWithoutDayInput
     ModifierWhenPart1Completed?: ChallengeModifierCreateNestedOneWithoutDayCompletedInPart1Input
     OptionWhenPart1Completed?: ModifierOptionCreateNestedOneWithoutDayCompletedInPart1Input
-    ChallengeModifier?: ChallengeModifierCreateNestedOneWithoutDayInput
-    ModifierOption?: ModifierOptionCreateNestedOneWithoutDayInput
+    EncludedCustomChallengeModifiers?: ChallengeModifierCreateNestedManyWithoutModifierPackIncludedInput
   }
 
   export type DayUncheckedCreateWithoutExcludedChallengeModifiersInput = {
@@ -23125,9 +23616,7 @@ export namespace Prisma {
     modifierOptionRerollsUsed?: number
     rerollTokensSpentDuringPart2?: number
     netScore?: number
-    ExcludedModifierOptions?: ModifierOptionUncheckedCreateNestedManyWithoutExcludedFromDayInput
-    IncludedCustomChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutIncludedInDayInput
-    IncludedCustomModifierOptions?: ModifierOptionUncheckedCreateNestedManyWithoutIncludedInDayInput
+    EncludedCustomChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutModifierPackIncludedInput
   }
 
   export type DayCreateOrConnectWithoutExcludedChallengeModifiersInput = {
@@ -23135,7 +23624,7 @@ export namespace Prisma {
     create: XOR<DayCreateWithoutExcludedChallengeModifiersInput, DayUncheckedCreateWithoutExcludedChallengeModifiersInput>
   }
 
-  export type DayCreateWithoutIncludedCustomChallengeModifiersInput = {
+  export type DayCreateWithoutEncludedCustomChallengeModifiersInput = {
     dateCreated?: Date | string
     userId: string
     gameNumber: number
@@ -23147,17 +23636,15 @@ export namespace Prisma {
     modifierOptionRerollsUsed?: number
     rerollTokensSpentDuringPart2?: number
     netScore?: number
-    ExcludedChallengeModifiers?: ChallengeModifierCreateNestedManyWithoutExcludedFromDayInput
-    ExcludedModifierOptions?: ModifierOptionCreateNestedManyWithoutExcludedFromDayInput
-    IncludedCustomModifierOptions?: ModifierOptionCreateNestedManyWithoutIncludedInDayInput
+    ChallengeModifier?: ChallengeModifierCreateNestedOneWithoutDayInput
     Game: GameCreateNestedOneWithoutDayInput
+    ModifierOption?: ModifierOptionCreateNestedOneWithoutDayInput
     ModifierWhenPart1Completed?: ChallengeModifierCreateNestedOneWithoutDayCompletedInPart1Input
     OptionWhenPart1Completed?: ModifierOptionCreateNestedOneWithoutDayCompletedInPart1Input
-    ChallengeModifier?: ChallengeModifierCreateNestedOneWithoutDayInput
-    ModifierOption?: ModifierOptionCreateNestedOneWithoutDayInput
+    ExcludedChallengeModifiers?: ChallengeModifierCreateNestedManyWithoutModifierPackExcludedInput
   }
 
-  export type DayUncheckedCreateWithoutIncludedCustomChallengeModifiersInput = {
+  export type DayUncheckedCreateWithoutEncludedCustomChallengeModifiersInput = {
     id?: number
     dateCreated?: Date | string
     gameId: number
@@ -23175,69 +23662,12 @@ export namespace Prisma {
     modifierOptionRerollsUsed?: number
     rerollTokensSpentDuringPart2?: number
     netScore?: number
-    ExcludedChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutExcludedFromDayInput
-    ExcludedModifierOptions?: ModifierOptionUncheckedCreateNestedManyWithoutExcludedFromDayInput
-    IncludedCustomModifierOptions?: ModifierOptionUncheckedCreateNestedManyWithoutIncludedInDayInput
+    ExcludedChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutModifierPackExcludedInput
   }
 
-  export type DayCreateOrConnectWithoutIncludedCustomChallengeModifiersInput = {
+  export type DayCreateOrConnectWithoutEncludedCustomChallengeModifiersInput = {
     where: DayWhereUniqueInput
-    create: XOR<DayCreateWithoutIncludedCustomChallengeModifiersInput, DayUncheckedCreateWithoutIncludedCustomChallengeModifiersInput>
-  }
-
-  export type DayCreateWithoutModifierWhenPart1CompletedInput = {
-    dateCreated?: Date | string
-    userId: string
-    gameNumber: number
-    number: number
-    dateFirstRolled?: Date | string | null
-    part1Completed?: Date | string | null
-    part2Completed?: Date | string | null
-    challengeModifierRerollsUsed?: number
-    modifierOptionRerollsUsed?: number
-    rerollTokensSpentDuringPart2?: number
-    netScore?: number
-    ExcludedChallengeModifiers?: ChallengeModifierCreateNestedManyWithoutExcludedFromDayInput
-    ExcludedModifierOptions?: ModifierOptionCreateNestedManyWithoutExcludedFromDayInput
-    IncludedCustomChallengeModifiers?: ChallengeModifierCreateNestedManyWithoutIncludedInDayInput
-    IncludedCustomModifierOptions?: ModifierOptionCreateNestedManyWithoutIncludedInDayInput
-    Game: GameCreateNestedOneWithoutDayInput
-    OptionWhenPart1Completed?: ModifierOptionCreateNestedOneWithoutDayCompletedInPart1Input
-    ChallengeModifier?: ChallengeModifierCreateNestedOneWithoutDayInput
-    ModifierOption?: ModifierOptionCreateNestedOneWithoutDayInput
-  }
-
-  export type DayUncheckedCreateWithoutModifierWhenPart1CompletedInput = {
-    id?: number
-    dateCreated?: Date | string
-    gameId: number
-    userId: string
-    gameNumber: number
-    number: number
-    challengeModifierId?: number | null
-    modifierOptionId?: number | null
-    dateFirstRolled?: Date | string | null
-    part1Completed?: Date | string | null
-    optionWhenPart1CompletedId?: number | null
-    part2Completed?: Date | string | null
-    challengeModifierRerollsUsed?: number
-    modifierOptionRerollsUsed?: number
-    rerollTokensSpentDuringPart2?: number
-    netScore?: number
-    ExcludedChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutExcludedFromDayInput
-    ExcludedModifierOptions?: ModifierOptionUncheckedCreateNestedManyWithoutExcludedFromDayInput
-    IncludedCustomChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutIncludedInDayInput
-    IncludedCustomModifierOptions?: ModifierOptionUncheckedCreateNestedManyWithoutIncludedInDayInput
-  }
-
-  export type DayCreateOrConnectWithoutModifierWhenPart1CompletedInput = {
-    where: DayWhereUniqueInput
-    create: XOR<DayCreateWithoutModifierWhenPart1CompletedInput, DayUncheckedCreateWithoutModifierWhenPart1CompletedInput>
-  }
-
-  export type DayCreateManyModifierWhenPart1CompletedInputEnvelope = {
-    data: DayCreateManyModifierWhenPart1CompletedInput | DayCreateManyModifierWhenPart1CompletedInput[]
-    skipDuplicates?: boolean
+    create: XOR<DayCreateWithoutEncludedCustomChallengeModifiersInput, DayUncheckedCreateWithoutEncludedCustomChallengeModifiersInput>
   }
 
   export type UserUpsertWithoutChallengeModifierInput = {
@@ -23257,16 +23687,16 @@ export namespace Prisma {
     username?: NullableStringFieldUpdateOperationsInput | string | null
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     numberOfGames?: IntFieldUpdateOperationsInput | number
+    Downvote?: DownvoteUpdateManyWithoutCreatedByNestedInput
     Game?: GameUpdateManyWithoutUserNestedInput
-    PublicProfile?: PublicProfileUpdateManyWithoutUserNestedInput
     ModifierOption?: ModifierOptionUpdateManyWithoutCreatedByNestedInput
+    ModifierPack?: ModifierPackUpdateManyWithoutCreatedByNestedInput
+    PublicProfile?: PublicProfileUpdateManyWithoutUserNestedInput
+    Upvote?: UpvoteUpdateManyWithoutCreatedByNestedInput
     DefaultExcludedChallengeModifiers?: ChallengeModifierUpdateManyWithoutUserExcludedNestedInput
     DefaultExcludedModifierOptions?: ModifierOptionUpdateManyWithoutUserExcludedNestedInput
     DefaultIncludedCustomChallengeModifiers?: ChallengeModifierUpdateManyWithoutUserIncludedNestedInput
     DefaultIncludedCustomModifierOptions?: ModifierOptionUpdateManyWithoutUserIncludedNestedInput
-    ModifierPack?: ModifierPackUpdateManyWithoutCreatedByNestedInput
-    Downvote?: DownvoteUpdateManyWithoutCreatedByNestedInput
-    Upvote?: UpvoteUpdateManyWithoutCreatedByNestedInput
   }
 
   export type UserUncheckedUpdateWithoutChallengeModifierInput = {
@@ -23275,32 +23705,16 @@ export namespace Prisma {
     username?: NullableStringFieldUpdateOperationsInput | string | null
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     numberOfGames?: IntFieldUpdateOperationsInput | number
+    Downvote?: DownvoteUncheckedUpdateManyWithoutCreatedByNestedInput
     Game?: GameUncheckedUpdateManyWithoutUserNestedInput
-    PublicProfile?: PublicProfileUncheckedUpdateManyWithoutUserNestedInput
     ModifierOption?: ModifierOptionUncheckedUpdateManyWithoutCreatedByNestedInput
+    ModifierPack?: ModifierPackUncheckedUpdateManyWithoutCreatedByNestedInput
+    PublicProfile?: PublicProfileUncheckedUpdateManyWithoutUserNestedInput
+    Upvote?: UpvoteUncheckedUpdateManyWithoutCreatedByNestedInput
     DefaultExcludedChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutUserExcludedNestedInput
     DefaultExcludedModifierOptions?: ModifierOptionUncheckedUpdateManyWithoutUserExcludedNestedInput
     DefaultIncludedCustomChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutUserIncludedNestedInput
     DefaultIncludedCustomModifierOptions?: ModifierOptionUncheckedUpdateManyWithoutUserIncludedNestedInput
-    ModifierPack?: ModifierPackUncheckedUpdateManyWithoutCreatedByNestedInput
-    Downvote?: DownvoteUncheckedUpdateManyWithoutCreatedByNestedInput
-    Upvote?: UpvoteUncheckedUpdateManyWithoutCreatedByNestedInput
-  }
-
-  export type ModifierOptionUpsertWithWhereUniqueWithoutChallengeModifierInput = {
-    where: ModifierOptionWhereUniqueInput
-    update: XOR<ModifierOptionUpdateWithoutChallengeModifierInput, ModifierOptionUncheckedUpdateWithoutChallengeModifierInput>
-    create: XOR<ModifierOptionCreateWithoutChallengeModifierInput, ModifierOptionUncheckedCreateWithoutChallengeModifierInput>
-  }
-
-  export type ModifierOptionUpdateWithWhereUniqueWithoutChallengeModifierInput = {
-    where: ModifierOptionWhereUniqueInput
-    data: XOR<ModifierOptionUpdateWithoutChallengeModifierInput, ModifierOptionUncheckedUpdateWithoutChallengeModifierInput>
-  }
-
-  export type ModifierOptionUpdateManyWithWhereWithoutChallengeModifierInput = {
-    where: ModifierOptionScalarWhereInput
-    data: XOR<ModifierOptionUpdateManyMutationInput, ModifierOptionUncheckedUpdateManyWithoutChallengeModifierInput>
   }
 
   export type DayUpsertWithWhereUniqueWithoutChallengeModifierInput = {
@@ -23319,36 +23733,36 @@ export namespace Prisma {
     data: XOR<DayUpdateManyMutationInput, DayUncheckedUpdateManyWithoutChallengeModifierInput>
   }
 
-  export type ModifierPackUpsertWithWhereUniqueWithoutExcludedChallengeModifiersInput = {
-    where: ModifierPackWhereUniqueInput
-    update: XOR<ModifierPackUpdateWithoutExcludedChallengeModifiersInput, ModifierPackUncheckedUpdateWithoutExcludedChallengeModifiersInput>
-    create: XOR<ModifierPackCreateWithoutExcludedChallengeModifiersInput, ModifierPackUncheckedCreateWithoutExcludedChallengeModifiersInput>
+  export type DayUpsertWithWhereUniqueWithoutModifierWhenPart1CompletedInput = {
+    where: DayWhereUniqueInput
+    update: XOR<DayUpdateWithoutModifierWhenPart1CompletedInput, DayUncheckedUpdateWithoutModifierWhenPart1CompletedInput>
+    create: XOR<DayCreateWithoutModifierWhenPart1CompletedInput, DayUncheckedCreateWithoutModifierWhenPart1CompletedInput>
   }
 
-  export type ModifierPackUpdateWithWhereUniqueWithoutExcludedChallengeModifiersInput = {
-    where: ModifierPackWhereUniqueInput
-    data: XOR<ModifierPackUpdateWithoutExcludedChallengeModifiersInput, ModifierPackUncheckedUpdateWithoutExcludedChallengeModifiersInput>
+  export type DayUpdateWithWhereUniqueWithoutModifierWhenPart1CompletedInput = {
+    where: DayWhereUniqueInput
+    data: XOR<DayUpdateWithoutModifierWhenPart1CompletedInput, DayUncheckedUpdateWithoutModifierWhenPart1CompletedInput>
   }
 
-  export type ModifierPackUpdateManyWithWhereWithoutExcludedChallengeModifiersInput = {
-    where: ModifierPackScalarWhereInput
-    data: XOR<ModifierPackUpdateManyMutationInput, ModifierPackUncheckedUpdateManyWithoutExcludedChallengeModifiersInput>
+  export type DayUpdateManyWithWhereWithoutModifierWhenPart1CompletedInput = {
+    where: DayScalarWhereInput
+    data: XOR<DayUpdateManyMutationInput, DayUncheckedUpdateManyWithoutModifierWhenPart1CompletedInput>
   }
 
-  export type ModifierPackUpsertWithWhereUniqueWithoutEncludedCustomChallengeModifiersInput = {
-    where: ModifierPackWhereUniqueInput
-    update: XOR<ModifierPackUpdateWithoutEncludedCustomChallengeModifiersInput, ModifierPackUncheckedUpdateWithoutEncludedCustomChallengeModifiersInput>
-    create: XOR<ModifierPackCreateWithoutEncludedCustomChallengeModifiersInput, ModifierPackUncheckedCreateWithoutEncludedCustomChallengeModifiersInput>
+  export type ModifierOptionUpsertWithWhereUniqueWithoutChallengeModifierInput = {
+    where: ModifierOptionWhereUniqueInput
+    update: XOR<ModifierOptionUpdateWithoutChallengeModifierInput, ModifierOptionUncheckedUpdateWithoutChallengeModifierInput>
+    create: XOR<ModifierOptionCreateWithoutChallengeModifierInput, ModifierOptionUncheckedCreateWithoutChallengeModifierInput>
   }
 
-  export type ModifierPackUpdateWithWhereUniqueWithoutEncludedCustomChallengeModifiersInput = {
-    where: ModifierPackWhereUniqueInput
-    data: XOR<ModifierPackUpdateWithoutEncludedCustomChallengeModifiersInput, ModifierPackUncheckedUpdateWithoutEncludedCustomChallengeModifiersInput>
+  export type ModifierOptionUpdateWithWhereUniqueWithoutChallengeModifierInput = {
+    where: ModifierOptionWhereUniqueInput
+    data: XOR<ModifierOptionUpdateWithoutChallengeModifierInput, ModifierOptionUncheckedUpdateWithoutChallengeModifierInput>
   }
 
-  export type ModifierPackUpdateManyWithWhereWithoutEncludedCustomChallengeModifiersInput = {
-    where: ModifierPackScalarWhereInput
-    data: XOR<ModifierPackUpdateManyMutationInput, ModifierPackUncheckedUpdateManyWithoutEncludedCustomChallengeModifiersInput>
+  export type ModifierOptionUpdateManyWithWhereWithoutChallengeModifierInput = {
+    where: ModifierOptionScalarWhereInput
+    data: XOR<ModifierOptionUpdateManyMutationInput, ModifierOptionUncheckedUpdateManyWithoutChallengeModifierInput>
   }
 
   export type UserUpsertWithWhereUniqueWithoutDefaultExcludedChallengeModifiersInput = {
@@ -23410,121 +23824,20 @@ export namespace Prisma {
     data: XOR<DayUpdateManyMutationInput, DayUncheckedUpdateManyWithoutExcludedChallengeModifiersInput>
   }
 
-  export type DayUpsertWithWhereUniqueWithoutIncludedCustomChallengeModifiersInput = {
+  export type DayUpsertWithWhereUniqueWithoutEncludedCustomChallengeModifiersInput = {
     where: DayWhereUniqueInput
-    update: XOR<DayUpdateWithoutIncludedCustomChallengeModifiersInput, DayUncheckedUpdateWithoutIncludedCustomChallengeModifiersInput>
-    create: XOR<DayCreateWithoutIncludedCustomChallengeModifiersInput, DayUncheckedCreateWithoutIncludedCustomChallengeModifiersInput>
+    update: XOR<DayUpdateWithoutEncludedCustomChallengeModifiersInput, DayUncheckedUpdateWithoutEncludedCustomChallengeModifiersInput>
+    create: XOR<DayCreateWithoutEncludedCustomChallengeModifiersInput, DayUncheckedCreateWithoutEncludedCustomChallengeModifiersInput>
   }
 
-  export type DayUpdateWithWhereUniqueWithoutIncludedCustomChallengeModifiersInput = {
+  export type DayUpdateWithWhereUniqueWithoutEncludedCustomChallengeModifiersInput = {
     where: DayWhereUniqueInput
-    data: XOR<DayUpdateWithoutIncludedCustomChallengeModifiersInput, DayUncheckedUpdateWithoutIncludedCustomChallengeModifiersInput>
+    data: XOR<DayUpdateWithoutEncludedCustomChallengeModifiersInput, DayUncheckedUpdateWithoutEncludedCustomChallengeModifiersInput>
   }
 
-  export type DayUpdateManyWithWhereWithoutIncludedCustomChallengeModifiersInput = {
+  export type DayUpdateManyWithWhereWithoutEncludedCustomChallengeModifiersInput = {
     where: DayScalarWhereInput
-    data: XOR<DayUpdateManyMutationInput, DayUncheckedUpdateManyWithoutIncludedCustomChallengeModifiersInput>
-  }
-
-  export type DayUpsertWithWhereUniqueWithoutModifierWhenPart1CompletedInput = {
-    where: DayWhereUniqueInput
-    update: XOR<DayUpdateWithoutModifierWhenPart1CompletedInput, DayUncheckedUpdateWithoutModifierWhenPart1CompletedInput>
-    create: XOR<DayCreateWithoutModifierWhenPart1CompletedInput, DayUncheckedCreateWithoutModifierWhenPart1CompletedInput>
-  }
-
-  export type DayUpdateWithWhereUniqueWithoutModifierWhenPart1CompletedInput = {
-    where: DayWhereUniqueInput
-    data: XOR<DayUpdateWithoutModifierWhenPart1CompletedInput, DayUncheckedUpdateWithoutModifierWhenPart1CompletedInput>
-  }
-
-  export type DayUpdateManyWithWhereWithoutModifierWhenPart1CompletedInput = {
-    where: DayScalarWhereInput
-    data: XOR<DayUpdateManyMutationInput, DayUncheckedUpdateManyWithoutModifierWhenPart1CompletedInput>
-  }
-
-  export type ChallengeModifierCreateWithoutModifierOptionInput = {
-    dateCreated?: Date | string
-    name: string
-    text: string
-    hasOptions?: boolean
-    explanatoryUrl?: string | null
-    standard?: boolean
-    isPublic?: boolean
-    CreatedBy?: UserCreateNestedOneWithoutChallengeModifierInput
-    Day?: DayCreateNestedManyWithoutChallengeModifierInput
-    ModifierPackExcluded?: ModifierPackCreateNestedManyWithoutExcludedChallengeModifiersInput
-    ModifierPackIncluded?: ModifierPackCreateNestedManyWithoutEncludedCustomChallengeModifiersInput
-    UserExcluded?: UserCreateNestedManyWithoutDefaultExcludedChallengeModifiersInput
-    UserIncluded?: UserCreateNestedManyWithoutDefaultIncludedCustomChallengeModifiersInput
-    ExcludedFromDay?: DayCreateNestedManyWithoutExcludedChallengeModifiersInput
-    IncludedInDay?: DayCreateNestedManyWithoutIncludedCustomChallengeModifiersInput
-    DayCompletedInPart1?: DayCreateNestedManyWithoutModifierWhenPart1CompletedInput
-  }
-
-  export type ChallengeModifierUncheckedCreateWithoutModifierOptionInput = {
-    id?: number
-    dateCreated?: Date | string
-    name: string
-    text: string
-    hasOptions?: boolean
-    explanatoryUrl?: string | null
-    standard?: boolean
-    createdById?: string | null
-    isPublic?: boolean
-    Day?: DayUncheckedCreateNestedManyWithoutChallengeModifierInput
-    ModifierPackExcluded?: ModifierPackUncheckedCreateNestedManyWithoutExcludedChallengeModifiersInput
-    ModifierPackIncluded?: ModifierPackUncheckedCreateNestedManyWithoutEncludedCustomChallengeModifiersInput
-    UserExcluded?: UserUncheckedCreateNestedManyWithoutDefaultExcludedChallengeModifiersInput
-    UserIncluded?: UserUncheckedCreateNestedManyWithoutDefaultIncludedCustomChallengeModifiersInput
-    ExcludedFromDay?: DayUncheckedCreateNestedManyWithoutExcludedChallengeModifiersInput
-    IncludedInDay?: DayUncheckedCreateNestedManyWithoutIncludedCustomChallengeModifiersInput
-    DayCompletedInPart1?: DayUncheckedCreateNestedManyWithoutModifierWhenPart1CompletedInput
-  }
-
-  export type ChallengeModifierCreateOrConnectWithoutModifierOptionInput = {
-    where: ChallengeModifierWhereUniqueInput
-    create: XOR<ChallengeModifierCreateWithoutModifierOptionInput, ChallengeModifierUncheckedCreateWithoutModifierOptionInput>
-  }
-
-  export type UserCreateWithoutModifierOptionInput = {
-    id: string
-    serializedId?: string | null
-    username?: string | null
-    dateCreated?: Date | string
-    numberOfGames?: number
-    Game?: GameCreateNestedManyWithoutUserInput
-    PublicProfile?: PublicProfileCreateNestedManyWithoutUserInput
-    ChallengeModifier?: ChallengeModifierCreateNestedManyWithoutCreatedByInput
-    DefaultExcludedChallengeModifiers?: ChallengeModifierCreateNestedManyWithoutUserExcludedInput
-    DefaultExcludedModifierOptions?: ModifierOptionCreateNestedManyWithoutUserExcludedInput
-    DefaultIncludedCustomChallengeModifiers?: ChallengeModifierCreateNestedManyWithoutUserIncludedInput
-    DefaultIncludedCustomModifierOptions?: ModifierOptionCreateNestedManyWithoutUserIncludedInput
-    ModifierPack?: ModifierPackCreateNestedManyWithoutCreatedByInput
-    Downvote?: DownvoteCreateNestedManyWithoutCreatedByInput
-    Upvote?: UpvoteCreateNestedManyWithoutCreatedByInput
-  }
-
-  export type UserUncheckedCreateWithoutModifierOptionInput = {
-    id: string
-    serializedId?: string | null
-    username?: string | null
-    dateCreated?: Date | string
-    numberOfGames?: number
-    Game?: GameUncheckedCreateNestedManyWithoutUserInput
-    PublicProfile?: PublicProfileUncheckedCreateNestedManyWithoutUserInput
-    ChallengeModifier?: ChallengeModifierUncheckedCreateNestedManyWithoutCreatedByInput
-    DefaultExcludedChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutUserExcludedInput
-    DefaultExcludedModifierOptions?: ModifierOptionUncheckedCreateNestedManyWithoutUserExcludedInput
-    DefaultIncludedCustomChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutUserIncludedInput
-    DefaultIncludedCustomModifierOptions?: ModifierOptionUncheckedCreateNestedManyWithoutUserIncludedInput
-    ModifierPack?: ModifierPackUncheckedCreateNestedManyWithoutCreatedByInput
-    Downvote?: DownvoteUncheckedCreateNestedManyWithoutCreatedByInput
-    Upvote?: UpvoteUncheckedCreateNestedManyWithoutCreatedByInput
-  }
-
-  export type UserCreateOrConnectWithoutModifierOptionInput = {
-    where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutModifierOptionInput, UserUncheckedCreateWithoutModifierOptionInput>
+    data: XOR<DayUpdateManyMutationInput, DayUncheckedUpdateManyWithoutEncludedCustomChallengeModifiersInput>
   }
 
   export type DayCreateWithoutModifierOptionInput = {
@@ -23539,14 +23852,12 @@ export namespace Prisma {
     modifierOptionRerollsUsed?: number
     rerollTokensSpentDuringPart2?: number
     netScore?: number
-    ExcludedChallengeModifiers?: ChallengeModifierCreateNestedManyWithoutExcludedFromDayInput
-    ExcludedModifierOptions?: ModifierOptionCreateNestedManyWithoutExcludedFromDayInput
-    IncludedCustomChallengeModifiers?: ChallengeModifierCreateNestedManyWithoutIncludedInDayInput
-    IncludedCustomModifierOptions?: ModifierOptionCreateNestedManyWithoutIncludedInDayInput
+    ChallengeModifier?: ChallengeModifierCreateNestedOneWithoutDayInput
     Game: GameCreateNestedOneWithoutDayInput
     ModifierWhenPart1Completed?: ChallengeModifierCreateNestedOneWithoutDayCompletedInPart1Input
     OptionWhenPart1Completed?: ModifierOptionCreateNestedOneWithoutDayCompletedInPart1Input
-    ChallengeModifier?: ChallengeModifierCreateNestedOneWithoutDayInput
+    ExcludedChallengeModifiers?: ChallengeModifierCreateNestedManyWithoutModifierPackExcludedInput
+    EncludedCustomChallengeModifiers?: ChallengeModifierCreateNestedManyWithoutModifierPackIncludedInput
   }
 
   export type DayUncheckedCreateWithoutModifierOptionInput = {
@@ -23566,10 +23877,8 @@ export namespace Prisma {
     modifierOptionRerollsUsed?: number
     rerollTokensSpentDuringPart2?: number
     netScore?: number
-    ExcludedChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutExcludedFromDayInput
-    ExcludedModifierOptions?: ModifierOptionUncheckedCreateNestedManyWithoutExcludedFromDayInput
-    IncludedCustomChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutIncludedInDayInput
-    IncludedCustomModifierOptions?: ModifierOptionUncheckedCreateNestedManyWithoutIncludedInDayInput
+    ExcludedChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutModifierPackExcludedInput
+    EncludedCustomChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutModifierPackIncludedInput
   }
 
   export type DayCreateOrConnectWithoutModifierOptionInput = {
@@ -23580,236 +23889,6 @@ export namespace Prisma {
   export type DayCreateManyModifierOptionInputEnvelope = {
     data: DayCreateManyModifierOptionInput | DayCreateManyModifierOptionInput[]
     skipDuplicates?: boolean
-  }
-
-  export type ModifierPackCreateWithoutExcludedModifierOptionsInput = {
-    dateCreated?: Date | string
-    isPublic?: boolean
-    ExcludedChallengeModifiers?: ChallengeModifierCreateNestedManyWithoutModifierPackExcludedInput
-    EncludedCustomChallengeModifiers?: ChallengeModifierCreateNestedManyWithoutModifierPackIncludedInput
-    IncludedCustomModifierOptions?: ModifierOptionCreateNestedManyWithoutModifierPackIncludedInput
-    CreatedBy?: UserCreateNestedOneWithoutModifierPackInput
-  }
-
-  export type ModifierPackUncheckedCreateWithoutExcludedModifierOptionsInput = {
-    id?: number
-    dateCreated?: Date | string
-    createdById?: string | null
-    isPublic?: boolean
-    ExcludedChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutModifierPackExcludedInput
-    EncludedCustomChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutModifierPackIncludedInput
-    IncludedCustomModifierOptions?: ModifierOptionUncheckedCreateNestedManyWithoutModifierPackIncludedInput
-  }
-
-  export type ModifierPackCreateOrConnectWithoutExcludedModifierOptionsInput = {
-    where: ModifierPackWhereUniqueInput
-    create: XOR<ModifierPackCreateWithoutExcludedModifierOptionsInput, ModifierPackUncheckedCreateWithoutExcludedModifierOptionsInput>
-  }
-
-  export type ModifierPackCreateWithoutIncludedCustomModifierOptionsInput = {
-    dateCreated?: Date | string
-    isPublic?: boolean
-    ExcludedChallengeModifiers?: ChallengeModifierCreateNestedManyWithoutModifierPackExcludedInput
-    ExcludedModifierOptions?: ModifierOptionCreateNestedManyWithoutModifierPackExcludedInput
-    EncludedCustomChallengeModifiers?: ChallengeModifierCreateNestedManyWithoutModifierPackIncludedInput
-    CreatedBy?: UserCreateNestedOneWithoutModifierPackInput
-  }
-
-  export type ModifierPackUncheckedCreateWithoutIncludedCustomModifierOptionsInput = {
-    id?: number
-    dateCreated?: Date | string
-    createdById?: string | null
-    isPublic?: boolean
-    ExcludedChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutModifierPackExcludedInput
-    ExcludedModifierOptions?: ModifierOptionUncheckedCreateNestedManyWithoutModifierPackExcludedInput
-    EncludedCustomChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutModifierPackIncludedInput
-  }
-
-  export type ModifierPackCreateOrConnectWithoutIncludedCustomModifierOptionsInput = {
-    where: ModifierPackWhereUniqueInput
-    create: XOR<ModifierPackCreateWithoutIncludedCustomModifierOptionsInput, ModifierPackUncheckedCreateWithoutIncludedCustomModifierOptionsInput>
-  }
-
-  export type UserCreateWithoutDefaultExcludedModifierOptionsInput = {
-    id: string
-    serializedId?: string | null
-    username?: string | null
-    dateCreated?: Date | string
-    numberOfGames?: number
-    Game?: GameCreateNestedManyWithoutUserInput
-    PublicProfile?: PublicProfileCreateNestedManyWithoutUserInput
-    ChallengeModifier?: ChallengeModifierCreateNestedManyWithoutCreatedByInput
-    ModifierOption?: ModifierOptionCreateNestedManyWithoutCreatedByInput
-    DefaultExcludedChallengeModifiers?: ChallengeModifierCreateNestedManyWithoutUserExcludedInput
-    DefaultIncludedCustomChallengeModifiers?: ChallengeModifierCreateNestedManyWithoutUserIncludedInput
-    DefaultIncludedCustomModifierOptions?: ModifierOptionCreateNestedManyWithoutUserIncludedInput
-    ModifierPack?: ModifierPackCreateNestedManyWithoutCreatedByInput
-    Downvote?: DownvoteCreateNestedManyWithoutCreatedByInput
-    Upvote?: UpvoteCreateNestedManyWithoutCreatedByInput
-  }
-
-  export type UserUncheckedCreateWithoutDefaultExcludedModifierOptionsInput = {
-    id: string
-    serializedId?: string | null
-    username?: string | null
-    dateCreated?: Date | string
-    numberOfGames?: number
-    Game?: GameUncheckedCreateNestedManyWithoutUserInput
-    PublicProfile?: PublicProfileUncheckedCreateNestedManyWithoutUserInput
-    ChallengeModifier?: ChallengeModifierUncheckedCreateNestedManyWithoutCreatedByInput
-    ModifierOption?: ModifierOptionUncheckedCreateNestedManyWithoutCreatedByInput
-    DefaultExcludedChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutUserExcludedInput
-    DefaultIncludedCustomChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutUserIncludedInput
-    DefaultIncludedCustomModifierOptions?: ModifierOptionUncheckedCreateNestedManyWithoutUserIncludedInput
-    ModifierPack?: ModifierPackUncheckedCreateNestedManyWithoutCreatedByInput
-    Downvote?: DownvoteUncheckedCreateNestedManyWithoutCreatedByInput
-    Upvote?: UpvoteUncheckedCreateNestedManyWithoutCreatedByInput
-  }
-
-  export type UserCreateOrConnectWithoutDefaultExcludedModifierOptionsInput = {
-    where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutDefaultExcludedModifierOptionsInput, UserUncheckedCreateWithoutDefaultExcludedModifierOptionsInput>
-  }
-
-  export type UserCreateWithoutDefaultIncludedCustomModifierOptionsInput = {
-    id: string
-    serializedId?: string | null
-    username?: string | null
-    dateCreated?: Date | string
-    numberOfGames?: number
-    Game?: GameCreateNestedManyWithoutUserInput
-    PublicProfile?: PublicProfileCreateNestedManyWithoutUserInput
-    ChallengeModifier?: ChallengeModifierCreateNestedManyWithoutCreatedByInput
-    ModifierOption?: ModifierOptionCreateNestedManyWithoutCreatedByInput
-    DefaultExcludedChallengeModifiers?: ChallengeModifierCreateNestedManyWithoutUserExcludedInput
-    DefaultExcludedModifierOptions?: ModifierOptionCreateNestedManyWithoutUserExcludedInput
-    DefaultIncludedCustomChallengeModifiers?: ChallengeModifierCreateNestedManyWithoutUserIncludedInput
-    ModifierPack?: ModifierPackCreateNestedManyWithoutCreatedByInput
-    Downvote?: DownvoteCreateNestedManyWithoutCreatedByInput
-    Upvote?: UpvoteCreateNestedManyWithoutCreatedByInput
-  }
-
-  export type UserUncheckedCreateWithoutDefaultIncludedCustomModifierOptionsInput = {
-    id: string
-    serializedId?: string | null
-    username?: string | null
-    dateCreated?: Date | string
-    numberOfGames?: number
-    Game?: GameUncheckedCreateNestedManyWithoutUserInput
-    PublicProfile?: PublicProfileUncheckedCreateNestedManyWithoutUserInput
-    ChallengeModifier?: ChallengeModifierUncheckedCreateNestedManyWithoutCreatedByInput
-    ModifierOption?: ModifierOptionUncheckedCreateNestedManyWithoutCreatedByInput
-    DefaultExcludedChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutUserExcludedInput
-    DefaultExcludedModifierOptions?: ModifierOptionUncheckedCreateNestedManyWithoutUserExcludedInput
-    DefaultIncludedCustomChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutUserIncludedInput
-    ModifierPack?: ModifierPackUncheckedCreateNestedManyWithoutCreatedByInput
-    Downvote?: DownvoteUncheckedCreateNestedManyWithoutCreatedByInput
-    Upvote?: UpvoteUncheckedCreateNestedManyWithoutCreatedByInput
-  }
-
-  export type UserCreateOrConnectWithoutDefaultIncludedCustomModifierOptionsInput = {
-    where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutDefaultIncludedCustomModifierOptionsInput, UserUncheckedCreateWithoutDefaultIncludedCustomModifierOptionsInput>
-  }
-
-  export type DayCreateWithoutExcludedModifierOptionsInput = {
-    dateCreated?: Date | string
-    userId: string
-    gameNumber: number
-    number: number
-    dateFirstRolled?: Date | string | null
-    part1Completed?: Date | string | null
-    part2Completed?: Date | string | null
-    challengeModifierRerollsUsed?: number
-    modifierOptionRerollsUsed?: number
-    rerollTokensSpentDuringPart2?: number
-    netScore?: number
-    ExcludedChallengeModifiers?: ChallengeModifierCreateNestedManyWithoutExcludedFromDayInput
-    IncludedCustomChallengeModifiers?: ChallengeModifierCreateNestedManyWithoutIncludedInDayInput
-    IncludedCustomModifierOptions?: ModifierOptionCreateNestedManyWithoutIncludedInDayInput
-    Game: GameCreateNestedOneWithoutDayInput
-    ModifierWhenPart1Completed?: ChallengeModifierCreateNestedOneWithoutDayCompletedInPart1Input
-    OptionWhenPart1Completed?: ModifierOptionCreateNestedOneWithoutDayCompletedInPart1Input
-    ChallengeModifier?: ChallengeModifierCreateNestedOneWithoutDayInput
-    ModifierOption?: ModifierOptionCreateNestedOneWithoutDayInput
-  }
-
-  export type DayUncheckedCreateWithoutExcludedModifierOptionsInput = {
-    id?: number
-    dateCreated?: Date | string
-    gameId: number
-    userId: string
-    gameNumber: number
-    number: number
-    challengeModifierId?: number | null
-    modifierOptionId?: number | null
-    dateFirstRolled?: Date | string | null
-    part1Completed?: Date | string | null
-    modifierWhenPart1CompletedId?: number | null
-    optionWhenPart1CompletedId?: number | null
-    part2Completed?: Date | string | null
-    challengeModifierRerollsUsed?: number
-    modifierOptionRerollsUsed?: number
-    rerollTokensSpentDuringPart2?: number
-    netScore?: number
-    ExcludedChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutExcludedFromDayInput
-    IncludedCustomChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutIncludedInDayInput
-    IncludedCustomModifierOptions?: ModifierOptionUncheckedCreateNestedManyWithoutIncludedInDayInput
-  }
-
-  export type DayCreateOrConnectWithoutExcludedModifierOptionsInput = {
-    where: DayWhereUniqueInput
-    create: XOR<DayCreateWithoutExcludedModifierOptionsInput, DayUncheckedCreateWithoutExcludedModifierOptionsInput>
-  }
-
-  export type DayCreateWithoutIncludedCustomModifierOptionsInput = {
-    dateCreated?: Date | string
-    userId: string
-    gameNumber: number
-    number: number
-    dateFirstRolled?: Date | string | null
-    part1Completed?: Date | string | null
-    part2Completed?: Date | string | null
-    challengeModifierRerollsUsed?: number
-    modifierOptionRerollsUsed?: number
-    rerollTokensSpentDuringPart2?: number
-    netScore?: number
-    ExcludedChallengeModifiers?: ChallengeModifierCreateNestedManyWithoutExcludedFromDayInput
-    ExcludedModifierOptions?: ModifierOptionCreateNestedManyWithoutExcludedFromDayInput
-    IncludedCustomChallengeModifiers?: ChallengeModifierCreateNestedManyWithoutIncludedInDayInput
-    Game: GameCreateNestedOneWithoutDayInput
-    ModifierWhenPart1Completed?: ChallengeModifierCreateNestedOneWithoutDayCompletedInPart1Input
-    OptionWhenPart1Completed?: ModifierOptionCreateNestedOneWithoutDayCompletedInPart1Input
-    ChallengeModifier?: ChallengeModifierCreateNestedOneWithoutDayInput
-    ModifierOption?: ModifierOptionCreateNestedOneWithoutDayInput
-  }
-
-  export type DayUncheckedCreateWithoutIncludedCustomModifierOptionsInput = {
-    id?: number
-    dateCreated?: Date | string
-    gameId: number
-    userId: string
-    gameNumber: number
-    number: number
-    challengeModifierId?: number | null
-    modifierOptionId?: number | null
-    dateFirstRolled?: Date | string | null
-    part1Completed?: Date | string | null
-    modifierWhenPart1CompletedId?: number | null
-    optionWhenPart1CompletedId?: number | null
-    part2Completed?: Date | string | null
-    challengeModifierRerollsUsed?: number
-    modifierOptionRerollsUsed?: number
-    rerollTokensSpentDuringPart2?: number
-    netScore?: number
-    ExcludedChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutExcludedFromDayInput
-    ExcludedModifierOptions?: ModifierOptionUncheckedCreateNestedManyWithoutExcludedFromDayInput
-    IncludedCustomChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutIncludedInDayInput
-  }
-
-  export type DayCreateOrConnectWithoutIncludedCustomModifierOptionsInput = {
-    where: DayWhereUniqueInput
-    create: XOR<DayCreateWithoutIncludedCustomModifierOptionsInput, DayUncheckedCreateWithoutIncludedCustomModifierOptionsInput>
   }
 
   export type DayCreateWithoutOptionWhenPart1CompletedInput = {
@@ -23824,14 +23903,12 @@ export namespace Prisma {
     modifierOptionRerollsUsed?: number
     rerollTokensSpentDuringPart2?: number
     netScore?: number
-    ExcludedChallengeModifiers?: ChallengeModifierCreateNestedManyWithoutExcludedFromDayInput
-    ExcludedModifierOptions?: ModifierOptionCreateNestedManyWithoutExcludedFromDayInput
-    IncludedCustomChallengeModifiers?: ChallengeModifierCreateNestedManyWithoutIncludedInDayInput
-    IncludedCustomModifierOptions?: ModifierOptionCreateNestedManyWithoutIncludedInDayInput
-    Game: GameCreateNestedOneWithoutDayInput
-    ModifierWhenPart1Completed?: ChallengeModifierCreateNestedOneWithoutDayCompletedInPart1Input
     ChallengeModifier?: ChallengeModifierCreateNestedOneWithoutDayInput
+    Game: GameCreateNestedOneWithoutDayInput
     ModifierOption?: ModifierOptionCreateNestedOneWithoutDayInput
+    ModifierWhenPart1Completed?: ChallengeModifierCreateNestedOneWithoutDayCompletedInPart1Input
+    ExcludedChallengeModifiers?: ChallengeModifierCreateNestedManyWithoutModifierPackExcludedInput
+    EncludedCustomChallengeModifiers?: ChallengeModifierCreateNestedManyWithoutModifierPackIncludedInput
   }
 
   export type DayUncheckedCreateWithoutOptionWhenPart1CompletedInput = {
@@ -23851,10 +23928,8 @@ export namespace Prisma {
     modifierOptionRerollsUsed?: number
     rerollTokensSpentDuringPart2?: number
     netScore?: number
-    ExcludedChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutExcludedFromDayInput
-    ExcludedModifierOptions?: ModifierOptionUncheckedCreateNestedManyWithoutExcludedFromDayInput
-    IncludedCustomChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutIncludedInDayInput
-    IncludedCustomModifierOptions?: ModifierOptionUncheckedCreateNestedManyWithoutIncludedInDayInput
+    ExcludedChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutModifierPackExcludedInput
+    EncludedCustomChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutModifierPackIncludedInput
   }
 
   export type DayCreateOrConnectWithoutOptionWhenPart1CompletedInput = {
@@ -23865,6 +23940,241 @@ export namespace Prisma {
   export type DayCreateManyOptionWhenPart1CompletedInputEnvelope = {
     data: DayCreateManyOptionWhenPart1CompletedInput | DayCreateManyOptionWhenPart1CompletedInput[]
     skipDuplicates?: boolean
+  }
+
+  export type ChallengeModifierCreateWithoutModifierOptionInput = {
+    dateCreated?: Date | string
+    name: string
+    text: string
+    hasOptions?: boolean
+    explanatoryUrl?: string | null
+    standard?: boolean
+    isPublic?: boolean
+    CreatedBy?: UserCreateNestedOneWithoutChallengeModifierInput
+    Day?: DayCreateNestedManyWithoutChallengeModifierInput
+    DayCompletedInPart1?: DayCreateNestedManyWithoutModifierWhenPart1CompletedInput
+    UserExcluded?: UserCreateNestedManyWithoutDefaultExcludedChallengeModifiersInput
+    UserIncluded?: UserCreateNestedManyWithoutDefaultIncludedCustomChallengeModifiersInput
+    ModifierPackExcluded?: DayCreateNestedManyWithoutExcludedChallengeModifiersInput
+    ModifierPackIncluded?: DayCreateNestedManyWithoutEncludedCustomChallengeModifiersInput
+  }
+
+  export type ChallengeModifierUncheckedCreateWithoutModifierOptionInput = {
+    id?: number
+    dateCreated?: Date | string
+    name: string
+    text: string
+    hasOptions?: boolean
+    explanatoryUrl?: string | null
+    standard?: boolean
+    createdById?: string | null
+    isPublic?: boolean
+    Day?: DayUncheckedCreateNestedManyWithoutChallengeModifierInput
+    DayCompletedInPart1?: DayUncheckedCreateNestedManyWithoutModifierWhenPart1CompletedInput
+    UserExcluded?: UserUncheckedCreateNestedManyWithoutDefaultExcludedChallengeModifiersInput
+    UserIncluded?: UserUncheckedCreateNestedManyWithoutDefaultIncludedCustomChallengeModifiersInput
+    ModifierPackExcluded?: DayUncheckedCreateNestedManyWithoutExcludedChallengeModifiersInput
+    ModifierPackIncluded?: DayUncheckedCreateNestedManyWithoutEncludedCustomChallengeModifiersInput
+  }
+
+  export type ChallengeModifierCreateOrConnectWithoutModifierOptionInput = {
+    where: ChallengeModifierWhereUniqueInput
+    create: XOR<ChallengeModifierCreateWithoutModifierOptionInput, ChallengeModifierUncheckedCreateWithoutModifierOptionInput>
+  }
+
+  export type UserCreateWithoutModifierOptionInput = {
+    id: string
+    serializedId?: string | null
+    username?: string | null
+    dateCreated?: Date | string
+    numberOfGames?: number
+    ChallengeModifier?: ChallengeModifierCreateNestedManyWithoutCreatedByInput
+    Downvote?: DownvoteCreateNestedManyWithoutCreatedByInput
+    Game?: GameCreateNestedManyWithoutUserInput
+    ModifierPack?: ModifierPackCreateNestedManyWithoutCreatedByInput
+    PublicProfile?: PublicProfileCreateNestedManyWithoutUserInput
+    Upvote?: UpvoteCreateNestedManyWithoutCreatedByInput
+    DefaultExcludedChallengeModifiers?: ChallengeModifierCreateNestedManyWithoutUserExcludedInput
+    DefaultExcludedModifierOptions?: ModifierOptionCreateNestedManyWithoutUserExcludedInput
+    DefaultIncludedCustomChallengeModifiers?: ChallengeModifierCreateNestedManyWithoutUserIncludedInput
+    DefaultIncludedCustomModifierOptions?: ModifierOptionCreateNestedManyWithoutUserIncludedInput
+  }
+
+  export type UserUncheckedCreateWithoutModifierOptionInput = {
+    id: string
+    serializedId?: string | null
+    username?: string | null
+    dateCreated?: Date | string
+    numberOfGames?: number
+    ChallengeModifier?: ChallengeModifierUncheckedCreateNestedManyWithoutCreatedByInput
+    Downvote?: DownvoteUncheckedCreateNestedManyWithoutCreatedByInput
+    Game?: GameUncheckedCreateNestedManyWithoutUserInput
+    ModifierPack?: ModifierPackUncheckedCreateNestedManyWithoutCreatedByInput
+    PublicProfile?: PublicProfileUncheckedCreateNestedManyWithoutUserInput
+    Upvote?: UpvoteUncheckedCreateNestedManyWithoutCreatedByInput
+    DefaultExcludedChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutUserExcludedInput
+    DefaultExcludedModifierOptions?: ModifierOptionUncheckedCreateNestedManyWithoutUserExcludedInput
+    DefaultIncludedCustomChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutUserIncludedInput
+    DefaultIncludedCustomModifierOptions?: ModifierOptionUncheckedCreateNestedManyWithoutUserIncludedInput
+  }
+
+  export type UserCreateOrConnectWithoutModifierOptionInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutModifierOptionInput, UserUncheckedCreateWithoutModifierOptionInput>
+  }
+
+  export type UserCreateWithoutDefaultExcludedModifierOptionsInput = {
+    id: string
+    serializedId?: string | null
+    username?: string | null
+    dateCreated?: Date | string
+    numberOfGames?: number
+    ChallengeModifier?: ChallengeModifierCreateNestedManyWithoutCreatedByInput
+    Downvote?: DownvoteCreateNestedManyWithoutCreatedByInput
+    Game?: GameCreateNestedManyWithoutUserInput
+    ModifierOption?: ModifierOptionCreateNestedManyWithoutCreatedByInput
+    ModifierPack?: ModifierPackCreateNestedManyWithoutCreatedByInput
+    PublicProfile?: PublicProfileCreateNestedManyWithoutUserInput
+    Upvote?: UpvoteCreateNestedManyWithoutCreatedByInput
+    DefaultExcludedChallengeModifiers?: ChallengeModifierCreateNestedManyWithoutUserExcludedInput
+    DefaultIncludedCustomChallengeModifiers?: ChallengeModifierCreateNestedManyWithoutUserIncludedInput
+    DefaultIncludedCustomModifierOptions?: ModifierOptionCreateNestedManyWithoutUserIncludedInput
+  }
+
+  export type UserUncheckedCreateWithoutDefaultExcludedModifierOptionsInput = {
+    id: string
+    serializedId?: string | null
+    username?: string | null
+    dateCreated?: Date | string
+    numberOfGames?: number
+    ChallengeModifier?: ChallengeModifierUncheckedCreateNestedManyWithoutCreatedByInput
+    Downvote?: DownvoteUncheckedCreateNestedManyWithoutCreatedByInput
+    Game?: GameUncheckedCreateNestedManyWithoutUserInput
+    ModifierOption?: ModifierOptionUncheckedCreateNestedManyWithoutCreatedByInput
+    ModifierPack?: ModifierPackUncheckedCreateNestedManyWithoutCreatedByInput
+    PublicProfile?: PublicProfileUncheckedCreateNestedManyWithoutUserInput
+    Upvote?: UpvoteUncheckedCreateNestedManyWithoutCreatedByInput
+    DefaultExcludedChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutUserExcludedInput
+    DefaultIncludedCustomChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutUserIncludedInput
+    DefaultIncludedCustomModifierOptions?: ModifierOptionUncheckedCreateNestedManyWithoutUserIncludedInput
+  }
+
+  export type UserCreateOrConnectWithoutDefaultExcludedModifierOptionsInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutDefaultExcludedModifierOptionsInput, UserUncheckedCreateWithoutDefaultExcludedModifierOptionsInput>
+  }
+
+  export type UserCreateWithoutDefaultIncludedCustomModifierOptionsInput = {
+    id: string
+    serializedId?: string | null
+    username?: string | null
+    dateCreated?: Date | string
+    numberOfGames?: number
+    ChallengeModifier?: ChallengeModifierCreateNestedManyWithoutCreatedByInput
+    Downvote?: DownvoteCreateNestedManyWithoutCreatedByInput
+    Game?: GameCreateNestedManyWithoutUserInput
+    ModifierOption?: ModifierOptionCreateNestedManyWithoutCreatedByInput
+    ModifierPack?: ModifierPackCreateNestedManyWithoutCreatedByInput
+    PublicProfile?: PublicProfileCreateNestedManyWithoutUserInput
+    Upvote?: UpvoteCreateNestedManyWithoutCreatedByInput
+    DefaultExcludedChallengeModifiers?: ChallengeModifierCreateNestedManyWithoutUserExcludedInput
+    DefaultExcludedModifierOptions?: ModifierOptionCreateNestedManyWithoutUserExcludedInput
+    DefaultIncludedCustomChallengeModifiers?: ChallengeModifierCreateNestedManyWithoutUserIncludedInput
+  }
+
+  export type UserUncheckedCreateWithoutDefaultIncludedCustomModifierOptionsInput = {
+    id: string
+    serializedId?: string | null
+    username?: string | null
+    dateCreated?: Date | string
+    numberOfGames?: number
+    ChallengeModifier?: ChallengeModifierUncheckedCreateNestedManyWithoutCreatedByInput
+    Downvote?: DownvoteUncheckedCreateNestedManyWithoutCreatedByInput
+    Game?: GameUncheckedCreateNestedManyWithoutUserInput
+    ModifierOption?: ModifierOptionUncheckedCreateNestedManyWithoutCreatedByInput
+    ModifierPack?: ModifierPackUncheckedCreateNestedManyWithoutCreatedByInput
+    PublicProfile?: PublicProfileUncheckedCreateNestedManyWithoutUserInput
+    Upvote?: UpvoteUncheckedCreateNestedManyWithoutCreatedByInput
+    DefaultExcludedChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutUserExcludedInput
+    DefaultExcludedModifierOptions?: ModifierOptionUncheckedCreateNestedManyWithoutUserExcludedInput
+    DefaultIncludedCustomChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutUserIncludedInput
+  }
+
+  export type UserCreateOrConnectWithoutDefaultIncludedCustomModifierOptionsInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutDefaultIncludedCustomModifierOptionsInput, UserUncheckedCreateWithoutDefaultIncludedCustomModifierOptionsInput>
+  }
+
+  export type ModifierPackCreateWithoutExcludedFromDayInput = {
+    dateCreated?: Date | string
+    isPublic?: boolean
+    CreatedBy?: UserCreateNestedOneWithoutModifierPackInput
+    IncludedInDay?: ModifierOptionCreateNestedManyWithoutIncludedCustomModifierOptionsInput
+  }
+
+  export type ModifierPackUncheckedCreateWithoutExcludedFromDayInput = {
+    id?: number
+    dateCreated?: Date | string
+    createdById?: string | null
+    isPublic?: boolean
+    IncludedInDay?: ModifierOptionUncheckedCreateNestedManyWithoutIncludedCustomModifierOptionsInput
+  }
+
+  export type ModifierPackCreateOrConnectWithoutExcludedFromDayInput = {
+    where: ModifierPackWhereUniqueInput
+    create: XOR<ModifierPackCreateWithoutExcludedFromDayInput, ModifierPackUncheckedCreateWithoutExcludedFromDayInput>
+  }
+
+  export type ModifierPackCreateWithoutIncludedInDayInput = {
+    dateCreated?: Date | string
+    isPublic?: boolean
+    CreatedBy?: UserCreateNestedOneWithoutModifierPackInput
+    ExcludedFromDay?: ModifierOptionCreateNestedManyWithoutExcludedModifierOptionsInput
+  }
+
+  export type ModifierPackUncheckedCreateWithoutIncludedInDayInput = {
+    id?: number
+    dateCreated?: Date | string
+    createdById?: string | null
+    isPublic?: boolean
+    ExcludedFromDay?: ModifierOptionUncheckedCreateNestedManyWithoutExcludedModifierOptionsInput
+  }
+
+  export type ModifierPackCreateOrConnectWithoutIncludedInDayInput = {
+    where: ModifierPackWhereUniqueInput
+    create: XOR<ModifierPackCreateWithoutIncludedInDayInput, ModifierPackUncheckedCreateWithoutIncludedInDayInput>
+  }
+
+  export type DayUpsertWithWhereUniqueWithoutModifierOptionInput = {
+    where: DayWhereUniqueInput
+    update: XOR<DayUpdateWithoutModifierOptionInput, DayUncheckedUpdateWithoutModifierOptionInput>
+    create: XOR<DayCreateWithoutModifierOptionInput, DayUncheckedCreateWithoutModifierOptionInput>
+  }
+
+  export type DayUpdateWithWhereUniqueWithoutModifierOptionInput = {
+    where: DayWhereUniqueInput
+    data: XOR<DayUpdateWithoutModifierOptionInput, DayUncheckedUpdateWithoutModifierOptionInput>
+  }
+
+  export type DayUpdateManyWithWhereWithoutModifierOptionInput = {
+    where: DayScalarWhereInput
+    data: XOR<DayUpdateManyMutationInput, DayUncheckedUpdateManyWithoutModifierOptionInput>
+  }
+
+  export type DayUpsertWithWhereUniqueWithoutOptionWhenPart1CompletedInput = {
+    where: DayWhereUniqueInput
+    update: XOR<DayUpdateWithoutOptionWhenPart1CompletedInput, DayUncheckedUpdateWithoutOptionWhenPart1CompletedInput>
+    create: XOR<DayCreateWithoutOptionWhenPart1CompletedInput, DayUncheckedCreateWithoutOptionWhenPart1CompletedInput>
+  }
+
+  export type DayUpdateWithWhereUniqueWithoutOptionWhenPart1CompletedInput = {
+    where: DayWhereUniqueInput
+    data: XOR<DayUpdateWithoutOptionWhenPart1CompletedInput, DayUncheckedUpdateWithoutOptionWhenPart1CompletedInput>
+  }
+
+  export type DayUpdateManyWithWhereWithoutOptionWhenPart1CompletedInput = {
+    where: DayScalarWhereInput
+    data: XOR<DayUpdateManyMutationInput, DayUncheckedUpdateManyWithoutOptionWhenPart1CompletedInput>
   }
 
   export type ChallengeModifierUpsertWithoutModifierOptionInput = {
@@ -23888,13 +24198,11 @@ export namespace Prisma {
     isPublic?: BoolFieldUpdateOperationsInput | boolean
     CreatedBy?: UserUpdateOneWithoutChallengeModifierNestedInput
     Day?: DayUpdateManyWithoutChallengeModifierNestedInput
-    ModifierPackExcluded?: ModifierPackUpdateManyWithoutExcludedChallengeModifiersNestedInput
-    ModifierPackIncluded?: ModifierPackUpdateManyWithoutEncludedCustomChallengeModifiersNestedInput
+    DayCompletedInPart1?: DayUpdateManyWithoutModifierWhenPart1CompletedNestedInput
     UserExcluded?: UserUpdateManyWithoutDefaultExcludedChallengeModifiersNestedInput
     UserIncluded?: UserUpdateManyWithoutDefaultIncludedCustomChallengeModifiersNestedInput
-    ExcludedFromDay?: DayUpdateManyWithoutExcludedChallengeModifiersNestedInput
-    IncludedInDay?: DayUpdateManyWithoutIncludedCustomChallengeModifiersNestedInput
-    DayCompletedInPart1?: DayUpdateManyWithoutModifierWhenPart1CompletedNestedInput
+    ModifierPackExcluded?: DayUpdateManyWithoutExcludedChallengeModifiersNestedInput
+    ModifierPackIncluded?: DayUpdateManyWithoutEncludedCustomChallengeModifiersNestedInput
   }
 
   export type ChallengeModifierUncheckedUpdateWithoutModifierOptionInput = {
@@ -23908,13 +24216,11 @@ export namespace Prisma {
     createdById?: NullableStringFieldUpdateOperationsInput | string | null
     isPublic?: BoolFieldUpdateOperationsInput | boolean
     Day?: DayUncheckedUpdateManyWithoutChallengeModifierNestedInput
-    ModifierPackExcluded?: ModifierPackUncheckedUpdateManyWithoutExcludedChallengeModifiersNestedInput
-    ModifierPackIncluded?: ModifierPackUncheckedUpdateManyWithoutEncludedCustomChallengeModifiersNestedInput
+    DayCompletedInPart1?: DayUncheckedUpdateManyWithoutModifierWhenPart1CompletedNestedInput
     UserExcluded?: UserUncheckedUpdateManyWithoutDefaultExcludedChallengeModifiersNestedInput
     UserIncluded?: UserUncheckedUpdateManyWithoutDefaultIncludedCustomChallengeModifiersNestedInput
-    ExcludedFromDay?: DayUncheckedUpdateManyWithoutExcludedChallengeModifiersNestedInput
-    IncludedInDay?: DayUncheckedUpdateManyWithoutIncludedCustomChallengeModifiersNestedInput
-    DayCompletedInPart1?: DayUncheckedUpdateManyWithoutModifierWhenPart1CompletedNestedInput
+    ModifierPackExcluded?: DayUncheckedUpdateManyWithoutExcludedChallengeModifiersNestedInput
+    ModifierPackIncluded?: DayUncheckedUpdateManyWithoutEncludedCustomChallengeModifiersNestedInput
   }
 
   export type UserUpsertWithoutModifierOptionInput = {
@@ -23934,16 +24240,16 @@ export namespace Prisma {
     username?: NullableStringFieldUpdateOperationsInput | string | null
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     numberOfGames?: IntFieldUpdateOperationsInput | number
-    Game?: GameUpdateManyWithoutUserNestedInput
-    PublicProfile?: PublicProfileUpdateManyWithoutUserNestedInput
     ChallengeModifier?: ChallengeModifierUpdateManyWithoutCreatedByNestedInput
+    Downvote?: DownvoteUpdateManyWithoutCreatedByNestedInput
+    Game?: GameUpdateManyWithoutUserNestedInput
+    ModifierPack?: ModifierPackUpdateManyWithoutCreatedByNestedInput
+    PublicProfile?: PublicProfileUpdateManyWithoutUserNestedInput
+    Upvote?: UpvoteUpdateManyWithoutCreatedByNestedInput
     DefaultExcludedChallengeModifiers?: ChallengeModifierUpdateManyWithoutUserExcludedNestedInput
     DefaultExcludedModifierOptions?: ModifierOptionUpdateManyWithoutUserExcludedNestedInput
     DefaultIncludedCustomChallengeModifiers?: ChallengeModifierUpdateManyWithoutUserIncludedNestedInput
     DefaultIncludedCustomModifierOptions?: ModifierOptionUpdateManyWithoutUserIncludedNestedInput
-    ModifierPack?: ModifierPackUpdateManyWithoutCreatedByNestedInput
-    Downvote?: DownvoteUpdateManyWithoutCreatedByNestedInput
-    Upvote?: UpvoteUpdateManyWithoutCreatedByNestedInput
   }
 
   export type UserUncheckedUpdateWithoutModifierOptionInput = {
@@ -23952,64 +24258,16 @@ export namespace Prisma {
     username?: NullableStringFieldUpdateOperationsInput | string | null
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     numberOfGames?: IntFieldUpdateOperationsInput | number
-    Game?: GameUncheckedUpdateManyWithoutUserNestedInput
-    PublicProfile?: PublicProfileUncheckedUpdateManyWithoutUserNestedInput
     ChallengeModifier?: ChallengeModifierUncheckedUpdateManyWithoutCreatedByNestedInput
+    Downvote?: DownvoteUncheckedUpdateManyWithoutCreatedByNestedInput
+    Game?: GameUncheckedUpdateManyWithoutUserNestedInput
+    ModifierPack?: ModifierPackUncheckedUpdateManyWithoutCreatedByNestedInput
+    PublicProfile?: PublicProfileUncheckedUpdateManyWithoutUserNestedInput
+    Upvote?: UpvoteUncheckedUpdateManyWithoutCreatedByNestedInput
     DefaultExcludedChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutUserExcludedNestedInput
     DefaultExcludedModifierOptions?: ModifierOptionUncheckedUpdateManyWithoutUserExcludedNestedInput
     DefaultIncludedCustomChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutUserIncludedNestedInput
     DefaultIncludedCustomModifierOptions?: ModifierOptionUncheckedUpdateManyWithoutUserIncludedNestedInput
-    ModifierPack?: ModifierPackUncheckedUpdateManyWithoutCreatedByNestedInput
-    Downvote?: DownvoteUncheckedUpdateManyWithoutCreatedByNestedInput
-    Upvote?: UpvoteUncheckedUpdateManyWithoutCreatedByNestedInput
-  }
-
-  export type DayUpsertWithWhereUniqueWithoutModifierOptionInput = {
-    where: DayWhereUniqueInput
-    update: XOR<DayUpdateWithoutModifierOptionInput, DayUncheckedUpdateWithoutModifierOptionInput>
-    create: XOR<DayCreateWithoutModifierOptionInput, DayUncheckedCreateWithoutModifierOptionInput>
-  }
-
-  export type DayUpdateWithWhereUniqueWithoutModifierOptionInput = {
-    where: DayWhereUniqueInput
-    data: XOR<DayUpdateWithoutModifierOptionInput, DayUncheckedUpdateWithoutModifierOptionInput>
-  }
-
-  export type DayUpdateManyWithWhereWithoutModifierOptionInput = {
-    where: DayScalarWhereInput
-    data: XOR<DayUpdateManyMutationInput, DayUncheckedUpdateManyWithoutModifierOptionInput>
-  }
-
-  export type ModifierPackUpsertWithWhereUniqueWithoutExcludedModifierOptionsInput = {
-    where: ModifierPackWhereUniqueInput
-    update: XOR<ModifierPackUpdateWithoutExcludedModifierOptionsInput, ModifierPackUncheckedUpdateWithoutExcludedModifierOptionsInput>
-    create: XOR<ModifierPackCreateWithoutExcludedModifierOptionsInput, ModifierPackUncheckedCreateWithoutExcludedModifierOptionsInput>
-  }
-
-  export type ModifierPackUpdateWithWhereUniqueWithoutExcludedModifierOptionsInput = {
-    where: ModifierPackWhereUniqueInput
-    data: XOR<ModifierPackUpdateWithoutExcludedModifierOptionsInput, ModifierPackUncheckedUpdateWithoutExcludedModifierOptionsInput>
-  }
-
-  export type ModifierPackUpdateManyWithWhereWithoutExcludedModifierOptionsInput = {
-    where: ModifierPackScalarWhereInput
-    data: XOR<ModifierPackUpdateManyMutationInput, ModifierPackUncheckedUpdateManyWithoutExcludedModifierOptionsInput>
-  }
-
-  export type ModifierPackUpsertWithWhereUniqueWithoutIncludedCustomModifierOptionsInput = {
-    where: ModifierPackWhereUniqueInput
-    update: XOR<ModifierPackUpdateWithoutIncludedCustomModifierOptionsInput, ModifierPackUncheckedUpdateWithoutIncludedCustomModifierOptionsInput>
-    create: XOR<ModifierPackCreateWithoutIncludedCustomModifierOptionsInput, ModifierPackUncheckedCreateWithoutIncludedCustomModifierOptionsInput>
-  }
-
-  export type ModifierPackUpdateWithWhereUniqueWithoutIncludedCustomModifierOptionsInput = {
-    where: ModifierPackWhereUniqueInput
-    data: XOR<ModifierPackUpdateWithoutIncludedCustomModifierOptionsInput, ModifierPackUncheckedUpdateWithoutIncludedCustomModifierOptionsInput>
-  }
-
-  export type ModifierPackUpdateManyWithWhereWithoutIncludedCustomModifierOptionsInput = {
-    where: ModifierPackScalarWhereInput
-    data: XOR<ModifierPackUpdateManyMutationInput, ModifierPackUncheckedUpdateManyWithoutIncludedCustomModifierOptionsInput>
   }
 
   export type UserUpsertWithWhereUniqueWithoutDefaultExcludedModifierOptionsInput = {
@@ -24044,224 +24302,36 @@ export namespace Prisma {
     data: XOR<UserUpdateManyMutationInput, UserUncheckedUpdateManyWithoutDefaultIncludedCustomModifierOptionsInput>
   }
 
-  export type DayUpsertWithWhereUniqueWithoutExcludedModifierOptionsInput = {
-    where: DayWhereUniqueInput
-    update: XOR<DayUpdateWithoutExcludedModifierOptionsInput, DayUncheckedUpdateWithoutExcludedModifierOptionsInput>
-    create: XOR<DayCreateWithoutExcludedModifierOptionsInput, DayUncheckedCreateWithoutExcludedModifierOptionsInput>
+  export type ModifierPackUpsertWithWhereUniqueWithoutExcludedFromDayInput = {
+    where: ModifierPackWhereUniqueInput
+    update: XOR<ModifierPackUpdateWithoutExcludedFromDayInput, ModifierPackUncheckedUpdateWithoutExcludedFromDayInput>
+    create: XOR<ModifierPackCreateWithoutExcludedFromDayInput, ModifierPackUncheckedCreateWithoutExcludedFromDayInput>
   }
 
-  export type DayUpdateWithWhereUniqueWithoutExcludedModifierOptionsInput = {
-    where: DayWhereUniqueInput
-    data: XOR<DayUpdateWithoutExcludedModifierOptionsInput, DayUncheckedUpdateWithoutExcludedModifierOptionsInput>
+  export type ModifierPackUpdateWithWhereUniqueWithoutExcludedFromDayInput = {
+    where: ModifierPackWhereUniqueInput
+    data: XOR<ModifierPackUpdateWithoutExcludedFromDayInput, ModifierPackUncheckedUpdateWithoutExcludedFromDayInput>
   }
 
-  export type DayUpdateManyWithWhereWithoutExcludedModifierOptionsInput = {
-    where: DayScalarWhereInput
-    data: XOR<DayUpdateManyMutationInput, DayUncheckedUpdateManyWithoutExcludedModifierOptionsInput>
+  export type ModifierPackUpdateManyWithWhereWithoutExcludedFromDayInput = {
+    where: ModifierPackScalarWhereInput
+    data: XOR<ModifierPackUpdateManyMutationInput, ModifierPackUncheckedUpdateManyWithoutExcludedFromDayInput>
   }
 
-  export type DayUpsertWithWhereUniqueWithoutIncludedCustomModifierOptionsInput = {
-    where: DayWhereUniqueInput
-    update: XOR<DayUpdateWithoutIncludedCustomModifierOptionsInput, DayUncheckedUpdateWithoutIncludedCustomModifierOptionsInput>
-    create: XOR<DayCreateWithoutIncludedCustomModifierOptionsInput, DayUncheckedCreateWithoutIncludedCustomModifierOptionsInput>
+  export type ModifierPackUpsertWithWhereUniqueWithoutIncludedInDayInput = {
+    where: ModifierPackWhereUniqueInput
+    update: XOR<ModifierPackUpdateWithoutIncludedInDayInput, ModifierPackUncheckedUpdateWithoutIncludedInDayInput>
+    create: XOR<ModifierPackCreateWithoutIncludedInDayInput, ModifierPackUncheckedCreateWithoutIncludedInDayInput>
   }
 
-  export type DayUpdateWithWhereUniqueWithoutIncludedCustomModifierOptionsInput = {
-    where: DayWhereUniqueInput
-    data: XOR<DayUpdateWithoutIncludedCustomModifierOptionsInput, DayUncheckedUpdateWithoutIncludedCustomModifierOptionsInput>
+  export type ModifierPackUpdateWithWhereUniqueWithoutIncludedInDayInput = {
+    where: ModifierPackWhereUniqueInput
+    data: XOR<ModifierPackUpdateWithoutIncludedInDayInput, ModifierPackUncheckedUpdateWithoutIncludedInDayInput>
   }
 
-  export type DayUpdateManyWithWhereWithoutIncludedCustomModifierOptionsInput = {
-    where: DayScalarWhereInput
-    data: XOR<DayUpdateManyMutationInput, DayUncheckedUpdateManyWithoutIncludedCustomModifierOptionsInput>
-  }
-
-  export type DayUpsertWithWhereUniqueWithoutOptionWhenPart1CompletedInput = {
-    where: DayWhereUniqueInput
-    update: XOR<DayUpdateWithoutOptionWhenPart1CompletedInput, DayUncheckedUpdateWithoutOptionWhenPart1CompletedInput>
-    create: XOR<DayCreateWithoutOptionWhenPart1CompletedInput, DayUncheckedCreateWithoutOptionWhenPart1CompletedInput>
-  }
-
-  export type DayUpdateWithWhereUniqueWithoutOptionWhenPart1CompletedInput = {
-    where: DayWhereUniqueInput
-    data: XOR<DayUpdateWithoutOptionWhenPart1CompletedInput, DayUncheckedUpdateWithoutOptionWhenPart1CompletedInput>
-  }
-
-  export type DayUpdateManyWithWhereWithoutOptionWhenPart1CompletedInput = {
-    where: DayScalarWhereInput
-    data: XOR<DayUpdateManyMutationInput, DayUncheckedUpdateManyWithoutOptionWhenPart1CompletedInput>
-  }
-
-  export type ChallengeModifierCreateWithoutModifierPackExcludedInput = {
-    dateCreated?: Date | string
-    name: string
-    text: string
-    hasOptions?: boolean
-    explanatoryUrl?: string | null
-    standard?: boolean
-    isPublic?: boolean
-    CreatedBy?: UserCreateNestedOneWithoutChallengeModifierInput
-    ModifierOption?: ModifierOptionCreateNestedManyWithoutChallengeModifierInput
-    Day?: DayCreateNestedManyWithoutChallengeModifierInput
-    ModifierPackIncluded?: ModifierPackCreateNestedManyWithoutEncludedCustomChallengeModifiersInput
-    UserExcluded?: UserCreateNestedManyWithoutDefaultExcludedChallengeModifiersInput
-    UserIncluded?: UserCreateNestedManyWithoutDefaultIncludedCustomChallengeModifiersInput
-    ExcludedFromDay?: DayCreateNestedManyWithoutExcludedChallengeModifiersInput
-    IncludedInDay?: DayCreateNestedManyWithoutIncludedCustomChallengeModifiersInput
-    DayCompletedInPart1?: DayCreateNestedManyWithoutModifierWhenPart1CompletedInput
-  }
-
-  export type ChallengeModifierUncheckedCreateWithoutModifierPackExcludedInput = {
-    id?: number
-    dateCreated?: Date | string
-    name: string
-    text: string
-    hasOptions?: boolean
-    explanatoryUrl?: string | null
-    standard?: boolean
-    createdById?: string | null
-    isPublic?: boolean
-    ModifierOption?: ModifierOptionUncheckedCreateNestedManyWithoutChallengeModifierInput
-    Day?: DayUncheckedCreateNestedManyWithoutChallengeModifierInput
-    ModifierPackIncluded?: ModifierPackUncheckedCreateNestedManyWithoutEncludedCustomChallengeModifiersInput
-    UserExcluded?: UserUncheckedCreateNestedManyWithoutDefaultExcludedChallengeModifiersInput
-    UserIncluded?: UserUncheckedCreateNestedManyWithoutDefaultIncludedCustomChallengeModifiersInput
-    ExcludedFromDay?: DayUncheckedCreateNestedManyWithoutExcludedChallengeModifiersInput
-    IncludedInDay?: DayUncheckedCreateNestedManyWithoutIncludedCustomChallengeModifiersInput
-    DayCompletedInPart1?: DayUncheckedCreateNestedManyWithoutModifierWhenPart1CompletedInput
-  }
-
-  export type ChallengeModifierCreateOrConnectWithoutModifierPackExcludedInput = {
-    where: ChallengeModifierWhereUniqueInput
-    create: XOR<ChallengeModifierCreateWithoutModifierPackExcludedInput, ChallengeModifierUncheckedCreateWithoutModifierPackExcludedInput>
-  }
-
-  export type ModifierOptionCreateWithoutModifierPackExcludedInput = {
-    dateCreated?: Date | string
-    name: string
-    text: string
-    explanatoryUrl?: string | null
-    standard?: boolean
-    isPublic?: boolean
-    ChallengeModifier: ChallengeModifierCreateNestedOneWithoutModifierOptionInput
-    CreatedBy?: UserCreateNestedOneWithoutModifierOptionInput
-    Day?: DayCreateNestedManyWithoutModifierOptionInput
-    ModifierPackIncluded?: ModifierPackCreateNestedManyWithoutIncludedCustomModifierOptionsInput
-    UserExcluded?: UserCreateNestedManyWithoutDefaultExcludedModifierOptionsInput
-    UserIncluded?: UserCreateNestedManyWithoutDefaultIncludedCustomModifierOptionsInput
-    ExcludedFromDay?: DayCreateNestedManyWithoutExcludedModifierOptionsInput
-    IncludedInDay?: DayCreateNestedManyWithoutIncludedCustomModifierOptionsInput
-    DayCompletedInPart1?: DayCreateNestedManyWithoutOptionWhenPart1CompletedInput
-  }
-
-  export type ModifierOptionUncheckedCreateWithoutModifierPackExcludedInput = {
-    id?: number
-    dateCreated?: Date | string
-    challengeModifierId: number
-    name: string
-    text: string
-    explanatoryUrl?: string | null
-    standard?: boolean
-    createdById?: string | null
-    isPublic?: boolean
-    Day?: DayUncheckedCreateNestedManyWithoutModifierOptionInput
-    ModifierPackIncluded?: ModifierPackUncheckedCreateNestedManyWithoutIncludedCustomModifierOptionsInput
-    UserExcluded?: UserUncheckedCreateNestedManyWithoutDefaultExcludedModifierOptionsInput
-    UserIncluded?: UserUncheckedCreateNestedManyWithoutDefaultIncludedCustomModifierOptionsInput
-    ExcludedFromDay?: DayUncheckedCreateNestedManyWithoutExcludedModifierOptionsInput
-    IncludedInDay?: DayUncheckedCreateNestedManyWithoutIncludedCustomModifierOptionsInput
-    DayCompletedInPart1?: DayUncheckedCreateNestedManyWithoutOptionWhenPart1CompletedInput
-  }
-
-  export type ModifierOptionCreateOrConnectWithoutModifierPackExcludedInput = {
-    where: ModifierOptionWhereUniqueInput
-    create: XOR<ModifierOptionCreateWithoutModifierPackExcludedInput, ModifierOptionUncheckedCreateWithoutModifierPackExcludedInput>
-  }
-
-  export type ChallengeModifierCreateWithoutModifierPackIncludedInput = {
-    dateCreated?: Date | string
-    name: string
-    text: string
-    hasOptions?: boolean
-    explanatoryUrl?: string | null
-    standard?: boolean
-    isPublic?: boolean
-    CreatedBy?: UserCreateNestedOneWithoutChallengeModifierInput
-    ModifierOption?: ModifierOptionCreateNestedManyWithoutChallengeModifierInput
-    Day?: DayCreateNestedManyWithoutChallengeModifierInput
-    ModifierPackExcluded?: ModifierPackCreateNestedManyWithoutExcludedChallengeModifiersInput
-    UserExcluded?: UserCreateNestedManyWithoutDefaultExcludedChallengeModifiersInput
-    UserIncluded?: UserCreateNestedManyWithoutDefaultIncludedCustomChallengeModifiersInput
-    ExcludedFromDay?: DayCreateNestedManyWithoutExcludedChallengeModifiersInput
-    IncludedInDay?: DayCreateNestedManyWithoutIncludedCustomChallengeModifiersInput
-    DayCompletedInPart1?: DayCreateNestedManyWithoutModifierWhenPart1CompletedInput
-  }
-
-  export type ChallengeModifierUncheckedCreateWithoutModifierPackIncludedInput = {
-    id?: number
-    dateCreated?: Date | string
-    name: string
-    text: string
-    hasOptions?: boolean
-    explanatoryUrl?: string | null
-    standard?: boolean
-    createdById?: string | null
-    isPublic?: boolean
-    ModifierOption?: ModifierOptionUncheckedCreateNestedManyWithoutChallengeModifierInput
-    Day?: DayUncheckedCreateNestedManyWithoutChallengeModifierInput
-    ModifierPackExcluded?: ModifierPackUncheckedCreateNestedManyWithoutExcludedChallengeModifiersInput
-    UserExcluded?: UserUncheckedCreateNestedManyWithoutDefaultExcludedChallengeModifiersInput
-    UserIncluded?: UserUncheckedCreateNestedManyWithoutDefaultIncludedCustomChallengeModifiersInput
-    ExcludedFromDay?: DayUncheckedCreateNestedManyWithoutExcludedChallengeModifiersInput
-    IncludedInDay?: DayUncheckedCreateNestedManyWithoutIncludedCustomChallengeModifiersInput
-    DayCompletedInPart1?: DayUncheckedCreateNestedManyWithoutModifierWhenPart1CompletedInput
-  }
-
-  export type ChallengeModifierCreateOrConnectWithoutModifierPackIncludedInput = {
-    where: ChallengeModifierWhereUniqueInput
-    create: XOR<ChallengeModifierCreateWithoutModifierPackIncludedInput, ChallengeModifierUncheckedCreateWithoutModifierPackIncludedInput>
-  }
-
-  export type ModifierOptionCreateWithoutModifierPackIncludedInput = {
-    dateCreated?: Date | string
-    name: string
-    text: string
-    explanatoryUrl?: string | null
-    standard?: boolean
-    isPublic?: boolean
-    ChallengeModifier: ChallengeModifierCreateNestedOneWithoutModifierOptionInput
-    CreatedBy?: UserCreateNestedOneWithoutModifierOptionInput
-    Day?: DayCreateNestedManyWithoutModifierOptionInput
-    ModifierPackExcluded?: ModifierPackCreateNestedManyWithoutExcludedModifierOptionsInput
-    UserExcluded?: UserCreateNestedManyWithoutDefaultExcludedModifierOptionsInput
-    UserIncluded?: UserCreateNestedManyWithoutDefaultIncludedCustomModifierOptionsInput
-    ExcludedFromDay?: DayCreateNestedManyWithoutExcludedModifierOptionsInput
-    IncludedInDay?: DayCreateNestedManyWithoutIncludedCustomModifierOptionsInput
-    DayCompletedInPart1?: DayCreateNestedManyWithoutOptionWhenPart1CompletedInput
-  }
-
-  export type ModifierOptionUncheckedCreateWithoutModifierPackIncludedInput = {
-    id?: number
-    dateCreated?: Date | string
-    challengeModifierId: number
-    name: string
-    text: string
-    explanatoryUrl?: string | null
-    standard?: boolean
-    createdById?: string | null
-    isPublic?: boolean
-    Day?: DayUncheckedCreateNestedManyWithoutModifierOptionInput
-    ModifierPackExcluded?: ModifierPackUncheckedCreateNestedManyWithoutExcludedModifierOptionsInput
-    UserExcluded?: UserUncheckedCreateNestedManyWithoutDefaultExcludedModifierOptionsInput
-    UserIncluded?: UserUncheckedCreateNestedManyWithoutDefaultIncludedCustomModifierOptionsInput
-    ExcludedFromDay?: DayUncheckedCreateNestedManyWithoutExcludedModifierOptionsInput
-    IncludedInDay?: DayUncheckedCreateNestedManyWithoutIncludedCustomModifierOptionsInput
-    DayCompletedInPart1?: DayUncheckedCreateNestedManyWithoutOptionWhenPart1CompletedInput
-  }
-
-  export type ModifierOptionCreateOrConnectWithoutModifierPackIncludedInput = {
-    where: ModifierOptionWhereUniqueInput
-    create: XOR<ModifierOptionCreateWithoutModifierPackIncludedInput, ModifierOptionUncheckedCreateWithoutModifierPackIncludedInput>
+  export type ModifierPackUpdateManyWithWhereWithoutIncludedInDayInput = {
+    where: ModifierPackScalarWhereInput
+    data: XOR<ModifierPackUpdateManyMutationInput, ModifierPackUncheckedUpdateManyWithoutIncludedInDayInput>
   }
 
   export type UserCreateWithoutModifierPackInput = {
@@ -24270,16 +24340,16 @@ export namespace Prisma {
     username?: string | null
     dateCreated?: Date | string
     numberOfGames?: number
-    Game?: GameCreateNestedManyWithoutUserInput
-    PublicProfile?: PublicProfileCreateNestedManyWithoutUserInput
     ChallengeModifier?: ChallengeModifierCreateNestedManyWithoutCreatedByInput
+    Downvote?: DownvoteCreateNestedManyWithoutCreatedByInput
+    Game?: GameCreateNestedManyWithoutUserInput
     ModifierOption?: ModifierOptionCreateNestedManyWithoutCreatedByInput
+    PublicProfile?: PublicProfileCreateNestedManyWithoutUserInput
+    Upvote?: UpvoteCreateNestedManyWithoutCreatedByInput
     DefaultExcludedChallengeModifiers?: ChallengeModifierCreateNestedManyWithoutUserExcludedInput
     DefaultExcludedModifierOptions?: ModifierOptionCreateNestedManyWithoutUserExcludedInput
     DefaultIncludedCustomChallengeModifiers?: ChallengeModifierCreateNestedManyWithoutUserIncludedInput
     DefaultIncludedCustomModifierOptions?: ModifierOptionCreateNestedManyWithoutUserIncludedInput
-    Downvote?: DownvoteCreateNestedManyWithoutCreatedByInput
-    Upvote?: UpvoteCreateNestedManyWithoutCreatedByInput
   }
 
   export type UserUncheckedCreateWithoutModifierPackInput = {
@@ -24288,16 +24358,16 @@ export namespace Prisma {
     username?: string | null
     dateCreated?: Date | string
     numberOfGames?: number
-    Game?: GameUncheckedCreateNestedManyWithoutUserInput
-    PublicProfile?: PublicProfileUncheckedCreateNestedManyWithoutUserInput
     ChallengeModifier?: ChallengeModifierUncheckedCreateNestedManyWithoutCreatedByInput
+    Downvote?: DownvoteUncheckedCreateNestedManyWithoutCreatedByInput
+    Game?: GameUncheckedCreateNestedManyWithoutUserInput
     ModifierOption?: ModifierOptionUncheckedCreateNestedManyWithoutCreatedByInput
+    PublicProfile?: PublicProfileUncheckedCreateNestedManyWithoutUserInput
+    Upvote?: UpvoteUncheckedCreateNestedManyWithoutCreatedByInput
     DefaultExcludedChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutUserExcludedInput
     DefaultExcludedModifierOptions?: ModifierOptionUncheckedCreateNestedManyWithoutUserExcludedInput
     DefaultIncludedCustomChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutUserIncludedInput
     DefaultIncludedCustomModifierOptions?: ModifierOptionUncheckedCreateNestedManyWithoutUserIncludedInput
-    Downvote?: DownvoteUncheckedCreateNestedManyWithoutCreatedByInput
-    Upvote?: UpvoteUncheckedCreateNestedManyWithoutCreatedByInput
   }
 
   export type UserCreateOrConnectWithoutModifierPackInput = {
@@ -24305,68 +24375,80 @@ export namespace Prisma {
     create: XOR<UserCreateWithoutModifierPackInput, UserUncheckedCreateWithoutModifierPackInput>
   }
 
-  export type ChallengeModifierUpsertWithWhereUniqueWithoutModifierPackExcludedInput = {
-    where: ChallengeModifierWhereUniqueInput
-    update: XOR<ChallengeModifierUpdateWithoutModifierPackExcludedInput, ChallengeModifierUncheckedUpdateWithoutModifierPackExcludedInput>
-    create: XOR<ChallengeModifierCreateWithoutModifierPackExcludedInput, ChallengeModifierUncheckedCreateWithoutModifierPackExcludedInput>
+  export type ModifierOptionCreateWithoutExcludedModifierOptionsInput = {
+    dateCreated?: Date | string
+    name: string
+    text: string
+    explanatoryUrl?: string | null
+    standard?: boolean
+    isPublic?: boolean
+    Day?: DayCreateNestedManyWithoutModifierOptionInput
+    DayCompletedInPart1?: DayCreateNestedManyWithoutOptionWhenPart1CompletedInput
+    ChallengeModifier: ChallengeModifierCreateNestedOneWithoutModifierOptionInput
+    CreatedBy?: UserCreateNestedOneWithoutModifierOptionInput
+    UserExcluded?: UserCreateNestedManyWithoutDefaultExcludedModifierOptionsInput
+    UserIncluded?: UserCreateNestedManyWithoutDefaultIncludedCustomModifierOptionsInput
+    IncludedCustomModifierOptions?: ModifierPackCreateNestedManyWithoutIncludedInDayInput
   }
 
-  export type ChallengeModifierUpdateWithWhereUniqueWithoutModifierPackExcludedInput = {
-    where: ChallengeModifierWhereUniqueInput
-    data: XOR<ChallengeModifierUpdateWithoutModifierPackExcludedInput, ChallengeModifierUncheckedUpdateWithoutModifierPackExcludedInput>
+  export type ModifierOptionUncheckedCreateWithoutExcludedModifierOptionsInput = {
+    id?: number
+    dateCreated?: Date | string
+    challengeModifierId: number
+    name: string
+    text: string
+    explanatoryUrl?: string | null
+    standard?: boolean
+    createdById?: string | null
+    isPublic?: boolean
+    Day?: DayUncheckedCreateNestedManyWithoutModifierOptionInput
+    DayCompletedInPart1?: DayUncheckedCreateNestedManyWithoutOptionWhenPart1CompletedInput
+    UserExcluded?: UserUncheckedCreateNestedManyWithoutDefaultExcludedModifierOptionsInput
+    UserIncluded?: UserUncheckedCreateNestedManyWithoutDefaultIncludedCustomModifierOptionsInput
+    IncludedCustomModifierOptions?: ModifierPackUncheckedCreateNestedManyWithoutIncludedInDayInput
   }
 
-  export type ChallengeModifierUpdateManyWithWhereWithoutModifierPackExcludedInput = {
-    where: ChallengeModifierScalarWhereInput
-    data: XOR<ChallengeModifierUpdateManyMutationInput, ChallengeModifierUncheckedUpdateManyWithoutModifierPackExcludedInput>
-  }
-
-  export type ModifierOptionUpsertWithWhereUniqueWithoutModifierPackExcludedInput = {
+  export type ModifierOptionCreateOrConnectWithoutExcludedModifierOptionsInput = {
     where: ModifierOptionWhereUniqueInput
-    update: XOR<ModifierOptionUpdateWithoutModifierPackExcludedInput, ModifierOptionUncheckedUpdateWithoutModifierPackExcludedInput>
-    create: XOR<ModifierOptionCreateWithoutModifierPackExcludedInput, ModifierOptionUncheckedCreateWithoutModifierPackExcludedInput>
+    create: XOR<ModifierOptionCreateWithoutExcludedModifierOptionsInput, ModifierOptionUncheckedCreateWithoutExcludedModifierOptionsInput>
   }
 
-  export type ModifierOptionUpdateWithWhereUniqueWithoutModifierPackExcludedInput = {
+  export type ModifierOptionCreateWithoutIncludedCustomModifierOptionsInput = {
+    dateCreated?: Date | string
+    name: string
+    text: string
+    explanatoryUrl?: string | null
+    standard?: boolean
+    isPublic?: boolean
+    Day?: DayCreateNestedManyWithoutModifierOptionInput
+    DayCompletedInPart1?: DayCreateNestedManyWithoutOptionWhenPart1CompletedInput
+    ChallengeModifier: ChallengeModifierCreateNestedOneWithoutModifierOptionInput
+    CreatedBy?: UserCreateNestedOneWithoutModifierOptionInput
+    UserExcluded?: UserCreateNestedManyWithoutDefaultExcludedModifierOptionsInput
+    UserIncluded?: UserCreateNestedManyWithoutDefaultIncludedCustomModifierOptionsInput
+    ExcludedModifierOptions?: ModifierPackCreateNestedManyWithoutExcludedFromDayInput
+  }
+
+  export type ModifierOptionUncheckedCreateWithoutIncludedCustomModifierOptionsInput = {
+    id?: number
+    dateCreated?: Date | string
+    challengeModifierId: number
+    name: string
+    text: string
+    explanatoryUrl?: string | null
+    standard?: boolean
+    createdById?: string | null
+    isPublic?: boolean
+    Day?: DayUncheckedCreateNestedManyWithoutModifierOptionInput
+    DayCompletedInPart1?: DayUncheckedCreateNestedManyWithoutOptionWhenPart1CompletedInput
+    UserExcluded?: UserUncheckedCreateNestedManyWithoutDefaultExcludedModifierOptionsInput
+    UserIncluded?: UserUncheckedCreateNestedManyWithoutDefaultIncludedCustomModifierOptionsInput
+    ExcludedModifierOptions?: ModifierPackUncheckedCreateNestedManyWithoutExcludedFromDayInput
+  }
+
+  export type ModifierOptionCreateOrConnectWithoutIncludedCustomModifierOptionsInput = {
     where: ModifierOptionWhereUniqueInput
-    data: XOR<ModifierOptionUpdateWithoutModifierPackExcludedInput, ModifierOptionUncheckedUpdateWithoutModifierPackExcludedInput>
-  }
-
-  export type ModifierOptionUpdateManyWithWhereWithoutModifierPackExcludedInput = {
-    where: ModifierOptionScalarWhereInput
-    data: XOR<ModifierOptionUpdateManyMutationInput, ModifierOptionUncheckedUpdateManyWithoutModifierPackExcludedInput>
-  }
-
-  export type ChallengeModifierUpsertWithWhereUniqueWithoutModifierPackIncludedInput = {
-    where: ChallengeModifierWhereUniqueInput
-    update: XOR<ChallengeModifierUpdateWithoutModifierPackIncludedInput, ChallengeModifierUncheckedUpdateWithoutModifierPackIncludedInput>
-    create: XOR<ChallengeModifierCreateWithoutModifierPackIncludedInput, ChallengeModifierUncheckedCreateWithoutModifierPackIncludedInput>
-  }
-
-  export type ChallengeModifierUpdateWithWhereUniqueWithoutModifierPackIncludedInput = {
-    where: ChallengeModifierWhereUniqueInput
-    data: XOR<ChallengeModifierUpdateWithoutModifierPackIncludedInput, ChallengeModifierUncheckedUpdateWithoutModifierPackIncludedInput>
-  }
-
-  export type ChallengeModifierUpdateManyWithWhereWithoutModifierPackIncludedInput = {
-    where: ChallengeModifierScalarWhereInput
-    data: XOR<ChallengeModifierUpdateManyMutationInput, ChallengeModifierUncheckedUpdateManyWithoutModifierPackIncludedInput>
-  }
-
-  export type ModifierOptionUpsertWithWhereUniqueWithoutModifierPackIncludedInput = {
-    where: ModifierOptionWhereUniqueInput
-    update: XOR<ModifierOptionUpdateWithoutModifierPackIncludedInput, ModifierOptionUncheckedUpdateWithoutModifierPackIncludedInput>
-    create: XOR<ModifierOptionCreateWithoutModifierPackIncludedInput, ModifierOptionUncheckedCreateWithoutModifierPackIncludedInput>
-  }
-
-  export type ModifierOptionUpdateWithWhereUniqueWithoutModifierPackIncludedInput = {
-    where: ModifierOptionWhereUniqueInput
-    data: XOR<ModifierOptionUpdateWithoutModifierPackIncludedInput, ModifierOptionUncheckedUpdateWithoutModifierPackIncludedInput>
-  }
-
-  export type ModifierOptionUpdateManyWithWhereWithoutModifierPackIncludedInput = {
-    where: ModifierOptionScalarWhereInput
-    data: XOR<ModifierOptionUpdateManyMutationInput, ModifierOptionUncheckedUpdateManyWithoutModifierPackIncludedInput>
+    create: XOR<ModifierOptionCreateWithoutIncludedCustomModifierOptionsInput, ModifierOptionUncheckedCreateWithoutIncludedCustomModifierOptionsInput>
   }
 
   export type UserUpsertWithoutModifierPackInput = {
@@ -24386,16 +24468,16 @@ export namespace Prisma {
     username?: NullableStringFieldUpdateOperationsInput | string | null
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     numberOfGames?: IntFieldUpdateOperationsInput | number
-    Game?: GameUpdateManyWithoutUserNestedInput
-    PublicProfile?: PublicProfileUpdateManyWithoutUserNestedInput
     ChallengeModifier?: ChallengeModifierUpdateManyWithoutCreatedByNestedInput
+    Downvote?: DownvoteUpdateManyWithoutCreatedByNestedInput
+    Game?: GameUpdateManyWithoutUserNestedInput
     ModifierOption?: ModifierOptionUpdateManyWithoutCreatedByNestedInput
+    PublicProfile?: PublicProfileUpdateManyWithoutUserNestedInput
+    Upvote?: UpvoteUpdateManyWithoutCreatedByNestedInput
     DefaultExcludedChallengeModifiers?: ChallengeModifierUpdateManyWithoutUserExcludedNestedInput
     DefaultExcludedModifierOptions?: ModifierOptionUpdateManyWithoutUserExcludedNestedInput
     DefaultIncludedCustomChallengeModifiers?: ChallengeModifierUpdateManyWithoutUserIncludedNestedInput
     DefaultIncludedCustomModifierOptions?: ModifierOptionUpdateManyWithoutUserIncludedNestedInput
-    Downvote?: DownvoteUpdateManyWithoutCreatedByNestedInput
-    Upvote?: UpvoteUpdateManyWithoutCreatedByNestedInput
   }
 
   export type UserUncheckedUpdateWithoutModifierPackInput = {
@@ -24404,16 +24486,89 @@ export namespace Prisma {
     username?: NullableStringFieldUpdateOperationsInput | string | null
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     numberOfGames?: IntFieldUpdateOperationsInput | number
-    Game?: GameUncheckedUpdateManyWithoutUserNestedInput
-    PublicProfile?: PublicProfileUncheckedUpdateManyWithoutUserNestedInput
     ChallengeModifier?: ChallengeModifierUncheckedUpdateManyWithoutCreatedByNestedInput
+    Downvote?: DownvoteUncheckedUpdateManyWithoutCreatedByNestedInput
+    Game?: GameUncheckedUpdateManyWithoutUserNestedInput
     ModifierOption?: ModifierOptionUncheckedUpdateManyWithoutCreatedByNestedInput
+    PublicProfile?: PublicProfileUncheckedUpdateManyWithoutUserNestedInput
+    Upvote?: UpvoteUncheckedUpdateManyWithoutCreatedByNestedInput
     DefaultExcludedChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutUserExcludedNestedInput
     DefaultExcludedModifierOptions?: ModifierOptionUncheckedUpdateManyWithoutUserExcludedNestedInput
     DefaultIncludedCustomChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutUserIncludedNestedInput
     DefaultIncludedCustomModifierOptions?: ModifierOptionUncheckedUpdateManyWithoutUserIncludedNestedInput
-    Downvote?: DownvoteUncheckedUpdateManyWithoutCreatedByNestedInput
-    Upvote?: UpvoteUncheckedUpdateManyWithoutCreatedByNestedInput
+  }
+
+  export type ModifierOptionUpsertWithWhereUniqueWithoutExcludedModifierOptionsInput = {
+    where: ModifierOptionWhereUniqueInput
+    update: XOR<ModifierOptionUpdateWithoutExcludedModifierOptionsInput, ModifierOptionUncheckedUpdateWithoutExcludedModifierOptionsInput>
+    create: XOR<ModifierOptionCreateWithoutExcludedModifierOptionsInput, ModifierOptionUncheckedCreateWithoutExcludedModifierOptionsInput>
+  }
+
+  export type ModifierOptionUpdateWithWhereUniqueWithoutExcludedModifierOptionsInput = {
+    where: ModifierOptionWhereUniqueInput
+    data: XOR<ModifierOptionUpdateWithoutExcludedModifierOptionsInput, ModifierOptionUncheckedUpdateWithoutExcludedModifierOptionsInput>
+  }
+
+  export type ModifierOptionUpdateManyWithWhereWithoutExcludedModifierOptionsInput = {
+    where: ModifierOptionScalarWhereInput
+    data: XOR<ModifierOptionUpdateManyMutationInput, ModifierOptionUncheckedUpdateManyWithoutExcludedModifierOptionsInput>
+  }
+
+  export type ModifierOptionUpsertWithWhereUniqueWithoutIncludedCustomModifierOptionsInput = {
+    where: ModifierOptionWhereUniqueInput
+    update: XOR<ModifierOptionUpdateWithoutIncludedCustomModifierOptionsInput, ModifierOptionUncheckedUpdateWithoutIncludedCustomModifierOptionsInput>
+    create: XOR<ModifierOptionCreateWithoutIncludedCustomModifierOptionsInput, ModifierOptionUncheckedCreateWithoutIncludedCustomModifierOptionsInput>
+  }
+
+  export type ModifierOptionUpdateWithWhereUniqueWithoutIncludedCustomModifierOptionsInput = {
+    where: ModifierOptionWhereUniqueInput
+    data: XOR<ModifierOptionUpdateWithoutIncludedCustomModifierOptionsInput, ModifierOptionUncheckedUpdateWithoutIncludedCustomModifierOptionsInput>
+  }
+
+  export type ModifierOptionUpdateManyWithWhereWithoutIncludedCustomModifierOptionsInput = {
+    where: ModifierOptionScalarWhereInput
+    data: XOR<ModifierOptionUpdateManyMutationInput, ModifierOptionUncheckedUpdateManyWithoutIncludedCustomModifierOptionsInput>
+  }
+
+  export type UserCreateWithoutUpvoteInput = {
+    id: string
+    serializedId?: string | null
+    username?: string | null
+    dateCreated?: Date | string
+    numberOfGames?: number
+    ChallengeModifier?: ChallengeModifierCreateNestedManyWithoutCreatedByInput
+    Downvote?: DownvoteCreateNestedManyWithoutCreatedByInput
+    Game?: GameCreateNestedManyWithoutUserInput
+    ModifierOption?: ModifierOptionCreateNestedManyWithoutCreatedByInput
+    ModifierPack?: ModifierPackCreateNestedManyWithoutCreatedByInput
+    PublicProfile?: PublicProfileCreateNestedManyWithoutUserInput
+    DefaultExcludedChallengeModifiers?: ChallengeModifierCreateNestedManyWithoutUserExcludedInput
+    DefaultExcludedModifierOptions?: ModifierOptionCreateNestedManyWithoutUserExcludedInput
+    DefaultIncludedCustomChallengeModifiers?: ChallengeModifierCreateNestedManyWithoutUserIncludedInput
+    DefaultIncludedCustomModifierOptions?: ModifierOptionCreateNestedManyWithoutUserIncludedInput
+  }
+
+  export type UserUncheckedCreateWithoutUpvoteInput = {
+    id: string
+    serializedId?: string | null
+    username?: string | null
+    dateCreated?: Date | string
+    numberOfGames?: number
+    ChallengeModifier?: ChallengeModifierUncheckedCreateNestedManyWithoutCreatedByInput
+    Downvote?: DownvoteUncheckedCreateNestedManyWithoutCreatedByInput
+    Game?: GameUncheckedCreateNestedManyWithoutUserInput
+    ModifierOption?: ModifierOptionUncheckedCreateNestedManyWithoutCreatedByInput
+    ModifierPack?: ModifierPackUncheckedCreateNestedManyWithoutCreatedByInput
+    PublicProfile?: PublicProfileUncheckedCreateNestedManyWithoutUserInput
+    DefaultExcludedChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutUserExcludedInput
+    DefaultExcludedModifierOptions?: ModifierOptionUncheckedCreateNestedManyWithoutUserExcludedInput
+    DefaultIncludedCustomChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutUserIncludedInput
+    DefaultIncludedCustomModifierOptions?: ModifierOptionUncheckedCreateNestedManyWithoutUserIncludedInput
+  }
+
+  export type UserCreateOrConnectWithoutUpvoteInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutUpvoteInput, UserUncheckedCreateWithoutUpvoteInput>
   }
 
   export type GameCreateWithoutUpvoteInput = {
@@ -24433,11 +24588,11 @@ export namespace Prisma {
     isPublic?: boolean
     score?: number
     dateCompleted?: Date | string | null
-    User: UserCreateNestedOneWithoutGameInput
-    Rank?: RankCreateNestedOneWithoutGameInput
     Day?: DayCreateNestedManyWithoutGameInput
-    PublicProfile?: PublicProfileCreateNestedOneWithoutGameInput
     Downvote?: DownvoteCreateNestedManyWithoutGameInput
+    PublicProfile?: PublicProfileCreateNestedOneWithoutGameInput
+    Rank?: RankCreateNestedOneWithoutGameInput
+    User: UserCreateNestedOneWithoutGameInput
   }
 
   export type GameUncheckedCreateWithoutUpvoteInput = {
@@ -24470,45 +24625,51 @@ export namespace Prisma {
     create: XOR<GameCreateWithoutUpvoteInput, GameUncheckedCreateWithoutUpvoteInput>
   }
 
-  export type UserCreateWithoutUpvoteInput = {
-    id: string
-    serializedId?: string | null
-    username?: string | null
-    dateCreated?: Date | string
-    numberOfGames?: number
-    Game?: GameCreateNestedManyWithoutUserInput
-    PublicProfile?: PublicProfileCreateNestedManyWithoutUserInput
-    ChallengeModifier?: ChallengeModifierCreateNestedManyWithoutCreatedByInput
-    ModifierOption?: ModifierOptionCreateNestedManyWithoutCreatedByInput
-    DefaultExcludedChallengeModifiers?: ChallengeModifierCreateNestedManyWithoutUserExcludedInput
-    DefaultExcludedModifierOptions?: ModifierOptionCreateNestedManyWithoutUserExcludedInput
-    DefaultIncludedCustomChallengeModifiers?: ChallengeModifierCreateNestedManyWithoutUserIncludedInput
-    DefaultIncludedCustomModifierOptions?: ModifierOptionCreateNestedManyWithoutUserIncludedInput
-    ModifierPack?: ModifierPackCreateNestedManyWithoutCreatedByInput
-    Downvote?: DownvoteCreateNestedManyWithoutCreatedByInput
-  }
-
-  export type UserUncheckedCreateWithoutUpvoteInput = {
-    id: string
-    serializedId?: string | null
-    username?: string | null
-    dateCreated?: Date | string
-    numberOfGames?: number
-    Game?: GameUncheckedCreateNestedManyWithoutUserInput
-    PublicProfile?: PublicProfileUncheckedCreateNestedManyWithoutUserInput
-    ChallengeModifier?: ChallengeModifierUncheckedCreateNestedManyWithoutCreatedByInput
-    ModifierOption?: ModifierOptionUncheckedCreateNestedManyWithoutCreatedByInput
-    DefaultExcludedChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutUserExcludedInput
-    DefaultExcludedModifierOptions?: ModifierOptionUncheckedCreateNestedManyWithoutUserExcludedInput
-    DefaultIncludedCustomChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutUserIncludedInput
-    DefaultIncludedCustomModifierOptions?: ModifierOptionUncheckedCreateNestedManyWithoutUserIncludedInput
-    ModifierPack?: ModifierPackUncheckedCreateNestedManyWithoutCreatedByInput
-    Downvote?: DownvoteUncheckedCreateNestedManyWithoutCreatedByInput
-  }
-
-  export type UserCreateOrConnectWithoutUpvoteInput = {
-    where: UserWhereUniqueInput
+  export type UserUpsertWithoutUpvoteInput = {
+    update: XOR<UserUpdateWithoutUpvoteInput, UserUncheckedUpdateWithoutUpvoteInput>
     create: XOR<UserCreateWithoutUpvoteInput, UserUncheckedCreateWithoutUpvoteInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutUpvoteInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutUpvoteInput, UserUncheckedUpdateWithoutUpvoteInput>
+  }
+
+  export type UserUpdateWithoutUpvoteInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    serializedId?: NullableStringFieldUpdateOperationsInput | string | null
+    username?: NullableStringFieldUpdateOperationsInput | string | null
+    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
+    numberOfGames?: IntFieldUpdateOperationsInput | number
+    ChallengeModifier?: ChallengeModifierUpdateManyWithoutCreatedByNestedInput
+    Downvote?: DownvoteUpdateManyWithoutCreatedByNestedInput
+    Game?: GameUpdateManyWithoutUserNestedInput
+    ModifierOption?: ModifierOptionUpdateManyWithoutCreatedByNestedInput
+    ModifierPack?: ModifierPackUpdateManyWithoutCreatedByNestedInput
+    PublicProfile?: PublicProfileUpdateManyWithoutUserNestedInput
+    DefaultExcludedChallengeModifiers?: ChallengeModifierUpdateManyWithoutUserExcludedNestedInput
+    DefaultExcludedModifierOptions?: ModifierOptionUpdateManyWithoutUserExcludedNestedInput
+    DefaultIncludedCustomChallengeModifiers?: ChallengeModifierUpdateManyWithoutUserIncludedNestedInput
+    DefaultIncludedCustomModifierOptions?: ModifierOptionUpdateManyWithoutUserIncludedNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutUpvoteInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    serializedId?: NullableStringFieldUpdateOperationsInput | string | null
+    username?: NullableStringFieldUpdateOperationsInput | string | null
+    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
+    numberOfGames?: IntFieldUpdateOperationsInput | number
+    ChallengeModifier?: ChallengeModifierUncheckedUpdateManyWithoutCreatedByNestedInput
+    Downvote?: DownvoteUncheckedUpdateManyWithoutCreatedByNestedInput
+    Game?: GameUncheckedUpdateManyWithoutUserNestedInput
+    ModifierOption?: ModifierOptionUncheckedUpdateManyWithoutCreatedByNestedInput
+    ModifierPack?: ModifierPackUncheckedUpdateManyWithoutCreatedByNestedInput
+    PublicProfile?: PublicProfileUncheckedUpdateManyWithoutUserNestedInput
+    DefaultExcludedChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutUserExcludedNestedInput
+    DefaultExcludedModifierOptions?: ModifierOptionUncheckedUpdateManyWithoutUserExcludedNestedInput
+    DefaultIncludedCustomChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutUserIncludedNestedInput
+    DefaultIncludedCustomModifierOptions?: ModifierOptionUncheckedUpdateManyWithoutUserIncludedNestedInput
   }
 
   export type GameUpsertWithoutUpvoteInput = {
@@ -24539,11 +24700,11 @@ export namespace Prisma {
     isPublic?: BoolFieldUpdateOperationsInput | boolean
     score?: IntFieldUpdateOperationsInput | number
     dateCompleted?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    User?: UserUpdateOneRequiredWithoutGameNestedInput
-    Rank?: RankUpdateOneWithoutGameNestedInput
     Day?: DayUpdateManyWithoutGameNestedInput
-    PublicProfile?: PublicProfileUpdateOneWithoutGameNestedInput
     Downvote?: DownvoteUpdateManyWithoutGameNestedInput
+    PublicProfile?: PublicProfileUpdateOneWithoutGameNestedInput
+    Rank?: RankUpdateOneWithoutGameNestedInput
+    User?: UserUpdateOneRequiredWithoutGameNestedInput
   }
 
   export type GameUncheckedUpdateWithoutUpvoteInput = {
@@ -24571,51 +24732,45 @@ export namespace Prisma {
     Downvote?: DownvoteUncheckedUpdateManyWithoutGameNestedInput
   }
 
-  export type UserUpsertWithoutUpvoteInput = {
-    update: XOR<UserUpdateWithoutUpvoteInput, UserUncheckedUpdateWithoutUpvoteInput>
-    create: XOR<UserCreateWithoutUpvoteInput, UserUncheckedCreateWithoutUpvoteInput>
-    where?: UserWhereInput
+  export type UserCreateWithoutDownvoteInput = {
+    id: string
+    serializedId?: string | null
+    username?: string | null
+    dateCreated?: Date | string
+    numberOfGames?: number
+    ChallengeModifier?: ChallengeModifierCreateNestedManyWithoutCreatedByInput
+    Game?: GameCreateNestedManyWithoutUserInput
+    ModifierOption?: ModifierOptionCreateNestedManyWithoutCreatedByInput
+    ModifierPack?: ModifierPackCreateNestedManyWithoutCreatedByInput
+    PublicProfile?: PublicProfileCreateNestedManyWithoutUserInput
+    Upvote?: UpvoteCreateNestedManyWithoutCreatedByInput
+    DefaultExcludedChallengeModifiers?: ChallengeModifierCreateNestedManyWithoutUserExcludedInput
+    DefaultExcludedModifierOptions?: ModifierOptionCreateNestedManyWithoutUserExcludedInput
+    DefaultIncludedCustomChallengeModifiers?: ChallengeModifierCreateNestedManyWithoutUserIncludedInput
+    DefaultIncludedCustomModifierOptions?: ModifierOptionCreateNestedManyWithoutUserIncludedInput
   }
 
-  export type UserUpdateToOneWithWhereWithoutUpvoteInput = {
-    where?: UserWhereInput
-    data: XOR<UserUpdateWithoutUpvoteInput, UserUncheckedUpdateWithoutUpvoteInput>
+  export type UserUncheckedCreateWithoutDownvoteInput = {
+    id: string
+    serializedId?: string | null
+    username?: string | null
+    dateCreated?: Date | string
+    numberOfGames?: number
+    ChallengeModifier?: ChallengeModifierUncheckedCreateNestedManyWithoutCreatedByInput
+    Game?: GameUncheckedCreateNestedManyWithoutUserInput
+    ModifierOption?: ModifierOptionUncheckedCreateNestedManyWithoutCreatedByInput
+    ModifierPack?: ModifierPackUncheckedCreateNestedManyWithoutCreatedByInput
+    PublicProfile?: PublicProfileUncheckedCreateNestedManyWithoutUserInput
+    Upvote?: UpvoteUncheckedCreateNestedManyWithoutCreatedByInput
+    DefaultExcludedChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutUserExcludedInput
+    DefaultExcludedModifierOptions?: ModifierOptionUncheckedCreateNestedManyWithoutUserExcludedInput
+    DefaultIncludedCustomChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutUserIncludedInput
+    DefaultIncludedCustomModifierOptions?: ModifierOptionUncheckedCreateNestedManyWithoutUserIncludedInput
   }
 
-  export type UserUpdateWithoutUpvoteInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    serializedId?: NullableStringFieldUpdateOperationsInput | string | null
-    username?: NullableStringFieldUpdateOperationsInput | string | null
-    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    numberOfGames?: IntFieldUpdateOperationsInput | number
-    Game?: GameUpdateManyWithoutUserNestedInput
-    PublicProfile?: PublicProfileUpdateManyWithoutUserNestedInput
-    ChallengeModifier?: ChallengeModifierUpdateManyWithoutCreatedByNestedInput
-    ModifierOption?: ModifierOptionUpdateManyWithoutCreatedByNestedInput
-    DefaultExcludedChallengeModifiers?: ChallengeModifierUpdateManyWithoutUserExcludedNestedInput
-    DefaultExcludedModifierOptions?: ModifierOptionUpdateManyWithoutUserExcludedNestedInput
-    DefaultIncludedCustomChallengeModifiers?: ChallengeModifierUpdateManyWithoutUserIncludedNestedInput
-    DefaultIncludedCustomModifierOptions?: ModifierOptionUpdateManyWithoutUserIncludedNestedInput
-    ModifierPack?: ModifierPackUpdateManyWithoutCreatedByNestedInput
-    Downvote?: DownvoteUpdateManyWithoutCreatedByNestedInput
-  }
-
-  export type UserUncheckedUpdateWithoutUpvoteInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    serializedId?: NullableStringFieldUpdateOperationsInput | string | null
-    username?: NullableStringFieldUpdateOperationsInput | string | null
-    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    numberOfGames?: IntFieldUpdateOperationsInput | number
-    Game?: GameUncheckedUpdateManyWithoutUserNestedInput
-    PublicProfile?: PublicProfileUncheckedUpdateManyWithoutUserNestedInput
-    ChallengeModifier?: ChallengeModifierUncheckedUpdateManyWithoutCreatedByNestedInput
-    ModifierOption?: ModifierOptionUncheckedUpdateManyWithoutCreatedByNestedInput
-    DefaultExcludedChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutUserExcludedNestedInput
-    DefaultExcludedModifierOptions?: ModifierOptionUncheckedUpdateManyWithoutUserExcludedNestedInput
-    DefaultIncludedCustomChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutUserIncludedNestedInput
-    DefaultIncludedCustomModifierOptions?: ModifierOptionUncheckedUpdateManyWithoutUserIncludedNestedInput
-    ModifierPack?: ModifierPackUncheckedUpdateManyWithoutCreatedByNestedInput
-    Downvote?: DownvoteUncheckedUpdateManyWithoutCreatedByNestedInput
+  export type UserCreateOrConnectWithoutDownvoteInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutDownvoteInput, UserUncheckedCreateWithoutDownvoteInput>
   }
 
   export type GameCreateWithoutDownvoteInput = {
@@ -24635,10 +24790,10 @@ export namespace Prisma {
     isPublic?: boolean
     score?: number
     dateCompleted?: Date | string | null
-    User: UserCreateNestedOneWithoutGameInput
-    Rank?: RankCreateNestedOneWithoutGameInput
     Day?: DayCreateNestedManyWithoutGameInput
     PublicProfile?: PublicProfileCreateNestedOneWithoutGameInput
+    Rank?: RankCreateNestedOneWithoutGameInput
+    User: UserCreateNestedOneWithoutGameInput
     Upvote?: UpvoteCreateNestedManyWithoutGameInput
   }
 
@@ -24672,45 +24827,51 @@ export namespace Prisma {
     create: XOR<GameCreateWithoutDownvoteInput, GameUncheckedCreateWithoutDownvoteInput>
   }
 
-  export type UserCreateWithoutDownvoteInput = {
-    id: string
-    serializedId?: string | null
-    username?: string | null
-    dateCreated?: Date | string
-    numberOfGames?: number
-    Game?: GameCreateNestedManyWithoutUserInput
-    PublicProfile?: PublicProfileCreateNestedManyWithoutUserInput
-    ChallengeModifier?: ChallengeModifierCreateNestedManyWithoutCreatedByInput
-    ModifierOption?: ModifierOptionCreateNestedManyWithoutCreatedByInput
-    DefaultExcludedChallengeModifiers?: ChallengeModifierCreateNestedManyWithoutUserExcludedInput
-    DefaultExcludedModifierOptions?: ModifierOptionCreateNestedManyWithoutUserExcludedInput
-    DefaultIncludedCustomChallengeModifiers?: ChallengeModifierCreateNestedManyWithoutUserIncludedInput
-    DefaultIncludedCustomModifierOptions?: ModifierOptionCreateNestedManyWithoutUserIncludedInput
-    ModifierPack?: ModifierPackCreateNestedManyWithoutCreatedByInput
-    Upvote?: UpvoteCreateNestedManyWithoutCreatedByInput
-  }
-
-  export type UserUncheckedCreateWithoutDownvoteInput = {
-    id: string
-    serializedId?: string | null
-    username?: string | null
-    dateCreated?: Date | string
-    numberOfGames?: number
-    Game?: GameUncheckedCreateNestedManyWithoutUserInput
-    PublicProfile?: PublicProfileUncheckedCreateNestedManyWithoutUserInput
-    ChallengeModifier?: ChallengeModifierUncheckedCreateNestedManyWithoutCreatedByInput
-    ModifierOption?: ModifierOptionUncheckedCreateNestedManyWithoutCreatedByInput
-    DefaultExcludedChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutUserExcludedInput
-    DefaultExcludedModifierOptions?: ModifierOptionUncheckedCreateNestedManyWithoutUserExcludedInput
-    DefaultIncludedCustomChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutUserIncludedInput
-    DefaultIncludedCustomModifierOptions?: ModifierOptionUncheckedCreateNestedManyWithoutUserIncludedInput
-    ModifierPack?: ModifierPackUncheckedCreateNestedManyWithoutCreatedByInput
-    Upvote?: UpvoteUncheckedCreateNestedManyWithoutCreatedByInput
-  }
-
-  export type UserCreateOrConnectWithoutDownvoteInput = {
-    where: UserWhereUniqueInput
+  export type UserUpsertWithoutDownvoteInput = {
+    update: XOR<UserUpdateWithoutDownvoteInput, UserUncheckedUpdateWithoutDownvoteInput>
     create: XOR<UserCreateWithoutDownvoteInput, UserUncheckedCreateWithoutDownvoteInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutDownvoteInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutDownvoteInput, UserUncheckedUpdateWithoutDownvoteInput>
+  }
+
+  export type UserUpdateWithoutDownvoteInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    serializedId?: NullableStringFieldUpdateOperationsInput | string | null
+    username?: NullableStringFieldUpdateOperationsInput | string | null
+    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
+    numberOfGames?: IntFieldUpdateOperationsInput | number
+    ChallengeModifier?: ChallengeModifierUpdateManyWithoutCreatedByNestedInput
+    Game?: GameUpdateManyWithoutUserNestedInput
+    ModifierOption?: ModifierOptionUpdateManyWithoutCreatedByNestedInput
+    ModifierPack?: ModifierPackUpdateManyWithoutCreatedByNestedInput
+    PublicProfile?: PublicProfileUpdateManyWithoutUserNestedInput
+    Upvote?: UpvoteUpdateManyWithoutCreatedByNestedInput
+    DefaultExcludedChallengeModifiers?: ChallengeModifierUpdateManyWithoutUserExcludedNestedInput
+    DefaultExcludedModifierOptions?: ModifierOptionUpdateManyWithoutUserExcludedNestedInput
+    DefaultIncludedCustomChallengeModifiers?: ChallengeModifierUpdateManyWithoutUserIncludedNestedInput
+    DefaultIncludedCustomModifierOptions?: ModifierOptionUpdateManyWithoutUserIncludedNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutDownvoteInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    serializedId?: NullableStringFieldUpdateOperationsInput | string | null
+    username?: NullableStringFieldUpdateOperationsInput | string | null
+    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
+    numberOfGames?: IntFieldUpdateOperationsInput | number
+    ChallengeModifier?: ChallengeModifierUncheckedUpdateManyWithoutCreatedByNestedInput
+    Game?: GameUncheckedUpdateManyWithoutUserNestedInput
+    ModifierOption?: ModifierOptionUncheckedUpdateManyWithoutCreatedByNestedInput
+    ModifierPack?: ModifierPackUncheckedUpdateManyWithoutCreatedByNestedInput
+    PublicProfile?: PublicProfileUncheckedUpdateManyWithoutUserNestedInput
+    Upvote?: UpvoteUncheckedUpdateManyWithoutCreatedByNestedInput
+    DefaultExcludedChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutUserExcludedNestedInput
+    DefaultExcludedModifierOptions?: ModifierOptionUncheckedUpdateManyWithoutUserExcludedNestedInput
+    DefaultIncludedCustomChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutUserIncludedNestedInput
+    DefaultIncludedCustomModifierOptions?: ModifierOptionUncheckedUpdateManyWithoutUserIncludedNestedInput
   }
 
   export type GameUpsertWithoutDownvoteInput = {
@@ -24741,10 +24902,10 @@ export namespace Prisma {
     isPublic?: BoolFieldUpdateOperationsInput | boolean
     score?: IntFieldUpdateOperationsInput | number
     dateCompleted?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    User?: UserUpdateOneRequiredWithoutGameNestedInput
-    Rank?: RankUpdateOneWithoutGameNestedInput
     Day?: DayUpdateManyWithoutGameNestedInput
     PublicProfile?: PublicProfileUpdateOneWithoutGameNestedInput
+    Rank?: RankUpdateOneWithoutGameNestedInput
+    User?: UserUpdateOneRequiredWithoutGameNestedInput
     Upvote?: UpvoteUpdateManyWithoutGameNestedInput
   }
 
@@ -24773,57 +24934,11 @@ export namespace Prisma {
     Upvote?: UpvoteUncheckedUpdateManyWithoutGameNestedInput
   }
 
-  export type UserUpsertWithoutDownvoteInput = {
-    update: XOR<UserUpdateWithoutDownvoteInput, UserUncheckedUpdateWithoutDownvoteInput>
-    create: XOR<UserCreateWithoutDownvoteInput, UserUncheckedCreateWithoutDownvoteInput>
-    where?: UserWhereInput
-  }
-
-  export type UserUpdateToOneWithWhereWithoutDownvoteInput = {
-    where?: UserWhereInput
-    data: XOR<UserUpdateWithoutDownvoteInput, UserUncheckedUpdateWithoutDownvoteInput>
-  }
-
-  export type UserUpdateWithoutDownvoteInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    serializedId?: NullableStringFieldUpdateOperationsInput | string | null
-    username?: NullableStringFieldUpdateOperationsInput | string | null
-    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    numberOfGames?: IntFieldUpdateOperationsInput | number
-    Game?: GameUpdateManyWithoutUserNestedInput
-    PublicProfile?: PublicProfileUpdateManyWithoutUserNestedInput
-    ChallengeModifier?: ChallengeModifierUpdateManyWithoutCreatedByNestedInput
-    ModifierOption?: ModifierOptionUpdateManyWithoutCreatedByNestedInput
-    DefaultExcludedChallengeModifiers?: ChallengeModifierUpdateManyWithoutUserExcludedNestedInput
-    DefaultExcludedModifierOptions?: ModifierOptionUpdateManyWithoutUserExcludedNestedInput
-    DefaultIncludedCustomChallengeModifiers?: ChallengeModifierUpdateManyWithoutUserIncludedNestedInput
-    DefaultIncludedCustomModifierOptions?: ModifierOptionUpdateManyWithoutUserIncludedNestedInput
-    ModifierPack?: ModifierPackUpdateManyWithoutCreatedByNestedInput
-    Upvote?: UpvoteUpdateManyWithoutCreatedByNestedInput
-  }
-
-  export type UserUncheckedUpdateWithoutDownvoteInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    serializedId?: NullableStringFieldUpdateOperationsInput | string | null
-    username?: NullableStringFieldUpdateOperationsInput | string | null
-    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    numberOfGames?: IntFieldUpdateOperationsInput | number
-    Game?: GameUncheckedUpdateManyWithoutUserNestedInput
-    PublicProfile?: PublicProfileUncheckedUpdateManyWithoutUserNestedInput
-    ChallengeModifier?: ChallengeModifierUncheckedUpdateManyWithoutCreatedByNestedInput
-    ModifierOption?: ModifierOptionUncheckedUpdateManyWithoutCreatedByNestedInput
-    DefaultExcludedChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutUserExcludedNestedInput
-    DefaultExcludedModifierOptions?: ModifierOptionUncheckedUpdateManyWithoutUserExcludedNestedInput
-    DefaultIncludedCustomChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutUserIncludedNestedInput
-    DefaultIncludedCustomModifierOptions?: ModifierOptionUncheckedUpdateManyWithoutUserIncludedNestedInput
-    ModifierPack?: ModifierPackUncheckedUpdateManyWithoutCreatedByNestedInput
-    Upvote?: UpvoteUncheckedUpdateManyWithoutCreatedByNestedInput
-  }
-
   export type TestChairCreateWithoutTableInput = {
     dateCreated?: Date | string
     name: string
     favoriteColor: string
+    height: number
   }
 
   export type TestChairUncheckedCreateWithoutTableInput = {
@@ -24831,6 +24946,7 @@ export namespace Prisma {
     dateCreated?: Date | string
     name: string
     favoriteColor: string
+    height: number
   }
 
   export type TestChairCreateOrConnectWithoutTableInput = {
@@ -24840,6 +24956,29 @@ export namespace Prisma {
 
   export type TestChairCreateManyTableInputEnvelope = {
     data: TestChairCreateManyTableInput | TestChairCreateManyTableInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type TestPlateCreateWithoutTableInput = {
+    dateCreated?: Date | string
+    name: string
+    color: string
+  }
+
+  export type TestPlateUncheckedCreateWithoutTableInput = {
+    id?: number
+    dateCreated?: Date | string
+    name: string
+    color: string
+  }
+
+  export type TestPlateCreateOrConnectWithoutTableInput = {
+    where: TestPlateWhereUniqueInput
+    create: XOR<TestPlateCreateWithoutTableInput, TestPlateUncheckedCreateWithoutTableInput>
+  }
+
+  export type TestPlateCreateManyTableInputEnvelope = {
+    data: TestPlateCreateManyTableInput | TestPlateCreateManyTableInput[]
     skipDuplicates?: boolean
   }
 
@@ -24867,13 +25006,42 @@ export namespace Prisma {
     dateCreated?: DateTimeFilter<"TestChair"> | Date | string
     name?: StringFilter<"TestChair"> | string
     favoriteColor?: StringFilter<"TestChair"> | string
+    height?: IntFilter<"TestChair"> | number
     tableId?: IntFilter<"TestChair"> | number
+  }
+
+  export type TestPlateUpsertWithWhereUniqueWithoutTableInput = {
+    where: TestPlateWhereUniqueInput
+    update: XOR<TestPlateUpdateWithoutTableInput, TestPlateUncheckedUpdateWithoutTableInput>
+    create: XOR<TestPlateCreateWithoutTableInput, TestPlateUncheckedCreateWithoutTableInput>
+  }
+
+  export type TestPlateUpdateWithWhereUniqueWithoutTableInput = {
+    where: TestPlateWhereUniqueInput
+    data: XOR<TestPlateUpdateWithoutTableInput, TestPlateUncheckedUpdateWithoutTableInput>
+  }
+
+  export type TestPlateUpdateManyWithWhereWithoutTableInput = {
+    where: TestPlateScalarWhereInput
+    data: XOR<TestPlateUpdateManyMutationInput, TestPlateUncheckedUpdateManyWithoutTableInput>
+  }
+
+  export type TestPlateScalarWhereInput = {
+    AND?: TestPlateScalarWhereInput | TestPlateScalarWhereInput[]
+    OR?: TestPlateScalarWhereInput[]
+    NOT?: TestPlateScalarWhereInput | TestPlateScalarWhereInput[]
+    id?: IntFilter<"TestPlate"> | number
+    dateCreated?: DateTimeFilter<"TestPlate"> | Date | string
+    name?: StringFilter<"TestPlate"> | string
+    color?: StringFilter<"TestPlate"> | string
+    tableId?: IntFilter<"TestPlate"> | number
   }
 
   export type TestTableCreateWithoutTestChairInput = {
     dateCreated?: Date | string
     name: string
     favoriteColor: string
+    TestPlate?: TestPlateCreateNestedManyWithoutTableInput
   }
 
   export type TestTableUncheckedCreateWithoutTestChairInput = {
@@ -24881,6 +25049,7 @@ export namespace Prisma {
     dateCreated?: Date | string
     name: string
     favoriteColor: string
+    TestPlate?: TestPlateUncheckedCreateNestedManyWithoutTableInput
   }
 
   export type TestTableCreateOrConnectWithoutTestChairInput = {
@@ -24903,6 +25072,7 @@ export namespace Prisma {
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     name?: StringFieldUpdateOperationsInput | string
     favoriteColor?: StringFieldUpdateOperationsInput | string
+    TestPlate?: TestPlateUpdateManyWithoutTableNestedInput
   }
 
   export type TestTableUncheckedUpdateWithoutTestChairInput = {
@@ -24910,6 +25080,71 @@ export namespace Prisma {
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     name?: StringFieldUpdateOperationsInput | string
     favoriteColor?: StringFieldUpdateOperationsInput | string
+    TestPlate?: TestPlateUncheckedUpdateManyWithoutTableNestedInput
+  }
+
+  export type TestTableCreateWithoutTestPlateInput = {
+    dateCreated?: Date | string
+    name: string
+    favoriteColor: string
+    TestChair?: TestChairCreateNestedManyWithoutTableInput
+  }
+
+  export type TestTableUncheckedCreateWithoutTestPlateInput = {
+    id?: number
+    dateCreated?: Date | string
+    name: string
+    favoriteColor: string
+    TestChair?: TestChairUncheckedCreateNestedManyWithoutTableInput
+  }
+
+  export type TestTableCreateOrConnectWithoutTestPlateInput = {
+    where: TestTableWhereUniqueInput
+    create: XOR<TestTableCreateWithoutTestPlateInput, TestTableUncheckedCreateWithoutTestPlateInput>
+  }
+
+  export type TestTableUpsertWithoutTestPlateInput = {
+    update: XOR<TestTableUpdateWithoutTestPlateInput, TestTableUncheckedUpdateWithoutTestPlateInput>
+    create: XOR<TestTableCreateWithoutTestPlateInput, TestTableUncheckedCreateWithoutTestPlateInput>
+    where?: TestTableWhereInput
+  }
+
+  export type TestTableUpdateToOneWithWhereWithoutTestPlateInput = {
+    where?: TestTableWhereInput
+    data: XOR<TestTableUpdateWithoutTestPlateInput, TestTableUncheckedUpdateWithoutTestPlateInput>
+  }
+
+  export type TestTableUpdateWithoutTestPlateInput = {
+    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
+    name?: StringFieldUpdateOperationsInput | string
+    favoriteColor?: StringFieldUpdateOperationsInput | string
+    TestChair?: TestChairUpdateManyWithoutTableNestedInput
+  }
+
+  export type TestTableUncheckedUpdateWithoutTestPlateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
+    name?: StringFieldUpdateOperationsInput | string
+    favoriteColor?: StringFieldUpdateOperationsInput | string
+    TestChair?: TestChairUncheckedUpdateManyWithoutTableNestedInput
+  }
+
+  export type ChallengeModifierCreateManyCreatedByInput = {
+    id?: number
+    dateCreated?: Date | string
+    name: string
+    text: string
+    hasOptions?: boolean
+    explanatoryUrl?: string | null
+    standard?: boolean
+    isPublic?: boolean
+  }
+
+  export type DownvoteCreateManyCreatedByInput = {
+    id?: number
+    note: string
+    dateCreated?: Date | string
+    gameId: number
   }
 
   export type GameCreateManyUserInput = {
@@ -24934,23 +25169,6 @@ export namespace Prisma {
     dateCompleted?: Date | string | null
   }
 
-  export type PublicProfileCreateManyUserInput = {
-    id?: number
-    dateCreated?: Date | string
-    name: string
-  }
-
-  export type ChallengeModifierCreateManyCreatedByInput = {
-    id?: number
-    dateCreated?: Date | string
-    name: string
-    text: string
-    hasOptions?: boolean
-    explanatoryUrl?: string | null
-    standard?: boolean
-    isPublic?: boolean
-  }
-
   export type ModifierOptionCreateManyCreatedByInput = {
     id?: number
     dateCreated?: Date | string
@@ -24968,11 +25186,10 @@ export namespace Prisma {
     isPublic?: boolean
   }
 
-  export type DownvoteCreateManyCreatedByInput = {
+  export type PublicProfileCreateManyUserInput = {
     id?: number
-    note: string
     dateCreated?: Date | string
-    gameId: number
+    name: string
   }
 
   export type UpvoteCreateManyCreatedByInput = {
@@ -24980,6 +25197,72 @@ export namespace Prisma {
     note?: string | null
     dateCreated?: Date | string
     gameId: number
+  }
+
+  export type ChallengeModifierUpdateWithoutCreatedByInput = {
+    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
+    name?: StringFieldUpdateOperationsInput | string
+    text?: StringFieldUpdateOperationsInput | string
+    hasOptions?: BoolFieldUpdateOperationsInput | boolean
+    explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    standard?: BoolFieldUpdateOperationsInput | boolean
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
+    Day?: DayUpdateManyWithoutChallengeModifierNestedInput
+    DayCompletedInPart1?: DayUpdateManyWithoutModifierWhenPart1CompletedNestedInput
+    ModifierOption?: ModifierOptionUpdateManyWithoutChallengeModifierNestedInput
+    UserExcluded?: UserUpdateManyWithoutDefaultExcludedChallengeModifiersNestedInput
+    UserIncluded?: UserUpdateManyWithoutDefaultIncludedCustomChallengeModifiersNestedInput
+    ModifierPackExcluded?: DayUpdateManyWithoutExcludedChallengeModifiersNestedInput
+    ModifierPackIncluded?: DayUpdateManyWithoutEncludedCustomChallengeModifiersNestedInput
+  }
+
+  export type ChallengeModifierUncheckedUpdateWithoutCreatedByInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
+    name?: StringFieldUpdateOperationsInput | string
+    text?: StringFieldUpdateOperationsInput | string
+    hasOptions?: BoolFieldUpdateOperationsInput | boolean
+    explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    standard?: BoolFieldUpdateOperationsInput | boolean
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
+    Day?: DayUncheckedUpdateManyWithoutChallengeModifierNestedInput
+    DayCompletedInPart1?: DayUncheckedUpdateManyWithoutModifierWhenPart1CompletedNestedInput
+    ModifierOption?: ModifierOptionUncheckedUpdateManyWithoutChallengeModifierNestedInput
+    UserExcluded?: UserUncheckedUpdateManyWithoutDefaultExcludedChallengeModifiersNestedInput
+    UserIncluded?: UserUncheckedUpdateManyWithoutDefaultIncludedCustomChallengeModifiersNestedInput
+    ModifierPackExcluded?: DayUncheckedUpdateManyWithoutExcludedChallengeModifiersNestedInput
+    ModifierPackIncluded?: DayUncheckedUpdateManyWithoutEncludedCustomChallengeModifiersNestedInput
+  }
+
+  export type ChallengeModifierUncheckedUpdateManyWithoutCreatedByInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
+    name?: StringFieldUpdateOperationsInput | string
+    text?: StringFieldUpdateOperationsInput | string
+    hasOptions?: BoolFieldUpdateOperationsInput | boolean
+    explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    standard?: BoolFieldUpdateOperationsInput | boolean
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
+  }
+
+  export type DownvoteUpdateWithoutCreatedByInput = {
+    note?: StringFieldUpdateOperationsInput | string
+    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
+    Game?: GameUpdateOneRequiredWithoutDownvoteNestedInput
+  }
+
+  export type DownvoteUncheckedUpdateWithoutCreatedByInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    note?: StringFieldUpdateOperationsInput | string
+    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
+    gameId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type DownvoteUncheckedUpdateManyWithoutCreatedByInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    note?: StringFieldUpdateOperationsInput | string
+    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
+    gameId?: IntFieldUpdateOperationsInput | number
   }
 
   export type GameUpdateWithoutUserInput = {
@@ -24999,11 +25282,11 @@ export namespace Prisma {
     isPublic?: BoolFieldUpdateOperationsInput | boolean
     score?: IntFieldUpdateOperationsInput | number
     dateCompleted?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    Rank?: RankUpdateOneWithoutGameNestedInput
     Day?: DayUpdateManyWithoutGameNestedInput
-    PublicProfile?: PublicProfileUpdateOneWithoutGameNestedInput
-    Upvote?: UpvoteUpdateManyWithoutGameNestedInput
     Downvote?: DownvoteUpdateManyWithoutGameNestedInput
+    PublicProfile?: PublicProfileUpdateOneWithoutGameNestedInput
+    Rank?: RankUpdateOneWithoutGameNestedInput
+    Upvote?: UpvoteUpdateManyWithoutGameNestedInput
   }
 
   export type GameUncheckedUpdateWithoutUserInput = {
@@ -25027,8 +25310,8 @@ export namespace Prisma {
     rankId?: NullableIntFieldUpdateOperationsInput | number | null
     dateCompleted?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     Day?: DayUncheckedUpdateManyWithoutGameNestedInput
-    Upvote?: UpvoteUncheckedUpdateManyWithoutGameNestedInput
     Downvote?: DownvoteUncheckedUpdateManyWithoutGameNestedInput
+    Upvote?: UpvoteUncheckedUpdateManyWithoutGameNestedInput
   }
 
   export type GameUncheckedUpdateManyWithoutUserInput = {
@@ -25053,6 +25336,71 @@ export namespace Prisma {
     dateCompleted?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
+  export type ModifierOptionUpdateWithoutCreatedByInput = {
+    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
+    name?: StringFieldUpdateOperationsInput | string
+    text?: StringFieldUpdateOperationsInput | string
+    explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    standard?: BoolFieldUpdateOperationsInput | boolean
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
+    Day?: DayUpdateManyWithoutModifierOptionNestedInput
+    DayCompletedInPart1?: DayUpdateManyWithoutOptionWhenPart1CompletedNestedInput
+    ChallengeModifier?: ChallengeModifierUpdateOneRequiredWithoutModifierOptionNestedInput
+    UserExcluded?: UserUpdateManyWithoutDefaultExcludedModifierOptionsNestedInput
+    UserIncluded?: UserUpdateManyWithoutDefaultIncludedCustomModifierOptionsNestedInput
+    ExcludedModifierOptions?: ModifierPackUpdateManyWithoutExcludedFromDayNestedInput
+    IncludedCustomModifierOptions?: ModifierPackUpdateManyWithoutIncludedInDayNestedInput
+  }
+
+  export type ModifierOptionUncheckedUpdateWithoutCreatedByInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
+    challengeModifierId?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    text?: StringFieldUpdateOperationsInput | string
+    explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    standard?: BoolFieldUpdateOperationsInput | boolean
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
+    Day?: DayUncheckedUpdateManyWithoutModifierOptionNestedInput
+    DayCompletedInPart1?: DayUncheckedUpdateManyWithoutOptionWhenPart1CompletedNestedInput
+    UserExcluded?: UserUncheckedUpdateManyWithoutDefaultExcludedModifierOptionsNestedInput
+    UserIncluded?: UserUncheckedUpdateManyWithoutDefaultIncludedCustomModifierOptionsNestedInput
+    ExcludedModifierOptions?: ModifierPackUncheckedUpdateManyWithoutExcludedFromDayNestedInput
+    IncludedCustomModifierOptions?: ModifierPackUncheckedUpdateManyWithoutIncludedInDayNestedInput
+  }
+
+  export type ModifierOptionUncheckedUpdateManyWithoutCreatedByInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
+    challengeModifierId?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    text?: StringFieldUpdateOperationsInput | string
+    explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    standard?: BoolFieldUpdateOperationsInput | boolean
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
+  }
+
+  export type ModifierPackUpdateWithoutCreatedByInput = {
+    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
+    ExcludedFromDay?: ModifierOptionUpdateManyWithoutExcludedModifierOptionsNestedInput
+    IncludedInDay?: ModifierOptionUpdateManyWithoutIncludedCustomModifierOptionsNestedInput
+  }
+
+  export type ModifierPackUncheckedUpdateWithoutCreatedByInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
+    ExcludedFromDay?: ModifierOptionUncheckedUpdateManyWithoutExcludedModifierOptionsNestedInput
+    IncludedInDay?: ModifierOptionUncheckedUpdateManyWithoutIncludedCustomModifierOptionsNestedInput
+  }
+
+  export type ModifierPackUncheckedUpdateManyWithoutCreatedByInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
+  }
+
   export type PublicProfileUpdateWithoutUserInput = {
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     name?: StringFieldUpdateOperationsInput | string
@@ -25072,102 +25420,24 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
   }
 
-  export type ChallengeModifierUpdateWithoutCreatedByInput = {
+  export type UpvoteUpdateWithoutCreatedByInput = {
+    note?: NullableStringFieldUpdateOperationsInput | string | null
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    name?: StringFieldUpdateOperationsInput | string
-    text?: StringFieldUpdateOperationsInput | string
-    hasOptions?: BoolFieldUpdateOperationsInput | boolean
-    explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    standard?: BoolFieldUpdateOperationsInput | boolean
-    isPublic?: BoolFieldUpdateOperationsInput | boolean
-    ModifierOption?: ModifierOptionUpdateManyWithoutChallengeModifierNestedInput
-    Day?: DayUpdateManyWithoutChallengeModifierNestedInput
-    ModifierPackExcluded?: ModifierPackUpdateManyWithoutExcludedChallengeModifiersNestedInput
-    ModifierPackIncluded?: ModifierPackUpdateManyWithoutEncludedCustomChallengeModifiersNestedInput
-    UserExcluded?: UserUpdateManyWithoutDefaultExcludedChallengeModifiersNestedInput
-    UserIncluded?: UserUpdateManyWithoutDefaultIncludedCustomChallengeModifiersNestedInput
-    ExcludedFromDay?: DayUpdateManyWithoutExcludedChallengeModifiersNestedInput
-    IncludedInDay?: DayUpdateManyWithoutIncludedCustomChallengeModifiersNestedInput
-    DayCompletedInPart1?: DayUpdateManyWithoutModifierWhenPart1CompletedNestedInput
+    Game?: GameUpdateOneRequiredWithoutUpvoteNestedInput
   }
 
-  export type ChallengeModifierUncheckedUpdateWithoutCreatedByInput = {
+  export type UpvoteUncheckedUpdateWithoutCreatedByInput = {
     id?: IntFieldUpdateOperationsInput | number
+    note?: NullableStringFieldUpdateOperationsInput | string | null
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    name?: StringFieldUpdateOperationsInput | string
-    text?: StringFieldUpdateOperationsInput | string
-    hasOptions?: BoolFieldUpdateOperationsInput | boolean
-    explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    standard?: BoolFieldUpdateOperationsInput | boolean
-    isPublic?: BoolFieldUpdateOperationsInput | boolean
-    ModifierOption?: ModifierOptionUncheckedUpdateManyWithoutChallengeModifierNestedInput
-    Day?: DayUncheckedUpdateManyWithoutChallengeModifierNestedInput
-    ModifierPackExcluded?: ModifierPackUncheckedUpdateManyWithoutExcludedChallengeModifiersNestedInput
-    ModifierPackIncluded?: ModifierPackUncheckedUpdateManyWithoutEncludedCustomChallengeModifiersNestedInput
-    UserExcluded?: UserUncheckedUpdateManyWithoutDefaultExcludedChallengeModifiersNestedInput
-    UserIncluded?: UserUncheckedUpdateManyWithoutDefaultIncludedCustomChallengeModifiersNestedInput
-    ExcludedFromDay?: DayUncheckedUpdateManyWithoutExcludedChallengeModifiersNestedInput
-    IncludedInDay?: DayUncheckedUpdateManyWithoutIncludedCustomChallengeModifiersNestedInput
-    DayCompletedInPart1?: DayUncheckedUpdateManyWithoutModifierWhenPart1CompletedNestedInput
+    gameId?: IntFieldUpdateOperationsInput | number
   }
 
-  export type ChallengeModifierUncheckedUpdateManyWithoutCreatedByInput = {
+  export type UpvoteUncheckedUpdateManyWithoutCreatedByInput = {
     id?: IntFieldUpdateOperationsInput | number
+    note?: NullableStringFieldUpdateOperationsInput | string | null
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    name?: StringFieldUpdateOperationsInput | string
-    text?: StringFieldUpdateOperationsInput | string
-    hasOptions?: BoolFieldUpdateOperationsInput | boolean
-    explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    standard?: BoolFieldUpdateOperationsInput | boolean
-    isPublic?: BoolFieldUpdateOperationsInput | boolean
-  }
-
-  export type ModifierOptionUpdateWithoutCreatedByInput = {
-    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    name?: StringFieldUpdateOperationsInput | string
-    text?: StringFieldUpdateOperationsInput | string
-    explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    standard?: BoolFieldUpdateOperationsInput | boolean
-    isPublic?: BoolFieldUpdateOperationsInput | boolean
-    ChallengeModifier?: ChallengeModifierUpdateOneRequiredWithoutModifierOptionNestedInput
-    Day?: DayUpdateManyWithoutModifierOptionNestedInput
-    ModifierPackExcluded?: ModifierPackUpdateManyWithoutExcludedModifierOptionsNestedInput
-    ModifierPackIncluded?: ModifierPackUpdateManyWithoutIncludedCustomModifierOptionsNestedInput
-    UserExcluded?: UserUpdateManyWithoutDefaultExcludedModifierOptionsNestedInput
-    UserIncluded?: UserUpdateManyWithoutDefaultIncludedCustomModifierOptionsNestedInput
-    ExcludedFromDay?: DayUpdateManyWithoutExcludedModifierOptionsNestedInput
-    IncludedInDay?: DayUpdateManyWithoutIncludedCustomModifierOptionsNestedInput
-    DayCompletedInPart1?: DayUpdateManyWithoutOptionWhenPart1CompletedNestedInput
-  }
-
-  export type ModifierOptionUncheckedUpdateWithoutCreatedByInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    challengeModifierId?: IntFieldUpdateOperationsInput | number
-    name?: StringFieldUpdateOperationsInput | string
-    text?: StringFieldUpdateOperationsInput | string
-    explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    standard?: BoolFieldUpdateOperationsInput | boolean
-    isPublic?: BoolFieldUpdateOperationsInput | boolean
-    Day?: DayUncheckedUpdateManyWithoutModifierOptionNestedInput
-    ModifierPackExcluded?: ModifierPackUncheckedUpdateManyWithoutExcludedModifierOptionsNestedInput
-    ModifierPackIncluded?: ModifierPackUncheckedUpdateManyWithoutIncludedCustomModifierOptionsNestedInput
-    UserExcluded?: UserUncheckedUpdateManyWithoutDefaultExcludedModifierOptionsNestedInput
-    UserIncluded?: UserUncheckedUpdateManyWithoutDefaultIncludedCustomModifierOptionsNestedInput
-    ExcludedFromDay?: DayUncheckedUpdateManyWithoutExcludedModifierOptionsNestedInput
-    IncludedInDay?: DayUncheckedUpdateManyWithoutIncludedCustomModifierOptionsNestedInput
-    DayCompletedInPart1?: DayUncheckedUpdateManyWithoutOptionWhenPart1CompletedNestedInput
-  }
-
-  export type ModifierOptionUncheckedUpdateManyWithoutCreatedByInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    challengeModifierId?: IntFieldUpdateOperationsInput | number
-    name?: StringFieldUpdateOperationsInput | string
-    text?: StringFieldUpdateOperationsInput | string
-    explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    standard?: BoolFieldUpdateOperationsInput | boolean
-    isPublic?: BoolFieldUpdateOperationsInput | boolean
+    gameId?: IntFieldUpdateOperationsInput | number
   }
 
   export type ChallengeModifierUpdateWithoutUserExcludedInput = {
@@ -25179,14 +25449,12 @@ export namespace Prisma {
     standard?: BoolFieldUpdateOperationsInput | boolean
     isPublic?: BoolFieldUpdateOperationsInput | boolean
     CreatedBy?: UserUpdateOneWithoutChallengeModifierNestedInput
-    ModifierOption?: ModifierOptionUpdateManyWithoutChallengeModifierNestedInput
     Day?: DayUpdateManyWithoutChallengeModifierNestedInput
-    ModifierPackExcluded?: ModifierPackUpdateManyWithoutExcludedChallengeModifiersNestedInput
-    ModifierPackIncluded?: ModifierPackUpdateManyWithoutEncludedCustomChallengeModifiersNestedInput
-    UserIncluded?: UserUpdateManyWithoutDefaultIncludedCustomChallengeModifiersNestedInput
-    ExcludedFromDay?: DayUpdateManyWithoutExcludedChallengeModifiersNestedInput
-    IncludedInDay?: DayUpdateManyWithoutIncludedCustomChallengeModifiersNestedInput
     DayCompletedInPart1?: DayUpdateManyWithoutModifierWhenPart1CompletedNestedInput
+    ModifierOption?: ModifierOptionUpdateManyWithoutChallengeModifierNestedInput
+    UserIncluded?: UserUpdateManyWithoutDefaultIncludedCustomChallengeModifiersNestedInput
+    ModifierPackExcluded?: DayUpdateManyWithoutExcludedChallengeModifiersNestedInput
+    ModifierPackIncluded?: DayUpdateManyWithoutEncludedCustomChallengeModifiersNestedInput
   }
 
   export type ChallengeModifierUncheckedUpdateWithoutUserExcludedInput = {
@@ -25199,14 +25467,12 @@ export namespace Prisma {
     standard?: BoolFieldUpdateOperationsInput | boolean
     createdById?: NullableStringFieldUpdateOperationsInput | string | null
     isPublic?: BoolFieldUpdateOperationsInput | boolean
-    ModifierOption?: ModifierOptionUncheckedUpdateManyWithoutChallengeModifierNestedInput
     Day?: DayUncheckedUpdateManyWithoutChallengeModifierNestedInput
-    ModifierPackExcluded?: ModifierPackUncheckedUpdateManyWithoutExcludedChallengeModifiersNestedInput
-    ModifierPackIncluded?: ModifierPackUncheckedUpdateManyWithoutEncludedCustomChallengeModifiersNestedInput
-    UserIncluded?: UserUncheckedUpdateManyWithoutDefaultIncludedCustomChallengeModifiersNestedInput
-    ExcludedFromDay?: DayUncheckedUpdateManyWithoutExcludedChallengeModifiersNestedInput
-    IncludedInDay?: DayUncheckedUpdateManyWithoutIncludedCustomChallengeModifiersNestedInput
     DayCompletedInPart1?: DayUncheckedUpdateManyWithoutModifierWhenPart1CompletedNestedInput
+    ModifierOption?: ModifierOptionUncheckedUpdateManyWithoutChallengeModifierNestedInput
+    UserIncluded?: UserUncheckedUpdateManyWithoutDefaultIncludedCustomChallengeModifiersNestedInput
+    ModifierPackExcluded?: DayUncheckedUpdateManyWithoutExcludedChallengeModifiersNestedInput
+    ModifierPackIncluded?: DayUncheckedUpdateManyWithoutEncludedCustomChallengeModifiersNestedInput
   }
 
   export type ChallengeModifierUncheckedUpdateManyWithoutUserExcludedInput = {
@@ -25228,15 +25494,13 @@ export namespace Prisma {
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
     isPublic?: BoolFieldUpdateOperationsInput | boolean
+    Day?: DayUpdateManyWithoutModifierOptionNestedInput
+    DayCompletedInPart1?: DayUpdateManyWithoutOptionWhenPart1CompletedNestedInput
     ChallengeModifier?: ChallengeModifierUpdateOneRequiredWithoutModifierOptionNestedInput
     CreatedBy?: UserUpdateOneWithoutModifierOptionNestedInput
-    Day?: DayUpdateManyWithoutModifierOptionNestedInput
-    ModifierPackExcluded?: ModifierPackUpdateManyWithoutExcludedModifierOptionsNestedInput
-    ModifierPackIncluded?: ModifierPackUpdateManyWithoutIncludedCustomModifierOptionsNestedInput
     UserIncluded?: UserUpdateManyWithoutDefaultIncludedCustomModifierOptionsNestedInput
-    ExcludedFromDay?: DayUpdateManyWithoutExcludedModifierOptionsNestedInput
-    IncludedInDay?: DayUpdateManyWithoutIncludedCustomModifierOptionsNestedInput
-    DayCompletedInPart1?: DayUpdateManyWithoutOptionWhenPart1CompletedNestedInput
+    ExcludedModifierOptions?: ModifierPackUpdateManyWithoutExcludedFromDayNestedInput
+    IncludedCustomModifierOptions?: ModifierPackUpdateManyWithoutIncludedInDayNestedInput
   }
 
   export type ModifierOptionUncheckedUpdateWithoutUserExcludedInput = {
@@ -25250,12 +25514,10 @@ export namespace Prisma {
     createdById?: NullableStringFieldUpdateOperationsInput | string | null
     isPublic?: BoolFieldUpdateOperationsInput | boolean
     Day?: DayUncheckedUpdateManyWithoutModifierOptionNestedInput
-    ModifierPackExcluded?: ModifierPackUncheckedUpdateManyWithoutExcludedModifierOptionsNestedInput
-    ModifierPackIncluded?: ModifierPackUncheckedUpdateManyWithoutIncludedCustomModifierOptionsNestedInput
-    UserIncluded?: UserUncheckedUpdateManyWithoutDefaultIncludedCustomModifierOptionsNestedInput
-    ExcludedFromDay?: DayUncheckedUpdateManyWithoutExcludedModifierOptionsNestedInput
-    IncludedInDay?: DayUncheckedUpdateManyWithoutIncludedCustomModifierOptionsNestedInput
     DayCompletedInPart1?: DayUncheckedUpdateManyWithoutOptionWhenPart1CompletedNestedInput
+    UserIncluded?: UserUncheckedUpdateManyWithoutDefaultIncludedCustomModifierOptionsNestedInput
+    ExcludedModifierOptions?: ModifierPackUncheckedUpdateManyWithoutExcludedFromDayNestedInput
+    IncludedCustomModifierOptions?: ModifierPackUncheckedUpdateManyWithoutIncludedInDayNestedInput
   }
 
   export type ModifierOptionUncheckedUpdateManyWithoutUserExcludedInput = {
@@ -25279,14 +25541,12 @@ export namespace Prisma {
     standard?: BoolFieldUpdateOperationsInput | boolean
     isPublic?: BoolFieldUpdateOperationsInput | boolean
     CreatedBy?: UserUpdateOneWithoutChallengeModifierNestedInput
-    ModifierOption?: ModifierOptionUpdateManyWithoutChallengeModifierNestedInput
     Day?: DayUpdateManyWithoutChallengeModifierNestedInput
-    ModifierPackExcluded?: ModifierPackUpdateManyWithoutExcludedChallengeModifiersNestedInput
-    ModifierPackIncluded?: ModifierPackUpdateManyWithoutEncludedCustomChallengeModifiersNestedInput
-    UserExcluded?: UserUpdateManyWithoutDefaultExcludedChallengeModifiersNestedInput
-    ExcludedFromDay?: DayUpdateManyWithoutExcludedChallengeModifiersNestedInput
-    IncludedInDay?: DayUpdateManyWithoutIncludedCustomChallengeModifiersNestedInput
     DayCompletedInPart1?: DayUpdateManyWithoutModifierWhenPart1CompletedNestedInput
+    ModifierOption?: ModifierOptionUpdateManyWithoutChallengeModifierNestedInput
+    UserExcluded?: UserUpdateManyWithoutDefaultExcludedChallengeModifiersNestedInput
+    ModifierPackExcluded?: DayUpdateManyWithoutExcludedChallengeModifiersNestedInput
+    ModifierPackIncluded?: DayUpdateManyWithoutEncludedCustomChallengeModifiersNestedInput
   }
 
   export type ChallengeModifierUncheckedUpdateWithoutUserIncludedInput = {
@@ -25299,14 +25559,12 @@ export namespace Prisma {
     standard?: BoolFieldUpdateOperationsInput | boolean
     createdById?: NullableStringFieldUpdateOperationsInput | string | null
     isPublic?: BoolFieldUpdateOperationsInput | boolean
-    ModifierOption?: ModifierOptionUncheckedUpdateManyWithoutChallengeModifierNestedInput
     Day?: DayUncheckedUpdateManyWithoutChallengeModifierNestedInput
-    ModifierPackExcluded?: ModifierPackUncheckedUpdateManyWithoutExcludedChallengeModifiersNestedInput
-    ModifierPackIncluded?: ModifierPackUncheckedUpdateManyWithoutEncludedCustomChallengeModifiersNestedInput
-    UserExcluded?: UserUncheckedUpdateManyWithoutDefaultExcludedChallengeModifiersNestedInput
-    ExcludedFromDay?: DayUncheckedUpdateManyWithoutExcludedChallengeModifiersNestedInput
-    IncludedInDay?: DayUncheckedUpdateManyWithoutIncludedCustomChallengeModifiersNestedInput
     DayCompletedInPart1?: DayUncheckedUpdateManyWithoutModifierWhenPart1CompletedNestedInput
+    ModifierOption?: ModifierOptionUncheckedUpdateManyWithoutChallengeModifierNestedInput
+    UserExcluded?: UserUncheckedUpdateManyWithoutDefaultExcludedChallengeModifiersNestedInput
+    ModifierPackExcluded?: DayUncheckedUpdateManyWithoutExcludedChallengeModifiersNestedInput
+    ModifierPackIncluded?: DayUncheckedUpdateManyWithoutEncludedCustomChallengeModifiersNestedInput
   }
 
   export type ChallengeModifierUncheckedUpdateManyWithoutUserIncludedInput = {
@@ -25328,15 +25586,13 @@ export namespace Prisma {
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
     isPublic?: BoolFieldUpdateOperationsInput | boolean
+    Day?: DayUpdateManyWithoutModifierOptionNestedInput
+    DayCompletedInPart1?: DayUpdateManyWithoutOptionWhenPart1CompletedNestedInput
     ChallengeModifier?: ChallengeModifierUpdateOneRequiredWithoutModifierOptionNestedInput
     CreatedBy?: UserUpdateOneWithoutModifierOptionNestedInput
-    Day?: DayUpdateManyWithoutModifierOptionNestedInput
-    ModifierPackExcluded?: ModifierPackUpdateManyWithoutExcludedModifierOptionsNestedInput
-    ModifierPackIncluded?: ModifierPackUpdateManyWithoutIncludedCustomModifierOptionsNestedInput
     UserExcluded?: UserUpdateManyWithoutDefaultExcludedModifierOptionsNestedInput
-    ExcludedFromDay?: DayUpdateManyWithoutExcludedModifierOptionsNestedInput
-    IncludedInDay?: DayUpdateManyWithoutIncludedCustomModifierOptionsNestedInput
-    DayCompletedInPart1?: DayUpdateManyWithoutOptionWhenPart1CompletedNestedInput
+    ExcludedModifierOptions?: ModifierPackUpdateManyWithoutExcludedFromDayNestedInput
+    IncludedCustomModifierOptions?: ModifierPackUpdateManyWithoutIncludedInDayNestedInput
   }
 
   export type ModifierOptionUncheckedUpdateWithoutUserIncludedInput = {
@@ -25350,12 +25606,10 @@ export namespace Prisma {
     createdById?: NullableStringFieldUpdateOperationsInput | string | null
     isPublic?: BoolFieldUpdateOperationsInput | boolean
     Day?: DayUncheckedUpdateManyWithoutModifierOptionNestedInput
-    ModifierPackExcluded?: ModifierPackUncheckedUpdateManyWithoutExcludedModifierOptionsNestedInput
-    ModifierPackIncluded?: ModifierPackUncheckedUpdateManyWithoutIncludedCustomModifierOptionsNestedInput
-    UserExcluded?: UserUncheckedUpdateManyWithoutDefaultExcludedModifierOptionsNestedInput
-    ExcludedFromDay?: DayUncheckedUpdateManyWithoutExcludedModifierOptionsNestedInput
-    IncludedInDay?: DayUncheckedUpdateManyWithoutIncludedCustomModifierOptionsNestedInput
     DayCompletedInPart1?: DayUncheckedUpdateManyWithoutOptionWhenPart1CompletedNestedInput
+    UserExcluded?: UserUncheckedUpdateManyWithoutDefaultExcludedModifierOptionsNestedInput
+    ExcludedModifierOptions?: ModifierPackUncheckedUpdateManyWithoutExcludedFromDayNestedInput
+    IncludedCustomModifierOptions?: ModifierPackUncheckedUpdateManyWithoutIncludedInDayNestedInput
   }
 
   export type ModifierOptionUncheckedUpdateManyWithoutUserIncludedInput = {
@@ -25368,71 +25622,6 @@ export namespace Prisma {
     standard?: BoolFieldUpdateOperationsInput | boolean
     createdById?: NullableStringFieldUpdateOperationsInput | string | null
     isPublic?: BoolFieldUpdateOperationsInput | boolean
-  }
-
-  export type ModifierPackUpdateWithoutCreatedByInput = {
-    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    isPublic?: BoolFieldUpdateOperationsInput | boolean
-    ExcludedChallengeModifiers?: ChallengeModifierUpdateManyWithoutModifierPackExcludedNestedInput
-    ExcludedModifierOptions?: ModifierOptionUpdateManyWithoutModifierPackExcludedNestedInput
-    EncludedCustomChallengeModifiers?: ChallengeModifierUpdateManyWithoutModifierPackIncludedNestedInput
-    IncludedCustomModifierOptions?: ModifierOptionUpdateManyWithoutModifierPackIncludedNestedInput
-  }
-
-  export type ModifierPackUncheckedUpdateWithoutCreatedByInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    isPublic?: BoolFieldUpdateOperationsInput | boolean
-    ExcludedChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutModifierPackExcludedNestedInput
-    ExcludedModifierOptions?: ModifierOptionUncheckedUpdateManyWithoutModifierPackExcludedNestedInput
-    EncludedCustomChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutModifierPackIncludedNestedInput
-    IncludedCustomModifierOptions?: ModifierOptionUncheckedUpdateManyWithoutModifierPackIncludedNestedInput
-  }
-
-  export type ModifierPackUncheckedUpdateManyWithoutCreatedByInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    isPublic?: BoolFieldUpdateOperationsInput | boolean
-  }
-
-  export type DownvoteUpdateWithoutCreatedByInput = {
-    note?: StringFieldUpdateOperationsInput | string
-    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    Game?: GameUpdateOneRequiredWithoutDownvoteNestedInput
-  }
-
-  export type DownvoteUncheckedUpdateWithoutCreatedByInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    note?: StringFieldUpdateOperationsInput | string
-    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    gameId?: IntFieldUpdateOperationsInput | number
-  }
-
-  export type DownvoteUncheckedUpdateManyWithoutCreatedByInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    note?: StringFieldUpdateOperationsInput | string
-    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    gameId?: IntFieldUpdateOperationsInput | number
-  }
-
-  export type UpvoteUpdateWithoutCreatedByInput = {
-    note?: NullableStringFieldUpdateOperationsInput | string | null
-    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    Game?: GameUpdateOneRequiredWithoutUpvoteNestedInput
-  }
-
-  export type UpvoteUncheckedUpdateWithoutCreatedByInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    note?: NullableStringFieldUpdateOperationsInput | string | null
-    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    gameId?: IntFieldUpdateOperationsInput | number
-  }
-
-  export type UpvoteUncheckedUpdateManyWithoutCreatedByInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    note?: NullableStringFieldUpdateOperationsInput | string | null
-    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    gameId?: IntFieldUpdateOperationsInput | number
   }
 
   export type GameCreateManyPublicProfileInput = {
@@ -25474,11 +25663,11 @@ export namespace Prisma {
     isPublic?: BoolFieldUpdateOperationsInput | boolean
     score?: IntFieldUpdateOperationsInput | number
     dateCompleted?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    User?: UserUpdateOneRequiredWithoutGameNestedInput
-    Rank?: RankUpdateOneWithoutGameNestedInput
     Day?: DayUpdateManyWithoutGameNestedInput
-    Upvote?: UpvoteUpdateManyWithoutGameNestedInput
     Downvote?: DownvoteUpdateManyWithoutGameNestedInput
+    Rank?: RankUpdateOneWithoutGameNestedInput
+    User?: UserUpdateOneRequiredWithoutGameNestedInput
+    Upvote?: UpvoteUpdateManyWithoutGameNestedInput
   }
 
   export type GameUncheckedUpdateWithoutPublicProfileInput = {
@@ -25502,8 +25691,8 @@ export namespace Prisma {
     rankId?: NullableIntFieldUpdateOperationsInput | number | null
     dateCompleted?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     Day?: DayUncheckedUpdateManyWithoutGameNestedInput
-    Upvote?: UpvoteUncheckedUpdateManyWithoutGameNestedInput
     Downvote?: DownvoteUncheckedUpdateManyWithoutGameNestedInput
+    Upvote?: UpvoteUncheckedUpdateManyWithoutGameNestedInput
   }
 
   export type GameUncheckedUpdateManyWithoutPublicProfileInput = {
@@ -25547,16 +25736,16 @@ export namespace Prisma {
     netScore?: number
   }
 
-  export type UpvoteCreateManyGameInput = {
+  export type DownvoteCreateManyGameInput = {
     id?: number
-    note?: string | null
+    note: string
     dateCreated?: Date | string
     createdById: string
   }
 
-  export type DownvoteCreateManyGameInput = {
+  export type UpvoteCreateManyGameInput = {
     id?: number
-    note: string
+    note?: string | null
     dateCreated?: Date | string
     createdById: string
   }
@@ -25573,14 +25762,12 @@ export namespace Prisma {
     modifierOptionRerollsUsed?: IntFieldUpdateOperationsInput | number
     rerollTokensSpentDuringPart2?: IntFieldUpdateOperationsInput | number
     netScore?: IntFieldUpdateOperationsInput | number
-    ExcludedChallengeModifiers?: ChallengeModifierUpdateManyWithoutExcludedFromDayNestedInput
-    ExcludedModifierOptions?: ModifierOptionUpdateManyWithoutExcludedFromDayNestedInput
-    IncludedCustomChallengeModifiers?: ChallengeModifierUpdateManyWithoutIncludedInDayNestedInput
-    IncludedCustomModifierOptions?: ModifierOptionUpdateManyWithoutIncludedInDayNestedInput
-    ModifierWhenPart1Completed?: ChallengeModifierUpdateOneWithoutDayCompletedInPart1NestedInput
-    OptionWhenPart1Completed?: ModifierOptionUpdateOneWithoutDayCompletedInPart1NestedInput
     ChallengeModifier?: ChallengeModifierUpdateOneWithoutDayNestedInput
     ModifierOption?: ModifierOptionUpdateOneWithoutDayNestedInput
+    ModifierWhenPart1Completed?: ChallengeModifierUpdateOneWithoutDayCompletedInPart1NestedInput
+    OptionWhenPart1Completed?: ModifierOptionUpdateOneWithoutDayCompletedInPart1NestedInput
+    ExcludedChallengeModifiers?: ChallengeModifierUpdateManyWithoutModifierPackExcludedNestedInput
+    EncludedCustomChallengeModifiers?: ChallengeModifierUpdateManyWithoutModifierPackIncludedNestedInput
   }
 
   export type DayUncheckedUpdateWithoutGameInput = {
@@ -25600,10 +25787,8 @@ export namespace Prisma {
     modifierOptionRerollsUsed?: IntFieldUpdateOperationsInput | number
     rerollTokensSpentDuringPart2?: IntFieldUpdateOperationsInput | number
     netScore?: IntFieldUpdateOperationsInput | number
-    ExcludedChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutExcludedFromDayNestedInput
-    ExcludedModifierOptions?: ModifierOptionUncheckedUpdateManyWithoutExcludedFromDayNestedInput
-    IncludedCustomChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutIncludedInDayNestedInput
-    IncludedCustomModifierOptions?: ModifierOptionUncheckedUpdateManyWithoutIncludedInDayNestedInput
+    ExcludedChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutModifierPackExcludedNestedInput
+    EncludedCustomChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutModifierPackIncludedNestedInput
   }
 
   export type DayUncheckedUpdateManyWithoutGameInput = {
@@ -25625,26 +25810,6 @@ export namespace Prisma {
     netScore?: IntFieldUpdateOperationsInput | number
   }
 
-  export type UpvoteUpdateWithoutGameInput = {
-    note?: NullableStringFieldUpdateOperationsInput | string | null
-    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    CreatedBy?: UserUpdateOneRequiredWithoutUpvoteNestedInput
-  }
-
-  export type UpvoteUncheckedUpdateWithoutGameInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    note?: NullableStringFieldUpdateOperationsInput | string | null
-    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdById?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type UpvoteUncheckedUpdateManyWithoutGameInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    note?: NullableStringFieldUpdateOperationsInput | string | null
-    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdById?: StringFieldUpdateOperationsInput | string
-  }
-
   export type DownvoteUpdateWithoutGameInput = {
     note?: StringFieldUpdateOperationsInput | string
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -25661,6 +25826,26 @@ export namespace Prisma {
   export type DownvoteUncheckedUpdateManyWithoutGameInput = {
     id?: IntFieldUpdateOperationsInput | number
     note?: StringFieldUpdateOperationsInput | string
+    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdById?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type UpvoteUpdateWithoutGameInput = {
+    note?: NullableStringFieldUpdateOperationsInput | string | null
+    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
+    CreatedBy?: UserUpdateOneRequiredWithoutUpvoteNestedInput
+  }
+
+  export type UpvoteUncheckedUpdateWithoutGameInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    note?: NullableStringFieldUpdateOperationsInput | string | null
+    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdById?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type UpvoteUncheckedUpdateManyWithoutGameInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    note?: NullableStringFieldUpdateOperationsInput | string | null
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     createdById?: StringFieldUpdateOperationsInput | string
   }
@@ -25704,11 +25889,11 @@ export namespace Prisma {
     isPublic?: BoolFieldUpdateOperationsInput | boolean
     score?: IntFieldUpdateOperationsInput | number
     dateCompleted?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    User?: UserUpdateOneRequiredWithoutGameNestedInput
     Day?: DayUpdateManyWithoutGameNestedInput
-    PublicProfile?: PublicProfileUpdateOneWithoutGameNestedInput
-    Upvote?: UpvoteUpdateManyWithoutGameNestedInput
     Downvote?: DownvoteUpdateManyWithoutGameNestedInput
+    PublicProfile?: PublicProfileUpdateOneWithoutGameNestedInput
+    User?: UserUpdateOneRequiredWithoutGameNestedInput
+    Upvote?: UpvoteUpdateManyWithoutGameNestedInput
   }
 
   export type GameUncheckedUpdateWithoutRankInput = {
@@ -25732,8 +25917,8 @@ export namespace Prisma {
     score?: IntFieldUpdateOperationsInput | number
     dateCompleted?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     Day?: DayUncheckedUpdateManyWithoutGameNestedInput
-    Upvote?: UpvoteUncheckedUpdateManyWithoutGameNestedInput
     Downvote?: DownvoteUncheckedUpdateManyWithoutGameNestedInput
+    Upvote?: UpvoteUncheckedUpdateManyWithoutGameNestedInput
   }
 
   export type GameUncheckedUpdateManyWithoutRankInput = {
@@ -25758,7 +25943,7 @@ export namespace Prisma {
     dateCompleted?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
-  export type ChallengeModifierUpdateWithoutExcludedFromDayInput = {
+  export type ChallengeModifierUpdateWithoutModifierPackExcludedInput = {
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     name?: StringFieldUpdateOperationsInput | string
     text?: StringFieldUpdateOperationsInput | string
@@ -25767,17 +25952,15 @@ export namespace Prisma {
     standard?: BoolFieldUpdateOperationsInput | boolean
     isPublic?: BoolFieldUpdateOperationsInput | boolean
     CreatedBy?: UserUpdateOneWithoutChallengeModifierNestedInput
-    ModifierOption?: ModifierOptionUpdateManyWithoutChallengeModifierNestedInput
     Day?: DayUpdateManyWithoutChallengeModifierNestedInput
-    ModifierPackExcluded?: ModifierPackUpdateManyWithoutExcludedChallengeModifiersNestedInput
-    ModifierPackIncluded?: ModifierPackUpdateManyWithoutEncludedCustomChallengeModifiersNestedInput
+    DayCompletedInPart1?: DayUpdateManyWithoutModifierWhenPart1CompletedNestedInput
+    ModifierOption?: ModifierOptionUpdateManyWithoutChallengeModifierNestedInput
     UserExcluded?: UserUpdateManyWithoutDefaultExcludedChallengeModifiersNestedInput
     UserIncluded?: UserUpdateManyWithoutDefaultIncludedCustomChallengeModifiersNestedInput
-    IncludedInDay?: DayUpdateManyWithoutIncludedCustomChallengeModifiersNestedInput
-    DayCompletedInPart1?: DayUpdateManyWithoutModifierWhenPart1CompletedNestedInput
+    ModifierPackIncluded?: DayUpdateManyWithoutEncludedCustomChallengeModifiersNestedInput
   }
 
-  export type ChallengeModifierUncheckedUpdateWithoutExcludedFromDayInput = {
+  export type ChallengeModifierUncheckedUpdateWithoutModifierPackExcludedInput = {
     id?: IntFieldUpdateOperationsInput | number
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     name?: StringFieldUpdateOperationsInput | string
@@ -25787,17 +25970,15 @@ export namespace Prisma {
     standard?: BoolFieldUpdateOperationsInput | boolean
     createdById?: NullableStringFieldUpdateOperationsInput | string | null
     isPublic?: BoolFieldUpdateOperationsInput | boolean
-    ModifierOption?: ModifierOptionUncheckedUpdateManyWithoutChallengeModifierNestedInput
     Day?: DayUncheckedUpdateManyWithoutChallengeModifierNestedInput
-    ModifierPackExcluded?: ModifierPackUncheckedUpdateManyWithoutExcludedChallengeModifiersNestedInput
-    ModifierPackIncluded?: ModifierPackUncheckedUpdateManyWithoutEncludedCustomChallengeModifiersNestedInput
+    DayCompletedInPart1?: DayUncheckedUpdateManyWithoutModifierWhenPart1CompletedNestedInput
+    ModifierOption?: ModifierOptionUncheckedUpdateManyWithoutChallengeModifierNestedInput
     UserExcluded?: UserUncheckedUpdateManyWithoutDefaultExcludedChallengeModifiersNestedInput
     UserIncluded?: UserUncheckedUpdateManyWithoutDefaultIncludedCustomChallengeModifiersNestedInput
-    IncludedInDay?: DayUncheckedUpdateManyWithoutIncludedCustomChallengeModifiersNestedInput
-    DayCompletedInPart1?: DayUncheckedUpdateManyWithoutModifierWhenPart1CompletedNestedInput
+    ModifierPackIncluded?: DayUncheckedUpdateManyWithoutEncludedCustomChallengeModifiersNestedInput
   }
 
-  export type ChallengeModifierUncheckedUpdateManyWithoutExcludedFromDayInput = {
+  export type ChallengeModifierUncheckedUpdateManyWithoutModifierPackExcludedInput = {
     id?: IntFieldUpdateOperationsInput | number
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     name?: StringFieldUpdateOperationsInput | string
@@ -25809,56 +25990,7 @@ export namespace Prisma {
     isPublic?: BoolFieldUpdateOperationsInput | boolean
   }
 
-  export type ModifierOptionUpdateWithoutExcludedFromDayInput = {
-    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    name?: StringFieldUpdateOperationsInput | string
-    text?: StringFieldUpdateOperationsInput | string
-    explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    standard?: BoolFieldUpdateOperationsInput | boolean
-    isPublic?: BoolFieldUpdateOperationsInput | boolean
-    ChallengeModifier?: ChallengeModifierUpdateOneRequiredWithoutModifierOptionNestedInput
-    CreatedBy?: UserUpdateOneWithoutModifierOptionNestedInput
-    Day?: DayUpdateManyWithoutModifierOptionNestedInput
-    ModifierPackExcluded?: ModifierPackUpdateManyWithoutExcludedModifierOptionsNestedInput
-    ModifierPackIncluded?: ModifierPackUpdateManyWithoutIncludedCustomModifierOptionsNestedInput
-    UserExcluded?: UserUpdateManyWithoutDefaultExcludedModifierOptionsNestedInput
-    UserIncluded?: UserUpdateManyWithoutDefaultIncludedCustomModifierOptionsNestedInput
-    IncludedInDay?: DayUpdateManyWithoutIncludedCustomModifierOptionsNestedInput
-    DayCompletedInPart1?: DayUpdateManyWithoutOptionWhenPart1CompletedNestedInput
-  }
-
-  export type ModifierOptionUncheckedUpdateWithoutExcludedFromDayInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    challengeModifierId?: IntFieldUpdateOperationsInput | number
-    name?: StringFieldUpdateOperationsInput | string
-    text?: StringFieldUpdateOperationsInput | string
-    explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    standard?: BoolFieldUpdateOperationsInput | boolean
-    createdById?: NullableStringFieldUpdateOperationsInput | string | null
-    isPublic?: BoolFieldUpdateOperationsInput | boolean
-    Day?: DayUncheckedUpdateManyWithoutModifierOptionNestedInput
-    ModifierPackExcluded?: ModifierPackUncheckedUpdateManyWithoutExcludedModifierOptionsNestedInput
-    ModifierPackIncluded?: ModifierPackUncheckedUpdateManyWithoutIncludedCustomModifierOptionsNestedInput
-    UserExcluded?: UserUncheckedUpdateManyWithoutDefaultExcludedModifierOptionsNestedInput
-    UserIncluded?: UserUncheckedUpdateManyWithoutDefaultIncludedCustomModifierOptionsNestedInput
-    IncludedInDay?: DayUncheckedUpdateManyWithoutIncludedCustomModifierOptionsNestedInput
-    DayCompletedInPart1?: DayUncheckedUpdateManyWithoutOptionWhenPart1CompletedNestedInput
-  }
-
-  export type ModifierOptionUncheckedUpdateManyWithoutExcludedFromDayInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    challengeModifierId?: IntFieldUpdateOperationsInput | number
-    name?: StringFieldUpdateOperationsInput | string
-    text?: StringFieldUpdateOperationsInput | string
-    explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    standard?: BoolFieldUpdateOperationsInput | boolean
-    createdById?: NullableStringFieldUpdateOperationsInput | string | null
-    isPublic?: BoolFieldUpdateOperationsInput | boolean
-  }
-
-  export type ChallengeModifierUpdateWithoutIncludedInDayInput = {
+  export type ChallengeModifierUpdateWithoutModifierPackIncludedInput = {
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     name?: StringFieldUpdateOperationsInput | string
     text?: StringFieldUpdateOperationsInput | string
@@ -25867,17 +25999,15 @@ export namespace Prisma {
     standard?: BoolFieldUpdateOperationsInput | boolean
     isPublic?: BoolFieldUpdateOperationsInput | boolean
     CreatedBy?: UserUpdateOneWithoutChallengeModifierNestedInput
-    ModifierOption?: ModifierOptionUpdateManyWithoutChallengeModifierNestedInput
     Day?: DayUpdateManyWithoutChallengeModifierNestedInput
-    ModifierPackExcluded?: ModifierPackUpdateManyWithoutExcludedChallengeModifiersNestedInput
-    ModifierPackIncluded?: ModifierPackUpdateManyWithoutEncludedCustomChallengeModifiersNestedInput
+    DayCompletedInPart1?: DayUpdateManyWithoutModifierWhenPart1CompletedNestedInput
+    ModifierOption?: ModifierOptionUpdateManyWithoutChallengeModifierNestedInput
     UserExcluded?: UserUpdateManyWithoutDefaultExcludedChallengeModifiersNestedInput
     UserIncluded?: UserUpdateManyWithoutDefaultIncludedCustomChallengeModifiersNestedInput
-    ExcludedFromDay?: DayUpdateManyWithoutExcludedChallengeModifiersNestedInput
-    DayCompletedInPart1?: DayUpdateManyWithoutModifierWhenPart1CompletedNestedInput
+    ModifierPackExcluded?: DayUpdateManyWithoutExcludedChallengeModifiersNestedInput
   }
 
-  export type ChallengeModifierUncheckedUpdateWithoutIncludedInDayInput = {
+  export type ChallengeModifierUncheckedUpdateWithoutModifierPackIncludedInput = {
     id?: IntFieldUpdateOperationsInput | number
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     name?: StringFieldUpdateOperationsInput | string
@@ -25887,17 +26017,15 @@ export namespace Prisma {
     standard?: BoolFieldUpdateOperationsInput | boolean
     createdById?: NullableStringFieldUpdateOperationsInput | string | null
     isPublic?: BoolFieldUpdateOperationsInput | boolean
-    ModifierOption?: ModifierOptionUncheckedUpdateManyWithoutChallengeModifierNestedInput
     Day?: DayUncheckedUpdateManyWithoutChallengeModifierNestedInput
-    ModifierPackExcluded?: ModifierPackUncheckedUpdateManyWithoutExcludedChallengeModifiersNestedInput
-    ModifierPackIncluded?: ModifierPackUncheckedUpdateManyWithoutEncludedCustomChallengeModifiersNestedInput
+    DayCompletedInPart1?: DayUncheckedUpdateManyWithoutModifierWhenPart1CompletedNestedInput
+    ModifierOption?: ModifierOptionUncheckedUpdateManyWithoutChallengeModifierNestedInput
     UserExcluded?: UserUncheckedUpdateManyWithoutDefaultExcludedChallengeModifiersNestedInput
     UserIncluded?: UserUncheckedUpdateManyWithoutDefaultIncludedCustomChallengeModifiersNestedInput
-    ExcludedFromDay?: DayUncheckedUpdateManyWithoutExcludedChallengeModifiersNestedInput
-    DayCompletedInPart1?: DayUncheckedUpdateManyWithoutModifierWhenPart1CompletedNestedInput
+    ModifierPackExcluded?: DayUncheckedUpdateManyWithoutExcludedChallengeModifiersNestedInput
   }
 
-  export type ChallengeModifierUncheckedUpdateManyWithoutIncludedInDayInput = {
+  export type ChallengeModifierUncheckedUpdateManyWithoutModifierPackIncludedInput = {
     id?: IntFieldUpdateOperationsInput | number
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     name?: StringFieldUpdateOperationsInput | string
@@ -25907,66 +26035,6 @@ export namespace Prisma {
     standard?: BoolFieldUpdateOperationsInput | boolean
     createdById?: NullableStringFieldUpdateOperationsInput | string | null
     isPublic?: BoolFieldUpdateOperationsInput | boolean
-  }
-
-  export type ModifierOptionUpdateWithoutIncludedInDayInput = {
-    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    name?: StringFieldUpdateOperationsInput | string
-    text?: StringFieldUpdateOperationsInput | string
-    explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    standard?: BoolFieldUpdateOperationsInput | boolean
-    isPublic?: BoolFieldUpdateOperationsInput | boolean
-    ChallengeModifier?: ChallengeModifierUpdateOneRequiredWithoutModifierOptionNestedInput
-    CreatedBy?: UserUpdateOneWithoutModifierOptionNestedInput
-    Day?: DayUpdateManyWithoutModifierOptionNestedInput
-    ModifierPackExcluded?: ModifierPackUpdateManyWithoutExcludedModifierOptionsNestedInput
-    ModifierPackIncluded?: ModifierPackUpdateManyWithoutIncludedCustomModifierOptionsNestedInput
-    UserExcluded?: UserUpdateManyWithoutDefaultExcludedModifierOptionsNestedInput
-    UserIncluded?: UserUpdateManyWithoutDefaultIncludedCustomModifierOptionsNestedInput
-    ExcludedFromDay?: DayUpdateManyWithoutExcludedModifierOptionsNestedInput
-    DayCompletedInPart1?: DayUpdateManyWithoutOptionWhenPart1CompletedNestedInput
-  }
-
-  export type ModifierOptionUncheckedUpdateWithoutIncludedInDayInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    challengeModifierId?: IntFieldUpdateOperationsInput | number
-    name?: StringFieldUpdateOperationsInput | string
-    text?: StringFieldUpdateOperationsInput | string
-    explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    standard?: BoolFieldUpdateOperationsInput | boolean
-    createdById?: NullableStringFieldUpdateOperationsInput | string | null
-    isPublic?: BoolFieldUpdateOperationsInput | boolean
-    Day?: DayUncheckedUpdateManyWithoutModifierOptionNestedInput
-    ModifierPackExcluded?: ModifierPackUncheckedUpdateManyWithoutExcludedModifierOptionsNestedInput
-    ModifierPackIncluded?: ModifierPackUncheckedUpdateManyWithoutIncludedCustomModifierOptionsNestedInput
-    UserExcluded?: UserUncheckedUpdateManyWithoutDefaultExcludedModifierOptionsNestedInput
-    UserIncluded?: UserUncheckedUpdateManyWithoutDefaultIncludedCustomModifierOptionsNestedInput
-    ExcludedFromDay?: DayUncheckedUpdateManyWithoutExcludedModifierOptionsNestedInput
-    DayCompletedInPart1?: DayUncheckedUpdateManyWithoutOptionWhenPart1CompletedNestedInput
-  }
-
-  export type ModifierOptionUncheckedUpdateManyWithoutIncludedInDayInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    challengeModifierId?: IntFieldUpdateOperationsInput | number
-    name?: StringFieldUpdateOperationsInput | string
-    text?: StringFieldUpdateOperationsInput | string
-    explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    standard?: BoolFieldUpdateOperationsInput | boolean
-    createdById?: NullableStringFieldUpdateOperationsInput | string | null
-    isPublic?: BoolFieldUpdateOperationsInput | boolean
-  }
-
-  export type ModifierOptionCreateManyChallengeModifierInput = {
-    id?: number
-    dateCreated?: Date | string
-    name: string
-    text: string
-    explanatoryUrl?: string | null
-    standard?: boolean
-    createdById?: string | null
-    isPublic?: boolean
   }
 
   export type DayCreateManyChallengeModifierInput = {
@@ -26007,52 +26075,15 @@ export namespace Prisma {
     netScore?: number
   }
 
-  export type ModifierOptionUpdateWithoutChallengeModifierInput = {
-    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    name?: StringFieldUpdateOperationsInput | string
-    text?: StringFieldUpdateOperationsInput | string
-    explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    standard?: BoolFieldUpdateOperationsInput | boolean
-    isPublic?: BoolFieldUpdateOperationsInput | boolean
-    CreatedBy?: UserUpdateOneWithoutModifierOptionNestedInput
-    Day?: DayUpdateManyWithoutModifierOptionNestedInput
-    ModifierPackExcluded?: ModifierPackUpdateManyWithoutExcludedModifierOptionsNestedInput
-    ModifierPackIncluded?: ModifierPackUpdateManyWithoutIncludedCustomModifierOptionsNestedInput
-    UserExcluded?: UserUpdateManyWithoutDefaultExcludedModifierOptionsNestedInput
-    UserIncluded?: UserUpdateManyWithoutDefaultIncludedCustomModifierOptionsNestedInput
-    ExcludedFromDay?: DayUpdateManyWithoutExcludedModifierOptionsNestedInput
-    IncludedInDay?: DayUpdateManyWithoutIncludedCustomModifierOptionsNestedInput
-    DayCompletedInPart1?: DayUpdateManyWithoutOptionWhenPart1CompletedNestedInput
-  }
-
-  export type ModifierOptionUncheckedUpdateWithoutChallengeModifierInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    name?: StringFieldUpdateOperationsInput | string
-    text?: StringFieldUpdateOperationsInput | string
-    explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    standard?: BoolFieldUpdateOperationsInput | boolean
-    createdById?: NullableStringFieldUpdateOperationsInput | string | null
-    isPublic?: BoolFieldUpdateOperationsInput | boolean
-    Day?: DayUncheckedUpdateManyWithoutModifierOptionNestedInput
-    ModifierPackExcluded?: ModifierPackUncheckedUpdateManyWithoutExcludedModifierOptionsNestedInput
-    ModifierPackIncluded?: ModifierPackUncheckedUpdateManyWithoutIncludedCustomModifierOptionsNestedInput
-    UserExcluded?: UserUncheckedUpdateManyWithoutDefaultExcludedModifierOptionsNestedInput
-    UserIncluded?: UserUncheckedUpdateManyWithoutDefaultIncludedCustomModifierOptionsNestedInput
-    ExcludedFromDay?: DayUncheckedUpdateManyWithoutExcludedModifierOptionsNestedInput
-    IncludedInDay?: DayUncheckedUpdateManyWithoutIncludedCustomModifierOptionsNestedInput
-    DayCompletedInPart1?: DayUncheckedUpdateManyWithoutOptionWhenPart1CompletedNestedInput
-  }
-
-  export type ModifierOptionUncheckedUpdateManyWithoutChallengeModifierInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    name?: StringFieldUpdateOperationsInput | string
-    text?: StringFieldUpdateOperationsInput | string
-    explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    standard?: BoolFieldUpdateOperationsInput | boolean
-    createdById?: NullableStringFieldUpdateOperationsInput | string | null
-    isPublic?: BoolFieldUpdateOperationsInput | boolean
+  export type ModifierOptionCreateManyChallengeModifierInput = {
+    id?: number
+    dateCreated?: Date | string
+    name: string
+    text: string
+    explanatoryUrl?: string | null
+    standard?: boolean
+    createdById?: string | null
+    isPublic?: boolean
   }
 
   export type DayUpdateWithoutChallengeModifierInput = {
@@ -26067,14 +26098,12 @@ export namespace Prisma {
     modifierOptionRerollsUsed?: IntFieldUpdateOperationsInput | number
     rerollTokensSpentDuringPart2?: IntFieldUpdateOperationsInput | number
     netScore?: IntFieldUpdateOperationsInput | number
-    ExcludedChallengeModifiers?: ChallengeModifierUpdateManyWithoutExcludedFromDayNestedInput
-    ExcludedModifierOptions?: ModifierOptionUpdateManyWithoutExcludedFromDayNestedInput
-    IncludedCustomChallengeModifiers?: ChallengeModifierUpdateManyWithoutIncludedInDayNestedInput
-    IncludedCustomModifierOptions?: ModifierOptionUpdateManyWithoutIncludedInDayNestedInput
     Game?: GameUpdateOneRequiredWithoutDayNestedInput
+    ModifierOption?: ModifierOptionUpdateOneWithoutDayNestedInput
     ModifierWhenPart1Completed?: ChallengeModifierUpdateOneWithoutDayCompletedInPart1NestedInput
     OptionWhenPart1Completed?: ModifierOptionUpdateOneWithoutDayCompletedInPart1NestedInput
-    ModifierOption?: ModifierOptionUpdateOneWithoutDayNestedInput
+    ExcludedChallengeModifiers?: ChallengeModifierUpdateManyWithoutModifierPackExcludedNestedInput
+    EncludedCustomChallengeModifiers?: ChallengeModifierUpdateManyWithoutModifierPackIncludedNestedInput
   }
 
   export type DayUncheckedUpdateWithoutChallengeModifierInput = {
@@ -26094,10 +26123,8 @@ export namespace Prisma {
     modifierOptionRerollsUsed?: IntFieldUpdateOperationsInput | number
     rerollTokensSpentDuringPart2?: IntFieldUpdateOperationsInput | number
     netScore?: IntFieldUpdateOperationsInput | number
-    ExcludedChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutExcludedFromDayNestedInput
-    ExcludedModifierOptions?: ModifierOptionUncheckedUpdateManyWithoutExcludedFromDayNestedInput
-    IncludedCustomChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutIncludedInDayNestedInput
-    IncludedCustomModifierOptions?: ModifierOptionUncheckedUpdateManyWithoutIncludedInDayNestedInput
+    ExcludedChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutModifierPackExcludedNestedInput
+    EncludedCustomChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutModifierPackIncludedNestedInput
   }
 
   export type DayUncheckedUpdateManyWithoutChallengeModifierInput = {
@@ -26107,276 +26134,6 @@ export namespace Prisma {
     userId?: StringFieldUpdateOperationsInput | string
     gameNumber?: IntFieldUpdateOperationsInput | number
     number?: IntFieldUpdateOperationsInput | number
-    modifierOptionId?: NullableIntFieldUpdateOperationsInput | number | null
-    dateFirstRolled?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    part1Completed?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    modifierWhenPart1CompletedId?: NullableIntFieldUpdateOperationsInput | number | null
-    optionWhenPart1CompletedId?: NullableIntFieldUpdateOperationsInput | number | null
-    part2Completed?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    challengeModifierRerollsUsed?: IntFieldUpdateOperationsInput | number
-    modifierOptionRerollsUsed?: IntFieldUpdateOperationsInput | number
-    rerollTokensSpentDuringPart2?: IntFieldUpdateOperationsInput | number
-    netScore?: IntFieldUpdateOperationsInput | number
-  }
-
-  export type ModifierPackUpdateWithoutExcludedChallengeModifiersInput = {
-    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    isPublic?: BoolFieldUpdateOperationsInput | boolean
-    ExcludedModifierOptions?: ModifierOptionUpdateManyWithoutModifierPackExcludedNestedInput
-    EncludedCustomChallengeModifiers?: ChallengeModifierUpdateManyWithoutModifierPackIncludedNestedInput
-    IncludedCustomModifierOptions?: ModifierOptionUpdateManyWithoutModifierPackIncludedNestedInput
-    CreatedBy?: UserUpdateOneWithoutModifierPackNestedInput
-  }
-
-  export type ModifierPackUncheckedUpdateWithoutExcludedChallengeModifiersInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdById?: NullableStringFieldUpdateOperationsInput | string | null
-    isPublic?: BoolFieldUpdateOperationsInput | boolean
-    ExcludedModifierOptions?: ModifierOptionUncheckedUpdateManyWithoutModifierPackExcludedNestedInput
-    EncludedCustomChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutModifierPackIncludedNestedInput
-    IncludedCustomModifierOptions?: ModifierOptionUncheckedUpdateManyWithoutModifierPackIncludedNestedInput
-  }
-
-  export type ModifierPackUncheckedUpdateManyWithoutExcludedChallengeModifiersInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdById?: NullableStringFieldUpdateOperationsInput | string | null
-    isPublic?: BoolFieldUpdateOperationsInput | boolean
-  }
-
-  export type ModifierPackUpdateWithoutEncludedCustomChallengeModifiersInput = {
-    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    isPublic?: BoolFieldUpdateOperationsInput | boolean
-    ExcludedChallengeModifiers?: ChallengeModifierUpdateManyWithoutModifierPackExcludedNestedInput
-    ExcludedModifierOptions?: ModifierOptionUpdateManyWithoutModifierPackExcludedNestedInput
-    IncludedCustomModifierOptions?: ModifierOptionUpdateManyWithoutModifierPackIncludedNestedInput
-    CreatedBy?: UserUpdateOneWithoutModifierPackNestedInput
-  }
-
-  export type ModifierPackUncheckedUpdateWithoutEncludedCustomChallengeModifiersInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdById?: NullableStringFieldUpdateOperationsInput | string | null
-    isPublic?: BoolFieldUpdateOperationsInput | boolean
-    ExcludedChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutModifierPackExcludedNestedInput
-    ExcludedModifierOptions?: ModifierOptionUncheckedUpdateManyWithoutModifierPackExcludedNestedInput
-    IncludedCustomModifierOptions?: ModifierOptionUncheckedUpdateManyWithoutModifierPackIncludedNestedInput
-  }
-
-  export type ModifierPackUncheckedUpdateManyWithoutEncludedCustomChallengeModifiersInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdById?: NullableStringFieldUpdateOperationsInput | string | null
-    isPublic?: BoolFieldUpdateOperationsInput | boolean
-  }
-
-  export type UserUpdateWithoutDefaultExcludedChallengeModifiersInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    serializedId?: NullableStringFieldUpdateOperationsInput | string | null
-    username?: NullableStringFieldUpdateOperationsInput | string | null
-    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    numberOfGames?: IntFieldUpdateOperationsInput | number
-    Game?: GameUpdateManyWithoutUserNestedInput
-    PublicProfile?: PublicProfileUpdateManyWithoutUserNestedInput
-    ChallengeModifier?: ChallengeModifierUpdateManyWithoutCreatedByNestedInput
-    ModifierOption?: ModifierOptionUpdateManyWithoutCreatedByNestedInput
-    DefaultExcludedModifierOptions?: ModifierOptionUpdateManyWithoutUserExcludedNestedInput
-    DefaultIncludedCustomChallengeModifiers?: ChallengeModifierUpdateManyWithoutUserIncludedNestedInput
-    DefaultIncludedCustomModifierOptions?: ModifierOptionUpdateManyWithoutUserIncludedNestedInput
-    ModifierPack?: ModifierPackUpdateManyWithoutCreatedByNestedInput
-    Downvote?: DownvoteUpdateManyWithoutCreatedByNestedInput
-    Upvote?: UpvoteUpdateManyWithoutCreatedByNestedInput
-  }
-
-  export type UserUncheckedUpdateWithoutDefaultExcludedChallengeModifiersInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    serializedId?: NullableStringFieldUpdateOperationsInput | string | null
-    username?: NullableStringFieldUpdateOperationsInput | string | null
-    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    numberOfGames?: IntFieldUpdateOperationsInput | number
-    Game?: GameUncheckedUpdateManyWithoutUserNestedInput
-    PublicProfile?: PublicProfileUncheckedUpdateManyWithoutUserNestedInput
-    ChallengeModifier?: ChallengeModifierUncheckedUpdateManyWithoutCreatedByNestedInput
-    ModifierOption?: ModifierOptionUncheckedUpdateManyWithoutCreatedByNestedInput
-    DefaultExcludedModifierOptions?: ModifierOptionUncheckedUpdateManyWithoutUserExcludedNestedInput
-    DefaultIncludedCustomChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutUserIncludedNestedInput
-    DefaultIncludedCustomModifierOptions?: ModifierOptionUncheckedUpdateManyWithoutUserIncludedNestedInput
-    ModifierPack?: ModifierPackUncheckedUpdateManyWithoutCreatedByNestedInput
-    Downvote?: DownvoteUncheckedUpdateManyWithoutCreatedByNestedInput
-    Upvote?: UpvoteUncheckedUpdateManyWithoutCreatedByNestedInput
-  }
-
-  export type UserUncheckedUpdateManyWithoutDefaultExcludedChallengeModifiersInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    serializedId?: NullableStringFieldUpdateOperationsInput | string | null
-    username?: NullableStringFieldUpdateOperationsInput | string | null
-    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    numberOfGames?: IntFieldUpdateOperationsInput | number
-  }
-
-  export type UserUpdateWithoutDefaultIncludedCustomChallengeModifiersInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    serializedId?: NullableStringFieldUpdateOperationsInput | string | null
-    username?: NullableStringFieldUpdateOperationsInput | string | null
-    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    numberOfGames?: IntFieldUpdateOperationsInput | number
-    Game?: GameUpdateManyWithoutUserNestedInput
-    PublicProfile?: PublicProfileUpdateManyWithoutUserNestedInput
-    ChallengeModifier?: ChallengeModifierUpdateManyWithoutCreatedByNestedInput
-    ModifierOption?: ModifierOptionUpdateManyWithoutCreatedByNestedInput
-    DefaultExcludedChallengeModifiers?: ChallengeModifierUpdateManyWithoutUserExcludedNestedInput
-    DefaultExcludedModifierOptions?: ModifierOptionUpdateManyWithoutUserExcludedNestedInput
-    DefaultIncludedCustomModifierOptions?: ModifierOptionUpdateManyWithoutUserIncludedNestedInput
-    ModifierPack?: ModifierPackUpdateManyWithoutCreatedByNestedInput
-    Downvote?: DownvoteUpdateManyWithoutCreatedByNestedInput
-    Upvote?: UpvoteUpdateManyWithoutCreatedByNestedInput
-  }
-
-  export type UserUncheckedUpdateWithoutDefaultIncludedCustomChallengeModifiersInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    serializedId?: NullableStringFieldUpdateOperationsInput | string | null
-    username?: NullableStringFieldUpdateOperationsInput | string | null
-    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    numberOfGames?: IntFieldUpdateOperationsInput | number
-    Game?: GameUncheckedUpdateManyWithoutUserNestedInput
-    PublicProfile?: PublicProfileUncheckedUpdateManyWithoutUserNestedInput
-    ChallengeModifier?: ChallengeModifierUncheckedUpdateManyWithoutCreatedByNestedInput
-    ModifierOption?: ModifierOptionUncheckedUpdateManyWithoutCreatedByNestedInput
-    DefaultExcludedChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutUserExcludedNestedInput
-    DefaultExcludedModifierOptions?: ModifierOptionUncheckedUpdateManyWithoutUserExcludedNestedInput
-    DefaultIncludedCustomModifierOptions?: ModifierOptionUncheckedUpdateManyWithoutUserIncludedNestedInput
-    ModifierPack?: ModifierPackUncheckedUpdateManyWithoutCreatedByNestedInput
-    Downvote?: DownvoteUncheckedUpdateManyWithoutCreatedByNestedInput
-    Upvote?: UpvoteUncheckedUpdateManyWithoutCreatedByNestedInput
-  }
-
-  export type UserUncheckedUpdateManyWithoutDefaultIncludedCustomChallengeModifiersInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    serializedId?: NullableStringFieldUpdateOperationsInput | string | null
-    username?: NullableStringFieldUpdateOperationsInput | string | null
-    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    numberOfGames?: IntFieldUpdateOperationsInput | number
-  }
-
-  export type DayUpdateWithoutExcludedChallengeModifiersInput = {
-    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    userId?: StringFieldUpdateOperationsInput | string
-    gameNumber?: IntFieldUpdateOperationsInput | number
-    number?: IntFieldUpdateOperationsInput | number
-    dateFirstRolled?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    part1Completed?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    part2Completed?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    challengeModifierRerollsUsed?: IntFieldUpdateOperationsInput | number
-    modifierOptionRerollsUsed?: IntFieldUpdateOperationsInput | number
-    rerollTokensSpentDuringPart2?: IntFieldUpdateOperationsInput | number
-    netScore?: IntFieldUpdateOperationsInput | number
-    ExcludedModifierOptions?: ModifierOptionUpdateManyWithoutExcludedFromDayNestedInput
-    IncludedCustomChallengeModifiers?: ChallengeModifierUpdateManyWithoutIncludedInDayNestedInput
-    IncludedCustomModifierOptions?: ModifierOptionUpdateManyWithoutIncludedInDayNestedInput
-    Game?: GameUpdateOneRequiredWithoutDayNestedInput
-    ModifierWhenPart1Completed?: ChallengeModifierUpdateOneWithoutDayCompletedInPart1NestedInput
-    OptionWhenPart1Completed?: ModifierOptionUpdateOneWithoutDayCompletedInPart1NestedInput
-    ChallengeModifier?: ChallengeModifierUpdateOneWithoutDayNestedInput
-    ModifierOption?: ModifierOptionUpdateOneWithoutDayNestedInput
-  }
-
-  export type DayUncheckedUpdateWithoutExcludedChallengeModifiersInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    gameId?: IntFieldUpdateOperationsInput | number
-    userId?: StringFieldUpdateOperationsInput | string
-    gameNumber?: IntFieldUpdateOperationsInput | number
-    number?: IntFieldUpdateOperationsInput | number
-    challengeModifierId?: NullableIntFieldUpdateOperationsInput | number | null
-    modifierOptionId?: NullableIntFieldUpdateOperationsInput | number | null
-    dateFirstRolled?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    part1Completed?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    modifierWhenPart1CompletedId?: NullableIntFieldUpdateOperationsInput | number | null
-    optionWhenPart1CompletedId?: NullableIntFieldUpdateOperationsInput | number | null
-    part2Completed?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    challengeModifierRerollsUsed?: IntFieldUpdateOperationsInput | number
-    modifierOptionRerollsUsed?: IntFieldUpdateOperationsInput | number
-    rerollTokensSpentDuringPart2?: IntFieldUpdateOperationsInput | number
-    netScore?: IntFieldUpdateOperationsInput | number
-    ExcludedModifierOptions?: ModifierOptionUncheckedUpdateManyWithoutExcludedFromDayNestedInput
-    IncludedCustomChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutIncludedInDayNestedInput
-    IncludedCustomModifierOptions?: ModifierOptionUncheckedUpdateManyWithoutIncludedInDayNestedInput
-  }
-
-  export type DayUncheckedUpdateManyWithoutExcludedChallengeModifiersInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    gameId?: IntFieldUpdateOperationsInput | number
-    userId?: StringFieldUpdateOperationsInput | string
-    gameNumber?: IntFieldUpdateOperationsInput | number
-    number?: IntFieldUpdateOperationsInput | number
-    challengeModifierId?: NullableIntFieldUpdateOperationsInput | number | null
-    modifierOptionId?: NullableIntFieldUpdateOperationsInput | number | null
-    dateFirstRolled?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    part1Completed?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    modifierWhenPart1CompletedId?: NullableIntFieldUpdateOperationsInput | number | null
-    optionWhenPart1CompletedId?: NullableIntFieldUpdateOperationsInput | number | null
-    part2Completed?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    challengeModifierRerollsUsed?: IntFieldUpdateOperationsInput | number
-    modifierOptionRerollsUsed?: IntFieldUpdateOperationsInput | number
-    rerollTokensSpentDuringPart2?: IntFieldUpdateOperationsInput | number
-    netScore?: IntFieldUpdateOperationsInput | number
-  }
-
-  export type DayUpdateWithoutIncludedCustomChallengeModifiersInput = {
-    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    userId?: StringFieldUpdateOperationsInput | string
-    gameNumber?: IntFieldUpdateOperationsInput | number
-    number?: IntFieldUpdateOperationsInput | number
-    dateFirstRolled?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    part1Completed?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    part2Completed?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    challengeModifierRerollsUsed?: IntFieldUpdateOperationsInput | number
-    modifierOptionRerollsUsed?: IntFieldUpdateOperationsInput | number
-    rerollTokensSpentDuringPart2?: IntFieldUpdateOperationsInput | number
-    netScore?: IntFieldUpdateOperationsInput | number
-    ExcludedChallengeModifiers?: ChallengeModifierUpdateManyWithoutExcludedFromDayNestedInput
-    ExcludedModifierOptions?: ModifierOptionUpdateManyWithoutExcludedFromDayNestedInput
-    IncludedCustomModifierOptions?: ModifierOptionUpdateManyWithoutIncludedInDayNestedInput
-    Game?: GameUpdateOneRequiredWithoutDayNestedInput
-    ModifierWhenPart1Completed?: ChallengeModifierUpdateOneWithoutDayCompletedInPart1NestedInput
-    OptionWhenPart1Completed?: ModifierOptionUpdateOneWithoutDayCompletedInPart1NestedInput
-    ChallengeModifier?: ChallengeModifierUpdateOneWithoutDayNestedInput
-    ModifierOption?: ModifierOptionUpdateOneWithoutDayNestedInput
-  }
-
-  export type DayUncheckedUpdateWithoutIncludedCustomChallengeModifiersInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    gameId?: IntFieldUpdateOperationsInput | number
-    userId?: StringFieldUpdateOperationsInput | string
-    gameNumber?: IntFieldUpdateOperationsInput | number
-    number?: IntFieldUpdateOperationsInput | number
-    challengeModifierId?: NullableIntFieldUpdateOperationsInput | number | null
-    modifierOptionId?: NullableIntFieldUpdateOperationsInput | number | null
-    dateFirstRolled?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    part1Completed?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    modifierWhenPart1CompletedId?: NullableIntFieldUpdateOperationsInput | number | null
-    optionWhenPart1CompletedId?: NullableIntFieldUpdateOperationsInput | number | null
-    part2Completed?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    challengeModifierRerollsUsed?: IntFieldUpdateOperationsInput | number
-    modifierOptionRerollsUsed?: IntFieldUpdateOperationsInput | number
-    rerollTokensSpentDuringPart2?: IntFieldUpdateOperationsInput | number
-    netScore?: IntFieldUpdateOperationsInput | number
-    ExcludedChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutExcludedFromDayNestedInput
-    ExcludedModifierOptions?: ModifierOptionUncheckedUpdateManyWithoutExcludedFromDayNestedInput
-    IncludedCustomModifierOptions?: ModifierOptionUncheckedUpdateManyWithoutIncludedInDayNestedInput
-  }
-
-  export type DayUncheckedUpdateManyWithoutIncludedCustomChallengeModifiersInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    gameId?: IntFieldUpdateOperationsInput | number
-    userId?: StringFieldUpdateOperationsInput | string
-    gameNumber?: IntFieldUpdateOperationsInput | number
-    number?: IntFieldUpdateOperationsInput | number
-    challengeModifierId?: NullableIntFieldUpdateOperationsInput | number | null
     modifierOptionId?: NullableIntFieldUpdateOperationsInput | number | null
     dateFirstRolled?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     part1Completed?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -26401,14 +26158,12 @@ export namespace Prisma {
     modifierOptionRerollsUsed?: IntFieldUpdateOperationsInput | number
     rerollTokensSpentDuringPart2?: IntFieldUpdateOperationsInput | number
     netScore?: IntFieldUpdateOperationsInput | number
-    ExcludedChallengeModifiers?: ChallengeModifierUpdateManyWithoutExcludedFromDayNestedInput
-    ExcludedModifierOptions?: ModifierOptionUpdateManyWithoutExcludedFromDayNestedInput
-    IncludedCustomChallengeModifiers?: ChallengeModifierUpdateManyWithoutIncludedInDayNestedInput
-    IncludedCustomModifierOptions?: ModifierOptionUpdateManyWithoutIncludedInDayNestedInput
-    Game?: GameUpdateOneRequiredWithoutDayNestedInput
-    OptionWhenPart1Completed?: ModifierOptionUpdateOneWithoutDayCompletedInPart1NestedInput
     ChallengeModifier?: ChallengeModifierUpdateOneWithoutDayNestedInput
+    Game?: GameUpdateOneRequiredWithoutDayNestedInput
     ModifierOption?: ModifierOptionUpdateOneWithoutDayNestedInput
+    OptionWhenPart1Completed?: ModifierOptionUpdateOneWithoutDayCompletedInPart1NestedInput
+    ExcludedChallengeModifiers?: ChallengeModifierUpdateManyWithoutModifierPackExcludedNestedInput
+    EncludedCustomChallengeModifiers?: ChallengeModifierUpdateManyWithoutModifierPackIncludedNestedInput
   }
 
   export type DayUncheckedUpdateWithoutModifierWhenPart1CompletedInput = {
@@ -26428,10 +26183,8 @@ export namespace Prisma {
     modifierOptionRerollsUsed?: IntFieldUpdateOperationsInput | number
     rerollTokensSpentDuringPart2?: IntFieldUpdateOperationsInput | number
     netScore?: IntFieldUpdateOperationsInput | number
-    ExcludedChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutExcludedFromDayNestedInput
-    ExcludedModifierOptions?: ModifierOptionUncheckedUpdateManyWithoutExcludedFromDayNestedInput
-    IncludedCustomChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutIncludedInDayNestedInput
-    IncludedCustomModifierOptions?: ModifierOptionUncheckedUpdateManyWithoutIncludedInDayNestedInput
+    ExcludedChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutModifierPackExcludedNestedInput
+    EncludedCustomChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutModifierPackIncludedNestedInput
   }
 
   export type DayUncheckedUpdateManyWithoutModifierWhenPart1CompletedInput = {
@@ -26445,6 +26198,260 @@ export namespace Prisma {
     modifierOptionId?: NullableIntFieldUpdateOperationsInput | number | null
     dateFirstRolled?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     part1Completed?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    optionWhenPart1CompletedId?: NullableIntFieldUpdateOperationsInput | number | null
+    part2Completed?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    challengeModifierRerollsUsed?: IntFieldUpdateOperationsInput | number
+    modifierOptionRerollsUsed?: IntFieldUpdateOperationsInput | number
+    rerollTokensSpentDuringPart2?: IntFieldUpdateOperationsInput | number
+    netScore?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type ModifierOptionUpdateWithoutChallengeModifierInput = {
+    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
+    name?: StringFieldUpdateOperationsInput | string
+    text?: StringFieldUpdateOperationsInput | string
+    explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    standard?: BoolFieldUpdateOperationsInput | boolean
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
+    Day?: DayUpdateManyWithoutModifierOptionNestedInput
+    DayCompletedInPart1?: DayUpdateManyWithoutOptionWhenPart1CompletedNestedInput
+    CreatedBy?: UserUpdateOneWithoutModifierOptionNestedInput
+    UserExcluded?: UserUpdateManyWithoutDefaultExcludedModifierOptionsNestedInput
+    UserIncluded?: UserUpdateManyWithoutDefaultIncludedCustomModifierOptionsNestedInput
+    ExcludedModifierOptions?: ModifierPackUpdateManyWithoutExcludedFromDayNestedInput
+    IncludedCustomModifierOptions?: ModifierPackUpdateManyWithoutIncludedInDayNestedInput
+  }
+
+  export type ModifierOptionUncheckedUpdateWithoutChallengeModifierInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
+    name?: StringFieldUpdateOperationsInput | string
+    text?: StringFieldUpdateOperationsInput | string
+    explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    standard?: BoolFieldUpdateOperationsInput | boolean
+    createdById?: NullableStringFieldUpdateOperationsInput | string | null
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
+    Day?: DayUncheckedUpdateManyWithoutModifierOptionNestedInput
+    DayCompletedInPart1?: DayUncheckedUpdateManyWithoutOptionWhenPart1CompletedNestedInput
+    UserExcluded?: UserUncheckedUpdateManyWithoutDefaultExcludedModifierOptionsNestedInput
+    UserIncluded?: UserUncheckedUpdateManyWithoutDefaultIncludedCustomModifierOptionsNestedInput
+    ExcludedModifierOptions?: ModifierPackUncheckedUpdateManyWithoutExcludedFromDayNestedInput
+    IncludedCustomModifierOptions?: ModifierPackUncheckedUpdateManyWithoutIncludedInDayNestedInput
+  }
+
+  export type ModifierOptionUncheckedUpdateManyWithoutChallengeModifierInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
+    name?: StringFieldUpdateOperationsInput | string
+    text?: StringFieldUpdateOperationsInput | string
+    explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    standard?: BoolFieldUpdateOperationsInput | boolean
+    createdById?: NullableStringFieldUpdateOperationsInput | string | null
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
+  }
+
+  export type UserUpdateWithoutDefaultExcludedChallengeModifiersInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    serializedId?: NullableStringFieldUpdateOperationsInput | string | null
+    username?: NullableStringFieldUpdateOperationsInput | string | null
+    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
+    numberOfGames?: IntFieldUpdateOperationsInput | number
+    ChallengeModifier?: ChallengeModifierUpdateManyWithoutCreatedByNestedInput
+    Downvote?: DownvoteUpdateManyWithoutCreatedByNestedInput
+    Game?: GameUpdateManyWithoutUserNestedInput
+    ModifierOption?: ModifierOptionUpdateManyWithoutCreatedByNestedInput
+    ModifierPack?: ModifierPackUpdateManyWithoutCreatedByNestedInput
+    PublicProfile?: PublicProfileUpdateManyWithoutUserNestedInput
+    Upvote?: UpvoteUpdateManyWithoutCreatedByNestedInput
+    DefaultExcludedModifierOptions?: ModifierOptionUpdateManyWithoutUserExcludedNestedInput
+    DefaultIncludedCustomChallengeModifiers?: ChallengeModifierUpdateManyWithoutUserIncludedNestedInput
+    DefaultIncludedCustomModifierOptions?: ModifierOptionUpdateManyWithoutUserIncludedNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutDefaultExcludedChallengeModifiersInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    serializedId?: NullableStringFieldUpdateOperationsInput | string | null
+    username?: NullableStringFieldUpdateOperationsInput | string | null
+    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
+    numberOfGames?: IntFieldUpdateOperationsInput | number
+    ChallengeModifier?: ChallengeModifierUncheckedUpdateManyWithoutCreatedByNestedInput
+    Downvote?: DownvoteUncheckedUpdateManyWithoutCreatedByNestedInput
+    Game?: GameUncheckedUpdateManyWithoutUserNestedInput
+    ModifierOption?: ModifierOptionUncheckedUpdateManyWithoutCreatedByNestedInput
+    ModifierPack?: ModifierPackUncheckedUpdateManyWithoutCreatedByNestedInput
+    PublicProfile?: PublicProfileUncheckedUpdateManyWithoutUserNestedInput
+    Upvote?: UpvoteUncheckedUpdateManyWithoutCreatedByNestedInput
+    DefaultExcludedModifierOptions?: ModifierOptionUncheckedUpdateManyWithoutUserExcludedNestedInput
+    DefaultIncludedCustomChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutUserIncludedNestedInput
+    DefaultIncludedCustomModifierOptions?: ModifierOptionUncheckedUpdateManyWithoutUserIncludedNestedInput
+  }
+
+  export type UserUncheckedUpdateManyWithoutDefaultExcludedChallengeModifiersInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    serializedId?: NullableStringFieldUpdateOperationsInput | string | null
+    username?: NullableStringFieldUpdateOperationsInput | string | null
+    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
+    numberOfGames?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type UserUpdateWithoutDefaultIncludedCustomChallengeModifiersInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    serializedId?: NullableStringFieldUpdateOperationsInput | string | null
+    username?: NullableStringFieldUpdateOperationsInput | string | null
+    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
+    numberOfGames?: IntFieldUpdateOperationsInput | number
+    ChallengeModifier?: ChallengeModifierUpdateManyWithoutCreatedByNestedInput
+    Downvote?: DownvoteUpdateManyWithoutCreatedByNestedInput
+    Game?: GameUpdateManyWithoutUserNestedInput
+    ModifierOption?: ModifierOptionUpdateManyWithoutCreatedByNestedInput
+    ModifierPack?: ModifierPackUpdateManyWithoutCreatedByNestedInput
+    PublicProfile?: PublicProfileUpdateManyWithoutUserNestedInput
+    Upvote?: UpvoteUpdateManyWithoutCreatedByNestedInput
+    DefaultExcludedChallengeModifiers?: ChallengeModifierUpdateManyWithoutUserExcludedNestedInput
+    DefaultExcludedModifierOptions?: ModifierOptionUpdateManyWithoutUserExcludedNestedInput
+    DefaultIncludedCustomModifierOptions?: ModifierOptionUpdateManyWithoutUserIncludedNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutDefaultIncludedCustomChallengeModifiersInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    serializedId?: NullableStringFieldUpdateOperationsInput | string | null
+    username?: NullableStringFieldUpdateOperationsInput | string | null
+    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
+    numberOfGames?: IntFieldUpdateOperationsInput | number
+    ChallengeModifier?: ChallengeModifierUncheckedUpdateManyWithoutCreatedByNestedInput
+    Downvote?: DownvoteUncheckedUpdateManyWithoutCreatedByNestedInput
+    Game?: GameUncheckedUpdateManyWithoutUserNestedInput
+    ModifierOption?: ModifierOptionUncheckedUpdateManyWithoutCreatedByNestedInput
+    ModifierPack?: ModifierPackUncheckedUpdateManyWithoutCreatedByNestedInput
+    PublicProfile?: PublicProfileUncheckedUpdateManyWithoutUserNestedInput
+    Upvote?: UpvoteUncheckedUpdateManyWithoutCreatedByNestedInput
+    DefaultExcludedChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutUserExcludedNestedInput
+    DefaultExcludedModifierOptions?: ModifierOptionUncheckedUpdateManyWithoutUserExcludedNestedInput
+    DefaultIncludedCustomModifierOptions?: ModifierOptionUncheckedUpdateManyWithoutUserIncludedNestedInput
+  }
+
+  export type UserUncheckedUpdateManyWithoutDefaultIncludedCustomChallengeModifiersInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    serializedId?: NullableStringFieldUpdateOperationsInput | string | null
+    username?: NullableStringFieldUpdateOperationsInput | string | null
+    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
+    numberOfGames?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type DayUpdateWithoutExcludedChallengeModifiersInput = {
+    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: StringFieldUpdateOperationsInput | string
+    gameNumber?: IntFieldUpdateOperationsInput | number
+    number?: IntFieldUpdateOperationsInput | number
+    dateFirstRolled?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    part1Completed?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    part2Completed?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    challengeModifierRerollsUsed?: IntFieldUpdateOperationsInput | number
+    modifierOptionRerollsUsed?: IntFieldUpdateOperationsInput | number
+    rerollTokensSpentDuringPart2?: IntFieldUpdateOperationsInput | number
+    netScore?: IntFieldUpdateOperationsInput | number
+    ChallengeModifier?: ChallengeModifierUpdateOneWithoutDayNestedInput
+    Game?: GameUpdateOneRequiredWithoutDayNestedInput
+    ModifierOption?: ModifierOptionUpdateOneWithoutDayNestedInput
+    ModifierWhenPart1Completed?: ChallengeModifierUpdateOneWithoutDayCompletedInPart1NestedInput
+    OptionWhenPart1Completed?: ModifierOptionUpdateOneWithoutDayCompletedInPart1NestedInput
+    EncludedCustomChallengeModifiers?: ChallengeModifierUpdateManyWithoutModifierPackIncludedNestedInput
+  }
+
+  export type DayUncheckedUpdateWithoutExcludedChallengeModifiersInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
+    gameId?: IntFieldUpdateOperationsInput | number
+    userId?: StringFieldUpdateOperationsInput | string
+    gameNumber?: IntFieldUpdateOperationsInput | number
+    number?: IntFieldUpdateOperationsInput | number
+    challengeModifierId?: NullableIntFieldUpdateOperationsInput | number | null
+    modifierOptionId?: NullableIntFieldUpdateOperationsInput | number | null
+    dateFirstRolled?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    part1Completed?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    modifierWhenPart1CompletedId?: NullableIntFieldUpdateOperationsInput | number | null
+    optionWhenPart1CompletedId?: NullableIntFieldUpdateOperationsInput | number | null
+    part2Completed?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    challengeModifierRerollsUsed?: IntFieldUpdateOperationsInput | number
+    modifierOptionRerollsUsed?: IntFieldUpdateOperationsInput | number
+    rerollTokensSpentDuringPart2?: IntFieldUpdateOperationsInput | number
+    netScore?: IntFieldUpdateOperationsInput | number
+    EncludedCustomChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutModifierPackIncludedNestedInput
+  }
+
+  export type DayUncheckedUpdateManyWithoutExcludedChallengeModifiersInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
+    gameId?: IntFieldUpdateOperationsInput | number
+    userId?: StringFieldUpdateOperationsInput | string
+    gameNumber?: IntFieldUpdateOperationsInput | number
+    number?: IntFieldUpdateOperationsInput | number
+    challengeModifierId?: NullableIntFieldUpdateOperationsInput | number | null
+    modifierOptionId?: NullableIntFieldUpdateOperationsInput | number | null
+    dateFirstRolled?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    part1Completed?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    modifierWhenPart1CompletedId?: NullableIntFieldUpdateOperationsInput | number | null
+    optionWhenPart1CompletedId?: NullableIntFieldUpdateOperationsInput | number | null
+    part2Completed?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    challengeModifierRerollsUsed?: IntFieldUpdateOperationsInput | number
+    modifierOptionRerollsUsed?: IntFieldUpdateOperationsInput | number
+    rerollTokensSpentDuringPart2?: IntFieldUpdateOperationsInput | number
+    netScore?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type DayUpdateWithoutEncludedCustomChallengeModifiersInput = {
+    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: StringFieldUpdateOperationsInput | string
+    gameNumber?: IntFieldUpdateOperationsInput | number
+    number?: IntFieldUpdateOperationsInput | number
+    dateFirstRolled?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    part1Completed?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    part2Completed?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    challengeModifierRerollsUsed?: IntFieldUpdateOperationsInput | number
+    modifierOptionRerollsUsed?: IntFieldUpdateOperationsInput | number
+    rerollTokensSpentDuringPart2?: IntFieldUpdateOperationsInput | number
+    netScore?: IntFieldUpdateOperationsInput | number
+    ChallengeModifier?: ChallengeModifierUpdateOneWithoutDayNestedInput
+    Game?: GameUpdateOneRequiredWithoutDayNestedInput
+    ModifierOption?: ModifierOptionUpdateOneWithoutDayNestedInput
+    ModifierWhenPart1Completed?: ChallengeModifierUpdateOneWithoutDayCompletedInPart1NestedInput
+    OptionWhenPart1Completed?: ModifierOptionUpdateOneWithoutDayCompletedInPart1NestedInput
+    ExcludedChallengeModifiers?: ChallengeModifierUpdateManyWithoutModifierPackExcludedNestedInput
+  }
+
+  export type DayUncheckedUpdateWithoutEncludedCustomChallengeModifiersInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
+    gameId?: IntFieldUpdateOperationsInput | number
+    userId?: StringFieldUpdateOperationsInput | string
+    gameNumber?: IntFieldUpdateOperationsInput | number
+    number?: IntFieldUpdateOperationsInput | number
+    challengeModifierId?: NullableIntFieldUpdateOperationsInput | number | null
+    modifierOptionId?: NullableIntFieldUpdateOperationsInput | number | null
+    dateFirstRolled?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    part1Completed?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    modifierWhenPart1CompletedId?: NullableIntFieldUpdateOperationsInput | number | null
+    optionWhenPart1CompletedId?: NullableIntFieldUpdateOperationsInput | number | null
+    part2Completed?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    challengeModifierRerollsUsed?: IntFieldUpdateOperationsInput | number
+    modifierOptionRerollsUsed?: IntFieldUpdateOperationsInput | number
+    rerollTokensSpentDuringPart2?: IntFieldUpdateOperationsInput | number
+    netScore?: IntFieldUpdateOperationsInput | number
+    ExcludedChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutModifierPackExcludedNestedInput
+  }
+
+  export type DayUncheckedUpdateManyWithoutEncludedCustomChallengeModifiersInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
+    gameId?: IntFieldUpdateOperationsInput | number
+    userId?: StringFieldUpdateOperationsInput | string
+    gameNumber?: IntFieldUpdateOperationsInput | number
+    number?: IntFieldUpdateOperationsInput | number
+    challengeModifierId?: NullableIntFieldUpdateOperationsInput | number | null
+    modifierOptionId?: NullableIntFieldUpdateOperationsInput | number | null
+    dateFirstRolled?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    part1Completed?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    modifierWhenPart1CompletedId?: NullableIntFieldUpdateOperationsInput | number | null
     optionWhenPart1CompletedId?: NullableIntFieldUpdateOperationsInput | number | null
     part2Completed?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     challengeModifierRerollsUsed?: IntFieldUpdateOperationsInput | number
@@ -26503,14 +26510,12 @@ export namespace Prisma {
     modifierOptionRerollsUsed?: IntFieldUpdateOperationsInput | number
     rerollTokensSpentDuringPart2?: IntFieldUpdateOperationsInput | number
     netScore?: IntFieldUpdateOperationsInput | number
-    ExcludedChallengeModifiers?: ChallengeModifierUpdateManyWithoutExcludedFromDayNestedInput
-    ExcludedModifierOptions?: ModifierOptionUpdateManyWithoutExcludedFromDayNestedInput
-    IncludedCustomChallengeModifiers?: ChallengeModifierUpdateManyWithoutIncludedInDayNestedInput
-    IncludedCustomModifierOptions?: ModifierOptionUpdateManyWithoutIncludedInDayNestedInput
+    ChallengeModifier?: ChallengeModifierUpdateOneWithoutDayNestedInput
     Game?: GameUpdateOneRequiredWithoutDayNestedInput
     ModifierWhenPart1Completed?: ChallengeModifierUpdateOneWithoutDayCompletedInPart1NestedInput
     OptionWhenPart1Completed?: ModifierOptionUpdateOneWithoutDayCompletedInPart1NestedInput
-    ChallengeModifier?: ChallengeModifierUpdateOneWithoutDayNestedInput
+    ExcludedChallengeModifiers?: ChallengeModifierUpdateManyWithoutModifierPackExcludedNestedInput
+    EncludedCustomChallengeModifiers?: ChallengeModifierUpdateManyWithoutModifierPackIncludedNestedInput
   }
 
   export type DayUncheckedUpdateWithoutModifierOptionInput = {
@@ -26530,10 +26535,8 @@ export namespace Prisma {
     modifierOptionRerollsUsed?: IntFieldUpdateOperationsInput | number
     rerollTokensSpentDuringPart2?: IntFieldUpdateOperationsInput | number
     netScore?: IntFieldUpdateOperationsInput | number
-    ExcludedChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutExcludedFromDayNestedInput
-    ExcludedModifierOptions?: ModifierOptionUncheckedUpdateManyWithoutExcludedFromDayNestedInput
-    IncludedCustomChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutIncludedInDayNestedInput
-    IncludedCustomModifierOptions?: ModifierOptionUncheckedUpdateManyWithoutIncludedInDayNestedInput
+    ExcludedChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutModifierPackExcludedNestedInput
+    EncludedCustomChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutModifierPackIncludedNestedInput
   }
 
   export type DayUncheckedUpdateManyWithoutModifierOptionInput = {
@@ -26544,276 +26547,6 @@ export namespace Prisma {
     gameNumber?: IntFieldUpdateOperationsInput | number
     number?: IntFieldUpdateOperationsInput | number
     challengeModifierId?: NullableIntFieldUpdateOperationsInput | number | null
-    dateFirstRolled?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    part1Completed?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    modifierWhenPart1CompletedId?: NullableIntFieldUpdateOperationsInput | number | null
-    optionWhenPart1CompletedId?: NullableIntFieldUpdateOperationsInput | number | null
-    part2Completed?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    challengeModifierRerollsUsed?: IntFieldUpdateOperationsInput | number
-    modifierOptionRerollsUsed?: IntFieldUpdateOperationsInput | number
-    rerollTokensSpentDuringPart2?: IntFieldUpdateOperationsInput | number
-    netScore?: IntFieldUpdateOperationsInput | number
-  }
-
-  export type ModifierPackUpdateWithoutExcludedModifierOptionsInput = {
-    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    isPublic?: BoolFieldUpdateOperationsInput | boolean
-    ExcludedChallengeModifiers?: ChallengeModifierUpdateManyWithoutModifierPackExcludedNestedInput
-    EncludedCustomChallengeModifiers?: ChallengeModifierUpdateManyWithoutModifierPackIncludedNestedInput
-    IncludedCustomModifierOptions?: ModifierOptionUpdateManyWithoutModifierPackIncludedNestedInput
-    CreatedBy?: UserUpdateOneWithoutModifierPackNestedInput
-  }
-
-  export type ModifierPackUncheckedUpdateWithoutExcludedModifierOptionsInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdById?: NullableStringFieldUpdateOperationsInput | string | null
-    isPublic?: BoolFieldUpdateOperationsInput | boolean
-    ExcludedChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutModifierPackExcludedNestedInput
-    EncludedCustomChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutModifierPackIncludedNestedInput
-    IncludedCustomModifierOptions?: ModifierOptionUncheckedUpdateManyWithoutModifierPackIncludedNestedInput
-  }
-
-  export type ModifierPackUncheckedUpdateManyWithoutExcludedModifierOptionsInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdById?: NullableStringFieldUpdateOperationsInput | string | null
-    isPublic?: BoolFieldUpdateOperationsInput | boolean
-  }
-
-  export type ModifierPackUpdateWithoutIncludedCustomModifierOptionsInput = {
-    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    isPublic?: BoolFieldUpdateOperationsInput | boolean
-    ExcludedChallengeModifiers?: ChallengeModifierUpdateManyWithoutModifierPackExcludedNestedInput
-    ExcludedModifierOptions?: ModifierOptionUpdateManyWithoutModifierPackExcludedNestedInput
-    EncludedCustomChallengeModifiers?: ChallengeModifierUpdateManyWithoutModifierPackIncludedNestedInput
-    CreatedBy?: UserUpdateOneWithoutModifierPackNestedInput
-  }
-
-  export type ModifierPackUncheckedUpdateWithoutIncludedCustomModifierOptionsInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdById?: NullableStringFieldUpdateOperationsInput | string | null
-    isPublic?: BoolFieldUpdateOperationsInput | boolean
-    ExcludedChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutModifierPackExcludedNestedInput
-    ExcludedModifierOptions?: ModifierOptionUncheckedUpdateManyWithoutModifierPackExcludedNestedInput
-    EncludedCustomChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutModifierPackIncludedNestedInput
-  }
-
-  export type ModifierPackUncheckedUpdateManyWithoutIncludedCustomModifierOptionsInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdById?: NullableStringFieldUpdateOperationsInput | string | null
-    isPublic?: BoolFieldUpdateOperationsInput | boolean
-  }
-
-  export type UserUpdateWithoutDefaultExcludedModifierOptionsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    serializedId?: NullableStringFieldUpdateOperationsInput | string | null
-    username?: NullableStringFieldUpdateOperationsInput | string | null
-    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    numberOfGames?: IntFieldUpdateOperationsInput | number
-    Game?: GameUpdateManyWithoutUserNestedInput
-    PublicProfile?: PublicProfileUpdateManyWithoutUserNestedInput
-    ChallengeModifier?: ChallengeModifierUpdateManyWithoutCreatedByNestedInput
-    ModifierOption?: ModifierOptionUpdateManyWithoutCreatedByNestedInput
-    DefaultExcludedChallengeModifiers?: ChallengeModifierUpdateManyWithoutUserExcludedNestedInput
-    DefaultIncludedCustomChallengeModifiers?: ChallengeModifierUpdateManyWithoutUserIncludedNestedInput
-    DefaultIncludedCustomModifierOptions?: ModifierOptionUpdateManyWithoutUserIncludedNestedInput
-    ModifierPack?: ModifierPackUpdateManyWithoutCreatedByNestedInput
-    Downvote?: DownvoteUpdateManyWithoutCreatedByNestedInput
-    Upvote?: UpvoteUpdateManyWithoutCreatedByNestedInput
-  }
-
-  export type UserUncheckedUpdateWithoutDefaultExcludedModifierOptionsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    serializedId?: NullableStringFieldUpdateOperationsInput | string | null
-    username?: NullableStringFieldUpdateOperationsInput | string | null
-    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    numberOfGames?: IntFieldUpdateOperationsInput | number
-    Game?: GameUncheckedUpdateManyWithoutUserNestedInput
-    PublicProfile?: PublicProfileUncheckedUpdateManyWithoutUserNestedInput
-    ChallengeModifier?: ChallengeModifierUncheckedUpdateManyWithoutCreatedByNestedInput
-    ModifierOption?: ModifierOptionUncheckedUpdateManyWithoutCreatedByNestedInput
-    DefaultExcludedChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutUserExcludedNestedInput
-    DefaultIncludedCustomChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutUserIncludedNestedInput
-    DefaultIncludedCustomModifierOptions?: ModifierOptionUncheckedUpdateManyWithoutUserIncludedNestedInput
-    ModifierPack?: ModifierPackUncheckedUpdateManyWithoutCreatedByNestedInput
-    Downvote?: DownvoteUncheckedUpdateManyWithoutCreatedByNestedInput
-    Upvote?: UpvoteUncheckedUpdateManyWithoutCreatedByNestedInput
-  }
-
-  export type UserUncheckedUpdateManyWithoutDefaultExcludedModifierOptionsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    serializedId?: NullableStringFieldUpdateOperationsInput | string | null
-    username?: NullableStringFieldUpdateOperationsInput | string | null
-    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    numberOfGames?: IntFieldUpdateOperationsInput | number
-  }
-
-  export type UserUpdateWithoutDefaultIncludedCustomModifierOptionsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    serializedId?: NullableStringFieldUpdateOperationsInput | string | null
-    username?: NullableStringFieldUpdateOperationsInput | string | null
-    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    numberOfGames?: IntFieldUpdateOperationsInput | number
-    Game?: GameUpdateManyWithoutUserNestedInput
-    PublicProfile?: PublicProfileUpdateManyWithoutUserNestedInput
-    ChallengeModifier?: ChallengeModifierUpdateManyWithoutCreatedByNestedInput
-    ModifierOption?: ModifierOptionUpdateManyWithoutCreatedByNestedInput
-    DefaultExcludedChallengeModifiers?: ChallengeModifierUpdateManyWithoutUserExcludedNestedInput
-    DefaultExcludedModifierOptions?: ModifierOptionUpdateManyWithoutUserExcludedNestedInput
-    DefaultIncludedCustomChallengeModifiers?: ChallengeModifierUpdateManyWithoutUserIncludedNestedInput
-    ModifierPack?: ModifierPackUpdateManyWithoutCreatedByNestedInput
-    Downvote?: DownvoteUpdateManyWithoutCreatedByNestedInput
-    Upvote?: UpvoteUpdateManyWithoutCreatedByNestedInput
-  }
-
-  export type UserUncheckedUpdateWithoutDefaultIncludedCustomModifierOptionsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    serializedId?: NullableStringFieldUpdateOperationsInput | string | null
-    username?: NullableStringFieldUpdateOperationsInput | string | null
-    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    numberOfGames?: IntFieldUpdateOperationsInput | number
-    Game?: GameUncheckedUpdateManyWithoutUserNestedInput
-    PublicProfile?: PublicProfileUncheckedUpdateManyWithoutUserNestedInput
-    ChallengeModifier?: ChallengeModifierUncheckedUpdateManyWithoutCreatedByNestedInput
-    ModifierOption?: ModifierOptionUncheckedUpdateManyWithoutCreatedByNestedInput
-    DefaultExcludedChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutUserExcludedNestedInput
-    DefaultExcludedModifierOptions?: ModifierOptionUncheckedUpdateManyWithoutUserExcludedNestedInput
-    DefaultIncludedCustomChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutUserIncludedNestedInput
-    ModifierPack?: ModifierPackUncheckedUpdateManyWithoutCreatedByNestedInput
-    Downvote?: DownvoteUncheckedUpdateManyWithoutCreatedByNestedInput
-    Upvote?: UpvoteUncheckedUpdateManyWithoutCreatedByNestedInput
-  }
-
-  export type UserUncheckedUpdateManyWithoutDefaultIncludedCustomModifierOptionsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    serializedId?: NullableStringFieldUpdateOperationsInput | string | null
-    username?: NullableStringFieldUpdateOperationsInput | string | null
-    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    numberOfGames?: IntFieldUpdateOperationsInput | number
-  }
-
-  export type DayUpdateWithoutExcludedModifierOptionsInput = {
-    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    userId?: StringFieldUpdateOperationsInput | string
-    gameNumber?: IntFieldUpdateOperationsInput | number
-    number?: IntFieldUpdateOperationsInput | number
-    dateFirstRolled?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    part1Completed?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    part2Completed?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    challengeModifierRerollsUsed?: IntFieldUpdateOperationsInput | number
-    modifierOptionRerollsUsed?: IntFieldUpdateOperationsInput | number
-    rerollTokensSpentDuringPart2?: IntFieldUpdateOperationsInput | number
-    netScore?: IntFieldUpdateOperationsInput | number
-    ExcludedChallengeModifiers?: ChallengeModifierUpdateManyWithoutExcludedFromDayNestedInput
-    IncludedCustomChallengeModifiers?: ChallengeModifierUpdateManyWithoutIncludedInDayNestedInput
-    IncludedCustomModifierOptions?: ModifierOptionUpdateManyWithoutIncludedInDayNestedInput
-    Game?: GameUpdateOneRequiredWithoutDayNestedInput
-    ModifierWhenPart1Completed?: ChallengeModifierUpdateOneWithoutDayCompletedInPart1NestedInput
-    OptionWhenPart1Completed?: ModifierOptionUpdateOneWithoutDayCompletedInPart1NestedInput
-    ChallengeModifier?: ChallengeModifierUpdateOneWithoutDayNestedInput
-    ModifierOption?: ModifierOptionUpdateOneWithoutDayNestedInput
-  }
-
-  export type DayUncheckedUpdateWithoutExcludedModifierOptionsInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    gameId?: IntFieldUpdateOperationsInput | number
-    userId?: StringFieldUpdateOperationsInput | string
-    gameNumber?: IntFieldUpdateOperationsInput | number
-    number?: IntFieldUpdateOperationsInput | number
-    challengeModifierId?: NullableIntFieldUpdateOperationsInput | number | null
-    modifierOptionId?: NullableIntFieldUpdateOperationsInput | number | null
-    dateFirstRolled?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    part1Completed?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    modifierWhenPart1CompletedId?: NullableIntFieldUpdateOperationsInput | number | null
-    optionWhenPart1CompletedId?: NullableIntFieldUpdateOperationsInput | number | null
-    part2Completed?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    challengeModifierRerollsUsed?: IntFieldUpdateOperationsInput | number
-    modifierOptionRerollsUsed?: IntFieldUpdateOperationsInput | number
-    rerollTokensSpentDuringPart2?: IntFieldUpdateOperationsInput | number
-    netScore?: IntFieldUpdateOperationsInput | number
-    ExcludedChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutExcludedFromDayNestedInput
-    IncludedCustomChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutIncludedInDayNestedInput
-    IncludedCustomModifierOptions?: ModifierOptionUncheckedUpdateManyWithoutIncludedInDayNestedInput
-  }
-
-  export type DayUncheckedUpdateManyWithoutExcludedModifierOptionsInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    gameId?: IntFieldUpdateOperationsInput | number
-    userId?: StringFieldUpdateOperationsInput | string
-    gameNumber?: IntFieldUpdateOperationsInput | number
-    number?: IntFieldUpdateOperationsInput | number
-    challengeModifierId?: NullableIntFieldUpdateOperationsInput | number | null
-    modifierOptionId?: NullableIntFieldUpdateOperationsInput | number | null
-    dateFirstRolled?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    part1Completed?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    modifierWhenPart1CompletedId?: NullableIntFieldUpdateOperationsInput | number | null
-    optionWhenPart1CompletedId?: NullableIntFieldUpdateOperationsInput | number | null
-    part2Completed?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    challengeModifierRerollsUsed?: IntFieldUpdateOperationsInput | number
-    modifierOptionRerollsUsed?: IntFieldUpdateOperationsInput | number
-    rerollTokensSpentDuringPart2?: IntFieldUpdateOperationsInput | number
-    netScore?: IntFieldUpdateOperationsInput | number
-  }
-
-  export type DayUpdateWithoutIncludedCustomModifierOptionsInput = {
-    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    userId?: StringFieldUpdateOperationsInput | string
-    gameNumber?: IntFieldUpdateOperationsInput | number
-    number?: IntFieldUpdateOperationsInput | number
-    dateFirstRolled?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    part1Completed?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    part2Completed?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    challengeModifierRerollsUsed?: IntFieldUpdateOperationsInput | number
-    modifierOptionRerollsUsed?: IntFieldUpdateOperationsInput | number
-    rerollTokensSpentDuringPart2?: IntFieldUpdateOperationsInput | number
-    netScore?: IntFieldUpdateOperationsInput | number
-    ExcludedChallengeModifiers?: ChallengeModifierUpdateManyWithoutExcludedFromDayNestedInput
-    ExcludedModifierOptions?: ModifierOptionUpdateManyWithoutExcludedFromDayNestedInput
-    IncludedCustomChallengeModifiers?: ChallengeModifierUpdateManyWithoutIncludedInDayNestedInput
-    Game?: GameUpdateOneRequiredWithoutDayNestedInput
-    ModifierWhenPart1Completed?: ChallengeModifierUpdateOneWithoutDayCompletedInPart1NestedInput
-    OptionWhenPart1Completed?: ModifierOptionUpdateOneWithoutDayCompletedInPart1NestedInput
-    ChallengeModifier?: ChallengeModifierUpdateOneWithoutDayNestedInput
-    ModifierOption?: ModifierOptionUpdateOneWithoutDayNestedInput
-  }
-
-  export type DayUncheckedUpdateWithoutIncludedCustomModifierOptionsInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    gameId?: IntFieldUpdateOperationsInput | number
-    userId?: StringFieldUpdateOperationsInput | string
-    gameNumber?: IntFieldUpdateOperationsInput | number
-    number?: IntFieldUpdateOperationsInput | number
-    challengeModifierId?: NullableIntFieldUpdateOperationsInput | number | null
-    modifierOptionId?: NullableIntFieldUpdateOperationsInput | number | null
-    dateFirstRolled?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    part1Completed?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    modifierWhenPart1CompletedId?: NullableIntFieldUpdateOperationsInput | number | null
-    optionWhenPart1CompletedId?: NullableIntFieldUpdateOperationsInput | number | null
-    part2Completed?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    challengeModifierRerollsUsed?: IntFieldUpdateOperationsInput | number
-    modifierOptionRerollsUsed?: IntFieldUpdateOperationsInput | number
-    rerollTokensSpentDuringPart2?: IntFieldUpdateOperationsInput | number
-    netScore?: IntFieldUpdateOperationsInput | number
-    ExcludedChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutExcludedFromDayNestedInput
-    ExcludedModifierOptions?: ModifierOptionUncheckedUpdateManyWithoutExcludedFromDayNestedInput
-    IncludedCustomChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutIncludedInDayNestedInput
-  }
-
-  export type DayUncheckedUpdateManyWithoutIncludedCustomModifierOptionsInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    gameId?: IntFieldUpdateOperationsInput | number
-    userId?: StringFieldUpdateOperationsInput | string
-    gameNumber?: IntFieldUpdateOperationsInput | number
-    number?: IntFieldUpdateOperationsInput | number
-    challengeModifierId?: NullableIntFieldUpdateOperationsInput | number | null
-    modifierOptionId?: NullableIntFieldUpdateOperationsInput | number | null
     dateFirstRolled?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     part1Completed?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     modifierWhenPart1CompletedId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -26837,14 +26570,12 @@ export namespace Prisma {
     modifierOptionRerollsUsed?: IntFieldUpdateOperationsInput | number
     rerollTokensSpentDuringPart2?: IntFieldUpdateOperationsInput | number
     netScore?: IntFieldUpdateOperationsInput | number
-    ExcludedChallengeModifiers?: ChallengeModifierUpdateManyWithoutExcludedFromDayNestedInput
-    ExcludedModifierOptions?: ModifierOptionUpdateManyWithoutExcludedFromDayNestedInput
-    IncludedCustomChallengeModifiers?: ChallengeModifierUpdateManyWithoutIncludedInDayNestedInput
-    IncludedCustomModifierOptions?: ModifierOptionUpdateManyWithoutIncludedInDayNestedInput
-    Game?: GameUpdateOneRequiredWithoutDayNestedInput
-    ModifierWhenPart1Completed?: ChallengeModifierUpdateOneWithoutDayCompletedInPart1NestedInput
     ChallengeModifier?: ChallengeModifierUpdateOneWithoutDayNestedInput
+    Game?: GameUpdateOneRequiredWithoutDayNestedInput
     ModifierOption?: ModifierOptionUpdateOneWithoutDayNestedInput
+    ModifierWhenPart1Completed?: ChallengeModifierUpdateOneWithoutDayCompletedInPart1NestedInput
+    ExcludedChallengeModifiers?: ChallengeModifierUpdateManyWithoutModifierPackExcludedNestedInput
+    EncludedCustomChallengeModifiers?: ChallengeModifierUpdateManyWithoutModifierPackIncludedNestedInput
   }
 
   export type DayUncheckedUpdateWithoutOptionWhenPart1CompletedInput = {
@@ -26864,10 +26595,8 @@ export namespace Prisma {
     modifierOptionRerollsUsed?: IntFieldUpdateOperationsInput | number
     rerollTokensSpentDuringPart2?: IntFieldUpdateOperationsInput | number
     netScore?: IntFieldUpdateOperationsInput | number
-    ExcludedChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutExcludedFromDayNestedInput
-    ExcludedModifierOptions?: ModifierOptionUncheckedUpdateManyWithoutExcludedFromDayNestedInput
-    IncludedCustomChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutIncludedInDayNestedInput
-    IncludedCustomModifierOptions?: ModifierOptionUncheckedUpdateManyWithoutIncludedInDayNestedInput
+    ExcludedChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutModifierPackExcludedNestedInput
+    EncludedCustomChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutModifierPackIncludedNestedInput
   }
 
   export type DayUncheckedUpdateManyWithoutOptionWhenPart1CompletedInput = {
@@ -26889,76 +26618,155 @@ export namespace Prisma {
     netScore?: IntFieldUpdateOperationsInput | number
   }
 
-  export type ChallengeModifierUpdateWithoutModifierPackExcludedInput = {
+  export type UserUpdateWithoutDefaultExcludedModifierOptionsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    serializedId?: NullableStringFieldUpdateOperationsInput | string | null
+    username?: NullableStringFieldUpdateOperationsInput | string | null
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    name?: StringFieldUpdateOperationsInput | string
-    text?: StringFieldUpdateOperationsInput | string
-    hasOptions?: BoolFieldUpdateOperationsInput | boolean
-    explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    standard?: BoolFieldUpdateOperationsInput | boolean
-    isPublic?: BoolFieldUpdateOperationsInput | boolean
-    CreatedBy?: UserUpdateOneWithoutChallengeModifierNestedInput
-    ModifierOption?: ModifierOptionUpdateManyWithoutChallengeModifierNestedInput
-    Day?: DayUpdateManyWithoutChallengeModifierNestedInput
-    ModifierPackIncluded?: ModifierPackUpdateManyWithoutEncludedCustomChallengeModifiersNestedInput
-    UserExcluded?: UserUpdateManyWithoutDefaultExcludedChallengeModifiersNestedInput
-    UserIncluded?: UserUpdateManyWithoutDefaultIncludedCustomChallengeModifiersNestedInput
-    ExcludedFromDay?: DayUpdateManyWithoutExcludedChallengeModifiersNestedInput
-    IncludedInDay?: DayUpdateManyWithoutIncludedCustomChallengeModifiersNestedInput
-    DayCompletedInPart1?: DayUpdateManyWithoutModifierWhenPart1CompletedNestedInput
+    numberOfGames?: IntFieldUpdateOperationsInput | number
+    ChallengeModifier?: ChallengeModifierUpdateManyWithoutCreatedByNestedInput
+    Downvote?: DownvoteUpdateManyWithoutCreatedByNestedInput
+    Game?: GameUpdateManyWithoutUserNestedInput
+    ModifierOption?: ModifierOptionUpdateManyWithoutCreatedByNestedInput
+    ModifierPack?: ModifierPackUpdateManyWithoutCreatedByNestedInput
+    PublicProfile?: PublicProfileUpdateManyWithoutUserNestedInput
+    Upvote?: UpvoteUpdateManyWithoutCreatedByNestedInput
+    DefaultExcludedChallengeModifiers?: ChallengeModifierUpdateManyWithoutUserExcludedNestedInput
+    DefaultIncludedCustomChallengeModifiers?: ChallengeModifierUpdateManyWithoutUserIncludedNestedInput
+    DefaultIncludedCustomModifierOptions?: ModifierOptionUpdateManyWithoutUserIncludedNestedInput
   }
 
-  export type ChallengeModifierUncheckedUpdateWithoutModifierPackExcludedInput = {
+  export type UserUncheckedUpdateWithoutDefaultExcludedModifierOptionsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    serializedId?: NullableStringFieldUpdateOperationsInput | string | null
+    username?: NullableStringFieldUpdateOperationsInput | string | null
+    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
+    numberOfGames?: IntFieldUpdateOperationsInput | number
+    ChallengeModifier?: ChallengeModifierUncheckedUpdateManyWithoutCreatedByNestedInput
+    Downvote?: DownvoteUncheckedUpdateManyWithoutCreatedByNestedInput
+    Game?: GameUncheckedUpdateManyWithoutUserNestedInput
+    ModifierOption?: ModifierOptionUncheckedUpdateManyWithoutCreatedByNestedInput
+    ModifierPack?: ModifierPackUncheckedUpdateManyWithoutCreatedByNestedInput
+    PublicProfile?: PublicProfileUncheckedUpdateManyWithoutUserNestedInput
+    Upvote?: UpvoteUncheckedUpdateManyWithoutCreatedByNestedInput
+    DefaultExcludedChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutUserExcludedNestedInput
+    DefaultIncludedCustomChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutUserIncludedNestedInput
+    DefaultIncludedCustomModifierOptions?: ModifierOptionUncheckedUpdateManyWithoutUserIncludedNestedInput
+  }
+
+  export type UserUncheckedUpdateManyWithoutDefaultExcludedModifierOptionsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    serializedId?: NullableStringFieldUpdateOperationsInput | string | null
+    username?: NullableStringFieldUpdateOperationsInput | string | null
+    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
+    numberOfGames?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type UserUpdateWithoutDefaultIncludedCustomModifierOptionsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    serializedId?: NullableStringFieldUpdateOperationsInput | string | null
+    username?: NullableStringFieldUpdateOperationsInput | string | null
+    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
+    numberOfGames?: IntFieldUpdateOperationsInput | number
+    ChallengeModifier?: ChallengeModifierUpdateManyWithoutCreatedByNestedInput
+    Downvote?: DownvoteUpdateManyWithoutCreatedByNestedInput
+    Game?: GameUpdateManyWithoutUserNestedInput
+    ModifierOption?: ModifierOptionUpdateManyWithoutCreatedByNestedInput
+    ModifierPack?: ModifierPackUpdateManyWithoutCreatedByNestedInput
+    PublicProfile?: PublicProfileUpdateManyWithoutUserNestedInput
+    Upvote?: UpvoteUpdateManyWithoutCreatedByNestedInput
+    DefaultExcludedChallengeModifiers?: ChallengeModifierUpdateManyWithoutUserExcludedNestedInput
+    DefaultExcludedModifierOptions?: ModifierOptionUpdateManyWithoutUserExcludedNestedInput
+    DefaultIncludedCustomChallengeModifiers?: ChallengeModifierUpdateManyWithoutUserIncludedNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutDefaultIncludedCustomModifierOptionsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    serializedId?: NullableStringFieldUpdateOperationsInput | string | null
+    username?: NullableStringFieldUpdateOperationsInput | string | null
+    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
+    numberOfGames?: IntFieldUpdateOperationsInput | number
+    ChallengeModifier?: ChallengeModifierUncheckedUpdateManyWithoutCreatedByNestedInput
+    Downvote?: DownvoteUncheckedUpdateManyWithoutCreatedByNestedInput
+    Game?: GameUncheckedUpdateManyWithoutUserNestedInput
+    ModifierOption?: ModifierOptionUncheckedUpdateManyWithoutCreatedByNestedInput
+    ModifierPack?: ModifierPackUncheckedUpdateManyWithoutCreatedByNestedInput
+    PublicProfile?: PublicProfileUncheckedUpdateManyWithoutUserNestedInput
+    Upvote?: UpvoteUncheckedUpdateManyWithoutCreatedByNestedInput
+    DefaultExcludedChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutUserExcludedNestedInput
+    DefaultExcludedModifierOptions?: ModifierOptionUncheckedUpdateManyWithoutUserExcludedNestedInput
+    DefaultIncludedCustomChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutUserIncludedNestedInput
+  }
+
+  export type UserUncheckedUpdateManyWithoutDefaultIncludedCustomModifierOptionsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    serializedId?: NullableStringFieldUpdateOperationsInput | string | null
+    username?: NullableStringFieldUpdateOperationsInput | string | null
+    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
+    numberOfGames?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type ModifierPackUpdateWithoutExcludedFromDayInput = {
+    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
+    CreatedBy?: UserUpdateOneWithoutModifierPackNestedInput
+    IncludedInDay?: ModifierOptionUpdateManyWithoutIncludedCustomModifierOptionsNestedInput
+  }
+
+  export type ModifierPackUncheckedUpdateWithoutExcludedFromDayInput = {
     id?: IntFieldUpdateOperationsInput | number
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    name?: StringFieldUpdateOperationsInput | string
-    text?: StringFieldUpdateOperationsInput | string
-    hasOptions?: BoolFieldUpdateOperationsInput | boolean
-    explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    standard?: BoolFieldUpdateOperationsInput | boolean
     createdById?: NullableStringFieldUpdateOperationsInput | string | null
     isPublic?: BoolFieldUpdateOperationsInput | boolean
-    ModifierOption?: ModifierOptionUncheckedUpdateManyWithoutChallengeModifierNestedInput
-    Day?: DayUncheckedUpdateManyWithoutChallengeModifierNestedInput
-    ModifierPackIncluded?: ModifierPackUncheckedUpdateManyWithoutEncludedCustomChallengeModifiersNestedInput
-    UserExcluded?: UserUncheckedUpdateManyWithoutDefaultExcludedChallengeModifiersNestedInput
-    UserIncluded?: UserUncheckedUpdateManyWithoutDefaultIncludedCustomChallengeModifiersNestedInput
-    ExcludedFromDay?: DayUncheckedUpdateManyWithoutExcludedChallengeModifiersNestedInput
-    IncludedInDay?: DayUncheckedUpdateManyWithoutIncludedCustomChallengeModifiersNestedInput
-    DayCompletedInPart1?: DayUncheckedUpdateManyWithoutModifierWhenPart1CompletedNestedInput
+    IncludedInDay?: ModifierOptionUncheckedUpdateManyWithoutIncludedCustomModifierOptionsNestedInput
   }
 
-  export type ChallengeModifierUncheckedUpdateManyWithoutModifierPackExcludedInput = {
+  export type ModifierPackUncheckedUpdateManyWithoutExcludedFromDayInput = {
     id?: IntFieldUpdateOperationsInput | number
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    name?: StringFieldUpdateOperationsInput | string
-    text?: StringFieldUpdateOperationsInput | string
-    hasOptions?: BoolFieldUpdateOperationsInput | boolean
-    explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    standard?: BoolFieldUpdateOperationsInput | boolean
     createdById?: NullableStringFieldUpdateOperationsInput | string | null
     isPublic?: BoolFieldUpdateOperationsInput | boolean
   }
 
-  export type ModifierOptionUpdateWithoutModifierPackExcludedInput = {
+  export type ModifierPackUpdateWithoutIncludedInDayInput = {
+    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
+    CreatedBy?: UserUpdateOneWithoutModifierPackNestedInput
+    ExcludedFromDay?: ModifierOptionUpdateManyWithoutExcludedModifierOptionsNestedInput
+  }
+
+  export type ModifierPackUncheckedUpdateWithoutIncludedInDayInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdById?: NullableStringFieldUpdateOperationsInput | string | null
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
+    ExcludedFromDay?: ModifierOptionUncheckedUpdateManyWithoutExcludedModifierOptionsNestedInput
+  }
+
+  export type ModifierPackUncheckedUpdateManyWithoutIncludedInDayInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdById?: NullableStringFieldUpdateOperationsInput | string | null
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
+  }
+
+  export type ModifierOptionUpdateWithoutExcludedModifierOptionsInput = {
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     name?: StringFieldUpdateOperationsInput | string
     text?: StringFieldUpdateOperationsInput | string
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
     isPublic?: BoolFieldUpdateOperationsInput | boolean
+    Day?: DayUpdateManyWithoutModifierOptionNestedInput
+    DayCompletedInPart1?: DayUpdateManyWithoutOptionWhenPart1CompletedNestedInput
     ChallengeModifier?: ChallengeModifierUpdateOneRequiredWithoutModifierOptionNestedInput
     CreatedBy?: UserUpdateOneWithoutModifierOptionNestedInput
-    Day?: DayUpdateManyWithoutModifierOptionNestedInput
-    ModifierPackIncluded?: ModifierPackUpdateManyWithoutIncludedCustomModifierOptionsNestedInput
     UserExcluded?: UserUpdateManyWithoutDefaultExcludedModifierOptionsNestedInput
     UserIncluded?: UserUpdateManyWithoutDefaultIncludedCustomModifierOptionsNestedInput
-    ExcludedFromDay?: DayUpdateManyWithoutExcludedModifierOptionsNestedInput
-    IncludedInDay?: DayUpdateManyWithoutIncludedCustomModifierOptionsNestedInput
-    DayCompletedInPart1?: DayUpdateManyWithoutOptionWhenPart1CompletedNestedInput
+    IncludedCustomModifierOptions?: ModifierPackUpdateManyWithoutIncludedInDayNestedInput
   }
 
-  export type ModifierOptionUncheckedUpdateWithoutModifierPackExcludedInput = {
+  export type ModifierOptionUncheckedUpdateWithoutExcludedModifierOptionsInput = {
     id?: IntFieldUpdateOperationsInput | number
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     challengeModifierId?: IntFieldUpdateOperationsInput | number
@@ -26969,15 +26777,13 @@ export namespace Prisma {
     createdById?: NullableStringFieldUpdateOperationsInput | string | null
     isPublic?: BoolFieldUpdateOperationsInput | boolean
     Day?: DayUncheckedUpdateManyWithoutModifierOptionNestedInput
-    ModifierPackIncluded?: ModifierPackUncheckedUpdateManyWithoutIncludedCustomModifierOptionsNestedInput
+    DayCompletedInPart1?: DayUncheckedUpdateManyWithoutOptionWhenPart1CompletedNestedInput
     UserExcluded?: UserUncheckedUpdateManyWithoutDefaultExcludedModifierOptionsNestedInput
     UserIncluded?: UserUncheckedUpdateManyWithoutDefaultIncludedCustomModifierOptionsNestedInput
-    ExcludedFromDay?: DayUncheckedUpdateManyWithoutExcludedModifierOptionsNestedInput
-    IncludedInDay?: DayUncheckedUpdateManyWithoutIncludedCustomModifierOptionsNestedInput
-    DayCompletedInPart1?: DayUncheckedUpdateManyWithoutOptionWhenPart1CompletedNestedInput
+    IncludedCustomModifierOptions?: ModifierPackUncheckedUpdateManyWithoutIncludedInDayNestedInput
   }
 
-  export type ModifierOptionUncheckedUpdateManyWithoutModifierPackExcludedInput = {
+  export type ModifierOptionUncheckedUpdateManyWithoutExcludedModifierOptionsInput = {
     id?: IntFieldUpdateOperationsInput | number
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     challengeModifierId?: IntFieldUpdateOperationsInput | number
@@ -26989,76 +26795,23 @@ export namespace Prisma {
     isPublic?: BoolFieldUpdateOperationsInput | boolean
   }
 
-  export type ChallengeModifierUpdateWithoutModifierPackIncludedInput = {
-    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    name?: StringFieldUpdateOperationsInput | string
-    text?: StringFieldUpdateOperationsInput | string
-    hasOptions?: BoolFieldUpdateOperationsInput | boolean
-    explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    standard?: BoolFieldUpdateOperationsInput | boolean
-    isPublic?: BoolFieldUpdateOperationsInput | boolean
-    CreatedBy?: UserUpdateOneWithoutChallengeModifierNestedInput
-    ModifierOption?: ModifierOptionUpdateManyWithoutChallengeModifierNestedInput
-    Day?: DayUpdateManyWithoutChallengeModifierNestedInput
-    ModifierPackExcluded?: ModifierPackUpdateManyWithoutExcludedChallengeModifiersNestedInput
-    UserExcluded?: UserUpdateManyWithoutDefaultExcludedChallengeModifiersNestedInput
-    UserIncluded?: UserUpdateManyWithoutDefaultIncludedCustomChallengeModifiersNestedInput
-    ExcludedFromDay?: DayUpdateManyWithoutExcludedChallengeModifiersNestedInput
-    IncludedInDay?: DayUpdateManyWithoutIncludedCustomChallengeModifiersNestedInput
-    DayCompletedInPart1?: DayUpdateManyWithoutModifierWhenPart1CompletedNestedInput
-  }
-
-  export type ChallengeModifierUncheckedUpdateWithoutModifierPackIncludedInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    name?: StringFieldUpdateOperationsInput | string
-    text?: StringFieldUpdateOperationsInput | string
-    hasOptions?: BoolFieldUpdateOperationsInput | boolean
-    explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    standard?: BoolFieldUpdateOperationsInput | boolean
-    createdById?: NullableStringFieldUpdateOperationsInput | string | null
-    isPublic?: BoolFieldUpdateOperationsInput | boolean
-    ModifierOption?: ModifierOptionUncheckedUpdateManyWithoutChallengeModifierNestedInput
-    Day?: DayUncheckedUpdateManyWithoutChallengeModifierNestedInput
-    ModifierPackExcluded?: ModifierPackUncheckedUpdateManyWithoutExcludedChallengeModifiersNestedInput
-    UserExcluded?: UserUncheckedUpdateManyWithoutDefaultExcludedChallengeModifiersNestedInput
-    UserIncluded?: UserUncheckedUpdateManyWithoutDefaultIncludedCustomChallengeModifiersNestedInput
-    ExcludedFromDay?: DayUncheckedUpdateManyWithoutExcludedChallengeModifiersNestedInput
-    IncludedInDay?: DayUncheckedUpdateManyWithoutIncludedCustomChallengeModifiersNestedInput
-    DayCompletedInPart1?: DayUncheckedUpdateManyWithoutModifierWhenPart1CompletedNestedInput
-  }
-
-  export type ChallengeModifierUncheckedUpdateManyWithoutModifierPackIncludedInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    name?: StringFieldUpdateOperationsInput | string
-    text?: StringFieldUpdateOperationsInput | string
-    hasOptions?: BoolFieldUpdateOperationsInput | boolean
-    explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    standard?: BoolFieldUpdateOperationsInput | boolean
-    createdById?: NullableStringFieldUpdateOperationsInput | string | null
-    isPublic?: BoolFieldUpdateOperationsInput | boolean
-  }
-
-  export type ModifierOptionUpdateWithoutModifierPackIncludedInput = {
+  export type ModifierOptionUpdateWithoutIncludedCustomModifierOptionsInput = {
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     name?: StringFieldUpdateOperationsInput | string
     text?: StringFieldUpdateOperationsInput | string
     explanatoryUrl?: NullableStringFieldUpdateOperationsInput | string | null
     standard?: BoolFieldUpdateOperationsInput | boolean
     isPublic?: BoolFieldUpdateOperationsInput | boolean
+    Day?: DayUpdateManyWithoutModifierOptionNestedInput
+    DayCompletedInPart1?: DayUpdateManyWithoutOptionWhenPart1CompletedNestedInput
     ChallengeModifier?: ChallengeModifierUpdateOneRequiredWithoutModifierOptionNestedInput
     CreatedBy?: UserUpdateOneWithoutModifierOptionNestedInput
-    Day?: DayUpdateManyWithoutModifierOptionNestedInput
-    ModifierPackExcluded?: ModifierPackUpdateManyWithoutExcludedModifierOptionsNestedInput
     UserExcluded?: UserUpdateManyWithoutDefaultExcludedModifierOptionsNestedInput
     UserIncluded?: UserUpdateManyWithoutDefaultIncludedCustomModifierOptionsNestedInput
-    ExcludedFromDay?: DayUpdateManyWithoutExcludedModifierOptionsNestedInput
-    IncludedInDay?: DayUpdateManyWithoutIncludedCustomModifierOptionsNestedInput
-    DayCompletedInPart1?: DayUpdateManyWithoutOptionWhenPart1CompletedNestedInput
+    ExcludedModifierOptions?: ModifierPackUpdateManyWithoutExcludedFromDayNestedInput
   }
 
-  export type ModifierOptionUncheckedUpdateWithoutModifierPackIncludedInput = {
+  export type ModifierOptionUncheckedUpdateWithoutIncludedCustomModifierOptionsInput = {
     id?: IntFieldUpdateOperationsInput | number
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     challengeModifierId?: IntFieldUpdateOperationsInput | number
@@ -27069,15 +26822,13 @@ export namespace Prisma {
     createdById?: NullableStringFieldUpdateOperationsInput | string | null
     isPublic?: BoolFieldUpdateOperationsInput | boolean
     Day?: DayUncheckedUpdateManyWithoutModifierOptionNestedInput
-    ModifierPackExcluded?: ModifierPackUncheckedUpdateManyWithoutExcludedModifierOptionsNestedInput
+    DayCompletedInPart1?: DayUncheckedUpdateManyWithoutOptionWhenPart1CompletedNestedInput
     UserExcluded?: UserUncheckedUpdateManyWithoutDefaultExcludedModifierOptionsNestedInput
     UserIncluded?: UserUncheckedUpdateManyWithoutDefaultIncludedCustomModifierOptionsNestedInput
-    ExcludedFromDay?: DayUncheckedUpdateManyWithoutExcludedModifierOptionsNestedInput
-    IncludedInDay?: DayUncheckedUpdateManyWithoutIncludedCustomModifierOptionsNestedInput
-    DayCompletedInPart1?: DayUncheckedUpdateManyWithoutOptionWhenPart1CompletedNestedInput
+    ExcludedModifierOptions?: ModifierPackUncheckedUpdateManyWithoutExcludedFromDayNestedInput
   }
 
-  export type ModifierOptionUncheckedUpdateManyWithoutModifierPackIncludedInput = {
+  export type ModifierOptionUncheckedUpdateManyWithoutIncludedCustomModifierOptionsInput = {
     id?: IntFieldUpdateOperationsInput | number
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     challengeModifierId?: IntFieldUpdateOperationsInput | number
@@ -27094,12 +26845,21 @@ export namespace Prisma {
     dateCreated?: Date | string
     name: string
     favoriteColor: string
+    height: number
+  }
+
+  export type TestPlateCreateManyTableInput = {
+    id?: number
+    dateCreated?: Date | string
+    name: string
+    color: string
   }
 
   export type TestChairUpdateWithoutTableInput = {
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     name?: StringFieldUpdateOperationsInput | string
     favoriteColor?: StringFieldUpdateOperationsInput | string
+    height?: IntFieldUpdateOperationsInput | number
   }
 
   export type TestChairUncheckedUpdateWithoutTableInput = {
@@ -27107,6 +26867,7 @@ export namespace Prisma {
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     name?: StringFieldUpdateOperationsInput | string
     favoriteColor?: StringFieldUpdateOperationsInput | string
+    height?: IntFieldUpdateOperationsInput | number
   }
 
   export type TestChairUncheckedUpdateManyWithoutTableInput = {
@@ -27114,6 +26875,27 @@ export namespace Prisma {
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     name?: StringFieldUpdateOperationsInput | string
     favoriteColor?: StringFieldUpdateOperationsInput | string
+    height?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type TestPlateUpdateWithoutTableInput = {
+    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
+    name?: StringFieldUpdateOperationsInput | string
+    color?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type TestPlateUncheckedUpdateWithoutTableInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
+    name?: StringFieldUpdateOperationsInput | string
+    color?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type TestPlateUncheckedUpdateManyWithoutTableInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
+    name?: StringFieldUpdateOperationsInput | string
+    color?: StringFieldUpdateOperationsInput | string
   }
 
 
@@ -27205,6 +26987,10 @@ export namespace Prisma {
      * @deprecated Use TestChairDefaultArgs instead
      */
     export type TestChairArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = TestChairDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use TestPlateDefaultArgs instead
+     */
+    export type TestPlateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = TestPlateDefaultArgs<ExtArgs>
 
   /**
    * Batch Payload for updateMany & deleteMany & createMany

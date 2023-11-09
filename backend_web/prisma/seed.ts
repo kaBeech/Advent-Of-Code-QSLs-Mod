@@ -921,7 +921,7 @@ const rankData: Prisma.RankCreateInput[] = [
   },
   {
     name: "Bodacious Champion",
-    minimumScore: 400,
+    minimumScore: 300,
   },
   {
     name: "Radical Champion",
@@ -929,7 +929,7 @@ const rankData: Prisma.RankCreateInput[] = [
   },
   {
     name: "Primo Champion",
-    minimumScore: 600,
+    minimumScore: 500,
   },
   {
     name: "Righteous Champion",
