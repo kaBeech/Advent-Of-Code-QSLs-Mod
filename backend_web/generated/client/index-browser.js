@@ -141,11 +141,11 @@ exports.Prisma.GameScalarFieldEnum = {
   isPublic: 'isPublic',
   publicProfileId: 'publicProfileId',
   score: 'score',
-  rankId: 'rankId',
+  titleId: 'titleId',
   dateCompleted: 'dateCompleted'
 };
 
-exports.Prisma.RankScalarFieldEnum = {
+exports.Prisma.TitleScalarFieldEnum = {
   id: 'id',
   name: 'name',
   minimumScore: 'minimumScore'
@@ -262,7 +262,7 @@ exports.Prisma.ModelName = {
   User: 'User',
   PublicProfile: 'PublicProfile',
   Game: 'Game',
-  Rank: 'Rank',
+  Title: 'Title',
   Day: 'Day',
   ChallengeModifier: 'ChallengeModifier',
   ModifierOption: 'ModifierOption',

@@ -1,4 +1,4 @@
-import { Game, Rank } from "../generated/client/deno/index.d.ts";
+import { Game, Title } from "../generated/client/deno/index.d.ts";
 
 interface GameControllerState {
   game: Game;
@@ -48,12 +48,12 @@ const currentDayCompletionStatusSetter = (state: GameControllerState) => ({
   },
 });
 
-const rankAwarder = (state: GameControllerState) => ({
-  awardRank: (ranks: Rank[]) => {
-    const sortedRanks = ranks.sort((a, b) => b.minimumScore - a.minimumScore);
-    for (let i = 0; state.game.rankId === null; i++) {
-      if (state.game.score >= sortedRanks[i].minimumScore) {
-        state.game.rankId = sortedRanks[i].id;
+const titleAwarder = (state: GameControllerState) => ({
+  awardTitle: (titles: Title[]) => {
+    const sortedTitles = titles.sort((a, b) => b.minimumScore - a.minimumScore);
+    for (let i = 0; state.game.titleId === null; i++) {
+      if (state.game.score >= sortedTitles[i].minimumScore) {
+        state.game.titleId = sortedTitles[i].id;
       }
     }
     return state.game;
@@ -61,7 +61,7 @@ const rankAwarder = (state: GameControllerState) => ({
 });
 
 const currentDayCompleter = (state: GameControllerState) => ({
-  completeCurrentDay: (part2RerollBonus: number, ranks: Rank[]) => {
+  completeCurrentDay: (part2RerollBonus: number, titles: Title[]) => {
     if (state.game.currentDayCompleted === true) {
       throw new Error(
         `Current day (${state.game.currentDay}) already completed`,
@@ -71,14 +71,14 @@ const currentDayCompleter = (state: GameControllerState) => ({
     state.game = currentDayCompletionStatusSetter(state)
       .setCurrentDayCompletionStatus(true);
     if (state.game.currentDay === 25) {
-      gameCompleter(state).completeGame(ranks);
+      gameCompleter(state).completeGame(titles);
     }
     return state.game;
   },
 });
 
 const gameCompleter = (state: GameControllerState) => ({
-  completeGame: (ranks: Rank[]) => {
+  completeGame: (titles: Title[]) => {
     if (state.game.dateCompleted) {
       throw new Error(
         `Game (${state.game.name}) already completed`,
@@ -96,7 +96,7 @@ const gameCompleter = (state: GameControllerState) => ({
     }
     state.game.dateCompleted = new Date();
     scoreCalculator(state).calculateScore();
-    rankAwarder(state).awardRank(ranks);
+    titleAwarder(state).awardTitle(titles);
     return state.game;
   },
 });

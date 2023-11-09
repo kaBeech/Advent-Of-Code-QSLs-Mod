@@ -906,7 +906,7 @@ for (const u of modifierOptionData) {
   console.log(`Created modifier option with id: ${modifierOption.id}`);
 }
 
-const rankData: Prisma.RankCreateInput[] = [
+const titleData: Prisma.TitleCreateInput[] = [
   {
     name: "Champion",
     minimumScore: 0,
@@ -958,13 +958,13 @@ const rankData: Prisma.RankCreateInput[] = [
   },
 ];
 
-for (const u of rankData) {
-  const user = await prisma.rank.upsert({
+for (const u of titleData) {
+  const user = await prisma.title.upsert({
     where: { name: u.name },
     update: {},
     create: u,
   });
-  console.log(`Created rank with id: ${user.id}`);
+  console.log(`Created title with id: ${user.id}`);
 }
 
 const userData: Prisma.UserCreateInput[] = [

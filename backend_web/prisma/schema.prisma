@@ -57,17 +57,17 @@ model Game {
   isPublic                            Boolean        @default(false)
   publicProfileId                     Int?
   score                               Int            @default(0)
-  rankId                              Int?
+  titleId                             Int?
   dateCompleted                       DateTime?
   Day                                 Day[]
   Downvote                            Downvote[]
   PublicProfile                       PublicProfile? @relation(fields: [publicProfileId], references: [id])
-  Rank                                Rank?          @relation(fields: [rankId], references: [id])
+  Title                               Title?         @relation(fields: [titleId], references: [id])
   User                                User           @relation(fields: [userId], references: [id])
   Upvote                              Upvote[]
 }
 
-model Rank {
+model Title {
   id           Int    @id @default(autoincrement())
   name         String @unique
   minimumScore Int

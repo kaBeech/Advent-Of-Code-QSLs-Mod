@@ -1,5 +1,5 @@
 import { assertEquals } from "https://deno.land/std@0.197.0/assert/mod.ts";
-import { exampleGame, exampleRanks } from "./exampleObjects.ts";
+import { exampleGame, exampleTitles } from "./exampleObjects.ts";
 import { GameController } from "../GameController.ts";
 import { assertThrows } from "https://deno.land/std@0.152.0/testing/asserts.ts";
 import { DayController } from "../DayController.ts";
@@ -63,7 +63,7 @@ Deno.test("Spends reroll tokens", () => {
 });
 
 Deno.test("Completes current day", () => {
-  const result = gameController.completeCurrentDay(40, exampleRanks);
+  const result = gameController.completeCurrentDay(40, exampleTitles);
   assertEquals(result.currentDay, 1);
   assertEquals(result.currentDayCompleted, true);
 });
@@ -71,7 +71,7 @@ Deno.test("Completes current day", () => {
 Deno.test("Starting next day throws error if current day is already completed", () => {
   assertThrows(
     () => {
-      return gameController.completeCurrentDay(0, exampleRanks);
+      return gameController.completeCurrentDay(0, exampleTitles);
     },
     Error,
     "Current day (1) already completed",

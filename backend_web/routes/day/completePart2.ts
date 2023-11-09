@@ -3,7 +3,7 @@ import { RouterContext } from "https://deno.land/x/oak@v12.6.1/router.ts";
 import { DayController } from "../../components/DayController.ts";
 import { GameController } from "../../components/GameController.ts";
 import {
-  getAllRanks,
+  getAllTitles,
   getUserByIdWithRelations,
   updateDay,
   updateGame,
@@ -33,11 +33,11 @@ export const completePart2 = async (
   let updatedGame = GameController(game!).adjustCurrentRerollTokens(
     rerollTokensEarned,
   );
-  const ranks = await getAllRanks();
+  const titles = await getAllTitles();
   const part2RerollBonus = DayController(day!).calculatePart2RerollBonus();
   updatedGame = GameController(game!).completeCurrentDay(
     part2RerollBonus,
-    ranks,
+    titles,
   );
   await updateDay(updatedDay);
   await updateGame(updatedGame);

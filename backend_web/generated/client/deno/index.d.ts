@@ -29,10 +29,10 @@ export type PublicProfile = $Result.DefaultSelection<Prisma.$PublicProfilePayloa
  */
 export type Game = $Result.DefaultSelection<Prisma.$GamePayload>
 /**
- * Model Rank
+ * Model Title
  * 
  */
-export type Rank = $Result.DefaultSelection<Prisma.$RankPayload>
+export type Title = $Result.DefaultSelection<Prisma.$TitlePayload>
 /**
  * Model Day
  * 
@@ -232,14 +232,14 @@ export class PrismaClient<
   get game(): Prisma.GameDelegate<ExtArgs>;
 
   /**
-   * `prisma.rank`: Exposes CRUD operations for the **Rank** model.
+   * `prisma.title`: Exposes CRUD operations for the **Title** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more Ranks
-    * const ranks = await prisma.rank.findMany()
+    * // Fetch zero or more Titles
+    * const titles = await prisma.title.findMany()
     * ```
     */
-  get rank(): Prisma.RankDelegate<ExtArgs>;
+  get title(): Prisma.TitleDelegate<ExtArgs>;
 
   /**
    * `prisma.day`: Exposes CRUD operations for the **Day** model.
@@ -803,7 +803,7 @@ export namespace Prisma {
     User: 'User',
     PublicProfile: 'PublicProfile',
     Game: 'Game',
-    Rank: 'Rank',
+    Title: 'Title',
     Day: 'Day',
     ChallengeModifier: 'ChallengeModifier',
     ModifierOption: 'ModifierOption',
@@ -829,7 +829,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     meta: {
-      modelProps: 'user' | 'publicProfile' | 'game' | 'rank' | 'day' | 'challengeModifier' | 'modifierOption' | 'modifierPack' | 'upvote' | 'downvote' | 'testTable' | 'testChair' | 'testPlate'
+      modelProps: 'user' | 'publicProfile' | 'game' | 'title' | 'day' | 'challengeModifier' | 'modifierOption' | 'modifierPack' | 'upvote' | 'downvote' | 'testTable' | 'testChair' | 'testPlate'
       txIsolationLevel: Prisma.TransactionIsolationLevel
     },
     model: {
@@ -1031,69 +1031,69 @@ export namespace Prisma {
           }
         }
       }
-      Rank: {
-        payload: Prisma.$RankPayload<ExtArgs>
-        fields: Prisma.RankFieldRefs
+      Title: {
+        payload: Prisma.$TitlePayload<ExtArgs>
+        fields: Prisma.TitleFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.RankFindUniqueArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$RankPayload> | null
+            args: Prisma.TitleFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$TitlePayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.RankFindUniqueOrThrowArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$RankPayload>
+            args: Prisma.TitleFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$TitlePayload>
           }
           findFirst: {
-            args: Prisma.RankFindFirstArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$RankPayload> | null
+            args: Prisma.TitleFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$TitlePayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.RankFindFirstOrThrowArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$RankPayload>
+            args: Prisma.TitleFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$TitlePayload>
           }
           findMany: {
-            args: Prisma.RankFindManyArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$RankPayload>[]
+            args: Prisma.TitleFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$TitlePayload>[]
           }
           create: {
-            args: Prisma.RankCreateArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$RankPayload>
+            args: Prisma.TitleCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$TitlePayload>
           }
           createMany: {
-            args: Prisma.RankCreateManyArgs<ExtArgs>,
+            args: Prisma.TitleCreateManyArgs<ExtArgs>,
             result: Prisma.BatchPayload
           }
           delete: {
-            args: Prisma.RankDeleteArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$RankPayload>
+            args: Prisma.TitleDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$TitlePayload>
           }
           update: {
-            args: Prisma.RankUpdateArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$RankPayload>
+            args: Prisma.TitleUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$TitlePayload>
           }
           deleteMany: {
-            args: Prisma.RankDeleteManyArgs<ExtArgs>,
+            args: Prisma.TitleDeleteManyArgs<ExtArgs>,
             result: Prisma.BatchPayload
           }
           updateMany: {
-            args: Prisma.RankUpdateManyArgs<ExtArgs>,
+            args: Prisma.TitleUpdateManyArgs<ExtArgs>,
             result: Prisma.BatchPayload
           }
           upsert: {
-            args: Prisma.RankUpsertArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$RankPayload>
+            args: Prisma.TitleUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$TitlePayload>
           }
           aggregate: {
-            args: Prisma.RankAggregateArgs<ExtArgs>,
-            result: $Utils.Optional<AggregateRank>
+            args: Prisma.TitleAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateTitle>
           }
           groupBy: {
-            args: Prisma.RankGroupByArgs<ExtArgs>,
-            result: $Utils.Optional<RankGroupByOutputType>[]
+            args: Prisma.TitleGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<TitleGroupByOutputType>[]
           }
           count: {
-            args: Prisma.RankCountArgs<ExtArgs>,
-            result: $Utils.Optional<RankCountAggregateOutputType> | number
+            args: Prisma.TitleCountArgs<ExtArgs>,
+            result: $Utils.Optional<TitleCountAggregateOutputType> | number
           }
         }
       }
@@ -2058,34 +2058,34 @@ export namespace Prisma {
 
 
   /**
-   * Count Type RankCountOutputType
+   * Count Type TitleCountOutputType
    */
 
-  export type RankCountOutputType = {
+  export type TitleCountOutputType = {
     Game: number
   }
 
-  export type RankCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    Game?: boolean | RankCountOutputTypeCountGameArgs
+  export type TitleCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    Game?: boolean | TitleCountOutputTypeCountGameArgs
   }
 
   // Custom InputTypes
 
   /**
-   * RankCountOutputType without action
+   * TitleCountOutputType without action
    */
-  export type RankCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TitleCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the RankCountOutputType
+     * Select specific fields to fetch from the TitleCountOutputType
      */
-    select?: RankCountOutputTypeSelect<ExtArgs> | null
+    select?: TitleCountOutputTypeSelect<ExtArgs> | null
   }
 
 
   /**
-   * RankCountOutputType without action
+   * TitleCountOutputType without action
    */
-  export type RankCountOutputTypeCountGameArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TitleCountOutputTypeCountGameArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: GameWhereInput
   }
 
@@ -4632,7 +4632,7 @@ export namespace Prisma {
     rerollTokensSpentDuringPart2Limited: number | null
     publicProfileId: number | null
     score: number | null
-    rankId: number | null
+    titleId: number | null
   }
 
   export type GameSumAggregateOutputType = {
@@ -4646,7 +4646,7 @@ export namespace Prisma {
     rerollTokensSpentDuringPart2Limited: number | null
     publicProfileId: number | null
     score: number | null
-    rankId: number | null
+    titleId: number | null
   }
 
   export type GameMinAggregateOutputType = {
@@ -4668,7 +4668,7 @@ export namespace Prisma {
     isPublic: boolean | null
     publicProfileId: number | null
     score: number | null
-    rankId: number | null
+    titleId: number | null
     dateCompleted: Date | null
   }
 
@@ -4691,7 +4691,7 @@ export namespace Prisma {
     isPublic: boolean | null
     publicProfileId: number | null
     score: number | null
-    rankId: number | null
+    titleId: number | null
     dateCompleted: Date | null
   }
 
@@ -4714,7 +4714,7 @@ export namespace Prisma {
     isPublic: number
     publicProfileId: number
     score: number
-    rankId: number
+    titleId: number
     dateCompleted: number
     _all: number
   }
@@ -4731,7 +4731,7 @@ export namespace Prisma {
     rerollTokensSpentDuringPart2Limited?: true
     publicProfileId?: true
     score?: true
-    rankId?: true
+    titleId?: true
   }
 
   export type GameSumAggregateInputType = {
@@ -4745,7 +4745,7 @@ export namespace Prisma {
     rerollTokensSpentDuringPart2Limited?: true
     publicProfileId?: true
     score?: true
-    rankId?: true
+    titleId?: true
   }
 
   export type GameMinAggregateInputType = {
@@ -4767,7 +4767,7 @@ export namespace Prisma {
     isPublic?: true
     publicProfileId?: true
     score?: true
-    rankId?: true
+    titleId?: true
     dateCompleted?: true
   }
 
@@ -4790,7 +4790,7 @@ export namespace Prisma {
     isPublic?: true
     publicProfileId?: true
     score?: true
-    rankId?: true
+    titleId?: true
     dateCompleted?: true
   }
 
@@ -4813,7 +4813,7 @@ export namespace Prisma {
     isPublic?: true
     publicProfileId?: true
     score?: true
-    rankId?: true
+    titleId?: true
     dateCompleted?: true
     _all?: true
   }
@@ -4923,7 +4923,7 @@ export namespace Prisma {
     isPublic: boolean
     publicProfileId: number | null
     score: number
-    rankId: number | null
+    titleId: number | null
     dateCompleted: Date | null
     _count: GameCountAggregateOutputType | null
     _avg: GameAvgAggregateOutputType | null
@@ -4965,12 +4965,12 @@ export namespace Prisma {
     isPublic?: boolean
     publicProfileId?: boolean
     score?: boolean
-    rankId?: boolean
+    titleId?: boolean
     dateCompleted?: boolean
     Day?: boolean | Game$DayArgs<ExtArgs>
     Downvote?: boolean | Game$DownvoteArgs<ExtArgs>
     PublicProfile?: boolean | Game$PublicProfileArgs<ExtArgs>
-    Rank?: boolean | Game$RankArgs<ExtArgs>
+    Title?: boolean | Game$TitleArgs<ExtArgs>
     User?: boolean | UserDefaultArgs<ExtArgs>
     Upvote?: boolean | Game$UpvoteArgs<ExtArgs>
     _count?: boolean | GameCountOutputTypeDefaultArgs<ExtArgs>
@@ -4995,7 +4995,7 @@ export namespace Prisma {
     isPublic?: boolean
     publicProfileId?: boolean
     score?: boolean
-    rankId?: boolean
+    titleId?: boolean
     dateCompleted?: boolean
   }
 
@@ -5003,7 +5003,7 @@ export namespace Prisma {
     Day?: boolean | Game$DayArgs<ExtArgs>
     Downvote?: boolean | Game$DownvoteArgs<ExtArgs>
     PublicProfile?: boolean | Game$PublicProfileArgs<ExtArgs>
-    Rank?: boolean | Game$RankArgs<ExtArgs>
+    Title?: boolean | Game$TitleArgs<ExtArgs>
     User?: boolean | UserDefaultArgs<ExtArgs>
     Upvote?: boolean | Game$UpvoteArgs<ExtArgs>
     _count?: boolean | GameCountOutputTypeDefaultArgs<ExtArgs>
@@ -5016,7 +5016,7 @@ export namespace Prisma {
       Day: Prisma.$DayPayload<ExtArgs>[]
       Downvote: Prisma.$DownvotePayload<ExtArgs>[]
       PublicProfile: Prisma.$PublicProfilePayload<ExtArgs> | null
-      Rank: Prisma.$RankPayload<ExtArgs> | null
+      Title: Prisma.$TitlePayload<ExtArgs> | null
       User: Prisma.$UserPayload<ExtArgs>
       Upvote: Prisma.$UpvotePayload<ExtArgs>[]
     }
@@ -5039,7 +5039,7 @@ export namespace Prisma {
       isPublic: boolean
       publicProfileId: number | null
       score: number
-      rankId: number | null
+      titleId: number | null
       dateCompleted: Date | null
     }, ExtArgs["result"]["game"]>
     composites: {}
@@ -5412,7 +5412,7 @@ export namespace Prisma {
 
     PublicProfile<T extends Game$PublicProfileArgs<ExtArgs> = {}>(args?: Subset<T, Game$PublicProfileArgs<ExtArgs>>): Prisma__PublicProfileClient<$Result.GetResult<Prisma.$PublicProfilePayload<ExtArgs>, T, 'findUniqueOrThrow'> | null, null, ExtArgs>;
 
-    Rank<T extends Game$RankArgs<ExtArgs> = {}>(args?: Subset<T, Game$RankArgs<ExtArgs>>): Prisma__RankClient<$Result.GetResult<Prisma.$RankPayload<ExtArgs>, T, 'findUniqueOrThrow'> | null, null, ExtArgs>;
+    Title<T extends Game$TitleArgs<ExtArgs> = {}>(args?: Subset<T, Game$TitleArgs<ExtArgs>>): Prisma__TitleClient<$Result.GetResult<Prisma.$TitlePayload<ExtArgs>, T, 'findUniqueOrThrow'> | null, null, ExtArgs>;
 
     User<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
 
@@ -5464,7 +5464,7 @@ export namespace Prisma {
     readonly isPublic: FieldRef<"Game", 'Boolean'>
     readonly publicProfileId: FieldRef<"Game", 'Int'>
     readonly score: FieldRef<"Game", 'Int'>
-    readonly rankId: FieldRef<"Game", 'Int'>
+    readonly titleId: FieldRef<"Game", 'Int'>
     readonly dateCompleted: FieldRef<"Game", 'DateTime'>
   }
     
@@ -5836,18 +5836,18 @@ export namespace Prisma {
 
 
   /**
-   * Game.Rank
+   * Game.Title
    */
-  export type Game$RankArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Game$TitleArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Rank
+     * Select specific fields to fetch from the Title
      */
-    select?: RankSelect<ExtArgs> | null
+    select?: TitleSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well.
      */
-    include?: RankInclude<ExtArgs> | null
-    where?: RankWhereInput
+    include?: TitleInclude<ExtArgs> | null
+    where?: TitleWhereInput
   }
 
 
@@ -5889,40 +5889,40 @@ export namespace Prisma {
 
 
   /**
-   * Model Rank
+   * Model Title
    */
 
-  export type AggregateRank = {
-    _count: RankCountAggregateOutputType | null
-    _avg: RankAvgAggregateOutputType | null
-    _sum: RankSumAggregateOutputType | null
-    _min: RankMinAggregateOutputType | null
-    _max: RankMaxAggregateOutputType | null
+  export type AggregateTitle = {
+    _count: TitleCountAggregateOutputType | null
+    _avg: TitleAvgAggregateOutputType | null
+    _sum: TitleSumAggregateOutputType | null
+    _min: TitleMinAggregateOutputType | null
+    _max: TitleMaxAggregateOutputType | null
   }
 
-  export type RankAvgAggregateOutputType = {
+  export type TitleAvgAggregateOutputType = {
     id: number | null
     minimumScore: number | null
   }
 
-  export type RankSumAggregateOutputType = {
+  export type TitleSumAggregateOutputType = {
     id: number | null
     minimumScore: number | null
   }
 
-  export type RankMinAggregateOutputType = {
-    id: number | null
-    name: string | null
-    minimumScore: number | null
-  }
-
-  export type RankMaxAggregateOutputType = {
+  export type TitleMinAggregateOutputType = {
     id: number | null
     name: string | null
     minimumScore: number | null
   }
 
-  export type RankCountAggregateOutputType = {
+  export type TitleMaxAggregateOutputType = {
+    id: number | null
+    name: string | null
+    minimumScore: number | null
+  }
+
+  export type TitleCountAggregateOutputType = {
     id: number
     name: number
     minimumScore: number
@@ -5930,168 +5930,168 @@ export namespace Prisma {
   }
 
 
-  export type RankAvgAggregateInputType = {
+  export type TitleAvgAggregateInputType = {
     id?: true
     minimumScore?: true
   }
 
-  export type RankSumAggregateInputType = {
+  export type TitleSumAggregateInputType = {
     id?: true
     minimumScore?: true
   }
 
-  export type RankMinAggregateInputType = {
-    id?: true
-    name?: true
-    minimumScore?: true
-  }
-
-  export type RankMaxAggregateInputType = {
+  export type TitleMinAggregateInputType = {
     id?: true
     name?: true
     minimumScore?: true
   }
 
-  export type RankCountAggregateInputType = {
+  export type TitleMaxAggregateInputType = {
+    id?: true
+    name?: true
+    minimumScore?: true
+  }
+
+  export type TitleCountAggregateInputType = {
     id?: true
     name?: true
     minimumScore?: true
     _all?: true
   }
 
-  export type RankAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TitleAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which Rank to aggregate.
+     * Filter which Title to aggregate.
      */
-    where?: RankWhereInput
+    where?: TitleWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Ranks to fetch.
+     * Determine the order of Titles to fetch.
      */
-    orderBy?: RankOrderByWithRelationInput | RankOrderByWithRelationInput[]
+    orderBy?: TitleOrderByWithRelationInput | TitleOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: RankWhereUniqueInput
+    cursor?: TitleWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Ranks from the position of the cursor.
+     * Take `±n` Titles from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Ranks.
+     * Skip the first `n` Titles.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned Ranks
+     * Count returned Titles
     **/
-    _count?: true | RankCountAggregateInputType
+    _count?: true | TitleCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to average
     **/
-    _avg?: RankAvgAggregateInputType
+    _avg?: TitleAvgAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to sum
     **/
-    _sum?: RankSumAggregateInputType
+    _sum?: TitleSumAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: RankMinAggregateInputType
+    _min?: TitleMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: RankMaxAggregateInputType
+    _max?: TitleMaxAggregateInputType
   }
 
-  export type GetRankAggregateType<T extends RankAggregateArgs> = {
-        [P in keyof T & keyof AggregateRank]: P extends '_count' | 'count'
+  export type GetTitleAggregateType<T extends TitleAggregateArgs> = {
+        [P in keyof T & keyof AggregateTitle]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateRank[P]>
-      : GetScalarType<T[P], AggregateRank[P]>
+        : GetScalarType<T[P], AggregateTitle[P]>
+      : GetScalarType<T[P], AggregateTitle[P]>
   }
 
 
 
 
-  export type RankGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: RankWhereInput
-    orderBy?: RankOrderByWithAggregationInput | RankOrderByWithAggregationInput[]
-    by: RankScalarFieldEnum[] | RankScalarFieldEnum
-    having?: RankScalarWhereWithAggregatesInput
+  export type TitleGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TitleWhereInput
+    orderBy?: TitleOrderByWithAggregationInput | TitleOrderByWithAggregationInput[]
+    by: TitleScalarFieldEnum[] | TitleScalarFieldEnum
+    having?: TitleScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: RankCountAggregateInputType | true
-    _avg?: RankAvgAggregateInputType
-    _sum?: RankSumAggregateInputType
-    _min?: RankMinAggregateInputType
-    _max?: RankMaxAggregateInputType
+    _count?: TitleCountAggregateInputType | true
+    _avg?: TitleAvgAggregateInputType
+    _sum?: TitleSumAggregateInputType
+    _min?: TitleMinAggregateInputType
+    _max?: TitleMaxAggregateInputType
   }
 
-  export type RankGroupByOutputType = {
+  export type TitleGroupByOutputType = {
     id: number
     name: string
     minimumScore: number
-    _count: RankCountAggregateOutputType | null
-    _avg: RankAvgAggregateOutputType | null
-    _sum: RankSumAggregateOutputType | null
-    _min: RankMinAggregateOutputType | null
-    _max: RankMaxAggregateOutputType | null
+    _count: TitleCountAggregateOutputType | null
+    _avg: TitleAvgAggregateOutputType | null
+    _sum: TitleSumAggregateOutputType | null
+    _min: TitleMinAggregateOutputType | null
+    _max: TitleMaxAggregateOutputType | null
   }
 
-  type GetRankGroupByPayload<T extends RankGroupByArgs> = Prisma.PrismaPromise<
+  type GetTitleGroupByPayload<T extends TitleGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<RankGroupByOutputType, T['by']> &
+      PickEnumerable<TitleGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof RankGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof TitleGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], RankGroupByOutputType[P]>
-            : GetScalarType<T[P], RankGroupByOutputType[P]>
+              : GetScalarType<T[P], TitleGroupByOutputType[P]>
+            : GetScalarType<T[P], TitleGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type RankSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type TitleSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
     minimumScore?: boolean
-    Game?: boolean | Rank$GameArgs<ExtArgs>
-    _count?: boolean | RankCountOutputTypeDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["rank"]>
+    Game?: boolean | Title$GameArgs<ExtArgs>
+    _count?: boolean | TitleCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["title"]>
 
-  export type RankSelectScalar = {
+  export type TitleSelectScalar = {
     id?: boolean
     name?: boolean
     minimumScore?: boolean
   }
 
-  export type RankInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    Game?: boolean | Rank$GameArgs<ExtArgs>
-    _count?: boolean | RankCountOutputTypeDefaultArgs<ExtArgs>
+  export type TitleInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    Game?: boolean | Title$GameArgs<ExtArgs>
+    _count?: boolean | TitleCountOutputTypeDefaultArgs<ExtArgs>
   }
 
 
-  export type $RankPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "Rank"
+  export type $TitlePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Title"
     objects: {
       Game: Prisma.$GamePayload<ExtArgs>[]
     }
@@ -6099,160 +6099,160 @@ export namespace Prisma {
       id: number
       name: string
       minimumScore: number
-    }, ExtArgs["result"]["rank"]>
+    }, ExtArgs["result"]["title"]>
     composites: {}
   }
 
 
-  type RankGetPayload<S extends boolean | null | undefined | RankDefaultArgs> = $Result.GetResult<Prisma.$RankPayload, S>
+  type TitleGetPayload<S extends boolean | null | undefined | TitleDefaultArgs> = $Result.GetResult<Prisma.$TitlePayload, S>
 
-  type RankCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
-    Omit<RankFindManyArgs, 'select' | 'include' | 'distinct' > & {
-      select?: RankCountAggregateInputType | true
+  type TitleCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<TitleFindManyArgs, 'select' | 'include' | 'distinct' > & {
+      select?: TitleCountAggregateInputType | true
     }
 
-  export interface RankDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Rank'], meta: { name: 'Rank' } }
+  export interface TitleDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Title'], meta: { name: 'Title' } }
     /**
-     * Find zero or one Rank that matches the filter.
-     * @param {RankFindUniqueArgs} args - Arguments to find a Rank
+     * Find zero or one Title that matches the filter.
+     * @param {TitleFindUniqueArgs} args - Arguments to find a Title
      * @example
-     * // Get one Rank
-     * const rank = await prisma.rank.findUnique({
+     * // Get one Title
+     * const title = await prisma.title.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
     **/
-    findUnique<T extends RankFindUniqueArgs<ExtArgs>>(
-      args: SelectSubset<T, RankFindUniqueArgs<ExtArgs>>
-    ): Prisma__RankClient<$Result.GetResult<Prisma.$RankPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
+    findUnique<T extends TitleFindUniqueArgs<ExtArgs>>(
+      args: SelectSubset<T, TitleFindUniqueArgs<ExtArgs>>
+    ): Prisma__TitleClient<$Result.GetResult<Prisma.$TitlePayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
 
     /**
-     * Find one Rank that matches the filter or throw an error  with `error.code='P2025'` 
+     * Find one Title that matches the filter or throw an error  with `error.code='P2025'` 
      *     if no matches were found.
-     * @param {RankFindUniqueOrThrowArgs} args - Arguments to find a Rank
+     * @param {TitleFindUniqueOrThrowArgs} args - Arguments to find a Title
      * @example
-     * // Get one Rank
-     * const rank = await prisma.rank.findUniqueOrThrow({
+     * // Get one Title
+     * const title = await prisma.title.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
     **/
-    findUniqueOrThrow<T extends RankFindUniqueOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, RankFindUniqueOrThrowArgs<ExtArgs>>
-    ): Prisma__RankClient<$Result.GetResult<Prisma.$RankPayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
+    findUniqueOrThrow<T extends TitleFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, TitleFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__TitleClient<$Result.GetResult<Prisma.$TitlePayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
 
     /**
-     * Find the first Rank that matches the filter.
+     * Find the first Title that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {RankFindFirstArgs} args - Arguments to find a Rank
+     * @param {TitleFindFirstArgs} args - Arguments to find a Title
      * @example
-     * // Get one Rank
-     * const rank = await prisma.rank.findFirst({
+     * // Get one Title
+     * const title = await prisma.title.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
     **/
-    findFirst<T extends RankFindFirstArgs<ExtArgs>>(
-      args?: SelectSubset<T, RankFindFirstArgs<ExtArgs>>
-    ): Prisma__RankClient<$Result.GetResult<Prisma.$RankPayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
+    findFirst<T extends TitleFindFirstArgs<ExtArgs>>(
+      args?: SelectSubset<T, TitleFindFirstArgs<ExtArgs>>
+    ): Prisma__TitleClient<$Result.GetResult<Prisma.$TitlePayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
 
     /**
-     * Find the first Rank that matches the filter or
+     * Find the first Title that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {RankFindFirstOrThrowArgs} args - Arguments to find a Rank
+     * @param {TitleFindFirstOrThrowArgs} args - Arguments to find a Title
      * @example
-     * // Get one Rank
-     * const rank = await prisma.rank.findFirstOrThrow({
+     * // Get one Title
+     * const title = await prisma.title.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
     **/
-    findFirstOrThrow<T extends RankFindFirstOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, RankFindFirstOrThrowArgs<ExtArgs>>
-    ): Prisma__RankClient<$Result.GetResult<Prisma.$RankPayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
+    findFirstOrThrow<T extends TitleFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, TitleFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__TitleClient<$Result.GetResult<Prisma.$TitlePayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
 
     /**
-     * Find zero or more Ranks that matches the filter.
+     * Find zero or more Titles that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {RankFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @param {TitleFindManyArgs=} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all Ranks
-     * const ranks = await prisma.rank.findMany()
+     * // Get all Titles
+     * const titles = await prisma.title.findMany()
      * 
-     * // Get first 10 Ranks
-     * const ranks = await prisma.rank.findMany({ take: 10 })
+     * // Get first 10 Titles
+     * const titles = await prisma.title.findMany({ take: 10 })
      * 
      * // Only select the `id`
-     * const rankWithIdOnly = await prisma.rank.findMany({ select: { id: true } })
+     * const titleWithIdOnly = await prisma.title.findMany({ select: { id: true } })
      * 
     **/
-    findMany<T extends RankFindManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, RankFindManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RankPayload<ExtArgs>, T, 'findMany'>>
+    findMany<T extends TitleFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, TitleFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TitlePayload<ExtArgs>, T, 'findMany'>>
 
     /**
-     * Create a Rank.
-     * @param {RankCreateArgs} args - Arguments to create a Rank.
+     * Create a Title.
+     * @param {TitleCreateArgs} args - Arguments to create a Title.
      * @example
-     * // Create one Rank
-     * const Rank = await prisma.rank.create({
+     * // Create one Title
+     * const Title = await prisma.title.create({
      *   data: {
-     *     // ... data to create a Rank
+     *     // ... data to create a Title
      *   }
      * })
      * 
     **/
-    create<T extends RankCreateArgs<ExtArgs>>(
-      args: SelectSubset<T, RankCreateArgs<ExtArgs>>
-    ): Prisma__RankClient<$Result.GetResult<Prisma.$RankPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
+    create<T extends TitleCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, TitleCreateArgs<ExtArgs>>
+    ): Prisma__TitleClient<$Result.GetResult<Prisma.$TitlePayload<ExtArgs>, T, 'create'>, never, ExtArgs>
 
     /**
-     * Create many Ranks.
-     *     @param {RankCreateManyArgs} args - Arguments to create many Ranks.
+     * Create many Titles.
+     *     @param {TitleCreateManyArgs} args - Arguments to create many Titles.
      *     @example
-     *     // Create many Ranks
-     *     const rank = await prisma.rank.createMany({
+     *     // Create many Titles
+     *     const title = await prisma.title.createMany({
      *       data: {
      *         // ... provide data here
      *       }
      *     })
      *     
     **/
-    createMany<T extends RankCreateManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, RankCreateManyArgs<ExtArgs>>
+    createMany<T extends TitleCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, TitleCreateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Delete a Rank.
-     * @param {RankDeleteArgs} args - Arguments to delete one Rank.
+     * Delete a Title.
+     * @param {TitleDeleteArgs} args - Arguments to delete one Title.
      * @example
-     * // Delete one Rank
-     * const Rank = await prisma.rank.delete({
+     * // Delete one Title
+     * const Title = await prisma.title.delete({
      *   where: {
-     *     // ... filter to delete one Rank
+     *     // ... filter to delete one Title
      *   }
      * })
      * 
     **/
-    delete<T extends RankDeleteArgs<ExtArgs>>(
-      args: SelectSubset<T, RankDeleteArgs<ExtArgs>>
-    ): Prisma__RankClient<$Result.GetResult<Prisma.$RankPayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
+    delete<T extends TitleDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, TitleDeleteArgs<ExtArgs>>
+    ): Prisma__TitleClient<$Result.GetResult<Prisma.$TitlePayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
 
     /**
-     * Update one Rank.
-     * @param {RankUpdateArgs} args - Arguments to update one Rank.
+     * Update one Title.
+     * @param {TitleUpdateArgs} args - Arguments to update one Title.
      * @example
-     * // Update one Rank
-     * const rank = await prisma.rank.update({
+     * // Update one Title
+     * const title = await prisma.title.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -6262,34 +6262,34 @@ export namespace Prisma {
      * })
      * 
     **/
-    update<T extends RankUpdateArgs<ExtArgs>>(
-      args: SelectSubset<T, RankUpdateArgs<ExtArgs>>
-    ): Prisma__RankClient<$Result.GetResult<Prisma.$RankPayload<ExtArgs>, T, 'update'>, never, ExtArgs>
+    update<T extends TitleUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, TitleUpdateArgs<ExtArgs>>
+    ): Prisma__TitleClient<$Result.GetResult<Prisma.$TitlePayload<ExtArgs>, T, 'update'>, never, ExtArgs>
 
     /**
-     * Delete zero or more Ranks.
-     * @param {RankDeleteManyArgs} args - Arguments to filter Ranks to delete.
+     * Delete zero or more Titles.
+     * @param {TitleDeleteManyArgs} args - Arguments to filter Titles to delete.
      * @example
-     * // Delete a few Ranks
-     * const { count } = await prisma.rank.deleteMany({
+     * // Delete a few Titles
+     * const { count } = await prisma.title.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
     **/
-    deleteMany<T extends RankDeleteManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, RankDeleteManyArgs<ExtArgs>>
+    deleteMany<T extends TitleDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, TitleDeleteManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more Ranks.
+     * Update zero or more Titles.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {RankUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {TitleUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many Ranks
-     * const rank = await prisma.rank.updateMany({
+     * // Update many Titles
+     * const title = await prisma.title.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -6299,59 +6299,59 @@ export namespace Prisma {
      * })
      * 
     **/
-    updateMany<T extends RankUpdateManyArgs<ExtArgs>>(
-      args: SelectSubset<T, RankUpdateManyArgs<ExtArgs>>
+    updateMany<T extends TitleUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, TitleUpdateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create or update one Rank.
-     * @param {RankUpsertArgs} args - Arguments to update or create a Rank.
+     * Create or update one Title.
+     * @param {TitleUpsertArgs} args - Arguments to update or create a Title.
      * @example
-     * // Update or create a Rank
-     * const rank = await prisma.rank.upsert({
+     * // Update or create a Title
+     * const title = await prisma.title.upsert({
      *   create: {
-     *     // ... data to create a Rank
+     *     // ... data to create a Title
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the Rank we want to update
+     *     // ... the filter for the Title we want to update
      *   }
      * })
     **/
-    upsert<T extends RankUpsertArgs<ExtArgs>>(
-      args: SelectSubset<T, RankUpsertArgs<ExtArgs>>
-    ): Prisma__RankClient<$Result.GetResult<Prisma.$RankPayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
+    upsert<T extends TitleUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, TitleUpsertArgs<ExtArgs>>
+    ): Prisma__TitleClient<$Result.GetResult<Prisma.$TitlePayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
 
     /**
-     * Count the number of Ranks.
+     * Count the number of Titles.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {RankCountArgs} args - Arguments to filter Ranks to count.
+     * @param {TitleCountArgs} args - Arguments to filter Titles to count.
      * @example
-     * // Count the number of Ranks
-     * const count = await prisma.rank.count({
+     * // Count the number of Titles
+     * const count = await prisma.title.count({
      *   where: {
-     *     // ... the filter for the Ranks we want to count
+     *     // ... the filter for the Titles we want to count
      *   }
      * })
     **/
-    count<T extends RankCountArgs>(
-      args?: Subset<T, RankCountArgs>,
+    count<T extends TitleCountArgs>(
+      args?: Subset<T, TitleCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], RankCountAggregateOutputType>
+          : GetScalarType<T['select'], TitleCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a Rank.
+     * Allows you to perform aggregations operations on a Title.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {RankAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {TitleAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -6371,13 +6371,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends RankAggregateArgs>(args: Subset<T, RankAggregateArgs>): Prisma.PrismaPromise<GetRankAggregateType<T>>
+    aggregate<T extends TitleAggregateArgs>(args: Subset<T, TitleAggregateArgs>): Prisma.PrismaPromise<GetTitleAggregateType<T>>
 
     /**
-     * Group by Rank.
+     * Group by Title.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {RankGroupByArgs} args - Group by arguments.
+     * @param {TitleGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -6392,14 +6392,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends RankGroupByArgs,
+      T extends TitleGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: RankGroupByArgs['orderBy'] }
-        : { orderBy?: RankGroupByArgs['orderBy'] },
+        ? { orderBy: TitleGroupByArgs['orderBy'] }
+        : { orderBy?: TitleGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -6448,23 +6448,23 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, RankGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetRankGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, TitleGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTitleGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the Rank model
+   * Fields of the Title model
    */
-  readonly fields: RankFieldRefs;
+  readonly fields: TitleFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for Rank.
+   * The delegate class that acts as a "Promise-like" for Title.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__RankClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__TitleClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
 
-    Game<T extends Rank$GameArgs<ExtArgs> = {}>(args?: Subset<T, Rank$GameArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GamePayload<ExtArgs>, T, 'findMany'> | Null>;
+    Game<T extends Title$GameArgs<ExtArgs> = {}>(args?: Subset<T, Title$GameArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GamePayload<ExtArgs>, T, 'findMany'> | Null>;
 
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -6491,327 +6491,327 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the Rank model
+   * Fields of the Title model
    */ 
-  interface RankFieldRefs {
-    readonly id: FieldRef<"Rank", 'Int'>
-    readonly name: FieldRef<"Rank", 'String'>
-    readonly minimumScore: FieldRef<"Rank", 'Int'>
+  interface TitleFieldRefs {
+    readonly id: FieldRef<"Title", 'Int'>
+    readonly name: FieldRef<"Title", 'String'>
+    readonly minimumScore: FieldRef<"Title", 'Int'>
   }
     
 
   // Custom InputTypes
 
   /**
-   * Rank findUnique
+   * Title findUnique
    */
-  export type RankFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TitleFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Rank
+     * Select specific fields to fetch from the Title
      */
-    select?: RankSelect<ExtArgs> | null
+    select?: TitleSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well.
      */
-    include?: RankInclude<ExtArgs> | null
+    include?: TitleInclude<ExtArgs> | null
     /**
-     * Filter, which Rank to fetch.
+     * Filter, which Title to fetch.
      */
-    where: RankWhereUniqueInput
+    where: TitleWhereUniqueInput
   }
 
 
   /**
-   * Rank findUniqueOrThrow
+   * Title findUniqueOrThrow
    */
-  export type RankFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TitleFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Rank
+     * Select specific fields to fetch from the Title
      */
-    select?: RankSelect<ExtArgs> | null
+    select?: TitleSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well.
      */
-    include?: RankInclude<ExtArgs> | null
+    include?: TitleInclude<ExtArgs> | null
     /**
-     * Filter, which Rank to fetch.
+     * Filter, which Title to fetch.
      */
-    where: RankWhereUniqueInput
+    where: TitleWhereUniqueInput
   }
 
 
   /**
-   * Rank findFirst
+   * Title findFirst
    */
-  export type RankFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TitleFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Rank
+     * Select specific fields to fetch from the Title
      */
-    select?: RankSelect<ExtArgs> | null
+    select?: TitleSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well.
      */
-    include?: RankInclude<ExtArgs> | null
+    include?: TitleInclude<ExtArgs> | null
     /**
-     * Filter, which Rank to fetch.
+     * Filter, which Title to fetch.
      */
-    where?: RankWhereInput
+    where?: TitleWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Ranks to fetch.
+     * Determine the order of Titles to fetch.
      */
-    orderBy?: RankOrderByWithRelationInput | RankOrderByWithRelationInput[]
+    orderBy?: TitleOrderByWithRelationInput | TitleOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for Ranks.
+     * Sets the position for searching for Titles.
      */
-    cursor?: RankWhereUniqueInput
+    cursor?: TitleWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Ranks from the position of the cursor.
+     * Take `±n` Titles from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Ranks.
+     * Skip the first `n` Titles.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of Ranks.
+     * Filter by unique combinations of Titles.
      */
-    distinct?: RankScalarFieldEnum | RankScalarFieldEnum[]
+    distinct?: TitleScalarFieldEnum | TitleScalarFieldEnum[]
   }
 
 
   /**
-   * Rank findFirstOrThrow
+   * Title findFirstOrThrow
    */
-  export type RankFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TitleFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Rank
+     * Select specific fields to fetch from the Title
      */
-    select?: RankSelect<ExtArgs> | null
+    select?: TitleSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well.
      */
-    include?: RankInclude<ExtArgs> | null
+    include?: TitleInclude<ExtArgs> | null
     /**
-     * Filter, which Rank to fetch.
+     * Filter, which Title to fetch.
      */
-    where?: RankWhereInput
+    where?: TitleWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Ranks to fetch.
+     * Determine the order of Titles to fetch.
      */
-    orderBy?: RankOrderByWithRelationInput | RankOrderByWithRelationInput[]
+    orderBy?: TitleOrderByWithRelationInput | TitleOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for Ranks.
+     * Sets the position for searching for Titles.
      */
-    cursor?: RankWhereUniqueInput
+    cursor?: TitleWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Ranks from the position of the cursor.
+     * Take `±n` Titles from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Ranks.
+     * Skip the first `n` Titles.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of Ranks.
+     * Filter by unique combinations of Titles.
      */
-    distinct?: RankScalarFieldEnum | RankScalarFieldEnum[]
+    distinct?: TitleScalarFieldEnum | TitleScalarFieldEnum[]
   }
 
 
   /**
-   * Rank findMany
+   * Title findMany
    */
-  export type RankFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TitleFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Rank
+     * Select specific fields to fetch from the Title
      */
-    select?: RankSelect<ExtArgs> | null
+    select?: TitleSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well.
      */
-    include?: RankInclude<ExtArgs> | null
+    include?: TitleInclude<ExtArgs> | null
     /**
-     * Filter, which Ranks to fetch.
+     * Filter, which Titles to fetch.
      */
-    where?: RankWhereInput
+    where?: TitleWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Ranks to fetch.
+     * Determine the order of Titles to fetch.
      */
-    orderBy?: RankOrderByWithRelationInput | RankOrderByWithRelationInput[]
+    orderBy?: TitleOrderByWithRelationInput | TitleOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing Ranks.
+     * Sets the position for listing Titles.
      */
-    cursor?: RankWhereUniqueInput
+    cursor?: TitleWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Ranks from the position of the cursor.
+     * Take `±n` Titles from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Ranks.
+     * Skip the first `n` Titles.
      */
     skip?: number
-    distinct?: RankScalarFieldEnum | RankScalarFieldEnum[]
+    distinct?: TitleScalarFieldEnum | TitleScalarFieldEnum[]
   }
 
 
   /**
-   * Rank create
+   * Title create
    */
-  export type RankCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TitleCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Rank
+     * Select specific fields to fetch from the Title
      */
-    select?: RankSelect<ExtArgs> | null
+    select?: TitleSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well.
      */
-    include?: RankInclude<ExtArgs> | null
+    include?: TitleInclude<ExtArgs> | null
     /**
-     * The data needed to create a Rank.
+     * The data needed to create a Title.
      */
-    data: XOR<RankCreateInput, RankUncheckedCreateInput>
+    data: XOR<TitleCreateInput, TitleUncheckedCreateInput>
   }
 
 
   /**
-   * Rank createMany
+   * Title createMany
    */
-  export type RankCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TitleCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many Ranks.
+     * The data used to create many Titles.
      */
-    data: RankCreateManyInput | RankCreateManyInput[]
+    data: TitleCreateManyInput | TitleCreateManyInput[]
     skipDuplicates?: boolean
   }
 
 
   /**
-   * Rank update
+   * Title update
    */
-  export type RankUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TitleUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Rank
+     * Select specific fields to fetch from the Title
      */
-    select?: RankSelect<ExtArgs> | null
+    select?: TitleSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well.
      */
-    include?: RankInclude<ExtArgs> | null
+    include?: TitleInclude<ExtArgs> | null
     /**
-     * The data needed to update a Rank.
+     * The data needed to update a Title.
      */
-    data: XOR<RankUpdateInput, RankUncheckedUpdateInput>
+    data: XOR<TitleUpdateInput, TitleUncheckedUpdateInput>
     /**
-     * Choose, which Rank to update.
+     * Choose, which Title to update.
      */
-    where: RankWhereUniqueInput
+    where: TitleWhereUniqueInput
   }
 
 
   /**
-   * Rank updateMany
+   * Title updateMany
    */
-  export type RankUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TitleUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update Ranks.
+     * The data used to update Titles.
      */
-    data: XOR<RankUpdateManyMutationInput, RankUncheckedUpdateManyInput>
+    data: XOR<TitleUpdateManyMutationInput, TitleUncheckedUpdateManyInput>
     /**
-     * Filter which Ranks to update
+     * Filter which Titles to update
      */
-    where?: RankWhereInput
+    where?: TitleWhereInput
   }
 
 
   /**
-   * Rank upsert
+   * Title upsert
    */
-  export type RankUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TitleUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Rank
+     * Select specific fields to fetch from the Title
      */
-    select?: RankSelect<ExtArgs> | null
+    select?: TitleSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well.
      */
-    include?: RankInclude<ExtArgs> | null
+    include?: TitleInclude<ExtArgs> | null
     /**
-     * The filter to search for the Rank to update in case it exists.
+     * The filter to search for the Title to update in case it exists.
      */
-    where: RankWhereUniqueInput
+    where: TitleWhereUniqueInput
     /**
-     * In case the Rank found by the `where` argument doesn't exist, create a new Rank with this data.
+     * In case the Title found by the `where` argument doesn't exist, create a new Title with this data.
      */
-    create: XOR<RankCreateInput, RankUncheckedCreateInput>
+    create: XOR<TitleCreateInput, TitleUncheckedCreateInput>
     /**
-     * In case the Rank was found with the provided `where` argument, update it with this data.
+     * In case the Title was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<RankUpdateInput, RankUncheckedUpdateInput>
+    update: XOR<TitleUpdateInput, TitleUncheckedUpdateInput>
   }
 
 
   /**
-   * Rank delete
+   * Title delete
    */
-  export type RankDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TitleDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Rank
+     * Select specific fields to fetch from the Title
      */
-    select?: RankSelect<ExtArgs> | null
+    select?: TitleSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well.
      */
-    include?: RankInclude<ExtArgs> | null
+    include?: TitleInclude<ExtArgs> | null
     /**
-     * Filter which Rank to delete.
+     * Filter which Title to delete.
      */
-    where: RankWhereUniqueInput
+    where: TitleWhereUniqueInput
   }
 
 
   /**
-   * Rank deleteMany
+   * Title deleteMany
    */
-  export type RankDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TitleDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which Ranks to delete
+     * Filter which Titles to delete
      */
-    where?: RankWhereInput
+    where?: TitleWhereInput
   }
 
 
   /**
-   * Rank.Game
+   * Title.Game
    */
-  export type Rank$GameArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Title$GameArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Game
      */
@@ -6830,17 +6830,17 @@ export namespace Prisma {
 
 
   /**
-   * Rank without action
+   * Title without action
    */
-  export type RankDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TitleDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Rank
+     * Select specific fields to fetch from the Title
      */
-    select?: RankSelect<ExtArgs> | null
+    select?: TitleSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well.
      */
-    include?: RankInclude<ExtArgs> | null
+    include?: TitleInclude<ExtArgs> | null
   }
 
 
@@ -16390,20 +16390,20 @@ export namespace Prisma {
     isPublic: 'isPublic',
     publicProfileId: 'publicProfileId',
     score: 'score',
-    rankId: 'rankId',
+    titleId: 'titleId',
     dateCompleted: 'dateCompleted'
   };
 
   export type GameScalarFieldEnum = (typeof GameScalarFieldEnum)[keyof typeof GameScalarFieldEnum]
 
 
-  export const RankScalarFieldEnum: {
+  export const TitleScalarFieldEnum: {
     id: 'id',
     name: 'name',
     minimumScore: 'minimumScore'
   };
 
-  export type RankScalarFieldEnum = (typeof RankScalarFieldEnum)[keyof typeof RankScalarFieldEnum]
+  export type TitleScalarFieldEnum = (typeof TitleScalarFieldEnum)[keyof typeof TitleScalarFieldEnum]
 
 
   export const DayScalarFieldEnum: {
@@ -16783,12 +16783,12 @@ export namespace Prisma {
     isPublic?: BoolFilter<"Game"> | boolean
     publicProfileId?: IntNullableFilter<"Game"> | number | null
     score?: IntFilter<"Game"> | number
-    rankId?: IntNullableFilter<"Game"> | number | null
+    titleId?: IntNullableFilter<"Game"> | number | null
     dateCompleted?: DateTimeNullableFilter<"Game"> | Date | string | null
     Day?: DayListRelationFilter
     Downvote?: DownvoteListRelationFilter
     PublicProfile?: XOR<PublicProfileNullableRelationFilter, PublicProfileWhereInput> | null
-    Rank?: XOR<RankNullableRelationFilter, RankWhereInput> | null
+    Title?: XOR<TitleNullableRelationFilter, TitleWhereInput> | null
     User?: XOR<UserRelationFilter, UserWhereInput>
     Upvote?: UpvoteListRelationFilter
   }
@@ -16812,12 +16812,12 @@ export namespace Prisma {
     isPublic?: SortOrder
     publicProfileId?: SortOrderInput | SortOrder
     score?: SortOrder
-    rankId?: SortOrderInput | SortOrder
+    titleId?: SortOrderInput | SortOrder
     dateCompleted?: SortOrderInput | SortOrder
     Day?: DayOrderByRelationAggregateInput
     Downvote?: DownvoteOrderByRelationAggregateInput
     PublicProfile?: PublicProfileOrderByWithRelationInput
-    Rank?: RankOrderByWithRelationInput
+    Title?: TitleOrderByWithRelationInput
     User?: UserOrderByWithRelationInput
     Upvote?: UpvoteOrderByRelationAggregateInput
   }
@@ -16844,12 +16844,12 @@ export namespace Prisma {
     isPublic?: BoolFilter<"Game"> | boolean
     publicProfileId?: IntNullableFilter<"Game"> | number | null
     score?: IntFilter<"Game"> | number
-    rankId?: IntNullableFilter<"Game"> | number | null
+    titleId?: IntNullableFilter<"Game"> | number | null
     dateCompleted?: DateTimeNullableFilter<"Game"> | Date | string | null
     Day?: DayListRelationFilter
     Downvote?: DownvoteListRelationFilter
     PublicProfile?: XOR<PublicProfileNullableRelationFilter, PublicProfileWhereInput> | null
-    Rank?: XOR<RankNullableRelationFilter, RankWhereInput> | null
+    Title?: XOR<TitleNullableRelationFilter, TitleWhereInput> | null
     User?: XOR<UserRelationFilter, UserWhereInput>
     Upvote?: UpvoteListRelationFilter
   }, "id">
@@ -16873,7 +16873,7 @@ export namespace Prisma {
     isPublic?: SortOrder
     publicProfileId?: SortOrderInput | SortOrder
     score?: SortOrder
-    rankId?: SortOrderInput | SortOrder
+    titleId?: SortOrderInput | SortOrder
     dateCompleted?: SortOrderInput | SortOrder
     _count?: GameCountOrderByAggregateInput
     _avg?: GameAvgOrderByAggregateInput
@@ -16904,55 +16904,55 @@ export namespace Prisma {
     isPublic?: BoolWithAggregatesFilter<"Game"> | boolean
     publicProfileId?: IntNullableWithAggregatesFilter<"Game"> | number | null
     score?: IntWithAggregatesFilter<"Game"> | number
-    rankId?: IntNullableWithAggregatesFilter<"Game"> | number | null
+    titleId?: IntNullableWithAggregatesFilter<"Game"> | number | null
     dateCompleted?: DateTimeNullableWithAggregatesFilter<"Game"> | Date | string | null
   }
 
-  export type RankWhereInput = {
-    AND?: RankWhereInput | RankWhereInput[]
-    OR?: RankWhereInput[]
-    NOT?: RankWhereInput | RankWhereInput[]
-    id?: IntFilter<"Rank"> | number
-    name?: StringFilter<"Rank"> | string
-    minimumScore?: IntFilter<"Rank"> | number
+  export type TitleWhereInput = {
+    AND?: TitleWhereInput | TitleWhereInput[]
+    OR?: TitleWhereInput[]
+    NOT?: TitleWhereInput | TitleWhereInput[]
+    id?: IntFilter<"Title"> | number
+    name?: StringFilter<"Title"> | string
+    minimumScore?: IntFilter<"Title"> | number
     Game?: GameListRelationFilter
   }
 
-  export type RankOrderByWithRelationInput = {
+  export type TitleOrderByWithRelationInput = {
     id?: SortOrder
     name?: SortOrder
     minimumScore?: SortOrder
     Game?: GameOrderByRelationAggregateInput
   }
 
-  export type RankWhereUniqueInput = Prisma.AtLeast<{
+  export type TitleWhereUniqueInput = Prisma.AtLeast<{
     id?: number
     name?: string
-    AND?: RankWhereInput | RankWhereInput[]
-    OR?: RankWhereInput[]
-    NOT?: RankWhereInput | RankWhereInput[]
-    minimumScore?: IntFilter<"Rank"> | number
+    AND?: TitleWhereInput | TitleWhereInput[]
+    OR?: TitleWhereInput[]
+    NOT?: TitleWhereInput | TitleWhereInput[]
+    minimumScore?: IntFilter<"Title"> | number
     Game?: GameListRelationFilter
   }, "id" | "name">
 
-  export type RankOrderByWithAggregationInput = {
+  export type TitleOrderByWithAggregationInput = {
     id?: SortOrder
     name?: SortOrder
     minimumScore?: SortOrder
-    _count?: RankCountOrderByAggregateInput
-    _avg?: RankAvgOrderByAggregateInput
-    _max?: RankMaxOrderByAggregateInput
-    _min?: RankMinOrderByAggregateInput
-    _sum?: RankSumOrderByAggregateInput
+    _count?: TitleCountOrderByAggregateInput
+    _avg?: TitleAvgOrderByAggregateInput
+    _max?: TitleMaxOrderByAggregateInput
+    _min?: TitleMinOrderByAggregateInput
+    _sum?: TitleSumOrderByAggregateInput
   }
 
-  export type RankScalarWhereWithAggregatesInput = {
-    AND?: RankScalarWhereWithAggregatesInput | RankScalarWhereWithAggregatesInput[]
-    OR?: RankScalarWhereWithAggregatesInput[]
-    NOT?: RankScalarWhereWithAggregatesInput | RankScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"Rank"> | number
-    name?: StringWithAggregatesFilter<"Rank"> | string
-    minimumScore?: IntWithAggregatesFilter<"Rank"> | number
+  export type TitleScalarWhereWithAggregatesInput = {
+    AND?: TitleScalarWhereWithAggregatesInput | TitleScalarWhereWithAggregatesInput[]
+    OR?: TitleScalarWhereWithAggregatesInput[]
+    NOT?: TitleScalarWhereWithAggregatesInput | TitleScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Title"> | number
+    name?: StringWithAggregatesFilter<"Title"> | string
+    minimumScore?: IntWithAggregatesFilter<"Title"> | number
   }
 
   export type DayWhereInput = {
@@ -17807,7 +17807,7 @@ export namespace Prisma {
     Day?: DayCreateNestedManyWithoutGameInput
     Downvote?: DownvoteCreateNestedManyWithoutGameInput
     PublicProfile?: PublicProfileCreateNestedOneWithoutGameInput
-    Rank?: RankCreateNestedOneWithoutGameInput
+    Title?: TitleCreateNestedOneWithoutGameInput
     User: UserCreateNestedOneWithoutGameInput
     Upvote?: UpvoteCreateNestedManyWithoutGameInput
   }
@@ -17831,7 +17831,7 @@ export namespace Prisma {
     isPublic?: boolean
     publicProfileId?: number | null
     score?: number
-    rankId?: number | null
+    titleId?: number | null
     dateCompleted?: Date | string | null
     Day?: DayUncheckedCreateNestedManyWithoutGameInput
     Downvote?: DownvoteUncheckedCreateNestedManyWithoutGameInput
@@ -17858,7 +17858,7 @@ export namespace Prisma {
     Day?: DayUpdateManyWithoutGameNestedInput
     Downvote?: DownvoteUpdateManyWithoutGameNestedInput
     PublicProfile?: PublicProfileUpdateOneWithoutGameNestedInput
-    Rank?: RankUpdateOneWithoutGameNestedInput
+    Title?: TitleUpdateOneWithoutGameNestedInput
     User?: UserUpdateOneRequiredWithoutGameNestedInput
     Upvote?: UpvoteUpdateManyWithoutGameNestedInput
   }
@@ -17882,7 +17882,7 @@ export namespace Prisma {
     isPublic?: BoolFieldUpdateOperationsInput | boolean
     publicProfileId?: NullableIntFieldUpdateOperationsInput | number | null
     score?: IntFieldUpdateOperationsInput | number
-    rankId?: NullableIntFieldUpdateOperationsInput | number | null
+    titleId?: NullableIntFieldUpdateOperationsInput | number | null
     dateCompleted?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     Day?: DayUncheckedUpdateManyWithoutGameNestedInput
     Downvote?: DownvoteUncheckedUpdateManyWithoutGameNestedInput
@@ -17908,7 +17908,7 @@ export namespace Prisma {
     isPublic?: boolean
     publicProfileId?: number | null
     score?: number
-    rankId?: number | null
+    titleId?: number | null
     dateCompleted?: Date | string | null
   }
 
@@ -17950,48 +17950,48 @@ export namespace Prisma {
     isPublic?: BoolFieldUpdateOperationsInput | boolean
     publicProfileId?: NullableIntFieldUpdateOperationsInput | number | null
     score?: IntFieldUpdateOperationsInput | number
-    rankId?: NullableIntFieldUpdateOperationsInput | number | null
+    titleId?: NullableIntFieldUpdateOperationsInput | number | null
     dateCompleted?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
-  export type RankCreateInput = {
+  export type TitleCreateInput = {
     name: string
     minimumScore: number
-    Game?: GameCreateNestedManyWithoutRankInput
+    Game?: GameCreateNestedManyWithoutTitleInput
   }
 
-  export type RankUncheckedCreateInput = {
+  export type TitleUncheckedCreateInput = {
     id?: number
     name: string
     minimumScore: number
-    Game?: GameUncheckedCreateNestedManyWithoutRankInput
+    Game?: GameUncheckedCreateNestedManyWithoutTitleInput
   }
 
-  export type RankUpdateInput = {
+  export type TitleUpdateInput = {
     name?: StringFieldUpdateOperationsInput | string
     minimumScore?: IntFieldUpdateOperationsInput | number
-    Game?: GameUpdateManyWithoutRankNestedInput
+    Game?: GameUpdateManyWithoutTitleNestedInput
   }
 
-  export type RankUncheckedUpdateInput = {
+  export type TitleUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     minimumScore?: IntFieldUpdateOperationsInput | number
-    Game?: GameUncheckedUpdateManyWithoutRankNestedInput
+    Game?: GameUncheckedUpdateManyWithoutTitleNestedInput
   }
 
-  export type RankCreateManyInput = {
+  export type TitleCreateManyInput = {
     id?: number
     name: string
     minimumScore: number
   }
 
-  export type RankUpdateManyMutationInput = {
+  export type TitleUpdateManyMutationInput = {
     name?: StringFieldUpdateOperationsInput | string
     minimumScore?: IntFieldUpdateOperationsInput | number
   }
 
-  export type RankUncheckedUpdateManyInput = {
+  export type TitleUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     minimumScore?: IntFieldUpdateOperationsInput | number
@@ -18965,9 +18965,9 @@ export namespace Prisma {
     isNot?: PublicProfileWhereInput | null
   }
 
-  export type RankNullableRelationFilter = {
-    is?: RankWhereInput | null
-    isNot?: RankWhereInput | null
+  export type TitleNullableRelationFilter = {
+    is?: TitleWhereInput | null
+    isNot?: TitleWhereInput | null
   }
 
   export type DayOrderByRelationAggregateInput = {
@@ -18993,7 +18993,7 @@ export namespace Prisma {
     isPublic?: SortOrder
     publicProfileId?: SortOrder
     score?: SortOrder
-    rankId?: SortOrder
+    titleId?: SortOrder
     dateCompleted?: SortOrder
   }
 
@@ -19008,7 +19008,7 @@ export namespace Prisma {
     rerollTokensSpentDuringPart2Limited?: SortOrder
     publicProfileId?: SortOrder
     score?: SortOrder
-    rankId?: SortOrder
+    titleId?: SortOrder
   }
 
   export type GameMaxOrderByAggregateInput = {
@@ -19030,7 +19030,7 @@ export namespace Prisma {
     isPublic?: SortOrder
     publicProfileId?: SortOrder
     score?: SortOrder
-    rankId?: SortOrder
+    titleId?: SortOrder
     dateCompleted?: SortOrder
   }
 
@@ -19053,7 +19053,7 @@ export namespace Prisma {
     isPublic?: SortOrder
     publicProfileId?: SortOrder
     score?: SortOrder
-    rankId?: SortOrder
+    titleId?: SortOrder
     dateCompleted?: SortOrder
   }
 
@@ -19068,7 +19068,7 @@ export namespace Prisma {
     rerollTokensSpentDuringPart2Limited?: SortOrder
     publicProfileId?: SortOrder
     score?: SortOrder
-    rankId?: SortOrder
+    titleId?: SortOrder
   }
 
   export type BoolWithAggregatesFilter<$PrismaModel = never> = {
@@ -19109,30 +19109,30 @@ export namespace Prisma {
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
-  export type RankCountOrderByAggregateInput = {
+  export type TitleCountOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
     minimumScore?: SortOrder
   }
 
-  export type RankAvgOrderByAggregateInput = {
+  export type TitleAvgOrderByAggregateInput = {
     id?: SortOrder
     minimumScore?: SortOrder
   }
 
-  export type RankMaxOrderByAggregateInput = {
-    id?: SortOrder
-    name?: SortOrder
-    minimumScore?: SortOrder
-  }
-
-  export type RankMinOrderByAggregateInput = {
+  export type TitleMaxOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
     minimumScore?: SortOrder
   }
 
-  export type RankSumOrderByAggregateInput = {
+  export type TitleMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    minimumScore?: SortOrder
+  }
+
+  export type TitleSumOrderByAggregateInput = {
     id?: SortOrder
     minimumScore?: SortOrder
   }
@@ -20118,10 +20118,10 @@ export namespace Prisma {
     connect?: PublicProfileWhereUniqueInput
   }
 
-  export type RankCreateNestedOneWithoutGameInput = {
-    create?: XOR<RankCreateWithoutGameInput, RankUncheckedCreateWithoutGameInput>
-    connectOrCreate?: RankCreateOrConnectWithoutGameInput
-    connect?: RankWhereUniqueInput
+  export type TitleCreateNestedOneWithoutGameInput = {
+    create?: XOR<TitleCreateWithoutGameInput, TitleUncheckedCreateWithoutGameInput>
+    connectOrCreate?: TitleCreateOrConnectWithoutGameInput
+    connect?: TitleWhereUniqueInput
   }
 
   export type UserCreateNestedOneWithoutGameInput = {
@@ -20204,14 +20204,14 @@ export namespace Prisma {
     update?: XOR<XOR<PublicProfileUpdateToOneWithWhereWithoutGameInput, PublicProfileUpdateWithoutGameInput>, PublicProfileUncheckedUpdateWithoutGameInput>
   }
 
-  export type RankUpdateOneWithoutGameNestedInput = {
-    create?: XOR<RankCreateWithoutGameInput, RankUncheckedCreateWithoutGameInput>
-    connectOrCreate?: RankCreateOrConnectWithoutGameInput
-    upsert?: RankUpsertWithoutGameInput
-    disconnect?: RankWhereInput | boolean
-    delete?: RankWhereInput | boolean
-    connect?: RankWhereUniqueInput
-    update?: XOR<XOR<RankUpdateToOneWithWhereWithoutGameInput, RankUpdateWithoutGameInput>, RankUncheckedUpdateWithoutGameInput>
+  export type TitleUpdateOneWithoutGameNestedInput = {
+    create?: XOR<TitleCreateWithoutGameInput, TitleUncheckedCreateWithoutGameInput>
+    connectOrCreate?: TitleCreateOrConnectWithoutGameInput
+    upsert?: TitleUpsertWithoutGameInput
+    disconnect?: TitleWhereInput | boolean
+    delete?: TitleWhereInput | boolean
+    connect?: TitleWhereUniqueInput
+    update?: XOR<XOR<TitleUpdateToOneWithWhereWithoutGameInput, TitleUpdateWithoutGameInput>, TitleUncheckedUpdateWithoutGameInput>
   }
 
   export type UserUpdateOneRequiredWithoutGameNestedInput = {
@@ -20286,45 +20286,45 @@ export namespace Prisma {
     deleteMany?: UpvoteScalarWhereInput | UpvoteScalarWhereInput[]
   }
 
-  export type GameCreateNestedManyWithoutRankInput = {
-    create?: XOR<GameCreateWithoutRankInput, GameUncheckedCreateWithoutRankInput> | GameCreateWithoutRankInput[] | GameUncheckedCreateWithoutRankInput[]
-    connectOrCreate?: GameCreateOrConnectWithoutRankInput | GameCreateOrConnectWithoutRankInput[]
-    createMany?: GameCreateManyRankInputEnvelope
+  export type GameCreateNestedManyWithoutTitleInput = {
+    create?: XOR<GameCreateWithoutTitleInput, GameUncheckedCreateWithoutTitleInput> | GameCreateWithoutTitleInput[] | GameUncheckedCreateWithoutTitleInput[]
+    connectOrCreate?: GameCreateOrConnectWithoutTitleInput | GameCreateOrConnectWithoutTitleInput[]
+    createMany?: GameCreateManyTitleInputEnvelope
     connect?: GameWhereUniqueInput | GameWhereUniqueInput[]
   }
 
-  export type GameUncheckedCreateNestedManyWithoutRankInput = {
-    create?: XOR<GameCreateWithoutRankInput, GameUncheckedCreateWithoutRankInput> | GameCreateWithoutRankInput[] | GameUncheckedCreateWithoutRankInput[]
-    connectOrCreate?: GameCreateOrConnectWithoutRankInput | GameCreateOrConnectWithoutRankInput[]
-    createMany?: GameCreateManyRankInputEnvelope
+  export type GameUncheckedCreateNestedManyWithoutTitleInput = {
+    create?: XOR<GameCreateWithoutTitleInput, GameUncheckedCreateWithoutTitleInput> | GameCreateWithoutTitleInput[] | GameUncheckedCreateWithoutTitleInput[]
+    connectOrCreate?: GameCreateOrConnectWithoutTitleInput | GameCreateOrConnectWithoutTitleInput[]
+    createMany?: GameCreateManyTitleInputEnvelope
     connect?: GameWhereUniqueInput | GameWhereUniqueInput[]
   }
 
-  export type GameUpdateManyWithoutRankNestedInput = {
-    create?: XOR<GameCreateWithoutRankInput, GameUncheckedCreateWithoutRankInput> | GameCreateWithoutRankInput[] | GameUncheckedCreateWithoutRankInput[]
-    connectOrCreate?: GameCreateOrConnectWithoutRankInput | GameCreateOrConnectWithoutRankInput[]
-    upsert?: GameUpsertWithWhereUniqueWithoutRankInput | GameUpsertWithWhereUniqueWithoutRankInput[]
-    createMany?: GameCreateManyRankInputEnvelope
+  export type GameUpdateManyWithoutTitleNestedInput = {
+    create?: XOR<GameCreateWithoutTitleInput, GameUncheckedCreateWithoutTitleInput> | GameCreateWithoutTitleInput[] | GameUncheckedCreateWithoutTitleInput[]
+    connectOrCreate?: GameCreateOrConnectWithoutTitleInput | GameCreateOrConnectWithoutTitleInput[]
+    upsert?: GameUpsertWithWhereUniqueWithoutTitleInput | GameUpsertWithWhereUniqueWithoutTitleInput[]
+    createMany?: GameCreateManyTitleInputEnvelope
     set?: GameWhereUniqueInput | GameWhereUniqueInput[]
     disconnect?: GameWhereUniqueInput | GameWhereUniqueInput[]
     delete?: GameWhereUniqueInput | GameWhereUniqueInput[]
     connect?: GameWhereUniqueInput | GameWhereUniqueInput[]
-    update?: GameUpdateWithWhereUniqueWithoutRankInput | GameUpdateWithWhereUniqueWithoutRankInput[]
-    updateMany?: GameUpdateManyWithWhereWithoutRankInput | GameUpdateManyWithWhereWithoutRankInput[]
+    update?: GameUpdateWithWhereUniqueWithoutTitleInput | GameUpdateWithWhereUniqueWithoutTitleInput[]
+    updateMany?: GameUpdateManyWithWhereWithoutTitleInput | GameUpdateManyWithWhereWithoutTitleInput[]
     deleteMany?: GameScalarWhereInput | GameScalarWhereInput[]
   }
 
-  export type GameUncheckedUpdateManyWithoutRankNestedInput = {
-    create?: XOR<GameCreateWithoutRankInput, GameUncheckedCreateWithoutRankInput> | GameCreateWithoutRankInput[] | GameUncheckedCreateWithoutRankInput[]
-    connectOrCreate?: GameCreateOrConnectWithoutRankInput | GameCreateOrConnectWithoutRankInput[]
-    upsert?: GameUpsertWithWhereUniqueWithoutRankInput | GameUpsertWithWhereUniqueWithoutRankInput[]
-    createMany?: GameCreateManyRankInputEnvelope
+  export type GameUncheckedUpdateManyWithoutTitleNestedInput = {
+    create?: XOR<GameCreateWithoutTitleInput, GameUncheckedCreateWithoutTitleInput> | GameCreateWithoutTitleInput[] | GameUncheckedCreateWithoutTitleInput[]
+    connectOrCreate?: GameCreateOrConnectWithoutTitleInput | GameCreateOrConnectWithoutTitleInput[]
+    upsert?: GameUpsertWithWhereUniqueWithoutTitleInput | GameUpsertWithWhereUniqueWithoutTitleInput[]
+    createMany?: GameCreateManyTitleInputEnvelope
     set?: GameWhereUniqueInput | GameWhereUniqueInput[]
     disconnect?: GameWhereUniqueInput | GameWhereUniqueInput[]
     delete?: GameWhereUniqueInput | GameWhereUniqueInput[]
     connect?: GameWhereUniqueInput | GameWhereUniqueInput[]
-    update?: GameUpdateWithWhereUniqueWithoutRankInput | GameUpdateWithWhereUniqueWithoutRankInput[]
-    updateMany?: GameUpdateManyWithWhereWithoutRankInput | GameUpdateManyWithWhereWithoutRankInput[]
+    update?: GameUpdateWithWhereUniqueWithoutTitleInput | GameUpdateWithWhereUniqueWithoutTitleInput[]
+    updateMany?: GameUpdateManyWithWhereWithoutTitleInput | GameUpdateManyWithWhereWithoutTitleInput[]
     deleteMany?: GameScalarWhereInput | GameScalarWhereInput[]
   }
 
@@ -21591,7 +21591,7 @@ export namespace Prisma {
     Day?: DayCreateNestedManyWithoutGameInput
     Downvote?: DownvoteCreateNestedManyWithoutGameInput
     PublicProfile?: PublicProfileCreateNestedOneWithoutGameInput
-    Rank?: RankCreateNestedOneWithoutGameInput
+    Title?: TitleCreateNestedOneWithoutGameInput
     Upvote?: UpvoteCreateNestedManyWithoutGameInput
   }
 
@@ -21613,7 +21613,7 @@ export namespace Prisma {
     isPublic?: boolean
     publicProfileId?: number | null
     score?: number
-    rankId?: number | null
+    titleId?: number | null
     dateCompleted?: Date | string | null
     Day?: DayUncheckedCreateNestedManyWithoutGameInput
     Downvote?: DownvoteUncheckedCreateNestedManyWithoutGameInput
@@ -21996,7 +21996,7 @@ export namespace Prisma {
     isPublic?: BoolFilter<"Game"> | boolean
     publicProfileId?: IntNullableFilter<"Game"> | number | null
     score?: IntFilter<"Game"> | number
-    rankId?: IntNullableFilter<"Game"> | number | null
+    titleId?: IntNullableFilter<"Game"> | number | null
     dateCompleted?: DateTimeNullableFilter<"Game"> | Date | string | null
   }
 
@@ -22193,7 +22193,7 @@ export namespace Prisma {
     dateCompleted?: Date | string | null
     Day?: DayCreateNestedManyWithoutGameInput
     Downvote?: DownvoteCreateNestedManyWithoutGameInput
-    Rank?: RankCreateNestedOneWithoutGameInput
+    Title?: TitleCreateNestedOneWithoutGameInput
     User: UserCreateNestedOneWithoutGameInput
     Upvote?: UpvoteCreateNestedManyWithoutGameInput
   }
@@ -22216,7 +22216,7 @@ export namespace Prisma {
     progressSheetLink?: string
     isPublic?: boolean
     score?: number
-    rankId?: number | null
+    titleId?: number | null
     dateCompleted?: Date | string | null
     Day?: DayUncheckedCreateNestedManyWithoutGameInput
     Downvote?: DownvoteUncheckedCreateNestedManyWithoutGameInput
@@ -22429,20 +22429,20 @@ export namespace Prisma {
     create: XOR<PublicProfileCreateWithoutGameInput, PublicProfileUncheckedCreateWithoutGameInput>
   }
 
-  export type RankCreateWithoutGameInput = {
+  export type TitleCreateWithoutGameInput = {
     name: string
     minimumScore: number
   }
 
-  export type RankUncheckedCreateWithoutGameInput = {
+  export type TitleUncheckedCreateWithoutGameInput = {
     id?: number
     name: string
     minimumScore: number
   }
 
-  export type RankCreateOrConnectWithoutGameInput = {
-    where: RankWhereUniqueInput
-    create: XOR<RankCreateWithoutGameInput, RankUncheckedCreateWithoutGameInput>
+  export type TitleCreateOrConnectWithoutGameInput = {
+    where: TitleWhereUniqueInput
+    create: XOR<TitleCreateWithoutGameInput, TitleUncheckedCreateWithoutGameInput>
   }
 
   export type UserCreateWithoutGameInput = {
@@ -22588,23 +22588,23 @@ export namespace Prisma {
     userId?: StringFieldUpdateOperationsInput | string
   }
 
-  export type RankUpsertWithoutGameInput = {
-    update: XOR<RankUpdateWithoutGameInput, RankUncheckedUpdateWithoutGameInput>
-    create: XOR<RankCreateWithoutGameInput, RankUncheckedCreateWithoutGameInput>
-    where?: RankWhereInput
+  export type TitleUpsertWithoutGameInput = {
+    update: XOR<TitleUpdateWithoutGameInput, TitleUncheckedUpdateWithoutGameInput>
+    create: XOR<TitleCreateWithoutGameInput, TitleUncheckedCreateWithoutGameInput>
+    where?: TitleWhereInput
   }
 
-  export type RankUpdateToOneWithWhereWithoutGameInput = {
-    where?: RankWhereInput
-    data: XOR<RankUpdateWithoutGameInput, RankUncheckedUpdateWithoutGameInput>
+  export type TitleUpdateToOneWithWhereWithoutGameInput = {
+    where?: TitleWhereInput
+    data: XOR<TitleUpdateWithoutGameInput, TitleUncheckedUpdateWithoutGameInput>
   }
 
-  export type RankUpdateWithoutGameInput = {
+  export type TitleUpdateWithoutGameInput = {
     name?: StringFieldUpdateOperationsInput | string
     minimumScore?: IntFieldUpdateOperationsInput | number
   }
 
-  export type RankUncheckedUpdateWithoutGameInput = {
+  export type TitleUncheckedUpdateWithoutGameInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     minimumScore?: IntFieldUpdateOperationsInput | number
@@ -22673,7 +22673,7 @@ export namespace Prisma {
     data: XOR<UpvoteUpdateManyMutationInput, UpvoteUncheckedUpdateManyWithoutGameInput>
   }
 
-  export type GameCreateWithoutRankInput = {
+  export type GameCreateWithoutTitleInput = {
     dateCreated?: Date | string
     number: number
     year: number
@@ -22697,7 +22697,7 @@ export namespace Prisma {
     Upvote?: UpvoteCreateNestedManyWithoutGameInput
   }
 
-  export type GameUncheckedCreateWithoutRankInput = {
+  export type GameUncheckedCreateWithoutTitleInput = {
     id?: number
     dateCreated?: Date | string
     userId: string
@@ -22722,30 +22722,30 @@ export namespace Prisma {
     Upvote?: UpvoteUncheckedCreateNestedManyWithoutGameInput
   }
 
-  export type GameCreateOrConnectWithoutRankInput = {
+  export type GameCreateOrConnectWithoutTitleInput = {
     where: GameWhereUniqueInput
-    create: XOR<GameCreateWithoutRankInput, GameUncheckedCreateWithoutRankInput>
+    create: XOR<GameCreateWithoutTitleInput, GameUncheckedCreateWithoutTitleInput>
   }
 
-  export type GameCreateManyRankInputEnvelope = {
-    data: GameCreateManyRankInput | GameCreateManyRankInput[]
+  export type GameCreateManyTitleInputEnvelope = {
+    data: GameCreateManyTitleInput | GameCreateManyTitleInput[]
     skipDuplicates?: boolean
   }
 
-  export type GameUpsertWithWhereUniqueWithoutRankInput = {
+  export type GameUpsertWithWhereUniqueWithoutTitleInput = {
     where: GameWhereUniqueInput
-    update: XOR<GameUpdateWithoutRankInput, GameUncheckedUpdateWithoutRankInput>
-    create: XOR<GameCreateWithoutRankInput, GameUncheckedCreateWithoutRankInput>
+    update: XOR<GameUpdateWithoutTitleInput, GameUncheckedUpdateWithoutTitleInput>
+    create: XOR<GameCreateWithoutTitleInput, GameUncheckedCreateWithoutTitleInput>
   }
 
-  export type GameUpdateWithWhereUniqueWithoutRankInput = {
+  export type GameUpdateWithWhereUniqueWithoutTitleInput = {
     where: GameWhereUniqueInput
-    data: XOR<GameUpdateWithoutRankInput, GameUncheckedUpdateWithoutRankInput>
+    data: XOR<GameUpdateWithoutTitleInput, GameUncheckedUpdateWithoutTitleInput>
   }
 
-  export type GameUpdateManyWithWhereWithoutRankInput = {
+  export type GameUpdateManyWithWhereWithoutTitleInput = {
     where: GameScalarWhereInput
-    data: XOR<GameUpdateManyMutationInput, GameUncheckedUpdateManyWithoutRankInput>
+    data: XOR<GameUpdateManyMutationInput, GameUncheckedUpdateManyWithoutTitleInput>
   }
 
   export type ChallengeModifierCreateWithoutDayInput = {
@@ -22807,7 +22807,7 @@ export namespace Prisma {
     dateCompleted?: Date | string | null
     Downvote?: DownvoteCreateNestedManyWithoutGameInput
     PublicProfile?: PublicProfileCreateNestedOneWithoutGameInput
-    Rank?: RankCreateNestedOneWithoutGameInput
+    Title?: TitleCreateNestedOneWithoutGameInput
     User: UserCreateNestedOneWithoutGameInput
     Upvote?: UpvoteCreateNestedManyWithoutGameInput
   }
@@ -22831,7 +22831,7 @@ export namespace Prisma {
     isPublic?: boolean
     publicProfileId?: number | null
     score?: number
-    rankId?: number | null
+    titleId?: number | null
     dateCompleted?: Date | string | null
     Downvote?: DownvoteUncheckedCreateNestedManyWithoutGameInput
     Upvote?: UpvoteUncheckedCreateNestedManyWithoutGameInput
@@ -23114,7 +23114,7 @@ export namespace Prisma {
     dateCompleted?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     Downvote?: DownvoteUpdateManyWithoutGameNestedInput
     PublicProfile?: PublicProfileUpdateOneWithoutGameNestedInput
-    Rank?: RankUpdateOneWithoutGameNestedInput
+    Title?: TitleUpdateOneWithoutGameNestedInput
     User?: UserUpdateOneRequiredWithoutGameNestedInput
     Upvote?: UpvoteUpdateManyWithoutGameNestedInput
   }
@@ -23138,7 +23138,7 @@ export namespace Prisma {
     isPublic?: BoolFieldUpdateOperationsInput | boolean
     publicProfileId?: NullableIntFieldUpdateOperationsInput | number | null
     score?: IntFieldUpdateOperationsInput | number
-    rankId?: NullableIntFieldUpdateOperationsInput | number | null
+    titleId?: NullableIntFieldUpdateOperationsInput | number | null
     dateCompleted?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     Downvote?: DownvoteUncheckedUpdateManyWithoutGameNestedInput
     Upvote?: UpvoteUncheckedUpdateManyWithoutGameNestedInput
@@ -24591,7 +24591,7 @@ export namespace Prisma {
     Day?: DayCreateNestedManyWithoutGameInput
     Downvote?: DownvoteCreateNestedManyWithoutGameInput
     PublicProfile?: PublicProfileCreateNestedOneWithoutGameInput
-    Rank?: RankCreateNestedOneWithoutGameInput
+    Title?: TitleCreateNestedOneWithoutGameInput
     User: UserCreateNestedOneWithoutGameInput
   }
 
@@ -24614,7 +24614,7 @@ export namespace Prisma {
     isPublic?: boolean
     publicProfileId?: number | null
     score?: number
-    rankId?: number | null
+    titleId?: number | null
     dateCompleted?: Date | string | null
     Day?: DayUncheckedCreateNestedManyWithoutGameInput
     Downvote?: DownvoteUncheckedCreateNestedManyWithoutGameInput
@@ -24703,7 +24703,7 @@ export namespace Prisma {
     Day?: DayUpdateManyWithoutGameNestedInput
     Downvote?: DownvoteUpdateManyWithoutGameNestedInput
     PublicProfile?: PublicProfileUpdateOneWithoutGameNestedInput
-    Rank?: RankUpdateOneWithoutGameNestedInput
+    Title?: TitleUpdateOneWithoutGameNestedInput
     User?: UserUpdateOneRequiredWithoutGameNestedInput
   }
 
@@ -24726,7 +24726,7 @@ export namespace Prisma {
     isPublic?: BoolFieldUpdateOperationsInput | boolean
     publicProfileId?: NullableIntFieldUpdateOperationsInput | number | null
     score?: IntFieldUpdateOperationsInput | number
-    rankId?: NullableIntFieldUpdateOperationsInput | number | null
+    titleId?: NullableIntFieldUpdateOperationsInput | number | null
     dateCompleted?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     Day?: DayUncheckedUpdateManyWithoutGameNestedInput
     Downvote?: DownvoteUncheckedUpdateManyWithoutGameNestedInput
@@ -24792,7 +24792,7 @@ export namespace Prisma {
     dateCompleted?: Date | string | null
     Day?: DayCreateNestedManyWithoutGameInput
     PublicProfile?: PublicProfileCreateNestedOneWithoutGameInput
-    Rank?: RankCreateNestedOneWithoutGameInput
+    Title?: TitleCreateNestedOneWithoutGameInput
     User: UserCreateNestedOneWithoutGameInput
     Upvote?: UpvoteCreateNestedManyWithoutGameInput
   }
@@ -24816,7 +24816,7 @@ export namespace Prisma {
     isPublic?: boolean
     publicProfileId?: number | null
     score?: number
-    rankId?: number | null
+    titleId?: number | null
     dateCompleted?: Date | string | null
     Day?: DayUncheckedCreateNestedManyWithoutGameInput
     Upvote?: UpvoteUncheckedCreateNestedManyWithoutGameInput
@@ -24904,7 +24904,7 @@ export namespace Prisma {
     dateCompleted?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     Day?: DayUpdateManyWithoutGameNestedInput
     PublicProfile?: PublicProfileUpdateOneWithoutGameNestedInput
-    Rank?: RankUpdateOneWithoutGameNestedInput
+    Title?: TitleUpdateOneWithoutGameNestedInput
     User?: UserUpdateOneRequiredWithoutGameNestedInput
     Upvote?: UpvoteUpdateManyWithoutGameNestedInput
   }
@@ -24928,7 +24928,7 @@ export namespace Prisma {
     isPublic?: BoolFieldUpdateOperationsInput | boolean
     publicProfileId?: NullableIntFieldUpdateOperationsInput | number | null
     score?: IntFieldUpdateOperationsInput | number
-    rankId?: NullableIntFieldUpdateOperationsInput | number | null
+    titleId?: NullableIntFieldUpdateOperationsInput | number | null
     dateCompleted?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     Day?: DayUncheckedUpdateManyWithoutGameNestedInput
     Upvote?: UpvoteUncheckedUpdateManyWithoutGameNestedInput
@@ -25165,7 +25165,7 @@ export namespace Prisma {
     isPublic?: boolean
     publicProfileId?: number | null
     score?: number
-    rankId?: number | null
+    titleId?: number | null
     dateCompleted?: Date | string | null
   }
 
@@ -25285,7 +25285,7 @@ export namespace Prisma {
     Day?: DayUpdateManyWithoutGameNestedInput
     Downvote?: DownvoteUpdateManyWithoutGameNestedInput
     PublicProfile?: PublicProfileUpdateOneWithoutGameNestedInput
-    Rank?: RankUpdateOneWithoutGameNestedInput
+    Title?: TitleUpdateOneWithoutGameNestedInput
     Upvote?: UpvoteUpdateManyWithoutGameNestedInput
   }
 
@@ -25307,7 +25307,7 @@ export namespace Prisma {
     isPublic?: BoolFieldUpdateOperationsInput | boolean
     publicProfileId?: NullableIntFieldUpdateOperationsInput | number | null
     score?: IntFieldUpdateOperationsInput | number
-    rankId?: NullableIntFieldUpdateOperationsInput | number | null
+    titleId?: NullableIntFieldUpdateOperationsInput | number | null
     dateCompleted?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     Day?: DayUncheckedUpdateManyWithoutGameNestedInput
     Downvote?: DownvoteUncheckedUpdateManyWithoutGameNestedInput
@@ -25332,7 +25332,7 @@ export namespace Prisma {
     isPublic?: BoolFieldUpdateOperationsInput | boolean
     publicProfileId?: NullableIntFieldUpdateOperationsInput | number | null
     score?: IntFieldUpdateOperationsInput | number
-    rankId?: NullableIntFieldUpdateOperationsInput | number | null
+    titleId?: NullableIntFieldUpdateOperationsInput | number | null
     dateCompleted?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
@@ -25642,7 +25642,7 @@ export namespace Prisma {
     progressSheetLink?: string
     isPublic?: boolean
     score?: number
-    rankId?: number | null
+    titleId?: number | null
     dateCompleted?: Date | string | null
   }
 
@@ -25665,7 +25665,7 @@ export namespace Prisma {
     dateCompleted?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     Day?: DayUpdateManyWithoutGameNestedInput
     Downvote?: DownvoteUpdateManyWithoutGameNestedInput
-    Rank?: RankUpdateOneWithoutGameNestedInput
+    Title?: TitleUpdateOneWithoutGameNestedInput
     User?: UserUpdateOneRequiredWithoutGameNestedInput
     Upvote?: UpvoteUpdateManyWithoutGameNestedInput
   }
@@ -25688,7 +25688,7 @@ export namespace Prisma {
     progressSheetLink?: StringFieldUpdateOperationsInput | string
     isPublic?: BoolFieldUpdateOperationsInput | boolean
     score?: IntFieldUpdateOperationsInput | number
-    rankId?: NullableIntFieldUpdateOperationsInput | number | null
+    titleId?: NullableIntFieldUpdateOperationsInput | number | null
     dateCompleted?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     Day?: DayUncheckedUpdateManyWithoutGameNestedInput
     Downvote?: DownvoteUncheckedUpdateManyWithoutGameNestedInput
@@ -25713,7 +25713,7 @@ export namespace Prisma {
     progressSheetLink?: StringFieldUpdateOperationsInput | string
     isPublic?: BoolFieldUpdateOperationsInput | boolean
     score?: IntFieldUpdateOperationsInput | number
-    rankId?: NullableIntFieldUpdateOperationsInput | number | null
+    titleId?: NullableIntFieldUpdateOperationsInput | number | null
     dateCompleted?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
@@ -25850,7 +25850,7 @@ export namespace Prisma {
     createdById?: StringFieldUpdateOperationsInput | string
   }
 
-  export type GameCreateManyRankInput = {
+  export type GameCreateManyTitleInput = {
     id?: number
     dateCreated?: Date | string
     userId: string
@@ -25872,7 +25872,7 @@ export namespace Prisma {
     dateCompleted?: Date | string | null
   }
 
-  export type GameUpdateWithoutRankInput = {
+  export type GameUpdateWithoutTitleInput = {
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     number?: IntFieldUpdateOperationsInput | number
     year?: IntFieldUpdateOperationsInput | number
@@ -25896,7 +25896,7 @@ export namespace Prisma {
     Upvote?: UpvoteUpdateManyWithoutGameNestedInput
   }
 
-  export type GameUncheckedUpdateWithoutRankInput = {
+  export type GameUncheckedUpdateWithoutTitleInput = {
     id?: IntFieldUpdateOperationsInput | number
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     userId?: StringFieldUpdateOperationsInput | string
@@ -25921,7 +25921,7 @@ export namespace Prisma {
     Upvote?: UpvoteUncheckedUpdateManyWithoutGameNestedInput
   }
 
-  export type GameUncheckedUpdateManyWithoutRankInput = {
+  export type GameUncheckedUpdateManyWithoutTitleInput = {
     id?: IntFieldUpdateOperationsInput | number
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     userId?: StringFieldUpdateOperationsInput | string
@@ -26916,9 +26916,9 @@ export namespace Prisma {
      */
     export type GameCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = GameCountOutputTypeDefaultArgs<ExtArgs>
     /**
-     * @deprecated Use RankCountOutputTypeDefaultArgs instead
+     * @deprecated Use TitleCountOutputTypeDefaultArgs instead
      */
-    export type RankCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = RankCountOutputTypeDefaultArgs<ExtArgs>
+    export type TitleCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = TitleCountOutputTypeDefaultArgs<ExtArgs>
     /**
      * @deprecated Use DayCountOutputTypeDefaultArgs instead
      */
@@ -26952,9 +26952,9 @@ export namespace Prisma {
      */
     export type GameArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = GameDefaultArgs<ExtArgs>
     /**
-     * @deprecated Use RankDefaultArgs instead
+     * @deprecated Use TitleDefaultArgs instead
      */
-    export type RankArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = RankDefaultArgs<ExtArgs>
+    export type TitleArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = TitleDefaultArgs<ExtArgs>
     /**
      * @deprecated Use DayDefaultArgs instead
      */

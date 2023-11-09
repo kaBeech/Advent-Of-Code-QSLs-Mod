@@ -24,7 +24,7 @@ export const exampleGame = {
   "isPublic": false,
   "publicProfileId": null,
   "score": 0,
-  "rankId": null,
+  "titleId": null,
   "dateCreated": new Date(),
   "dateCompleted": null,
 };
@@ -45,7 +45,7 @@ export const exampleGameDay1 = {
   "isPublic": false,
   "publicProfileId": null,
   "score": 0,
-  "rankId": null,
+  "titleId": null,
   "dateCreated": new Date(),
   "dateCompleted": null,
   "rerollTokensSpentDuringPart2Raw": 0,
@@ -265,7 +265,7 @@ export const exampleModifierOptions = [
   },
 ];
 
-export const exampleRanks = [
+export const exampleTitles = [
   {
     id: 1,
     name: "Champion",
