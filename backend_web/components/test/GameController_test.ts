@@ -2,7 +2,6 @@ import { assertEquals } from "https://deno.land/std@0.197.0/assert/mod.ts";
 import { exampleGame, exampleTitles } from "./exampleObjects.ts";
 import { GameController } from "../GameController.ts";
 import { assertThrows } from "https://deno.land/std@0.152.0/testing/asserts.ts";
-import { DayController } from "../DayController.ts";
 
 const gameController = GameController(exampleGame);
 
