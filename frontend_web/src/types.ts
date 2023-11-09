@@ -32,6 +32,7 @@ export interface LeaderboardGame {
   score: number;
   Title: { id: string; name: string; minimumScore: number };
   repositoryLink: string;
+  User: { username: string };
 }
 
 export interface ChallengeModifier {
@@ -57,4 +58,5 @@ export interface UserData {
     number: number;
     year: number;
   }[];
+  username: string;
 }

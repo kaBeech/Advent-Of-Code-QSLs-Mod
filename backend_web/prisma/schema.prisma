@@ -14,6 +14,10 @@ model User {
   id                                      String              @id
   serializedId                            String?             @unique
   username                                String?             @unique
+  oauthUrl                                String?
+  oauthUsername                           String?
+  oauthName                               String?
+  oauthAvatarUrl                          String?
   dateCreated                             DateTime            @default(now())
   numberOfGames                           Int                 @default(0)
   ChallengeModifier                       ChallengeModifier[]

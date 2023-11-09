@@ -154,7 +154,7 @@ export default component$(() => {
                           <span class={title.color}>{title.string}</span>
                           <a href={game.repositoryLink}> °Repo Link°</a>
                           {"  "}
-                          {game.playerName}{" "}
+                          {game.User.username}{" "}
                         </em>
                       </li>
                     );

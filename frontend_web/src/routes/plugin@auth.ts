@@ -17,11 +17,16 @@ export const { onRequest, useAuthSession, useAuthSignin, useAuthSignout } =
             signal: abortController.signal,
             method: "PUT",
             headers: {
-              Authorization: `Bearer ${
-                env.get("XMAS_SECRET")
-              } github${profile.id}`,
+              Authorization: `Bearer ${env.get("XMAS_SECRET")}`,
+              UserId: `github${profile.id}`,
+              OAuthUrl: profile.html_url,
+              OAuthUsername: profile.login,
+              OAuthName: profile.name || "",
+              OAuthAvatarUrl: profile.avatar_url,
             },
           });
+
+          console.log("profile", profile);
 
           // Return profile info
           return {

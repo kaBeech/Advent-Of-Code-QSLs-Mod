@@ -111,6 +111,10 @@ exports.Prisma.UserScalarFieldEnum = {
   id: 'id',
   serializedId: 'serializedId',
   username: 'username',
+  oauthUrl: 'oauthUrl',
+  oauthUsername: 'oauthUsername',
+  oauthName: 'oauthName',
+  oauthAvatarUrl: 'oauthAvatarUrl',
   dateCreated: 'dateCreated',
   numberOfGames: 'numberOfGames'
 };
