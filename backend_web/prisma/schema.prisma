@@ -170,31 +170,3 @@ model Downvote {
   CreatedBy   User     @relation(fields: [createdById], references: [id])
   Game        Game     @relation(fields: [gameId], references: [id])
 }
-
-model TestTable {
-  id            Int         @id @default(autoincrement())
-  dateCreated   DateTime    @default(now())
-  name          String
-  favoriteColor String
-  TestChair     TestChair[]
-  TestPlate     TestPlate[]
-}
-
-model TestChair {
-  id            Int       @id @default(autoincrement())
-  dateCreated   DateTime  @default(now())
-  name          String
-  favoriteColor String
-  height        Int
-  tableId       Int
-  Table         TestTable @relation(fields: [tableId], references: [id])
-}
-
-model TestPlate {
-  id          Int       @id @default(autoincrement())
-  dateCreated DateTime  @default(now())
-  name        String
-  color       String
-  tableId     Int
-  Table       TestTable @relation(fields: [tableId], references: [id])
-}
