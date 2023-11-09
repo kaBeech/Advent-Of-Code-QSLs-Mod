@@ -34,7 +34,11 @@ export const completePart2 = async (
     rerollTokensEarned,
   );
   const ranks = await getAllRanks();
-  updatedGame = GameController(game!).completeCurrentDay(ranks);
+  const part2RerollBonus = DayController(day!).calculatePart2RerollBonus();
+  updatedGame = GameController(game!).completeCurrentDay(
+    part2RerollBonus,
+    ranks,
+  );
   await updateDay(updatedDay);
   await updateGame(updatedGame);
   ctx.response.body = { updatedDay, updatedGame };

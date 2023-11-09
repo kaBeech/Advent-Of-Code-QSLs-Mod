@@ -61,12 +61,13 @@ const rankAwarder = (state: GameControllerState) => ({
 });
 
 const currentDayCompleter = (state: GameControllerState) => ({
-  completeCurrentDay: (ranks: Rank[]) => {
+  completeCurrentDay: (part2RerollBonus: number, ranks: Rank[]) => {
     if (state.game.currentDayCompleted === true) {
       throw new Error(
         `Current day (${state.game.currentDay}) already completed`,
       );
     }
+    state.game.rerollTokensSpentDuringPart2Limited += part2RerollBonus;
     state.game = currentDayCompletionStatusSetter(state)
       .setCurrentDayCompletionStatus(true);
     if (state.game.currentDay === 25) {
@@ -111,24 +112,9 @@ const currentRerollTokensAdjuster = (state: GameControllerState) => ({
 const rerollTokenSpender = (state: GameControllerState) => ({
   spendRerollTokens: (
     amount: number,
-    round2: boolean,
-    tokensAlreadySpentDuringRound2: number,
-    modifierWhenPart1CompletedId: number | null,
   ) => {
     currentRerollTokensAdjuster(state).adjustCurrentRerollTokens(-amount);
     state.game.rerollTokensSpent += amount;
-    if (round2) {
-      state.game.rerollTokensSpentDuringPart2Raw += amount;
-      if (modifierWhenPart1CompletedId) {
-        state.game.rerollTokensSpentDuringPart2Limited += Math.min(
-          amount,
-          Math.max(
-            2 - tokensAlreadySpentDuringRound2,
-            0,
-          ),
-        );
-      }
-    }
     return state.game;
   },
 });
@@ -183,8 +169,7 @@ const progressSheetLinkSetter = (state: GameControllerState) => ({
 
 const scoreCalculator = (state: GameControllerState) => ({
   calculateScore: () => {
-    const part2RerollBonus = 20 *
-      state.game.rerollTokensSpentDuringPart2Limited;
+    const part2RerollBonus = state.game.rerollTokensSpentDuringPart2Limited;
     state.game.score = 10 * state.game.currentRerollTokens + part2RerollBonus;
     return state.game.score;
   },

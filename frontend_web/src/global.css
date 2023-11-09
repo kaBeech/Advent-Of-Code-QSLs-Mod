@@ -95,6 +95,9 @@ html {
     "Segoe UI Emoji",
     "Segoe UI Symbol",
     "Noto Color Emoji";
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 body {
@@ -110,6 +113,8 @@ body {
   min-height: 95vh;
   display: flex;
   flex-direction: column;
+  /* max-width: 60em;  */
+  width: 100%;
 }
 
 footer {
@@ -117,7 +122,7 @@ footer {
 }
 
 article {
-  width: 52em;
+  max-width: 52em;
   margin-bottom: 2em;
 }
 
@@ -395,4 +400,15 @@ strong {
 
 .fsTurquoise {
   color: var(--full-sat-turquoise);
+}
+
+/* Viewsetting */
+
+@media (max-width: 1390px) {
+}
+
+@media (max-width: 990px) {
+}
+
+@media (max-width: 590px) {
 }
