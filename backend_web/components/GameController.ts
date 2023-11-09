@@ -1,4 +1,4 @@
-import { Game, Rank } from "../generated/client/deno/index.d.ts";
+import { Game, Title } from "../generated/client/deno/index.d.ts";
 
 interface GameControllerState {
   game: Game;
@@ -48,12 +48,12 @@ const currentDayCompletionStatusSetter = (state: GameControllerState) => ({
   },
 });
 
-const rankAwarder = (state: GameControllerState) => ({
-  awardRank: (ranks: Rank[]) => {
-    const sortedRanks = ranks.sort((a, b) => b.minimumScore - a.minimumScore);
-    for (let i = 0; state.game.rankId === null; i++) {
-      if (state.game.score >= sortedRanks[i].minimumScore) {
-        state.game.rankId = sortedRanks[i].id;
+const titleAwarder = (state: GameControllerState) => ({
+  awardTitle: (titles: Title[]) => {
+    const sortedTitles = titles.sort((a, b) => b.minimumScore - a.minimumScore);
+    for (let i = 0; state.game.titleId === null; i++) {
+      if (state.game.score >= sortedTitles[i].minimumScore) {
+        state.game.titleId = sortedTitles[i].id;
       }
     }
     return state.game;
@@ -61,23 +61,24 @@ const rankAwarder = (state: GameControllerState) => ({
 });
 
 const currentDayCompleter = (state: GameControllerState) => ({
-  completeCurrentDay: (ranks: Rank[]) => {
+  completeCurrentDay: (part2RerollBonus: number, titles: Title[]) => {
     if (state.game.currentDayCompleted === true) {
       throw new Error(
         `Current day (${state.game.currentDay}) already completed`,
       );
     }
+    state.game.rerollTokensSpentDuringPart2Limited += part2RerollBonus;
     state.game = currentDayCompletionStatusSetter(state)
       .setCurrentDayCompletionStatus(true);
     if (state.game.currentDay === 25) {
-      gameCompleter(state).completeGame(ranks);
+      gameCompleter(state).completeGame(titles);
     }
     return state.game;
   },
 });
 
 const gameCompleter = (state: GameControllerState) => ({
-  completeGame: (ranks: Rank[]) => {
+  completeGame: (titles: Title[]) => {
     if (state.game.dateCompleted) {
       throw new Error(
         `Game (${state.game.name}) already completed`,
@@ -95,7 +96,7 @@ const gameCompleter = (state: GameControllerState) => ({
     }
     state.game.dateCompleted = new Date();
     scoreCalculator(state).calculateScore();
-    rankAwarder(state).awardRank(ranks);
+    titleAwarder(state).awardTitle(titles);
     return state.game;
   },
 });
@@ -111,21 +112,9 @@ const currentRerollTokensAdjuster = (state: GameControllerState) => ({
 const rerollTokenSpender = (state: GameControllerState) => ({
   spendRerollTokens: (
     amount: number,
-    round2: boolean,
-    tokensAlreadySpentDuringRound2: number,
   ) => {
     currentRerollTokensAdjuster(state).adjustCurrentRerollTokens(-amount);
     state.game.rerollTokensSpent += amount;
-    if (round2) {
-      state.game.rerollTokensSpentDuringPart2Raw += amount;
-      state.game.rerollTokensSpentDuringPart2Limited += Math.min(
-        amount,
-        Math.max(
-          2 - tokensAlreadySpentDuringRound2,
-          0,
-        ),
-      );
-    }
     return state.game;
   },
 });
@@ -180,21 +169,8 @@ const progressSheetLinkSetter = (state: GameControllerState) => ({
 
 const scoreCalculator = (state: GameControllerState) => ({
   calculateScore: () => {
-    if (state.game.rerollTokensSpentDuringPart2Limited === 50) {
-      const tokensSpentDuringPart1 = state.game.rerollTokensSpent -
-        state.game.rerollTokensSpentDuringPart2Raw;
-      state.game.score = 1120 + 10 * state.game.currentRerollTokens -
-        10 * tokensSpentDuringPart1;
-      return state.game.score;
-    }
-    let fewRerollsBonus = 0;
-    if (state.game.dateCompleted) {
-      fewRerollsBonus = Math.max(300 - 10 * state.game.rerollTokensSpent, 0);
-    }
-    const part2RerollBonus = 20 *
-      state.game.rerollTokensSpentDuringPart2Limited;
-    state.game.score = 10 * state.game.currentRerollTokens + part2RerollBonus +
-      fewRerollsBonus;
+    const part2RerollBonus = state.game.rerollTokensSpentDuringPart2Limited;
+    state.game.score = 10 * state.game.currentRerollTokens + part2RerollBonus;
     return state.game.score;
   },
 });

@@ -20,11 +20,11 @@ export const exampleGame = {
   "rerollTokensSpentDuringPart2Raw": 0,
   "rerollTokensSpentDuringPart2Limited": 0,
   "repositoryLink": null,
-  "progressSheetLink": null,
+  "progressSheetLink": "https://www.xtremexmascode.com/game/public/24/",
   "isPublic": false,
   "publicProfileId": null,
   "score": 0,
-  "rankId": null,
+  "titleId": null,
   "dateCreated": new Date(),
   "dateCompleted": null,
 };
@@ -41,11 +41,11 @@ export const exampleGameDay1 = {
   "currentRerollTokens": 7,
   "rerollTokensSpent": 0,
   "repositoryLink": null,
-  "progressSheetLink": null,
+  "progressSheetLink": "https://www.xtremexmascode.com/game/public/24/",
   "isPublic": false,
   "publicProfileId": null,
   "score": 0,
-  "rankId": null,
+  "titleId": null,
   "dateCreated": new Date(),
   "dateCompleted": null,
   "rerollTokensSpentDuringPart2Raw": 0,
@@ -265,46 +265,7 @@ export const exampleModifierOptions = [
   },
 ];
 
-[
-  {
-    name: "Champion",
-    minimumScore: 0,
-  },
-  {
-    name: "Gnarly Champion",
-    minimumScore: 200,
-  },
-  {
-    name: "Radical Champion",
-    minimumScore: 400,
-  },
-  {
-    name: "Righteous Champion",
-    minimumScore: 600,
-  },
-  {
-    name: "Epic Champion",
-    minimumScore: 800,
-  },
-  {
-    name: "Flawless Champion",
-    minimumScore: 920,
-  },
-  {
-    name: "Legendary Champion",
-    minimumScore: 1000,
-  },
-  {
-    name: "Santaic Champion",
-    minimumScore: 1100,
-  },
-  {
-    name: "Godlike Champion",
-    minimumScore: 1240,
-  },
-];
-
-export const exampleRanks = [
+export const exampleTitles = [
   {
     id: 1,
     name: "Champion",

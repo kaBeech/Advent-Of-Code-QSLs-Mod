@@ -166,7 +166,7 @@ export async function getAllPublicGamesWithRepositoryLinks() {
       },
     },
     include: {
-      Rank: true,
+      Title: true,
     },
   });
   return games;
@@ -259,7 +259,7 @@ export async function updateGame(game: Game) {
       isPublic: game.isPublic,
       publicProfileId: game.publicProfileId,
       score: game.score,
-      rankId: game.rankId,
+      titleId: game.titleId,
       dateCompleted: game.dateCompleted,
     },
   });
@@ -371,10 +371,10 @@ export async function getModifierOptionsByChallengeModifierId(
 }
 
 /**
- * Rank CRUD
+ * Title CRUD
  */
 
-export async function getAllRanks() {
-  const ranks = await prisma.rank.findMany();
-  return ranks;
+export async function getAllTitles() {
+  const titles = await prisma.title.findMany();
+  return titles;
 }

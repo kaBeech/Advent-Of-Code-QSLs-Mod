@@ -4,8 +4,10 @@
     "devsafe": "deno run --allow-env --allow-read --allow-net --watch main.ts",
     "deploy": "deployctl deploy --project=$XMAS_BACKEND_DENO_DEPLOY_PROJECT --token=$XMAS_BACKEND_DENO_DEPLOY_TOKEN main.ts",
     "deployprod": "deployctl deploy --project=$XMAS_BACKEND_DENO_DEPLOY_PROJECT --token=$XMAS_BACKEND_DENO_DEPLOY_TOKEN --prod main.ts",
-    "pushdb": "deno run --allow-run --allow-read --allow-write --allow-env --allow-sys npm:prisma@^4.5 db push",
-    "generateprisma": "deno run --allow-run --allow-read --allow-write --allow-env --allow-sys npm:prisma@^4.5 generate --data-proxy",
-    "seedprisma": "deno run --allow-read --allow-env --allow-net prisma/seed.ts"
+    "pushdb": "deno run --allow-run --allow-read --allow-write --allow-env --allow-sys npm:prisma@^5.5.2 db push",
+    "pulldb": "deno run --allow-run --allow-read --allow-write --allow-env --allow-sys npm:prisma@^5.5.2 db pull",
+    "generateprisma": "deno run --allow-run --allow-read --allow-write --allow-env --allow-sys npm:prisma@^5.5.2 generate --data-proxy",
+    "seedprisma": "deno run --allow-read --allow-env --allow-net prisma/seed.ts",
+    "migrateprisma": "deno run --allow-run --allow-read --allow-write --allow-env --allow-sys npm:prisma@^5.5.2 migrate dev"
   }
 }

@@ -26,6 +26,7 @@ export const DayController = (
     ...challengeModifierRemover(state),
     ...part1Completer(state),
     ...part2Completer(state),
+    ...part2RerollBonusCalculator(state),
   };
 };
 
@@ -179,12 +180,28 @@ const netScoreCalculator = (state: DayControllerState) => ({
       netTokensGained++;
     netTokensGained -= state.day.challengeModifierRerollsUsed * 2;
     netTokensGained -= state.day.modifierOptionRerollsUsed;
-    let part2RerollBonus = 20 * state.day.rerollTokensSpentDuringPart2;
-    if (part2RerollBonus > 40) {
-      part2RerollBonus = 40;
-    }
+    const part2RerollBonus = part2RerollBonusCalculator(state)
+      .calculatePart2RerollBonus();
     state.day.netScore = 10 * netTokensGained + part2RerollBonus;
 
     return state.day.netScore;
+  },
+});
+
+const part2RerollBonusCalculator = (state: DayControllerState) => ({
+  calculatePart2RerollBonus: () => {
+    let part2RerollBonus = 0;
+    if (state.day.part2Completed && !state.day.challengeModifierId) {
+      return part2RerollBonus;
+    }
+    part2RerollBonus =
+      state.day.modifierWhenPart1CompletedId && state.day.challengeModifierId
+        ? 20 * state.day.rerollTokensSpentDuringPart2
+        : 0;
+    if (part2RerollBonus > 40) {
+      part2RerollBonus = 40;
+    }
+
+    return part2RerollBonus;
   },
 });

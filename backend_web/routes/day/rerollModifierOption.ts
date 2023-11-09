@@ -25,7 +25,6 @@ export const rerollModifierOption = async (
   const userData = await getUserByIdWithRelations(userId);
   const game = userData.Game.find((game) => game.number === +gameNumber);
   const day = game!.Day.find((day) => day.number === +dayNumber);
-  const rerollTokensSpentDuringPart2 = day!.rerollTokensSpentDuringPart2;
   const modifierOptions = await getModifierOptionsByChallengeModifierId(
     day!.challengeModifierId!,
   );
@@ -34,11 +33,7 @@ export const rerollModifierOption = async (
     modifierOptions,
     game!,
   );
-  const updatedGame = GameController(game!).spendRerollTokens(
-    1,
-    Boolean(day!.part1Completed),
-    rerollTokensSpentDuringPart2,
-  );
+  const updatedGame = GameController(game!).spendRerollTokens(1);
   await updateDay(updatedDay);
   await updateGame(updatedGame);
   ctx.response.body = { updatedDay, updatedGame };
