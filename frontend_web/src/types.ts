@@ -20,7 +20,7 @@ export interface GameInfo {
   score: number;
   currentRerollTokens: number;
   dateCompleted: string | null;
-  rank: number | null;
+  title: number | null;
 }
 
 export interface LeaderboardGame {
@@ -30,7 +30,7 @@ export interface LeaderboardGame {
   number: number;
   year: number;
   score: number;
-  Rank: { id: string; name: string; minimumScore: number };
+  Title: { id: string; name: string; minimumScore: number };
   repositoryLink: string;
 }
 
