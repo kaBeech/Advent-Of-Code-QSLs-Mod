@@ -19,7 +19,7 @@ export const { onRequest, useAuthSession, useAuthSignin, useAuthSignout } =
             headers: {
               Authorization: `Bearer ${
                 env.get("XMAS_SECRET")
-              } githubtest${profile.id}`,
+              } github${profile.id}`,
             },
           });
 

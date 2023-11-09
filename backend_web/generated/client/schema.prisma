@@ -127,6 +127,7 @@ model ModifierOption {
   challengeModifierId           Int
   name                          String            @unique
   text                          String
+  shortText                     String?
   explanatoryUrl                String?
   standard                      Boolean           @default(false)
   createdById                   String?
@@ -169,32 +170,4 @@ model Downvote {
   createdById String
   CreatedBy   User     @relation(fields: [createdById], references: [id])
   Game        Game     @relation(fields: [gameId], references: [id])
-}
-
-model TestTable {
-  id            Int         @id @default(autoincrement())
-  dateCreated   DateTime    @default(now())
-  name          String
-  favoriteColor String
-  TestChair     TestChair[]
-  TestPlate     TestPlate[]
-}
-
-model TestChair {
-  id            Int       @id @default(autoincrement())
-  dateCreated   DateTime  @default(now())
-  name          String
-  favoriteColor String
-  tableId       Int
-  height        Int
-  Table         TestTable @relation(fields: [tableId], references: [id])
-}
-
-model TestPlate {
-  id          Int       @id @default(autoincrement())
-  dateCreated DateTime  @default(now())
-  name        String
-  color       String
-  tableId     Int
-  Table       TestTable @relation(fields: [tableId], references: [id])
 }

@@ -56,7 +56,7 @@ export default component$(() => {
                 </li>
                 {state.gameInfo?.dateCompleted && (
                   <>
-                    <li>Rank: {state.gameInfo.rank}</li>
+                    <li>Title: {state.gameInfo.title}</li>
                     <li>
                       Completed During Calendar Year:{" "}
                       {state.gameInfo.dateCompleted.toString().slice(0, 4) ===
@@ -135,7 +135,7 @@ export default component$(() => {
                 </li>
                 {gameData.dateCompleted && (
                   <>
-                    <li>Rank: {gameData.rank}</li>
+                    <li>Title: {gameData.title}</li>
                     <li>
                       Completed During Calendar Year?{" "}
                       {gameData.dateCompleted.toString().slice(0, 4) ===

@@ -69,7 +69,7 @@ export default component$(() => {
                     {state.leaderboardGames.map((game: LeaderboardGame) => (
                       <li key={`game-${game.id}`}>
                         {game.year} - {game.name} - {game.score} -{" "}
-                        {game.Rank.name} - {game.playerName} -{" "}
+                        {game.Title.name} - {game.playerName} -{" "}
                         <a href={`repositoryLink`}>°Repo Link°</a>
                       </li>
                     ))}
@@ -94,8 +94,8 @@ export default component$(() => {
                     let scoreString = String(game.score);
                     const title = {
                       // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-                      string: game.Rank
-                        ? game.Rank.name.split(" ")[0]
+                      string: game.Title
+                        ? game.Title.name.split(" ")[0]
                         : `Incomplete`,
                       color: "textBright",
                     };

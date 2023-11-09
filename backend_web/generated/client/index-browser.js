@@ -189,6 +189,7 @@ exports.Prisma.ModifierOptionScalarFieldEnum = {
   challengeModifierId: 'challengeModifierId',
   name: 'name',
   text: 'text',
+  shortText: 'shortText',
   explanatoryUrl: 'explanatoryUrl',
   standard: 'standard',
   createdById: 'createdById',
@@ -218,30 +219,6 @@ exports.Prisma.DownvoteScalarFieldEnum = {
   createdById: 'createdById'
 };
 
-exports.Prisma.TestTableScalarFieldEnum = {
-  id: 'id',
-  dateCreated: 'dateCreated',
-  name: 'name',
-  favoriteColor: 'favoriteColor'
-};
-
-exports.Prisma.TestChairScalarFieldEnum = {
-  id: 'id',
-  dateCreated: 'dateCreated',
-  name: 'name',
-  favoriteColor: 'favoriteColor',
-  tableId: 'tableId',
-  height: 'height'
-};
-
-exports.Prisma.TestPlateScalarFieldEnum = {
-  id: 'id',
-  dateCreated: 'dateCreated',
-  name: 'name',
-  color: 'color',
-  tableId: 'tableId'
-};
-
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -268,10 +245,7 @@ exports.Prisma.ModelName = {
   ModifierOption: 'ModifierOption',
   ModifierPack: 'ModifierPack',
   Upvote: 'Upvote',
-  Downvote: 'Downvote',
-  TestTable: 'TestTable',
-  TestChair: 'TestChair',
-  TestPlate: 'TestPlate'
+  Downvote: 'Downvote'
 };
 
 /**
