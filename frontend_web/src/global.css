@@ -403,6 +403,17 @@ strong {
 
 /* Viewsetting */
 
+@media (min-width: 901px) {
+  .mobileShow {
+    display: none;
+  }
+}
+@media (min-width: 461px) {
+  .tinyShow {
+    display: none;
+  }
+}
+
 @media (max-width: 1390px) {
   body {
     font-size: 1.2rem !important;
@@ -430,6 +441,9 @@ strong {
   /* header {
     max-width: 32em;
   } */
+  .mobileHide {
+    display: none;
+  }
   .logo {
     font-size: 2.5rem;
   }
@@ -443,5 +457,11 @@ strong {
   footer {
     margin-left: 2em;
     margin-right: 2em;
+  }
+}
+
+@media (max-width: 461px) {
+  .mobileShow {
+    display: none;
   }
 }

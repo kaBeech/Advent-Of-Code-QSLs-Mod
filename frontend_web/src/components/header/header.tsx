@@ -32,7 +32,7 @@ export default component$((props: HeaderProps) => {
       />
       <br />
       <br />
-      <div class="flex column alignCenter">
+      <div class="flex column alignCenter mobileHide">
         <div class="flex gap1 marginTBPoint2">
           {" "}
           <a href="/about">°About°</a> ¦{" "}
@@ -62,6 +62,91 @@ export default component$((props: HeaderProps) => {
             °Leaderboards°
           </a>
           ¦<a href="/sponsors">°Sponsors°</a>
+        </div>
+        <div class="flex gap1 marginTBPoint2">
+          {" "}
+          <span class="textGreen">{session.value?.user?.name}</span>
+          <LogInOrOut
+            isLoggedIn={props.isLoggedIn}
+            toggleLoggedIn={props.toggleLoggedIn}
+          />
+        </div>
+        <br />
+      </div>
+      <div class="flex column alignCenter mobileShow">
+        <div class="flex gap1 marginTBPoint2">
+          {" "}
+          <a href="/about">°About°</a> ¦{" "}
+          <a href="/leaderboard" class="textGreen">
+            °Leaderboards°
+          </a>
+          ¦{" "}
+          <a href="/modifier" class="textRed">
+            °Modifiers°
+          </a>
+        </div>
+        <div class="flex gap1 marginTBPoint2">
+          <a href="/support" class="textGreen">
+            °Support°
+          </a>{" "}
+          ¦<a href="/settings">°Settings°</a> ¦
+          <a href="/sponsors" class="textGreen">
+            °Sponsors°
+          </a>
+        </div>
+        <div class="flex gap1 marginTBPoint2">
+          {" "}
+          <a href="/calendar">°Calendar°</a> ¦{" "}
+          <a href="/games" class="textGreen">
+            °Games°
+          </a>{" "}
+          ¦
+          <a href="https://adventofcode.com/" class="textRed">
+            °AoC°
+          </a>{" "}
+        </div>
+        <div class="flex gap1 marginTBPoint2">
+          {" "}
+          <span class="textGreen">{session.value?.user?.name}</span>
+          <LogInOrOut
+            isLoggedIn={props.isLoggedIn}
+            toggleLoggedIn={props.toggleLoggedIn}
+          />
+        </div>
+        <br />
+      </div>
+      <div class="flex column alignCenter tinyShow">
+        <div class="flex gap1 marginTBPoint2">
+          {" "}
+          <a href="/about">°About°</a> ¦{" "}
+          <a href="/modifier" class="textGreen">
+            °Modifiers°
+          </a>
+        </div>
+        <div class="flex gap1 marginTBPoint2">
+          <a href="/settings" class="textGreen">
+            °Settings°
+          </a>{" "}
+          ¦<a href="/sponsors">°Sponsors°</a>
+        </div>
+        <div class="flex gap1 marginTBPoint2">
+          <a href="/games">°Games°</a> ¦{" "}
+          <a href="/support" class="textGreen">
+            °Support°
+          </a>{" "}
+        </div>
+        <div class="flex gap1 marginTBPoint2">
+          {" "}
+          <a href="/calendar" class="textGreen">
+            °Calendar°
+          </a>
+          ¦
+          <a href="https://adventofcode.com/" class="textRed">
+            °AoC°
+          </a>{" "}
+        </div>
+        <div class="flex gap1 marginTBPoint2">
+          <a href="/leaderboard">°Leaderboards°</a>
         </div>
         <div class="flex gap1 marginTBPoint2">
           {" "}
