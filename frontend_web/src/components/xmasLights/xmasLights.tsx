@@ -8,6 +8,7 @@ export interface XmasLightsProps {
   isOn: boolean;
   toggleLights: QRL<() => void>;
   hasLightSwitch: boolean;
+  length: "long" | "short";
   alternateColors?: boolean;
 }
 
@@ -74,21 +75,60 @@ export default component$((props: XmasLightsProps) => {
               <>
                 <span
                   key={`xmasLight-${xmasLight.number}`}
-                  class={`xmasLight brightLight colorShift${xmasLight.startingColorNumber}`}
+                  class={
+                    props.length === "long"
+                      ? xmasLight.number < 12
+                        ? `desktopShow`
+                        : xmasLight.number < 22
+                        ? `mobileHide`
+                        : xmasLight.number < 28
+                        ? `smallHide`
+                        : xmasLight.number < 33 && `tinyHide`
+                      : xmasLight.number < 6
+                      ? `desktopShow`
+                      : xmasLight.number < 11
+                      ? `mobileHide`
+                      : xmasLight.number < 14
+                      ? `smallHide`
+                      : xmasLight.number < 16 && `tinyHide`
+                  }
                 >
-                  
+                  <span
+                    class={`xmasLight brightLight colorShift${xmasLight.startingColorNumber}`}
+                  >
+                    
+                  </span>
+                  <span class="logoGreen">{"~"}</span>
                 </span>
-                <span class="logoGreen">{"~"}</span>
               </>
             )
           )
         : xmasLights.map(
             (xmasLight: { number: number; startingColorNumber: number }) => (
               <>
-                <span key={`xmasLight-${xmasLight.number}`} class={`logoRed`}>
-                  ~
+                <span
+                  key={`xmasLight-${xmasLight.number}`}
+                  class={
+                    props.length === "long"
+                      ? xmasLight.number < 12
+                        ? `desktopShow`
+                        : xmasLight.number < 22
+                        ? `mobileHide`
+                        : xmasLight.number < 28
+                        ? `smallHide`
+                        : xmasLight.number < 33 && `tinyHide`
+                      : xmasLight.number < 6
+                      ? `desktopShow`
+                      : xmasLight.number < 11
+                      ? `mobileHide`
+                      : xmasLight.number < 14
+                      ? `smallHide`
+                      : xmasLight.number < 16 && `tinyHide`
+                  }
+                >
+                  <span class={`logoRed`}>~</span>
+                  <span class="logoGreen">{"~"}</span>
                 </span>
-                <span class="logoGreen">{"~"}</span>
               </>
             )
           )}
