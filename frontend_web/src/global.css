@@ -460,8 +460,20 @@ strong {
   }
 }
 
+@media (max-width: 531px) {
+  .smallHide {
+    display: none;
+  }
+}
+
 @media (max-width: 461px) {
   .mobileShow {
+    display: none;
+  }
+}
+
+@media (max-width: 421px) {
+  .tinyHide {
     display: none;
   }
 }

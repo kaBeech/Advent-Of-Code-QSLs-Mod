@@ -29,6 +29,7 @@ export default component$((props: HeaderProps) => {
         hasLightSwitch={true}
         isOn={props.areLightsOn}
         toggleLights={props.toggleLights}
+        length="long"
       />
       <br />
       <br />
