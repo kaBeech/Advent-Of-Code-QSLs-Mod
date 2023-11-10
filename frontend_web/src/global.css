@@ -403,11 +403,18 @@ strong {
 
 /* Viewsetting */
 
+@media (min-width: 1391px) {
+  .tabletShow {
+    display: none;
+  }
+}
+
 @media (min-width: 901px) {
   .mobileShow {
     display: none;
   }
 }
+
 @media (min-width: 461px) {
   .tinyShow {
     display: none;
