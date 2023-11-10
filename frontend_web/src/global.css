@@ -117,8 +117,13 @@ body {
   width: 100%;
 }
 
+header {
+  align-self: center;
+}
+
 footer {
   margin-top: auto;
+  align-self: center;
 }
 
 article {
@@ -235,12 +240,6 @@ strong {
   position: absolute;
   white-space: nowrap;
   width: 1px;
-}
-
-@media (max-width: 1150px) {
-  .desktopShow {
-    display: none;
-  }
 }
 
 /* Custom Classes */
@@ -405,10 +404,44 @@ strong {
 /* Viewsetting */
 
 @media (max-width: 1390px) {
+  body {
+    font-size: 1.2rem !important;
+  }
+  article,
+  footer {
+    max-width: 36em;
+  }
+  .desktopShow {
+    display: none;
+  }
+  .logo {
+    font-size: 4rem;
+  }
 }
 
-@media (max-width: 990px) {
+@media (max-width: 900px) {
+  body {
+    font-size: 1rem !important;
+  }
+  article,
+  footer {
+    max-width: 28em;
+  }
+  /* header {
+    max-width: 32em;
+  } */
+  .logo {
+    font-size: 2.5rem;
+  }
 }
 
 @media (max-width: 590px) {
+  header {
+    text-align: center;
+  }
+  article,
+  footer {
+    margin-left: 2em;
+    margin-right: 2em;
+  }
 }

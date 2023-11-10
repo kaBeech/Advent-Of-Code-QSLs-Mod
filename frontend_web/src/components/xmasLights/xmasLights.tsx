@@ -40,7 +40,7 @@ export default component$((props: XmasLightsProps) => {
     }
   }
   return (
-    <span class={`rotate${direction}`}>
+    <span class={`rotate${direction} desktopShow`}>
       {props.hasLightSwitch && props.isOn && (
         <>
           <span class="logoGreen fontLarger"> {"󰛨"}</span>
