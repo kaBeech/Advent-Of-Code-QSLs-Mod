@@ -9,7 +9,7 @@ export default component$(() => {
         <span class="logoRed"> Welcome! </span>
         {"<"}
       </h1>
-      <p>
+      <p class="textCenter">
         Please <LogIn /> to play!{" "}
       </p>
       <br />
