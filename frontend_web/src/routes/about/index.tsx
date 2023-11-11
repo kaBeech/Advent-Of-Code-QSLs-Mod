@@ -46,11 +46,11 @@ export default component$(() => {
           </a>
           .
         </p>
-        <div>
+        <div class="desktopShow">
           ----------------------------------------------------------------------------
         </div>
         <h2 id="aboutMe"> About Me </h2>
-        <div>
+        <div class="desktopShow">
           ----------------------------------------------------------------------------
         </div>
         <p>
@@ -102,11 +102,11 @@ export default component$(() => {
           </a>
           .{" "}
         </p>
-        <div>
+        <div class="desktopShow">
           ----------------------------------------------------------------------------
         </div>
         <h2 id="disclaimer"> Disclaimer </h2>
-        <div>
+        <div class="desktopShow">
           ----------------------------------------------------------------------------
         </div>{" "}
         <p>
@@ -129,11 +129,11 @@ export default component$(() => {
           </a>
           !
         </p>{" "}
-        <div>
+        <div class="desktopShow">
           ----------------------------------------------------------------------------
         </div>
         <h2 id="rules"> Rules </h2>
-        <div>
+        <div class="desktopShow">
           ----------------------------------------------------------------------------
         </div>{" "}
         <p>
@@ -192,11 +192,11 @@ export default component$(() => {
           which combined with the 24 we started with gives us 23 Reroll Tokens
           at the start of Day 2.
         </p>
-        <div>
+        <div class="desktopShow">
           ----------------------------------------------------------------------------
         </div>{" "}
         <h2 id="scoring"> Scoring </h2>{" "}
-        <div>
+        <div class="desktopShow">
           ----------------------------------------------------------------------------
         </div>{" "}
         <p>
@@ -247,11 +247,11 @@ export default component$(() => {
           </li>
         </ul>
         <br />
-        <div>
+        <div class="desktopShow">
           ----------------------------------------------------------------------------
         </div>{" "}
         <h2 id="titles"> Titles </h2>
-        <div>
+        <div class="desktopShow">
           ----------------------------------------------------------------------------
         </div>{" "}
         <p>
@@ -297,22 +297,22 @@ export default component$(() => {
           </li>
         </ul>
         <br />
-        <div>
+        <div class="desktopShow">
           ----------------------------------------------------------------------------
         </div>{" "}
         <h2 id="publicLinks"> Public Links </h2>
-        <div>
+        <div class="desktopShow">
           ----------------------------------------------------------------------------
         </div>{" "}
         <p>
           You can generate a <em>Public Link</em> to share your work with the
           world by marking your game as Public. TBA...
         </p>
-        <div>
+        <div class="desktopShow">
           ----------------------------------------------------------------------------
         </div>{" "}
         <h2 id="FAQ"> Frequently Asked Questions </h2>
-        <div>
+        <div class="desktopShow">
           ----------------------------------------------------------------------------
         </div>
         <p>
@@ -478,11 +478,11 @@ export default component$(() => {
           . Xtreme Xmas Code will remember your unique ID, names, URL, and image
           from the service you use to authenticate.
         </p>
-        <div>
+        <div class="desktopShow">
           ----------------------------------------------------------------------------
         </div>{" "}
         <h2 id="credits"> Credits </h2>
-        <div>
+        <div class="desktopShow">
           ----------------------------------------------------------------------------
         </div>
         <p>

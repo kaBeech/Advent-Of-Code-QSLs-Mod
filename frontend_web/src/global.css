@@ -129,6 +129,9 @@ footer {
 article {
   max-width: 52em;
   margin-bottom: 2em;
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
 }
 
 h1,
@@ -434,6 +437,11 @@ strong {
   }
   .logo {
     font-size: 4rem;
+  }
+  .bigHeaders h2 {
+    border-style: dashed;
+    max-width: fit-content;
+    padding: 0.5rem 1rem;
   }
 }
 
