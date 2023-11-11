@@ -105,7 +105,9 @@ export default component$(() => {
                   ))}
                 </ul>
                 <br />
-                <a href="/new">°Start a New Game!°</a>
+                <a href="/new" class="textGreen">
+                  °Start a New Game!°
+                </a>
               </>
             );
           }
