@@ -236,6 +236,13 @@ export default component$(() => {
           which combined with the 24 we started with gives us 23 Reroll Tokens
           at the start of Day 2.
         </p>
+        <p>
+          If your Challenge Modifier for a specific day proves too challenging
+          and you don't have enough tokens to reroll, you may remove the
+          Challenge Modifier and complete the puzzle vanilla style. You will not
+          earn tokens for Parts 1 or 2 completed without a Challenge Modifier,
+          but your game will still show on the leaderboards if applicable.
+        </p>
         <div class="desktopShow">
           ----------------------------------------------------------------------------
         </div>{" "}
