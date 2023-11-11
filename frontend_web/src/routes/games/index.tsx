@@ -73,7 +73,10 @@ export default component$(() => {
                   `Loading...`
                 ) : state.numberOfGames < 1 ? (
                   <h2>
-                    Please <a href="/new">°Start a New Game!°</a>
+                    Please{" "}
+                    <a href="/new" class="textGreen">
+                      °Start a New Game!°
+                    </a>
                   </h2>
                 ) : (
                   <ul>
@@ -84,9 +87,12 @@ export default component$(() => {
                         year: number;
                       }) => (
                         <li key={`game-${game.number}`}>
-                          <a href={`/game/${game.number}`}>
+                          <a
+                            href={`/game/${game.number}`}
+                            class={`${gameNumber % 2 === 0 && ` textGreen`}`}
+                          >
                             °{game.year}°
-                            <span class="textMedium"> - {game.name}</span>
+                            <span class={`textMedium`}> - {game.name}</span>
                           </a>
                         </li>
                       )
@@ -102,7 +108,10 @@ export default component$(() => {
           if (+xtremeXmasData.numberOfGames < 1) {
             return (
               <h2>
-                Please <a href="/new">°Start a New Game!°</a>
+                Please{" "}
+                <a href="/new" class="textGreen">
+                  °Start a New Game!°
+                </a>
               </h2>
             );
           }
@@ -112,7 +121,10 @@ export default component$(() => {
               {xtremeXmasData.userData.Game.map(
                 (game: { name: string; number: number; year: number }) => (
                   <li key={`game-${game.number}`}>
-                    <a href={`/game/${game.number}`}>
+                    <a
+                      href={`/game/${game.number}`}
+                      class={game.number % 2 !== 0 && ` textGreen`}
+                    >
                       °{game.year}°
                       <span class="textMedium"> - {game.name}</span>
                     </a>

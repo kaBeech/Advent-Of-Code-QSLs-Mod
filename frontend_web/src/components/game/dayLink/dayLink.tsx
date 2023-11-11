@@ -27,12 +27,21 @@ export interface DayLinkProps {
 export default component$((props: DayLinkProps) => {
   if (!props.dayLinkData) {
     return (
-      <li class="textDim">
-        ########################################################{" "}
-        <span class="textBright">
-          {props.dayNumber < 10 ? " " + props.dayNumber : props.dayNumber}
-        </span>
-      </li>
+      <>
+        <li class="textDim desktopShow">
+          ########################################################{" "}
+          <span class="textBright">
+            {props.dayNumber < 10 ? " " + props.dayNumber : props.dayNumber}
+          </span>
+          {"        "}
+        </li>
+        <li class="textDim tabletShow">
+          #####LOCKED#####{" "}
+          <span class="textBright">
+            {props.dayNumber < 10 ? " " + props.dayNumber : props.dayNumber}
+          </span>
+        </li>
+      </>
     );
   }
 
@@ -62,38 +71,71 @@ export default component$((props: DayLinkProps) => {
   tokensSpent += props.dayLinkData.challengeModifierRerollsUsed * 2;
   tokensSpent += props.dayLinkData.modifierOptionRerollsUsed;
 
-  const challengeModifierString = `°${challengeModifier}°${
+  const challengeModifierString = `°${challengeModifier}°`;
+
+  const challengeModifierPadding = `${
     challengeModifier.length < 22
       ? " ".repeat(22 - challengeModifier.length)
       : ""
   }`;
 
-  const modifierOptionString = `°${modifierOption}°${
-    modifierOption.length < 16 && " ".repeat(16 - modifierOption.length)
+  const modifierOptionString = `°${modifierOption}°`;
+
+  const modifierOptionPadding = `${
+    modifierOption.length < 16 ? " ".repeat(16 - modifierOption.length) : ""
   }`;
 
-  const scoreString = `${score} points${
-    score.length < 8 && " ".repeat(8 - score.length)
+  const scoreString = `${score} points`;
+
+  const scorePadding = `${
+    score.length < 8 ? " ".repeat(8 - score.length) : ""
   }`;
 
   return (
-    <li>
-      <a href={`day/${props.dayNumber}`} class={modifierColor}>
-        <span>{challengeModifierString}</span>
-        <span>{modifierOptionString}</span>
-        <span class={scoreColor}>{scoreString}</span>
-      </a>
-      <span class="textBright">
-        {props.dayNumber < 10 ? " " + props.dayNumber : props.dayNumber}
-        {"    "}
-      </span>
-      <span class="token">{renderTokens(tokensGained)}</span>
-      <span class="tokenSpent">
-        {tokensSpent > 9
-          ? renderSpentTokens(1) + "x" + tokensSpent
-          : renderSpentTokens(tokensSpent)}
-        {/* {renderSpentTokens(tokensSpent)} */}
-      </span>
-    </li>
+    <>
+      <li class="desktopShow">
+        <a href={`day/${props.dayNumber}`} class={modifierColor}>
+          <span>
+            {challengeModifierString}
+            {challengeModifierPadding}
+          </span>
+          <span>
+            {modifierOptionString}
+            {modifierOptionPadding}
+          </span>
+          <span class={scoreColor}>
+            {scoreString}
+            {scorePadding}
+          </span>
+        </a>
+        <span class="textBright">
+          {props.dayNumber < 10 ? " " + props.dayNumber : props.dayNumber}
+          {"    "}
+        </span>
+        <span class="token">{renderTokens(tokensGained)}</span>
+        <span class="tokenSpent">
+          {tokensSpent > 9
+            ? renderSpentTokens(1) + "x" + tokensSpent
+            : renderSpentTokens(tokensSpent)}
+          {/* {renderSpentTokens(tokensSpent)} */}
+        </span>
+      </li>
+      <li class="tabletShow flex column textCenter alignCenter maxWidthFixedContent">
+        <span class="textBright">{props.dayNumber}</span>
+        <span class="token">{renderTokens(tokensGained)}</span>
+        <span class="tokenSpent">
+          {tokensSpent > 9
+            ? renderSpentTokens(1) + "x" + tokensSpent
+            : renderSpentTokens(tokensSpent)}
+        </span>
+        <a href={`day/${props.dayNumber}`} class={`textMedium`}>
+          <span class={`${modifierColor}`}>{challengeModifierString}</span>
+          {" ¦ "}
+          <span class={`${modifierColor}`}>{modifierOptionString}</span>
+          {" ¦ "}
+          <span class={`${modifierColor} ${scoreColor}`}>{scoreString}</span>
+        </a>
+      </li>
+    </>
   );
 });
