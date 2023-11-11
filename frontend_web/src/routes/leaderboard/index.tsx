@@ -71,7 +71,13 @@ export default component$(() => {
                         <li key={`game-${game.id}`}>
                           {game.year} - {game.name} - {game.score} -{" "}
                           {game.Title.name} - {game.User.username} -{" "}
-                          <a href={`repositoryLink`}>°Repo Link°</a>
+                          <a
+                            href={`repositoryLink`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            °Repo Link°
+                          </a>
                         </li>
                       ))}
                     </>
@@ -156,7 +162,14 @@ export default component$(() => {
                             </a>{" "}
                             <span class="textGold">{scoreString}</span>{" "}
                             <span class={title.color}>{title.string}</span>
-                            <a href={game.repositoryLink}> °Repo Link°</a>
+                            <a
+                              href={game.repositoryLink}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              {" "}
+                              °Repo Link°
+                            </a>
                             {"  "}
                             {game.User.username}{" "}
                           </em>
@@ -191,7 +204,13 @@ export default component$(() => {
                         <li key={`game-${game.id}`}>
                           {game.year} - {game.name} - {game.score} -{" "}
                           {game.Title.name} - {game.User.username} -{" "}
-                          <a href={`repositoryLink`}>°Repo Link°</a>
+                          <a
+                            href={`repositoryLink`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            °Repo Link°
+                          </a>
                         </li>
                       ))}
                     </>
@@ -269,7 +288,14 @@ export default component$(() => {
                             <span class="textGold">{scoreString}</span>
                             {" ¦ "}
                             <span class={title.color}>{title.string}</span>
-                            <a href={game.repositoryLink}> °Repo Link°</a>
+                            <a
+                              href={game.repositoryLink}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              {" "}
+                              °Repo Link°
+                            </a>
                             {" ¦ "}
                             <em>{game.User.username}</em>
                           </p>

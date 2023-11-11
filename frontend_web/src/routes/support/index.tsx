@@ -11,7 +11,12 @@ export default component$(() => {
           °sponsors°
         </a>
         , or supporting{" "}
-        <a href="https://adventofcode.com/support" class="link">
+        <a
+          href="https://adventofcode.com/support"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="link"
+        >
           °Eric Wastl°
         </a>
         , creator of the original Advent of Code.
@@ -22,7 +27,12 @@ export default component$(() => {
         software engineering role (right now I'm daylighting in healthcare and
         freelancing in web development). If you're looking to work with a fun
         nerd you may contact me via{" "}
-        <a href="https://www.linkedin.com/in/kyle-beechly/" class="link">
+        <a
+          href="https://www.linkedin.com/in/kyle-beechly/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="link"
+        >
           °LinkedIn°
         </a>
         ,{" "}
@@ -33,11 +43,21 @@ export default component$(() => {
           °Email°
         </a>
         ,{" "}
-        <a href="https://bsky.app/profile/kabeech.com" class="link">
+        <a
+          href="https://bsky.app/profile/kabeech.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="link"
+        >
           °Bluesky°
         </a>
         , or{" "}
-        <a href="https://hachyderm.io/@kaBeech" class="link">
+        <a
+          href="https://hachyderm.io/@kaBeech"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="link"
+        >
           °Mastodon°
         </a>
         !

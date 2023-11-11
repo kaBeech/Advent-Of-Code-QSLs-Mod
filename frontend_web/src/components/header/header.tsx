@@ -49,7 +49,12 @@ export default component$((props: HeaderProps) => {
             °Settings°
           </a>{" "}
           ¦{" "}
-          <a href="https://adventofcode.com/" class="textRed">
+          <a
+            href="https://adventofcode.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="textRed"
+          >
             °AoC°
           </a>{" "}
         </div>
@@ -102,7 +107,12 @@ export default component$((props: HeaderProps) => {
             °Games°
           </a>{" "}
           ¦
-          <a href="https://adventofcode.com/" class="textRed">
+          <a
+            href="https://adventofcode.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="textRed"
+          >
             °AoC°
           </a>{" "}
         </div>
@@ -142,7 +152,12 @@ export default component$((props: HeaderProps) => {
             °Calendar°
           </a>
           ¦
-          <a href="https://adventofcode.com/" class="textRed">
+          <a
+            href="https://adventofcode.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="textRed"
+          >
             °AoC°
           </a>{" "}
         </div>
