@@ -206,6 +206,10 @@ strong {
   justify-content: center;
 }
 
+.alignSelfStart {
+  align-self: flex-start;
+}
+
 .gap1 {
   gap: 1rem;
 }
@@ -243,6 +247,10 @@ strong {
   position: absolute;
   white-space: nowrap;
   width: 1px;
+}
+
+.maxWidthFitContent {
+  max-width: fit-content;
 }
 
 /* Custom Classes */
@@ -438,7 +446,7 @@ strong {
   .logo {
     font-size: 4rem;
   }
-  .bigHeaders h2 {
+  .dashedHeaders h2 {
     border-style: dashed;
     max-width: fit-content;
     padding: 0.5rem 1rem;

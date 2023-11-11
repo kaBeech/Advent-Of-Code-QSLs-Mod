@@ -22,7 +22,7 @@ export default component$(() => {
   });
 
   return (
-    <article>
+    <article class="dashedHeaders">
       <br />
       <Resource
         value={gameDataResource}
@@ -120,8 +120,7 @@ export default component$(() => {
           );
           return (
             <>
-              <ul>
-                <li>Test</li>
+              <ul class="textCenter">
                 <li>{gameData.name}</li>
                 <li>Year: {gameData.year}</li>
                 <li>Score: {gameData.score}</li>
@@ -147,15 +146,23 @@ export default component$(() => {
                 )}
               </ul>
               <br />
-              <div>
-                --------------------------------------------------------------------
+              <div class="desktopShow">
+                <div>
+                  --------------------------------------------------------------------
+                </div>
+                <h2>
+                  Challenge Modifier {`   `}¦ Modifier Option ¦ Net Score {` `}{" "}
+                  ¦ Day ¦ Tokens
+                </h2>
+                <div>
+                  --------------------------------------------------------------------
+                </div>
               </div>
-              <div>
-                Challenge Modifier {`   `}¦ Modifier Option ¦ Est Score {` `} ¦
-                Day ¦ Tokens
-              </div>
-              <div>
-                --------------------------------------------------------------------
+              <div class="tabletShow">
+                <h2>
+                  Challenge Modifier ¦ Modifier Option ¦ Net Score ¦ Day ¦
+                  Tokens
+                </h2>
               </div>
               <ul>
                 {sortedDays.map(

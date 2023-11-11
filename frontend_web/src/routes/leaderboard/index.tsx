@@ -41,7 +41,7 @@ export default component$(() => {
   );
 
   return (
-    <article>
+    <article class="dashedHeaders">
       <h1>Leaderboard</h1>
       <div class="desktopShow">
         <div>
@@ -171,11 +171,9 @@ export default component$(() => {
         </ul>
       </div>
       <div class="tabletShow">
-        <div>------------</div>
-        <div>
+        <h2>
           Rank ¦ Year ¦ Game Name ¦ Score ¦ Title ¦ Repo Link ¦ Player Name
-        </div>
-        <div>------------</div>
+        </h2>
         <ul>
           <Resource
             value={leaderboardGamesResource}
@@ -275,7 +273,6 @@ export default component$(() => {
                             {" ¦ "}
                             <em>{game.User.username}</em>
                           </p>
-                          <p>------------------</p>
                         </li>
                       );
                     }
