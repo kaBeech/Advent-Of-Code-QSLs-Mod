@@ -179,7 +179,6 @@ const challengeModifierData: Prisma.ChallengeModifierCreateInput[] = [
     standard: true,
     isPublic: true,
   },
-  { name: "no_loops", text: "using no loops", standard: true, isPublic: true },
   {
     name: "no_conditionals",
     text: "using no conditionals",
