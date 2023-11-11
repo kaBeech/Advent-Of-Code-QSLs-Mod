@@ -199,8 +199,8 @@ export default component$(() => {
           Therefore the full text of our example Challenge Modifier including
           its Modifier Option will be{" "}
           <em class="bold textBright">
-            "You must complete this challenge using this language from the
-            Functional Programming Box: Haskell."
+            "You must write a program to complete this challenge using a random
+            selection from the Functional Programming Box: Haskell."
           </em>
         </p>
         <p>
@@ -218,16 +218,17 @@ export default component$(() => {
           Challenge Modifier. We decide to reroll our Modifier Option for one
           Reroll Token, giving us{" "}
           <em class="bold textBright">
-            "You must complete this challenge using this language from the
-            Functional Programming Box: Erlang."
+            "You must write a program to complete this challenge using a random
+            selection from the Functional Programming Box: Erlang."
           </em>
         </p>
         <p>
           We don't want to use Erlang either, so we choose to reroll the whole
           Challenge Modifier for 2 Reroll Tokens. This gives us{" "}
           <em class="bold textBright">
-            "You must complete this challenge making declarations in a natural
-            language not yet used in this codebase (e.g. Spanish)."
+            "You must write a program to complete this challenge making
+            declarations in a natural language not yet used in this codebase
+            (e.g. Spanish)."
           </em>{" "}
           ¡Vamos!
         </p>
@@ -239,9 +240,10 @@ export default component$(() => {
         <p>
           If your Challenge Modifier for a specific day proves too challenging
           and you don't have enough tokens to reroll, you may remove the
-          Challenge Modifier and complete the puzzle vanilla style. You will not
-          earn tokens for Parts 1 or 2 completed without a Challenge Modifier,
-          but your game will still show on the leaderboards if applicable.
+          Challenge Modifier altogether and complete the puzzle vanilla style.
+          You will not earn tokens for Parts 1 or 2 completed without a
+          Challenge Modifier, but your game will still show on the leaderboards
+          if applicable.
         </p>
         <div class="desktopShow">
           ----------------------------------------------------------------------------

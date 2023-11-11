@@ -34,7 +34,10 @@ export default component$(() => {
             <>
               <h1>Challenge Modifier</h1>
               <p>{challengeModifier.name}</p>
-              <p>You must complete this challenge {challengeModifier.text}</p>
+              <p>
+                You must write a program to complete this challenge{" "}
+                {challengeModifier.text}
+              </p>
               <p>{challengeModifier.explanatoryUrl}</p>
               <h2>Modifier Options:</h2>
               <ul>

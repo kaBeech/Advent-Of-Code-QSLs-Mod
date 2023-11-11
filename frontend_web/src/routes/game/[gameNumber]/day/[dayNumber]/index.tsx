@@ -173,7 +173,7 @@ export default component$(() => {
                     ? `Loading...`
                     : state.dayInfo.challengeModifier === "None"
                     ? "None"
-                    : "You must complete this challenge " +
+                    : "You must write a program to complete this challenge " +
                       state.dayInfo.challengeModifier +
                       (state.dayInfo.modifierOption !== "None" &&
                         state.dayInfo.modifierOption)}
@@ -294,7 +294,7 @@ export default component$(() => {
                   <strong>
                     {xtremeXmasData.challengeModifier === "None"
                       ? "None"
-                      : "You must complete this challenge " +
+                      : "You must write a program to complete this challenge " +
                         xtremeXmasData.challengeModifier}
                     {xtremeXmasData.modifierOption !== "None" &&
                       xtremeXmasData.modifierOption}
@@ -471,7 +471,7 @@ export default component$(() => {
                       <strong>
                         {xtremeXmasData.challengeModifier === "None"
                           ? "None"
-                          : "You must complete this challenge " +
+                          : "You must write a program to complete this challenge " +
                             xtremeXmasData.challengeModifier}
                         {xtremeXmasData.modifierOption !== "None" &&
                           xtremeXmasData.modifierOption}
