@@ -84,9 +84,12 @@ export default component$(() => {
                         year: number;
                       }) => (
                         <li key={`game-${game.number}`}>
-                          <a href={`/game/${game.number}`}>
+                          <a
+                            href={`/game/${game.number}`}
+                            class={`${gameNumber % 2 === 0 && ` textGreen`}`}
+                          >
                             °{game.year}°
-                            <span class="textMedium"> - {game.name}</span>
+                            <span class={`textMedium`}> - {game.name}</span>
                           </a>
                         </li>
                       )
@@ -112,7 +115,10 @@ export default component$(() => {
               {xtremeXmasData.userData.Game.map(
                 (game: { name: string; number: number; year: number }) => (
                   <li key={`game-${game.number}`}>
-                    <a href={`/game/${game.number}`}>
+                    <a
+                      href={`/game/${game.number}`}
+                      class={game.number % 2 !== 0 && ` textGreen`}
+                    >
                       °{game.year}°
                       <span class="textMedium"> - {game.name}</span>
                     </a>
