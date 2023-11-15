@@ -1,6 +1,8 @@
 import type { QRL } from "@builder.io/qwik";
 import { component$ } from "@builder.io/qwik";
 import XmasLights from "../xmasLights/xmasLights";
+import sponsors from "~/data/sponsors";
+import { pickRandomly } from "~/util/pickRandomly";
 
 interface FooterProps {
   areLightsOn: boolean;
@@ -8,6 +10,8 @@ interface FooterProps {
 }
 
 export default component$((props: FooterProps) => {
+  const randomlySelectedSponsor = pickRandomly(sponsors);
+
   return (
     <footer id="footer" class="sponsor flex column gap1 alignCenter">
       <div>
@@ -34,10 +38,11 @@ export default component$((props: FooterProps) => {
         />
       </div>
       <p class="sponsor textCenter">
-        <a href="/support">°Kyle Beechly°</a> - I'm the creator of Xtreme Xmas
-        Code; I hope you like it! <br />
-        Please reach out if you have any questions/comments or if you'd like to
-        work together!
+        <a href={randomlySelectedSponsor.url}>
+          °{randomlySelectedSponsor.name}°
+        </a>{" "}
+        - {randomlySelectedSponsor.textLine1} <br />{" "}
+        {randomlySelectedSponsor.textLine2}
       </p>
     </footer>
   );

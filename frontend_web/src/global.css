@@ -241,6 +241,11 @@ strong {
   margin-bottom: 1rem;
 }
 
+.marginVert2 {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
 .rotate0 {
   transform: rotate(0deg);
 }

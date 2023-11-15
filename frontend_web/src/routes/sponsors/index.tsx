@@ -1,4 +1,5 @@
 import { component$ } from "@builder.io/qwik";
+import sponsors from "~/data/sponsors";
 
 export default component$(() => {
   return (
@@ -7,12 +8,12 @@ export default component$(() => {
         Xtreme Xmas Code is made possible in part by the following sponsors:
       </h1>
       <ul>
-        <li>
-          <a href="/support">°Kyle Beechly°</a> - I'm the creator of Xtreme Xmas
-          Code; I hope you like it! <br />
-          Please reach out if you have any questions/comments or if you'd like
-          to work together!
-        </li>
+        {sponsors.map((sponsor, index) => (
+          <li key={`sponsor-${index}`} class={`marginVert2`}>
+            <a href={sponsor.url}>°{sponsor.name}°</a> - {sponsor.textLine1}{" "}
+            <br /> {sponsor.textLine2}
+          </li>
+        ))}
       </ul>
     </article>
   );
