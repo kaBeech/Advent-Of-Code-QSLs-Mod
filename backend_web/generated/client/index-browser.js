@@ -139,7 +139,7 @@ exports.Prisma.GameScalarFieldEnum = {
   currentRerollTokens: 'currentRerollTokens',
   rerollTokensSpent: 'rerollTokensSpent',
   rerollTokensSpentDuringPart2Raw: 'rerollTokensSpentDuringPart2Raw',
-  rerollTokensSpentDuringPart2Limited: 'rerollTokensSpentDuringPart2Limited',
+  part2RerollBonus: 'part2RerollBonus',
   repositoryLink: 'repositoryLink',
   progressSheetLink: 'progressSheetLink',
   isPublic: 'isPublic',

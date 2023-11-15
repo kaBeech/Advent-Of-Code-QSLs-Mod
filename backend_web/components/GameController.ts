@@ -67,7 +67,7 @@ const currentDayCompleter = (state: GameControllerState) => ({
         `Current day (${state.game.currentDay}) already completed`,
       );
     }
-    state.game.rerollTokensSpentDuringPart2Limited += part2RerollBonus;
+    state.game.part2RerollBonus += part2RerollBonus;
     state.game = currentDayCompletionStatusSetter(state)
       .setCurrentDayCompletionStatus(true);
     scoreCalculator(state).calculateScore();
@@ -170,7 +170,7 @@ const progressSheetLinkSetter = (state: GameControllerState) => ({
 
 const scoreCalculator = (state: GameControllerState) => ({
   calculateScore: () => {
-    const part2RerollBonus = state.game.rerollTokensSpentDuringPart2Limited;
+    const part2RerollBonus = state.game.part2RerollBonus;
     state.game.score = 10 * state.game.currentRerollTokens + part2RerollBonus;
     return state.game.score;
   },

@@ -306,8 +306,7 @@ export async function updateGame(game: Game) {
       currentRerollTokens: game.currentRerollTokens,
       rerollTokensSpent: game.rerollTokensSpent,
       rerollTokensSpentDuringPart2Raw: game.rerollTokensSpentDuringPart2Raw,
-      rerollTokensSpentDuringPart2Limited:
-        game.rerollTokensSpentDuringPart2Limited,
+      part2RerollBonus: game.part2RerollBonus,
       repositoryLink: game.repositoryLink,
       progressSheetLink: game.progressSheetLink,
       isPublic: game.isPublic,

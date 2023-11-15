@@ -43,32 +43,32 @@ model PublicProfile {
 }
 
 model Game {
-  id                                  Int            @id @default(autoincrement())
-  dateCreated                         DateTime       @default(now())
-  userId                              String
-  number                              Int
-  year                                Int
-  name                                String
-  playerName                          String?
-  currentDay                          Int            @default(0)
-  currentDayCompleted                 Boolean        @default(false)
-  currentRerollTokens                 Int            @default(24)
-  rerollTokensSpent                   Int            @default(0)
-  rerollTokensSpentDuringPart2Raw     Int            @default(0)
-  rerollTokensSpentDuringPart2Limited Int            @default(0)
-  repositoryLink                      String?
-  progressSheetLink                   String         @default("/game/public/${id}")
-  isPublic                            Boolean        @default(false)
-  publicProfileId                     Int?
-  score                               Int            @default(0)
-  titleId                             Int?
-  dateCompleted                       DateTime?
-  Day                                 Day[]
-  Downvote                            Downvote[]
-  PublicProfile                       PublicProfile? @relation(fields: [publicProfileId], references: [id])
-  Title                               Title?         @relation(fields: [titleId], references: [id])
-  User                                User           @relation(fields: [userId], references: [id])
-  Upvote                              Upvote[]
+  id                              Int            @id @default(autoincrement())
+  dateCreated                     DateTime       @default(now())
+  userId                          String
+  number                          Int
+  year                            Int
+  name                            String
+  playerName                      String?
+  currentDay                      Int            @default(0)
+  currentDayCompleted             Boolean        @default(false)
+  currentRerollTokens             Int            @default(24)
+  rerollTokensSpent               Int            @default(0)
+  rerollTokensSpentDuringPart2Raw Int            @default(0)
+  part2RerollBonus                Int            @default(0)
+  repositoryLink                  String?
+  progressSheetLink               String         @default("/game/public/${id}")
+  isPublic                        Boolean        @default(false)
+  publicProfileId                 Int?
+  score                           Int            @default(0)
+  titleId                         Int?
+  dateCompleted                   DateTime?
+  Day                             Day[]
+  Downvote                        Downvote[]
+  PublicProfile                   PublicProfile? @relation(fields: [publicProfileId], references: [id])
+  Title                           Title?         @relation(fields: [titleId], references: [id])
+  User                            User           @relation(fields: [userId], references: [id])
+  Upvote                          Upvote[]
 }
 
 model Title {

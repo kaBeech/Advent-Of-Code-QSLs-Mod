@@ -4383,7 +4383,7 @@ export namespace Prisma {
     currentRerollTokens: number | null
     rerollTokensSpent: number | null
     rerollTokensSpentDuringPart2Raw: number | null
-    rerollTokensSpentDuringPart2Limited: number | null
+    part2RerollBonus: number | null
     publicProfileId: number | null
     score: number | null
     titleId: number | null
@@ -4397,7 +4397,7 @@ export namespace Prisma {
     currentRerollTokens: number | null
     rerollTokensSpent: number | null
     rerollTokensSpentDuringPart2Raw: number | null
-    rerollTokensSpentDuringPart2Limited: number | null
+    part2RerollBonus: number | null
     publicProfileId: number | null
     score: number | null
     titleId: number | null
@@ -4416,7 +4416,7 @@ export namespace Prisma {
     currentRerollTokens: number | null
     rerollTokensSpent: number | null
     rerollTokensSpentDuringPart2Raw: number | null
-    rerollTokensSpentDuringPart2Limited: number | null
+    part2RerollBonus: number | null
     repositoryLink: string | null
     progressSheetLink: string | null
     isPublic: boolean | null
@@ -4439,7 +4439,7 @@ export namespace Prisma {
     currentRerollTokens: number | null
     rerollTokensSpent: number | null
     rerollTokensSpentDuringPart2Raw: number | null
-    rerollTokensSpentDuringPart2Limited: number | null
+    part2RerollBonus: number | null
     repositoryLink: string | null
     progressSheetLink: string | null
     isPublic: boolean | null
@@ -4462,7 +4462,7 @@ export namespace Prisma {
     currentRerollTokens: number
     rerollTokensSpent: number
     rerollTokensSpentDuringPart2Raw: number
-    rerollTokensSpentDuringPart2Limited: number
+    part2RerollBonus: number
     repositoryLink: number
     progressSheetLink: number
     isPublic: number
@@ -4482,7 +4482,7 @@ export namespace Prisma {
     currentRerollTokens?: true
     rerollTokensSpent?: true
     rerollTokensSpentDuringPart2Raw?: true
-    rerollTokensSpentDuringPart2Limited?: true
+    part2RerollBonus?: true
     publicProfileId?: true
     score?: true
     titleId?: true
@@ -4496,7 +4496,7 @@ export namespace Prisma {
     currentRerollTokens?: true
     rerollTokensSpent?: true
     rerollTokensSpentDuringPart2Raw?: true
-    rerollTokensSpentDuringPart2Limited?: true
+    part2RerollBonus?: true
     publicProfileId?: true
     score?: true
     titleId?: true
@@ -4515,7 +4515,7 @@ export namespace Prisma {
     currentRerollTokens?: true
     rerollTokensSpent?: true
     rerollTokensSpentDuringPart2Raw?: true
-    rerollTokensSpentDuringPart2Limited?: true
+    part2RerollBonus?: true
     repositoryLink?: true
     progressSheetLink?: true
     isPublic?: true
@@ -4538,7 +4538,7 @@ export namespace Prisma {
     currentRerollTokens?: true
     rerollTokensSpent?: true
     rerollTokensSpentDuringPart2Raw?: true
-    rerollTokensSpentDuringPart2Limited?: true
+    part2RerollBonus?: true
     repositoryLink?: true
     progressSheetLink?: true
     isPublic?: true
@@ -4561,7 +4561,7 @@ export namespace Prisma {
     currentRerollTokens?: true
     rerollTokensSpent?: true
     rerollTokensSpentDuringPart2Raw?: true
-    rerollTokensSpentDuringPart2Limited?: true
+    part2RerollBonus?: true
     repositoryLink?: true
     progressSheetLink?: true
     isPublic?: true
@@ -4671,7 +4671,7 @@ export namespace Prisma {
     currentRerollTokens: number
     rerollTokensSpent: number
     rerollTokensSpentDuringPart2Raw: number
-    rerollTokensSpentDuringPart2Limited: number
+    part2RerollBonus: number
     repositoryLink: string | null
     progressSheetLink: string
     isPublic: boolean
@@ -4713,7 +4713,7 @@ export namespace Prisma {
     currentRerollTokens?: boolean
     rerollTokensSpent?: boolean
     rerollTokensSpentDuringPart2Raw?: boolean
-    rerollTokensSpentDuringPart2Limited?: boolean
+    part2RerollBonus?: boolean
     repositoryLink?: boolean
     progressSheetLink?: boolean
     isPublic?: boolean
@@ -4743,7 +4743,7 @@ export namespace Prisma {
     currentRerollTokens?: boolean
     rerollTokensSpent?: boolean
     rerollTokensSpentDuringPart2Raw?: boolean
-    rerollTokensSpentDuringPart2Limited?: boolean
+    part2RerollBonus?: boolean
     repositoryLink?: boolean
     progressSheetLink?: boolean
     isPublic?: boolean
@@ -4787,7 +4787,7 @@ export namespace Prisma {
       currentRerollTokens: number
       rerollTokensSpent: number
       rerollTokensSpentDuringPart2Raw: number
-      rerollTokensSpentDuringPart2Limited: number
+      part2RerollBonus: number
       repositoryLink: string | null
       progressSheetLink: string
       isPublic: boolean
@@ -5212,7 +5212,7 @@ export namespace Prisma {
     readonly currentRerollTokens: FieldRef<"Game", 'Int'>
     readonly rerollTokensSpent: FieldRef<"Game", 'Int'>
     readonly rerollTokensSpentDuringPart2Raw: FieldRef<"Game", 'Int'>
-    readonly rerollTokensSpentDuringPart2Limited: FieldRef<"Game", 'Int'>
+    readonly part2RerollBonus: FieldRef<"Game", 'Int'>
     readonly repositoryLink: FieldRef<"Game", 'String'>
     readonly progressSheetLink: FieldRef<"Game", 'String'>
     readonly isPublic: FieldRef<"Game", 'Boolean'>
@@ -13236,7 +13236,7 @@ export namespace Prisma {
     currentRerollTokens: 'currentRerollTokens',
     rerollTokensSpent: 'rerollTokensSpent',
     rerollTokensSpentDuringPart2Raw: 'rerollTokensSpentDuringPart2Raw',
-    rerollTokensSpentDuringPart2Limited: 'rerollTokensSpentDuringPart2Limited',
+    part2RerollBonus: 'part2RerollBonus',
     repositoryLink: 'repositoryLink',
     progressSheetLink: 'progressSheetLink',
     isPublic: 'isPublic',
@@ -13617,7 +13617,7 @@ export namespace Prisma {
     currentRerollTokens?: IntFilter<"Game"> | number
     rerollTokensSpent?: IntFilter<"Game"> | number
     rerollTokensSpentDuringPart2Raw?: IntFilter<"Game"> | number
-    rerollTokensSpentDuringPart2Limited?: IntFilter<"Game"> | number
+    part2RerollBonus?: IntFilter<"Game"> | number
     repositoryLink?: StringNullableFilter<"Game"> | string | null
     progressSheetLink?: StringFilter<"Game"> | string
     isPublic?: BoolFilter<"Game"> | boolean
@@ -13646,7 +13646,7 @@ export namespace Prisma {
     currentRerollTokens?: SortOrder
     rerollTokensSpent?: SortOrder
     rerollTokensSpentDuringPart2Raw?: SortOrder
-    rerollTokensSpentDuringPart2Limited?: SortOrder
+    part2RerollBonus?: SortOrder
     repositoryLink?: SortOrderInput | SortOrder
     progressSheetLink?: SortOrder
     isPublic?: SortOrder
@@ -13678,7 +13678,7 @@ export namespace Prisma {
     currentRerollTokens?: IntFilter<"Game"> | number
     rerollTokensSpent?: IntFilter<"Game"> | number
     rerollTokensSpentDuringPart2Raw?: IntFilter<"Game"> | number
-    rerollTokensSpentDuringPart2Limited?: IntFilter<"Game"> | number
+    part2RerollBonus?: IntFilter<"Game"> | number
     repositoryLink?: StringNullableFilter<"Game"> | string | null
     progressSheetLink?: StringFilter<"Game"> | string
     isPublic?: BoolFilter<"Game"> | boolean
@@ -13707,7 +13707,7 @@ export namespace Prisma {
     currentRerollTokens?: SortOrder
     rerollTokensSpent?: SortOrder
     rerollTokensSpentDuringPart2Raw?: SortOrder
-    rerollTokensSpentDuringPart2Limited?: SortOrder
+    part2RerollBonus?: SortOrder
     repositoryLink?: SortOrderInput | SortOrder
     progressSheetLink?: SortOrder
     isPublic?: SortOrder
@@ -13738,7 +13738,7 @@ export namespace Prisma {
     currentRerollTokens?: IntWithAggregatesFilter<"Game"> | number
     rerollTokensSpent?: IntWithAggregatesFilter<"Game"> | number
     rerollTokensSpentDuringPart2Raw?: IntWithAggregatesFilter<"Game"> | number
-    rerollTokensSpentDuringPart2Limited?: IntWithAggregatesFilter<"Game"> | number
+    part2RerollBonus?: IntWithAggregatesFilter<"Game"> | number
     repositoryLink?: StringNullableWithAggregatesFilter<"Game"> | string | null
     progressSheetLink?: StringWithAggregatesFilter<"Game"> | string
     isPublic?: BoolWithAggregatesFilter<"Game"> | boolean
@@ -14497,7 +14497,7 @@ export namespace Prisma {
     currentRerollTokens?: number
     rerollTokensSpent?: number
     rerollTokensSpentDuringPart2Raw?: number
-    rerollTokensSpentDuringPart2Limited?: number
+    part2RerollBonus?: number
     repositoryLink?: string | null
     progressSheetLink?: string
     isPublic?: boolean
@@ -14524,7 +14524,7 @@ export namespace Prisma {
     currentRerollTokens?: number
     rerollTokensSpent?: number
     rerollTokensSpentDuringPart2Raw?: number
-    rerollTokensSpentDuringPart2Limited?: number
+    part2RerollBonus?: number
     repositoryLink?: string | null
     progressSheetLink?: string
     isPublic?: boolean
@@ -14548,7 +14548,7 @@ export namespace Prisma {
     currentRerollTokens?: IntFieldUpdateOperationsInput | number
     rerollTokensSpent?: IntFieldUpdateOperationsInput | number
     rerollTokensSpentDuringPart2Raw?: IntFieldUpdateOperationsInput | number
-    rerollTokensSpentDuringPart2Limited?: IntFieldUpdateOperationsInput | number
+    part2RerollBonus?: IntFieldUpdateOperationsInput | number
     repositoryLink?: NullableStringFieldUpdateOperationsInput | string | null
     progressSheetLink?: StringFieldUpdateOperationsInput | string
     isPublic?: BoolFieldUpdateOperationsInput | boolean
@@ -14575,7 +14575,7 @@ export namespace Prisma {
     currentRerollTokens?: IntFieldUpdateOperationsInput | number
     rerollTokensSpent?: IntFieldUpdateOperationsInput | number
     rerollTokensSpentDuringPart2Raw?: IntFieldUpdateOperationsInput | number
-    rerollTokensSpentDuringPart2Limited?: IntFieldUpdateOperationsInput | number
+    part2RerollBonus?: IntFieldUpdateOperationsInput | number
     repositoryLink?: NullableStringFieldUpdateOperationsInput | string | null
     progressSheetLink?: StringFieldUpdateOperationsInput | string
     isPublic?: BoolFieldUpdateOperationsInput | boolean
@@ -14601,7 +14601,7 @@ export namespace Prisma {
     currentRerollTokens?: number
     rerollTokensSpent?: number
     rerollTokensSpentDuringPart2Raw?: number
-    rerollTokensSpentDuringPart2Limited?: number
+    part2RerollBonus?: number
     repositoryLink?: string | null
     progressSheetLink?: string
     isPublic?: boolean
@@ -14622,7 +14622,7 @@ export namespace Prisma {
     currentRerollTokens?: IntFieldUpdateOperationsInput | number
     rerollTokensSpent?: IntFieldUpdateOperationsInput | number
     rerollTokensSpentDuringPart2Raw?: IntFieldUpdateOperationsInput | number
-    rerollTokensSpentDuringPart2Limited?: IntFieldUpdateOperationsInput | number
+    part2RerollBonus?: IntFieldUpdateOperationsInput | number
     repositoryLink?: NullableStringFieldUpdateOperationsInput | string | null
     progressSheetLink?: StringFieldUpdateOperationsInput | string
     isPublic?: BoolFieldUpdateOperationsInput | boolean
@@ -14643,7 +14643,7 @@ export namespace Prisma {
     currentRerollTokens?: IntFieldUpdateOperationsInput | number
     rerollTokensSpent?: IntFieldUpdateOperationsInput | number
     rerollTokensSpentDuringPart2Raw?: IntFieldUpdateOperationsInput | number
-    rerollTokensSpentDuringPart2Limited?: IntFieldUpdateOperationsInput | number
+    part2RerollBonus?: IntFieldUpdateOperationsInput | number
     repositoryLink?: NullableStringFieldUpdateOperationsInput | string | null
     progressSheetLink?: StringFieldUpdateOperationsInput | string
     isPublic?: BoolFieldUpdateOperationsInput | boolean
@@ -15540,7 +15540,7 @@ export namespace Prisma {
     currentRerollTokens?: SortOrder
     rerollTokensSpent?: SortOrder
     rerollTokensSpentDuringPart2Raw?: SortOrder
-    rerollTokensSpentDuringPart2Limited?: SortOrder
+    part2RerollBonus?: SortOrder
     repositoryLink?: SortOrder
     progressSheetLink?: SortOrder
     isPublic?: SortOrder
@@ -15558,7 +15558,7 @@ export namespace Prisma {
     currentRerollTokens?: SortOrder
     rerollTokensSpent?: SortOrder
     rerollTokensSpentDuringPart2Raw?: SortOrder
-    rerollTokensSpentDuringPart2Limited?: SortOrder
+    part2RerollBonus?: SortOrder
     publicProfileId?: SortOrder
     score?: SortOrder
     titleId?: SortOrder
@@ -15577,7 +15577,7 @@ export namespace Prisma {
     currentRerollTokens?: SortOrder
     rerollTokensSpent?: SortOrder
     rerollTokensSpentDuringPart2Raw?: SortOrder
-    rerollTokensSpentDuringPart2Limited?: SortOrder
+    part2RerollBonus?: SortOrder
     repositoryLink?: SortOrder
     progressSheetLink?: SortOrder
     isPublic?: SortOrder
@@ -15600,7 +15600,7 @@ export namespace Prisma {
     currentRerollTokens?: SortOrder
     rerollTokensSpent?: SortOrder
     rerollTokensSpentDuringPart2Raw?: SortOrder
-    rerollTokensSpentDuringPart2Limited?: SortOrder
+    part2RerollBonus?: SortOrder
     repositoryLink?: SortOrder
     progressSheetLink?: SortOrder
     isPublic?: SortOrder
@@ -15618,7 +15618,7 @@ export namespace Prisma {
     currentRerollTokens?: SortOrder
     rerollTokensSpent?: SortOrder
     rerollTokensSpentDuringPart2Raw?: SortOrder
-    rerollTokensSpentDuringPart2Limited?: SortOrder
+    part2RerollBonus?: SortOrder
     publicProfileId?: SortOrder
     score?: SortOrder
     titleId?: SortOrder
@@ -17899,7 +17899,7 @@ export namespace Prisma {
     currentRerollTokens?: number
     rerollTokensSpent?: number
     rerollTokensSpentDuringPart2Raw?: number
-    rerollTokensSpentDuringPart2Limited?: number
+    part2RerollBonus?: number
     repositoryLink?: string | null
     progressSheetLink?: string
     isPublic?: boolean
@@ -17924,7 +17924,7 @@ export namespace Prisma {
     currentRerollTokens?: number
     rerollTokensSpent?: number
     rerollTokensSpentDuringPart2Raw?: number
-    rerollTokensSpentDuringPart2Limited?: number
+    part2RerollBonus?: number
     repositoryLink?: string | null
     progressSheetLink?: string
     isPublic?: boolean
@@ -18313,7 +18313,7 @@ export namespace Prisma {
     currentRerollTokens?: IntFilter<"Game"> | number
     rerollTokensSpent?: IntFilter<"Game"> | number
     rerollTokensSpentDuringPart2Raw?: IntFilter<"Game"> | number
-    rerollTokensSpentDuringPart2Limited?: IntFilter<"Game"> | number
+    part2RerollBonus?: IntFilter<"Game"> | number
     repositoryLink?: StringNullableFilter<"Game"> | string | null
     progressSheetLink?: StringFilter<"Game"> | string
     isPublic?: BoolFilter<"Game"> | boolean
@@ -18509,7 +18509,7 @@ export namespace Prisma {
     currentRerollTokens?: number
     rerollTokensSpent?: number
     rerollTokensSpentDuringPart2Raw?: number
-    rerollTokensSpentDuringPart2Limited?: number
+    part2RerollBonus?: number
     repositoryLink?: string | null
     progressSheetLink?: string
     isPublic?: boolean
@@ -18535,7 +18535,7 @@ export namespace Prisma {
     currentRerollTokens?: number
     rerollTokensSpent?: number
     rerollTokensSpentDuringPart2Raw?: number
-    rerollTokensSpentDuringPart2Limited?: number
+    part2RerollBonus?: number
     repositoryLink?: string | null
     progressSheetLink?: string
     isPublic?: boolean
@@ -19040,7 +19040,7 @@ export namespace Prisma {
     currentRerollTokens?: number
     rerollTokensSpent?: number
     rerollTokensSpentDuringPart2Raw?: number
-    rerollTokensSpentDuringPart2Limited?: number
+    part2RerollBonus?: number
     repositoryLink?: string | null
     progressSheetLink?: string
     isPublic?: boolean
@@ -19066,7 +19066,7 @@ export namespace Prisma {
     currentRerollTokens?: number
     rerollTokensSpent?: number
     rerollTokensSpentDuringPart2Raw?: number
-    rerollTokensSpentDuringPart2Limited?: number
+    part2RerollBonus?: number
     repositoryLink?: string | null
     progressSheetLink?: string
     isPublic?: boolean
@@ -19155,7 +19155,7 @@ export namespace Prisma {
     currentRerollTokens?: number
     rerollTokensSpent?: number
     rerollTokensSpentDuringPart2Raw?: number
-    rerollTokensSpentDuringPart2Limited?: number
+    part2RerollBonus?: number
     repositoryLink?: string | null
     progressSheetLink?: string
     isPublic?: boolean
@@ -19181,7 +19181,7 @@ export namespace Prisma {
     currentRerollTokens?: number
     rerollTokensSpent?: number
     rerollTokensSpentDuringPart2Raw?: number
-    rerollTokensSpentDuringPart2Limited?: number
+    part2RerollBonus?: number
     repositoryLink?: string | null
     progressSheetLink?: string
     isPublic?: boolean
@@ -19466,7 +19466,7 @@ export namespace Prisma {
     currentRerollTokens?: IntFieldUpdateOperationsInput | number
     rerollTokensSpent?: IntFieldUpdateOperationsInput | number
     rerollTokensSpentDuringPart2Raw?: IntFieldUpdateOperationsInput | number
-    rerollTokensSpentDuringPart2Limited?: IntFieldUpdateOperationsInput | number
+    part2RerollBonus?: IntFieldUpdateOperationsInput | number
     repositoryLink?: NullableStringFieldUpdateOperationsInput | string | null
     progressSheetLink?: StringFieldUpdateOperationsInput | string
     isPublic?: BoolFieldUpdateOperationsInput | boolean
@@ -19492,7 +19492,7 @@ export namespace Prisma {
     currentRerollTokens?: IntFieldUpdateOperationsInput | number
     rerollTokensSpent?: IntFieldUpdateOperationsInput | number
     rerollTokensSpentDuringPart2Raw?: IntFieldUpdateOperationsInput | number
-    rerollTokensSpentDuringPart2Limited?: IntFieldUpdateOperationsInput | number
+    part2RerollBonus?: IntFieldUpdateOperationsInput | number
     repositoryLink?: NullableStringFieldUpdateOperationsInput | string | null
     progressSheetLink?: StringFieldUpdateOperationsInput | string
     isPublic?: BoolFieldUpdateOperationsInput | boolean
@@ -21044,7 +21044,7 @@ export namespace Prisma {
     currentRerollTokens?: number
     rerollTokensSpent?: number
     rerollTokensSpentDuringPart2Raw?: number
-    rerollTokensSpentDuringPart2Limited?: number
+    part2RerollBonus?: number
     repositoryLink?: string | null
     progressSheetLink?: string
     isPublic?: boolean
@@ -21070,7 +21070,7 @@ export namespace Prisma {
     currentRerollTokens?: number
     rerollTokensSpent?: number
     rerollTokensSpentDuringPart2Raw?: number
-    rerollTokensSpentDuringPart2Limited?: number
+    part2RerollBonus?: number
     repositoryLink?: string | null
     progressSheetLink?: string
     isPublic?: boolean
@@ -21164,7 +21164,7 @@ export namespace Prisma {
     currentRerollTokens?: IntFieldUpdateOperationsInput | number
     rerollTokensSpent?: IntFieldUpdateOperationsInput | number
     rerollTokensSpentDuringPart2Raw?: IntFieldUpdateOperationsInput | number
-    rerollTokensSpentDuringPart2Limited?: IntFieldUpdateOperationsInput | number
+    part2RerollBonus?: IntFieldUpdateOperationsInput | number
     repositoryLink?: NullableStringFieldUpdateOperationsInput | string | null
     progressSheetLink?: StringFieldUpdateOperationsInput | string
     isPublic?: BoolFieldUpdateOperationsInput | boolean
@@ -21190,7 +21190,7 @@ export namespace Prisma {
     currentRerollTokens?: IntFieldUpdateOperationsInput | number
     rerollTokensSpent?: IntFieldUpdateOperationsInput | number
     rerollTokensSpentDuringPart2Raw?: IntFieldUpdateOperationsInput | number
-    rerollTokensSpentDuringPart2Limited?: IntFieldUpdateOperationsInput | number
+    part2RerollBonus?: IntFieldUpdateOperationsInput | number
     repositoryLink?: NullableStringFieldUpdateOperationsInput | string | null
     progressSheetLink?: StringFieldUpdateOperationsInput | string
     isPublic?: BoolFieldUpdateOperationsInput | boolean
@@ -21262,7 +21262,7 @@ export namespace Prisma {
     currentRerollTokens?: number
     rerollTokensSpent?: number
     rerollTokensSpentDuringPart2Raw?: number
-    rerollTokensSpentDuringPart2Limited?: number
+    part2RerollBonus?: number
     repositoryLink?: string | null
     progressSheetLink?: string
     isPublic?: boolean
@@ -21288,7 +21288,7 @@ export namespace Prisma {
     currentRerollTokens?: number
     rerollTokensSpent?: number
     rerollTokensSpentDuringPart2Raw?: number
-    rerollTokensSpentDuringPart2Limited?: number
+    part2RerollBonus?: number
     repositoryLink?: string | null
     progressSheetLink?: string
     isPublic?: boolean
@@ -21382,7 +21382,7 @@ export namespace Prisma {
     currentRerollTokens?: IntFieldUpdateOperationsInput | number
     rerollTokensSpent?: IntFieldUpdateOperationsInput | number
     rerollTokensSpentDuringPart2Raw?: IntFieldUpdateOperationsInput | number
-    rerollTokensSpentDuringPart2Limited?: IntFieldUpdateOperationsInput | number
+    part2RerollBonus?: IntFieldUpdateOperationsInput | number
     repositoryLink?: NullableStringFieldUpdateOperationsInput | string | null
     progressSheetLink?: StringFieldUpdateOperationsInput | string
     isPublic?: BoolFieldUpdateOperationsInput | boolean
@@ -21408,7 +21408,7 @@ export namespace Prisma {
     currentRerollTokens?: IntFieldUpdateOperationsInput | number
     rerollTokensSpent?: IntFieldUpdateOperationsInput | number
     rerollTokensSpentDuringPart2Raw?: IntFieldUpdateOperationsInput | number
-    rerollTokensSpentDuringPart2Limited?: IntFieldUpdateOperationsInput | number
+    part2RerollBonus?: IntFieldUpdateOperationsInput | number
     repositoryLink?: NullableStringFieldUpdateOperationsInput | string | null
     progressSheetLink?: StringFieldUpdateOperationsInput | string
     isPublic?: BoolFieldUpdateOperationsInput | boolean
@@ -21450,7 +21450,7 @@ export namespace Prisma {
     currentRerollTokens?: number
     rerollTokensSpent?: number
     rerollTokensSpentDuringPart2Raw?: number
-    rerollTokensSpentDuringPart2Limited?: number
+    part2RerollBonus?: number
     repositoryLink?: string | null
     progressSheetLink?: string
     isPublic?: boolean
@@ -21568,7 +21568,7 @@ export namespace Prisma {
     currentRerollTokens?: IntFieldUpdateOperationsInput | number
     rerollTokensSpent?: IntFieldUpdateOperationsInput | number
     rerollTokensSpentDuringPart2Raw?: IntFieldUpdateOperationsInput | number
-    rerollTokensSpentDuringPart2Limited?: IntFieldUpdateOperationsInput | number
+    part2RerollBonus?: IntFieldUpdateOperationsInput | number
     repositoryLink?: NullableStringFieldUpdateOperationsInput | string | null
     progressSheetLink?: StringFieldUpdateOperationsInput | string
     isPublic?: BoolFieldUpdateOperationsInput | boolean
@@ -21593,7 +21593,7 @@ export namespace Prisma {
     currentRerollTokens?: IntFieldUpdateOperationsInput | number
     rerollTokensSpent?: IntFieldUpdateOperationsInput | number
     rerollTokensSpentDuringPart2Raw?: IntFieldUpdateOperationsInput | number
-    rerollTokensSpentDuringPart2Limited?: IntFieldUpdateOperationsInput | number
+    part2RerollBonus?: IntFieldUpdateOperationsInput | number
     repositoryLink?: NullableStringFieldUpdateOperationsInput | string | null
     progressSheetLink?: StringFieldUpdateOperationsInput | string
     isPublic?: BoolFieldUpdateOperationsInput | boolean
@@ -21618,7 +21618,7 @@ export namespace Prisma {
     currentRerollTokens?: IntFieldUpdateOperationsInput | number
     rerollTokensSpent?: IntFieldUpdateOperationsInput | number
     rerollTokensSpentDuringPart2Raw?: IntFieldUpdateOperationsInput | number
-    rerollTokensSpentDuringPart2Limited?: IntFieldUpdateOperationsInput | number
+    part2RerollBonus?: IntFieldUpdateOperationsInput | number
     repositoryLink?: NullableStringFieldUpdateOperationsInput | string | null
     progressSheetLink?: StringFieldUpdateOperationsInput | string
     isPublic?: BoolFieldUpdateOperationsInput | boolean
@@ -21938,7 +21938,7 @@ export namespace Prisma {
     currentRerollTokens?: number
     rerollTokensSpent?: number
     rerollTokensSpentDuringPart2Raw?: number
-    rerollTokensSpentDuringPart2Limited?: number
+    part2RerollBonus?: number
     repositoryLink?: string | null
     progressSheetLink?: string
     isPublic?: boolean
@@ -21958,7 +21958,7 @@ export namespace Prisma {
     currentRerollTokens?: IntFieldUpdateOperationsInput | number
     rerollTokensSpent?: IntFieldUpdateOperationsInput | number
     rerollTokensSpentDuringPart2Raw?: IntFieldUpdateOperationsInput | number
-    rerollTokensSpentDuringPart2Limited?: IntFieldUpdateOperationsInput | number
+    part2RerollBonus?: IntFieldUpdateOperationsInput | number
     repositoryLink?: NullableStringFieldUpdateOperationsInput | string | null
     progressSheetLink?: StringFieldUpdateOperationsInput | string
     isPublic?: BoolFieldUpdateOperationsInput | boolean
@@ -21984,7 +21984,7 @@ export namespace Prisma {
     currentRerollTokens?: IntFieldUpdateOperationsInput | number
     rerollTokensSpent?: IntFieldUpdateOperationsInput | number
     rerollTokensSpentDuringPart2Raw?: IntFieldUpdateOperationsInput | number
-    rerollTokensSpentDuringPart2Limited?: IntFieldUpdateOperationsInput | number
+    part2RerollBonus?: IntFieldUpdateOperationsInput | number
     repositoryLink?: NullableStringFieldUpdateOperationsInput | string | null
     progressSheetLink?: StringFieldUpdateOperationsInput | string
     isPublic?: BoolFieldUpdateOperationsInput | boolean
@@ -22009,7 +22009,7 @@ export namespace Prisma {
     currentRerollTokens?: IntFieldUpdateOperationsInput | number
     rerollTokensSpent?: IntFieldUpdateOperationsInput | number
     rerollTokensSpentDuringPart2Raw?: IntFieldUpdateOperationsInput | number
-    rerollTokensSpentDuringPart2Limited?: IntFieldUpdateOperationsInput | number
+    part2RerollBonus?: IntFieldUpdateOperationsInput | number
     repositoryLink?: NullableStringFieldUpdateOperationsInput | string | null
     progressSheetLink?: StringFieldUpdateOperationsInput | string
     isPublic?: BoolFieldUpdateOperationsInput | boolean
@@ -22164,7 +22164,7 @@ export namespace Prisma {
     currentRerollTokens?: number
     rerollTokensSpent?: number
     rerollTokensSpentDuringPart2Raw?: number
-    rerollTokensSpentDuringPart2Limited?: number
+    part2RerollBonus?: number
     repositoryLink?: string | null
     progressSheetLink?: string
     isPublic?: boolean
@@ -22184,7 +22184,7 @@ export namespace Prisma {
     currentRerollTokens?: IntFieldUpdateOperationsInput | number
     rerollTokensSpent?: IntFieldUpdateOperationsInput | number
     rerollTokensSpentDuringPart2Raw?: IntFieldUpdateOperationsInput | number
-    rerollTokensSpentDuringPart2Limited?: IntFieldUpdateOperationsInput | number
+    part2RerollBonus?: IntFieldUpdateOperationsInput | number
     repositoryLink?: NullableStringFieldUpdateOperationsInput | string | null
     progressSheetLink?: StringFieldUpdateOperationsInput | string
     isPublic?: BoolFieldUpdateOperationsInput | boolean
@@ -22210,7 +22210,7 @@ export namespace Prisma {
     currentRerollTokens?: IntFieldUpdateOperationsInput | number
     rerollTokensSpent?: IntFieldUpdateOperationsInput | number
     rerollTokensSpentDuringPart2Raw?: IntFieldUpdateOperationsInput | number
-    rerollTokensSpentDuringPart2Limited?: IntFieldUpdateOperationsInput | number
+    part2RerollBonus?: IntFieldUpdateOperationsInput | number
     repositoryLink?: NullableStringFieldUpdateOperationsInput | string | null
     progressSheetLink?: StringFieldUpdateOperationsInput | string
     isPublic?: BoolFieldUpdateOperationsInput | boolean
@@ -22235,7 +22235,7 @@ export namespace Prisma {
     currentRerollTokens?: IntFieldUpdateOperationsInput | number
     rerollTokensSpent?: IntFieldUpdateOperationsInput | number
     rerollTokensSpentDuringPart2Raw?: IntFieldUpdateOperationsInput | number
-    rerollTokensSpentDuringPart2Limited?: IntFieldUpdateOperationsInput | number
+    part2RerollBonus?: IntFieldUpdateOperationsInput | number
     repositoryLink?: NullableStringFieldUpdateOperationsInput | string | null
     progressSheetLink?: StringFieldUpdateOperationsInput | string
     isPublic?: BoolFieldUpdateOperationsInput | boolean
