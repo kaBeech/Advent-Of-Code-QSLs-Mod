@@ -369,10 +369,10 @@ const modifierOptionData: Prisma.ModifierOptionCreateInput[] = [
   {
     ChallengeModifier: {
       connect: {
-        name: "gpp_box",
+        name: "oop_box",
       },
     },
-    name: "gpp_box_java",
+    name: "oop_box_java",
     text: "Java",
     standard: true,
     isPublic: true,
