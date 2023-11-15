@@ -38,8 +38,8 @@ const challengeModifierData: Prisma.ChallengeModifierCreateInput[] = [
     isPublic: true,
   },
   {
-    name: "gpp_box",
-    text: "using a random selection from the General Purpose Programming Box: ",
+    name: "misc_box",
+    text: "using a random selection from the Miscellaneous Programming Box: ",
     hasOptions: true,
     standard: true,
     isPublic: true,
@@ -234,50 +234,6 @@ for (const u of challengeModifierData) {
 }
 
 const modifierOptionData: Prisma.ModifierOptionCreateInput[] = [
-  //   // {
-  //   //   ChallengeModifier: {
-  //   //     connect: {
-  //   //       name: "language_box_1",
-  //   //     },
-  //   //   },
-  //   //   name: "language_box_1_r",
-  //   //   text: "R",
-  //   //   standard: true,
-  //   //   isPublic: true,
-  //   // },
-  //   // {
-  //   //   ChallengeModifier: {
-  //   //     connect: {
-  //   //       name: "language_box_2",
-  //   //     },
-  //   //   },
-  //   //   name: "language_box_2_prolog",
-  //   //   text: "Prolog",
-  //   //   standard: true,
-  //   //   isPublic: true,
-  //   // },
-  //   // {
-  //   //   ChallengeModifier: {
-  //   //     connect: {
-  //   //       name: "language_box_2",
-  //   //     },
-  //   //   },
-  //   //   name: "language_box_2_pascal",
-  //   //   text: "Pascal",
-  //   //   standard: true,
-  //   //   isPublic: true,
-  //   // },
-  //   // {
-  //   //   ChallengeModifier: {
-  //   //     connect: {
-  //   //       name: "language_box_3",
-  //   //     },
-  //   //   },
-  //   //   name: "language_box_3_webassembly",
-  //   //   text: "WebAssembly",
-  //   //   standard: true,
-  //   //   isPublic: true,
-  //   // },
   {
     ChallengeModifier: {
       connect: {
@@ -380,10 +336,10 @@ const modifierOptionData: Prisma.ModifierOptionCreateInput[] = [
   {
     ChallengeModifier: {
       connect: {
-        name: "gpp_box",
+        name: "misc_box",
       },
     },
-    name: "gpp_box_javascript",
+    name: "misc_box_javascript",
     text: "JavaScript",
     standard: true,
     isPublic: true,
@@ -391,10 +347,10 @@ const modifierOptionData: Prisma.ModifierOptionCreateInput[] = [
   {
     ChallengeModifier: {
       connect: {
-        name: "gpp_box",
+        name: "misc_box",
       },
     },
-    name: "gpp_box_typescript",
+    name: "misc_box_typescript",
     text: "TypeScript",
     standard: true,
     isPublic: true,
@@ -402,11 +358,44 @@ const modifierOptionData: Prisma.ModifierOptionCreateInput[] = [
   {
     ChallengeModifier: {
       connect: {
-        name: "gpp_box",
+        name: "misc_box",
       },
     },
-    name: "gpp_box_python",
+    name: "misc_box_python",
     text: "Python",
+    standard: true,
+    isPublic: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "misc_box",
+      },
+    },
+    name: "misc_box_r",
+    text: "R",
+    standard: true,
+    isPublic: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "misc_box",
+      },
+    },
+    name: "misc_box_prolog",
+    text: "Prolog",
+    standard: true,
+    isPublic: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "misc_box",
+      },
+    },
+    name: "misc_box_webassembly",
+    text: "WebAssembly",
     standard: true,
     isPublic: true,
   },
@@ -594,6 +583,17 @@ const modifierOptionData: Prisma.ModifierOptionCreateInput[] = [
     },
     name: "legacy_box_fortran",
     text: "FORTRAN",
+    standard: true,
+    isPublic: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "legacy_box",
+      },
+    },
+    name: "legacy_box_pascal",
+    text: "Pascal",
     standard: true,
     isPublic: true,
   },
