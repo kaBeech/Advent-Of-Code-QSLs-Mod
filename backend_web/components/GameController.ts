@@ -70,6 +70,7 @@ const currentDayCompleter = (state: GameControllerState) => ({
     state.game.rerollTokensSpentDuringPart2Limited += part2RerollBonus;
     state.game = currentDayCompletionStatusSetter(state)
       .setCurrentDayCompletionStatus(true);
+    scoreCalculator(state).calculateScore();
     if (state.game.currentDay === 25) {
       gameCompleter(state).completeGame(titles);
     }
