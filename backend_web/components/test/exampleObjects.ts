@@ -69,7 +69,7 @@ export const exampleDay = {
   "challengeModifierRerollsUsed": 0,
   "modifierOptionRerollsUsed": 0,
   "rerollTokensSpentDuringPart2": 0,
-  "netScore": 0,
+  "score": 0,
 };
 
 export const exampleChallengeModifiers = [

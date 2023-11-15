@@ -89,7 +89,7 @@ export default component$(() => {
           dayData.rerollTokensSpentDuringPart2,
         rerollTokensSpentDuringPart2: dayData.rerollTokensSpentDuringPart2,
         currentRerollTokens: gameData.currentRerollTokens,
-        netScore: dayData.netScore,
+        score: dayData.score,
         currentDay: gameData.currentDay,
         currentDayCompleted: gameData.currentDayCompleted,
         part1Completed: dayData.part1Completed || null,
@@ -164,10 +164,10 @@ export default component$(() => {
                 <strong>
                   {!state.dayInfo ? (
                     `Loading...`
-                  ) : state.dayInfo.netScore > 0 ? (
-                    <strong class="token">+{state.dayInfo.netScore}</strong>
+                  ) : state.dayInfo.score > 0 ? (
+                    <strong class="token">+{state.dayInfo.score}</strong>
                   ) : (
-                    <strong class="tokenSpent">{state.dayInfo.netScore}</strong>
+                    <strong class="tokenSpent">{state.dayInfo.score}</strong>
                   )}
                 </strong>
               </li>
@@ -286,12 +286,10 @@ export default component$(() => {
                 </li>
                 <li>
                   Day Score:{" "}
-                  {xtremeXmasData.netScore > 0 ? (
-                    <strong class="token">+{xtremeXmasData.netScore}</strong>
+                  {xtremeXmasData.score > 0 ? (
+                    <strong class="token">+{xtremeXmasData.score}</strong>
                   ) : (
-                    <strong class="tokenSpent">
-                      {xtremeXmasData.netScore}
-                    </strong>
+                    <strong class="tokenSpent">{xtremeXmasData.score}</strong>
                   )}
                 </li>
                 {xtremeXmasData.modifierWhenPart1Completed &&

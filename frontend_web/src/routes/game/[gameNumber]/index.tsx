@@ -233,7 +233,7 @@ export default component$(() => {
                       name: string;
                       text: string;
                     };
-                    netScore: number;
+                    score: number;
                   }) => (
                     <DayLink
                       key={`unlockedDay-${day.number}`}
@@ -249,7 +249,7 @@ export default component$(() => {
                           day.modifierOptionRerollsUsed,
                         ChallengeModifier: day.ChallengeModifier,
                         ModifierOption: day.ModifierOption,
-                        netScore: day.netScore,
+                        score: day.score,
                       }}
                     />
                   )

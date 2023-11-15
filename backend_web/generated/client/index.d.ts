@@ -6623,7 +6623,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed: number | null
     modifierOptionRerollsUsed: number | null
     rerollTokensSpentDuringPart2: number | null
-    netScore: number | null
+    score: number | null
   }
 
   export type DaySumAggregateOutputType = {
@@ -6638,7 +6638,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed: number | null
     modifierOptionRerollsUsed: number | null
     rerollTokensSpentDuringPart2: number | null
-    netScore: number | null
+    score: number | null
   }
 
   export type DayMinAggregateOutputType = {
@@ -6658,7 +6658,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed: number | null
     modifierOptionRerollsUsed: number | null
     rerollTokensSpentDuringPart2: number | null
-    netScore: number | null
+    score: number | null
   }
 
   export type DayMaxAggregateOutputType = {
@@ -6678,7 +6678,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed: number | null
     modifierOptionRerollsUsed: number | null
     rerollTokensSpentDuringPart2: number | null
-    netScore: number | null
+    score: number | null
   }
 
   export type DayCountAggregateOutputType = {
@@ -6698,7 +6698,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed: number
     modifierOptionRerollsUsed: number
     rerollTokensSpentDuringPart2: number
-    netScore: number
+    score: number
     _all: number
   }
 
@@ -6715,7 +6715,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: true
     modifierOptionRerollsUsed?: true
     rerollTokensSpentDuringPart2?: true
-    netScore?: true
+    score?: true
   }
 
   export type DaySumAggregateInputType = {
@@ -6730,7 +6730,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: true
     modifierOptionRerollsUsed?: true
     rerollTokensSpentDuringPart2?: true
-    netScore?: true
+    score?: true
   }
 
   export type DayMinAggregateInputType = {
@@ -6750,7 +6750,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: true
     modifierOptionRerollsUsed?: true
     rerollTokensSpentDuringPart2?: true
-    netScore?: true
+    score?: true
   }
 
   export type DayMaxAggregateInputType = {
@@ -6770,7 +6770,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: true
     modifierOptionRerollsUsed?: true
     rerollTokensSpentDuringPart2?: true
-    netScore?: true
+    score?: true
   }
 
   export type DayCountAggregateInputType = {
@@ -6790,7 +6790,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: true
     modifierOptionRerollsUsed?: true
     rerollTokensSpentDuringPart2?: true
-    netScore?: true
+    score?: true
     _all?: true
   }
 
@@ -6897,7 +6897,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed: number
     modifierOptionRerollsUsed: number
     rerollTokensSpentDuringPart2: number
-    netScore: number
+    score: number
     _count: DayCountAggregateOutputType | null
     _avg: DayAvgAggregateOutputType | null
     _sum: DaySumAggregateOutputType | null
@@ -6936,7 +6936,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: boolean
     modifierOptionRerollsUsed?: boolean
     rerollTokensSpentDuringPart2?: boolean
-    netScore?: boolean
+    score?: boolean
     ChallengeModifier?: boolean | Day$ChallengeModifierArgs<ExtArgs>
     Game?: boolean | GameDefaultArgs<ExtArgs>
     ModifierOption?: boolean | Day$ModifierOptionArgs<ExtArgs>
@@ -6964,7 +6964,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: boolean
     modifierOptionRerollsUsed?: boolean
     rerollTokensSpentDuringPart2?: boolean
-    netScore?: boolean
+    score?: boolean
   }
 
   export type DayInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -7007,7 +7007,7 @@ export namespace Prisma {
       challengeModifierRerollsUsed: number
       modifierOptionRerollsUsed: number
       rerollTokensSpentDuringPart2: number
-      netScore: number
+      score: number
     }, ExtArgs["result"]["day"]>
     composites: {}
   }
@@ -7431,7 +7431,7 @@ export namespace Prisma {
     readonly challengeModifierRerollsUsed: FieldRef<"Day", 'Int'>
     readonly modifierOptionRerollsUsed: FieldRef<"Day", 'Int'>
     readonly rerollTokensSpentDuringPart2: FieldRef<"Day", 'Int'>
-    readonly netScore: FieldRef<"Day", 'Int'>
+    readonly score: FieldRef<"Day", 'Int'>
   }
     
 
@@ -13275,7 +13275,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed: 'challengeModifierRerollsUsed',
     modifierOptionRerollsUsed: 'modifierOptionRerollsUsed',
     rerollTokensSpentDuringPart2: 'rerollTokensSpentDuringPart2',
-    netScore: 'netScore'
+    score: 'score'
   };
 
   export type DayScalarFieldEnum = (typeof DayScalarFieldEnum)[keyof typeof DayScalarFieldEnum]
@@ -13815,7 +13815,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: IntFilter<"Day"> | number
     modifierOptionRerollsUsed?: IntFilter<"Day"> | number
     rerollTokensSpentDuringPart2?: IntFilter<"Day"> | number
-    netScore?: IntFilter<"Day"> | number
+    score?: IntFilter<"Day"> | number
     ChallengeModifier?: XOR<ChallengeModifierNullableRelationFilter, ChallengeModifierWhereInput> | null
     Game?: XOR<GameRelationFilter, GameWhereInput>
     ModifierOption?: XOR<ModifierOptionNullableRelationFilter, ModifierOptionWhereInput> | null
@@ -13842,7 +13842,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: SortOrder
     modifierOptionRerollsUsed?: SortOrder
     rerollTokensSpentDuringPart2?: SortOrder
-    netScore?: SortOrder
+    score?: SortOrder
     ChallengeModifier?: ChallengeModifierOrderByWithRelationInput
     Game?: GameOrderByWithRelationInput
     ModifierOption?: ModifierOptionOrderByWithRelationInput
@@ -13872,7 +13872,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: IntFilter<"Day"> | number
     modifierOptionRerollsUsed?: IntFilter<"Day"> | number
     rerollTokensSpentDuringPart2?: IntFilter<"Day"> | number
-    netScore?: IntFilter<"Day"> | number
+    score?: IntFilter<"Day"> | number
     ChallengeModifier?: XOR<ChallengeModifierNullableRelationFilter, ChallengeModifierWhereInput> | null
     Game?: XOR<GameRelationFilter, GameWhereInput>
     ModifierOption?: XOR<ModifierOptionNullableRelationFilter, ModifierOptionWhereInput> | null
@@ -13899,7 +13899,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: SortOrder
     modifierOptionRerollsUsed?: SortOrder
     rerollTokensSpentDuringPart2?: SortOrder
-    netScore?: SortOrder
+    score?: SortOrder
     _count?: DayCountOrderByAggregateInput
     _avg?: DayAvgOrderByAggregateInput
     _max?: DayMaxOrderByAggregateInput
@@ -13927,7 +13927,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: IntWithAggregatesFilter<"Day"> | number
     modifierOptionRerollsUsed?: IntWithAggregatesFilter<"Day"> | number
     rerollTokensSpentDuringPart2?: IntWithAggregatesFilter<"Day"> | number
-    netScore?: IntWithAggregatesFilter<"Day"> | number
+    score?: IntWithAggregatesFilter<"Day"> | number
   }
 
   export type ChallengeModifierWhereInput = {
@@ -14707,7 +14707,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: number
     modifierOptionRerollsUsed?: number
     rerollTokensSpentDuringPart2?: number
-    netScore?: number
+    score?: number
     ChallengeModifier?: ChallengeModifierCreateNestedOneWithoutDayInput
     Game: GameCreateNestedOneWithoutDayInput
     ModifierOption?: ModifierOptionCreateNestedOneWithoutDayInput
@@ -14734,7 +14734,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: number
     modifierOptionRerollsUsed?: number
     rerollTokensSpentDuringPart2?: number
-    netScore?: number
+    score?: number
     ExcludedChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutModifierPackExcludedInput
     EncludedCustomChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutModifierPackIncludedInput
   }
@@ -14750,7 +14750,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: IntFieldUpdateOperationsInput | number
     modifierOptionRerollsUsed?: IntFieldUpdateOperationsInput | number
     rerollTokensSpentDuringPart2?: IntFieldUpdateOperationsInput | number
-    netScore?: IntFieldUpdateOperationsInput | number
+    score?: IntFieldUpdateOperationsInput | number
     ChallengeModifier?: ChallengeModifierUpdateOneWithoutDayNestedInput
     Game?: GameUpdateOneRequiredWithoutDayNestedInput
     ModifierOption?: ModifierOptionUpdateOneWithoutDayNestedInput
@@ -14777,7 +14777,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: IntFieldUpdateOperationsInput | number
     modifierOptionRerollsUsed?: IntFieldUpdateOperationsInput | number
     rerollTokensSpentDuringPart2?: IntFieldUpdateOperationsInput | number
-    netScore?: IntFieldUpdateOperationsInput | number
+    score?: IntFieldUpdateOperationsInput | number
     ExcludedChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutModifierPackExcludedNestedInput
     EncludedCustomChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutModifierPackIncludedNestedInput
   }
@@ -14799,7 +14799,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: number
     modifierOptionRerollsUsed?: number
     rerollTokensSpentDuringPart2?: number
-    netScore?: number
+    score?: number
   }
 
   export type DayUpdateManyMutationInput = {
@@ -14813,7 +14813,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: IntFieldUpdateOperationsInput | number
     modifierOptionRerollsUsed?: IntFieldUpdateOperationsInput | number
     rerollTokensSpentDuringPart2?: IntFieldUpdateOperationsInput | number
-    netScore?: IntFieldUpdateOperationsInput | number
+    score?: IntFieldUpdateOperationsInput | number
   }
 
   export type DayUncheckedUpdateManyInput = {
@@ -14833,7 +14833,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: IntFieldUpdateOperationsInput | number
     modifierOptionRerollsUsed?: IntFieldUpdateOperationsInput | number
     rerollTokensSpentDuringPart2?: IntFieldUpdateOperationsInput | number
-    netScore?: IntFieldUpdateOperationsInput | number
+    score?: IntFieldUpdateOperationsInput | number
   }
 
   export type ChallengeModifierCreateInput = {
@@ -15722,7 +15722,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: SortOrder
     modifierOptionRerollsUsed?: SortOrder
     rerollTokensSpentDuringPart2?: SortOrder
-    netScore?: SortOrder
+    score?: SortOrder
   }
 
   export type DayAvgOrderByAggregateInput = {
@@ -15737,7 +15737,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: SortOrder
     modifierOptionRerollsUsed?: SortOrder
     rerollTokensSpentDuringPart2?: SortOrder
-    netScore?: SortOrder
+    score?: SortOrder
   }
 
   export type DayMaxOrderByAggregateInput = {
@@ -15757,7 +15757,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: SortOrder
     modifierOptionRerollsUsed?: SortOrder
     rerollTokensSpentDuringPart2?: SortOrder
-    netScore?: SortOrder
+    score?: SortOrder
   }
 
   export type DayMinOrderByAggregateInput = {
@@ -15777,7 +15777,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: SortOrder
     modifierOptionRerollsUsed?: SortOrder
     rerollTokensSpentDuringPart2?: SortOrder
-    netScore?: SortOrder
+    score?: SortOrder
   }
 
   export type DaySumOrderByAggregateInput = {
@@ -15792,7 +15792,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: SortOrder
     modifierOptionRerollsUsed?: SortOrder
     rerollTokensSpentDuringPart2?: SortOrder
-    netScore?: SortOrder
+    score?: SortOrder
   }
 
   export type UserNullableRelationFilter = {
@@ -18688,7 +18688,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: number
     modifierOptionRerollsUsed?: number
     rerollTokensSpentDuringPart2?: number
-    netScore?: number
+    score?: number
     ChallengeModifier?: ChallengeModifierCreateNestedOneWithoutDayInput
     ModifierOption?: ModifierOptionCreateNestedOneWithoutDayInput
     ModifierWhenPart1Completed?: ChallengeModifierCreateNestedOneWithoutDayCompletedInPart1Input
@@ -18713,7 +18713,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: number
     modifierOptionRerollsUsed?: number
     rerollTokensSpentDuringPart2?: number
-    netScore?: number
+    score?: number
     ExcludedChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutModifierPackExcludedInput
     EncludedCustomChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutModifierPackIncludedInput
   }
@@ -18893,7 +18893,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: IntFilter<"Day"> | number
     modifierOptionRerollsUsed?: IntFilter<"Day"> | number
     rerollTokensSpentDuringPart2?: IntFilter<"Day"> | number
-    netScore?: IntFilter<"Day"> | number
+    score?: IntFilter<"Day"> | number
   }
 
   export type DownvoteUpsertWithWhereUniqueWithoutGameInput = {
@@ -19734,7 +19734,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: number
     modifierOptionRerollsUsed?: number
     rerollTokensSpentDuringPart2?: number
-    netScore?: number
+    score?: number
     Game: GameCreateNestedOneWithoutDayInput
     ModifierOption?: ModifierOptionCreateNestedOneWithoutDayInput
     ModifierWhenPart1Completed?: ChallengeModifierCreateNestedOneWithoutDayCompletedInPart1Input
@@ -19759,7 +19759,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: number
     modifierOptionRerollsUsed?: number
     rerollTokensSpentDuringPart2?: number
-    netScore?: number
+    score?: number
     ExcludedChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutModifierPackExcludedInput
     EncludedCustomChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutModifierPackIncludedInput
   }
@@ -19785,7 +19785,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: number
     modifierOptionRerollsUsed?: number
     rerollTokensSpentDuringPart2?: number
-    netScore?: number
+    score?: number
     ChallengeModifier?: ChallengeModifierCreateNestedOneWithoutDayInput
     Game: GameCreateNestedOneWithoutDayInput
     ModifierOption?: ModifierOptionCreateNestedOneWithoutDayInput
@@ -19810,7 +19810,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: number
     modifierOptionRerollsUsed?: number
     rerollTokensSpentDuringPart2?: number
-    netScore?: number
+    score?: number
     ExcludedChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutModifierPackExcludedInput
     EncludedCustomChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutModifierPackIncludedInput
   }
@@ -19979,7 +19979,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: number
     modifierOptionRerollsUsed?: number
     rerollTokensSpentDuringPart2?: number
-    netScore?: number
+    score?: number
     ChallengeModifier?: ChallengeModifierCreateNestedOneWithoutDayInput
     Game: GameCreateNestedOneWithoutDayInput
     ModifierOption?: ModifierOptionCreateNestedOneWithoutDayInput
@@ -20005,7 +20005,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: number
     modifierOptionRerollsUsed?: number
     rerollTokensSpentDuringPart2?: number
-    netScore?: number
+    score?: number
     EncludedCustomChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutModifierPackIncludedInput
   }
 
@@ -20025,7 +20025,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: number
     modifierOptionRerollsUsed?: number
     rerollTokensSpentDuringPart2?: number
-    netScore?: number
+    score?: number
     ChallengeModifier?: ChallengeModifierCreateNestedOneWithoutDayInput
     Game: GameCreateNestedOneWithoutDayInput
     ModifierOption?: ModifierOptionCreateNestedOneWithoutDayInput
@@ -20051,7 +20051,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: number
     modifierOptionRerollsUsed?: number
     rerollTokensSpentDuringPart2?: number
-    netScore?: number
+    score?: number
     ExcludedChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutModifierPackExcludedInput
   }
 
@@ -20253,7 +20253,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: number
     modifierOptionRerollsUsed?: number
     rerollTokensSpentDuringPart2?: number
-    netScore?: number
+    score?: number
     ChallengeModifier?: ChallengeModifierCreateNestedOneWithoutDayInput
     Game: GameCreateNestedOneWithoutDayInput
     ModifierWhenPart1Completed?: ChallengeModifierCreateNestedOneWithoutDayCompletedInPart1Input
@@ -20278,7 +20278,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: number
     modifierOptionRerollsUsed?: number
     rerollTokensSpentDuringPart2?: number
-    netScore?: number
+    score?: number
     ExcludedChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutModifierPackExcludedInput
     EncludedCustomChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutModifierPackIncludedInput
   }
@@ -20304,7 +20304,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: number
     modifierOptionRerollsUsed?: number
     rerollTokensSpentDuringPart2?: number
-    netScore?: number
+    score?: number
     ChallengeModifier?: ChallengeModifierCreateNestedOneWithoutDayInput
     Game: GameCreateNestedOneWithoutDayInput
     ModifierOption?: ModifierOptionCreateNestedOneWithoutDayInput
@@ -20329,7 +20329,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: number
     modifierOptionRerollsUsed?: number
     rerollTokensSpentDuringPart2?: number
-    netScore?: number
+    score?: number
     ExcludedChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutModifierPackExcludedInput
     EncludedCustomChallengeModifiers?: ChallengeModifierUncheckedCreateNestedManyWithoutModifierPackIncludedInput
   }
@@ -22034,7 +22034,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: number
     modifierOptionRerollsUsed?: number
     rerollTokensSpentDuringPart2?: number
-    netScore?: number
+    score?: number
   }
 
   export type DownvoteCreateManyGameInput = {
@@ -22062,7 +22062,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: IntFieldUpdateOperationsInput | number
     modifierOptionRerollsUsed?: IntFieldUpdateOperationsInput | number
     rerollTokensSpentDuringPart2?: IntFieldUpdateOperationsInput | number
-    netScore?: IntFieldUpdateOperationsInput | number
+    score?: IntFieldUpdateOperationsInput | number
     ChallengeModifier?: ChallengeModifierUpdateOneWithoutDayNestedInput
     ModifierOption?: ModifierOptionUpdateOneWithoutDayNestedInput
     ModifierWhenPart1Completed?: ChallengeModifierUpdateOneWithoutDayCompletedInPart1NestedInput
@@ -22087,7 +22087,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: IntFieldUpdateOperationsInput | number
     modifierOptionRerollsUsed?: IntFieldUpdateOperationsInput | number
     rerollTokensSpentDuringPart2?: IntFieldUpdateOperationsInput | number
-    netScore?: IntFieldUpdateOperationsInput | number
+    score?: IntFieldUpdateOperationsInput | number
     ExcludedChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutModifierPackExcludedNestedInput
     EncludedCustomChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutModifierPackIncludedNestedInput
   }
@@ -22108,7 +22108,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: IntFieldUpdateOperationsInput | number
     modifierOptionRerollsUsed?: IntFieldUpdateOperationsInput | number
     rerollTokensSpentDuringPart2?: IntFieldUpdateOperationsInput | number
-    netScore?: IntFieldUpdateOperationsInput | number
+    score?: IntFieldUpdateOperationsInput | number
   }
 
   export type DownvoteUpdateWithoutGameInput = {
@@ -22354,7 +22354,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: number
     modifierOptionRerollsUsed?: number
     rerollTokensSpentDuringPart2?: number
-    netScore?: number
+    score?: number
   }
 
   export type DayCreateManyModifierWhenPart1CompletedInput = {
@@ -22373,7 +22373,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: number
     modifierOptionRerollsUsed?: number
     rerollTokensSpentDuringPart2?: number
-    netScore?: number
+    score?: number
   }
 
   export type ModifierOptionCreateManyChallengeModifierInput = {
@@ -22399,7 +22399,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: IntFieldUpdateOperationsInput | number
     modifierOptionRerollsUsed?: IntFieldUpdateOperationsInput | number
     rerollTokensSpentDuringPart2?: IntFieldUpdateOperationsInput | number
-    netScore?: IntFieldUpdateOperationsInput | number
+    score?: IntFieldUpdateOperationsInput | number
     Game?: GameUpdateOneRequiredWithoutDayNestedInput
     ModifierOption?: ModifierOptionUpdateOneWithoutDayNestedInput
     ModifierWhenPart1Completed?: ChallengeModifierUpdateOneWithoutDayCompletedInPart1NestedInput
@@ -22424,7 +22424,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: IntFieldUpdateOperationsInput | number
     modifierOptionRerollsUsed?: IntFieldUpdateOperationsInput | number
     rerollTokensSpentDuringPart2?: IntFieldUpdateOperationsInput | number
-    netScore?: IntFieldUpdateOperationsInput | number
+    score?: IntFieldUpdateOperationsInput | number
     ExcludedChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutModifierPackExcludedNestedInput
     EncludedCustomChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutModifierPackIncludedNestedInput
   }
@@ -22445,7 +22445,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: IntFieldUpdateOperationsInput | number
     modifierOptionRerollsUsed?: IntFieldUpdateOperationsInput | number
     rerollTokensSpentDuringPart2?: IntFieldUpdateOperationsInput | number
-    netScore?: IntFieldUpdateOperationsInput | number
+    score?: IntFieldUpdateOperationsInput | number
   }
 
   export type DayUpdateWithoutModifierWhenPart1CompletedInput = {
@@ -22459,7 +22459,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: IntFieldUpdateOperationsInput | number
     modifierOptionRerollsUsed?: IntFieldUpdateOperationsInput | number
     rerollTokensSpentDuringPart2?: IntFieldUpdateOperationsInput | number
-    netScore?: IntFieldUpdateOperationsInput | number
+    score?: IntFieldUpdateOperationsInput | number
     ChallengeModifier?: ChallengeModifierUpdateOneWithoutDayNestedInput
     Game?: GameUpdateOneRequiredWithoutDayNestedInput
     ModifierOption?: ModifierOptionUpdateOneWithoutDayNestedInput
@@ -22484,7 +22484,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: IntFieldUpdateOperationsInput | number
     modifierOptionRerollsUsed?: IntFieldUpdateOperationsInput | number
     rerollTokensSpentDuringPart2?: IntFieldUpdateOperationsInput | number
-    netScore?: IntFieldUpdateOperationsInput | number
+    score?: IntFieldUpdateOperationsInput | number
     ExcludedChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutModifierPackExcludedNestedInput
     EncludedCustomChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutModifierPackIncludedNestedInput
   }
@@ -22505,7 +22505,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: IntFieldUpdateOperationsInput | number
     modifierOptionRerollsUsed?: IntFieldUpdateOperationsInput | number
     rerollTokensSpentDuringPart2?: IntFieldUpdateOperationsInput | number
-    netScore?: IntFieldUpdateOperationsInput | number
+    score?: IntFieldUpdateOperationsInput | number
   }
 
   export type ModifierOptionUpdateWithoutChallengeModifierInput = {
@@ -22678,7 +22678,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: IntFieldUpdateOperationsInput | number
     modifierOptionRerollsUsed?: IntFieldUpdateOperationsInput | number
     rerollTokensSpentDuringPart2?: IntFieldUpdateOperationsInput | number
-    netScore?: IntFieldUpdateOperationsInput | number
+    score?: IntFieldUpdateOperationsInput | number
     ChallengeModifier?: ChallengeModifierUpdateOneWithoutDayNestedInput
     Game?: GameUpdateOneRequiredWithoutDayNestedInput
     ModifierOption?: ModifierOptionUpdateOneWithoutDayNestedInput
@@ -22704,7 +22704,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: IntFieldUpdateOperationsInput | number
     modifierOptionRerollsUsed?: IntFieldUpdateOperationsInput | number
     rerollTokensSpentDuringPart2?: IntFieldUpdateOperationsInput | number
-    netScore?: IntFieldUpdateOperationsInput | number
+    score?: IntFieldUpdateOperationsInput | number
     EncludedCustomChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutModifierPackIncludedNestedInput
   }
 
@@ -22725,7 +22725,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: IntFieldUpdateOperationsInput | number
     modifierOptionRerollsUsed?: IntFieldUpdateOperationsInput | number
     rerollTokensSpentDuringPart2?: IntFieldUpdateOperationsInput | number
-    netScore?: IntFieldUpdateOperationsInput | number
+    score?: IntFieldUpdateOperationsInput | number
   }
 
   export type DayUpdateWithoutEncludedCustomChallengeModifiersInput = {
@@ -22739,7 +22739,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: IntFieldUpdateOperationsInput | number
     modifierOptionRerollsUsed?: IntFieldUpdateOperationsInput | number
     rerollTokensSpentDuringPart2?: IntFieldUpdateOperationsInput | number
-    netScore?: IntFieldUpdateOperationsInput | number
+    score?: IntFieldUpdateOperationsInput | number
     ChallengeModifier?: ChallengeModifierUpdateOneWithoutDayNestedInput
     Game?: GameUpdateOneRequiredWithoutDayNestedInput
     ModifierOption?: ModifierOptionUpdateOneWithoutDayNestedInput
@@ -22765,7 +22765,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: IntFieldUpdateOperationsInput | number
     modifierOptionRerollsUsed?: IntFieldUpdateOperationsInput | number
     rerollTokensSpentDuringPart2?: IntFieldUpdateOperationsInput | number
-    netScore?: IntFieldUpdateOperationsInput | number
+    score?: IntFieldUpdateOperationsInput | number
     ExcludedChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutModifierPackExcludedNestedInput
   }
 
@@ -22786,7 +22786,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: IntFieldUpdateOperationsInput | number
     modifierOptionRerollsUsed?: IntFieldUpdateOperationsInput | number
     rerollTokensSpentDuringPart2?: IntFieldUpdateOperationsInput | number
-    netScore?: IntFieldUpdateOperationsInput | number
+    score?: IntFieldUpdateOperationsInput | number
   }
 
   export type DayCreateManyModifierOptionInput = {
@@ -22805,7 +22805,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: number
     modifierOptionRerollsUsed?: number
     rerollTokensSpentDuringPart2?: number
-    netScore?: number
+    score?: number
   }
 
   export type DayCreateManyOptionWhenPart1CompletedInput = {
@@ -22824,7 +22824,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: number
     modifierOptionRerollsUsed?: number
     rerollTokensSpentDuringPart2?: number
-    netScore?: number
+    score?: number
   }
 
   export type DayUpdateWithoutModifierOptionInput = {
@@ -22838,7 +22838,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: IntFieldUpdateOperationsInput | number
     modifierOptionRerollsUsed?: IntFieldUpdateOperationsInput | number
     rerollTokensSpentDuringPart2?: IntFieldUpdateOperationsInput | number
-    netScore?: IntFieldUpdateOperationsInput | number
+    score?: IntFieldUpdateOperationsInput | number
     ChallengeModifier?: ChallengeModifierUpdateOneWithoutDayNestedInput
     Game?: GameUpdateOneRequiredWithoutDayNestedInput
     ModifierWhenPart1Completed?: ChallengeModifierUpdateOneWithoutDayCompletedInPart1NestedInput
@@ -22863,7 +22863,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: IntFieldUpdateOperationsInput | number
     modifierOptionRerollsUsed?: IntFieldUpdateOperationsInput | number
     rerollTokensSpentDuringPart2?: IntFieldUpdateOperationsInput | number
-    netScore?: IntFieldUpdateOperationsInput | number
+    score?: IntFieldUpdateOperationsInput | number
     ExcludedChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutModifierPackExcludedNestedInput
     EncludedCustomChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutModifierPackIncludedNestedInput
   }
@@ -22884,7 +22884,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: IntFieldUpdateOperationsInput | number
     modifierOptionRerollsUsed?: IntFieldUpdateOperationsInput | number
     rerollTokensSpentDuringPart2?: IntFieldUpdateOperationsInput | number
-    netScore?: IntFieldUpdateOperationsInput | number
+    score?: IntFieldUpdateOperationsInput | number
   }
 
   export type DayUpdateWithoutOptionWhenPart1CompletedInput = {
@@ -22898,7 +22898,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: IntFieldUpdateOperationsInput | number
     modifierOptionRerollsUsed?: IntFieldUpdateOperationsInput | number
     rerollTokensSpentDuringPart2?: IntFieldUpdateOperationsInput | number
-    netScore?: IntFieldUpdateOperationsInput | number
+    score?: IntFieldUpdateOperationsInput | number
     ChallengeModifier?: ChallengeModifierUpdateOneWithoutDayNestedInput
     Game?: GameUpdateOneRequiredWithoutDayNestedInput
     ModifierOption?: ModifierOptionUpdateOneWithoutDayNestedInput
@@ -22923,7 +22923,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: IntFieldUpdateOperationsInput | number
     modifierOptionRerollsUsed?: IntFieldUpdateOperationsInput | number
     rerollTokensSpentDuringPart2?: IntFieldUpdateOperationsInput | number
-    netScore?: IntFieldUpdateOperationsInput | number
+    score?: IntFieldUpdateOperationsInput | number
     ExcludedChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutModifierPackExcludedNestedInput
     EncludedCustomChallengeModifiers?: ChallengeModifierUncheckedUpdateManyWithoutModifierPackIncludedNestedInput
   }
@@ -22944,7 +22944,7 @@ export namespace Prisma {
     challengeModifierRerollsUsed?: IntFieldUpdateOperationsInput | number
     modifierOptionRerollsUsed?: IntFieldUpdateOperationsInput | number
     rerollTokensSpentDuringPart2?: IntFieldUpdateOperationsInput | number
-    netScore?: IntFieldUpdateOperationsInput | number
+    score?: IntFieldUpdateOperationsInput | number
   }
 
   export type UserUpdateWithoutDefaultExcludedModifierOptionsInput = {

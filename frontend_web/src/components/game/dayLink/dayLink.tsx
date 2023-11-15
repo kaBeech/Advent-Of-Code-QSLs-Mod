@@ -16,7 +16,7 @@ export interface DayLinkData {
     name: string;
     text: string;
   };
-  netScore: number;
+  score: number;
 }
 
 export interface DayLinkProps {
@@ -51,7 +51,7 @@ export default component$((props: DayLinkProps) => {
   const modifierOption = props.dayLinkData.ModifierOption?.text
     ? props.dayLinkData.ModifierOption.text
     : "";
-  let score = String(props.dayLinkData.netScore);
+  let score = String(props.dayLinkData.score);
   let modifierColor = "textRed";
   let scoreColor = "textRed";
   if (props.dayNumber % 2 === 0) {

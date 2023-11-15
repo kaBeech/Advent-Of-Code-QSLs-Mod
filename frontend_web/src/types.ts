@@ -4,7 +4,7 @@ export interface DayInfo {
   rerollTokensSpentDuringPart1: number;
   rerollTokensSpentDuringPart2: number;
   currentRerollTokens: number;
-  netScore: number;
+  score: number;
   currentDay: number;
   currentDayCompleted: boolean;
   part1Completed: Date | null;

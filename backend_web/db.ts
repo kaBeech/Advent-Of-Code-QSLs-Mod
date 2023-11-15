@@ -387,7 +387,7 @@ export async function updateDay(day: Day) {
       challengeModifierRerollsUsed: day.challengeModifierRerollsUsed,
       modifierOptionRerollsUsed: day.modifierOptionRerollsUsed,
       rerollTokensSpentDuringPart2: day.rerollTokensSpentDuringPart2,
-      netScore: day.netScore,
+      score: day.score,
     },
   });
   return result;

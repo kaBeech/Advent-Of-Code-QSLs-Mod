@@ -95,7 +95,7 @@ model Day {
   challengeModifierRerollsUsed     Int                 @default(0)
   modifierOptionRerollsUsed        Int                 @default(0)
   rerollTokensSpentDuringPart2     Int                 @default(0)
-  netScore                         Int                 @default(0)
+  score                            Int                 @default(0)
   ChallengeModifier                ChallengeModifier?  @relation(fields: [challengeModifierId], references: [id])
   Game                             Game                @relation(fields: [gameId], references: [id])
   ModifierOption                   ModifierOption?     @relation(fields: [modifierOptionId], references: [id])
