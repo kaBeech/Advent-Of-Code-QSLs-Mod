@@ -117,7 +117,6 @@ export default component$((props: DayLinkProps) => {
           {tokensSpent > 9
             ? renderSpentTokens(1) + "x" + tokensSpent
             : renderSpentTokens(tokensSpent)}
-          {/* {renderSpentTokens(tokensSpent)} */}
         </span>
       </li>
       <li class="tabletShow flex column textCenter alignCenter maxWidthFixedContent">
