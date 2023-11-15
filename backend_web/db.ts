@@ -95,6 +95,12 @@ export async function getUserByIdWithRelations(
                 },
               },
               ModifierOption: true,
+              ModifierWhenPart1Completed: {
+                include: {
+                  ModifierOption: true,
+                },
+              },
+              OptionWhenPart1Completed: true,
             },
           },
         },
@@ -232,6 +238,12 @@ export async function getPublicGameById(id: number) {
             },
           },
           ModifierOption: true,
+          ModifierWhenPart1Completed: {
+            include: {
+              ModifierOption: true,
+            },
+          },
+          OptionWhenPart1Completed: true,
         },
       },
     },
@@ -257,6 +269,12 @@ export async function getGameByNumberAndUserIdWithRelations(
             },
           },
           ModifierOption: true,
+          ModifierWhenPart1Completed: {
+            include: {
+              ModifierOption: true,
+            },
+          },
+          OptionWhenPart1Completed: true,
         },
       },
     },

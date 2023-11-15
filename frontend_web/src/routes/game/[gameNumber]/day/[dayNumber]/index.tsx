@@ -93,14 +93,19 @@ export default component$(() => {
         currentDay: gameData.currentDay,
         currentDayCompleted: gameData.currentDayCompleted,
         part1Completed: dayData.part1Completed || null,
-        modifierWhenPart1Completed: dayData.modifierWhenPart1Completed || null,
-        optionWhenPart1Completed: dayData.optionWhenPart1Completed || null,
+        modifierWhenPart1Completed: dayData.modifierWhenPart1CompletedId
+          ? dayData.ModifierWhenPart1Completed.text
+          : "None",
+        optionWhenPart1Completed: dayData.optionWhenPart1CompletedId
+          ? dayData.OptionWhenPart1Completed.text
+          : "None",
         part2Completed: dayData.part2Completed || null,
         number: dayData.number,
         dateFirstRolled: dayData.dateFirstRolled || null,
         rerollTokensEarned,
       };
       state.dayInfo = dayInfoData;
+      console.log(dayData);
       return dayInfoData;
     }
   );
@@ -289,6 +294,23 @@ export default component$(() => {
                     </strong>
                   )}
                 </li>
+                {xtremeXmasData.modifierWhenPart1Completed &&
+                  (xtremeXmasData.modifierWhenPart1Completed !==
+                    xtremeXmasData.challengeModifier ||
+                    xtremeXmasData.optionWhenPart1Completed !==
+                      xtremeXmasData.modifierOption) && (
+                    <li>
+                      Challenge Modifier During Part 1:{" "}
+                      <strong>
+                        {xtremeXmasData.modifierWhenPart1Completed === "None"
+                          ? "None"
+                          : "You must write a program to complete this challenge " +
+                            xtremeXmasData.modifierWhenPart1Completed}
+                        {xtremeXmasData.optionWhenPart1Completed !== "None" &&
+                          xtremeXmasData.optionWhenPart1Completed}
+                      </strong>
+                    </li>
+                  )}
                 <li>
                   Challenge Modifier:{" "}
                   <strong>
@@ -461,23 +483,6 @@ export default component$(() => {
                     </a>
                   )}
                 </li>
-                {xtremeXmasData.modifierWhenPart1Completed &&
-                  (xtremeXmasData.modifierWhenPart1Completed !==
-                    xtremeXmasData.challengeModifier ||
-                    xtremeXmasData.optionWhenPart1Completed !==
-                      xtremeXmasData.modifierOption) && (
-                    <li>
-                      Challenge Modifier During Part 1:{" "}
-                      <strong>
-                        {xtremeXmasData.challengeModifier === "None"
-                          ? "None"
-                          : "You must write a program to complete this challenge " +
-                            xtremeXmasData.challengeModifier}
-                        {xtremeXmasData.modifierOption !== "None" &&
-                          xtremeXmasData.modifierOption}
-                      </strong>
-                    </li>
-                  )}
                 <li>
                   Selected Day Part 2 Completed?{" "}
                   <strong>
