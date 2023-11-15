@@ -214,9 +214,31 @@ strong {
   gap: 1rem;
 }
 
+.margin0 {
+  margin: 0;
+}
+
+.marginBottom1 {
+  margin-bottom: 1rem;
+}
+
+.marginBottom2 {
+  margin-bottom: 2rem;
+}
+
 .marginVertPoint2 {
   margin-top: 0.2rem;
   margin-bottom: 0.2rem;
+}
+
+.marginVertPoint5 {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.marginVert1 {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 .rotate0 {

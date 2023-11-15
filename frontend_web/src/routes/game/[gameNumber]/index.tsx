@@ -211,9 +211,12 @@ export default component$(() => {
                 </div>
               </div>
               <div class="tabletShow">
-                <h2>
-                  Challenge Modifier ¦ Modifier Option ¦ Day Score ¦ Day ¦
-                  Tokens
+                <h2 class={`textCenter marginBottom2`}>
+                  <p>Day</p>
+                  <p>Tokens</p>
+                  <p>Challenge Modifier</p>
+                  <p>Modifier Option</p>
+                  <p>Day Score</p>
                 </h2>
               </div>
               <ul>
