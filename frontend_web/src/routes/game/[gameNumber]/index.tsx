@@ -203,7 +203,7 @@ export default component$(() => {
                   --------------------------------------------------------------------
                 </div>
                 <div>
-                  Challenge Modifier {`   `}¦ Modifier Option ¦ Net Score {` `}{" "}
+                  Challenge Modifier {`   `}¦ Modifier Option ¦ Day Score {` `}{" "}
                   ¦ Day ¦ Tokens
                 </div>
                 <div>
@@ -212,7 +212,7 @@ export default component$(() => {
               </div>
               <div class="tabletShow">
                 <h2>
-                  Challenge Modifier ¦ Modifier Option ¦ Net Score ¦ Day ¦
+                  Challenge Modifier ¦ Modifier Option ¦ Day Score ¦ Day ¦
                   Tokens
                 </h2>
               </div>

@@ -139,7 +139,7 @@ export default component$(() => {
                 </strong>
               </li>
               <li>
-                Estimated Net Score:{" "}
+                Estimated Day Score:{" "}
                 <strong>
                   {!state.dayInfo ? (
                     `Loading...`
@@ -264,7 +264,7 @@ export default component$(() => {
                   </strong>
                 </li>
                 <li>
-                  Estimated Net Score:{" "}
+                  Estimated Day Score:{" "}
                   {xtremeXmasData.netScore > 0 ? (
                     <strong class="token">+{xtremeXmasData.netScore}</strong>
                   ) : (
