@@ -1,9 +1,15 @@
-export const exampleUser = {
+import { User } from "../../generated/client/deno/edge.ts";
+
+export const exampleUser: User = {
   "id": "1",
   "dateCreated": new Date(),
   "numberOfGames": 1,
   "serializedId": "42",
   "username": "exampleUser",
+  "oauthUrl": null,
+  "oauthAvatarUrl": null,
+  "oauthName": null,
+  "oauthUsername": null,
 };
 
 export const exampleGame = {

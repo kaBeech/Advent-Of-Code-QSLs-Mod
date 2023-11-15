@@ -21,7 +21,7 @@ export default component$(() => {
 });
 
 export const head: DocumentHead = {
-  title: "Xtreme Xmas - Game   Viewer",
+  title: "Xtreme Xmas - Game Viewer",
   meta: [
     {
       name: "description",
