@@ -95,6 +95,12 @@ export async function getUserByIdWithRelations(
                 },
               },
               ModifierOption: true,
+              ModifierWhenPart1Completed: {
+                include: {
+                  ModifierOption: true,
+                },
+              },
+              OptionWhenPart1Completed: true,
             },
           },
         },
@@ -232,6 +238,12 @@ export async function getPublicGameById(id: number) {
             },
           },
           ModifierOption: true,
+          ModifierWhenPart1Completed: {
+            include: {
+              ModifierOption: true,
+            },
+          },
+          OptionWhenPart1Completed: true,
         },
       },
     },
@@ -257,6 +269,12 @@ export async function getGameByNumberAndUserIdWithRelations(
             },
           },
           ModifierOption: true,
+          ModifierWhenPart1Completed: {
+            include: {
+              ModifierOption: true,
+            },
+          },
+          OptionWhenPart1Completed: true,
         },
       },
     },
@@ -288,8 +306,7 @@ export async function updateGame(game: Game) {
       currentRerollTokens: game.currentRerollTokens,
       rerollTokensSpent: game.rerollTokensSpent,
       rerollTokensSpentDuringPart2Raw: game.rerollTokensSpentDuringPart2Raw,
-      rerollTokensSpentDuringPart2Limited:
-        game.rerollTokensSpentDuringPart2Limited,
+      part2RerollBonus: game.part2RerollBonus,
       repositoryLink: game.repositoryLink,
       progressSheetLink: game.progressSheetLink,
       isPublic: game.isPublic,
@@ -369,7 +386,7 @@ export async function updateDay(day: Day) {
       challengeModifierRerollsUsed: day.challengeModifierRerollsUsed,
       modifierOptionRerollsUsed: day.modifierOptionRerollsUsed,
       rerollTokensSpentDuringPart2: day.rerollTokensSpentDuringPart2,
-      netScore: day.netScore,
+      score: day.score,
     },
   });
   return result;

@@ -153,7 +153,7 @@ export default component$(() => {
                   --------------------------------------------------------------------
                 </div>
                 <h2>
-                  Challenge Modifier {`   `}¦ Modifier Option ¦ Net Score {` `}{" "}
+                  Challenge Modifier {`   `}¦ Modifier Option ¦ Day Score {` `}{" "}
                   ¦ Day ¦ Tokens
                 </h2>
                 <div>
@@ -161,9 +161,12 @@ export default component$(() => {
                 </div>
               </div>
               <div class="tabletShow">
-                <h2>
-                  Challenge Modifier ¦ Modifier Option ¦ Net Score ¦ Day ¦
-                  Tokens
+                <h2 class={`textCenter marginBottom2`}>
+                  <p>Day</p>
+                  <p>Tokens</p>
+                  <p>Challenge Modifier</p>
+                  <p>Modifier Option</p>
+                  <p>Day Score</p>
                 </h2>
               </div>
               <ul>
@@ -183,7 +186,7 @@ export default component$(() => {
                       name: string;
                       text: string;
                     };
-                    netScore: number;
+                    score: number;
                   }) => (
                     <DayLink
                       key={`unlockedDay-${day.number}`}
@@ -199,7 +202,7 @@ export default component$(() => {
                           day.modifierOptionRerollsUsed,
                         ChallengeModifier: day.ChallengeModifier,
                         ModifierOption: day.ModifierOption,
-                        netScore: day.netScore,
+                        score: day.score,
                       }}
                     />
                   )

@@ -18,7 +18,7 @@ export const exampleGame = {
   "currentRerollTokens": 7,
   "rerollTokensSpent": 0,
   "rerollTokensSpentDuringPart2Raw": 0,
-  "rerollTokensSpentDuringPart2Limited": 0,
+  "part2RerollBonus": 0,
   "repositoryLink": null,
   "progressSheetLink": "https://www.xtremexmascode.com/game/public/24/",
   "isPublic": false,
@@ -49,7 +49,7 @@ export const exampleGameDay1 = {
   "dateCreated": new Date(),
   "dateCompleted": null,
   "rerollTokensSpentDuringPart2Raw": 0,
-  "rerollTokensSpentDuringPart2Limited": 0,
+  "part2RerollBonus": 0,
 };
 
 export const exampleDay = {
@@ -69,7 +69,7 @@ export const exampleDay = {
   "challengeModifierRerollsUsed": 0,
   "modifierOptionRerollsUsed": 0,
   "rerollTokensSpentDuringPart2": 0,
-  "netScore": 0,
+  "score": 0,
 };
 
 export const exampleChallengeModifiers = [

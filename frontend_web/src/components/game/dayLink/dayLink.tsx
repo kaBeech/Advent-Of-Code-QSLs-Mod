@@ -16,7 +16,7 @@ export interface DayLinkData {
     name: string;
     text: string;
   };
-  netScore: number;
+  score: number;
 }
 
 export interface DayLinkProps {
@@ -51,7 +51,7 @@ export default component$((props: DayLinkProps) => {
   const modifierOption = props.dayLinkData.ModifierOption?.text
     ? props.dayLinkData.ModifierOption.text
     : "";
-  let score = String(props.dayLinkData.netScore);
+  let score = String(props.dayLinkData.score);
   let modifierColor = "textRed";
   let scoreColor = "textRed";
   if (props.dayNumber % 2 === 0) {
@@ -117,7 +117,6 @@ export default component$((props: DayLinkProps) => {
           {tokensSpent > 9
             ? renderSpentTokens(1) + "x" + tokensSpent
             : renderSpentTokens(tokensSpent)}
-          {/* {renderSpentTokens(tokensSpent)} */}
         </span>
       </li>
       <li class="tabletShow flex column textCenter alignCenter maxWidthFixedContent">
@@ -129,12 +128,17 @@ export default component$((props: DayLinkProps) => {
             : renderSpentTokens(tokensSpent)}
         </span>
         <a href={`day/${props.dayNumber}`} class={`textMedium`}>
-          <span class={`${modifierColor}`}>{challengeModifierString}</span>
-          {" ¦ "}
-          <span class={`${modifierColor}`}>{modifierOptionString}</span>
-          {" ¦ "}
-          <span class={`${modifierColor} ${scoreColor}`}>{scoreString}</span>
+          <p class={`${modifierColor} marginVertPoint5`}>
+            {challengeModifierString}
+          </p>
+          <p class={`${modifierColor} marginVertPoint5`}>
+            {modifierOptionString}
+          </p>
+          <p class={`${modifierColor} ${scoreColor} marginVertPoint5`}>
+            {scoreString}
+          </p>
         </a>
+        <div class={`marginVert1`}>-----</div>
       </li>
     </>
   );

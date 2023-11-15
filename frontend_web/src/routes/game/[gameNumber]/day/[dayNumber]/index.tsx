@@ -89,18 +89,23 @@ export default component$(() => {
           dayData.rerollTokensSpentDuringPart2,
         rerollTokensSpentDuringPart2: dayData.rerollTokensSpentDuringPart2,
         currentRerollTokens: gameData.currentRerollTokens,
-        netScore: dayData.netScore,
+        score: dayData.score,
         currentDay: gameData.currentDay,
         currentDayCompleted: gameData.currentDayCompleted,
         part1Completed: dayData.part1Completed || null,
-        modifierWhenPart1Completed: dayData.modifierWhenPart1Completed || null,
-        optionWhenPart1Completed: dayData.optionWhenPart1Completed || null,
+        modifierWhenPart1Completed: dayData.modifierWhenPart1CompletedId
+          ? dayData.ModifierWhenPart1Completed.text
+          : "None",
+        optionWhenPart1Completed: dayData.optionWhenPart1CompletedId
+          ? dayData.OptionWhenPart1Completed.text
+          : "None",
         part2Completed: dayData.part2Completed || null,
         number: dayData.number,
         dateFirstRolled: dayData.dateFirstRolled || null,
         rerollTokensEarned,
       };
       state.dayInfo = dayInfoData;
+      console.log(dayData);
       return dayInfoData;
     }
   );
@@ -155,14 +160,14 @@ export default component$(() => {
                 </strong>
               </li>
               <li>
-                Estimated Net Score:{" "}
+                Day Score:{" "}
                 <strong>
                   {!state.dayInfo ? (
                     `Loading...`
-                  ) : state.dayInfo.netScore > 0 ? (
-                    <strong class="token">+{state.dayInfo.netScore}</strong>
+                  ) : state.dayInfo.score > 0 ? (
+                    <strong class="token">+{state.dayInfo.score}</strong>
                   ) : (
-                    <strong class="tokenSpent">{state.dayInfo.netScore}</strong>
+                    <strong class="tokenSpent">{state.dayInfo.score}</strong>
                   )}
                 </strong>
               </li>
@@ -173,7 +178,7 @@ export default component$(() => {
                     ? `Loading...`
                     : state.dayInfo.challengeModifier === "None"
                     ? "None"
-                    : "You must complete this challenge " +
+                    : "You must write a program to complete this challenge " +
                       state.dayInfo.challengeModifier +
                       (state.dayInfo.modifierOption !== "None" &&
                         state.dayInfo.modifierOption)}
@@ -280,21 +285,36 @@ export default component$(() => {
                   </strong>
                 </li>
                 <li>
-                  Estimated Net Score:{" "}
-                  {xtremeXmasData.netScore > 0 ? (
-                    <strong class="token">+{xtremeXmasData.netScore}</strong>
+                  Day Score:{" "}
+                  {xtremeXmasData.score > 0 ? (
+                    <strong class="token">+{xtremeXmasData.score}</strong>
                   ) : (
-                    <strong class="tokenSpent">
-                      {xtremeXmasData.netScore}
-                    </strong>
+                    <strong class="tokenSpent">{xtremeXmasData.score}</strong>
                   )}
                 </li>
+                {xtremeXmasData.modifierWhenPart1Completed &&
+                  (xtremeXmasData.modifierWhenPart1Completed !==
+                    xtremeXmasData.challengeModifier ||
+                    xtremeXmasData.optionWhenPart1Completed !==
+                      xtremeXmasData.modifierOption) && (
+                    <li>
+                      Challenge Modifier During Part 1:{" "}
+                      <strong>
+                        {xtremeXmasData.modifierWhenPart1Completed === "None"
+                          ? "None"
+                          : "You must write a program to complete this challenge " +
+                            xtremeXmasData.modifierWhenPart1Completed}
+                        {xtremeXmasData.optionWhenPart1Completed !== "None" &&
+                          xtremeXmasData.optionWhenPart1Completed}
+                      </strong>
+                    </li>
+                  )}
                 <li>
                   Challenge Modifier:{" "}
                   <strong>
                     {xtremeXmasData.challengeModifier === "None"
                       ? "None"
-                      : "You must complete this challenge " +
+                      : "You must write a program to complete this challenge " +
                         xtremeXmasData.challengeModifier}
                     {xtremeXmasData.modifierOption !== "None" &&
                       xtremeXmasData.modifierOption}
@@ -461,23 +481,6 @@ export default component$(() => {
                     </a>
                   )}
                 </li>
-                {xtremeXmasData.modifierWhenPart1Completed &&
-                  (xtremeXmasData.modifierWhenPart1Completed !==
-                    xtremeXmasData.challengeModifier ||
-                    xtremeXmasData.optionWhenPart1Completed !==
-                      xtremeXmasData.modifierOption) && (
-                    <li>
-                      Challenge Modifier During Part 1:{" "}
-                      <strong>
-                        {xtremeXmasData.challengeModifier === "None"
-                          ? "None"
-                          : "You must complete this challenge " +
-                            xtremeXmasData.challengeModifier}
-                        {xtremeXmasData.modifierOption !== "None" &&
-                          xtremeXmasData.modifierOption}
-                      </strong>
-                    </li>
-                  )}
                 <li>
                   Selected Day Part 2 Completed?{" "}
                   <strong>

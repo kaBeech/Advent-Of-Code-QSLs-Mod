@@ -90,7 +90,7 @@ const challengeModifierReroller = (state: DayControllerState) => ({
     if (state.day.part1Completed) {
       state.day.rerollTokensSpentDuringPart2 += 2;
     }
-    netScoreCalculator(state).calculateNetScore();
+    scoreCalculator(state).calculateNetScore();
     return state.day;
   },
 });
@@ -126,7 +126,7 @@ const modifierOptionReroller = (state: DayControllerState) => ({
     if (state.day.part1Completed) {
       state.day.rerollTokensSpentDuringPart2 += 1;
     }
-    netScoreCalculator(state).calculateNetScore();
+    scoreCalculator(state).calculateNetScore();
     return state.day;
   },
 });
@@ -152,7 +152,7 @@ const part1Completer = (state: DayControllerState) => ({
     state.day.part1Completed = new Date();
     state.day.modifierWhenPart1CompletedId = state.day.challengeModifierId;
     state.day.optionWhenPart1CompletedId = state.day.modifierOptionId;
-    netScoreCalculator(state).calculateNetScore();
+    scoreCalculator(state).calculateNetScore();
     return state.day;
   },
 });
@@ -167,12 +167,12 @@ const part2Completer = (state: DayControllerState) => ({
       throw new Error("Part 2 already completed");
     }
     state.day.part2Completed = new Date();
-    netScoreCalculator(state).calculateNetScore();
+    scoreCalculator(state).calculateNetScore();
     return state.day;
   },
 });
 
-const netScoreCalculator = (state: DayControllerState) => ({
+const scoreCalculator = (state: DayControllerState) => ({
   calculateNetScore: () => {
     let netTokensGained = 0;
     state.day.modifierWhenPart1CompletedId && netTokensGained++;
@@ -182,9 +182,9 @@ const netScoreCalculator = (state: DayControllerState) => ({
     netTokensGained -= state.day.modifierOptionRerollsUsed;
     const part2RerollBonus = part2RerollBonusCalculator(state)
       .calculatePart2RerollBonus();
-    state.day.netScore = 10 * netTokensGained + part2RerollBonus;
+    state.day.score = 10 * netTokensGained + part2RerollBonus;
 
-    return state.day.netScore;
+    return state.day.score;
   },
 });
 
