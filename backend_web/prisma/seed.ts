@@ -87,6 +87,13 @@ const challengeModifierData: Prisma.ChallengeModifierCreateInput[] = [
     isPublic: true,
   },
   {
+    name: "treat_box",
+    text: "while enjoying a random selection from the Treat Box: ",
+    hasOptions: true,
+    standard: true,
+    isPublic: true,
+  },
+  {
     name: "testing",
     text: "with thorough testing",
     standard: true,
@@ -101,6 +108,18 @@ const challengeModifierData: Prisma.ChallengeModifierCreateInput[] = [
   {
     name: "comments",
     text: "with thorough comments",
+    standard: true,
+    isPublic: true,
+  },
+  {
+    name: "breaks",
+    text: "while taking a 3-minute (minimum) breaks every 20 minutes",
+    standard: true,
+    isPublic: true,
+  },
+  {
+    name: "atomic_commits",
+    text: "while making atomic commits",
     standard: true,
     isPublic: true,
   },
@@ -173,9 +192,51 @@ const challengeModifierData: Prisma.ChallengeModifierCreateInput[] = [
     isPublic: true,
   },
   {
+    name: "alphabetical_declarations",
+    text: "making declarations in alphabetical order",
+    standard: true,
+    isPublic: true,
+  },
+  // {
+  //   name: "random_letter_declarations",
+  //   text:
+  //     "making all declarations begin with a Scrabble-official word starting with the same random letter:",
+  //   hasOptions: true,
+  //   standard: true,
+  //   isPublic: true,
+  // },
+  {
+    name: "theme_box",
+    text:
+      "naming all declarations in a random theme selected from the Theme Box: ",
+    hasOptions: true,
+    standard: true,
+    isPublic: true,
+  },
+  {
+    name: "no_named_functions",
+    text: "without declaring any named functions",
+    standard: true,
+    isPublic: true,
+  },
+  {
     name: "chat_gpt",
     text:
-      "by writing a program using ChatGPT (the free, GPT-3.5 version) exclusively (no editing Chat's responses - you must edit your prompts!)",
+      "using ChatGPT (the free, GPT-3.5 version) exclusively (no editing Chat's responses - you must edit your prompts!)",
+    standard: true,
+    isPublic: true,
+  },
+  {
+    name: "no_random_operator",
+    text: "without using a random character from the Operator Box: ",
+    hasOptions: true,
+    standard: true,
+    isPublic: true,
+  },
+  {
+    name: "no_random_letter",
+    text: "without using a random character from the Letter Box: ",
+    hasOptions: true,
     standard: true,
     isPublic: true,
   },
@@ -206,7 +267,8 @@ const challengeModifierData: Prisma.ChallengeModifierCreateInput[] = [
   },
   {
     name: "no_strings",
-    text: "using no strings",
+    text:
+      "using no strings (you may convert any strings in your challengeInput)",
     standard: true,
     isPublic: true,
   },
@@ -666,6 +728,17 @@ const modifierOptionData: Prisma.ModifierOptionCreateInput[] = [
   {
     ChallengeModifier: {
       connect: {
+        name: "visual_box",
+      },
+    },
+    name: "visual_box_pane",
+    text: "PANE",
+    standard: true,
+    isPublic: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
         name: "esoteric_box",
       },
     },
@@ -892,6 +965,629 @@ const modifierOptionData: Prisma.ModifierOptionCreateInput[] = [
     name: "text_editor_box_sysdef",
     text: "Your system default text editor (e.g. gedit, TextEdit, Notepad)",
     shortText: "System Default",
+    standard: true,
+    isPublic: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "theme_box",
+      },
+    },
+    name: "theme_box_veg",
+    text: "Fruits and Vegetables",
+    standard: true,
+    isPublic: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "theme_box",
+      },
+    },
+    name: "theme_box_plants",
+    text: "Plants",
+    standard: true,
+    isPublic: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "theme_box",
+      },
+    },
+    name: "theme_box_animals",
+    text: "Animals",
+    standard: true,
+    isPublic: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "theme_box",
+      },
+    },
+    name: "theme_box_colors",
+    text: "Colors",
+    standard: true,
+    isPublic: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "theme_box",
+      },
+    },
+    name: "theme_box_sports",
+    text: "Sports",
+    standard: true,
+    isPublic: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "theme_box",
+      },
+    },
+    name: "theme_box_weather",
+    text: "Weather",
+    standard: true,
+    isPublic: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "theme_box",
+      },
+    },
+    name: "theme_box_holidays",
+    text: "Holidays",
+    standard: true,
+    isPublic: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "theme_box",
+      },
+    },
+    name: "theme_box_famous_people",
+    text: "Famous People",
+    standard: true,
+    isPublic: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "theme_box",
+      },
+    },
+    name: "theme_box_famous_places",
+    text: "Famous Places",
+    standard: true,
+    isPublic: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "theme_box",
+      },
+    },
+    name: "theme_box_books",
+    text: "Books and Literature",
+    shortText: "Books",
+    standard: true,
+    isPublic: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "theme_box",
+      },
+    },
+    name: "theme_box_food_drink",
+    text: "Food and Drink",
+    standard: true,
+    isPublic: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "theme_box",
+      },
+    },
+    name: "theme_box_music",
+    text: "Music",
+    standard: true,
+    isPublic: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "theme_box",
+      },
+    },
+    name: "theme_box_fictional_creatures",
+    text: "Fictional/Mythical Creatures",
+    shortText: "Fictional Creatures",
+    standard: true,
+    isPublic: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "theme_box",
+      },
+    },
+    name: "theme_box_pokemon",
+    text: "Pokémon",
+    standard: true,
+    isPublic: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "theme_box",
+      },
+    },
+    name: "theme_box_dinosaurs",
+    text:
+      "Prehistoric Creatures (including Prehistoric Dinosaurs, but not Modern Birds)",
+    shortText: "Dinosaurs",
+    standard: true,
+    isPublic: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "theme_box",
+      },
+    },
+    name: "theme_box_science",
+    text: "Science",
+    standard: true,
+    isPublic: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "treat_box",
+      },
+    },
+    name: "treat_box_snack",
+    text: "a tasty snack. Lucky you!",
+    shortText: "Snack",
+    standard: true,
+    isPublic: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "treat_box",
+      },
+    },
+    name: "treat_box_beveridge",
+    text: "a refreshing beverage. Lucky you!",
+    shortText: "Beverage",
+    standard: true,
+    isPublic: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "treat_box",
+      },
+    },
+    name: "treat_box_water",
+    text: "a glass of water (at least 12 ounces). Hydration is important!",
+    shortText: "Water",
+    standard: true,
+    isPublic: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "no_random_operator",
+      },
+    },
+    name: "random_operator_plus",
+    text: "+",
+    standard: true,
+    isPublic: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "no_random_operator",
+      },
+    },
+    name: "random_operator_minus",
+    text: "-",
+    standard: true,
+    isPublic: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "no_random_operator",
+      },
+    },
+    name: "random_operator_multiply",
+    text: "*",
+    standard: true,
+    isPublic: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "no_random_operator",
+      },
+    },
+    name: "random_operator_divide",
+    text: "/",
+    standard: true,
+    isPublic: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "no_random_operator",
+      },
+    },
+    name: "random_operator_modulo",
+    text: "%",
+    standard: true,
+    isPublic: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "no_random_operator",
+      },
+    },
+    name: "random_operator_and",
+    text: "&",
+    standard: true,
+    isPublic: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "no_random_operator",
+      },
+    },
+    name: "random_operator_or",
+    text: "|",
+    standard: true,
+    isPublic: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "no_random_operator",
+      },
+    },
+    name: "random_operator_greater_than",
+    text: ">",
+    standard: true,
+    isPublic: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "no_random_operator",
+      },
+    },
+    name: "random_operator_less_than",
+    text: "<",
+    standard: true,
+    isPublic: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "no_random_operator",
+      },
+    },
+    name: "random_operator_question_mark",
+    text: "?",
+    standard: true,
+    isPublic: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "no_random_operator",
+      },
+    },
+    name: "random_operator_exclamation_point",
+    text: "!",
+    standard: true,
+    isPublic: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "no_random_letter",
+      },
+    },
+    name: "random_letter_a",
+    text: "A",
+    standard: true,
+    isPublic: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "no_random_letter",
+      },
+    },
+    name: "random_letter_b",
+    text: "B",
+    standard: true,
+    isPublic: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "no_random_letter",
+      },
+    },
+    name: "random_letter_c",
+    text: "C",
+    standard: true,
+    isPublic: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "no_random_letter",
+      },
+    },
+    name: "random_letter_d",
+    text: "D",
+    standard: true,
+    isPublic: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "no_random_letter",
+      },
+    },
+    name: "random_letter_e",
+    text: "E",
+    standard: true,
+    isPublic: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "no_random_letter",
+      },
+    },
+    name: "random_letter_f",
+    text: "F",
+    standard: true,
+    isPublic: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "no_random_letter",
+      },
+    },
+    name: "random_letter_g",
+    text: "G",
+    standard: true,
+    isPublic: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "no_random_letter",
+      },
+    },
+    name: "random_letter_h",
+    text: "H",
+    standard: true,
+    isPublic: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "no_random_letter",
+      },
+    },
+    name: "random_letter_i",
+    text: "I",
+    standard: true,
+    isPublic: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "no_random_letter",
+      },
+    },
+    name: "random_letter_j",
+    text: "J",
+    standard: true,
+    isPublic: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "no_random_letter",
+      },
+    },
+    name: "random_letter_k",
+    text: "K",
+    standard: true,
+    isPublic: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "no_random_letter",
+      },
+    },
+    name: "random_letter_l",
+    text: "L",
+    standard: true,
+    isPublic: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "no_random_letter",
+      },
+    },
+    name: "random_letter_m",
+    text: "M",
+    standard: true,
+    isPublic: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "no_random_letter",
+      },
+    },
+    name: "random_letter_n",
+    text: "N",
+    standard: true,
+    isPublic: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "no_random_letter",
+      },
+    },
+    name: "random_letter_o",
+    text: "O",
+    standard: true,
+    isPublic: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "no_random_letter",
+      },
+    },
+    name: "random_letter_p",
+    text: "P",
+    standard: true,
+    isPublic: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "no_random_letter",
+      },
+    },
+    name: "random_letter_q",
+    text: "Q",
+    standard: true,
+    isPublic: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "no_random_letter",
+      },
+    },
+    name: "random_letter_r",
+    text: "R",
+    standard: true,
+    isPublic: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "no_random_letter",
+      },
+    },
+    name: "random_letter_s",
+    text: "S",
+    standard: true,
+    isPublic: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "no_random_letter",
+      },
+    },
+    name: "random_letter_t",
+    text: "T",
+    standard: true,
+    isPublic: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "no_random_letter",
+      },
+    },
+    name: "random_letter_u",
+    text: "U",
+    standard: true,
+    isPublic: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "no_random_letter",
+      },
+    },
+    name: "random_letter_v",
+    text: "V",
+    standard: true,
+    isPublic: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "no_random_letter",
+      },
+    },
+    name: "random_letter_w",
+    text: "W",
+    standard: true,
+    isPublic: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "no_random_letter",
+      },
+    },
+    name: "random_letter_x",
+    text: "X",
+    standard: true,
+    isPublic: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "no_random_letter",
+      },
+    },
+    name: "random_letter_y",
+    text: "Y",
+    standard: true,
+    isPublic: true,
+  },
+  {
+    ChallengeModifier: {
+      connect: {
+        name: "no_random_letter",
+      },
+    },
+    name: "random_letter_z",
+    text: "Z",
     standard: true,
     isPublic: true,
   },
