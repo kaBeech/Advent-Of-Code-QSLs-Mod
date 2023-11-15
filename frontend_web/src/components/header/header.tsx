@@ -16,7 +16,7 @@ export default component$((props: HeaderProps) => {
   const session = useAuthSession();
   return (
     <header class="flex column alignCenter">
-      <a href="/" class="logo stitch marginTBPoint2">
+      <a href="/" class="logo stitch marginVertPoint2">
         <span class="logoGold">*</span> Xtreme <span class="logoGreen">^</span>{" "}
         Xmas <span class="logoWhite">§</span> Code{" "}
         <span class="logoBrown">»</span>
@@ -34,7 +34,7 @@ export default component$((props: HeaderProps) => {
       <br />
       <br />
       <div class="flex column alignCenter mobileHide">
-        <div class="flex gap1 marginTBPoint2">
+        <div class="flex gap1 marginVertPoint2">
           {" "}
           <a href="/about">°About°</a> ¦{" "}
           <a href="/games" class="textGreen">
@@ -58,7 +58,7 @@ export default component$((props: HeaderProps) => {
             °AoC°
           </a>{" "}
         </div>
-        <div class="flex gap1 marginTBPoint2">
+        <div class="flex gap1 marginVertPoint2">
           {" "}
           <a href="/calendar" class="textGreen">
             °Calendar°
@@ -69,7 +69,7 @@ export default component$((props: HeaderProps) => {
           </a>
           ¦<a href="/sponsors">°Sponsors°</a>
         </div>
-        <div class="flex gap1 marginTBPoint2">
+        <div class="flex gap1 marginVertPoint2">
           {" "}
           <span class="textGreen">{session.value?.user?.name}</span>
           <LogInOrOut
@@ -80,7 +80,7 @@ export default component$((props: HeaderProps) => {
         <br />
       </div>
       <div class="flex column alignCenter mobileShow">
-        <div class="flex gap1 marginTBPoint2">
+        <div class="flex gap1 marginVertPoint2">
           {" "}
           <a href="/about">°About°</a> ¦{" "}
           <a href="/leaderboard" class="textGreen">
@@ -91,7 +91,7 @@ export default component$((props: HeaderProps) => {
             °Modifiers°
           </a>
         </div>
-        <div class="flex gap1 marginTBPoint2">
+        <div class="flex gap1 marginVertPoint2">
           <a href="/support" class="textGreen">
             °Support°
           </a>{" "}
@@ -100,7 +100,7 @@ export default component$((props: HeaderProps) => {
             °Sponsors°
           </a>
         </div>
-        <div class="flex gap1 marginTBPoint2">
+        <div class="flex gap1 marginVertPoint2">
           {" "}
           <a href="/calendar">°Calendar°</a> ¦{" "}
           <a href="/games" class="textGreen">
@@ -116,7 +116,7 @@ export default component$((props: HeaderProps) => {
             °AoC°
           </a>{" "}
         </div>
-        <div class="flex gap1 marginTBPoint2">
+        <div class="flex gap1 marginVertPoint2">
           {" "}
           <span class="textGreen">{session.value?.user?.name}</span>
           <LogInOrOut
@@ -127,26 +127,26 @@ export default component$((props: HeaderProps) => {
         <br />
       </div>
       <div class="flex column alignCenter tinyShow">
-        <div class="flex gap1 marginTBPoint2">
+        <div class="flex gap1 marginVertPoint2">
           {" "}
           <a href="/about">°About°</a> ¦{" "}
           <a href="/modifier" class="textGreen">
             °Modifiers°
           </a>
         </div>
-        <div class="flex gap1 marginTBPoint2">
+        <div class="flex gap1 marginVertPoint2">
           <a href="/settings" class="textGreen">
             °Settings°
           </a>{" "}
           ¦<a href="/sponsors">°Sponsors°</a>
         </div>
-        <div class="flex gap1 marginTBPoint2">
+        <div class="flex gap1 marginVertPoint2">
           <a href="/games">°Games°</a> ¦{" "}
           <a href="/support" class="textGreen">
             °Support°
           </a>{" "}
         </div>
-        <div class="flex gap1 marginTBPoint2">
+        <div class="flex gap1 marginVertPoint2">
           {" "}
           <a href="/calendar" class="textGreen">
             °Calendar°
@@ -161,10 +161,10 @@ export default component$((props: HeaderProps) => {
             °AoC°
           </a>{" "}
         </div>
-        <div class="flex gap1 marginTBPoint2">
+        <div class="flex gap1 marginVertPoint2">
           <a href="/leaderboard">°Leaderboards°</a>
         </div>
-        <div class="flex gap1 marginTBPoint2">
+        <div class="flex gap1 marginVertPoint2">
           {" "}
           <span class="textGreen">{session.value?.user?.name}</span>
           <LogInOrOut
