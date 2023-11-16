@@ -272,7 +272,9 @@ export default component$(() => {
               <ul class="flex column">
                 {xtremeXmasData.gameIsPublic && (
                   <li>
-                    <a href={`/game/public/${xtremeXmasData.gameId}/`}>
+                    <a
+                      href={`/game/public/${xtremeXmasData.gameId}/day/${state.dayNumber}`}
+                    >
                       °Public Link°
                     </a>
                   </li>
