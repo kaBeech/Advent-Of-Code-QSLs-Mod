@@ -359,7 +359,8 @@ export default component$(() => {
         </div>{" "}
         <p>
           You can generate a <em>Public Link</em> to share your work with the
-          world by marking your game as Public. TBA...
+          world by marking your game as Public. These links can be found on the
+          Calendar pages.
         </p>
         <div class="desktopShow">
           ----------------------------------------------------------------------------

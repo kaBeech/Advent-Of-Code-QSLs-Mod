@@ -216,6 +216,11 @@ export default component$(() => {
                 <li>
                   <a href="edit">°Edit Game°</a>
                 </li>
+                {gameData.isPublic && (
+                  <li>
+                    <a href={`/game/public/${gameData.id}/`}>°Public Link°</a>
+                  </li>
+                )}
               </ul>
               <br />
               <div class="desktopShow">

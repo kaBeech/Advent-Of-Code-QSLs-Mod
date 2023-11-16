@@ -18,6 +18,7 @@ export interface DayInfo {
 }
 
 export interface GameInfo {
+  id: string;
   name: string;
   year: number;
   score: number;
