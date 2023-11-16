@@ -25,6 +25,7 @@ import { getLeaderboardGames } from "./routes/leaderboard/getLeaderboardGames.ts
 import { getPublicGame } from "./routes/game/getPublicGame.ts";
 import { getPublicDay } from "./routes/day/getPublicDay.ts";
 import { removeChallengeModifier } from "./routes/day/removeChallengeModifier.ts";
+import { updateUsername } from "./routes/user/updateUsername.ts";
 
 type AppState = {
   session: Session;
@@ -35,6 +36,7 @@ export const router = new Router<AppState>();
 router
   .get("/", getHelloWorld)
   .put("/user", authenticate, getOrCreateUser)
+  .put("/user/username", authenticate, updateUsername)
   .get("/log-in/github", logInWithOAuth)
   .get("/oauth2/callback", getOAuthData)
   .get("/logout", authenticate, logOut)
