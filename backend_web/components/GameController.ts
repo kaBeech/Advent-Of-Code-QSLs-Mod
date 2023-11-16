@@ -21,6 +21,7 @@ export const GameController = (
     ...repositoryLinkSetter(state),
     ...progressSheetLinkSetter(state),
     ...publicStatusSetter(state),
+    ...repositoryLinkSetter(state),
   };
 };
 
