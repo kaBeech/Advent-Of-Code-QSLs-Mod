@@ -74,7 +74,7 @@ export default component$(() => {
           state.loading = true;
           return <></>;
         }}
-        onResolved={() => {
+        onResolved={(gameData) => {
           state.loading = false;
           return (
             <>
@@ -119,6 +119,37 @@ export default component$(() => {
                   Game is Private
                 </p>
               )}
+              <p>
+                <label for="name">Name: </label>
+                <input
+                  id="name"
+                  class="pointer"
+                  type="text"
+                  onInput$={(ev: any) =>
+                    (state.gameInfo!.name = ev.target.value)
+                  }
+                  value={gameData.name}
+                  maxLength={70}
+                  aria-labelledby="Name"
+                />
+                <span
+                  class="pointer stitchLettering textRed"
+                  onClick$={async () => {
+                    await serverFetcher(
+                      `game/${gameNumber}/name`,
+                      "PUT",
+                      userId,
+                      {
+                        name: gameData.name,
+                      }
+                    );
+                    state.gameInfo!.name = gameData.name;
+                  }}
+                >
+                  {" "}
+                  °Update Name°
+                </span>
+              </p>
             </>
           );
         }}

@@ -22,6 +22,7 @@ export interface GameInfo {
   dateCompleted: string | null;
   title: number | null;
   isPublic: boolean;
+  repositoryLink: string;
 }
 
 export interface LeaderboardGame {
