@@ -16,8 +16,11 @@ import Footer from "~/components/footer/footer";
 import { useLocalStorage } from "~/hooks/useLocalStorage";
 
 let isLoggedIn = false;
-const aocLink = { url: "https://adventofcode.com/", type: "plain" };
-let dayNumber = 0;
+const aocLink = {
+  url: "https://adventofcode.com/",
+  type: "plain",
+  dayNumber: 0,
+};
 
 export const onRequest: RequestHandler = (event) => {
   const session: Session | null = event.sharedMap.get("session");
@@ -34,7 +37,7 @@ const readyAOCLink = (event: RequestEvent<QwikCityPlatform>) => {
     aocLink.type = "game";
     if (event.pathname.includes(`day/`)) {
       aocLink.type = "day";
-      dayNumber = +event.params.dayNumber;
+      aocLink.dayNumber = +event.params.dayNumber;
     }
   }
 };
@@ -81,7 +84,7 @@ export default component$(() => {
     if (state.aocLink.type === "game") {
       state.aocLink.url = `https://adventofcode.com/${year.value}`;
     } else if (state.aocLink.type === "day") {
-      state.aocLink.url = `https://adventofcode.com/${year.value}/day/${dayNumber}`;
+      state.aocLink.url = `https://adventofcode.com/${year.value}/day/${state.aocLink.dayNumber}`;
     }
   });
 
