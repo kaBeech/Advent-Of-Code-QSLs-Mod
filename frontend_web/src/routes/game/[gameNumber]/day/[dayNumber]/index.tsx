@@ -105,7 +105,6 @@ export default component$(() => {
         rerollTokensEarned,
       };
       state.dayInfo = dayInfoData;
-      console.log(dayData);
       return dayInfoData;
     }
   );
