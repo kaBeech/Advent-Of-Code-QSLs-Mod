@@ -82,6 +82,11 @@ export default component$(() => {
       const dayInfoData = {
         numberOfGames: JSON.stringify(userData.Game.length),
         year: gameData.year,
+        gameName: gameData.name,
+        gameId: gameData.id,
+        gameIsPublic: gameData.isPublic,
+        username: userData.username,
+        oauthAvatarUrl: userData.oauthAvatarUrl,
         challengeModifier: dayData.challengeModifierId
           ? dayData.ChallengeModifier.text
           : "None",
@@ -255,7 +260,9 @@ export default component$(() => {
             return (
               <p>
                 Day not found - please try again or{" "}
-                <a href="/new">°start a new game!°</a>
+                <a href="/new" class="textGreen">
+                  °start a new game!°
+                </a>
               </p>
             );
           }
@@ -263,6 +270,15 @@ export default component$(() => {
           return (
             <>
               <ul class="flex column">
+                {xtremeXmasData.gameIsPublic && (
+                  <li>
+                    <a
+                      href={`/game/public/${xtremeXmasData.gameId}/day/${state.dayNumber}`}
+                    >
+                      °Public Link°
+                    </a>
+                  </li>
+                )}
                 <li>
                   Reroll Tokens Earned:{" "}
                   <strong class="token">

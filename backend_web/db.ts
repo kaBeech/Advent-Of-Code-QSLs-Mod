@@ -246,6 +246,12 @@ export async function getPublicGameById(id: number) {
           OptionWhenPart1Completed: true,
         },
       },
+      User: {
+        select: {
+          username: true,
+          oauthAvatarUrl: true,
+        },
+      },
     },
   });
   return game;
@@ -275,6 +281,12 @@ export async function getGameByNumberAndUserIdWithRelations(
             },
           },
           OptionWhenPart1Completed: true,
+        },
+      },
+      User: {
+        select: {
+          username: true,
+          oauthAvatarUrl: true,
         },
       },
     },

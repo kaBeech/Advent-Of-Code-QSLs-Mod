@@ -21,6 +21,33 @@ export default component$(() => {
   });
 
   const session = useAuthSession();
+
+  if (!session.value || new Date(session.value.expires) < new Date()) {
+    return (
+      <article>
+        <h1>Settings</h1>
+        {areLightsOn.value ? (
+          <p>
+            <em
+              class="pointer stitchLettering textGreen"
+              onClick$={toggleLights}
+            >
+              󱨥
+            </em>{" "}
+            Christmas Lights are ON by default
+          </p>
+        ) : (
+          <p>
+            <em class="pointer stitchLettering textRed" onClick$={toggleLights}>
+              󱨦
+            </em>{" "}
+            Christmas Lights are OFF by default
+          </p>
+        )}
+      </article>
+    );
+  }
+
   const userId = getGithubUserIdFromUserImage(session.value!.user!.image!);
 
   const xtremeXmasUserDataResource = useResource$<any>(async ({ cleanup }) => {

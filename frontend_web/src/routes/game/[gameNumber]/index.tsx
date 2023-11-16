@@ -91,7 +91,9 @@ export default component$(() => {
                           width="24"
                           height="24"
                         />
-                      ) + session.value!.user!.name!}
+                      ) +
+                      " " +
+                      session.value!.user!.name!}
                 </li>
                 <li>
                   Year: {!state.gameInfo ? `Loading...` : state.gameInfo.year}
@@ -186,8 +188,8 @@ export default component$(() => {
                     style={{ height: "1.5rem", width: "1.5rem" }}
                     width="24"
                     height="24"
-                  />
-                  {session.value!.user!.name!}
+                  />{" "}
+                  {gameData.User.username}
                 </li>
                 <li>Year: {gameData.year}</li>
                 <li>Score: {gameData.score}</li>
@@ -214,6 +216,11 @@ export default component$(() => {
                 <li>
                   <a href="edit">°Edit Game°</a>
                 </li>
+                {gameData.isPublic && (
+                  <li>
+                    <a href={`/game/public/${gameData.id}/`}>°Public Link°</a>
+                  </li>
+                )}
               </ul>
               <br />
               <div class="desktopShow">

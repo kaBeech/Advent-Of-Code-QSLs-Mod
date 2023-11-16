@@ -138,6 +138,16 @@ export default component$(() => {
             <>
               <ul class="textCenter">
                 <li>{gameData.name}</li>
+                <li>
+                  <img
+                    src={gameData.User.oauthAvatarUrl}
+                    alt="user avatar"
+                    style={{ height: "1.5rem", width: "1.5rem" }}
+                    width="24"
+                    height="24"
+                  />{" "}
+                  {gameData.User.username}
+                </li>
                 <li>Year: {gameData.year}</li>
                 <li>Score: {gameData.score}</li>
                 <li>

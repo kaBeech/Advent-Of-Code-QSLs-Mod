@@ -359,7 +359,8 @@ export default component$(() => {
         </div>{" "}
         <p>
           You can generate a <em>Public Link</em> to share your work with the
-          world by marking your game as Public. TBA...
+          world by marking your game as Public. These links can be found on the
+          Calendar pages.
         </p>
         <div class="desktopShow">
           ----------------------------------------------------------------------------
@@ -491,9 +492,16 @@ export default component$(() => {
         </p>
         <p>
           To post a game to the leaderboards, you must first mark your game as
-          Public and add a Repository Link. TBA... If you mark your game as
-          Private or remove its Repository Link, it will automatically be
-          removed from the leaderboards. TBA...
+          Public and add a Repository Link.
+        </p>
+        <p>
+          You can do this when starting a new game or anytime thereafter from
+          the Edit Game page. The Edit Game page can be accessed from the Edit
+          Game link on the Calendar page.
+        </p>
+        <p>
+          If you mark your game as Private or remove its Repository Link, it
+          will automatically be removed from the leaderboards.
         </p>
         <p>
           <em>Can I use AI to get on the leaderboards?</em>
