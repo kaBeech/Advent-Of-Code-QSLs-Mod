@@ -27,6 +27,7 @@ import { getPublicDay } from "./routes/day/getPublicDay.ts";
 import { removeChallengeModifier } from "./routes/day/removeChallengeModifier.ts";
 import { updateUsername } from "./routes/user/updateUsername.ts";
 import { updateGamePublicStatus } from "./routes/game/updateGamePublicStatus.ts";
+import { updateGameName } from "./routes/game/updateGameName.ts";
 
 type AppState = {
   session: Session;
@@ -51,6 +52,7 @@ router
   .get("/game/:gameNumber", authenticate, getGame)
   .put("/game/:gameNumber", authenticate, startNewGame)
   .put("/game/:gameNumber/public", authenticate, updateGamePublicStatus)
+  .put("/game/:gameNumber/name", authenticate, updateGameName)
   .delete("/game/:gameNumber", authenticate, deleteGame)
   .get("/game/:gameNumber/day", authenticate, getAllDays)
   .get("/game/:gameNumber/day/:dayNumber", authenticate, getDay)
