@@ -78,6 +78,17 @@ export default component$(() => {
           state.loading = false;
           return (
             <>
+              <p class={`marginBottom0`}>{gameData.name}</p>
+              <p class={`marginTop0`}>
+                <img
+                  src={session.value!.user!.image!}
+                  alt="user avatar"
+                  style={{ height: "1.5rem", width: "1.5rem" }}
+                  width="24"
+                  height="24"
+                />{" "}
+                {gameData.User.username}
+              </p>
               {state.gameInfo!.isPublic ? (
                 <p>
                   <em

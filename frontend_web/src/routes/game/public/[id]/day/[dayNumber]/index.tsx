@@ -258,7 +258,7 @@ export default component$(() => {
                     style={{ height: "1.5rem", width: "1.5rem" }}
                     width="24"
                     height="24"
-                  />
+                  />{" "}
                   {xtremeXmasData.username}
                 </li>
                 <li>

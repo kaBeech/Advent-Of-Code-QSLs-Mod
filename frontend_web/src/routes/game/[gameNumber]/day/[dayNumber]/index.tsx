@@ -82,6 +82,9 @@ export default component$(() => {
       const dayInfoData = {
         numberOfGames: JSON.stringify(userData.Game.length),
         year: gameData.year,
+        gameName: gameData.name,
+        username: userData.username,
+        oauthAvatarUrl: userData.oauthAvatarUrl,
         challengeModifier: dayData.challengeModifierId
           ? dayData.ChallengeModifier.text
           : "None",

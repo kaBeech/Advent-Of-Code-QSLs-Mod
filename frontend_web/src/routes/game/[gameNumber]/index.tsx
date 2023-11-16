@@ -91,7 +91,9 @@ export default component$(() => {
                           width="24"
                           height="24"
                         />
-                      ) + session.value!.user!.name!}
+                      ) +
+                      " " +
+                      session.value!.user!.name!}
                 </li>
                 <li>
                   Year: {!state.gameInfo ? `Loading...` : state.gameInfo.year}
@@ -186,7 +188,7 @@ export default component$(() => {
                     style={{ height: "1.5rem", width: "1.5rem" }}
                     width="24"
                     height="24"
-                  />
+                  />{" "}
                   {gameData.User.username}
                 </li>
                 <li>Year: {gameData.year}</li>
