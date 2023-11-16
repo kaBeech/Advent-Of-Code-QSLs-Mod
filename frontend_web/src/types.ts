@@ -21,6 +21,7 @@ export interface GameInfo {
   currentRerollTokens: number;
   dateCompleted: string | null;
   title: number | null;
+  isPublic: boolean;
 }
 
 export interface LeaderboardGame {

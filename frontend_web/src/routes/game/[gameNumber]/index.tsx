@@ -211,6 +211,9 @@ export default component$(() => {
                     </li>
                   </>
                 )}
+                <li>
+                  <a href="edit">°Edit Game°</a>
+                </li>
               </ul>
               <br />
               <div class="desktopShow">

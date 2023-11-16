@@ -24,8 +24,6 @@ export default component$(() => {
   const userId = getGithubUserIdFromUserImage(session.value!.user!.image!);
 
   const xtremeXmasUserDataResource = useResource$<any>(async ({ cleanup }) => {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-
     const abortController = new AbortController();
     cleanup(() => abortController.abort("cleanup"));
     const userData = await serverFetcher(`userdata`, "GET", userId);
