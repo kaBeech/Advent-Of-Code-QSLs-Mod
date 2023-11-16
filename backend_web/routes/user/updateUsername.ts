@@ -10,7 +10,6 @@ export const updateUsername = async (
   >,
 ) => {
   const body = await ctx.request.body().value;
-  //   const username = body.get("username");
   const bodyData = await body.read();
   const username = bodyData.fields.username;
   const userId = ctx.state.session.get("userId") as string;
