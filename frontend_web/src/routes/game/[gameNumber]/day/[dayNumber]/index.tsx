@@ -4,6 +4,7 @@ import {
   useResource$,
   useStore,
   useStylesScoped$,
+  useVisibleTask$,
 } from "@builder.io/qwik";
 import {
   useLocation,
@@ -16,6 +17,7 @@ import type { Session } from "@auth/core/types";
 import { useAuthSession } from "~/routes/plugin@auth";
 import styles from "./day.css?inline";
 import type { DayInfo } from "~/types";
+import { useLocalStorage } from "~/hooks/useLocalStorage";
 
 let dayInfo: DayInfo | null;
 
@@ -40,6 +42,8 @@ export default component$(() => {
   const userId = getGithubUserIdFromUserImage(session.value!.user!.image!);
   const gameNumber = useLocation().params.gameNumber;
   const dayNumber = useLocation().params.dayNumber;
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [getYear, setYear] = useLocalStorage("year", 2014);
 
   const state = useStore({
     gameNumber,
@@ -77,6 +81,7 @@ export default component$(() => {
       }
       const dayInfoData = {
         numberOfGames: JSON.stringify(userData.Game.length),
+        year: gameData.year,
         challengeModifier: dayData.challengeModifierId
           ? dayData.ChallengeModifier.text
           : "None",
@@ -108,6 +113,11 @@ export default component$(() => {
       return dayInfoData;
     }
   );
+
+  useVisibleTask$(async () => {
+    const dayInfoData = await xtremeXmasUserDataResource.value;
+    setYear(dayInfoData.year);
+  });
 
   return (
     <article>

@@ -1,9 +1,16 @@
 /* eslint-disable no-irregular-whitespace */
-import { Resource, component$, useResource$, useStore } from "@builder.io/qwik";
+import {
+  Resource,
+  component$,
+  useResource$,
+  useStore,
+  useVisibleTask$,
+} from "@builder.io/qwik";
 import { useLocation, type DocumentHead } from "@builder.io/qwik-city";
 import { serverFetcher } from "~/util/serverFetcher";
 import DayLink from "~/components/game/dayLink/dayLink";
 import type { GameInfo } from "~/types";
+import { useLocalStorage } from "~/hooks/useLocalStorage";
 
 let gameInfo: GameInfo | null;
 
@@ -12,6 +19,8 @@ export default component$(() => {
     gameInfo,
   });
   const gameId = useLocation().params.id;
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [getYear, setYear] = useLocalStorage("year", 2014);
 
   const gameDataResource = useResource$<any>(async ({ cleanup }) => {
     const abortController = new AbortController();
@@ -19,6 +28,11 @@ export default component$(() => {
     const gameData = await serverFetcher(`game/public/${gameId}`, "GET");
     state.gameInfo = gameData;
     return gameData;
+  });
+
+  useVisibleTask$(async () => {
+    const gameData = await gameDataResource.value;
+    setYear(gameData.year);
   });
 
   return (
