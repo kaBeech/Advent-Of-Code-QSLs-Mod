@@ -150,6 +150,37 @@ export default component$(() => {
                   °Update Name°
                 </span>
               </p>
+              <p>
+                <label for="name">Repository Link: </label>
+                <input
+                  id="repoLink"
+                  class="pointer"
+                  type="url"
+                  onInput$={(ev: any) =>
+                    (state.gameInfo!.repositoryLink = ev.target.value)
+                  }
+                  value={gameData.repositoryLink}
+                  maxLength={255}
+                  aria-labelledby="Repository Link"
+                />
+                <span
+                  class="pointer stitchLettering textRed"
+                  onClick$={async () => {
+                    await serverFetcher(
+                      `game/${gameNumber}/repolink`,
+                      "PUT",
+                      userId,
+                      {
+                        repositoryLink: gameData.repositoryLink,
+                      }
+                    );
+                    state.gameInfo!.repositoryLink = gameData.repositoryLink;
+                  }}
+                >
+                  {" "}
+                  °Update Repo Link°
+                </span>
+              </p>
             </>
           );
         }}
