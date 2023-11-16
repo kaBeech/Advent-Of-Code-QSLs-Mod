@@ -65,6 +65,7 @@ export default component$(() => {
   const state = useStore({
     isLoggedIn,
     aocLink,
+    year: 2023,
   });
 
   const toggleLoggedIn = $(() => {
@@ -81,10 +82,11 @@ export default component$(() => {
   const [year, setYear] = useLocalStorage("year", 2023);
 
   useVisibleTask$(() => {
+    state.year = year.value;
     if (state.aocLink.type === "game") {
-      state.aocLink.url = `https://adventofcode.com/${year.value}`;
+      state.aocLink.url = `https://adventofcode.com/${state.year}`;
     } else if (state.aocLink.type === "day") {
-      state.aocLink.url = `https://adventofcode.com/${year.value}/day/${state.aocLink.dayNumber}`;
+      state.aocLink.url = `https://adventofcode.com/${state.year}/day/${state.aocLink.dayNumber}`;
     }
   });
 
