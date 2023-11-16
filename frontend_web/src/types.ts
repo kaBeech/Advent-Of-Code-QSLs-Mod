@@ -12,6 +12,9 @@ export interface DayInfo {
   optionWhenPart1Completed: string;
   part2Completed: Date | null;
   number: number;
+  username: string;
+  oauthAvatarUrl: string;
+  gameName: string;
 }
 
 export interface GameInfo {

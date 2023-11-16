@@ -66,6 +66,9 @@ export default component$(() => {
       }
       const dayInfoData = {
         year: gameData.year,
+        gameName: gameData.name,
+        username: gameData.User.username,
+        oauthAvatarUrl: gameData.User.oauthAvatarUrl,
         challengeModifier: dayData.challengeModifierId
           ? dayData.ChallengeModifier.text
           : "None",
@@ -247,6 +250,17 @@ export default component$(() => {
           return (
             <>
               <ul class="flex column">
+                <li>{xtremeXmasData.gameName}</li>
+                <li>
+                  <img
+                    src={state.dayInfo?.oauthAvatarUrl}
+                    alt="user avatar"
+                    style={{ height: "1.5rem", width: "1.5rem" }}
+                    width="24"
+                    height="24"
+                  />
+                  {xtremeXmasData.username}
+                </li>
                 <li>
                   Reroll Tokens Earned:{" "}
                   <strong class="token">

@@ -187,7 +187,7 @@ export default component$(() => {
                     width="24"
                     height="24"
                   />
-                  {session.value!.user!.name!}
+                  {gameData.User.username}
                 </li>
                 <li>Year: {gameData.year}</li>
                 <li>Score: {gameData.score}</li>
