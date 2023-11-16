@@ -4,6 +4,7 @@ import {
   useResource$,
   useStore,
   useStylesScoped$,
+  useVisibleTask$,
 } from "@builder.io/qwik";
 import {
   useLocation,
@@ -13,6 +14,7 @@ import {
 import { serverFetcher } from "~/util/serverFetcher";
 import styles from "./day.css?inline";
 import type { DayInfo } from "~/types";
+import { useLocalStorage } from "~/hooks/useLocalStorage";
 
 let dayInfo: DayInfo | null;
 
@@ -31,6 +33,8 @@ export default component$(() => {
   useStylesScoped$(styles);
   const gameId = useLocation().params.id;
   const dayNumber = useLocation().params.dayNumber;
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [getYear, setYear] = useLocalStorage("year", 2014);
 
   const state = useStore({
     gameId,
@@ -61,6 +65,7 @@ export default component$(() => {
         rerollTokensEarned += 1;
       }
       const dayInfoData = {
+        year: gameData.year,
         challengeModifier: dayData.challengeModifierId
           ? dayData.ChallengeModifier.text
           : "None",
@@ -92,6 +97,11 @@ export default component$(() => {
       return dayInfoData;
     }
   );
+
+  useVisibleTask$(async () => {
+    const dayInfoData = await xtremeXmasUserDataResource.value;
+    setYear(dayInfoData.year);
+  });
 
   return (
     <article>

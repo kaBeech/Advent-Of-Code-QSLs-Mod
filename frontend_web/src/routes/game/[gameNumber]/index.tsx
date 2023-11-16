@@ -1,5 +1,11 @@
 /* eslint-disable no-irregular-whitespace */
-import { Resource, component$, useResource$, useStore } from "@builder.io/qwik";
+import {
+  Resource,
+  component$,
+  useResource$,
+  useStore,
+  useVisibleTask$,
+} from "@builder.io/qwik";
 import {
   useLocation,
   type DocumentHead,
@@ -11,6 +17,7 @@ import { getGithubUserIdFromUserImage } from "~/util/getGithubUserIdFromUserImag
 import type { Session } from "@auth/core/types";
 import DayLink from "~/components/game/dayLink/dayLink";
 import type { GameInfo } from "~/types";
+import { useLocalStorage } from "~/hooks/useLocalStorage";
 
 let gameInfo: GameInfo | null;
 
@@ -36,6 +43,8 @@ export default component$(() => {
   const session = useAuthSession();
   const userId = getGithubUserIdFromUserImage(session.value!.user!.image!);
   const gameNumber = useLocation().params.gameNumber;
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [getYear, setYear] = useLocalStorage("year", 2014);
 
   const gameDataResource = useResource$<any>(async ({ cleanup }) => {
     const abortController = new AbortController();
@@ -47,6 +56,11 @@ export default component$(() => {
     );
     state.gameInfo = gameData;
     return gameData;
+  });
+
+  useVisibleTask$(async () => {
+    const gameData = await gameDataResource.value;
+    setYear(gameData.year);
   });
 
   return (
@@ -134,6 +148,7 @@ export default component$(() => {
             for (let i = 25; i > 0; i--) {
               dummyDays.push({ number: i });
             }
+
             return (
               <>
                 <ul>
@@ -196,6 +211,9 @@ export default component$(() => {
                     </li>
                   </>
                 )}
+                <li>
+                  <a href="edit">°Edit Game°</a>
+                </li>
               </ul>
               <br />
               <div class="desktopShow">

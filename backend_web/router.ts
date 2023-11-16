@@ -25,6 +25,10 @@ import { getLeaderboardGames } from "./routes/leaderboard/getLeaderboardGames.ts
 import { getPublicGame } from "./routes/game/getPublicGame.ts";
 import { getPublicDay } from "./routes/day/getPublicDay.ts";
 import { removeChallengeModifier } from "./routes/day/removeChallengeModifier.ts";
+import { updateUsername } from "./routes/user/updateUsername.ts";
+import { updateGamePublicStatus } from "./routes/game/updateGamePublicStatus.ts";
+import { updateGameName } from "./routes/game/updateGameName.ts";
+import { updateGameRepositoryLink } from "./routes/game/updateGameRepositoryLink.ts";
 
 type AppState = {
   session: Session;
@@ -35,6 +39,7 @@ export const router = new Router<AppState>();
 router
   .get("/", getHelloWorld)
   .put("/user", authenticate, getOrCreateUser)
+  .put("/user/username", authenticate, updateUsername)
   .get("/log-in/github", logInWithOAuth)
   .get("/oauth2/callback", getOAuthData)
   .get("/logout", authenticate, logOut)
@@ -47,6 +52,9 @@ router
   .get("/game", authenticate, getGames)
   .get("/game/:gameNumber", authenticate, getGame)
   .put("/game/:gameNumber", authenticate, startNewGame)
+  .put("/game/:gameNumber/public", authenticate, updateGamePublicStatus)
+  .put("/game/:gameNumber/name", authenticate, updateGameName)
+  .put("/game/:gameNumber/repolink", authenticate, updateGameRepositoryLink)
   .delete("/game/:gameNumber", authenticate, deleteGame)
   .get("/game/:gameNumber/day", authenticate, getAllDays)
   .get("/game/:gameNumber/day/:dayNumber", authenticate, getDay)

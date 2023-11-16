@@ -4,7 +4,7 @@ import { serverFetcher } from "~/util/serverFetcher";
 import { useAuthSession } from "../plugin@auth";
 import { getGithubUserIdFromUserImage } from "~/util/getGithubUserIdFromUserImage";
 
-const title = "Test Game";
+const name = "Test Game";
 const year = 2022;
 const numberOfGames = 0;
 const isPublic: boolean = false;
@@ -16,7 +16,7 @@ export default component$(() => {
 
   const state = useStore({
     numberOfGames,
-    title,
+    name,
     year,
     buttonPresses: 0,
     loading: false,
@@ -27,7 +27,7 @@ export default component$(() => {
   const xtremeXmasUserDataResource = useResource$<any>(
     async ({ track, cleanup }) => {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      const title = track(() => state.title);
+      const title = track(() => state.name);
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const year = track(() => state.year);
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -54,16 +54,16 @@ export default component$(() => {
       <h1 class="title">Create New Game</h1>
       <ul>
         <li>
-          <label for="title">Title:</label>
+          <label for="name">Name:</label>
           <input
-            id="title"
+            id="name"
             class="pointer"
             type="text"
-            onInput$={(ev: any) => (state.title = ev.target.value)}
-            value={title}
+            onInput$={(ev: any) => (state.name = ev.target.value)}
+            value={name}
             minLength={1}
             maxLength={256}
-            aria-labelledby="Title"
+            aria-labelledby="Name"
           />
         </li>
         <li>
@@ -140,7 +140,7 @@ export default component$(() => {
                     "PUT",
                     userId,
                     {
-                      name: state.title,
+                      name: state.name,
                       year: state.year,
                       isPublic: state.isPublic ? true : false,
                       repositoryLink,

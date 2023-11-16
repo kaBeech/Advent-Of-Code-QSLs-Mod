@@ -10,6 +10,7 @@ interface HeaderProps {
   toggleLoggedIn: Function | any;
   areLightsOn: boolean;
   toggleLights: QRL<() => void>;
+  aocLink: string;
 }
 
 export default component$((props: HeaderProps) => {
@@ -50,7 +51,7 @@ export default component$((props: HeaderProps) => {
           </a>{" "}
           ¦{" "}
           <a
-            href="https://adventofcode.com/"
+            href={props.aocLink}
             target="_blank"
             rel="noopener noreferrer"
             class="textRed"
@@ -108,7 +109,7 @@ export default component$((props: HeaderProps) => {
           </a>{" "}
           ¦
           <a
-            href="https://adventofcode.com/"
+            href={props.aocLink}
             target="_blank"
             rel="noopener noreferrer"
             class="textRed"
@@ -153,7 +154,7 @@ export default component$((props: HeaderProps) => {
           </a>
           ¦
           <a
-            href="https://adventofcode.com/"
+            href={props.aocLink}
             target="_blank"
             rel="noopener noreferrer"
             class="textRed"

@@ -9,12 +9,12 @@ const pickRandomly = (
     throw new Error("No items to pick from");
   }
 
-  const randomIndex = Math.floor(Math.random() * selectFrom.length);
-  const randomSelection = selectFrom[randomIndex];
+  const filteredOptions = selectFrom.filter((option) => {
+    return option !== currentSelection;
+  });
 
-  if (randomSelection === currentSelection) {
-    return pickRandomly(selectFrom, currentSelection);
-  }
+  const randomIndex = Math.floor(Math.random() * filteredOptions.length);
+  const randomSelection = filteredOptions[randomIndex];
 
   return randomSelection;
 };

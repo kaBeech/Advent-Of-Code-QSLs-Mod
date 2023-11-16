@@ -26,7 +26,7 @@ export const { onRequest, useAuthSession, useAuthSignin, useAuthSignout } =
             },
           });
 
-          console.log("profile", profile);
+          // console.log("profile", profile);
 
           // Return profile info
           return {

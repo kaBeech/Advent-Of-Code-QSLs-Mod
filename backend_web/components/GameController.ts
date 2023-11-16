@@ -20,6 +20,8 @@ export const GameController = (
     ...playerNameSetter(state),
     ...repositoryLinkSetter(state),
     ...progressSheetLinkSetter(state),
+    ...publicStatusSetter(state),
+    ...repositoryLinkSetter(state),
   };
 };
 
@@ -164,6 +166,13 @@ const progressSheetLinkSetter = (state: GameControllerState) => ({
       );
     }
     state.game.progressSheetLink = newProgressSheetLink;
+    return state.game;
+  },
+});
+
+const publicStatusSetter = (state: GameControllerState) => ({
+  setPublicStatus: (isPublic: boolean) => {
+    state.game.isPublic = isPublic;
     return state.game;
   },
 });

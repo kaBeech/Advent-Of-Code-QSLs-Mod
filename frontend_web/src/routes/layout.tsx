@@ -1,6 +1,13 @@
-import { $, component$, Slot, useStore, useStyles$ } from "@builder.io/qwik";
+import {
+  $,
+  component$,
+  Slot,
+  useStore,
+  useStyles$,
+  useVisibleTask$,
+} from "@builder.io/qwik";
 import { routeLoader$ } from "@builder.io/qwik-city";
-import type { RequestHandler } from "@builder.io/qwik-city";
+import type { RequestEvent, RequestHandler } from "@builder.io/qwik-city";
 
 import styles from "./styles.css?inline";
 import Header from "~/components/header/header";
@@ -9,6 +16,11 @@ import Footer from "~/components/footer/footer";
 import { useLocalStorage } from "~/hooks/useLocalStorage";
 
 let isLoggedIn = false;
+const aocLink = {
+  url: "https://adventofcode.com/",
+  type: "plain",
+  dayNumber: 0,
+};
 
 export const onRequest: RequestHandler = (event) => {
   const session: Session | null = event.sharedMap.get("session");
@@ -16,6 +28,17 @@ export const onRequest: RequestHandler = (event) => {
     isLoggedIn = true;
   } else {
     isLoggedIn = false;
+  }
+  readyAOCLink(event);
+};
+
+const readyAOCLink = (event: RequestEvent<QwikCityPlatform>) => {
+  if (event.pathname.includes(`game/`)) {
+    aocLink.type = "game";
+    if (event.pathname.includes(`day/`)) {
+      aocLink.type = "day";
+      aocLink.dayNumber = +event.params.dayNumber;
+    }
   }
 };
 
@@ -41,6 +64,8 @@ export default component$(() => {
 
   const state = useStore({
     isLoggedIn,
+    aocLink,
+    year: 2023,
   });
 
   const toggleLoggedIn = $(() => {
@@ -53,6 +78,18 @@ export default component$(() => {
     areLightsOn.value ? setLightsBoolean(false) : setLightsBoolean(true);
   });
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [year, setYear] = useLocalStorage("year", 2023);
+
+  useVisibleTask$(() => {
+    state.year = year.value;
+    if (state.aocLink.type === "game") {
+      state.aocLink.url = `https://adventofcode.com/${state.year}`;
+    } else if (state.aocLink.type === "day") {
+      state.aocLink.url = `https://adventofcode.com/${state.year}/day/${state.aocLink.dayNumber}`;
+    }
+  });
+
   return (
     <>
       <Header
@@ -60,6 +97,7 @@ export default component$(() => {
         toggleLoggedIn={toggleLoggedIn}
         areLightsOn={areLightsOn.value}
         toggleLights={toggleLights}
+        aocLink={state.aocLink.url}
       />
       <main class="flex column alignCenter">
         <Slot />
