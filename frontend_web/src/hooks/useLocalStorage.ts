@@ -11,7 +11,10 @@ export const useLocalStorage = (
       const item = window.localStorage.getItem(key);
       state.value = item ? JSON.parse(item) : initialState;
     } catch (error) {
-      console.error(error);
+      console.error(
+        `Getting ${key} failed - setting initial state to ${initialState}. Error info just in case: `,
+        error,
+      );
       state.value = initialState;
     }
   });
