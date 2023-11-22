@@ -22,7 +22,7 @@ export const authenticate = async (ctx: Context, next: Next) => {
 
     const userId = headers.get("UserId");
     ctx.state.session.set("userId", userId);
-    const oauthURL = headers.get("OAuthURL");
+    const oauthURL = headers.get("OAuthUrl");
     ctx.state.session.set("oauthURL", oauthURL);
     const oauthUsername = headers.get("OAuthUsername");
     ctx.state.session.set("oauthUsername", oauthUsername);
