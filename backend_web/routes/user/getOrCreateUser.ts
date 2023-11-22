@@ -18,8 +18,19 @@ export const getOrCreateUser = async (ctx: Context, next: Next) => {
     let user;
     try {
       user = await getUserById(userId);
-    } catch (_err) {
-      user = await createUser(userId);
+    } catch (errorFromGet) {
+      try {
+        user = await createUser(userId);
+      } catch (errorFromCreate) {
+        console.error(
+          `Get User failed. Create User also failed. Error messages follow. `,
+          `Error from Create action: ${errorFromCreate}. `,
+          `Error from Get action: ${errorFromGet}. `,
+        );
+        throw new Error(
+          `Error from Create action: ${errorFromCreate}. Error from Get action: ${errorFromGet}. `,
+        );
+      }
     }
     await updateUserName(userId, oauthUsername);
     if (oauthName !== "") {
