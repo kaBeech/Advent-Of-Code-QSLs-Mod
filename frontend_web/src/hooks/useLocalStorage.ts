@@ -26,7 +26,10 @@ export const useLocalStorage = (
         window.localStorage.setItem(key, JSON.stringify(value));
       }
     } catch (error) {
-      console.error(error);
+      console.error(
+        `Setting ${key} to ${value} failed. Error info: `,
+        error,
+      );
     }
   });
   return [state, setValue$];
