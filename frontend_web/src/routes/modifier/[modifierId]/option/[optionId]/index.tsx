@@ -39,7 +39,19 @@ export default component$(() => {
               <h1>Modifier Option</h1>
               <p>{modifierOption.name}</p>
               <p>{modifierOption.text}</p>
-              <p>{modifierOption.explanatoryUrl}</p>
+              {modifierOption.explanatoryUrl && (
+                <p>
+                  See this{" "}
+                  <a
+                    href={modifierOption.explanatoryUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    external link
+                  </a>{" "}
+                  for more info
+                </p>
+              )}
             </>
           );
         }}

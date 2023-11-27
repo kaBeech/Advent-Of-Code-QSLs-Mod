@@ -38,7 +38,19 @@ export default component$(() => {
                 You must write a program to complete this challenge{" "}
                 {challengeModifier.text}
               </p>
-              <p>{challengeModifier.explanatoryUrl}</p>
+              {challengeModifier.explanatoryUrl && (
+                <p>
+                  See this{" "}
+                  <a
+                    href={challengeModifier.explanatoryUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    external link
+                  </a>{" "}
+                  for more info
+                </p>
+              )}
               <h2>Modifier Options:</h2>
               <ul>
                 {challengeModifier.hasOptions
