@@ -49,7 +49,7 @@ export default component$(() => {
 });
 
 export const head: DocumentHead = {
-  title: "Xtreme Xmas - Challenge Modifiers",
+  title: "Xtreme Xmas Code - Modifier Option Details",
   meta: [
     {
       name: "description",

@@ -1,4 +1,5 @@
 import { component$ } from "@builder.io/qwik";
+import type { DocumentHead } from "@builder.io/qwik-city";
 
 export default component$(() => {
   return (
@@ -65,3 +66,14 @@ export default component$(() => {
     </article>
   );
 });
+
+export const head: DocumentHead = {
+  title: "Xtreme Xmas Code - Support",
+  meta: [
+    {
+      name: "description",
+      content:
+        "Xtreme Xmas Code - an invigorating twist on your favorite advent calendar",
+    },
+  ],
+};

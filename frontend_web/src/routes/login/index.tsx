@@ -1,4 +1,5 @@
 import { component$ } from "@builder.io/qwik";
+import type { DocumentHead } from "@builder.io/qwik-city";
 import LogIn from "~/components/logIn/logIn";
 
 export default component$(() => {
@@ -17,3 +18,14 @@ export default component$(() => {
     </>
   );
 });
+
+export const head: DocumentHead = {
+  title: "Xtreme Xmas Code - Calendar",
+  meta: [
+    {
+      name: "description",
+      content:
+        "Xtreme Xmas Code - an invigorating twist on your favorite advent calendar",
+    },
+  ],
+};

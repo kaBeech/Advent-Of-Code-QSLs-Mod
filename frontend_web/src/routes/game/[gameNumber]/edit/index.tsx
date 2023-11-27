@@ -10,6 +10,7 @@ import { getGithubUserIdFromUserImage } from "~/util/getGithubUserIdFromUserImag
 import { serverFetcher } from "~/util/serverFetcher";
 import { useAuthSession } from "../../../plugin@auth";
 import type { Session } from "@auth/core/types";
+import type { DocumentHead } from "@builder.io/qwik-city";
 import { useLocation, type RequestHandler } from "@builder.io/qwik-city";
 import type { GameInfo } from "~/types";
 
@@ -199,3 +200,14 @@ export default component$(() => {
     </article>
   );
 });
+
+export const head: DocumentHead = {
+  title: "Xtreme Xmas Code - Edit Game",
+  meta: [
+    {
+      name: "description",
+      content:
+        "Xtreme Xmas Code - an invigorating twist on your favorite advent calendar",
+    },
+  ],
+};

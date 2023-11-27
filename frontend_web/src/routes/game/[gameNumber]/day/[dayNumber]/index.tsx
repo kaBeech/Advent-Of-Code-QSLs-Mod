@@ -567,12 +567,12 @@ export default component$(() => {
 });
 
 export const head: DocumentHead = {
-  title: "Xtreme Xmas - Day Viewer",
+  title: "Xtreme Xmas Code - Day Viewer",
   meta: [
     {
       name: "description",
       content:
-        "Xtreme Xmas - an invigorating twist on your favorite advent calendar",
+        "Xtreme Xmas Code - an invigorating twist on your favorite advent calendar",
     },
   ],
 };
