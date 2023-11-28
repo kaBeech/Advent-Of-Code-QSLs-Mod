@@ -151,7 +151,7 @@ export default component$(() => {
                 privateViewerData={{
                   gameIsPublic: state.dayInfo.gameIsPublic,
                   gameId: state.dayInfo.gameId,
-                  dateFirstRolled: state.dayInfo.dateFirstRolled.toDateString(),
+                  dateFirstRolled: String(state.dayInfo.dateFirstRolled),
                   gameNumber,
                   dayNumber,
                   incrementButtonPresses,
@@ -172,10 +172,8 @@ export default component$(() => {
                   modifierOption: state.dayInfo.modifierOption,
                   currentDay: state.dayInfo.currentDay,
                   currentDayCompleted: state.dayInfo.currentDayCompleted,
-                  part1Completed:
-                    state.dayInfo.part1Completed?.toDateString() || null,
-                  part2Completed:
-                    state.dayInfo.part2Completed?.toDateString() || null,
+                  part1Completed: String(state.dayInfo.part1Completed) || null,
+                  part2Completed: String(state.dayInfo.part2Completed) || null,
                   modifierWhenPart1Completed:
                     state.dayInfo.modifierWhenPart1Completed,
                   optionWhenPart1Completed:
