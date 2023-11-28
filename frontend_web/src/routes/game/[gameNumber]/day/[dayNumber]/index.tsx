@@ -154,8 +154,11 @@ export default component$(() => {
                 loading={state.loading}
                 setLoadingStatus={setLoadingStatus}
                 userId={userId}
-                xtremeXmasData={{
+                privateViewerData={{
                   gameIsPublic: state.dayInfo.gameIsPublic,
+                }}
+                xtremeXmasData={{
+                  gameName: state.dayInfo.gameName,
                   gameId: state.dayInfo.gameId,
                   rerollTokensEarned: state.dayInfo.rerollTokensEarned,
                   rerollTokensSpentDuringPart1:
@@ -189,8 +192,11 @@ export default component$(() => {
                 loading={state.loading}
                 setLoadingStatus={setLoadingStatus}
                 userId={userId}
-                xtremeXmasData={{
+                privateViewerData={{
                   gameIsPublic: false,
+                }}
+                xtremeXmasData={{
+                  gameName: "Loading...",
                   gameId: "Loading...",
                   rerollTokensEarned: 0,
                   rerollTokensSpentDuringPart1: 0,
