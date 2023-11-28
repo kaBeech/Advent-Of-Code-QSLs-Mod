@@ -1,6 +1,7 @@
 import { Resource, component$, useResource$ } from "@builder.io/qwik";
 import { useLocation, type DocumentHead } from "@builder.io/qwik-city";
 import type { ChallengeModifier } from "~/types";
+import constructChallengeModifierFullText from "~/util/constructChallengeModifierFullText";
 import { serverFetcher } from "~/util/serverFetcher";
 
 export default component$(() => {
@@ -23,7 +24,7 @@ export default component$(() => {
     const modifierOption = challengeModifier!.ModifierOption.find(
       (option) => option.id === optionId
     );
-    return modifierOption ? modifierOption : "None";
+    return modifierOption ? { challengeModifier, modifierOption } : "None";
   });
 
   return (
@@ -33,17 +34,24 @@ export default component$(() => {
         onPending={() => {
           return <h1>Modifier Option</h1>;
         }}
-        onResolved={(modifierOption) => {
+        onResolved={(modifierOptionData) => {
           return (
             <>
               <h1>Modifier Option</h1>
-              <p>{modifierOption.name}</p>
-              <p>{modifierOption.text}</p>
-              {modifierOption.explanatoryUrl && (
+              <p>{modifierOptionData.modifierOption.text}</p>
+              <p>
+                <em>Full Challenge Modifier Text:</em> "
+                {constructChallengeModifierFullText(
+                  modifierOptionData.challengeModifier.text +
+                    modifierOptionData.modifierOption.text
+                )}
+                "
+              </p>
+              {modifierOptionData.modifierOption.explanatoryUrl && (
                 <p>
                   See this{" "}
                   <a
-                    href={modifierOption.explanatoryUrl}
+                    href={modifierOptionData.modifierOption.explanatoryUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
