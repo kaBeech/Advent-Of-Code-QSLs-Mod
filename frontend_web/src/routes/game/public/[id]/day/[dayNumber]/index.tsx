@@ -15,7 +15,7 @@ import { serverFetcher } from "~/util/serverFetcher";
 import styles from "./day.css?inline";
 import type { DayInfo } from "~/types";
 import { useLocalStorage } from "~/hooks/useLocalStorage";
-import constructChallengeModifierFullText from "~/util/constructChallengeModifierFullText";
+import DayViewer from "~/components/game/day/dayViewer";
 
 let dayInfo: DayInfo | null;
 
@@ -96,6 +96,8 @@ export default component$(() => {
         number: dayData.number,
         dateFirstRolled: dayData.dateFirstRolled || null,
         rerollTokensEarned,
+        gameIsPublic: gameData.isPublic,
+        gameId: gameData.id,
       };
       state.dayInfo = dayInfoData;
       return dayInfoData;
@@ -114,129 +116,63 @@ export default component$(() => {
         value={xtremeXmasUserDataResource}
         onPending={() => {
           state.loading = true;
-          return (
-            <ul>
-              <li>
-                Reroll Tokens Earned:{" "}
-                <strong>
-                  {state.dayInfo?.part2Completed
-                    ? ""
-                    : state.dayInfo?.part1Completed
-                    ? ""
-                    : ""}
-                </strong>
-              </li>
-              <li>
-                Reroll Tokens Spent During Part 1:{" "}
-                <strong>
-                  {(state.dayInfo?.rerollTokensSpentDuringPart1 || 0) > 9
-                    ? state.dayInfo?.rerollTokensSpentDuringPart1 + ""
-                    : "".repeat(
-                        state.dayInfo?.rerollTokensSpentDuringPart1 || 0
-                      )}
-                </strong>
-              </li>
-              <li>
-                Reroll Tokens Spent During Part 2:{" "}
-                <strong>
-                  {" "}
-                  {(state.dayInfo?.rerollTokensSpentDuringPart2 || 0) > 9
-                    ? state.dayInfo?.rerollTokensSpentDuringPart2 + ""
-                    : "".repeat(
-                        state.dayInfo?.rerollTokensSpentDuringPart2 || 0
-                      )}
-                </strong>
-              </li>
-              <li>
-                Current Reroll Tokens:{" "}
-                <strong>
-                  {" "}
-                  {(state.dayInfo?.currentRerollTokens || 0) > 9
-                    ? state.dayInfo?.currentRerollTokens + ""
-                    : "".repeat(state.dayInfo?.currentRerollTokens || 0)}
-                </strong>
-              </li>
-              <li>
-                Estimated Day Score:{" "}
-                <strong>
-                  {!state.dayInfo ? (
-                    `Loading...`
-                  ) : state.dayInfo.score > 0 ? (
-                    <strong class="token">+{state.dayInfo.score}</strong>
-                  ) : (
-                    <strong class="tokenSpent">{state.dayInfo.score}</strong>
-                  )}
-                </strong>
-              </li>
-              <li>
-                Challenge Modifier:{" "}
-                <strong>
-                  {!state.dayInfo
-                    ? `Loading...`
-                    : state.dayInfo.challengeModifier === "None"
-                    ? "None"
-                    : constructChallengeModifierFullText(
-                        state.dayInfo.challengeModifier +
-                          (state.dayInfo.modifierOption !== "None" &&
-                            state.dayInfo.modifierOption)
-                      )}
-                </strong>
-              </li>
-              <li>
-                Current Day:{" "}
-                <strong>
-                  {!state.dayInfo ? `Loading...` : state.dayInfo.currentDay}
-                </strong>
-              </li>
-              <li>
-                Current Day Completed?:{" "}
-                <strong>
-                  {!state.dayInfo
-                    ? `Loading...`
-                    : state.dayInfo.part1Completed
-                    ? `Yes`
-                    : `No`}
-                </strong>
-              </li>
-              <li>
-                Selected Day Part 1 Completed?:{" "}
-                <strong>
-                  {" "}
-                  {!state.dayInfo
-                    ? `Loading...`
-                    : state.dayInfo.part1Completed
-                    ? `Yes`
-                    : `No`}
-                </strong>
-                {!state.dayInfo?.part1Completed ? null : (
-                  <>
-                    <br />
-                    <strong>
-                      {new Date(state.dayInfo.part1Completed).toString()}
-                    </strong>
-                  </>
-                )}
-              </li>
-              <li>
-                Selected Day Part 2 Completed?:{" "}
-                <strong>
-                  {!state.dayInfo
-                    ? `Loading...`
-                    : state.dayInfo.part2Completed
-                    ? `Yes`
-                    : `No`}
-                </strong>
-                {!state.dayInfo?.part2Completed ? null : (
-                  <>
-                    <br />
-                    <strong>
-                      {new Date(state.dayInfo.part2Completed).toString()}
-                    </strong>
-                  </>
-                )}
-              </li>
-            </ul>
-          );
+          if (state.dayInfo) {
+            return (
+              <DayViewer
+                publicViewerData={{
+                  username: state.dayInfo.username,
+                  oauthAvatarUrl: state.dayInfo.oauthAvatarUrl,
+                }}
+                xtremeXmasData={{
+                  gameName: state.dayInfo.gameName,
+                  challengeModifier: state.dayInfo.challengeModifier,
+                  modifierOption: state.dayInfo.modifierOption,
+                  rerollTokensSpentDuringPart1:
+                    state.dayInfo.rerollTokensSpentDuringPart1,
+                  rerollTokensSpentDuringPart2:
+                    state.dayInfo.rerollTokensSpentDuringPart2,
+                  currentRerollTokens: state.dayInfo.currentRerollTokens,
+                  score: state.dayInfo.score,
+                  currentDay: state.dayInfo.currentDay,
+                  currentDayCompleted: state.dayInfo.currentDayCompleted,
+                  part1Completed:
+                    state.dayInfo.part1Completed?.toDateString() || null,
+                  modifierWhenPart1Completed:
+                    state.dayInfo.modifierWhenPart1Completed,
+                  optionWhenPart1Completed:
+                    state.dayInfo.optionWhenPart1Completed,
+                  part2Completed:
+                    state.dayInfo.part2Completed?.toDateString() || null,
+                  rerollTokensEarned: 0,
+                }}
+              />
+            );
+          } else {
+            return (
+              <DayViewer
+                publicViewerData={{
+                  username: "Loading...",
+                  oauthAvatarUrl: "",
+                }}
+                xtremeXmasData={{
+                  gameName: "Loading...",
+                  challengeModifier: "Loading...",
+                  modifierOption: "Loading...",
+                  rerollTokensSpentDuringPart1: 0,
+                  rerollTokensSpentDuringPart2: 0,
+                  currentRerollTokens: 0,
+                  score: 0,
+                  currentDay: 0,
+                  currentDayCompleted: false,
+                  part1Completed: null,
+                  modifierWhenPart1Completed: "Loading...",
+                  optionWhenPart1Completed: "Loading...",
+                  part2Completed: null,
+                  rerollTokensEarned: 0,
+                }}
+              />
+            );
+          }
         }}
         onResolved={(xtremeXmasData) => {
           state.loading = false;
@@ -250,127 +186,13 @@ export default component$(() => {
           }
 
           return (
-            <>
-              <ul class="flex column">
-                <li>{xtremeXmasData.gameName}</li>
-                <li>
-                  <img
-                    src={state.dayInfo?.oauthAvatarUrl}
-                    alt="user avatar"
-                    style={{ height: "1.5rem", width: "1.5rem" }}
-                    width="24"
-                    height="24"
-                  />{" "}
-                  {xtremeXmasData.username}
-                </li>
-                <li>
-                  Reroll Tokens Earned:{" "}
-                  <strong class="token">
-                    {"".repeat(xtremeXmasData.rerollTokensEarned)}
-                  </strong>
-                </li>
-                <li>
-                  Reroll Tokens Spent During Part 1:{" "}
-                  <strong class="tokenSpent">
-                    {xtremeXmasData.rerollTokensSpentDuringPart1 > 9
-                      ? xtremeXmasData.rerollTokensSpentDuringPart1 + ""
-                      : "".repeat(xtremeXmasData.rerollTokensSpentDuringPart1)}
-                  </strong>
-                </li>
-                <li>
-                  Reroll Tokens Spent During Part 2:{" "}
-                  <strong class="tokenSpent">
-                    {xtremeXmasData.rerollTokensSpentDuringPart2 > 9
-                      ? xtremeXmasData.rerollTokensSpentDuringPart2 + ""
-                      : "".repeat(xtremeXmasData.rerollTokensSpentDuringPart2)}
-                  </strong>
-                </li>
-                <li>
-                  Current Reroll Tokens:{" "}
-                  <strong class="token">
-                    {xtremeXmasData.currentRerollTokens > 9
-                      ? xtremeXmasData.currentRerollTokens + ""
-                      : "".repeat(xtremeXmasData.currentRerollTokens)}
-                  </strong>
-                </li>
-                <li>
-                  Estimated Day Score:{" "}
-                  {xtremeXmasData.score > 0 ? (
-                    <strong class="token">+{xtremeXmasData.score}</strong>
-                  ) : (
-                    <strong class="tokenSpent">{xtremeXmasData.score}</strong>
-                  )}
-                </li>
-                {xtremeXmasData.modifierWhenPart1Completed &&
-                  (xtremeXmasData.modifierWhenPart1Completed !==
-                    xtremeXmasData.challengeModifier ||
-                    xtremeXmasData.optionWhenPart1Completed !==
-                      xtremeXmasData.modifierOption) && (
-                    <li>
-                      Challenge Modifier During Part 1:{" "}
-                      <strong>
-                        {xtremeXmasData.modifierWhenPart1Completed === "None"
-                          ? "None"
-                          : constructChallengeModifierFullText(
-                              xtremeXmasData.modifierWhenPart1Completed +
-                                (xtremeXmasData.optionWhenPart1Completed !==
-                                  "None" &&
-                                  xtremeXmasData.optionWhenPart1Completed)
-                            )}
-                      </strong>
-                    </li>
-                  )}
-                <li>
-                  Challenge Modifier:{" "}
-                  <strong>
-                    {xtremeXmasData.challengeModifier === "None"
-                      ? "None"
-                      : constructChallengeModifierFullText(
-                          xtremeXmasData.challengeModifier +
-                            (xtremeXmasData.modifierOption !== "None" &&
-                              xtremeXmasData.modifierOption)
-                        )}
-                  </strong>{" "}
-                </li>
-                <li>
-                  Current Day: <strong>{xtremeXmasData.currentDay}</strong>{" "}
-                </li>
-                <li>
-                  Current Day Completed?{" "}
-                  <strong>
-                    {xtremeXmasData.currentDayCompleted ? `Yes` : `No`}
-                  </strong>{" "}
-                </li>
-                <li>
-                  Selected Day Part 1 Completed?{" "}
-                  <strong>
-                    {xtremeXmasData.part1Completed ? `Yes` : `No`}
-                  </strong>
-                  {xtremeXmasData.part2Completed ? (
-                    <>
-                      <br />
-                      <strong>
-                        {new Date(xtremeXmasData.part1Completed).toString()}
-                      </strong>
-                    </>
-                  ) : null}
-                </li>
-                <li>
-                  Selected Day Part 2 Completed?{" "}
-                  <strong>
-                    {xtremeXmasData.part2Completed ? `Yes` : `No`}
-                  </strong>{" "}
-                  {xtremeXmasData.part2Completed ? (
-                    <>
-                      <br />
-                      <strong>
-                        {new Date(xtremeXmasData.part2Completed).toString()}
-                      </strong>
-                    </>
-                  ) : null}
-                </li>{" "}
-              </ul>
-            </>
+            <DayViewer
+              xtremeXmasData={xtremeXmasData}
+              publicViewerData={{
+                oauthAvatarUrl: xtremeXmasData.oauthAvatarUrl,
+                username: xtremeXmasData.username,
+              }}
+            />
           );
         }}
       />
