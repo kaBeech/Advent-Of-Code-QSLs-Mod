@@ -148,18 +148,19 @@ export default component$(() => {
           if (state.dayInfo) {
             return (
               <DayViewer
-                gameNumber={gameNumber}
-                dayNumber={dayNumber}
-                incrementButtonPresses={incrementButtonPresses}
-                loading={state.loading}
-                setLoadingStatus={setLoadingStatus}
-                userId={userId}
                 privateViewerData={{
                   gameIsPublic: state.dayInfo.gameIsPublic,
+                  gameId: state.dayInfo.gameId,
+                  dateFirstRolled: state.dayInfo.dateFirstRolled.toDateString(),
+                  gameNumber,
+                  dayNumber,
+                  incrementButtonPresses,
+                  loading: state.loading,
+                  setLoadingStatus,
+                  userId,
                 }}
                 xtremeXmasData={{
                   gameName: state.dayInfo.gameName,
-                  gameId: state.dayInfo.gameId,
                   rerollTokensEarned: state.dayInfo.rerollTokensEarned,
                   rerollTokensSpentDuringPart1:
                     state.dayInfo.rerollTokensSpentDuringPart1,
@@ -179,25 +180,25 @@ export default component$(() => {
                     state.dayInfo.modifierWhenPart1Completed,
                   optionWhenPart1Completed:
                     state.dayInfo.optionWhenPart1Completed,
-                  dateFirstRolled: state.dayInfo.dateFirstRolled.toDateString(),
                 }}
               />
             );
           } else {
             return (
               <DayViewer
-                gameNumber={gameNumber}
-                dayNumber={dayNumber}
-                incrementButtonPresses={incrementButtonPresses}
-                loading={state.loading}
-                setLoadingStatus={setLoadingStatus}
-                userId={userId}
                 privateViewerData={{
                   gameIsPublic: false,
+                  gameId: "Loading...",
+                  dateFirstRolled: "Loading...",
+                  gameNumber,
+                  dayNumber,
+                  incrementButtonPresses,
+                  loading: state.loading,
+                  setLoadingStatus,
+                  userId,
                 }}
                 xtremeXmasData={{
                   gameName: "Loading...",
-                  gameId: "Loading...",
                   rerollTokensEarned: 0,
                   rerollTokensSpentDuringPart1: 0,
                   rerollTokensSpentDuringPart2: 0,
@@ -211,7 +212,6 @@ export default component$(() => {
                   part2Completed: null,
                   modifierWhenPart1Completed: "Loading...",
                   optionWhenPart1Completed: "Loading...",
-                  dateFirstRolled: "Loading...",
                 }}
               />
             );
@@ -232,12 +232,17 @@ export default component$(() => {
 
           return (
             <DayViewer
-              gameNumber={gameNumber}
-              dayNumber={dayNumber}
-              incrementButtonPresses={incrementButtonPresses}
-              loading={state.loading}
-              setLoadingStatus={setLoadingStatus}
-              userId={userId}
+              privateViewerData={{
+                gameNumber,
+                dayNumber,
+                incrementButtonPresses,
+                loading: state.loading,
+                setLoadingStatus,
+                userId,
+                gameIsPublic: xtremeXmasData.gameIsPublic,
+                gameId: xtremeXmasData.gameId,
+                dateFirstRolled: xtremeXmasData.dateFirstRolled,
+              }}
               xtremeXmasData={xtremeXmasData}
             />
           );

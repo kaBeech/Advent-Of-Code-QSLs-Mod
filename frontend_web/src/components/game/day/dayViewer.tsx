@@ -3,15 +3,8 @@ import constructChallengeModifierFullText from "~/util/constructChallengeModifie
 import { serverFetcher } from "~/util/serverFetcher";
 
 export interface DayDataProps {
-  gameNumber: string;
-  dayNumber: string;
-  incrementButtonPresses: Function | any;
-  loading: boolean;
-  setLoadingStatus: Function | any;
-  userId: string;
   xtremeXmasData: {
     gameName: string;
-    gameId: string;
     rerollTokensEarned: number;
     rerollTokensSpentDuringPart1: number;
     rerollTokensSpentDuringPart2: number;
@@ -25,10 +18,17 @@ export interface DayDataProps {
     currentDayCompleted: boolean;
     part1Completed: string | null;
     part2Completed: string | null;
-    dateFirstRolled: string | null;
   };
   privateViewerData?: {
     gameIsPublic: boolean;
+    gameId: string;
+    dateFirstRolled: string | null;
+    gameNumber: string;
+    dayNumber: string;
+    incrementButtonPresses: Function | any;
+    loading: boolean;
+    setLoadingStatus: Function | any;
+    userId: string;
   };
   publicViewerData?: {
     oauthAvatarUrl: string;
@@ -56,7 +56,7 @@ export default component$((props: DayDataProps) => {
         {props.privateViewerData?.gameIsPublic && (
           <li>
             <a
-              href={`/game/public/${props.xtremeXmasData.gameId}/day/${props.dayNumber}`}
+              href={`/game/public/${props.privateViewerData.gameId}/day/${props.privateViewerData.dayNumber}`}
             >
               °Public Link°
             </a>
@@ -134,19 +134,21 @@ export default component$((props: DayDataProps) => {
           </strong>{" "}
           {!props.privateViewerData || props.xtremeXmasData.part2Completed ? (
             <></>
-          ) : !props.xtremeXmasData.dateFirstRolled ? (
+          ) : !props.privateViewerData.dateFirstRolled ? (
             <a
               onClick$={async () => {
-                if (props.loading) {
+                if (props.privateViewerData!.loading) {
                   return;
                 }
-                props.setLoadingStatus(true);
+                props.privateViewerData!.setLoadingStatus(true);
                 await serverFetcher(
-                  `game/${props.gameNumber}/day/${props.dayNumber}/roll`,
+                  `game/${props.privateViewerData!.gameNumber}/day/${
+                    props.privateViewerData!.dayNumber
+                  }/roll`,
                   "PUT",
-                  props.userId
+                  props.privateViewerData!.userId
                 );
-                props.incrementButtonPresses();
+                props.privateViewerData!.incrementButtonPresses();
               }}
             >
               °Roll Initial Challenge Modifier°
@@ -155,16 +157,18 @@ export default component$((props: DayDataProps) => {
             <li>
               <a
                 onClick$={async () => {
-                  if (props.loading) {
+                  if (props.privateViewerData!.loading) {
                     return;
                   }
-                  props.setLoadingStatus(true);
+                  props.privateViewerData!.setLoadingStatus(true);
                   await serverFetcher(
-                    `game/${props.gameNumber}/day/${props.dayNumber}/reroll/modifier`,
+                    `game/${props.privateViewerData!.gameNumber}/day/${
+                      props.privateViewerData!.dayNumber
+                    }/reroll/modifier`,
                     "PUT",
-                    props.userId
+                    props.privateViewerData!.userId
                   );
-                  props.incrementButtonPresses();
+                  props.privateViewerData!.incrementButtonPresses();
                 }}
               >
                 °Reroll Challenge Modifier°
@@ -178,16 +182,18 @@ export default component$((props: DayDataProps) => {
               <li>
                 <a
                   onClick$={async () => {
-                    if (props.loading) {
+                    if (props.privateViewerData!.loading) {
                       return;
                     }
-                    props.setLoadingStatus(true);
+                    props.privateViewerData!.setLoadingStatus(true);
                     await serverFetcher(
-                      `game/${props.gameNumber}/day/${props.dayNumber}/reroll/option`,
+                      `game/${props.privateViewerData!.gameNumber}/day/${
+                        props.privateViewerData!.dayNumber
+                      }/reroll/option`,
                       "PUT",
-                      props.userId
+                      props.privateViewerData!.userId
                     );
-                    props.incrementButtonPresses();
+                    props.privateViewerData!.incrementButtonPresses();
                   }}
                 >
                   °Reroll Modifier Option°
@@ -202,16 +208,18 @@ export default component$((props: DayDataProps) => {
               <li>
                 <a
                   onClick$={async () => {
-                    if (props.loading) {
+                    if (props.privateViewerData!.loading) {
                       return;
                     }
-                    props.setLoadingStatus(true);
+                    props.privateViewerData!.setLoadingStatus(true);
                     await serverFetcher(
-                      `game/${props.gameNumber}/day/${props.dayNumber}/removeChallengeModifier`,
+                      `game/${props.privateViewerData!.gameNumber}/day/${
+                        props.privateViewerData!.dayNumber
+                      }/removeChallengeModifier`,
                       "PUT",
-                      props.userId
+                      props.privateViewerData!.userId
                     );
-                    props.incrementButtonPresses();
+                    props.privateViewerData!.incrementButtonPresses();
                   }}
                 >
                   °Remove Challenge Modifier°
@@ -223,24 +231,27 @@ export default component$((props: DayDataProps) => {
           Current Day: <strong>{props.xtremeXmasData.currentDay}</strong>{" "}
           {!props.privateViewerData ||
           !props.xtremeXmasData.currentDayCompleted ||
-          props.xtremeXmasData.currentDay != +props.dayNumber ||
+          props.xtremeXmasData.currentDay !=
+            +props.privateViewerData!.dayNumber ||
           props.xtremeXmasData.currentDay === 25 ? (
             <></>
           ) : (
             <a
               onClick$={async () => {
-                if (props.loading) {
+                if (props.privateViewerData!.loading) {
                   return;
                 }
-                props.setLoadingStatus(true);
+                props.privateViewerData!.setLoadingStatus(true);
                 const res = await serverFetcher(
-                  `game/${props.gameNumber}/day/${+props.dayNumber + 1}`,
+                  `game/${props.privateViewerData!.gameNumber}/day/${
+                    +props.privateViewerData!.dayNumber + 1
+                  }`,
                   "PUT",
-                  props.userId
+                  props.privateViewerData!.userId
                 );
-                props.incrementButtonPresses();
+                props.privateViewerData!.incrementButtonPresses();
                 window.location.href = `/game/${
-                  props.gameNumber
+                  props.privateViewerData!.gameNumber
                 }/day/${+res.number}`;
               }}
             >
@@ -268,22 +279,24 @@ export default component$((props: DayDataProps) => {
             <strong>No</strong>
           )}
           {!props.privateViewerData ||
-          !props.xtremeXmasData.dateFirstRolled ||
+          !props.privateViewerData.dateFirstRolled ||
           props.xtremeXmasData.part1Completed ? (
             <></>
           ) : (
             <a
               onClick$={async () => {
-                if (props.loading) {
+                if (props.privateViewerData!.loading) {
                   return;
                 }
-                props.setLoadingStatus(true);
+                props.privateViewerData!.setLoadingStatus(true);
                 await serverFetcher(
-                  `game/${props.gameNumber}/day/${props.dayNumber}/complete/part1`,
+                  `game/${props.privateViewerData!.gameNumber}/day/${
+                    props.privateViewerData!.dayNumber
+                  }/complete/part1`,
                   "PUT",
-                  props.userId
+                  props.privateViewerData!.userId
                 );
-                props.incrementButtonPresses();
+                props.privateViewerData!.incrementButtonPresses();
               }}
             >
               °Complete Part 1°{" "}
@@ -316,16 +329,18 @@ export default component$((props: DayDataProps) => {
           ) : (
             <a
               onClick$={async () => {
-                if (props.loading) {
+                if (props.privateViewerData!.loading) {
                   return;
                 }
-                props.setLoadingStatus(true);
+                props.privateViewerData!.setLoadingStatus(true);
                 await serverFetcher(
-                  `game/${props.gameNumber}/day/${props.dayNumber}/complete/part2`,
+                  `game/${props.privateViewerData!.gameNumber}/day/${
+                    props.privateViewerData!.dayNumber
+                  }/complete/part2`,
                   "PUT",
-                  props.userId
+                  props.privateViewerData!.userId
                 );
-                props.incrementButtonPresses();
+                props.privateViewerData!.incrementButtonPresses();
               }}
             >
               °Complete Part 2°{" "}
@@ -339,13 +354,22 @@ export default component$((props: DayDataProps) => {
           )}
         </li>{" "}
       </ul>
-      {+props.dayNumber > 1 && (
-        <a href={`/game/${props.gameNumber}/day/${+props.dayNumber - 1}/`}>
+      {+props.privateViewerData!.dayNumber > 1 && (
+        <a
+          href={`/game/${props.privateViewerData!.gameNumber}/day/${
+            +props.privateViewerData!.dayNumber - 1
+          }/`}
+        >
           °Previous Day°
         </a>
       )}{" "}
-      {+props.dayNumber < props.xtremeXmasData.currentDay && (
-        <a href={`/game/${props.gameNumber}/day/${+props.dayNumber + 1}/`}>
+      {+props.privateViewerData!.dayNumber <
+        props.xtremeXmasData.currentDay && (
+        <a
+          href={`/game/${props.privateViewerData!.gameNumber}/day/${
+            +props.privateViewerData!.dayNumber + 1
+          }/`}
+        >
           °Next Day°
         </a>
       )}
