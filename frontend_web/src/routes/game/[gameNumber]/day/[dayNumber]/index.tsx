@@ -1,4 +1,5 @@
 import {
+  $,
   Resource,
   component$,
   useResource$,
@@ -19,6 +20,7 @@ import styles from "./day.css?inline";
 import type { DayInfo } from "~/types";
 import { useLocalStorage } from "~/hooks/useLocalStorage";
 import constructChallengeModifierFullText from "~/util/constructChallengeModifierFullText";
+import DayData from "~/components/game/day/dayData";
 
 let dayInfo: DayInfo | null;
 
@@ -52,6 +54,18 @@ export default component$(() => {
     buttonPresses: 0,
     loading: false,
     dayInfo,
+  });
+
+  const incrementButtonPresses = $(() => {
+    state.buttonPresses += 1;
+  });
+
+  const setLoadingStatus = $((status: boolean) => {
+    if (status) {
+      state.loading = true;
+    } else {
+      state.loading = false;
+    }
   });
 
   const xtremeXmasUserDataResource = useResource$<any>(
@@ -270,302 +284,15 @@ export default component$(() => {
           }
 
           return (
-            <>
-              <ul class="flex column">
-                {xtremeXmasData.gameIsPublic && (
-                  <li>
-                    <a
-                      href={`/game/public/${xtremeXmasData.gameId}/day/${state.dayNumber}`}
-                    >
-                      °Public Link°
-                    </a>
-                  </li>
-                )}
-                <li>
-                  Reroll Tokens Earned:{" "}
-                  <strong class="token">
-                    {"".repeat(xtremeXmasData.rerollTokensEarned)}
-                  </strong>
-                </li>
-                <li>
-                  Reroll Tokens Spent During Part 1:{" "}
-                  <strong class="tokenSpent">
-                    {xtremeXmasData.rerollTokensSpentDuringPart1 > 9
-                      ? xtremeXmasData.rerollTokensSpentDuringPart1 + ""
-                      : "".repeat(xtremeXmasData.rerollTokensSpentDuringPart1)}
-                  </strong>
-                </li>
-                <li>
-                  Reroll Tokens Spent During Part 2:{" "}
-                  <strong class="tokenSpent">
-                    {xtremeXmasData.rerollTokensSpentDuringPart2 > 9
-                      ? xtremeXmasData.rerollTokensSpentDuringPart2 + ""
-                      : "".repeat(xtremeXmasData.rerollTokensSpentDuringPart2)}
-                  </strong>
-                </li>
-                <li>
-                  Current Reroll Tokens:{" "}
-                  <strong class="token">
-                    {xtremeXmasData.currentRerollTokens > 9
-                      ? xtremeXmasData.currentRerollTokens + ""
-                      : "".repeat(xtremeXmasData.currentRerollTokens)}
-                  </strong>
-                </li>
-                <li>
-                  Day Score:{" "}
-                  {xtremeXmasData.score > 0 ? (
-                    <strong class="token">+{xtremeXmasData.score}</strong>
-                  ) : (
-                    <strong class="tokenSpent">{xtremeXmasData.score}</strong>
-                  )}
-                </li>
-                {xtremeXmasData.modifierWhenPart1Completed &&
-                  (xtremeXmasData.modifierWhenPart1Completed !==
-                    xtremeXmasData.challengeModifier ||
-                    xtremeXmasData.optionWhenPart1Completed !==
-                      xtremeXmasData.modifierOption) && (
-                    <li>
-                      Challenge Modifier During Part 1:{" "}
-                      <strong>
-                        {xtremeXmasData.modifierWhenPart1Completed === "None"
-                          ? "None"
-                          : constructChallengeModifierFullText(
-                              xtremeXmasData.modifierWhenPart1Completed +
-                                (xtremeXmasData.optionWhenPart1Completed !==
-                                  "None" &&
-                                  xtremeXmasData.optionWhenPart1Completed)
-                            )}
-                        {xtremeXmasData.optionWhenPart1Completed !== "None" &&
-                          xtremeXmasData.optionWhenPart1Completed}
-                      </strong>
-                    </li>
-                  )}
-                <li>
-                  Challenge Modifier:{" "}
-                  <strong>
-                    {xtremeXmasData.challengeModifier === "None"
-                      ? "None"
-                      : constructChallengeModifierFullText(
-                          xtremeXmasData.challengeModifier +
-                            (xtremeXmasData.modifierOption !== "None" &&
-                              xtremeXmasData.modifierOption)
-                        )}
-                  </strong>{" "}
-                  {xtremeXmasData.part2Completed ? (
-                    <></>
-                  ) : !xtremeXmasData.dateFirstRolled ? (
-                    <a
-                      onClick$={async () => {
-                        if (state.loading) {
-                          return;
-                        }
-                        state.loading = true;
-                        await serverFetcher(
-                          `game/${state.gameNumber}/day/${state.dayNumber}/roll`,
-                          "PUT",
-                          userId
-                        );
-                        state.buttonPresses++;
-                      }}
-                    >
-                      °Roll Initial Challenge Modifier°
-                    </a>
-                  ) : (
-                    <li>
-                      <a
-                        onClick$={async () => {
-                          if (state.loading) {
-                            return;
-                          }
-                          state.loading = true;
-                          await serverFetcher(
-                            `game/${state.gameNumber}/day/${state.dayNumber}/reroll/modifier`,
-                            "PUT",
-                            userId
-                          );
-                          state.buttonPresses++;
-                        }}
-                      >
-                        °Reroll Challenge Modifier°
-                      </a>{" "}
-                      for <strong class="tokenSpent"></strong>
-                    </li>
-                  )}{" "}
-                  {xtremeXmasData.modifierOption !== "None" &&
-                    !xtremeXmasData.part2Completed && (
-                      <li>
-                        <a
-                          onClick$={async () => {
-                            if (state.loading) {
-                              return;
-                            }
-                            state.loading = true;
-                            await serverFetcher(
-                              `game/${state.gameNumber}/day/${state.dayNumber}/reroll/option`,
-                              "PUT",
-                              userId
-                            );
-                            state.buttonPresses++;
-                          }}
-                        >
-                          °Reroll Modifier Option°
-                        </a>{" "}
-                        ({xtremeXmasData.modifierOption}) for{" "}
-                        <strong class="tokenSpent"></strong>
-                      </li>
-                    )}{" "}
-                  {xtremeXmasData.challengeModifier !== "None" &&
-                    !xtremeXmasData.part2Completed && (
-                      <li>
-                        <a
-                          onClick$={async () => {
-                            if (state.loading) {
-                              return;
-                            }
-                            state.loading = true;
-                            await serverFetcher(
-                              `game/${state.gameNumber}/day/${state.dayNumber}/removeChallengeModifier`,
-                              "PUT",
-                              userId
-                            );
-                            state.buttonPresses++;
-                          }}
-                        >
-                          °Remove Challenge Modifier°
-                        </a>
-                      </li>
-                    )}
-                </li>
-                <li>
-                  Current Day: <strong>{xtremeXmasData.currentDay}</strong>{" "}
-                  {!xtremeXmasData.currentDayCompleted ||
-                  xtremeXmasData.currentDay != +state.dayNumber ||
-                  xtremeXmasData.currentDay === 25 ? (
-                    <></>
-                  ) : (
-                    <a
-                      onClick$={async () => {
-                        if (state.loading) {
-                          return;
-                        }
-                        state.loading = true;
-                        const res = await serverFetcher(
-                          `game/${state.gameNumber}/day/${
-                            +state.dayNumber + 1
-                          }`,
-                          "PUT",
-                          userId
-                        );
-                        state.buttonPresses++;
-                        window.location.href = `/game/${
-                          state.gameNumber
-                        }/day/${+res.number}`;
-                      }}
-                    >
-                      °Start Next Day°
-                    </a>
-                  )}
-                </li>
-                <li>
-                  Current Day Completed?{" "}
-                  <strong>
-                    {xtremeXmasData.currentDayCompleted ? `Yes` : `No`}
-                  </strong>{" "}
-                </li>
-                <li>
-                  Selected Day Part 1 Completed?{" "}
-                  <strong>
-                    {xtremeXmasData.part1Completed ? `Yes` : `No`}
-                  </strong>
-                  {xtremeXmasData.part2Completed ? (
-                    <>
-                      <br />
-                      <strong>
-                        {new Date(xtremeXmasData.part1Completed).toString()}
-                      </strong>
-                    </>
-                  ) : null}
-                  {!xtremeXmasData.dateFirstRolled ||
-                  xtremeXmasData.part1Completed ? (
-                    <></>
-                  ) : (
-                    <a
-                      onClick$={async () => {
-                        if (state.loading) {
-                          return;
-                        }
-                        state.loading = true;
-                        await serverFetcher(
-                          `game/${state.gameNumber}/day/${state.dayNumber}/complete/part1`,
-                          "PUT",
-                          userId
-                        );
-                        state.buttonPresses++;
-                      }}
-                    >
-                      °Complete Part 1°{" "}
-                      {xtremeXmasData.challengeModifier !== "None" && (
-                        <>
-                          <>for </>
-                          <span class="token"></span>
-                        </>
-                      )}
-                    </a>
-                  )}
-                </li>
-                <li>
-                  Selected Day Part 2 Completed?{" "}
-                  <strong>
-                    {xtremeXmasData.part2Completed ? `Yes` : `No`}
-                  </strong>{" "}
-                  {xtremeXmasData.part2Completed ? (
-                    <>
-                      <br />
-                      <strong>
-                        {new Date(xtremeXmasData.part2Completed).toString()}
-                      </strong>
-                    </>
-                  ) : null}
-                  {!xtremeXmasData.part1Completed ||
-                  xtremeXmasData.part2Completed ? (
-                    <></>
-                  ) : (
-                    <a
-                      onClick$={async () => {
-                        if (state.loading) {
-                          return;
-                        }
-                        state.loading = true;
-                        await serverFetcher(
-                          `game/${state.gameNumber}/day/${state.dayNumber}/complete/part2`,
-                          "PUT",
-                          userId
-                        );
-                        state.buttonPresses++;
-                      }}
-                    >
-                      °Complete Part 2°{" "}
-                      {xtremeXmasData.challengeModifier !== "None" && (
-                        <>
-                          <>for </>
-                          <span class="token"></span>
-                        </>
-                      )}
-                    </a>
-                  )}
-                </li>{" "}
-              </ul>
-              {+dayNumber > 1 && (
-                <a href={`/game/${gameNumber}/day/${+dayNumber - 1}/`}>
-                  °Previous Day°
-                </a>
-              )}{" "}
-              {dayNumber < xtremeXmasData.currentDay && (
-                <a href={`/game/${gameNumber}/day/${+dayNumber + 1}/`}>
-                  °Next Day°
-                </a>
-              )}
-            </>
+            <DayData
+              gameNumber={gameNumber}
+              dayNumber={dayNumber}
+              incrementButtonPresses={incrementButtonPresses}
+              loading={state.loading}
+              setLoadingStatus={setLoadingStatus}
+              userId={userId}
+              xtremeXmasData={xtremeXmasData}
+            />
           );
         }}
       />
