@@ -15,6 +15,7 @@ import { serverFetcher } from "~/util/serverFetcher";
 import styles from "./day.css?inline";
 import type { DayInfo } from "~/types";
 import { useLocalStorage } from "~/hooks/useLocalStorage";
+import constructChallengeModifierFullText from "~/util/constructChallengeModifierFullText";
 
 let dayInfo: DayInfo | null;
 
@@ -174,10 +175,11 @@ export default component$(() => {
                     ? `Loading...`
                     : state.dayInfo.challengeModifier === "None"
                     ? "None"
-                    : "You must write a program to complete this challenge " +
-                      state.dayInfo.challengeModifier +
-                      (state.dayInfo.modifierOption !== "None" &&
-                        state.dayInfo.modifierOption)}
+                    : constructChallengeModifierFullText(
+                        state.dayInfo.challengeModifier +
+                          (state.dayInfo.modifierOption !== "None" &&
+                            state.dayInfo.modifierOption)
+                      )}
                 </strong>
               </li>
               <li>
@@ -309,10 +311,12 @@ export default component$(() => {
                       <strong>
                         {xtremeXmasData.modifierWhenPart1Completed === "None"
                           ? "None"
-                          : "You must write a program to complete this challenge " +
-                            xtremeXmasData.modifierWhenPart1Completed}
-                        {xtremeXmasData.optionWhenPart1Completed !== "None" &&
-                          xtremeXmasData.optionWhenPart1Completed}
+                          : constructChallengeModifierFullText(
+                              xtremeXmasData.modifierWhenPart1Completed +
+                                (xtremeXmasData.optionWhenPart1Completed !==
+                                  "None" &&
+                                  xtremeXmasData.optionWhenPart1Completed)
+                            )}
                       </strong>
                     </li>
                   )}
@@ -321,10 +325,11 @@ export default component$(() => {
                   <strong>
                     {xtremeXmasData.challengeModifier === "None"
                       ? "None"
-                      : "You must write a program to complete this challenge " +
-                        xtremeXmasData.challengeModifier}
-                    {xtremeXmasData.modifierOption !== "None" &&
-                      xtremeXmasData.modifierOption}
+                      : constructChallengeModifierFullText(
+                          xtremeXmasData.challengeModifier +
+                            (xtremeXmasData.modifierOption !== "None" &&
+                              xtremeXmasData.modifierOption)
+                        )}
                   </strong>{" "}
                 </li>
                 <li>

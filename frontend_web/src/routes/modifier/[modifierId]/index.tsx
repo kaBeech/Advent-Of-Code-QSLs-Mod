@@ -1,6 +1,7 @@
 import { Resource, component$, useResource$ } from "@builder.io/qwik";
 import { useLocation, type DocumentHead } from "@builder.io/qwik-city";
 import type { ChallengeModifier, ModifierOption } from "~/types";
+import constructChallengeModifierFullText from "~/util/constructChallengeModifierFullText";
 import { serverFetcher } from "~/util/serverFetcher";
 
 export default component$(() => {
@@ -35,8 +36,7 @@ export default component$(() => {
               <h1>Challenge Modifier</h1>
               <p>{challengeModifier.name}</p>
               <p>
-                You must write a program to complete this challenge{" "}
-                {challengeModifier.text}
+                {constructChallengeModifierFullText(challengeModifier.text)}
               </p>
               {challengeModifier.explanatoryUrl && (
                 <p>
