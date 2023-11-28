@@ -354,7 +354,7 @@ export default component$((props: DayDataProps) => {
           )}
         </li>{" "}
       </ul>
-      {+props.privateViewerData!.dayNumber > 1 && (
+      {props.privateViewerData && +props.privateViewerData.dayNumber > 1 && (
         <a
           href={`/game/${props.privateViewerData!.gameNumber}/day/${
             +props.privateViewerData!.dayNumber - 1
@@ -363,16 +363,17 @@ export default component$((props: DayDataProps) => {
           °Previous Day°
         </a>
       )}{" "}
-      {+props.privateViewerData!.dayNumber <
-        props.xtremeXmasData.currentDay && (
-        <a
-          href={`/game/${props.privateViewerData!.gameNumber}/day/${
-            +props.privateViewerData!.dayNumber + 1
-          }/`}
-        >
-          °Next Day°
-        </a>
-      )}
+      {props.privateViewerData &&
+        +props.privateViewerData!.dayNumber <
+          props.xtremeXmasData.currentDay && (
+          <a
+            href={`/game/${props.privateViewerData!.gameNumber}/day/${
+              +props.privateViewerData!.dayNumber + 1
+            }/`}
+          >
+            °Next Day°
+          </a>
+        )}
     </>
   );
 });
