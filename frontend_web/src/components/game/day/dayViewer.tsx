@@ -10,7 +10,7 @@ export interface DayDataProps {
   setLoadingStatus: Function | any;
   userId: string;
   xtremeXmasData: {
-    gameIsPublic: boolean;
+    gameName: string;
     gameId: string;
     rerollTokensEarned: number;
     rerollTokensSpentDuringPart1: number;
@@ -27,13 +27,33 @@ export interface DayDataProps {
     part2Completed: string | null;
     dateFirstRolled: string | null;
   };
+  privateViewerData?: {
+    gameIsPublic: boolean;
+  };
+  publicViewerData?: {
+    oauthAvatarUrl: string;
+    username: string;
+  };
 }
 
 export default component$((props: DayDataProps) => {
   return (
     <>
       <ul class="flex column">
-        {props.xtremeXmasData.gameIsPublic && (
+        <li>{props.xtremeXmasData.gameName}</li>
+        {props.publicViewerData && (
+          <li>
+            <img
+              src={props.publicViewerData!.oauthAvatarUrl}
+              alt="user avatar"
+              style={{ height: "1.5rem", width: "1.5rem" }}
+              width="24"
+              height="24"
+            />{" "}
+            {props.publicViewerData!.username}
+          </li>
+        )}
+        {props.privateViewerData?.gameIsPublic && (
           <li>
             <a
               href={`/game/public/${props.xtremeXmasData.gameId}/day/${props.dayNumber}`}
@@ -112,7 +132,7 @@ export default component$((props: DayDataProps) => {
                       props.xtremeXmasData.modifierOption)
                 )}
           </strong>{" "}
-          {props.xtremeXmasData.part2Completed ? (
+          {!props.privateViewerData || props.xtremeXmasData.part2Completed ? (
             <></>
           ) : !props.xtremeXmasData.dateFirstRolled ? (
             <a
@@ -152,7 +172,8 @@ export default component$((props: DayDataProps) => {
               for <strong class="tokenSpent"></strong>
             </li>
           )}{" "}
-          {props.xtremeXmasData.modifierOption !== "None" &&
+          {props.privateViewerData &&
+            props.xtremeXmasData.modifierOption !== "None" &&
             !props.xtremeXmasData.part2Completed && (
               <li>
                 <a
@@ -175,7 +196,8 @@ export default component$((props: DayDataProps) => {
                 <strong class="tokenSpent"></strong>
               </li>
             )}{" "}
-          {props.xtremeXmasData.challengeModifier !== "None" &&
+          {props.privateViewerData &&
+            props.xtremeXmasData.challengeModifier !== "None" &&
             !props.xtremeXmasData.part2Completed && (
               <li>
                 <a
@@ -199,7 +221,8 @@ export default component$((props: DayDataProps) => {
         </li>
         <li>
           Current Day: <strong>{props.xtremeXmasData.currentDay}</strong>{" "}
-          {!props.xtremeXmasData.currentDayCompleted ||
+          {!props.privateViewerData ||
+          !props.xtremeXmasData.currentDayCompleted ||
           props.xtremeXmasData.currentDay != +props.dayNumber ||
           props.xtremeXmasData.currentDay === 25 ? (
             <></>
@@ -233,16 +256,19 @@ export default component$((props: DayDataProps) => {
         </li>
         <li>
           Selected Day Part 1 Completed?{" "}
-          <strong>{props.xtremeXmasData.part1Completed ? `Yes` : `No`}</strong>
-          {props.xtremeXmasData.part2Completed ? (
+          {props.xtremeXmasData.part1Completed ? (
             <>
+              <strong>Yes</strong>
               <br />
               <strong>
                 {new Date(props.xtremeXmasData.part1Completed!).toString()}
               </strong>
             </>
-          ) : null}
-          {!props.xtremeXmasData.dateFirstRolled ||
+          ) : (
+            <strong>No</strong>
+          )}
+          {!props.privateViewerData ||
+          !props.xtremeXmasData.dateFirstRolled ||
           props.xtremeXmasData.part1Completed ? (
             <></>
           ) : (
@@ -272,16 +298,19 @@ export default component$((props: DayDataProps) => {
         </li>
         <li>
           Selected Day Part 2 Completed?{" "}
-          <strong>{props.xtremeXmasData.part2Completed ? `Yes` : `No`}</strong>{" "}
           {props.xtremeXmasData.part2Completed ? (
             <>
+              <strong>Yes</strong>
               <br />
               <strong>
                 {new Date(props.xtremeXmasData.part2Completed).toString()}
               </strong>
             </>
-          ) : null}
-          {!props.xtremeXmasData.part1Completed ||
+          ) : (
+            <strong>No</strong>
+          )}
+          {!props.privateViewerData ||
+          !props.xtremeXmasData.part1Completed ||
           props.xtremeXmasData.part2Completed ? (
             <></>
           ) : (
