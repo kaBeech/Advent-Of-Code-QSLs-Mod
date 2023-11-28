@@ -19,7 +19,6 @@ import { useAuthSession } from "~/routes/plugin@auth";
 import styles from "./day.css?inline";
 import type { DayInfo } from "~/types";
 import { useLocalStorage } from "~/hooks/useLocalStorage";
-import constructChallengeModifierFullText from "~/util/constructChallengeModifierFullText";
 import DayData from "~/components/game/day/dayData";
 
 let dayInfo: DayInfo | null;
@@ -146,129 +145,71 @@ export default component$(() => {
         value={xtremeXmasUserDataResource}
         onPending={() => {
           state.loading = true;
-          return (
-            <ul>
-              <li>
-                Reroll Tokens Earned:{" "}
-                <strong>
-                  {state.dayInfo?.part2Completed
-                    ? ""
-                    : state.dayInfo?.part1Completed
-                    ? ""
-                    : ""}
-                </strong>
-              </li>
-              <li>
-                Reroll Tokens Spent During Part 1:{" "}
-                <strong>
-                  {(state.dayInfo?.rerollTokensSpentDuringPart1 || 0) > 9
-                    ? state.dayInfo?.rerollTokensSpentDuringPart1 + ""
-                    : "".repeat(
-                        state.dayInfo?.rerollTokensSpentDuringPart1 || 0
-                      )}
-                </strong>
-              </li>
-              <li>
-                Reroll Tokens Spent During Part 2:{" "}
-                <strong>
-                  {" "}
-                  {(state.dayInfo?.rerollTokensSpentDuringPart2 || 0) > 9
-                    ? state.dayInfo?.rerollTokensSpentDuringPart2 + ""
-                    : "".repeat(
-                        state.dayInfo?.rerollTokensSpentDuringPart2 || 0
-                      )}
-                </strong>
-              </li>
-              <li>
-                Current Reroll Tokens:{" "}
-                <strong class="token">
-                  {" "}
-                  {(state.dayInfo?.currentRerollTokens || 0) > 9
-                    ? state.dayInfo?.currentRerollTokens + ""
-                    : "".repeat(state.dayInfo?.currentRerollTokens || 0)}
-                </strong>
-              </li>
-              <li>
-                Day Score:{" "}
-                <strong>
-                  {!state.dayInfo ? (
-                    `Loading...`
-                  ) : state.dayInfo.score > 0 ? (
-                    <strong class="token">+{state.dayInfo.score}</strong>
-                  ) : (
-                    <strong class="tokenSpent">{state.dayInfo.score}</strong>
-                  )}
-                </strong>
-              </li>
-              <li>
-                Challenge Modifier:{" "}
-                <strong>
-                  {!state.dayInfo
-                    ? `Loading...`
-                    : state.dayInfo.challengeModifier === "None"
-                    ? "None"
-                    : constructChallengeModifierFullText(
-                        state.dayInfo.challengeModifier +
-                          (state.dayInfo.modifierOption !== "None" &&
-                            state.dayInfo.modifierOption)
-                      )}
-                </strong>
-              </li>
-              <li>
-                Current Day:{" "}
-                <strong>
-                  {!state.dayInfo ? `Loading...` : state.dayInfo.currentDay}
-                </strong>
-              </li>
-              <li>
-                Current Day Completed?:{" "}
-                <strong>
-                  {!state.dayInfo
-                    ? `Loading...`
-                    : state.dayInfo.part1Completed
-                    ? `Yes`
-                    : `No`}
-                </strong>
-              </li>
-              <li>
-                Selected Day Part 1 Completed?:{" "}
-                <strong>
-                  {" "}
-                  {!state.dayInfo
-                    ? `Loading...`
-                    : state.dayInfo.part1Completed
-                    ? `Yes`
-                    : `No`}
-                </strong>
-                {!state.dayInfo?.part1Completed ? null : (
-                  <>
-                    <br />
-                    <strong>
-                      {new Date(state.dayInfo.part1Completed).toString()}
-                    </strong>
-                  </>
-                )}
-              </li>
-              <li>
-                Selected Day Part 2 Completed?:{" "}
-                <strong>
-                  {!state.dayInfo
-                    ? `Loading...`
-                    : state.dayInfo.part2Completed
-                    ? `Yes`
-                    : `No`}
-                </strong>
-                {!state.dayInfo?.part2Completed ? null : (
-                  <>
-                    <br />
-                    <strong>
-                      {new Date(state.dayInfo.part2Completed).toString()}
-                    </strong>
-                  </>
-                )}
-              </li>
-            </ul>
-          );
+          if (state.dayInfo) {
+            return (
+              <DayData
+                gameNumber={gameNumber}
+                dayNumber={dayNumber}
+                incrementButtonPresses={incrementButtonPresses}
+                loading={state.loading}
+                setLoadingStatus={setLoadingStatus}
+                userId={userId}
+                xtremeXmasData={{
+                  gameIsPublic: state.dayInfo.gameIsPublic,
+                  gameId: state.dayInfo.gameId,
+                  rerollTokensEarned: state.dayInfo.rerollTokensEarned,
+                  rerollTokensSpentDuringPart1:
+                    state.dayInfo.rerollTokensSpentDuringPart1,
+                  rerollTokensSpentDuringPart2:
+                    state.dayInfo.rerollTokensSpentDuringPart2,
+                  currentRerollTokens: state.dayInfo.currentRerollTokens,
+                  score: state.dayInfo.score,
+                  challengeModifier: state.dayInfo.challengeModifier,
+                  modifierOption: state.dayInfo.modifierOption,
+                  currentDay: state.dayInfo.currentDay,
+                  currentDayCompleted: state.dayInfo.currentDayCompleted,
+                  part1Completed:
+                    state.dayInfo.part1Completed?.toDateString() || null,
+                  part2Completed:
+                    state.dayInfo.part2Completed?.toDateString() || null,
+                  modifierWhenPart1Completed:
+                    state.dayInfo.modifierWhenPart1Completed,
+                  optionWhenPart1Completed:
+                    state.dayInfo.optionWhenPart1Completed,
+                  dateFirstRolled: state.dayInfo.dateFirstRolled.toDateString(),
+                }}
+              />
+            );
+          } else {
+            return (
+              <DayData
+                gameNumber={gameNumber}
+                dayNumber={dayNumber}
+                incrementButtonPresses={incrementButtonPresses}
+                loading={state.loading}
+                setLoadingStatus={setLoadingStatus}
+                userId={userId}
+                xtremeXmasData={{
+                  gameIsPublic: false,
+                  gameId: "Loading...",
+                  rerollTokensEarned: 0,
+                  rerollTokensSpentDuringPart1: 0,
+                  rerollTokensSpentDuringPart2: 0,
+                  currentRerollTokens: 0,
+                  score: 0,
+                  challengeModifier: "Loading...",
+                  modifierOption: "Loading...",
+                  currentDay: 0,
+                  currentDayCompleted: false,
+                  part1Completed: null,
+                  part2Completed: null,
+                  modifierWhenPart1Completed: "Loading...",
+                  optionWhenPart1Completed: "Loading...",
+                  dateFirstRolled: "Loading...",
+                }}
+              />
+            );
+          }
         }}
         onResolved={(xtremeXmasData) => {
           state.loading = false;

@@ -15,6 +15,10 @@ export interface DayInfo {
   username: string;
   oauthAvatarUrl: string;
   gameName: string;
+  rerollTokensEarned: number;
+  gameIsPublic: boolean;
+  dateFirstRolled: Date;
+  gameId: string;
 }
 
 export interface GameInfo {
