@@ -19,7 +19,7 @@ import { useAuthSession } from "~/routes/plugin@auth";
 import styles from "./day.css?inline";
 import type { DayInfo } from "~/types";
 import { useLocalStorage } from "~/hooks/useLocalStorage";
-import DayData from "~/components/game/day/dayData";
+import DayViewer from "~/components/game/day/dayViewer";
 
 let dayInfo: DayInfo | null;
 
@@ -147,7 +147,7 @@ export default component$(() => {
           state.loading = true;
           if (state.dayInfo) {
             return (
-              <DayData
+              <DayViewer
                 gameNumber={gameNumber}
                 dayNumber={dayNumber}
                 incrementButtonPresses={incrementButtonPresses}
@@ -182,7 +182,7 @@ export default component$(() => {
             );
           } else {
             return (
-              <DayData
+              <DayViewer
                 gameNumber={gameNumber}
                 dayNumber={dayNumber}
                 incrementButtonPresses={incrementButtonPresses}
@@ -225,7 +225,7 @@ export default component$(() => {
           }
 
           return (
-            <DayData
+            <DayViewer
               gameNumber={gameNumber}
               dayNumber={dayNumber}
               incrementButtonPresses={incrementButtonPresses}
