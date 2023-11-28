@@ -868,28 +868,6 @@ const modifierOptionData: Prisma.ModifierOptionCreateInput[] = [
         name: "esoteric_box",
       },
     },
-    name: "esoteric_box_brainfuck",
-    text: "Brainfuck",
-    standard: true,
-    isPublic: true,
-  },
-  {
-    ChallengeModifier: {
-      connect: {
-        name: "esoteric_box",
-      },
-    },
-    name: "esoteric_box_jsfuck",
-    text: "JSFuck",
-    standard: true,
-    isPublic: true,
-  },
-  {
-    ChallengeModifier: {
-      connect: {
-        name: "esoteric_box",
-      },
-    },
     name: "esoteric_box_chicken",
     text: "Chicken",
     explanatoryUrl: "https://esolangs.org/wiki/Chicken",
