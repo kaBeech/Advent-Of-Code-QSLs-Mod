@@ -21,11 +21,12 @@ export default component$(() => {
 });
 
 export const head: DocumentHead = {
-  title: "Welcome to Qwik",
+  title: "Xtreme Xmas Code - Home",
   meta: [
     {
       name: "description",
-      content: "Qwik site description",
+      content:
+        "Xtreme Xmas Code - an invigorating twist on your favorite advent calendar",
     },
   ],
 };

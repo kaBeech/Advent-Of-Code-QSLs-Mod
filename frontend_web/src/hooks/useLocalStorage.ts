@@ -11,7 +11,10 @@ export const useLocalStorage = (
       const item = window.localStorage.getItem(key);
       state.value = item ? JSON.parse(item) : initialState;
     } catch (error) {
-      console.error(error);
+      console.warn(
+        `Getting ${key} failed - setting initial state to ${initialState}. Error info just in case: `,
+        error,
+      );
       state.value = initialState;
     }
   });
@@ -23,7 +26,10 @@ export const useLocalStorage = (
         window.localStorage.setItem(key, JSON.stringify(value));
       }
     } catch (error) {
-      console.error(error);
+      console.error(
+        `Setting ${key} to ${value} failed. Error info: `,
+        error,
+      );
     }
   });
   return [state, setValue$];

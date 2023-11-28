@@ -9,6 +9,7 @@ import { useLocalStorage } from "~/hooks/useLocalStorage";
 import { getGithubUserIdFromUserImage } from "~/util/getGithubUserIdFromUserImage";
 import { serverFetcher } from "~/util/serverFetcher";
 import { useAuthSession } from "../plugin@auth";
+import type { DocumentHead } from "@builder.io/qwik-city";
 
 export default component$(() => {
   const [areLightsOn, setLightsBoolean] = useLocalStorage("areLightsOn", false);
@@ -133,3 +134,14 @@ export default component$(() => {
     </article>
   );
 });
+
+export const head: DocumentHead = {
+  title: "Xtreme Xmas Code - Settings",
+  meta: [
+    {
+      name: "description",
+      content:
+        "Xtreme Xmas Code - an invigorating twist on your favorite advent calendar",
+    },
+  ],
+};

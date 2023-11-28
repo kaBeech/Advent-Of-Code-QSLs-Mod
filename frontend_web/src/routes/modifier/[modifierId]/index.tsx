@@ -1,6 +1,7 @@
 import { Resource, component$, useResource$ } from "@builder.io/qwik";
 import { useLocation, type DocumentHead } from "@builder.io/qwik-city";
 import type { ChallengeModifier, ModifierOption } from "~/types";
+import constructChallengeModifierFullText from "~/util/constructChallengeModifierFullText";
 import { serverFetcher } from "~/util/serverFetcher";
 
 export default component$(() => {
@@ -35,10 +36,21 @@ export default component$(() => {
               <h1>Challenge Modifier</h1>
               <p>{challengeModifier.name}</p>
               <p>
-                You must write a program to complete this challenge{" "}
-                {challengeModifier.text}
+                {constructChallengeModifierFullText(challengeModifier.text)}
               </p>
-              <p>{challengeModifier.explanatoryUrl}</p>
+              {challengeModifier.explanatoryUrl && (
+                <p>
+                  See this{" "}
+                  <a
+                    href={challengeModifier.explanatoryUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    external link
+                  </a>{" "}
+                  for more info
+                </p>
+              )}
               <h2>Modifier Options:</h2>
               <ul>
                 {challengeModifier.hasOptions
@@ -67,12 +79,12 @@ export default component$(() => {
 });
 
 export const head: DocumentHead = {
-  title: "Xtreme Xmas - Challenge Modifiers",
+  title: "Xtreme Xmas Code - Challenge Modifier Viewer",
   meta: [
     {
       name: "description",
       content:
-        "Xtreme Xmas - an invigorating twist on your favorite advent calendar",
+        "Xtreme Xmas Code - an invigorating twist on your favorite advent calendar",
     },
   ],
 };
