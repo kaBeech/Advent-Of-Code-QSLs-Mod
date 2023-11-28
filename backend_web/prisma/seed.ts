@@ -183,27 +183,27 @@ const challengeModifierData: Prisma.ChallengeModifierCreateInput[] = [
   {
     name: "new_natural_language",
     text:
-      "making declarations in a natural language not yet used in this codebase (e.g. Spanish)",
+      "while making declarations in a natural language not yet used in this codebase (e.g. Spanish)",
     standard: true,
     isPublic: true,
   },
   {
     name: "non_latin",
     text:
-      "making declarations in a natural language using a non-Latin-based writing system (e.g. Arabic)",
+      "while making declarations in a natural language using a non-Latin-based writing system (e.g. Arabic)",
     standard: true,
     isPublic: true,
   },
   {
     name: "alphabetical_declarations",
-    text: "making declarations in alphabetical order",
+    text: "while making declarations in alphabetical order",
     standard: true,
     isPublic: true,
   },
   // {
   //   name: "random_letter_declarations",
   //   text:
-  //     "making all declarations begin with a Scrabble-official word starting with the same random letter:",
+  //     "while making all declarations begin with a Scrabble-official word starting with the same random letter:",
   //   hasOptions: true,
   //   standard: true,
   //   isPublic: true,
@@ -252,7 +252,7 @@ const challengeModifierData: Prisma.ChallengeModifierCreateInput[] = [
   },
   {
     name: "no_comments",
-    text: "using no comments",
+    text: "while making your code as clear as possible, but using no comments",
     standard: true,
     isPublic: true,
   },
