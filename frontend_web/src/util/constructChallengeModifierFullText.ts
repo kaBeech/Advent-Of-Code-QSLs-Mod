@@ -1,6 +1,7 @@
 export default function (
   challengeModifierText: string,
 ): string {
-  const preface = "You must write a program to complete this challenge ";
+  const preface =
+    "Your challenge is to write a program to complete today's puzzle ";
   return preface + challengeModifierText;
 }
