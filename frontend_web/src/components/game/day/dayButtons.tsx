@@ -25,7 +25,7 @@ export interface DayButtonsProps {
 
 export default component$((props: DayButtonsProps) => {
   return (
-    <>
+    <div class={`flex column gap1 marginTop1`}>
       {+props.privateViewerData.dayNumber > 1 && (
         <a
           href={`/game/${props.privateViewerData!.gameNumber}/day/${
@@ -222,6 +222,6 @@ export default component$((props: DayButtonsProps) => {
           )}
         </a>
       )}
-    </>
+    </div>
   );
 });

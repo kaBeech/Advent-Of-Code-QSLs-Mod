@@ -39,7 +39,7 @@ export interface DayDataProps {
 export default component$((props: DayDataProps) => {
   return (
     <>
-      <ul class="flex column">
+      <ul class="flex column textCenter gap1">
         <li>{props.xtremeXmasData.gameName}</li>
         {props.publicViewerData && (
           <li>
