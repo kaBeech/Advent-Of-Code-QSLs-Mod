@@ -13,7 +13,6 @@ import {
   type RequestHandler,
 } from "@builder.io/qwik-city";
 import { serverFetcher } from "~/util/serverFetcher";
-import { getGithubUserIdFromUserImage } from "~/util/getGithubUserIdFromUserImage";
 import type { Session } from "@auth/core/types";
 import { useAuthSession } from "~/routes/plugin@auth";
 import styles from "./day.css?inline";
@@ -41,7 +40,8 @@ export const onRequest: RequestHandler = (event) => {
 export default component$(() => {
   useStylesScoped$(styles);
   const session = useAuthSession();
-  const userId = getGithubUserIdFromUserImage(session.value!.user!.image!);
+  // This is not actually using email - it's a hack to get Qwik's DefaultSession to make the User's ID accessible
+  const userId = session.value!.user!.email!;
   const gameNumber = useLocation().params.gameNumber;
   const dayNumber = useLocation().params.dayNumber;
   // eslint-disable-next-line @typescript-eslint/no-unused-vars

@@ -6,7 +6,6 @@ import {
   useStore,
 } from "@builder.io/qwik";
 import { useLocalStorage } from "~/hooks/useLocalStorage";
-import { getGithubUserIdFromUserImage } from "~/util/getGithubUserIdFromUserImage";
 import { serverFetcher } from "~/util/serverFetcher";
 import { useAuthSession } from "../plugin@auth";
 import type { DocumentHead } from "@builder.io/qwik-city";
@@ -49,7 +48,8 @@ export default component$(() => {
     );
   }
 
-  const userId = getGithubUserIdFromUserImage(session.value!.user!.image!);
+  // This is not actually using email - it's a hack to get Qwik's DefaultSession to make the User's ID accessible
+  const userId = session.value!.user!.email!;
 
   const xtremeXmasUserDataResource = useResource$<any>(async ({ cleanup }) => {
     const abortController = new AbortController();

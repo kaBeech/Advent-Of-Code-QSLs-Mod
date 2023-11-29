@@ -4,8 +4,6 @@ import { Resource, component$, useResource$, useStore } from "@builder.io/qwik";
 import type { DocumentHead, RequestHandler } from "@builder.io/qwik-city";
 import type { LeaderboardGame } from "~/types";
 import { serverFetcher } from "~/util/serverFetcher";
-// import { getGithubUserIdFromUserImage } from "~/util/getGithubUserIdFromUserImage";
-// import { useAuthSession } from "../plugin@auth";
 
 let leaderboardGames: LeaderboardGame[] | null = null;
 
@@ -18,8 +16,6 @@ export const onRequest: RequestHandler = (event) => {
 };
 
 export default component$(() => {
-  // const session = useAuthSession();
-  // const userId = getGithubUserIdFromUserImage(session.value!.user!.image!);
   const state = useStore({
     leaderboardGames,
   });

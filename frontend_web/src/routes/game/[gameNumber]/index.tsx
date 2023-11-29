@@ -13,7 +13,6 @@ import {
 } from "@builder.io/qwik-city";
 import { serverFetcher } from "~/util/serverFetcher";
 import { useAuthSession } from "../../plugin@auth";
-import { getGithubUserIdFromUserImage } from "~/util/getGithubUserIdFromUserImage";
 import type { Session } from "@auth/core/types";
 import DayLink from "~/components/game/dayLink/dayLink";
 import type { GameInfo } from "~/types";
@@ -41,7 +40,8 @@ export default component$(() => {
     gameInfo,
   });
   const session = useAuthSession();
-  const userId = getGithubUserIdFromUserImage(session.value!.user!.image!);
+  // This is not actually using email - it's a hack to get Qwik's DefaultSession to make the User's ID accessible
+  const userId = session.value!.user!.email!;
   const gameNumber = useLocation().params.gameNumber;
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [getYear, setYear] = useLocalStorage("year", 2014);
