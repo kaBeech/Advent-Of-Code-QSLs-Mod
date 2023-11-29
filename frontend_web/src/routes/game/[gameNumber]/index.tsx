@@ -17,6 +17,7 @@ import type { Session } from "@auth/core/types";
 import DayLink from "~/components/game/dayLink/dayLink";
 import type { GameInfo } from "~/types";
 import { useLocalStorage } from "~/hooks/useLocalStorage";
+import constructUserId from "~/util/constructUserId";
 
 let gameInfo: GameInfo | null;
 
@@ -41,7 +42,10 @@ export default component$(() => {
   });
   const session = useAuthSession();
   // This is not actually using email - it's a hack to get Qwik's DefaultSession to make the User's ID accessible
-  const userId = session.value!.user!.email!;
+  const userId = constructUserId(
+    session.value!.user!.email!,
+    session.value!.user!.image!
+  );
   const gameNumber = useLocation().params.gameNumber;
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [getYear, setYear] = useLocalStorage("year", 2014);

@@ -2,6 +2,7 @@ import { Resource, component$, useResource$, useStore } from "@builder.io/qwik";
 import type { DocumentHead } from "@builder.io/qwik-city";
 import { serverFetcher } from "~/util/serverFetcher";
 import { useAuthSession } from "../plugin@auth";
+import constructUserId from "~/util/constructUserId";
 
 const name = "Test Game";
 const year = 2022;
@@ -12,7 +13,10 @@ const repositoryLink = "https://github.com/octocat/Spoon-Knife";
 export default component$(() => {
   const session = useAuthSession();
   // This is not actually using email - it's a hack to get Qwik's DefaultSession to make the User's ID accessible
-  const userId = session.value!.user!.email!;
+  const userId = constructUserId(
+    session.value!.user!.email!,
+    session.value!.user!.image!
+  );
 
   const state = useStore({
     numberOfGames,

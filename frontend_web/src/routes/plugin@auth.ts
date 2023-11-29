@@ -31,7 +31,7 @@ export const { onRequest, useAuthSession, useAuthSignin, useAuthSignout } =
           return {
             id: profile.id.toString(),
             name: profile.name ?? profile.login,
-            image: profile.avatar_url,
+            image: profile.avatar_url ? profile.avatar_url : "github",
             // This is not email, it's a hack to get Qwik's DefaultSession to make the User's ID accessible
             email: profile.id.toString(),
           };
@@ -67,7 +67,7 @@ export const { onRequest, useAuthSession, useAuthSignin, useAuthSignout } =
           return {
             id: profile.id.toString(),
             name: profile.name,
-            image: profile.icon_img,
+            image: profile.icon_img ? profile.icon_img : "reddit",
             // This is not email, it's a hack to get Qwik's DefaultSession to make the User's ID accessible
             email: profile.id.toString(),
           };

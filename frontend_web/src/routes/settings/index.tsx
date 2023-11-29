@@ -9,6 +9,7 @@ import { useLocalStorage } from "~/hooks/useLocalStorage";
 import { serverFetcher } from "~/util/serverFetcher";
 import { useAuthSession } from "../plugin@auth";
 import type { DocumentHead } from "@builder.io/qwik-city";
+import constructUserId from "~/util/constructUserId";
 
 export default component$(() => {
   const [areLightsOn, setLightsBoolean] = useLocalStorage("areLightsOn", false);
@@ -49,7 +50,10 @@ export default component$(() => {
   }
 
   // This is not actually using email - it's a hack to get Qwik's DefaultSession to make the User's ID accessible
-  const userId = session.value!.user!.email!;
+  const userId = constructUserId(
+    session.value!.user!.email!,
+    session.value!.user!.image!
+  );
 
   const xtremeXmasUserDataResource = useResource$<any>(async ({ cleanup }) => {
     const abortController = new AbortController();

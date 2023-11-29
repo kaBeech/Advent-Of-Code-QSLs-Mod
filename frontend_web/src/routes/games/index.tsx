@@ -4,6 +4,7 @@ import { serverFetcher } from "~/util/serverFetcher";
 import { useAuthSession } from "../plugin@auth";
 import type { Session } from "@auth/core/types";
 import type { UserData } from "~/types";
+import constructUserId from "~/util/constructUserId";
 
 let gameNumber = 1;
 const dayNumber = 1;
@@ -24,7 +25,10 @@ export const onRequest: RequestHandler = (event) => {
 export default component$(() => {
   const session = useAuthSession();
   // This is not actually using email - it's a hack to get Qwik's DefaultSession to make the User's ID accessible
-  const userId = session.value!.user!.email!;
+  const userId = constructUserId(
+    session.value!.user!.email!,
+    session.value!.user!.image!
+  );
 
   const state = useStore({
     gameNumber,

@@ -19,6 +19,7 @@ import styles from "./day.css?inline";
 import type { DayInfo } from "~/types";
 import { useLocalStorage } from "~/hooks/useLocalStorage";
 import DayViewer from "~/components/game/day/dayViewer";
+import constructUserId from "~/util/constructUserId";
 
 let dayInfo: DayInfo | null;
 
@@ -41,7 +42,10 @@ export default component$(() => {
   useStylesScoped$(styles);
   const session = useAuthSession();
   // This is not actually using email - it's a hack to get Qwik's DefaultSession to make the User's ID accessible
-  const userId = session.value!.user!.email!;
+  const userId = constructUserId(
+    session.value!.user!.email!,
+    session.value!.user!.image!
+  );
   const gameNumber = useLocation().params.gameNumber;
   const dayNumber = useLocation().params.dayNumber;
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
