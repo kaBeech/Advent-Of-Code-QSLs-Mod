@@ -27,9 +27,7 @@ export default component$((props: LoginProps) => {
       ) : (
         <a
           onClick$={() => {
-            logIn.submit({
-              providerId: "github",
-            });
+            logIn.submit({});
             state.isLoggedIn = true;
           }}
           class="textGreen"

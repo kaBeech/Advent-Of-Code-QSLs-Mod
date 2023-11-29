@@ -6,9 +6,7 @@ export default component$(() => {
   return (
     <a
       onClick$={() => {
-        signIn.submit({
-          providerId: "github",
-        });
+        signIn.submit({});
       }}
       class="textGreen"
     >

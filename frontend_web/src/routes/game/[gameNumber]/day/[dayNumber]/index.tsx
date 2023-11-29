@@ -13,13 +13,13 @@ import {
   type RequestHandler,
 } from "@builder.io/qwik-city";
 import { serverFetcher } from "~/util/serverFetcher";
-import { getGithubUserIdFromUserImage } from "~/util/getGithubUserIdFromUserImage";
 import type { Session } from "@auth/core/types";
 import { useAuthSession } from "~/routes/plugin@auth";
 import styles from "./day.css?inline";
 import type { DayInfo } from "~/types";
 import { useLocalStorage } from "~/hooks/useLocalStorage";
 import DayViewer from "~/components/game/day/dayViewer";
+import constructUserId from "~/util/constructUserId";
 
 let dayInfo: DayInfo | null;
 
@@ -41,7 +41,11 @@ export const onRequest: RequestHandler = (event) => {
 export default component$(() => {
   useStylesScoped$(styles);
   const session = useAuthSession();
-  const userId = getGithubUserIdFromUserImage(session.value!.user!.image!);
+  // This is not actually using email - it's a hack to get Qwik's DefaultSession to make the User's ID accessible
+  const userId = constructUserId(
+    session.value!.user!.email!,
+    session.value!.user!.image!
+  );
   const gameNumber = useLocation().params.gameNumber;
   const dayNumber = useLocation().params.dayNumber;
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -151,7 +155,7 @@ export default component$(() => {
                 privateViewerData={{
                   gameIsPublic: state.dayInfo.gameIsPublic,
                   gameId: state.dayInfo.gameId,
-                  dateFirstRolled: state.dayInfo.dateFirstRolled.toDateString(),
+                  dateFirstRolled: String(state.dayInfo.dateFirstRolled),
                   gameNumber,
                   dayNumber,
                   incrementButtonPresses,
@@ -172,10 +176,8 @@ export default component$(() => {
                   modifierOption: state.dayInfo.modifierOption,
                   currentDay: state.dayInfo.currentDay,
                   currentDayCompleted: state.dayInfo.currentDayCompleted,
-                  part1Completed:
-                    state.dayInfo.part1Completed?.toDateString() || null,
-                  part2Completed:
-                    state.dayInfo.part2Completed?.toDateString() || null,
+                  part1Completed: String(state.dayInfo.part1Completed) || null,
+                  part2Completed: String(state.dayInfo.part2Completed) || null,
                   modifierWhenPart1Completed:
                     state.dayInfo.modifierWhenPart1Completed,
                   optionWhenPart1Completed:

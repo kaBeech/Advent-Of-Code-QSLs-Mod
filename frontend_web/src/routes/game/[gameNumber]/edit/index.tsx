@@ -6,13 +6,13 @@ import {
   useVisibleTask$,
 } from "@builder.io/qwik";
 import { useLocalStorage } from "~/hooks/useLocalStorage";
-import { getGithubUserIdFromUserImage } from "~/util/getGithubUserIdFromUserImage";
 import { serverFetcher } from "~/util/serverFetcher";
 import { useAuthSession } from "../../../plugin@auth";
 import type { Session } from "@auth/core/types";
 import type { DocumentHead } from "@builder.io/qwik-city";
 import { useLocation, type RequestHandler } from "@builder.io/qwik-city";
 import type { GameInfo } from "~/types";
+import constructUserId from "~/util/constructUserId";
 
 let gameInfo: GameInfo | null;
 
@@ -36,7 +36,11 @@ export default component$(() => {
   const [getYear, setYear] = useLocalStorage("year", 2014);
 
   const session = useAuthSession();
-  const userId = getGithubUserIdFromUserImage(session.value!.user!.image!);
+  // This is not actually using email - it's a hack to get Qwik's DefaultSession to make the User's ID accessible
+  const userId = constructUserId(
+    session.value!.user!.email!,
+    session.value!.user!.image!
+  );
   const gameNumber = useLocation().params.gameNumber;
 
   const state = useStore({
