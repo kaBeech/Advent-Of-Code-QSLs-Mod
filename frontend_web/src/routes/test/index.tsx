@@ -1,7 +1,7 @@
 import { component$ } from "@builder.io/qwik";
 import { Resource, useResource$, useStore } from "@builder.io/qwik";
 import type { DocumentHead } from "@builder.io/qwik-city";
-import LogInTest from "~/components/logIn/logInTest";
+import LogIn from "~/components/logIn/logIn";
 import { serverFetcher } from "~/util/serverFetcher";
 
 export default component$(() => {
@@ -29,7 +29,7 @@ export default component$(() => {
       <h1 class="title">Create New Game</h1>
       <h2>Enter Title, Year, and Player Name:</h2>
       <p class="textCenter">
-        Please <LogInTest /> to play!{" "}
+        Please <LogIn /> to play!{" "}
       </p>
 
       <Resource
