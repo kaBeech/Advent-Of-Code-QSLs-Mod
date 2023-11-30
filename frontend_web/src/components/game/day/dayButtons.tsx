@@ -26,15 +26,6 @@ export interface DayButtonsProps {
 export default component$((props: DayButtonsProps) => {
   return (
     <div class={`flex column gap1 marginTop1`}>
-      {+props.privateViewerData.dayNumber > 1 && (
-        <a
-          href={`/game/${props.privateViewerData!.gameNumber}/day/${
-            +props.privateViewerData!.dayNumber - 1
-          }/`}
-        >
-          °Previous Day°
-        </a>
-      )}{" "}
       {+props.privateViewerData!.dayNumber <
         props.xtremeXmasData.currentDay && (
         <a
@@ -45,6 +36,15 @@ export default component$((props: DayButtonsProps) => {
           °Next Day°
         </a>
       )}
+      {+props.privateViewerData.dayNumber > 1 && (
+        <a
+          href={`/game/${props.privateViewerData!.gameNumber}/day/${
+            +props.privateViewerData!.dayNumber - 1
+          }/`}
+        >
+          °Previous Day°
+        </a>
+      )}{" "}
       {props.xtremeXmasData.part2Completed ? (
         <></>
       ) : !props.privateViewerData.dateFirstRolled ? (
