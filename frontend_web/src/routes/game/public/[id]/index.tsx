@@ -170,6 +170,19 @@ export default component$(() => {
                     </li>
                   </>
                 )}
+                {gameData.repositoryLink && (
+                  <li>
+                    {" "}
+                    <a
+                      href={gameData.repositoryLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {" "}
+                      °Repo Link°
+                    </a>
+                  </li>
+                )}
               </ul>
               <br />
               <div class="desktopShow">

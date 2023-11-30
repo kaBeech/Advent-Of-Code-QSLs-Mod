@@ -5,6 +5,7 @@ import DayButtons from "./dayButtons";
 export interface DayDataProps {
   xtremeXmasData: {
     gameName: string;
+    repositoryUrl: string;
     rerollTokensEarned: number;
     rerollTokensSpentDuringPart1: number;
     rerollTokensSpentDuringPart2: number;
@@ -56,6 +57,16 @@ export default component$((props: DayDataProps) => {
           {props.publicViewerData!.username}
         </h2>
       )}
+      {props.xtremeXmasData.repositoryUrl !== "None" && (
+        <a
+          href={props.xtremeXmasData.repositoryUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {" "}
+          °Repo Link°
+        </a>
+      )}
       {props.privateViewerData?.gameIsPublic && (
         <p>
           <a
@@ -71,13 +82,17 @@ export default component$((props: DayDataProps) => {
           <li>
             Reroll Tokens Earned:{" "}
             <strong class="token">
-              {"".repeat(props.xtremeXmasData.rerollTokensEarned)}
+              {props.xtremeXmasData.rerollTokensEarned === 0
+                ? "0"
+                : "".repeat(props.xtremeXmasData.rerollTokensEarned)}
             </strong>
           </li>
           <li>
             Reroll Tokens Spent During Part 1:{" "}
             <strong class="tokenSpent">
-              {props.xtremeXmasData.rerollTokensSpentDuringPart1 > 9
+              {props.xtremeXmasData.rerollTokensSpentDuringPart1 === 0
+                ? "0"
+                : props.xtremeXmasData.rerollTokensSpentDuringPart1 > 9
                 ? props.xtremeXmasData.rerollTokensSpentDuringPart1 + ""
                 : "".repeat(props.xtremeXmasData.rerollTokensSpentDuringPart1)}
             </strong>
@@ -85,7 +100,9 @@ export default component$((props: DayDataProps) => {
           <li>
             Reroll Tokens Spent During Part 2:{" "}
             <strong class="tokenSpent">
-              {props.xtremeXmasData.rerollTokensSpentDuringPart2 > 9
+              {props.xtremeXmasData.rerollTokensSpentDuringPart2 === 0
+                ? "0"
+                : props.xtremeXmasData.rerollTokensSpentDuringPart2 > 9
                 ? props.xtremeXmasData.rerollTokensSpentDuringPart2 + ""
                 : "".repeat(props.xtremeXmasData.rerollTokensSpentDuringPart2)}
             </strong>

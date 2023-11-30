@@ -220,6 +220,16 @@ export default component$(() => {
                 <li>
                   <a href="edit">°Edit Game°</a>
                 </li>
+                {gameData.repositoryLink && (
+                  <a
+                    href={gameData.repositoryLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {" "}
+                    °Repo Link°
+                  </a>
+                )}
                 {gameData.isPublic && (
                   <li>
                     <a href={`/game/public/${gameData.id}/`}>°Public Link°</a>

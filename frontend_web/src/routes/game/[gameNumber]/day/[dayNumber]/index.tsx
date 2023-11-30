@@ -105,6 +105,7 @@ export default component$(() => {
         gameIsPublic: gameData.isPublic,
         username: userData.username,
         oauthAvatarUrl: userData.oauthAvatarUrl,
+        repositoryUrl: gameData.repositoryUrl ? gameData.repositoryUrl : "None",
         challengeModifier: dayData.challengeModifierId
           ? dayData.ChallengeModifier.text
           : "None",
@@ -187,6 +188,7 @@ export default component$(() => {
                 }}
                 xtremeXmasData={{
                   gameName: state.dayInfo.gameName,
+                  repositoryUrl: state.dayInfo.repositoryUrl,
                   rerollTokensEarned: state.dayInfo.rerollTokensEarned,
                   rerollTokensSpentDuringPart1:
                     state.dayInfo.rerollTokensSpentDuringPart1,
@@ -231,6 +233,7 @@ export default component$(() => {
                 }}
                 xtremeXmasData={{
                   gameName: "Loading...",
+                  repositoryUrl: "None",
                   rerollTokensEarned: 0,
                   rerollTokensSpentDuringPart1: 0,
                   rerollTokensSpentDuringPart2: 0,

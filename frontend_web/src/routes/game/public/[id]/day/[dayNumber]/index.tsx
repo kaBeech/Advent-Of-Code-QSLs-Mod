@@ -70,6 +70,7 @@ export default component$(() => {
         gameName: gameData.name,
         username: gameData.User.username,
         oauthAvatarUrl: gameData.User.oauthAvatarUrl,
+        repositoryUrl: gameData.repositoryUrl ? gameData.repositoryUrl : "None",
         challengeModifier: dayData.challengeModifierId
           ? dayData.ChallengeModifier.text
           : "None",
@@ -147,6 +148,7 @@ export default component$(() => {
                 }}
                 xtremeXmasData={{
                   gameName: state.dayInfo.gameName,
+                  repositoryUrl: state.dayInfo.repositoryUrl,
                   challengeModifier: state.dayInfo.challengeModifier,
                   challengeModifierExplanatoryUrl:
                     state.dayInfo.challengeModifierExplanatoryUrl,
@@ -186,6 +188,7 @@ export default component$(() => {
                 }}
                 xtremeXmasData={{
                   gameName: "Loading...",
+                  repositoryUrl: "None",
                   challengeModifier: "Loading...",
                   challengeModifierExplanatoryUrl: "None",
                   modifierOption: "Loading...",
