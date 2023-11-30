@@ -40,16 +40,12 @@ export default component$(() => {
     <article class="dashedHeaders">
       <h1>Leaderboard</h1>
       <div class="desktopShow">
+        <div>-----------------------------------------------</div>
         <div>
-          -------------------------------------------------------------------------------
+          # ¦ Year  ¦ Title      ¦ Game Name          
+          <br />   ¦ Score ¦ Repo Link  ¦ Player Name
         </div>
-        <div>
-          Rank ¦ Year ¦ Game Name          ¦ Score ¦ Title      ¦ Repo Link ¦
-          Player Name
-        </div>
-        <div>
-          -------------------------------------------------------------------------------
-        </div>
+        <div>-----------------------------------------------</div>
         <ul>
           <Resource
             value={leaderboardGamesResource}
@@ -135,8 +131,8 @@ export default component$(() => {
                         default:
                           break;
                       }
-                      rank.string.length < 6 &&
-                        (rank.string += " ".repeat(6 - rank.string.length));
+                      rank.string.length < 3 &&
+                        (rank.string += " ".repeat(3 - rank.string.length));
                       gameNameString.length <= 21
                         ? (gameNameString += " ".repeat(
                             21 - gameNameString.length
@@ -145,19 +141,26 @@ export default component$(() => {
                             gameNameString.slice(0, 16) + "...° ");
                       scoreString.length < 7 &&
                         (scoreString += " ".repeat(7 - scoreString.length));
-                      title.string.length < 11 &&
-                        (title.string += " ".repeat(11 - title.string.length));
+                      title.string.length < 13
+                        ? (title.string = "  " + title.string)
+                        : title.string.length < 14 &&
+                          (title.string = " " + title.string);
+                      title.string.length < 14 &&
+                        (title.string += " ".repeat(14 - title.string.length));
                       return (
-                        <li key={`game-${game.id}`}>
+                        <li key={`game-${game.id}`} class={`marginVert1`}>
                           <em>
                             <span class={rank.color}>{rank.string}</span>{" "}
                             {game.year}
                             {"  "}
+                            <span class={title.color}>{title.string}</span>
                             <a href={`/game/public/${game.id}`}>
                               {gameNameString}
                             </a>{" "}
-                            <span class="textGold">{scoreString}</span>{" "}
-                            <span class={title.color}>{title.string}</span>
+                            <br />
+                            <span class="textGold">
+                              {"    " + scoreString}
+                            </span>{" "}
                             <a
                               href={game.repositoryLink}
                               target="_blank"

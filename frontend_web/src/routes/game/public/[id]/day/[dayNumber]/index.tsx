@@ -32,6 +32,7 @@ export const onRequest: RequestHandler = (event) => {
 
 export default component$(() => {
   useStylesScoped$(styles);
+
   const gameId = useLocation().params.id;
   const dayNumber = useLocation().params.dayNumber;
   // eslint-disable-next-line @typescript-eslint/no-unused-vars

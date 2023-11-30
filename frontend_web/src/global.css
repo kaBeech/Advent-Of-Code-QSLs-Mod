@@ -217,6 +217,10 @@ strong {
   margin: 0;
 }
 
+.margin1 {
+  margin: 1rem;
+}
+
 .marginBottom0 {
   margin-bottom: 0;
 }
