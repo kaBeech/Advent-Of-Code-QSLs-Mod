@@ -108,8 +108,18 @@ export default component$(() => {
         challengeModifier: dayData.challengeModifierId
           ? dayData.ChallengeModifier.text
           : "None",
+        challengeModifierExplanatoryUrl: dayData.challengeModifierId
+          ? dayData.ChallengeModifier.explanatoryUrl
+            ? dayData.ChallengeModifier.explanatoryUrl
+            : "None"
+          : "None",
         modifierOption: dayData.modifierOptionId
           ? dayData.ModifierOption.text
+          : "None",
+        modifierOptionExplanatoryUrl: dayData.modifierOptionId
+          ? dayData.ModifierOption.explanatoryUrl
+            ? dayData.ModifierOption.explanatoryUrl
+            : "None"
           : "None",
         rerollTokensSpentDuringPart1:
           dayData.challengeModifierRerollsUsed * 2 +
@@ -124,9 +134,21 @@ export default component$(() => {
         modifierWhenPart1Completed: dayData.modifierWhenPart1CompletedId
           ? dayData.ModifierWhenPart1Completed.text
           : "None",
+        modifierWhenPart1CompletedExplanatoryUrl:
+          dayData.modifierWhenPart1CompletedId
+            ? dayData.ModifierWhenPart1Completed.explanatoryUrl
+              ? dayData.ModifierWhenPart1Completed.explanatoryUrl
+              : "None"
+            : "None",
         optionWhenPart1Completed: dayData.optionWhenPart1CompletedId
           ? dayData.OptionWhenPart1Completed.text
           : "None",
+        optionWhenPart1CompletedExplanatoryUrl:
+          dayData.optionWhenPart1CompletedId
+            ? dayData.OptionWhenPart1Completed.explanatoryUrl
+              ? dayData.OptionWhenPart1Completed.explanatoryUrl
+              : "None"
+            : "None",
         part2Completed: dayData.part2Completed || null,
         number: dayData.number,
         dateFirstRolled: dayData.dateFirstRolled || null,
@@ -173,15 +195,23 @@ export default component$(() => {
                   currentRerollTokens: state.dayInfo.currentRerollTokens,
                   score: state.dayInfo.score,
                   challengeModifier: state.dayInfo.challengeModifier,
+                  challengeModifierExplanatoryUrl:
+                    state.dayInfo.challengeModifierExplanatoryUrl,
                   modifierOption: state.dayInfo.modifierOption,
+                  modifierOptionExplanatoryUrl:
+                    state.dayInfo.modifierOptionExplanatoryUrl,
                   currentDay: state.dayInfo.currentDay,
                   currentDayCompleted: state.dayInfo.currentDayCompleted,
                   part1Completed: String(state.dayInfo.part1Completed) || null,
                   part2Completed: String(state.dayInfo.part2Completed) || null,
                   modifierWhenPart1Completed:
                     state.dayInfo.modifierWhenPart1Completed,
+                  modifierWhenPart1CompletedExplanatoryUrl:
+                    state.dayInfo.modifierWhenPart1CompletedExplanatoryUrl,
                   optionWhenPart1Completed:
                     state.dayInfo.optionWhenPart1Completed,
+                  optionWhenPart1CompletedExplanatoryUrl:
+                    state.dayInfo.optionWhenPart1CompletedExplanatoryUrl,
                 }}
               />
             );
@@ -207,13 +237,17 @@ export default component$(() => {
                   currentRerollTokens: 0,
                   score: 0,
                   challengeModifier: "Loading...",
+                  challengeModifierExplanatoryUrl: "None",
                   modifierOption: "Loading...",
+                  modifierOptionExplanatoryUrl: "None",
                   currentDay: 0,
                   currentDayCompleted: false,
                   part1Completed: null,
                   part2Completed: null,
                   modifierWhenPart1Completed: "Loading...",
+                  modifierWhenPart1CompletedExplanatoryUrl: "None",
                   optionWhenPart1Completed: "Loading...",
+                  optionWhenPart1CompletedExplanatoryUrl: "None",
                 }}
               />
             );

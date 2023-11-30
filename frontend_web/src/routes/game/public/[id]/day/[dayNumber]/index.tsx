@@ -73,8 +73,18 @@ export default component$(() => {
         challengeModifier: dayData.challengeModifierId
           ? dayData.ChallengeModifier.text
           : "None",
+        challengeModifierExplanatoryUrl: dayData.challengeModifierId
+          ? dayData.ChallengeModifier.explanatoryUrl
+            ? dayData.ChallengeModifier.explanatoryUrl
+            : "None"
+          : "None",
         modifierOption: dayData.modifierOptionId
           ? dayData.ModifierOption.text
+          : "None",
+        modifierOptionExplanatoryUrl: dayData.modifierOptionId
+          ? dayData.ModifierOption.explanatoryUrl
+            ? dayData.ModifierOption.explanatoryUrl
+            : "None"
           : "None",
         rerollTokensSpentDuringPart1:
           dayData.challengeModifierRerollsUsed * 2 +
@@ -89,9 +99,21 @@ export default component$(() => {
         modifierWhenPart1Completed: dayData.modifierWhenPart1CompletedId
           ? dayData.ModifierWhenPart1Completed.text
           : "None",
+        modifierWhenPart1CompletedExplanatoryUrl:
+          dayData.modifierWhenPart1CompletedId
+            ? dayData.ModifierWhenPart1Completed.explanatoryUrl
+              ? dayData.ModifierWhenPart1Completed.explanatoryUrl
+              : "None"
+            : "None",
         optionWhenPart1Completed: dayData.optionWhenPart1CompletedId
           ? dayData.OptionWhenPart1Completed.text
           : "None",
+        optionWhenPart1CompletedExplanatoryUrl:
+          dayData.optionWhenPart1CompletedId
+            ? dayData.OptionWhenPart1Completed.explanatoryUrl
+              ? dayData.OptionWhenPart1Completed.explanatoryUrl
+              : "None"
+            : "None",
         part2Completed: dayData.part2Completed || null,
         number: dayData.number,
         dateFirstRolled: dayData.dateFirstRolled || null,
@@ -126,7 +148,11 @@ export default component$(() => {
                 xtremeXmasData={{
                   gameName: state.dayInfo.gameName,
                   challengeModifier: state.dayInfo.challengeModifier,
+                  challengeModifierExplanatoryUrl:
+                    state.dayInfo.challengeModifierExplanatoryUrl,
                   modifierOption: state.dayInfo.modifierOption,
+                  modifierOptionExplanatoryUrl:
+                    state.dayInfo.modifierOptionExplanatoryUrl,
                   rerollTokensSpentDuringPart1:
                     state.dayInfo.rerollTokensSpentDuringPart1,
                   rerollTokensSpentDuringPart2:
@@ -139,8 +165,12 @@ export default component$(() => {
                     state.dayInfo.part1Completed?.toDateString() || null,
                   modifierWhenPart1Completed:
                     state.dayInfo.modifierWhenPart1Completed,
+                  modifierWhenPart1CompletedExplanatoryUrl:
+                    state.dayInfo.modifierWhenPart1CompletedExplanatoryUrl,
                   optionWhenPart1Completed:
                     state.dayInfo.optionWhenPart1Completed,
+                  optionWhenPart1CompletedExplanatoryUrl:
+                    state.dayInfo.optionWhenPart1CompletedExplanatoryUrl,
                   part2Completed:
                     state.dayInfo.part2Completed?.toDateString() || null,
                   rerollTokensEarned: 0,
@@ -157,7 +187,9 @@ export default component$(() => {
                 xtremeXmasData={{
                   gameName: "Loading...",
                   challengeModifier: "Loading...",
+                  challengeModifierExplanatoryUrl: "None",
                   modifierOption: "Loading...",
+                  modifierOptionExplanatoryUrl: "None",
                   rerollTokensSpentDuringPart1: 0,
                   rerollTokensSpentDuringPart2: 0,
                   currentRerollTokens: 0,
@@ -166,7 +198,9 @@ export default component$(() => {
                   currentDayCompleted: false,
                   part1Completed: null,
                   modifierWhenPart1Completed: "Loading...",
+                  modifierWhenPart1CompletedExplanatoryUrl: "None",
                   optionWhenPart1Completed: "Loading...",
+                  optionWhenPart1CompletedExplanatoryUrl: "None",
                   part2Completed: null,
                   rerollTokensEarned: 0,
                 }}

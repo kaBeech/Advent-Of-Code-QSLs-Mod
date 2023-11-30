@@ -1,6 +1,8 @@
 export interface DayInfo {
   challengeModifier: string;
+  challengeModifierExplanatoryUrl: string;
   modifierOption: string;
+  modifierOptionExplanatoryUrl: string;
   rerollTokensSpentDuringPart1: number;
   rerollTokensSpentDuringPart2: number;
   currentRerollTokens: number;
@@ -9,7 +11,9 @@ export interface DayInfo {
   currentDayCompleted: boolean;
   part1Completed: Date | null;
   modifierWhenPart1Completed: string;
+  modifierWhenPart1CompletedExplanatoryUrl: string;
   optionWhenPart1Completed: string;
+  optionWhenPart1CompletedExplanatoryUrl: string;
   part2Completed: Date | null;
   number: number;
   username: string;
