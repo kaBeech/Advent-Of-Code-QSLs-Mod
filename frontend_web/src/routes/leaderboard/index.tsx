@@ -50,8 +50,8 @@ export default component$(() => {
       <h1 class={`fontLarger`}>Leaderboard</h1>
       <div class="dashedHeaders">
         <h2 class="smallHide">
-          <span> # ¦ Year  ¦ Title      ¦ Game Link            </span> <br />
-          <span>   ¦ Score ¦ Repo Link  ¦ Player Name</span>
+          <span> # ¦ Year  ¦ Repo Link  ¦ Game Link            </span> <br />
+          <span>   ¦ Score ¦ Title      ¦ Player Name</span>
         </h2>
         <h2 class="smallShow">
           <span> # ¦ Year</span>
@@ -162,8 +162,8 @@ export default component$(() => {
                           ))
                         : (gameNameString =
                             gameNameString.slice(0, 16) + "...° ");
-                      scoreString.length < 7 &&
-                        (scoreString += " ".repeat(7 - scoreString.length));
+                      scoreString.length < 5 &&
+                        (scoreString += " ".repeat(5 - scoreString.length));
                       title.string.length < 13
                         ? (title.string = "  " + title.string)
                         : title.string.length < 14 &&
@@ -178,24 +178,24 @@ export default component$(() => {
                           >
                             <em>
                               <span class={rank.color}>{rank.string}</span>{" "}
-                              {game.year}
+                              {game.year}{" "}
+                              <a
+                                href={game.repositoryLink}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                              >
+                                {"  "}
+                                °Repo Link°
+                              </a>
                               {"  "}
-                              <span class={title.color}>{title.string}</span>
                               <a href={`/game/public/${game.id}`}>
                                 {gameNameString}
                               </a>{" "}
                               <br />
                               <span class="textGold">
                                 {"     " + scoreString}
-                              </span>{" "}
-                              <a
-                                href={game.repositoryLink}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                              >
-                                {" "}
-                                °Repo Link°
-                              </a>
+                              </span>
+                              <span class={title.color}>{title.string}</span>
                               {"  "}
                               {game.User.username}{" "}
                             </em>
