@@ -1,6 +1,6 @@
 export interface DayInfo {
   year: number;
-  repositoryUrl: string;
+  repositoryLink: string;
   challengeModifier: string;
   challengeModifierExplanatoryUrl: string;
   modifierOption: string;

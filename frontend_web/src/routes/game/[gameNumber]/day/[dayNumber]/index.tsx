@@ -105,12 +105,15 @@ export default component$(() => {
       const dayInfoData = {
         numberOfGames: JSON.stringify(userData.Game.length),
         year: gameData.year,
+        dayNumber: dayData.number,
         gameName: gameData.name,
         gameId: gameData.id,
         gameIsPublic: gameData.isPublic,
         username: userData.username,
         oauthAvatarUrl: userData.oauthAvatarUrl,
-        repositoryUrl: gameData.repositoryUrl ? gameData.repositoryUrl : "None",
+        repositoryLink: gameData.repositoryLink
+          ? gameData.repositoryLink
+          : "None",
         challengeModifier: dayData.challengeModifierId
           ? dayData.ChallengeModifier.text
           : "None",
@@ -172,7 +175,7 @@ export default component$(() => {
 
   return (
     <article>
-      <h1 class="title">Day {dayNumber}</h1>
+      <br />
       <Resource
         value={xtremeXmasUserDataResource}
         onPending={() => {
@@ -192,8 +195,9 @@ export default component$(() => {
                 }}
                 xtremeXmasData={{
                   gameName: state.dayInfo.gameName,
+                  dayNumber: state.dayInfo.number,
                   year: state.dayInfo.year,
-                  repositoryUrl: state.dayInfo.repositoryUrl,
+                  repositoryLink: state.dayInfo.repositoryLink,
                   rerollTokensEarned: state.dayInfo.rerollTokensEarned,
                   rerollTokensSpentDuringPart1:
                     state.dayInfo.rerollTokensSpentDuringPart1,
@@ -238,8 +242,9 @@ export default component$(() => {
                 }}
                 xtremeXmasData={{
                   gameName: "Loading...",
+                  dayNumber: 0,
                   year: 2015,
-                  repositoryUrl: "None",
+                  repositoryLink: "None",
                   rerollTokensEarned: 0,
                   rerollTokensSpentDuringPart1: 0,
                   rerollTokensSpentDuringPart2: 0,

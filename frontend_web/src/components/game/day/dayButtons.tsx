@@ -26,26 +26,6 @@ export interface DayButtonsProps {
 export default component$((props: DayButtonsProps) => {
   return (
     <div class={`flex column gap1 marginTop1`}>
-      {+props.privateViewerData!.dayNumber <
-        props.xtremeXmasData.currentDay && (
-        <a
-          href={`/game/${props.privateViewerData!.gameNumber}/day/${
-            +props.privateViewerData!.dayNumber + 1
-          }/`}
-          class="textGreen"
-        >
-          °Next Day°
-        </a>
-      )}
-      {+props.privateViewerData.dayNumber > 1 && (
-        <a
-          href={`/game/${props.privateViewerData!.gameNumber}/day/${
-            +props.privateViewerData!.dayNumber - 1
-          }/`}
-        >
-          °Previous Day°
-        </a>
-      )}{" "}
       {props.xtremeXmasData.part2Completed ? (
         <></>
       ) : !props.xtremeXmasData.dateFirstRolled ? (
@@ -174,9 +154,7 @@ export default component$((props: DayButtonsProps) => {
         <></>
       ) : (
         <a
-          class={
-            props.xtremeXmasData.modifierOption === "None" ? "textGreen" : ""
-          }
+          class={"textGreen"}
           onClick$={async () => {
             if (props.privateViewerData!.loading) {
               return;
@@ -206,9 +184,7 @@ export default component$((props: DayButtonsProps) => {
         <></>
       ) : (
         <a
-          class={
-            props.xtremeXmasData.modifierOption === "None" ? "textGreen" : ""
-          }
+          class={"textGreen"}
           onClick$={async () => {
             if (props.privateViewerData!.loading) {
               return;
@@ -233,6 +209,26 @@ export default component$((props: DayButtonsProps) => {
           )}
         </a>
       )}
+      {+props.privateViewerData!.dayNumber <
+        props.xtremeXmasData.currentDay && (
+        <a
+          href={`/game/${props.privateViewerData!.gameNumber}/day/${
+            +props.privateViewerData!.dayNumber + 1
+          }/`}
+          class="textGreen"
+        >
+          °Next Day°
+        </a>
+      )}
+      {+props.privateViewerData.dayNumber > 1 && (
+        <a
+          href={`/game/${props.privateViewerData!.gameNumber}/day/${
+            +props.privateViewerData!.dayNumber - 1
+          }/`}
+        >
+          °Previous Day°
+        </a>
+      )}{" "}
     </div>
   );
 });

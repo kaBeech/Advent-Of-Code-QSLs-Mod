@@ -1,12 +1,14 @@
-import { component$ } from "@builder.io/qwik";
+import { component$, useStylesScoped$ } from "@builder.io/qwik";
 import constructChallengeModifierFullText from "~/util/constructChallengeModifierFullText";
 import DayButtons from "./dayButtons";
+import styles from "./dayViewer.css?inline";
 
 export interface DayDataProps {
   xtremeXmasData: {
+    dayNumber: number;
     gameName: string;
     year: number;
-    repositoryUrl: string;
+    repositoryLink: string;
     rerollTokensEarned: number;
     rerollTokensSpentDuringPart1: number;
     rerollTokensSpentDuringPart2: number;
@@ -43,9 +45,12 @@ export interface DayDataProps {
 }
 
 export default component$((props: DayDataProps) => {
+  useStylesScoped$(styles);
+
   return (
     <>
-      <h1>{props.xtremeXmasData.gameName}</h1>
+      <h1 class="margin0">{props.xtremeXmasData.gameName}</h1>
+      <h2>Day {props.xtremeXmasData.dayNumber}</h2>
       {props.publicViewerData && (
         <h2>
           <img
@@ -58,27 +63,29 @@ export default component$((props: DayDataProps) => {
           {props.publicViewerData!.username}
         </h2>
       )}
-      <a
-        href={`https://adventofcode.com/${props.xtremeXmasData.year}/day/${props.xtremeXmasData.currentDay}`}
-        target="_blank"
-        rel="noopener noreferrer"
-        class="textGreen"
-      >
-        {" "}
-        °Puzzle Link°
-      </a>
-      {props.xtremeXmasData.repositoryUrl !== "None" && (
+      <p>
         <a
-          href={props.xtremeXmasData.repositoryUrl}
+          href={`https://adventofcode.com/${props.xtremeXmasData.year}/day/${props.xtremeXmasData.currentDay}`}
           target="_blank"
           rel="noopener noreferrer"
+          class="textGreen"
         >
-          {" "}
-          °Repo Link°
+          °Puzzle Link°
         </a>
+      </p>
+      {props.xtremeXmasData.repositoryLink !== "None" && (
+        <p>
+          <a
+            href={props.xtremeXmasData.repositoryLink}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            °Repo Link°
+          </a>
+        </p>
       )}
       {props.privateViewerData?.gameIsPublic &&
-        props.xtremeXmasData.repositoryUrl !== "None" && (
+        props.xtremeXmasData.repositoryLink !== "None" && (
           <p>
             <a
               href={`/game/public/${props.privateViewerData.gameId}/day/${props.privateViewerData.dayNumber}`}
@@ -88,6 +95,7 @@ export default component$((props: DayDataProps) => {
             </a>
           </p>
         )}
+      <br />
       <br />
       <div class="flex column alignStart gap1">
         <ul class="flex column alignStart gap1">
@@ -178,19 +186,22 @@ export default component$((props: DayDataProps) => {
               props.xtremeXmasData.challengeModifier ||
               props.xtremeXmasData.optionWhenPart1Completed !==
                 props.xtremeXmasData.modifierOption) && (
-              <li>
-                <strong>Challenge Modifier During Part 1</strong>:{" "}
-                {props.xtremeXmasData.modifierWhenPart1Completed === "None"
-                  ? "None"
-                  : constructChallengeModifierFullText(
-                      props.xtremeXmasData.modifierWhenPart1Completed +
-                        (props.xtremeXmasData.optionWhenPart1Completed !==
-                          "None" &&
-                          props.xtremeXmasData.optionWhenPart1Completed)
-                    )}
-                {props.xtremeXmasData.optionWhenPart1Completed !== "None" &&
-                  props.xtremeXmasData.optionWhenPart1Completed}
-              </li>
+              <>
+                <br />
+                <li>
+                  <strong>Challenge Modifier During Part 1</strong>:{" "}
+                  {props.xtremeXmasData.modifierWhenPart1Completed === "None"
+                    ? "None"
+                    : constructChallengeModifierFullText(
+                        props.xtremeXmasData.modifierWhenPart1Completed +
+                          (props.xtremeXmasData.optionWhenPart1Completed !==
+                            "None" &&
+                            props.xtremeXmasData.optionWhenPart1Completed)
+                      )}
+                  {props.xtremeXmasData.optionWhenPart1Completed !== "None" &&
+                    props.xtremeXmasData.optionWhenPart1Completed}
+                </li>
+              </>
             )}
           {props.xtremeXmasData.modifierWhenPart1CompletedExplanatoryUrl !==
             "None" &&

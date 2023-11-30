@@ -68,9 +68,12 @@ export default component$(() => {
       const dayInfoData = {
         year: gameData.year,
         gameName: gameData.name,
+        dayNumber: dayData.number,
         username: gameData.User.username,
         oauthAvatarUrl: gameData.User.oauthAvatarUrl,
-        repositoryUrl: gameData.repositoryUrl ? gameData.repositoryUrl : "None",
+        repositoryLink: gameData.repositoryLink
+          ? gameData.repositoryLink
+          : "None",
         challengeModifier: dayData.challengeModifierId
           ? dayData.ChallengeModifier.text
           : "None",
@@ -134,7 +137,7 @@ export default component$(() => {
 
   return (
     <article>
-      <h1 class="title">Day {dayNumber}</h1>
+      <br />
       <Resource
         value={xtremeXmasUserDataResource}
         onPending={() => {
@@ -148,8 +151,9 @@ export default component$(() => {
                 }}
                 xtremeXmasData={{
                   gameName: state.dayInfo.gameName,
+                  dayNumber: state.dayInfo.number,
                   year: state.dayInfo.year,
-                  repositoryUrl: state.dayInfo.repositoryUrl,
+                  repositoryLink: state.dayInfo.repositoryLink,
                   challengeModifier: state.dayInfo.challengeModifier,
                   challengeModifierExplanatoryUrl:
                     state.dayInfo.challengeModifierExplanatoryUrl,
@@ -191,8 +195,9 @@ export default component$(() => {
                 }}
                 xtremeXmasData={{
                   gameName: "Loading...",
+                  dayNumber: 0,
                   year: 2015,
-                  repositoryUrl: "None",
+                  repositoryLink: "None",
                   challengeModifier: "Loading...",
                   challengeModifierExplanatoryUrl: "None",
                   modifierOption: "Loading...",
