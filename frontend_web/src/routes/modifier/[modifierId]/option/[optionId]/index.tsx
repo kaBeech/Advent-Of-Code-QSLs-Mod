@@ -38,6 +38,7 @@ export default component$(() => {
           return (
             <>
               <h1 class={`fontLarger`}>Modifier Option</h1>
+              <br />
               <p>{modifierOptionData.modifierOption.text}</p>
               <p>
                 <em>Full Challenge Modifier Text:</em> "

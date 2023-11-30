@@ -153,6 +153,7 @@ export default component$(() => {
                 </p>
               </div>
               <br />
+              <br />
               <p>Year: {gameData.year}</p>
               <p>Score: {gameData.score}</p>
               <p>

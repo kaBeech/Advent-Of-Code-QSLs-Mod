@@ -23,6 +23,7 @@ export default component$(() => {
   return (
     <article>
       <h1 class={`fontLarger`}>Challenge Modifiers</h1>
+      <br />
       <Resource
         value={challengeModifiersResource}
         onPending={() => {

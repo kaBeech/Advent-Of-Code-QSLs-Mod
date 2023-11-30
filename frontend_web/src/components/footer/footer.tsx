@@ -14,6 +14,7 @@ export default component$((props: FooterProps) => {
 
   return (
     <footer id="footer" class="sponsor flex column gap1 alignCenter">
+      <br />
       <div>
         <XmasLights
           numberOfLights={18}

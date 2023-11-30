@@ -6,7 +6,7 @@ export default component$(() => {
   return (
     <>
       <article class="bigHeaders mobileDashedHeaders textCenter">
-        <h1 class="visualHide"> Xtreme Xmas Code </h1>
+        <h1 class="fontLarger"> Xtreme Xmas Code </h1>
         <p>
           Have you ever been savoring your Advent Of Code calendar, keyboard
           dusted with sugar cookie crumbles, reindeer curled at your feet, and

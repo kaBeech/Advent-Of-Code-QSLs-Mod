@@ -22,18 +22,6 @@ export default component$((props: HeaderProps) => {
         Xmas <span class="logoWhite">§</span> Code{" "}
         <span class="logoBrown">»</span>
       </a>
-      <br />
-      <XmasLights
-        numberOfLights={42}
-        firstLightStartingColorNumber={1}
-        alternateColors={true}
-        hasLightSwitch={true}
-        isOn={props.areLightsOn}
-        toggleLights={props.toggleLights}
-        length="long"
-      />
-      <br />
-      <br />
       <div class="flex column alignCenter mobileHide">
         <div class="flex gap1 marginVertPoint2">
           {" "}
@@ -78,7 +66,6 @@ export default component$((props: HeaderProps) => {
             toggleLoggedIn={props.toggleLoggedIn}
           />
         </div>
-        <br />
       </div>
       <div class="flex column alignCenter mobileShow">
         <div class="flex gap1 marginVertPoint2">
@@ -173,8 +160,17 @@ export default component$((props: HeaderProps) => {
             toggleLoggedIn={props.toggleLoggedIn}
           />
         </div>
-        <br />
       </div>
+      <XmasLights
+        numberOfLights={42}
+        firstLightStartingColorNumber={1}
+        alternateColors={true}
+        hasLightSwitch={true}
+        isOn={props.areLightsOn}
+        toggleLights={props.toggleLights}
+        length="long"
+      />
+      <br />
     </header>
   );
 });

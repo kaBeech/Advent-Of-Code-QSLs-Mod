@@ -74,7 +74,8 @@ export default component$(() => {
 
   return (
     <article>
-      <h1>Settings</h1>
+      <br />
+      <h1 class="fontLarger">Settings</h1>
       {areLightsOn.value ? (
         <p>
           <em class="pointer textGreen" onClick$={toggleLights}>

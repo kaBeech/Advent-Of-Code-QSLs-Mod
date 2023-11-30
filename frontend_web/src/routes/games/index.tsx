@@ -73,6 +73,7 @@ export default component$(() => {
   return (
     <article>
       <h1 class="title fontLarger">Current Games</h1>
+      <br />
       <Resource
         value={xtremeXmasUserDataResource}
         onPending={() => {
