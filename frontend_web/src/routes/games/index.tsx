@@ -15,7 +15,10 @@ export const onRequest: RequestHandler = (event) => {
   if (!session || new Date(session.expires) < new Date()) {
     throw event.redirect(302, `/login`);
   }
-  gameNumber = +event.cookie.get("gameNumber")!.value;
+  const storedGameNumber = event.cookie.get("gameNumber") || null;
+  if (storedGameNumber) {
+    gameNumber = +storedGameNumber;
+  }
   const userDataString = event.cookie.get("userData")?.value || null;
   if (userDataString) {
     userData = JSON.parse(userDataString);
