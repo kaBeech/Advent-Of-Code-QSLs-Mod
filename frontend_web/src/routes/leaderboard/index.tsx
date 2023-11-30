@@ -1,6 +1,13 @@
 /* eslint-disable no-irregular-whitespace */
 // import type { Session } from "@auth/core/types";
-import { Resource, component$, useResource$, useStore } from "@builder.io/qwik";
+import {
+  Resource,
+  component$,
+  useResource$,
+  useStore,
+  useStylesScoped$,
+} from "@builder.io/qwik";
+import styles from "./leaderboard.css?inline";
 import type { DocumentHead, RequestHandler } from "@builder.io/qwik-city";
 import type { LeaderboardGame } from "~/types";
 import { serverFetcher } from "~/util/serverFetcher";
@@ -16,6 +23,8 @@ export const onRequest: RequestHandler = (event) => {
 };
 
 export default component$(() => {
+  useStylesScoped$(styles);
+
   const state = useStore({
     leaderboardGames,
   });
@@ -40,9 +49,22 @@ export default component$(() => {
     <article class="mobileDashedHeaders">
       <h1>Leaderboard</h1>
       <div class="dashedHeaders">
-        <h2>
-           # ¦ Year  ¦ Title      ¦ Game Name             <br />    ¦ Score ¦
-          Repo Link  ¦ Player Name
+        <h2 class="smallHide">
+          <span> # ¦ Year  ¦ Title      ¦ Game Link            </span> <br />
+          <span>   ¦ Score ¦ Repo Link  ¦ Player Name</span>
+        </h2>
+        <h2 class="smallShow">
+          <span> # ¦ Year</span>
+          <br />
+          <span>     Game Link            </span>
+          <br />
+          <span>     Player Name</span>
+          <br />
+          <span>     Repo Link</span>
+          <br />
+          <span>     Score</span>
+          <br />
+          <span>     Title</span>
         </h2>
         <br />
         <ul>
@@ -130,10 +152,10 @@ export default component$(() => {
                         default:
                           break;
                       }
+                      rank.string += " ";
                       rank.string.length < 4 &&
-                        (rank.string = " " + rank.string);
-                      rank.string.length < 4 &&
-                        (rank.string += " ".repeat(4 - rank.string.length));
+                        (rank.string =
+                          " ".repeat(4 - rank.string.length) + rank.string);
                       gameNameString.length <= 21
                         ? (gameNameString += " ".repeat(
                             21 - gameNameString.length
@@ -149,31 +171,68 @@ export default component$(() => {
                       title.string.length < 14 &&
                         (title.string += " ".repeat(14 - title.string.length));
                       return (
-                        <li key={`game-${game.id}`} class={`marginBottom1`}>
-                          <em>
-                            <span class={rank.color}>{rank.string}</span>{" "}
-                            {game.year}
-                            {"  "}
-                            <span class={title.color}>{title.string}</span>
-                            <a href={`/game/public/${game.id}`}>
-                              {gameNameString}
-                            </a>{" "}
-                            <br />
-                            <span class="textGold">
-                              {"     " + scoreString}
-                            </span>{" "}
-                            <a
-                              href={game.repositoryLink}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                            >
-                              {" "}
-                              °Repo Link°
-                            </a>
-                            {"  "}
-                            {game.User.username}{" "}
-                          </em>
-                        </li>
+                        <>
+                          <li
+                            key={`game-${game.id}`}
+                            class={`marginBottom1 smallHide`}
+                          >
+                            <em>
+                              <span class={rank.color}>{rank.string}</span>{" "}
+                              {game.year}
+                              {"  "}
+                              <span class={title.color}>{title.string}</span>
+                              <a href={`/game/public/${game.id}`}>
+                                {gameNameString}
+                              </a>{" "}
+                              <br />
+                              <span class="textGold">
+                                {"     " + scoreString}
+                              </span>{" "}
+                              <a
+                                href={game.repositoryLink}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                              >
+                                {" "}
+                                °Repo Link°
+                              </a>
+                              {"  "}
+                              {game.User.username}{" "}
+                            </em>
+                          </li>
+                          <li
+                            key={`game-${game.id}`}
+                            class={`marginBottom1 smallShow`}
+                          >
+                            <em>
+                              <span class={rank.color}>{rank.string}</span>{" "}
+                              {game.year}
+                              <br /> {"    "}
+                              <a href={`/game/public/${game.id}`}>
+                                {gameNameString}
+                              </a>{" "}
+                              <br />
+                              {"     "}
+                              {game.User.username}
+                              <br />
+                              {"    "}
+                              <a
+                                href={game.repositoryLink}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                              >
+                                °Repo Link°
+                              </a>
+                              <br />
+                              <span class="textGold">
+                                {"     " + scoreString}
+                              </span>
+                              <br />
+                              {"   "}
+                              <span class={title.color}>{title.string}</span>
+                            </em>
+                          </li>
+                        </>
                       );
                     }
                   )}
@@ -183,9 +242,9 @@ export default component$(() => {
           />
         </ul>
       </div>
-      {/* <div class="tabletShow">
+      {/* <div class="desktopHide">
         <h2>
-          Rank ¦ Year ¦ Game Name ¦ Score ¦ Title ¦ Repo Link ¦ Player Name
+          Rank ¦ Year ¦ Game Link ¦ Score ¦ Title ¦ Repo Link ¦ Player Name
         </h2>
         <ul>
           <Resource

@@ -495,6 +495,12 @@ strong {
   }
 }
 
+@media (min-width: 591px) {
+  .smallShow {
+    display: none;
+  }
+}
+
 @media (min-width: 461px) {
   .tinyShow {
     display: none;
@@ -542,6 +548,9 @@ strong {
 }
 
 @media (max-width: 590px) {
+  .smallHide {
+    display: none;
+  }
   header {
     text-align: center;
   }
@@ -549,12 +558,6 @@ strong {
   footer {
     margin-left: 2em;
     margin-right: 2em;
-  }
-}
-
-@media (max-width: 531px) {
-  .smallHide {
-    display: none;
   }
 }
 
