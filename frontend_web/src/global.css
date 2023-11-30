@@ -302,6 +302,12 @@ strong {
   margin: 0.5rem;
 }
 
+.dashedHeaders h2 {
+  border-style: dashed;
+  max-width: fit-content;
+  padding: 0.5rem 0;
+}
+
 .logo {
   font-size: 6rem;
 }
@@ -509,7 +515,7 @@ strong {
   .logo {
     font-size: 4rem;
   }
-  .dashedHeaders h2 {
+  .mobileDashedHeaders h2 {
     border-style: dashed;
     max-width: fit-content;
     padding: 0.5rem 1rem;

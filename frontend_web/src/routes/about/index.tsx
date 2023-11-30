@@ -5,7 +5,7 @@ import constructChallengeModifierFullText from "~/util/constructChallengeModifie
 export default component$(() => {
   return (
     <>
-      <article class="bigHeaders dashedHeaders textCenter">
+      <article class="bigHeaders mobileDashedHeaders textCenter">
         <h1 class="visualHide"> Xtreme Xmas Code </h1>
         <p>
           Have you ever been savoring your Advent Of Code calendar, keyboard

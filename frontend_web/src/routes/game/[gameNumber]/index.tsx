@@ -76,7 +76,7 @@ export default component$(() => {
   });
 
   return (
-    <article class="dashedHeaders">
+    <article class="mobileDashedHeaders">
       <Resource
         value={gameDataResource}
         onPending={() => {

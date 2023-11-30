@@ -39,7 +39,7 @@ export default component$(() => {
   });
 
   return (
-    <article class="dashedHeaders">
+    <article class="mobileDashedHeaders">
       <br />
       <Resource
         value={gameDataResource}
