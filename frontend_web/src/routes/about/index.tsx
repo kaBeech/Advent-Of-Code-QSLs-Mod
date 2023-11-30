@@ -151,33 +151,6 @@ export default component$(() => {
         <div class="desktopShow">
           ----------------------------------------------------------------------------
         </div>
-        <h2 id="disclaimer"> Disclaimer </h2>
-        <div class="desktopShow">
-          ----------------------------------------------------------------------------
-        </div>{" "}
-        <p>
-          <em>Xtreme Xmas Code is under construction</em> and has not officially
-          launched.
-        </p>
-        <p>
-          Xtreme Xmas Code is in public Beta Testing phase and will be
-          officially released on November 30, 2023. Until then,{" "}
-          <em>
-            much of the site is subject to change and some features may not be
-            fully built out or optimized
-          </em>
-          . If you'd like to participate in the public beta,{" "}
-          <a
-            href="mailto:contact@kabeech.com?subject=Xtreme%20Xmas%20Beta%20Testing"
-            class="link"
-          >
-            °send me an email with your feedback°
-          </a>
-          !
-        </p>{" "}
-        <div class="desktopShow">
-          ----------------------------------------------------------------------------
-        </div>
         <h2 id="rules"> Rules </h2>
         <div class="desktopShow">
           ----------------------------------------------------------------------------
