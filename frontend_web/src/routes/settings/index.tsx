@@ -26,7 +26,7 @@ export default component$(() => {
   if (!session.value || new Date(session.value.expires) < new Date()) {
     return (
       <article>
-        <h1>Settings</h1>
+        <h1 class={`fontLarger`}>Settings</h1>
         {areLightsOn.value ? (
           <p>
             <em class="pointer textGreen" onClick$={toggleLights}>

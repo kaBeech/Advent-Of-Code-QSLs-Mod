@@ -22,7 +22,7 @@ export default component$(() => {
 
   return (
     <article>
-      <h1>Challenge Modifiers</h1>
+      <h1 class={`fontLarger`}>Challenge Modifiers</h1>
       <Resource
         value={challengeModifiersResource}
         onPending={() => {

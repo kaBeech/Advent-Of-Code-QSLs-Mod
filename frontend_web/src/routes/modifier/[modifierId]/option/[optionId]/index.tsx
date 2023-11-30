@@ -32,12 +32,12 @@ export default component$(() => {
       <Resource
         value={modifierOptionResource}
         onPending={() => {
-          return <h1>Modifier Option</h1>;
+          return <h1 class={`fontLarger`}>Modifier Option</h1>;
         }}
         onResolved={(modifierOptionData) => {
           return (
             <>
-              <h1>Modifier Option</h1>
+              <h1 class={`fontLarger`}>Modifier Option</h1>
               <p>{modifierOptionData.modifierOption.text}</p>
               <p>
                 <em>Full Challenge Modifier Text:</em> "

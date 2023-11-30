@@ -47,7 +47,7 @@ export default component$(() => {
 
   return (
     <article class="mobileDashedHeaders">
-      <h1>Leaderboard</h1>
+      <h1 class={`fontLarger`}>Leaderboard</h1>
       <div class="dashedHeaders">
         <h2 class="smallHide">
           <span> # ¦ Year  ¦ Title      ¦ Game Link            </span> <br />

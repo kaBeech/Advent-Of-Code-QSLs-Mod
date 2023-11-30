@@ -77,7 +77,7 @@ export default component$(() => {
 
   return (
     <article>
-      <h1>Edit Game</h1>
+      <h1 class={`fontLarger`}>Edit Game</h1>
       <Resource
         value={gameDataResource}
         onPending={() => {

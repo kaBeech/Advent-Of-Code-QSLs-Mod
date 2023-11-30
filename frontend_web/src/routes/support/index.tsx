@@ -4,7 +4,7 @@ import type { DocumentHead } from "@builder.io/qwik-city";
 export default component$(() => {
   return (
     <article>
-      <h1>Support</h1>
+      <h1 class={`fontLarger`}>Support</h1>
       <p>
         If you'd like to support Xtreme Xmas Code, you can do so by sharing it
         with a friend, supporting XXC's{" "}

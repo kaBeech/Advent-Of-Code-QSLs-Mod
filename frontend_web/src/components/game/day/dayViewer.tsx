@@ -50,7 +50,7 @@ export default component$((props: DayDataProps) => {
   return (
     <>
       <br />
-      <div class="dashedBorder textCenter">
+      <div class="dashedBorder textCenter fontLarger">
         {" "}
         <h1 class="margin0">{props.xtremeXmasData.gameName}</h1>
         {props.publicViewerData && (

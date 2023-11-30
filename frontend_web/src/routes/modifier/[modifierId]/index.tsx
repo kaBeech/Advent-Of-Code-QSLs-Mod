@@ -28,12 +28,12 @@ export default component$(() => {
       <Resource
         value={challengeModifierResource}
         onPending={() => {
-          return <h1>Challenge Modifier</h1>;
+          return <h1 class={`fontLarger`}>Challenge Modifier</h1>;
         }}
         onResolved={(challengeModifier) => {
           return (
             <>
-              <h1>Challenge Modifier</h1>
+              <h1 class={`fontLarger`}>Challenge Modifier</h1>
               <p>{challengeModifier.name}</p>
               <p>
                 {constructChallengeModifierFullText(challengeModifier.text)}

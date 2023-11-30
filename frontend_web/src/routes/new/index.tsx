@@ -55,7 +55,7 @@ export default component$(() => {
 
   return (
     <article>
-      <h1 class="title">Create New Game</h1>
+      <h1 class="title fontLarger">Create New Game</h1>
       <ul>
         <li>
           <label for="name">Name:</label>
