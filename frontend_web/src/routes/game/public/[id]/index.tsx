@@ -137,7 +137,7 @@ export default component$(() => {
           return (
             <>
               <br />
-              <div class="dashedBorder">
+              <div class="dashedBorder textCenter">
                 <h1>{gameData.name}</h1>
                 <p>
                   <img
