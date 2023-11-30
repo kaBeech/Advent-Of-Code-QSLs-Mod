@@ -35,7 +35,7 @@ export default component$((props: DayLinkProps) => {
           </span>
           {"        "}
         </li>
-        <li class="textDim tabletShow">
+        <li class="textDim desktopHide">
           #####LOCKED#####{" "}
           <span class="textBright">
             {props.dayNumber < 10 ? " " + props.dayNumber : props.dayNumber}
@@ -110,17 +110,22 @@ export default component$((props: DayLinkProps) => {
         </a>
         <span class="textBright">
           {props.dayNumber < 10 ? " " + props.dayNumber : props.dayNumber}
-          {"    "}
+          {"  "}
         </span>
-        <span class="token">{renderTokens(tokensGained)}</span>
+        <span class="token">
+          {" ".repeat(2 - tokensGained) + renderTokens(tokensGained)}
+        </span>
         <span class="tokenSpent">
           {tokensSpent > 9
             ? renderSpentTokens(1) + "x" + tokensSpent
-            : renderSpentTokens(tokensSpent)}
+            : tokensSpent > 4
+            ? renderSpentTokens(1) + "x" + tokensSpent + " "
+            : renderSpentTokens(tokensSpent) + " ".repeat(4 - tokensSpent)}
         </span>
       </li>
-      <li class="tabletShow flex column textCenter alignCenter maxWidthFixedContent">
-        <span class="textBright">{props.dayNumber}</span>
+      <li class="desktopHide flex column textCenter alignCenter maxWidthFixedContent">
+        <span class="textBright marginTop1">Day {props.dayNumber}</span>
+        <br />
         <span class="token">{renderTokens(tokensGained)}</span>
         <span class="tokenSpent">
           {tokensSpent > 9
@@ -131,9 +136,11 @@ export default component$((props: DayLinkProps) => {
           <p class={`${modifierColor} marginVertPoint5`}>
             {challengeModifierString}
           </p>
-          <p class={`${modifierColor} marginVertPoint5`}>
-            {modifierOptionString}
-          </p>
+          {modifierOptionString !== "°°" && (
+            <p class={`${modifierColor} marginVertPoint5`}>
+              {modifierOptionString}
+            </p>
+          )}
           <p class={`${modifierColor} ${scoreColor} marginVertPoint5`}>
             {scoreString}
           </p>

@@ -11,8 +11,15 @@ export default component$(() => {
       <ul>
         {sponsors.map((sponsor, index) => (
           <li key={`sponsor-${index}`} class={`marginVert2`}>
-            <a href={sponsor.url}>°{sponsor.name}°</a> - {sponsor.textLine1}{" "}
-            <br /> {sponsor.textLine2}
+            <a
+              href={sponsor.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class={index % 2 === 0 ? "textGreen" : ""}
+            >
+              °{sponsor.name}°
+            </a>{" "}
+            - {sponsor.textLine1} <br /> {sponsor.textLine2}
           </li>
         ))}
       </ul>

@@ -5,7 +5,7 @@ import constructChallengeModifierFullText from "~/util/constructChallengeModifie
 export default component$(() => {
   return (
     <>
-      <article class="bigHeaders dashedHeaders textCenter">
+      <article class="bigHeaders mobileDashedHeaders textCenter">
         <h1 class="visualHide"> Xtreme Xmas Code </h1>
         <p>
           Have you ever been savoring your Advent Of Code calendar, keyboard
@@ -148,33 +148,6 @@ export default component$(() => {
           </a>
           .{" "}
         </p>
-        <div class="desktopShow">
-          ----------------------------------------------------------------------------
-        </div>
-        <h2 id="disclaimer"> Disclaimer </h2>
-        <div class="desktopShow">
-          ----------------------------------------------------------------------------
-        </div>{" "}
-        <p>
-          <em>Xtreme Xmas Code is under construction</em> and has not officially
-          launched.
-        </p>
-        <p>
-          Xtreme Xmas Code is in public Beta Testing phase and will be
-          officially released on November 30, 2023. Until then,{" "}
-          <em>
-            much of the site is subject to change and some features may not be
-            fully built out or optimized
-          </em>
-          . If you'd like to participate in the public beta,{" "}
-          <a
-            href="mailto:contact@kabeech.com?subject=Xtreme%20Xmas%20Beta%20Testing"
-            class="link"
-          >
-            °send me an email with your feedback°
-          </a>
-          !
-        </p>{" "}
         <div class="desktopShow">
           ----------------------------------------------------------------------------
         </div>
@@ -379,8 +352,9 @@ export default component$(() => {
         <div class="desktopShow">
           ----------------------------------------------------------------------------
         </div>
-        <p>
-          <em>
+        <br />
+        {/* <p>
+          <em id="high-contrast">
             I find the text on the site hard to read. Is there a high contrast
             mode?
           </em>
@@ -388,9 +362,9 @@ export default component$(() => {
         <p>
           There will be a high contrast alternate stylesheet. Firefox supports
           these by default (View -{">"} Page Style -{">"} High Contrast).
-        </p>
+        </p> */}
         <p>
-          <em>Are you affiliated with Advent of Code?</em>
+          <em id="affiliated">Are you affiliated with Advent of Code?</em>
         </p>
         <p>Nope!</p>
         <p>
@@ -422,7 +396,7 @@ export default component$(() => {
           (at the upper right of the page).
         </p>
         <p>
-          <em>Why make a mod for Advent of Code?</em>
+          <em id="why">Why make a mod for Advent of Code?</em>
         </p>
         <p>
           Because it's fun! Using randomized challenges to push our boundaries
@@ -487,11 +461,11 @@ export default component$(() => {
           and lateral thinking.
         </p>
         <p>
-          <em>How do the leaderboards work?</em>
+          <em id="leaderboards">How do the leaderboards work?</em>
         </p>
         <p>
           The leaderboards are opt-in; you must post your game manually for it
-          to show up. Games on the boards are ranked by score. There are two
+          to show up. Games on the boards are ranked by score. There will be two
           boards for each year: In-Season and All-Time. To qualify for the
           In-Season board, your game must be completed and posted during the
           specified year. For example, to qualify for the 2023 In-Season board
@@ -514,7 +488,7 @@ export default component$(() => {
           will automatically be removed from the leaderboards.
         </p>
         <p>
-          <em>Can I use AI to get on the leaderboards?</em>
+          <em id="ai">Can I use AI to get on the leaderboards?</em>
         </p>
         <p>
           Please don't post games that use AI to do most or all of your puzzle
@@ -526,9 +500,16 @@ export default component$(() => {
           sport =)
         </p>
         <p>
-          <em>How do you deter cheating? </em>
+          <em id="cheating">How do you deter cheating? </em>
         </p>
         <p>
+          We focus on showing our work as players. Each game posted to the
+          leaderboards must include a link to a public repository showing the
+          code used to solve each puzzle. If it becomes necessary, I will
+          implement a community-based reputation system (similar to Reddit's
+          approach) to filter out dishonest games.
+        </p>
+        {/* <p>
           We use a community-based reputation system and focus on showing our
           work as players. Each game posted to the leaderboards must include a
           link to a public repository showing the code used to solve each
@@ -545,9 +526,9 @@ export default component$(() => {
           player who I feel is abusing the leaderboards, including the voting
           and petitions process, may be subject to revocation of privileges,
           including being banned from voting in or posting to the leaderboards.
-        </p>
+        </p> */}
         <p>
-          <em>How does authentication work?</em>
+          <em id="authentication">How does authentication work?</em>
         </p>
         <p>
           Xtreme Xmas Code uses{" "}
@@ -568,18 +549,18 @@ export default component$(() => {
           >
             °GitHub°
           </a>{" "}
-          to log in with and Xtreme Xmas Code receives information to remember
-          who you are. This is generally public information; here are examples
-          from{" "}
+          or{" "}
           <a
-            href="https://api.reddit.com/user/reddit/about"
+            href="https://www.reddit.com/"
             target="_blank"
             rel="noopener noreferrer"
             class="link"
           >
-            °Reddit°
+            Reddit
           </a>{" "}
-          and{" "}
+          to log in with and Xtreme Xmas Code receives information to remember
+          who you are. This is generally public information; here are examples
+          from{" "}
           <a
             href="https://api.github.com/users/octocat"
             target="_blank"
@@ -587,6 +568,15 @@ export default component$(() => {
             class="link"
           >
             °GitHub°
+          </a>{" "}
+          and{" "}
+          <a
+            href="https://api.reddit.com/user/reddit/about"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="link"
+          >
+            °Reddit°
           </a>
           . Xtreme Xmas Code will remember your unique ID, names, URL, and image
           from the service you use to authenticate.

@@ -38,8 +38,8 @@ export default component$((props: HeaderProps) => {
         <div class="flex gap1 marginVertPoint2">
           {" "}
           <a href="/about">°About°</a> ¦{" "}
-          <a href="/games" class="textGreen">
-            °Games°
+          <a href="/calendar" class="textGreen">
+            °Calendar°
           </a>{" "}
           ¦{" "}
           <a href="/modifier" class="textRed">
@@ -61,8 +61,8 @@ export default component$((props: HeaderProps) => {
         </div>
         <div class="flex gap1 marginVertPoint2">
           {" "}
-          <a href="/calendar" class="textGreen">
-            °Calendar°
+          <a href="/games" class="textGreen">
+            °Games°
           </a>{" "}
           ¦ <a href="/support">°Support°</a> ¦
           <a href="/leaderboard" class="textGreen">
@@ -84,17 +84,14 @@ export default component$((props: HeaderProps) => {
         <div class="flex gap1 marginVertPoint2">
           {" "}
           <a href="/about">°About°</a> ¦{" "}
-          <a href="/leaderboard" class="textGreen">
-            °Leaderboards°
-          </a>
-          ¦{" "}
-          <a href="/modifier" class="textRed">
-            °Modifiers°
-          </a>
+          <a href="/calendar" class="textGreen">
+            °Calendar°
+          </a>{" "}
+          ¦ <a href="/leaderboard">°Leaderboards°</a>
         </div>
         <div class="flex gap1 marginVertPoint2">
-          <a href="/support" class="textGreen">
-            °Support°
+          <a href="/games" class="textGreen">
+            °Games°
           </a>{" "}
           ¦<a href="/settings">°Settings°</a> ¦
           <a href="/sponsors" class="textGreen">
@@ -103,9 +100,12 @@ export default component$((props: HeaderProps) => {
         </div>
         <div class="flex gap1 marginVertPoint2">
           {" "}
-          <a href="/calendar">°Calendar°</a> ¦{" "}
-          <a href="/games" class="textGreen">
-            °Games°
+          <a href="/modifier" class="textRed">
+            °Modifiers°
+          </a>
+          ¦{" "}
+          <a href="/support" class="textGreen">
+            °Support°
           </a>{" "}
           ¦
           <a
@@ -131,26 +131,26 @@ export default component$((props: HeaderProps) => {
         <div class="flex gap1 marginVertPoint2">
           {" "}
           <a href="/about">°About°</a> ¦{" "}
-          <a href="/modifier" class="textGreen">
-            °Modifiers°
-          </a>
+          <a href="/games" class="textGreen">
+            °Games°
+          </a>{" "}
         </div>
         <div class="flex gap1 marginVertPoint2">
-          <a href="/settings" class="textGreen">
-            °Settings°
-          </a>{" "}
+          <a href="/calendar" class="textGreen">
+            °Calendar°
+          </a>
           ¦<a href="/sponsors">°Sponsors°</a>
         </div>
         <div class="flex gap1 marginVertPoint2">
-          <a href="/games">°Games°</a> ¦{" "}
+          <a href="/settings">°Settings°</a> ¦{" "}
           <a href="/support" class="textGreen">
             °Support°
           </a>{" "}
         </div>
         <div class="flex gap1 marginVertPoint2">
           {" "}
-          <a href="/calendar" class="textGreen">
-            °Calendar°
+          <a href="/modifier" class="textGreen">
+            °Modifiers°
           </a>
           ¦
           <a

@@ -5,6 +5,7 @@ import { useAuthSession } from "../plugin@auth";
 import type { Session } from "@auth/core/types";
 import type { UserData } from "~/types";
 import constructUserId from "~/util/constructUserId";
+import { isNumeric } from "~/util/isNumeric";
 
 let gameNumber = 1;
 const dayNumber = 1;
@@ -15,7 +16,13 @@ export const onRequest: RequestHandler = (event) => {
   if (!session || new Date(session.expires) < new Date()) {
     throw event.redirect(302, `/login`);
   }
-  gameNumber = +event.cookie.get("gameNumber")!.value;
+
+  const storedGameNumber = event.cookie.get("gameNumber")?.value || null;
+  if (!storedGameNumber || !isNumeric(storedGameNumber)) {
+    gameNumber = 1;
+  } else {
+    gameNumber = +storedGameNumber;
+  }
   const userDataString = event.cookie.get("userData")?.value || null;
   if (userDataString) {
     userData = JSON.parse(userDataString);
@@ -120,11 +127,17 @@ export default component$(() => {
             );
           }
 
+          const sortedGames = xtremeXmasData.userData.Game.sort(
+            (a: { number: number }, b: { number: number }) => {
+              return b.number - a.number;
+            }
+          );
+
           return (
             <ul>
-              {xtremeXmasData.userData.Game.map(
+              {sortedGames.map(
                 (game: { name: string; number: number; year: number }) => (
-                  <li key={`game-${game.number}`}>
+                  <li key={`game-${game.number}`} class={`marginVertPoint5`}>
                     <a
                       href={`/game/${game.number}`}
                       class={game.number % 2 !== 0 && ` textGreen`}
@@ -135,7 +148,10 @@ export default component$(() => {
                   </li>
                 )
               )}
-              <a href="/new">°New Game°</a>
+              <br />
+              <li>
+                <a href="/new">°New Game°</a>
+              </li>
             </ul>
           );
         }}

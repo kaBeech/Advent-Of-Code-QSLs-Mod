@@ -4,8 +4,10 @@ import {
   component$,
   useResource$,
   useStore,
+  useStylesScoped$,
   useVisibleTask$,
 } from "@builder.io/qwik";
+import styles from "./game.css?inline";
 import {
   useLocation,
   type DocumentHead,
@@ -18,6 +20,7 @@ import DayLink from "~/components/game/dayLink/dayLink";
 import type { GameInfo } from "~/types";
 import { useLocalStorage } from "~/hooks/useLocalStorage";
 import constructUserId from "~/util/constructUserId";
+import { isNumeric } from "~/util/isNumeric";
 
 let gameInfo: GameInfo | null;
 
@@ -26,7 +29,11 @@ export const onRequest: RequestHandler = (event) => {
   if (!session || new Date(session.expires) < new Date()) {
     throw event.redirect(302, `/login`);
   }
-  event.cookie.set("gameNumber", event.params.gameNumber, {
+  let gameNumber = event.params.gameNumber;
+  if (!isNumeric(gameNumber)) {
+    gameNumber = "1";
+  }
+  event.cookie.set("gameNumber", gameNumber, {
     path: "/",
     secure: true,
   });
@@ -37,6 +44,7 @@ export const onRequest: RequestHandler = (event) => {
 };
 
 export default component$(() => {
+  useStylesScoped$(styles);
   const state = useStore({
     gameInfo,
   });
@@ -68,7 +76,7 @@ export default component$(() => {
   });
 
   return (
-    <article class="dashedHeaders">
+    <article class="mobileDashedHeaders">
       <Resource
         value={gameDataResource}
         onPending={() => {
@@ -78,65 +86,67 @@ export default component$(() => {
           }
           return (
             <>
-              <ul>
-                <li>
-                  Game Name:{" "}
-                  {!state.gameInfo ? `Loading...` : state.gameInfo.name}
-                </li>
-                <li>
-                  Player:{" "}
+              <p>
+                Game Name:{" "}
+                {!state.gameInfo ? `Loading...` : state.gameInfo.name}
+              </p>
+              <p>
+                Player:{" "}
+                {!state.gameInfo
+                  ? `Loading...`
+                  : (
+                      <img
+                        src={session.value!.user!.image!}
+                        alt="user avatar"
+                        style={{ height: "1.5rem", width: "1.5rem" }}
+                        width="24"
+                        height="24"
+                      />
+                    ) +
+                    " " +
+                    (
+                      <span style={`vertical-align: text-top`}>
+                        session.value!.user!.name!
+                      </span>
+                    )}
+              </p>
+              <p>
+                Year: {!state.gameInfo ? `Loading...` : state.gameInfo.year}
+              </p>
+              <p>
+                Score: {!state.gameInfo ? `Loading...` : state.gameInfo.score}
+              </p>
+              <p>
+                Current Reroll Tokens:{" "}
+                <strong class="token">
                   {!state.gameInfo
                     ? `Loading...`
-                    : (
-                        <img
-                          src={session.value!.user!.image!}
-                          alt="user avatar"
-                          style={{ height: "1.5rem", width: "1.5rem" }}
-                          width="24"
-                          height="24"
-                        />
-                      ) +
-                      " " +
-                      session.value!.user!.name!}
-                </li>
-                <li>
-                  Year: {!state.gameInfo ? `Loading...` : state.gameInfo.year}
-                </li>
-                <li>
-                  Score: {!state.gameInfo ? `Loading...` : state.gameInfo.score}
-                </li>
-                <li>
-                  Current Reroll Tokens:{" "}
-                  <strong class="token">
-                    {!state.gameInfo
-                      ? `Loading...`
-                      : state.gameInfo.currentRerollTokens > 9
-                      ? state.gameInfo.currentRerollTokens + ""
-                      : "".repeat(state.gameInfo.currentRerollTokens)}
-                  </strong>
-                </li>
-                {state.gameInfo?.dateCompleted && (
-                  <>
-                    <li>Title: {state.gameInfo.title}</li>
-                    <li>
-                      Completed During Calendar Year:{" "}
-                      {state.gameInfo.dateCompleted.toString().slice(0, 4) ===
-                      state.gameInfo.year.toString()
-                        ? "Yes"
-                        : "No"}
-                    </li>
-                  </>
-                )}
-                <li>
-                  Completed During Calendar Year?{" "}
-                  {!state.gameInfo
-                    ? `Loading...`
-                    : state.gameInfo.dateCompleted?.toString().slice(0, 4) ===
-                      state.gameInfo.year.toString()
-                    ? "Yes"
-                    : "No"}
-                </li>
-              </ul>
+                    : state.gameInfo.currentRerollTokens > 9
+                    ? state.gameInfo.currentRerollTokens + ""
+                    : "".repeat(state.gameInfo.currentRerollTokens)}
+                </strong>
+              </p>
+              {state.gameInfo?.dateCompleted && (
+                <>
+                  <p>Title: {state.gameInfo.title}</p>
+                  <p>
+                    Completed During Calendar Year:{" "}
+                    {state.gameInfo.dateCompleted.toString().slice(0, 4) ===
+                    state.gameInfo.year.toString()
+                      ? "Yes"
+                      : "No"}
+                  </p>
+                </>
+              )}
+              <p>
+                Completed During Calendar Year?{" "}
+                {!state.gameInfo
+                  ? `Loading...`
+                  : state.gameInfo.dateCompleted?.toString().slice(0, 4) ===
+                    state.gameInfo.year.toString()
+                  ? "Yes"
+                  : "No"}
+              </p>
               <ul>
                 {pendingDays.map((day: { number: number }) => (
                   <DayLink
@@ -183,49 +193,91 @@ export default component$(() => {
           );
           return (
             <>
-              <ul class="textCenter">
-                <li>{gameData.name}</li>
-                <li>
-                  <img
-                    src={session.value!.user!.image!}
-                    alt="user avatar"
-                    style={{ height: "1.5rem", width: "1.5rem" }}
-                    width="24"
-                    height="24"
-                  />{" "}
-                  {gameData.User.username}
-                </li>
-                <li>Year: {gameData.year}</li>
-                <li>Score: {gameData.score}</li>
-                <li>
-                  Current Reroll Tokens:{" "}
-                  <strong class="token">
-                    {gameData.currentRerollTokens > 9
-                      ? gameData.currentRerollTokens + ""
-                      : "".repeat(gameData.currentRerollTokens)}
-                  </strong>
-                </li>
-                {gameData.dateCompleted && (
-                  <>
-                    <li>Title: {gameData.title}</li>
-                    <li>
-                      Completed During Calendar Year?{" "}
-                      {gameData.dateCompleted.toString().slice(0, 4) ===
-                      gameData.year.toString()
-                        ? "Yes"
-                        : "No"}
-                    </li>
-                  </>
-                )}
-                <li>
-                  <a href="edit">°Edit Game°</a>
-                </li>
-                {gameData.isPublic && (
-                  <li>
-                    <a href={`/game/public/${gameData.id}/`}>°Public Link°</a>
-                  </li>
-                )}
-              </ul>
+              <h1 class={``}>{gameData.name}</h1>
+              <p class={``}>
+                <img
+                  src={session.value!.user!.image!}
+                  alt="user avatar"
+                  style={{ height: "1.5rem", width: "1.5rem" }}
+                  width="24"
+                  height="24"
+                />{" "}
+                {gameData.User.username}
+              </p>
+              <br />
+              <p>Year: {gameData.year}</p>
+              <p>Score: {gameData.score}</p>
+              <p>
+                Current Reroll Tokens:{" "}
+                <strong class="token">
+                  {gameData.currentRerollTokens > 9
+                    ? gameData.currentRerollTokens + ""
+                    : "".repeat(gameData.currentRerollTokens)}
+                </strong>
+              </p>
+              <br />
+              {gameData.dateCompleted && (
+                <>
+                  <p>Title: {gameData.title}</p>
+                  <p>
+                    Completed During Calendar Year?{" "}
+                    {gameData.dateCompleted.toString().slice(0, 4) ===
+                    gameData.year.toString()
+                      ? "Yes"
+                      : "No"}
+                  </p>
+                </>
+              )}
+              <p>
+                <a href={`day/${gameData.currentDay}/`} class="textGreen">
+                  °Continue Current Day°
+                </a>
+              </p>
+              <br />
+              <p>
+                <a
+                  href="edit"
+                  class={
+                    gameData.repositoryLink && !gameData.isPublic
+                      ? "textGreen"
+                      : ""
+                  }
+                >
+                  °Edit Game°
+                </a>
+              </p>
+              <p>
+                {" "}
+                <a
+                  href={`https://adventofcode.com/${gameData.year}/`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="textGreen"
+                >
+                  {" "}
+                  °Puzzle Link°
+                </a>
+              </p>
+              {gameData.repositoryLink && (
+                <p>
+                  {" "}
+                  <a
+                    href={gameData.repositoryLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {" "}
+                    °Repo Link°
+                  </a>
+                </p>
+              )}
+              {gameData.repositoryLink && gameData.isPublic && (
+                <p>
+                  <a href={`/game/public/${gameData.id}/`} class="textGreen">
+                    °Public Link°
+                  </a>
+                </p>
+              )}
               <br />
               <div class="desktopShow">
                 <div class="desktopShow">
@@ -239,7 +291,7 @@ export default component$(() => {
                   --------------------------------------------------------------------
                 </div>
               </div>
-              <div class="tabletShow">
+              <div class="desktopHide">
                 <h2 class={`textCenter marginBottom2`}>
                   <p>Day</p>
                   <p>Tokens</p>

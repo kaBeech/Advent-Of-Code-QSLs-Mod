@@ -1,9 +1,5 @@
 # Xtreme Xmas Code
 
-\*\*UNDER CONSTRUCTION\*\*
-
-\*\*CURRENT STATUS: Basic functionality built out. Next step - finalize design and flesh out functionality\*\*
-
 Have you ever been savoring your [Advent Of Code](https://adventofcode.com/) calendar, keyboard dusted with sugar cookie crumbles, reindeer curled at your feet, and found yourself wishing the puzzles were wilder? More challenging? MORE XTREME??
 
 Well ho-ho-hold that thought because this is the mod for you!

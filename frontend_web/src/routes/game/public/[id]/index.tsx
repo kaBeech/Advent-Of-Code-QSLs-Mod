@@ -4,8 +4,10 @@ import {
   component$,
   useResource$,
   useStore,
+  useStylesScoped$,
   useVisibleTask$,
 } from "@builder.io/qwik";
+import styles from "../../[gameNumber]/game.css?inline";
 import { useLocation, type DocumentHead } from "@builder.io/qwik-city";
 import { serverFetcher } from "~/util/serverFetcher";
 import DayLink from "~/components/game/dayLink/dayLink";
@@ -15,6 +17,7 @@ import { useLocalStorage } from "~/hooks/useLocalStorage";
 let gameInfo: GameInfo | null;
 
 export default component$(() => {
+  useStylesScoped$(styles);
   const state = useStore({
     gameInfo,
   });
@@ -36,7 +39,7 @@ export default component$(() => {
   });
 
   return (
-    <article class="dashedHeaders">
+    <article class="mobileDashedHeaders">
       <br />
       <Resource
         value={gameDataResource}
@@ -47,49 +50,46 @@ export default component$(() => {
           }
           return (
             <>
-              <ul>
-                <li>Test</li>
-                <li>
-                  Game Name:{" "}
-                  {!state.gameInfo ? `Loading...` : state.gameInfo.name}
-                </li>
-                <li>Player: Loading...</li>
-                <li>
-                  Year: {!state.gameInfo ? `Loading...` : state.gameInfo.year}
-                </li>
-                <li>
-                  Score: {!state.gameInfo ? `Loading...` : state.gameInfo.score}
-                </li>
-                <li>
-                  Current Reroll Tokens:{" "}
-                  {!state.gameInfo
-                    ? `Loading...`
-                    : state.gameInfo.currentRerollTokens > 9
-                    ? state.gameInfo.currentRerollTokens + ""
-                    : "".repeat(state.gameInfo.currentRerollTokens)}
-                </li>
-                {state.gameInfo?.dateCompleted && (
-                  <>
-                    <li>Title: {state.gameInfo.title}</li>
-                    <li>
-                      Completed During Calendar Year:{" "}
-                      {state.gameInfo.dateCompleted.toString().slice(0, 4) ===
-                      state.gameInfo.year.toString()
-                        ? "Yes"
-                        : "No"}
-                    </li>
-                  </>
-                )}
-                <li>
-                  Completed During Calendar Year?{" "}
-                  {!state.gameInfo
-                    ? `Loading...`
-                    : state.gameInfo.dateCompleted?.toString().slice(0, 4) ===
-                      state.gameInfo.year.toString()
-                    ? "Yes"
-                    : "No"}
-                </li>
-              </ul>
+              <p>
+                Game Name:{" "}
+                {!state.gameInfo ? `Loading...` : state.gameInfo.name}
+              </p>
+              <p>Player: Loading...</p>
+              <p>
+                Year: {!state.gameInfo ? `Loading...` : state.gameInfo.year}
+              </p>
+              <p>
+                Score: {!state.gameInfo ? `Loading...` : state.gameInfo.score}
+              </p>
+              <p>
+                Current Reroll Tokens:{" "}
+                {!state.gameInfo
+                  ? `Loading...`
+                  : state.gameInfo.currentRerollTokens > 9
+                  ? state.gameInfo.currentRerollTokens + ""
+                  : "".repeat(state.gameInfo.currentRerollTokens)}
+              </p>
+              {state.gameInfo?.dateCompleted && (
+                <>
+                  <p>Title: {state.gameInfo.title}</p>
+                  <p>
+                    Completed During Calendar Year:{" "}
+                    {state.gameInfo.dateCompleted.toString().slice(0, 4) ===
+                    state.gameInfo.year.toString()
+                      ? "Yes"
+                      : "No"}
+                  </p>
+                </>
+              )}
+              <p>
+                Completed During Calendar Year?{" "}
+                {!state.gameInfo
+                  ? `Loading...`
+                  : state.gameInfo.dateCompleted?.toString().slice(0, 4) ===
+                    state.gameInfo.year.toString()
+                  ? "Yes"
+                  : "No"}
+              </p>
               <ul>
                 {pendingDays.map((day: { number: number }) => (
                   <DayLink
@@ -136,41 +136,68 @@ export default component$(() => {
           );
           return (
             <>
-              <ul class="textCenter">
-                <li>{gameData.name}</li>
-                <li>
-                  <img
-                    src={gameData.User.oauthAvatarUrl}
-                    alt="user avatar"
-                    style={{ height: "1.5rem", width: "1.5rem" }}
-                    width="24"
-                    height="24"
-                  />{" "}
+              <h1>{gameData.name}</h1>
+              <p>
+                <img
+                  src={gameData.User.oauthAvatarUrl}
+                  alt="user avatar"
+                  style={{ height: "1.5rem", width: "1.5rem" }}
+                  width="24"
+                  height="24"
+                />{" "}
+                <span style={`vertical-align: text-top`}>
                   {gameData.User.username}
-                </li>
-                <li>Year: {gameData.year}</li>
-                <li>Score: {gameData.score}</li>
-                <li>
-                  Current Reroll Tokens:{" "}
-                  <strong class="token">
-                    {gameData.currentRerollTokens > 9
-                      ? gameData.currentRerollTokens + ""
-                      : "".repeat(gameData.currentRerollTokens)}
-                  </strong>
-                </li>
-                {gameData.dateCompleted && (
-                  <>
-                    <li>Title: {gameData.title}</li>
-                    <li>
-                      Completed During Calendar Year?{" "}
-                      {gameData.dateCompleted.toString().slice(0, 4) ===
-                      gameData.year.toString()
-                        ? "Yes"
-                        : "No"}
-                    </li>
-                  </>
-                )}
-              </ul>
+                </span>
+              </p>
+              <br />
+              <p>Year: {gameData.year}</p>
+              <p>Score: {gameData.score}</p>
+              <p>
+                Current Reroll Tokens:{" "}
+                <strong class="token">
+                  {gameData.currentRerollTokens > 9
+                    ? gameData.currentRerollTokens + ""
+                    : "".repeat(gameData.currentRerollTokens)}
+                </strong>
+              </p>
+              {gameData.dateCompleted && (
+                <>
+                  <p>Title: {gameData.title}</p>
+                  <p>
+                    Completed During Calendar Year?{" "}
+                    {gameData.dateCompleted.toString().slice(0, 4) ===
+                    gameData.year.toString()
+                      ? "Yes"
+                      : "No"}
+                  </p>
+                </>
+              )}
+              <br />
+              <p>
+                {" "}
+                <a
+                  href={`https://adventofcode.com/${gameData.year}/day/`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="textGreen"
+                >
+                  {" "}
+                  °Puzzle Link°
+                </a>
+              </p>
+              {gameData.repositoryLink && (
+                <p>
+                  {" "}
+                  <a
+                    href={gameData.repositoryLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {" "}
+                    °Repo Link°
+                  </a>
+                </p>
+              )}
               <br />
               <div class="desktopShow">
                 <div>
@@ -184,7 +211,7 @@ export default component$(() => {
                   --------------------------------------------------------------------
                 </div>
               </div>
-              <div class="tabletShow">
+              <div class="desktopHide">
                 <h2 class={`textCenter marginBottom2`}>
                   <p>Day</p>
                   <p>Tokens</p>

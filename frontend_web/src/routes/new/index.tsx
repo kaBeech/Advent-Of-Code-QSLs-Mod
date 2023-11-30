@@ -5,7 +5,7 @@ import { useAuthSession } from "../plugin@auth";
 import constructUserId from "~/util/constructUserId";
 
 const name = "Test Game";
-const year = 2022;
+const year = 2023;
 const numberOfGames = 0;
 const isPublic: boolean = false;
 const repositoryLink = "https://github.com/octocat/Spoon-Knife";

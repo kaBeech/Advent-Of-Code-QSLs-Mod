@@ -1,0 +1,14 @@
+@media (max-width: 900px) {
+  article,
+  footer {
+    max-width: 34em;
+  }
+}
+
+@media (max-width: 1390px) {
+  .mobileDashedHeaders h2 {
+    /* border-style: dashed; */
+    /* max-width: fit-content; */
+    padding: 0.5rem 0;
+  }
+}

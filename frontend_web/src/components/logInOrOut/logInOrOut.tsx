@@ -19,6 +19,7 @@ export default component$((props: LoginProps) => {
         <a
           onClick$={() => {
             logOut.submit({ callbackUrl: "/" });
+            props.toggleLoggedIn();
             state.isLoggedIn = false;
           }}
         >
@@ -28,6 +29,7 @@ export default component$((props: LoginProps) => {
         <a
           onClick$={() => {
             logIn.submit({});
+            props.toggleLoggedIn();
             state.isLoggedIn = true;
           }}
           class="textGreen"

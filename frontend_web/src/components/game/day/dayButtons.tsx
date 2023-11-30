@@ -5,7 +5,6 @@ export interface DayButtonsProps {
   privateViewerData: {
     gameIsPublic: boolean;
     gameId: string;
-    dateFirstRolled: string | null;
     gameNumber: string;
     dayNumber: string;
     incrementButtonPresses: Function | any;
@@ -14,6 +13,7 @@ export interface DayButtonsProps {
     userId: string;
   };
   xtremeXmasData: {
+    dateFirstRolled: string | null;
     currentDay: number;
     currentDayCompleted: boolean;
     part1Completed: string | null;
@@ -26,29 +26,11 @@ export interface DayButtonsProps {
 export default component$((props: DayButtonsProps) => {
   return (
     <div class={`flex column gap1 marginTop1`}>
-      {+props.privateViewerData.dayNumber > 1 && (
-        <a
-          href={`/game/${props.privateViewerData!.gameNumber}/day/${
-            +props.privateViewerData!.dayNumber - 1
-          }/`}
-        >
-          °Previous Day°
-        </a>
-      )}{" "}
-      {+props.privateViewerData!.dayNumber <
-        props.xtremeXmasData.currentDay && (
-        <a
-          href={`/game/${props.privateViewerData!.gameNumber}/day/${
-            +props.privateViewerData!.dayNumber + 1
-          }/`}
-        >
-          °Next Day°
-        </a>
-      )}
       {props.xtremeXmasData.part2Completed ? (
         <></>
-      ) : !props.privateViewerData.dateFirstRolled ? (
+      ) : !props.xtremeXmasData.dateFirstRolled ? (
         <a
+          class="textGreen"
           onClick$={async () => {
             if (props.privateViewerData!.loading) {
               return;
@@ -69,6 +51,7 @@ export default component$((props: DayButtonsProps) => {
       ) : (
         <li>
           <a
+            class="textGreen"
             onClick$={async () => {
               if (props.privateViewerData!.loading) {
                 return;
@@ -89,31 +72,6 @@ export default component$((props: DayButtonsProps) => {
           for <strong class="tokenSpent"></strong>
         </li>
       )}{" "}
-      {props.xtremeXmasData.modifierOption !== "None" &&
-        !props.xtremeXmasData.part2Completed && (
-          <li>
-            <a
-              onClick$={async () => {
-                if (props.privateViewerData!.loading) {
-                  return;
-                }
-                props.privateViewerData!.setLoadingStatus(true);
-                await serverFetcher(
-                  `game/${props.privateViewerData!.gameNumber}/day/${
-                    props.privateViewerData!.dayNumber
-                  }/reroll/option`,
-                  "PUT",
-                  props.privateViewerData!.userId
-                );
-                props.privateViewerData!.incrementButtonPresses();
-              }}
-            >
-              °Reroll Modifier Option°
-            </a>{" "}
-            ({props.xtremeXmasData.modifierOption}) for{" "}
-            <strong class="tokenSpent"></strong>
-          </li>
-        )}{" "}
       {props.xtremeXmasData.challengeModifier !== "None" &&
         !props.xtremeXmasData.part2Completed && (
           <li>
@@ -137,12 +95,39 @@ export default component$((props: DayButtonsProps) => {
             </a>
           </li>
         )}
+      {props.xtremeXmasData.modifierOption !== "None" &&
+        !props.xtremeXmasData.part2Completed && (
+          <li>
+            <a
+              class="textGreen"
+              onClick$={async () => {
+                if (props.privateViewerData!.loading) {
+                  return;
+                }
+                props.privateViewerData!.setLoadingStatus(true);
+                await serverFetcher(
+                  `game/${props.privateViewerData!.gameNumber}/day/${
+                    props.privateViewerData!.dayNumber
+                  }/reroll/option`,
+                  "PUT",
+                  props.privateViewerData!.userId
+                );
+                props.privateViewerData!.incrementButtonPresses();
+              }}
+            >
+              °Reroll Modifier Option°
+            </a>{" "}
+            ({props.xtremeXmasData.modifierOption}) for{" "}
+            <strong class="tokenSpent"></strong>
+          </li>
+        )}{" "}
       {!props.xtremeXmasData.currentDayCompleted ||
       props.xtremeXmasData.currentDay != +props.privateViewerData!.dayNumber ||
       props.xtremeXmasData.currentDay === 25 ? (
         <></>
       ) : (
         <a
+          class={"textGreen"}
           onClick$={async () => {
             if (props.privateViewerData!.loading) {
               return;
@@ -164,11 +149,12 @@ export default component$((props: DayButtonsProps) => {
           °Start Next Day°
         </a>
       )}
-      {!props.privateViewerData.dateFirstRolled ||
+      {!props.xtremeXmasData.dateFirstRolled ||
       props.xtremeXmasData.part1Completed ? (
         <></>
       ) : (
         <a
+          class={"textGreen"}
           onClick$={async () => {
             if (props.privateViewerData!.loading) {
               return;
@@ -198,6 +184,7 @@ export default component$((props: DayButtonsProps) => {
         <></>
       ) : (
         <a
+          class={"textGreen"}
           onClick$={async () => {
             if (props.privateViewerData!.loading) {
               return;
@@ -222,6 +209,26 @@ export default component$((props: DayButtonsProps) => {
           )}
         </a>
       )}
+      {+props.privateViewerData!.dayNumber <
+        props.xtremeXmasData.currentDay && (
+        <a
+          href={`/game/${props.privateViewerData!.gameNumber}/day/${
+            +props.privateViewerData!.dayNumber + 1
+          }/`}
+          class="textGreen"
+        >
+          °Next Day°
+        </a>
+      )}
+      {+props.privateViewerData.dayNumber > 1 && (
+        <a
+          href={`/game/${props.privateViewerData!.gameNumber}/day/${
+            +props.privateViewerData!.dayNumber - 1
+          }/`}
+        >
+          °Previous Day°
+        </a>
+      )}{" "}
     </div>
   );
 });
