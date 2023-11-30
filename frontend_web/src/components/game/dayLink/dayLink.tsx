@@ -33,7 +33,7 @@ export default component$((props: DayLinkProps) => {
           <span class="textBright">
             {props.dayNumber < 10 ? " " + props.dayNumber : props.dayNumber}
           </span>
-          {"        "}
+          {"         "}
         </li>
         <li class="textDim desktopHide">
           #####LOCKED#####{" "}
@@ -113,7 +113,7 @@ export default component$((props: DayLinkProps) => {
           {"  "}
         </span>
         <span class="token">
-          {" ".repeat(2 - tokensGained) + renderTokens(tokensGained)}
+          {" ".repeat(3 - tokensGained) + renderTokens(tokensGained)}
         </span>
         <span class="tokenSpent">
           {tokensSpent > 9
