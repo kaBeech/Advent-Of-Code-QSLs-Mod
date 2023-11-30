@@ -132,9 +132,11 @@ export default component$((props: DayLinkProps) => {
           <p class={`${modifierColor} marginVertPoint5`}>
             {challengeModifierString}
           </p>
-          <p class={`${modifierColor} marginVertPoint5`}>
-            {modifierOptionString}
-          </p>
+          {modifierOptionString !== "°°" && (
+            <p class={`${modifierColor} marginVertPoint5`}>
+              {modifierOptionString}
+            </p>
+          )}
           <p class={`${modifierColor} ${scoreColor} marginVertPoint5`}>
             {scoreString}
           </p>
