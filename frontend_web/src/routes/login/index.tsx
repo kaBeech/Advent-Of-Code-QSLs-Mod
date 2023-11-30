@@ -18,8 +18,8 @@ export default component$(() => {
         <span class="logoRed"> Welcome! </span>
         {"<"}
       </h1>
-      <p class="textCenter fonztLarger">
-        Please <LogIn /> to play!{" "}
+      <p class="textCenter fontLarger">
+        Please <LogIn /> to play!
       </p>
       <p>
         <a href="/about">°About°</a> Xtreme Xmas Code
