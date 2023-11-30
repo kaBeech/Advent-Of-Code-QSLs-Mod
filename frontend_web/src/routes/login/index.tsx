@@ -21,6 +21,9 @@ export default component$(() => {
       <p class="textCenter">
         Please <LogIn /> to play!{" "}
       </p>
+      <p>
+        <a href="/about">°About°</a> Xtreme Xmas Code
+      </p>
       <br />
       <br />
     </>
