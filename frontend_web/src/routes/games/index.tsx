@@ -127,9 +127,15 @@ export default component$(() => {
             );
           }
 
+          const sortedGames = xtremeXmasData.userData.Game.sort(
+            (a: { number: number }, b: { number: number }) => {
+              return b.number - a.number;
+            }
+          );
+
           return (
             <ul>
-              {xtremeXmasData.userData.Game.map(
+              {sortedGames.map(
                 (game: { name: string; number: number; year: number }) => (
                   <li key={`game-${game.number}`}>
                     <a
@@ -142,6 +148,7 @@ export default component$(() => {
                   </li>
                 )
               )}
+              <br />
               <a href="/new">°New Game°</a>
             </ul>
           );
