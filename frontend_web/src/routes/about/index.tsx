@@ -62,6 +62,7 @@ export default component$(() => {
           </a>
           .
         </p>
+        <br />
         <div class="desktopShow">
           ----------------------------------------------------------------------------
         </div>
@@ -69,6 +70,7 @@ export default component$(() => {
         <div class="desktopShow">
           ----------------------------------------------------------------------------
         </div>
+        <br />
         <p>
           I'm{" "}
           <a
@@ -148,6 +150,7 @@ export default component$(() => {
           </a>
           .{" "}
         </p>
+        <br />
         <div class="desktopShow">
           ----------------------------------------------------------------------------
         </div>
@@ -155,6 +158,7 @@ export default component$(() => {
         <div class="desktopShow">
           ----------------------------------------------------------------------------
         </div>{" "}
+        <br />
         <p>
           Each day you may roll a new <em>Challenge Modifier</em>. Our example
           Challenge Modifier will be{" "}
@@ -228,6 +232,7 @@ export default component$(() => {
           Challenge Modifier, but your game will still show on the leaderboards
           if applicable.
         </p>
+        <br />
         <div class="desktopShow">
           ----------------------------------------------------------------------------
         </div>{" "}
@@ -235,6 +240,7 @@ export default component$(() => {
         <div class="desktopShow">
           ----------------------------------------------------------------------------
         </div>{" "}
+        <br />
         <p>
           The <em>Scoring Formula</em> is{" "}
           <code>
@@ -283,6 +289,7 @@ export default component$(() => {
           </li>
         </ul>
         <br />
+        <br />
         <div class="desktopShow">
           ----------------------------------------------------------------------------
         </div>{" "}
@@ -290,6 +297,7 @@ export default component$(() => {
         <div class="desktopShow">
           ----------------------------------------------------------------------------
         </div>{" "}
+        <br />
         <p>
           Upon completing Day 25 of a game you will be awarded a <em>Title</em>{" "}
           based on your score. The titles are:
@@ -333,6 +341,7 @@ export default component$(() => {
           </li>
         </ul>
         <br />
+        <br />
         <div class="desktopShow">
           ----------------------------------------------------------------------------
         </div>{" "}
@@ -340,11 +349,13 @@ export default component$(() => {
         <div class="desktopShow">
           ----------------------------------------------------------------------------
         </div>{" "}
+        <br />
         <p>
           You can generate a <em>Public Link</em> to share your work with the
           world by marking your game as Public. These links can be found on the
           Calendar pages.
         </p>
+        <br />
         <div class="desktopShow">
           ----------------------------------------------------------------------------
         </div>{" "}
@@ -581,6 +592,7 @@ export default component$(() => {
           . Xtreme Xmas Code will remember your unique ID, names, URL, and image
           from the service you use to authenticate.
         </p>
+        <br />
         <div class="desktopShow">
           ----------------------------------------------------------------------------
         </div>{" "}
@@ -588,6 +600,7 @@ export default component$(() => {
         <div class="desktopShow">
           ----------------------------------------------------------------------------
         </div>
+        <br />
         <p>
           Xtreme Xmas Code:{" "}
           <a
