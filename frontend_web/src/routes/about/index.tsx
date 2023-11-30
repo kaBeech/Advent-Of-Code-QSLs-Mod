@@ -529,6 +529,13 @@ export default component$(() => {
           <em id="cheating">How do you deter cheating? </em>
         </p>
         <p>
+          We focus on showing our work as players. Each game posted to the
+          leaderboards must include a link to a public repository showing the
+          code used to solve each puzzle. If it becomes necessary, I will
+          implement a community-based reputation system (similar to Reddit's
+          approach) to filter out dishonest games.
+        </p>
+        {/* <p>
           We use a community-based reputation system and focus on showing our
           work as players. Each game posted to the leaderboards must include a
           link to a public repository showing the code used to solve each
@@ -545,7 +552,7 @@ export default component$(() => {
           player who I feel is abusing the leaderboards, including the voting
           and petitions process, may be subject to revocation of privileges,
           including being banned from voting in or posting to the leaderboards.
-        </p>
+        </p> */}
         <p>
           <em id="authentication">How does authentication work?</em>
         </p>
