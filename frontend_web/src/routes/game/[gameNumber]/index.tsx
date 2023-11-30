@@ -225,6 +225,24 @@ export default component$(() => {
                 </>
               )}
               <p>
+                <a href={`day/${gameData.currentDay}/`} class="textGreen">
+                  °Continue Current Day°
+                </a>
+              </p>
+              <br />
+              <p>
+                <a
+                  href="edit"
+                  class={
+                    gameData.repositoryLink && !gameData.isPublic
+                      ? "textGreen"
+                      : ""
+                  }
+                >
+                  °Edit Game°
+                </a>
+              </p>
+              <p>
                 {" "}
                 <a
                   href={`https://adventofcode.com/${gameData.year}/`}
@@ -256,18 +274,6 @@ export default component$(() => {
                   </a>
                 </p>
               )}
-              <p>
-                <a
-                  href="edit"
-                  class={
-                    gameData.repositoryLink && !gameData.isPublic
-                      ? "textGreen"
-                      : ""
-                  }
-                >
-                  °Edit Game°
-                </a>
-              </p>
               <br />
               <div class="desktopShow">
                 <div class="desktopShow">
