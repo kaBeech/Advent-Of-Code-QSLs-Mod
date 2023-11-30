@@ -4,8 +4,10 @@ import {
   component$,
   useResource$,
   useStore,
+  useStylesScoped$,
   useVisibleTask$,
 } from "@builder.io/qwik";
+import styles from "./game.css?inline";
 import {
   useLocation,
   type DocumentHead,
@@ -42,6 +44,7 @@ export const onRequest: RequestHandler = (event) => {
 };
 
 export default component$(() => {
+  useStylesScoped$(styles);
   const state = useStore({
     gameInfo,
   });
@@ -83,65 +86,63 @@ export default component$(() => {
           }
           return (
             <>
-              <ul>
-                <li>
-                  Game Name:{" "}
-                  {!state.gameInfo ? `Loading...` : state.gameInfo.name}
-                </li>
-                <li>
-                  Player:{" "}
+              <p>
+                Game Name:{" "}
+                {!state.gameInfo ? `Loading...` : state.gameInfo.name}
+              </p>
+              <p>
+                Player:{" "}
+                {!state.gameInfo
+                  ? `Loading...`
+                  : (
+                      <img
+                        src={session.value!.user!.image!}
+                        alt="user avatar"
+                        style={{ height: "1.5rem", width: "1.5rem" }}
+                        width="24"
+                        height="24"
+                      />
+                    ) +
+                    " " +
+                    session.value!.user!.name!}
+              </p>
+              <p>
+                Year: {!state.gameInfo ? `Loading...` : state.gameInfo.year}
+              </p>
+              <p>
+                Score: {!state.gameInfo ? `Loading...` : state.gameInfo.score}
+              </p>
+              <p>
+                Current Reroll Tokens:{" "}
+                <strong class="token">
                   {!state.gameInfo
                     ? `Loading...`
-                    : (
-                        <img
-                          src={session.value!.user!.image!}
-                          alt="user avatar"
-                          style={{ height: "1.5rem", width: "1.5rem" }}
-                          width="24"
-                          height="24"
-                        />
-                      ) +
-                      " " +
-                      session.value!.user!.name!}
-                </li>
-                <li>
-                  Year: {!state.gameInfo ? `Loading...` : state.gameInfo.year}
-                </li>
-                <li>
-                  Score: {!state.gameInfo ? `Loading...` : state.gameInfo.score}
-                </li>
-                <li>
-                  Current Reroll Tokens:{" "}
-                  <strong class="token">
-                    {!state.gameInfo
-                      ? `Loading...`
-                      : state.gameInfo.currentRerollTokens > 9
-                      ? state.gameInfo.currentRerollTokens + ""
-                      : "".repeat(state.gameInfo.currentRerollTokens)}
-                  </strong>
-                </li>
-                {state.gameInfo?.dateCompleted && (
-                  <>
-                    <li>Title: {state.gameInfo.title}</li>
-                    <li>
-                      Completed During Calendar Year:{" "}
-                      {state.gameInfo.dateCompleted.toString().slice(0, 4) ===
-                      state.gameInfo.year.toString()
-                        ? "Yes"
-                        : "No"}
-                    </li>
-                  </>
-                )}
-                <li>
-                  Completed During Calendar Year?{" "}
-                  {!state.gameInfo
-                    ? `Loading...`
-                    : state.gameInfo.dateCompleted?.toString().slice(0, 4) ===
-                      state.gameInfo.year.toString()
-                    ? "Yes"
-                    : "No"}
-                </li>
-              </ul>
+                    : state.gameInfo.currentRerollTokens > 9
+                    ? state.gameInfo.currentRerollTokens + ""
+                    : "".repeat(state.gameInfo.currentRerollTokens)}
+                </strong>
+              </p>
+              {state.gameInfo?.dateCompleted && (
+                <>
+                  <p>Title: {state.gameInfo.title}</p>
+                  <p>
+                    Completed During Calendar Year:{" "}
+                    {state.gameInfo.dateCompleted.toString().slice(0, 4) ===
+                    state.gameInfo.year.toString()
+                      ? "Yes"
+                      : "No"}
+                  </p>
+                </>
+              )}
+              <p>
+                Completed During Calendar Year?{" "}
+                {!state.gameInfo
+                  ? `Loading...`
+                  : state.gameInfo.dateCompleted?.toString().slice(0, 4) ===
+                    state.gameInfo.year.toString()
+                  ? "Yes"
+                  : "No"}
+              </p>
               <ul>
                 {pendingDays.map((day: { number: number }) => (
                   <DayLink
@@ -188,85 +189,85 @@ export default component$(() => {
           );
           return (
             <>
-              <ul class="textCenter">
-                <li>{gameData.name}</li>
-                <li>
-                  <img
-                    src={session.value!.user!.image!}
-                    alt="user avatar"
-                    style={{ height: "1.5rem", width: "1.5rem" }}
-                    width="24"
-                    height="24"
-                  />{" "}
-                  {gameData.User.username}
-                </li>
-                <li>Year: {gameData.year}</li>
-                <li>Score: {gameData.score}</li>
-                <li>
-                  Current Reroll Tokens:{" "}
-                  <strong class="token">
-                    {gameData.currentRerollTokens > 9
-                      ? gameData.currentRerollTokens + ""
-                      : "".repeat(gameData.currentRerollTokens)}
-                  </strong>
-                </li>
-                {gameData.dateCompleted && (
-                  <>
-                    <li>Title: {gameData.title}</li>
-                    <li>
-                      Completed During Calendar Year?{" "}
-                      {gameData.dateCompleted.toString().slice(0, 4) ===
-                      gameData.year.toString()
-                        ? "Yes"
-                        : "No"}
-                    </li>
-                  </>
-                )}
-                <li>
+              <h1 class={``}>{gameData.name}</h1>
+              <h2 class={``}>
+                <img
+                  src={session.value!.user!.image!}
+                  alt="user avatar"
+                  style={{ height: "1.5rem", width: "1.5rem" }}
+                  width="24"
+                  height="24"
+                />{" "}
+                {gameData.User.username}
+              </h2>
+              <br />
+              <p>Year: {gameData.year}</p>
+              <p>Score: {gameData.score}</p>
+              <p>
+                Current Reroll Tokens:{" "}
+                <strong class="token">
+                  {gameData.currentRerollTokens > 9
+                    ? gameData.currentRerollTokens + ""
+                    : "".repeat(gameData.currentRerollTokens)}
+                </strong>
+              </p>
+              <br />
+              {gameData.dateCompleted && (
+                <>
+                  <p>Title: {gameData.title}</p>
+                  <p>
+                    Completed During Calendar Year?{" "}
+                    {gameData.dateCompleted.toString().slice(0, 4) ===
+                    gameData.year.toString()
+                      ? "Yes"
+                      : "No"}
+                  </p>
+                </>
+              )}
+              <p>
+                {" "}
+                <a
+                  href={`https://adventofcode.com/${gameData.year}/`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="textGreen"
+                >
+                  {" "}
+                  °Puzzle Link°
+                </a>
+              </p>
+              {gameData.repositoryLink && (
+                <p>
                   {" "}
                   <a
-                    href={`https://adventofcode.com/${gameData.year}/`}
+                    href={gameData.repositoryLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="textGreen"
                   >
                     {" "}
-                    °Puzzle Link°
+                    °Repo Link°
                   </a>
-                </li>
-                {gameData.repositoryLink && (
-                  <li>
-                    {" "}
-                    <a
-                      href={gameData.repositoryLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      {" "}
-                      °Repo Link°
-                    </a>
-                  </li>
-                )}
-                {gameData.repositoryLink && gameData.isPublic && (
-                  <li>
-                    <a href={`/game/public/${gameData.id}/`} class="textGreen">
-                      °Public Link°
-                    </a>
-                  </li>
-                )}
-                <li>
-                  <a
-                    href="edit"
-                    class={
-                      gameData.repositoryLink && !gameData.isPublic
-                        ? "textGreen"
-                        : ""
-                    }
-                  >
-                    °Edit Game°
+                </p>
+              )}
+              {gameData.repositoryLink && gameData.isPublic && (
+                <p>
+                  <a href={`/game/public/${gameData.id}/`} class="textGreen">
+                    °Public Link°
                   </a>
-                </li>
-              </ul>
+                </p>
+              )}
+              <p>
+                <a
+                  href="edit"
+                  class={
+                    gameData.repositoryLink && !gameData.isPublic
+                      ? "textGreen"
+                      : ""
+                  }
+                >
+                  °Edit Game°
+                </a>
+              </p>
               <br />
               <div class="desktopShow">
                 <div class="desktopShow">
