@@ -100,7 +100,7 @@ export default component$((props: DayDataProps) => {
         )}
       <br />
       <br />
-      <div class="flex column alignStart gap1">
+      <div class="flex column alignStart gap1" style={`max-width: 36rem`}>
         <ul class="flex column alignStart gap1">
           <li>
             <strong>Reroll Tokens Earned</strong>:{" "}
@@ -148,7 +148,7 @@ export default component$((props: DayDataProps) => {
           </li>
           <br />
           <li>
-            <strong>Challenge Modifier</strong>:{" "}
+            <strong>Challenge Modifier</strong>:<br />
             {props.xtremeXmasData.challengeModifier === "None"
               ? "None"
               : constructChallengeModifierFullText(
@@ -249,20 +249,20 @@ export default component$((props: DayDataProps) => {
             <>
               <br />
               <li>
-                <strong>First Rolled On</strong>:{" "}
+                <strong>First Rolled On</strong>: <br />
                 {new Date(props.xtremeXmasData.dateFirstRolled).toString()}{" "}
               </li>
             </>
           )}
           {props.xtremeXmasData.part1Completed && (
             <li>
-              <strong>Part 1 Completed On</strong>:{" "}
+              <strong>Part 1 Completed On</strong>:<br />
               {new Date(props.xtremeXmasData.part1Completed).toString()}
             </li>
           )}
           {props.xtremeXmasData.part2Completed && (
             <li>
-              <strong>Part 2 Completed On</strong>:{" "}
+              <strong>Part 2 Completed On</strong>:<br />
               {new Date(props.xtremeXmasData.part2Completed).toString()}
             </li>
           )}{" "}
