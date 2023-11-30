@@ -179,7 +179,7 @@ export default component$(() => {
               <p>
                 {" "}
                 <a
-                  href={`https://adventofcode.com/${gameData.year}/day/`}
+                  href={`https://adventofcode.com/${gameData.year}/`}
                   target="_blank"
                   rel="noopener noreferrer"
                   class="textGreen"
