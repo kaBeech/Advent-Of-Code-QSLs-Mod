@@ -124,7 +124,7 @@ export default component$((props: DayLinkProps) => {
         </span>
       </li>
       <li class="desktopHide flex column textCenter alignCenter maxWidthFixedContent">
-        <span class="textBright">Day {props.dayNumber}</span>
+        <span class="textBright marginTop1">Day {props.dayNumber}</span>
         <br />
         <span class="token">{renderTokens(tokensGained)}</span>
         <span class="tokenSpent">

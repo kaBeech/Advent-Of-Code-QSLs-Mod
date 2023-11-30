@@ -137,7 +137,7 @@ export default component$(() => {
           return (
             <>
               <h1>{gameData.name}</h1>
-              <h2>
+              <p>
                 <img
                   src={gameData.User.oauthAvatarUrl}
                   alt="user avatar"
@@ -148,7 +148,7 @@ export default component$(() => {
                 <span style={`vertical-align: text-top`}>
                   {gameData.User.username}
                 </span>
-              </h2>
+              </p>
               <br />
               <p>Year: {gameData.year}</p>
               <p>Score: {gameData.score}</p>

@@ -104,7 +104,11 @@ export default component$(() => {
                       />
                     ) +
                     " " +
-                    session.value!.user!.name!}
+                    (
+                      <span style={`vertical-align: text-top`}>
+                        session.value!.user!.name!
+                      </span>
+                    )}
               </p>
               <p>
                 Year: {!state.gameInfo ? `Loading...` : state.gameInfo.year}
@@ -190,7 +194,7 @@ export default component$(() => {
           return (
             <>
               <h1 class={``}>{gameData.name}</h1>
-              <h2 class={``}>
+              <p class={``}>
                 <img
                   src={session.value!.user!.image!}
                   alt="user avatar"
@@ -199,7 +203,7 @@ export default component$(() => {
                   height="24"
                 />{" "}
                 {gameData.User.username}
-              </h2>
+              </p>
               <br />
               <p>Year: {gameData.year}</p>
               <p>Score: {gameData.score}</p>
