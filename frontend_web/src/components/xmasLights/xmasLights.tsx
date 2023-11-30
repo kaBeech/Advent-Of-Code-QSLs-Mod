@@ -41,7 +41,7 @@ export default component$((props: XmasLightsProps) => {
     }
   }
   return (
-    <span class={`flippedSwitches rotate${direction}`}>
+    <span class={`flippedSwitches rotate${direction} marginVertPoint5`}>
       {props.hasLightSwitch && props.isOn && (
         <>
           <span class="logoGreen fontLarger"> {"󰛨"}</span>

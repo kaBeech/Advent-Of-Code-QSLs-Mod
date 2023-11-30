@@ -38,7 +38,7 @@ export default component$((props: FooterProps) => {
           length="short"
         />
       </div>
-      <p class="sponsor textCenter">
+      <p class="sponsor textCenter margin0">
         <a
           href={randomlySelectedSponsor.url}
           target="_blank"

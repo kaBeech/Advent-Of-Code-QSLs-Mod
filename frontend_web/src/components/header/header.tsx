@@ -112,7 +112,6 @@ export default component$((props: HeaderProps) => {
             toggleLoggedIn={props.toggleLoggedIn}
           />
         </div>
-        <br />
       </div>
       <div class="flex column alignCenter tinyShow">
         <div class="flex gap1 marginVertPoint2">
