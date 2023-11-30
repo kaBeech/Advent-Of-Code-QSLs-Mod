@@ -185,7 +185,7 @@ export default component$(() => {
                   aria-labelledby="Repository Link"
                 />
                 <span
-                  class="pointer textRed"
+                  class="pointer textGreen"
                   onClick$={async () => {
                     await serverFetcher(
                       `game/${gameNumber}/repolink`,
