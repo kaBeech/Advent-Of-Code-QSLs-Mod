@@ -41,14 +41,14 @@ export default component$(() => {
       <h1>Leaderboard</h1>
       <div class="desktopShow">
         <div>
-          -----------------------------------------------------------------------------
+          -------------------------------------------------------------------------------
         </div>
         <div>
-          Rank ¦ Year ¦ Game Name        ¦ Score ¦ Title      ¦ Repo Link ¦
+          Rank ¦ Year ¦ Game Name          ¦ Score ¦ Title      ¦ Repo Link ¦
           Player Name
         </div>
         <div>
-          -----------------------------------------------------------------------------
+          -------------------------------------------------------------------------------
         </div>
         <ul>
           <Resource
@@ -137,12 +137,12 @@ export default component$(() => {
                       }
                       rank.string.length < 6 &&
                         (rank.string += " ".repeat(6 - rank.string.length));
-                      gameNameString.length <= 19
+                      gameNameString.length <= 21
                         ? (gameNameString += " ".repeat(
-                            19 - gameNameString.length
+                            21 - gameNameString.length
                           ))
                         : (gameNameString =
-                            gameNameString.slice(0, 15) + "...°");
+                            gameNameString.slice(0, 16) + "...° ");
                       scoreString.length < 7 &&
                         (scoreString += " ".repeat(7 - scoreString.length));
                       title.string.length < 11 &&
