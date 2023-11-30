@@ -135,6 +135,7 @@ export default component$((props: DayDataProps) => {
               <strong class="tokenSpent">{props.xtremeXmasData.score}</strong>
             )}
           </li>
+          <br />
           <li>
             <strong>Challenge Modifier</strong>:{" "}
             {props.xtremeXmasData.challengeModifier === "None"
@@ -231,10 +232,13 @@ export default component$((props: DayDataProps) => {
               </li>
             )}
           {props.xtremeXmasData.dateFirstRolled && (
-            <li>
-              <strong>First Rolled On</strong>:{" "}
-              {new Date(props.xtremeXmasData.dateFirstRolled).toString()}{" "}
-            </li>
+            <>
+              <br />
+              <li>
+                <strong>First Rolled On</strong>:{" "}
+                {new Date(props.xtremeXmasData.dateFirstRolled).toString()}{" "}
+              </li>
+            </>
           )}
           {props.xtremeXmasData.part1Completed && (
             <li>
