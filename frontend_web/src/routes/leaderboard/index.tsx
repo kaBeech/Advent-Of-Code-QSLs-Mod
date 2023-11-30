@@ -37,15 +37,14 @@ export default component$(() => {
   );
 
   return (
-    <article class="dashedHeaders">
+    <article class="mobileDashedHeaders">
       <h1>Leaderboard</h1>
-      <div class="desktopShow">
-        <div>-----------------------------------------------</div>
-        <div>
-          # ¦ Year  ¦ Title      ¦ Game Name          
-          <br />   ¦ Score ¦ Repo Link  ¦ Player Name
-        </div>
-        <div>-----------------------------------------------</div>
+      <div class="dashedHeaders">
+        <h2>
+           # ¦ Year  ¦ Title      ¦ Game Name             <br />    ¦ Score ¦
+          Repo Link  ¦ Player Name
+        </h2>
+        <br />
         <ul>
           <Resource
             value={leaderboardGamesResource}
@@ -131,8 +130,10 @@ export default component$(() => {
                         default:
                           break;
                       }
-                      rank.string.length < 3 &&
-                        (rank.string += " ".repeat(3 - rank.string.length));
+                      rank.string.length < 4 &&
+                        (rank.string = " " + rank.string);
+                      rank.string.length < 4 &&
+                        (rank.string += " ".repeat(4 - rank.string.length));
                       gameNameString.length <= 21
                         ? (gameNameString += " ".repeat(
                             21 - gameNameString.length
@@ -148,7 +149,7 @@ export default component$(() => {
                       title.string.length < 14 &&
                         (title.string += " ".repeat(14 - title.string.length));
                       return (
-                        <li key={`game-${game.id}`} class={`marginVert1`}>
+                        <li key={`game-${game.id}`} class={`marginBottom1`}>
                           <em>
                             <span class={rank.color}>{rank.string}</span>{" "}
                             {game.year}
@@ -159,7 +160,7 @@ export default component$(() => {
                             </a>{" "}
                             <br />
                             <span class="textGold">
-                              {"    " + scoreString}
+                              {"     " + scoreString}
                             </span>{" "}
                             <a
                               href={game.repositoryLink}
@@ -182,7 +183,7 @@ export default component$(() => {
           />
         </ul>
       </div>
-      <div class="tabletShow">
+      {/* <div class="tabletShow">
         <h2>
           Rank ¦ Year ¦ Game Name ¦ Score ¦ Title ¦ Repo Link ¦ Player Name
         </h2>
@@ -307,7 +308,7 @@ export default component$(() => {
             }}
           />
         </ul>
-      </div>
+      </div> */}
     </article>
   );
 });
