@@ -22,7 +22,14 @@ export default component$(() => {
         Please <LogIn /> to play!
       </p>
       <p>
-        <a href="/about">°About°</a> Xtreme Xmas Code
+        View the <a href="/leaderboard">°Leaderboard°</a>
+      </p>{" "}
+      <p>
+        Learn{" "}
+        <a href="/about" class={`textGreen`}>
+          °About°
+        </a>{" "}
+        XXC
       </p>
       <br />
       <br />
