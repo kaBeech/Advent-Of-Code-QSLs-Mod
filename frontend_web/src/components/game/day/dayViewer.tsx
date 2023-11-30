@@ -92,7 +92,7 @@ export default component$((props: DayDataProps) => {
       <div class="flex column alignStart gap1">
         <ul class="flex column alignStart gap1">
           <li>
-            Reroll Tokens Earned:{" "}
+            <strong>Reroll Tokens Earned</strong>:{" "}
             <strong class="token">
               {props.xtremeXmasData.rerollTokensEarned === 0
                 ? "0"
@@ -100,7 +100,7 @@ export default component$((props: DayDataProps) => {
             </strong>
           </li>
           <li>
-            Reroll Tokens Spent During Part 1:{" "}
+            <strong>Reroll Tokens Spent During Part 1</strong>:{" "}
             <strong class="tokenSpent">
               {props.xtremeXmasData.rerollTokensSpentDuringPart1 === 0
                 ? "0"
@@ -110,7 +110,7 @@ export default component$((props: DayDataProps) => {
             </strong>
           </li>
           <li>
-            Reroll Tokens Spent During Part 2:{" "}
+            <strong>Reroll Tokens Spent During Part 2</strong>:{" "}
             <strong class="tokenSpent">
               {props.xtremeXmasData.rerollTokensSpentDuringPart2 === 0
                 ? "0"
@@ -120,7 +120,7 @@ export default component$((props: DayDataProps) => {
             </strong>
           </li>
           <li>
-            Current Reroll Tokens:{" "}
+            <strong>Current Reroll Tokens</strong>:{" "}
             <strong class="token">
               {props.xtremeXmasData.currentRerollTokens > 9
                 ? props.xtremeXmasData.currentRerollTokens + ""
@@ -128,32 +128,67 @@ export default component$((props: DayDataProps) => {
             </strong>
           </li>
           <li>
-            Day Score:{" "}
+            <strong>Day Score</strong>:{" "}
             {props.xtremeXmasData.score > 0 ? (
               <strong class="token">+{props.xtremeXmasData.score}</strong>
             ) : (
               <strong class="tokenSpent">{props.xtremeXmasData.score}</strong>
             )}
           </li>
+          <li>
+            <strong>Challenge Modifier</strong>:{" "}
+            {props.xtremeXmasData.challengeModifier === "None"
+              ? "None"
+              : constructChallengeModifierFullText(
+                  props.xtremeXmasData.challengeModifier +
+                    (props.xtremeXmasData.modifierOption !== "None"
+                      ? props.xtremeXmasData.modifierOption
+                      : "")
+                )}
+          </li>
+          {props.xtremeXmasData.challengeModifierExplanatoryUrl !== "None" && (
+            <li>
+              Click this{" "}
+              <a
+                href={props.xtremeXmasData.challengeModifierExplanatoryUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                °external link°
+              </a>{" "}
+              to learn more about this Challenge Modifier
+            </li>
+          )}
+          {props.xtremeXmasData.modifierOptionExplanatoryUrl !== "None" && (
+            <li>
+              Click this{" "}
+              <a
+                href={props.xtremeXmasData.modifierOptionExplanatoryUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                °external link°
+              </a>{" "}
+              to learn more about this Modifier Option
+            </li>
+          )}
           {props.xtremeXmasData.modifierWhenPart1Completed != "None" &&
             (props.xtremeXmasData.modifierWhenPart1Completed !==
               props.xtremeXmasData.challengeModifier ||
               props.xtremeXmasData.optionWhenPart1Completed !==
                 props.xtremeXmasData.modifierOption) && (
               <li>
-                Challenge Modifier During Part 1:{" "}
-                <strong>
-                  {props.xtremeXmasData.modifierWhenPart1Completed === "None"
-                    ? "None"
-                    : constructChallengeModifierFullText(
-                        props.xtremeXmasData.modifierWhenPart1Completed +
-                          (props.xtremeXmasData.optionWhenPart1Completed !==
-                            "None" &&
-                            props.xtremeXmasData.optionWhenPart1Completed)
-                      )}
-                  {props.xtremeXmasData.optionWhenPart1Completed !== "None" &&
-                    props.xtremeXmasData.optionWhenPart1Completed}
-                </strong>
+                <strong>Challenge Modifier During Part 1</strong>:{" "}
+                {props.xtremeXmasData.modifierWhenPart1Completed === "None"
+                  ? "None"
+                  : constructChallengeModifierFullText(
+                      props.xtremeXmasData.modifierWhenPart1Completed +
+                        (props.xtremeXmasData.optionWhenPart1Completed !==
+                          "None" &&
+                          props.xtremeXmasData.optionWhenPart1Completed)
+                    )}
+                {props.xtremeXmasData.optionWhenPart1Completed !== "None" &&
+                  props.xtremeXmasData.optionWhenPart1Completed}
               </li>
             )}
           {props.xtremeXmasData.modifierWhenPart1CompletedExplanatoryUrl !==
@@ -191,79 +226,34 @@ export default component$((props: DayDataProps) => {
             </li>
           )}
           <li>
-            Challenge Modifier:{" "}
-            <strong>
-              {props.xtremeXmasData.challengeModifier === "None"
-                ? "None"
-                : constructChallengeModifierFullText(
-                    props.xtremeXmasData.challengeModifier +
-                      (props.xtremeXmasData.modifierOption !== "None"
-                        ? props.xtremeXmasData.modifierOption
-                        : "")
-                  )}
-            </strong>{" "}
-          </li>
-          {props.xtremeXmasData.challengeModifierExplanatoryUrl !== "None" && (
-            <li>
-              Click this{" "}
-              <a
-                href={props.xtremeXmasData.challengeModifierExplanatoryUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                °external link°
-              </a>{" "}
-              to learn more about this Challenge Modifier
-            </li>
-          )}
-          {props.xtremeXmasData.modifierOptionExplanatoryUrl !== "None" && (
-            <li>
-              Click this{" "}
-              <a
-                href={props.xtremeXmasData.modifierOptionExplanatoryUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                °external link°
-              </a>{" "}
-              to learn more about this Modifier Option
-            </li>
-          )}
-          <li>
-            Current Day: <strong>{props.xtremeXmasData.currentDay}</strong>{" "}
+            <strong> Current Day</strong>: {props.xtremeXmasData.currentDay}{" "}
           </li>
           <li>
-            Current Day Completed?{" "}
-            <strong>
-              {props.xtremeXmasData.currentDayCompleted ? `Yes` : `No`}
-            </strong>{" "}
+            <strong>Current Day Completed?</strong>{" "}
+            {props.xtremeXmasData.currentDayCompleted ? `Yes` : `No`}{" "}
           </li>
           <li>
-            Selected Day Part 1 Completed?{" "}
+            <strong> This Day Part 1 Completed? </strong>
             {props.xtremeXmasData.part1Completed ? (
               <>
-                <strong>Yes</strong>
+                Yes
                 <br />
-                <strong>
-                  {new Date(props.xtremeXmasData.part1Completed!).toString()}
-                </strong>
+                {new Date(props.xtremeXmasData.part1Completed!).toString()}
               </>
             ) : (
-              <strong>No</strong>
+              <>No</>
             )}
           </li>
           <li>
-            Selected Day Part 2 Completed?{" "}
+            <strong>This Day Part 2 Completed?</strong>{" "}
             {props.xtremeXmasData.part2Completed ? (
               <>
-                <strong>Yes</strong>
+                Yes
                 <br />
-                <strong>
-                  {new Date(props.xtremeXmasData.part2Completed).toString()}
-                </strong>
+                {new Date(props.xtremeXmasData.part2Completed).toString()}
               </>
             ) : (
-              <strong>No</strong>
+              <>No</>
             )}
           </li>{" "}
         </ul>
