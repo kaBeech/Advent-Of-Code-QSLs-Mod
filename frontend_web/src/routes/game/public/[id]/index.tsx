@@ -176,6 +176,7 @@ export default component$(() => {
                     href={`https://adventofcode.com/${gameData.year}/day/`}
                     target="_blank"
                     rel="noopener noreferrer"
+                    class="textGreen"
                   >
                     {" "}
                     °Puzzle Link°

@@ -223,13 +223,11 @@ export default component$(() => {
                     href={`https://adventofcode.com/${gameData.year}/`}
                     target="_blank"
                     rel="noopener noreferrer"
+                    class="textGreen"
                   >
                     {" "}
                     °Puzzle Link°
                   </a>
-                </li>
-                <li>
-                  <a href="edit">°Edit Game°</a>
                 </li>
                 {gameData.repositoryLink && (
                   <li>
@@ -244,11 +242,25 @@ export default component$(() => {
                     </a>
                   </li>
                 )}
-                {gameData.isPublic && (
+                {gameData.repositoryLink && gameData.isPublic && (
                   <li>
-                    <a href={`/game/public/${gameData.id}/`}>°Public Link°</a>
+                    <a href={`/game/public/${gameData.id}/`} class="textGreen">
+                      °Public Link°
+                    </a>
                   </li>
                 )}
+                <li>
+                  <a
+                    href="edit"
+                    class={
+                      gameData.repositoryLink && !gameData.isPublic
+                        ? "textGreen"
+                        : ""
+                    }
+                  >
+                    °Edit Game°
+                  </a>
+                </li>
               </ul>
               <br />
               <div class="desktopShow">

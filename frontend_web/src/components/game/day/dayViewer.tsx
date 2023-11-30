@@ -62,6 +62,7 @@ export default component$((props: DayDataProps) => {
         href={`https://adventofcode.com/${props.xtremeXmasData.year}/day/${props.xtremeXmasData.currentDay}`}
         target="_blank"
         rel="noopener noreferrer"
+        class="textGreen"
       >
         {" "}
         °Puzzle Link°
@@ -76,15 +77,17 @@ export default component$((props: DayDataProps) => {
           °Repo Link°
         </a>
       )}
-      {props.privateViewerData?.gameIsPublic && (
-        <p>
-          <a
-            href={`/game/public/${props.privateViewerData.gameId}/day/${props.privateViewerData.dayNumber}`}
-          >
-            °Public Link°
-          </a>
-        </p>
-      )}
+      {props.privateViewerData?.gameIsPublic &&
+        props.xtremeXmasData.repositoryUrl !== "None" && (
+          <p>
+            <a
+              href={`/game/public/${props.privateViewerData.gameId}/day/${props.privateViewerData.dayNumber}`}
+              class="textGreen"
+            >
+              °Public Link°
+            </a>
+          </p>
+        )}
       <br />
       <div class="flex column alignStart gap1">
         <ul class="flex column alignStart gap1">
