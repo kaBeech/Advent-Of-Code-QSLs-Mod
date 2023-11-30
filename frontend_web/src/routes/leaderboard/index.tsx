@@ -50,8 +50,8 @@ export default component$(() => {
       <h1 class={`fontLarger`}>Leaderboard</h1>
       <div class="dashedHeaders">
         <h2 class="smallHide">
-          <span> # ¦ Year  ¦ Repo Link  ¦ Game Link            </span> <br />
-          <span>   ¦ Score ¦ Title      ¦ Player Name</span>
+          <span> # ¦ Year  ¦ Game Link            ¦ Repo Link  </span> <br />
+          <span>   ¦ Score ¦ Player Name          ¦ Title      </span>
         </h2>
         <h2 class="smallShow">
           <span> # ¦ Year</span>
@@ -114,6 +114,7 @@ export default component$(() => {
                       };
                       let gameNameString = `°${game.name}°`;
                       let scoreString = String(game.score);
+                      let usernameString = game.User.username;
                       const title = {
                         // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
                         string: game.Title
@@ -164,6 +165,10 @@ export default component$(() => {
                             gameNameString.slice(0, 16) + "...° ");
                       scoreString.length < 5 &&
                         (scoreString += " ".repeat(5 - scoreString.length));
+                      usernameString.length < 20 &&
+                        (usernameString += " ".repeat(
+                          20 - usernameString.length
+                        ));
                       title.string.length < 13
                         ? (title.string = "  " + title.string)
                         : title.string.length < 14 &&
@@ -178,7 +183,10 @@ export default component$(() => {
                           >
                             <em>
                               <span class={rank.color}>{rank.string}</span>{" "}
-                              {game.year}{" "}
+                              {game.year} {"  "}
+                              <a href={`/game/public/${game.id}`}>
+                                {gameNameString}
+                              </a>
                               <a
                                 href={game.repositoryLink}
                                 target="_blank"
@@ -188,16 +196,13 @@ export default component$(() => {
                                 °Repo Link°
                               </a>
                               {"  "}
-                              <a href={`/game/public/${game.id}`}>
-                                {gameNameString}
-                              </a>{" "}
                               <br />
                               <span class="textGold">
                                 {"     " + scoreString}
                               </span>
+                              {"  "} {usernameString}{" "}
                               <span class={title.color}>{title.string}</span>
-                              {"  "}
-                              {game.User.username}{" "}
+                              {"  "}{" "}
                             </em>
                           </li>
                           <li
