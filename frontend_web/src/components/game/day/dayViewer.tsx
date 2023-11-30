@@ -128,8 +128,9 @@ export default component$((props: DayDataProps) => {
               ? "None"
               : constructChallengeModifierFullText(
                   props.xtremeXmasData.challengeModifier +
-                    (props.xtremeXmasData.modifierOption !== "None" &&
-                      props.xtremeXmasData.modifierOption)
+                    (props.xtremeXmasData.modifierOption !== "None"
+                      ? props.xtremeXmasData.modifierOption
+                      : "")
                 )}
           </strong>{" "}
         </li>
