@@ -484,7 +484,7 @@ strong {
 /* Viewsetting */
 
 @media (min-width: 1391px) {
-  .tabletShow {
+  .desktopHide {
     display: none;
   }
 }

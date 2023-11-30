@@ -35,7 +35,7 @@ export default component$((props: DayLinkProps) => {
           </span>
           {"        "}
         </li>
-        <li class="textDim tabletShow">
+        <li class="textDim desktopHide">
           #####LOCKED#####{" "}
           <span class="textBright">
             {props.dayNumber < 10 ? " " + props.dayNumber : props.dayNumber}
@@ -123,7 +123,7 @@ export default component$((props: DayLinkProps) => {
             : renderSpentTokens(tokensSpent) + " ".repeat(4 - tokensSpent)}
         </span>
       </li>
-      <li class="tabletShow flex column textCenter alignCenter maxWidthFixedContent">
+      <li class="desktopHide flex column textCenter alignCenter maxWidthFixedContent">
         <span class="textBright">Day {props.dayNumber}</span>
         <br />
         <span class="token">{renderTokens(tokensGained)}</span>

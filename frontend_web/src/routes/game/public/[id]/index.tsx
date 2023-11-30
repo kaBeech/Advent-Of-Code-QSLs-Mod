@@ -211,7 +211,7 @@ export default component$(() => {
                   --------------------------------------------------------------------
                 </div>
               </div>
-              <div class="tabletShow">
+              <div class="desktopHide">
                 <h2 class={`textCenter marginBottom2`}>
                   <p>Day</p>
                   <p>Tokens</p>
