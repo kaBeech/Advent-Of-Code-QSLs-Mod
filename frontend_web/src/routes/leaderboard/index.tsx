@@ -268,8 +268,8 @@ export default component$(() => {
                         default:
                           break;
                       }
-                      gameNameString.length > 19 &&
-                        (gameNameString = gameNameString.slice(0, 15) + "...°");
+                      gameNameString.length > 21 &&
+                        (gameNameString = gameNameString.slice(0, 16) + "...°");
                       return (
                         <li key={`game-${game.id}`}>
                           <p>
