@@ -172,7 +172,7 @@ export default component$((props: DayDataProps) => {
               to learn more about this Modifier Option
             </li>
           )}
-          {props.xtremeXmasData.modifierWhenPart1Completed != "None" &&
+          {props.xtremeXmasData.modifierWhenPart1Completed !== "None" &&
             (props.xtremeXmasData.modifierWhenPart1Completed !==
               props.xtremeXmasData.challengeModifier ||
               props.xtremeXmasData.optionWhenPart1Completed !==
@@ -192,39 +192,44 @@ export default component$((props: DayDataProps) => {
               </li>
             )}
           {props.xtremeXmasData.modifierWhenPart1CompletedExplanatoryUrl !==
-            "None" && (
-            <li>
-              Click this{" "}
-              <a
-                href={
-                  props.xtremeXmasData.modifierWhenPart1CompletedExplanatoryUrl
-                }
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                °external link°
-              </a>{" "}
-              to learn more about this Challenge Modifier that was completed
-              during Part 1
-            </li>
-          )}
+            "None" &&
+            props.xtremeXmasData.modifierWhenPart1Completed !==
+              props.xtremeXmasData.challengeModifier && (
+              <li>
+                Click this{" "}
+                <a
+                  href={
+                    props.xtremeXmasData
+                      .modifierWhenPart1CompletedExplanatoryUrl
+                  }
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  °external link°
+                </a>{" "}
+                to learn more about this Challenge Modifier that was completed
+                during Part 1
+              </li>
+            )}
           {props.xtremeXmasData.optionWhenPart1CompletedExplanatoryUrl !==
-            "None" && (
-            <li>
-              Click this{" "}
-              <a
-                href={
-                  props.xtremeXmasData.optionWhenPart1CompletedExplanatoryUrl
-                }
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                °external link°
-              </a>{" "}
-              to learn more about this Modifier Option that was completed during
-              Part 1
-            </li>
-          )}
+            "None" &&
+            props.xtremeXmasData.optionWhenPart1Completed !==
+              props.xtremeXmasData.modifierOption && (
+              <li>
+                Click this{" "}
+                <a
+                  href={
+                    props.xtremeXmasData.optionWhenPart1CompletedExplanatoryUrl
+                  }
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  °external link°
+                </a>{" "}
+                to learn more about this Modifier Option that was completed
+                during Part 1
+              </li>
+            )}
           {props.xtremeXmasData.dateFirstRolled && (
             <li>
               <strong>First Rolled On</strong>:{" "}
