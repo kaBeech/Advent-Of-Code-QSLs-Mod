@@ -38,7 +38,7 @@ export default component$((props: FooterProps) => {
         />
       </div>
       <p class="sponsor textCenter">
-        <a href={randomlySelectedSponsor.url}>
+        <a href={randomlySelectedSponsor.url} class="textGreen">
           °{randomlySelectedSponsor.name}°
         </a>{" "}
         - {randomlySelectedSponsor.textLine1} <br />{" "}
