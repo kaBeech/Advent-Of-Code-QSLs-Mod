@@ -5,6 +5,7 @@ import DayButtons from "./dayButtons";
 export interface DayDataProps {
   xtremeXmasData: {
     gameName: string;
+    year: number;
     repositoryUrl: string;
     rerollTokensEarned: number;
     rerollTokensSpentDuringPart1: number;
@@ -57,6 +58,14 @@ export default component$((props: DayDataProps) => {
           {props.publicViewerData!.username}
         </h2>
       )}
+      <a
+        href={`https://adventofcode.com/${props.xtremeXmasData.year}/day/${props.xtremeXmasData.currentDay}`}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {" "}
+        °Puzzle Link°
+      </a>
       {props.xtremeXmasData.repositoryUrl !== "None" && (
         <a
           href={props.xtremeXmasData.repositoryUrl}

@@ -148,6 +148,7 @@ export default component$(() => {
                 }}
                 xtremeXmasData={{
                   gameName: state.dayInfo.gameName,
+                  year: state.dayInfo.year,
                   repositoryUrl: state.dayInfo.repositoryUrl,
                   challengeModifier: state.dayInfo.challengeModifier,
                   challengeModifierExplanatoryUrl:
@@ -188,6 +189,7 @@ export default component$(() => {
                 }}
                 xtremeXmasData={{
                   gameName: "Loading...",
+                  year: 2015,
                   repositoryUrl: "None",
                   challengeModifier: "Loading...",
                   challengeModifierExplanatoryUrl: "None",

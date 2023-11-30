@@ -188,6 +188,7 @@ export default component$(() => {
                 }}
                 xtremeXmasData={{
                   gameName: state.dayInfo.gameName,
+                  year: state.dayInfo.year,
                   repositoryUrl: state.dayInfo.repositoryUrl,
                   rerollTokensEarned: state.dayInfo.rerollTokensEarned,
                   rerollTokensSpentDuringPart1:
@@ -233,6 +234,7 @@ export default component$(() => {
                 }}
                 xtremeXmasData={{
                   gameName: "Loading...",
+                  year: 2015,
                   repositoryUrl: "None",
                   rerollTokensEarned: 0,
                   rerollTokensSpentDuringPart1: 0,

@@ -218,17 +218,31 @@ export default component$(() => {
                   </>
                 )}
                 <li>
-                  <a href="edit">°Edit Game°</a>
-                </li>
-                {gameData.repositoryLink && (
+                  {" "}
                   <a
-                    href={gameData.repositoryLink}
+                    href={`https://adventofcode.com/${gameData.year}/`}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     {" "}
-                    °Repo Link°
+                    °Puzzle Link°
                   </a>
+                </li>
+                <li>
+                  <a href="edit">°Edit Game°</a>
+                </li>
+                {gameData.repositoryLink && (
+                  <li>
+                    {" "}
+                    <a
+                      href={gameData.repositoryLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {" "}
+                      °Repo Link°
+                    </a>
+                  </li>
                 )}
                 {gameData.isPublic && (
                   <li>

@@ -170,6 +170,17 @@ export default component$(() => {
                     </li>
                   </>
                 )}
+                <li>
+                  {" "}
+                  <a
+                    href={`https://adventofcode.com/${gameData.year}/day/`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {" "}
+                    °Puzzle Link°
+                  </a>
+                </li>
                 {gameData.repositoryLink && (
                   <li>
                     {" "}
