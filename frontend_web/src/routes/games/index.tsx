@@ -137,7 +137,7 @@ export default component$(() => {
             <ul>
               {sortedGames.map(
                 (game: { name: string; number: number; year: number }) => (
-                  <li key={`game-${game.number}`}>
+                  <li key={`game-${game.number}`} class={`marginVertPoint5`}>
                     <a
                       href={`/game/${game.number}`}
                       class={game.number % 2 !== 0 && ` textGreen`}
@@ -149,7 +149,9 @@ export default component$(() => {
                 )
               )}
               <br />
-              <a href="/new">°New Game°</a>
+              <li>
+                <a href="/new">°New Game°</a>
+              </li>
             </ul>
           );
         }}
