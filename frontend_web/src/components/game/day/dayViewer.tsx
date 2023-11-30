@@ -225,13 +225,6 @@ export default component$((props: DayDataProps) => {
               Part 1
             </li>
           )}
-          <li>
-            <strong> Current Day</strong>: {props.xtremeXmasData.currentDay}{" "}
-          </li>
-          <li>
-            <strong>Current Day Completed?</strong>{" "}
-            {props.xtremeXmasData.currentDayCompleted ? `Yes` : `No`}{" "}
-          </li>
           {props.xtremeXmasData.dateFirstRolled && (
             <li>
               <strong>First Rolled On</strong>:{" "}
