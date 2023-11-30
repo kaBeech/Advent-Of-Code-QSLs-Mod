@@ -18,7 +18,7 @@ export default component$(() => {
         <span class="logoRed"> Welcome! </span>
         {"<"}
       </h1>
-      <p class="textCenter">
+      <p class="textCenter fonztLarger">
         Please <LogIn /> to play!{" "}
       </p>
       <p>
