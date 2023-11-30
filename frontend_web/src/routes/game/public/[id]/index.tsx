@@ -145,7 +145,9 @@ export default component$(() => {
                   width="24"
                   height="24"
                 />{" "}
-                {gameData.User.username}
+                <span style={`vertical-align: text-top`}>
+                  {gameData.User.username}
+                </span>
               </h2>
               <br />
               <p>Year: {gameData.year}</p>

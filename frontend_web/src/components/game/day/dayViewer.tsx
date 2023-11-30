@@ -50,9 +50,8 @@ export default component$((props: DayDataProps) => {
   return (
     <>
       <h1 class="margin0">{props.xtremeXmasData.gameName}</h1>
-      <h2>Day {props.xtremeXmasData.dayNumber}</h2>
       {props.publicViewerData && (
-        <h2>
+        <p class="marginBottom1">
           <img
             src={props.publicViewerData!.oauthAvatarUrl}
             alt="user avatar"
@@ -60,9 +59,13 @@ export default component$((props: DayDataProps) => {
             width="24"
             height="24"
           />{" "}
-          {props.publicViewerData!.username}
-        </h2>
+          <span style={`vertical-align: text-top`}>
+            {props.publicViewerData!.username}
+          </span>
+        </p>
       )}
+      <h2>Day {props.xtremeXmasData.dayNumber}</h2>
+      <br />
       <p>
         <a
           href={`https://adventofcode.com/${props.xtremeXmasData.year}/day/${props.xtremeXmasData.currentDay}`}
