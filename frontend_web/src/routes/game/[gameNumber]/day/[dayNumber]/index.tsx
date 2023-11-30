@@ -178,7 +178,6 @@ export default component$(() => {
                 privateViewerData={{
                   gameIsPublic: state.dayInfo.gameIsPublic,
                   gameId: state.dayInfo.gameId,
-                  dateFirstRolled: String(state.dayInfo.dateFirstRolled),
                   gameNumber,
                   dayNumber,
                   incrementButtonPresses,
@@ -203,6 +202,7 @@ export default component$(() => {
                   modifierOption: state.dayInfo.modifierOption,
                   modifierOptionExplanatoryUrl:
                     state.dayInfo.modifierOptionExplanatoryUrl,
+                  dateFirstRolled: String(state.dayInfo.dateFirstRolled),
                   currentDay: state.dayInfo.currentDay,
                   currentDayCompleted: state.dayInfo.currentDayCompleted,
                   part1Completed: String(state.dayInfo.part1Completed) || null,
@@ -224,7 +224,6 @@ export default component$(() => {
                 privateViewerData={{
                   gameIsPublic: false,
                   gameId: "Loading...",
-                  dateFirstRolled: "Loading...",
                   gameNumber,
                   dayNumber,
                   incrementButtonPresses,
@@ -245,6 +244,7 @@ export default component$(() => {
                   challengeModifierExplanatoryUrl: "None",
                   modifierOption: "Loading...",
                   modifierOptionExplanatoryUrl: "None",
+                  dateFirstRolled: null,
                   currentDay: 0,
                   currentDayCompleted: false,
                   part1Completed: null,
@@ -282,7 +282,6 @@ export default component$(() => {
                 userId,
                 gameIsPublic: xtremeXmasData.gameIsPublic,
                 gameId: xtremeXmasData.gameId,
-                dateFirstRolled: xtremeXmasData.dateFirstRolled,
               }}
               xtremeXmasData={xtremeXmasData}
             />

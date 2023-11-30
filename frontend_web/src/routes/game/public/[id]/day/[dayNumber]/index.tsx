@@ -156,6 +156,8 @@ export default component$(() => {
                   modifierOption: state.dayInfo.modifierOption,
                   modifierOptionExplanatoryUrl:
                     state.dayInfo.modifierOptionExplanatoryUrl,
+                  dateFirstRolled:
+                    state.dayInfo.dateFirstRolled.toDateString() || null,
                   rerollTokensSpentDuringPart1:
                     state.dayInfo.rerollTokensSpentDuringPart1,
                   rerollTokensSpentDuringPart2:
@@ -195,6 +197,7 @@ export default component$(() => {
                   challengeModifierExplanatoryUrl: "None",
                   modifierOption: "Loading...",
                   modifierOptionExplanatoryUrl: "None",
+                  dateFirstRolled: null,
                   rerollTokensSpentDuringPart1: 0,
                   rerollTokensSpentDuringPart2: 0,
                   currentRerollTokens: 0,

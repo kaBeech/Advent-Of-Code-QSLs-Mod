@@ -5,7 +5,6 @@ export interface DayButtonsProps {
   privateViewerData: {
     gameIsPublic: boolean;
     gameId: string;
-    dateFirstRolled: string | null;
     gameNumber: string;
     dayNumber: string;
     incrementButtonPresses: Function | any;
@@ -14,6 +13,7 @@ export interface DayButtonsProps {
     userId: string;
   };
   xtremeXmasData: {
+    dateFirstRolled: string | null;
     currentDay: number;
     currentDayCompleted: boolean;
     part1Completed: string | null;
@@ -47,7 +47,7 @@ export default component$((props: DayButtonsProps) => {
       )}{" "}
       {props.xtremeXmasData.part2Completed ? (
         <></>
-      ) : !props.privateViewerData.dateFirstRolled ? (
+      ) : !props.xtremeXmasData.dateFirstRolled ? (
         <a
           onClick$={async () => {
             if (props.privateViewerData!.loading) {
@@ -164,7 +164,7 @@ export default component$((props: DayButtonsProps) => {
           °Start Next Day°
         </a>
       )}
-      {!props.privateViewerData.dateFirstRolled ||
+      {!props.xtremeXmasData.dateFirstRolled ||
       props.xtremeXmasData.part1Completed ? (
         <></>
       ) : (

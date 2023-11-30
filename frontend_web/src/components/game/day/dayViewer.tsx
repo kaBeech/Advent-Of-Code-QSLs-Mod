@@ -20,6 +20,7 @@ export interface DayDataProps {
     challengeModifierExplanatoryUrl: string;
     modifierOption: string;
     modifierOptionExplanatoryUrl: string;
+    dateFirstRolled: string | null;
     currentDay: number;
     currentDayCompleted: boolean;
     part1Completed: string | null;
@@ -28,7 +29,6 @@ export interface DayDataProps {
   privateViewerData?: {
     gameIsPublic: boolean;
     gameId: string;
-    dateFirstRolled: string | null;
     gameNumber: string;
     dayNumber: string;
     incrementButtonPresses: Function | any;
@@ -232,30 +232,24 @@ export default component$((props: DayDataProps) => {
             <strong>Current Day Completed?</strong>{" "}
             {props.xtremeXmasData.currentDayCompleted ? `Yes` : `No`}{" "}
           </li>
-          <li>
-            <strong> This Day Part 1 Completed? </strong>
-            {props.xtremeXmasData.part1Completed ? (
-              <>
-                Yes
-                <br />
-                {new Date(props.xtremeXmasData.part1Completed!).toString()}
-              </>
-            ) : (
-              <>No</>
-            )}
-          </li>
-          <li>
-            <strong>This Day Part 2 Completed?</strong>{" "}
-            {props.xtremeXmasData.part2Completed ? (
-              <>
-                Yes
-                <br />
-                {new Date(props.xtremeXmasData.part2Completed).toString()}
-              </>
-            ) : (
-              <>No</>
-            )}
-          </li>{" "}
+          {props.xtremeXmasData.dateFirstRolled && (
+            <li>
+              <strong>First Rolled On</strong>:{" "}
+              {new Date(props.xtremeXmasData.dateFirstRolled).toString()}{" "}
+            </li>
+          )}
+          {props.xtremeXmasData.part1Completed && (
+            <li>
+              <strong>Part 1 Completed On</strong>:{" "}
+              {new Date(props.xtremeXmasData.part1Completed).toString()}
+            </li>
+          )}
+          {props.xtremeXmasData.part2Completed && (
+            <li>
+              <strong>Part 2 Completed On</strong>:{" "}
+              {new Date(props.xtremeXmasData.part2Completed).toString()}
+            </li>
+          )}{" "}
         </ul>
         {props.privateViewerData && (
           <DayButtons
