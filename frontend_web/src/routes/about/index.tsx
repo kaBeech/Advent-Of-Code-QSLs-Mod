@@ -379,7 +379,8 @@ export default component$(() => {
         <div class="desktopShow">
           ----------------------------------------------------------------------------
         </div>
-        <p>
+        <br />
+        {/* <p>
           <em id="high-contrast">
             I find the text on the site hard to read. Is there a high contrast
             mode?
@@ -388,7 +389,7 @@ export default component$(() => {
         <p>
           There will be a high contrast alternate stylesheet. Firefox supports
           these by default (View -{">"} Page Style -{">"} High Contrast).
-        </p>
+        </p> */}
         <p>
           <em id="affiliated">Are you affiliated with Advent of Code?</em>
         </p>
