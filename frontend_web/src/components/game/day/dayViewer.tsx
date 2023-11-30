@@ -49,22 +49,27 @@ export default component$((props: DayDataProps) => {
 
   return (
     <>
-      <h1 class="margin0">{props.xtremeXmasData.gameName}</h1>
-      {props.publicViewerData && (
-        <p class="marginBottom1">
-          <img
-            src={props.publicViewerData!.oauthAvatarUrl}
-            alt="user avatar"
-            style={{ height: "1.5rem", width: "1.5rem" }}
-            width="24"
-            height="24"
-          />{" "}
-          <span style={`vertical-align: text-top`}>
-            {props.publicViewerData!.username}
-          </span>
-        </p>
-      )}
-      <h2>Day {props.xtremeXmasData.dayNumber}</h2>
+      <br />
+      <div class="dashedBorder textCenter fontLarger">
+        {" "}
+        <h1 class="margin0">{props.xtremeXmasData.gameName}</h1>
+        {props.publicViewerData && (
+          <p class="marginBottom1">
+            <img
+              src={props.publicViewerData!.oauthAvatarUrl}
+              alt="user avatar"
+              style={{ height: "1.5rem", width: "1.5rem" }}
+              width="24"
+              height="24"
+            />{" "}
+            <span style={`vertical-align: text-top`}>
+              {props.publicViewerData!.username}
+            </span>
+          </p>
+        )}
+        <h2>Day {props.xtremeXmasData.dayNumber}</h2>
+      </div>
+      <br />
       <br />
       <p>
         <a
@@ -274,6 +279,7 @@ export default component$((props: DayDataProps) => {
           />
         )}
       </div>
+      <br />
     </>
   );
 });

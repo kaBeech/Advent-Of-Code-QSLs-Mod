@@ -193,17 +193,20 @@ export default component$(() => {
           );
           return (
             <>
-              <h1 class={``}>{gameData.name}</h1>
-              <p class={``}>
-                <img
-                  src={session.value!.user!.image!}
-                  alt="user avatar"
-                  style={{ height: "1.5rem", width: "1.5rem" }}
-                  width="24"
-                  height="24"
-                />{" "}
-                {gameData.User.username}
-              </p>
+              <br />
+              <div class="dashedBorder">
+                <h1 class={``}>{gameData.name}</h1>
+                <p class={``}>
+                  <img
+                    src={session.value!.user!.image!}
+                    alt="user avatar"
+                    style={{ height: "1.5rem", width: "1.5rem" }}
+                    width="24"
+                    height="24"
+                  />{" "}
+                  {gameData.User.username}
+                </p>
+              </div>
               <br />
               <p>Year: {gameData.year}</p>
               <p>Score: {gameData.score}</p>
@@ -291,14 +294,18 @@ export default component$(() => {
                   --------------------------------------------------------------------
                 </div>
               </div>
-              <div class="desktopHide">
-                <h2 class={`textCenter marginBottom2`}>
+              <div class="desktopHide textCenter">
+                <br />
+                <div>-----</div>
+                <h2 class={`textCenter marginBottom2 borderNone`}>
                   <p>Day</p>
                   <p>Tokens</p>
                   <p>Challenge Modifier</p>
                   <p>Modifier Option</p>
                   <p>Day Score</p>
                 </h2>
+                <div>-----</div>
+                <br />
               </div>
               <ul>
                 {sortedDays.map(
