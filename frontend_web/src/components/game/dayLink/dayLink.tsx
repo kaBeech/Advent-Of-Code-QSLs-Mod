@@ -110,13 +110,17 @@ export default component$((props: DayLinkProps) => {
         </a>
         <span class="textBright">
           {props.dayNumber < 10 ? " " + props.dayNumber : props.dayNumber}
-          {"    "}
+          {"  "}
         </span>
-        <span class="token">{renderTokens(tokensGained)}</span>
+        <span class="token">
+          {" ".repeat(2 - tokensGained) + renderTokens(tokensGained)}
+        </span>
         <span class="tokenSpent">
           {tokensSpent > 9
             ? renderSpentTokens(1) + "x" + tokensSpent
-            : renderSpentTokens(tokensSpent)}
+            : tokensSpent > 4
+            ? renderSpentTokens(1) + "x" + tokensSpent + " "
+            : renderSpentTokens(tokensSpent) + " ".repeat(4 - tokensSpent)}
         </span>
       </li>
       <li class="tabletShow flex column textCenter alignCenter maxWidthFixedContent">
