@@ -102,7 +102,7 @@ export default component$(() => {
               {state.gameInfo!.isPublic ? (
                 <p>
                   <em
-                    class="pointer stitchLettering textGreen"
+                    class="pointer textGreen"
                     onClick$={async () => {
                       await serverFetcher(
                         `game/${gameNumber}/public`,
@@ -122,7 +122,7 @@ export default component$(() => {
               ) : (
                 <p>
                   <em
-                    class="pointer stitchLettering textRed"
+                    class="pointer textRed"
                     onClick$={async () => {
                       await serverFetcher(
                         `game/${gameNumber}/public`,
@@ -154,7 +154,7 @@ export default component$(() => {
                   aria-labelledby="Name"
                 />
                 <span
-                  class="pointer stitchLettering textRed"
+                  class="pointer textRed"
                   onClick$={async () => {
                     await serverFetcher(
                       `game/${gameNumber}/name`,
@@ -185,7 +185,7 @@ export default component$(() => {
                   aria-labelledby="Repository Link"
                 />
                 <span
-                  class="pointer stitchLettering textRed"
+                  class="pointer textRed"
                   onClick$={async () => {
                     await serverFetcher(
                       `game/${gameNumber}/repolink`,

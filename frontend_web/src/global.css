@@ -78,7 +78,6 @@ html {
   tab-size: 4;
   min-height: 100vh;
   font-family:
-    "Gohu 11 Flipped Switches",
     "Gohu 11",
     monospace,
     ui-sans-serif,
@@ -329,6 +328,27 @@ strong {
 
 .stitchLettering {
   font-family:
+    "Gohu 11",
+    monospace,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    "Helvetica Neue",
+    Arial,
+    "Noto Sans",
+    sans-serif,
+    "Apple Color Emoji",
+    "Segoe UI Emoji",
+    "Segoe UI Symbol",
+    "Noto Color Emoji";
+}
+
+.flippedSwitches {
+  font-family:
+    "Gohu 11 Flipped Switches",
     "Gohu 11",
     monospace,
     ui-sans-serif,

@@ -29,17 +29,14 @@ export default component$(() => {
         <h1>Settings</h1>
         {areLightsOn.value ? (
           <p>
-            <em
-              class="pointer stitchLettering textGreen"
-              onClick$={toggleLights}
-            >
+            <em class="pointer textGreen" onClick$={toggleLights}>
               󱨥
             </em>{" "}
             Christmas Lights are ON by default
           </p>
         ) : (
           <p>
-            <em class="pointer stitchLettering textRed" onClick$={toggleLights}>
+            <em class="pointer textRed" onClick$={toggleLights}>
               󱨦
             </em>{" "}
             Christmas Lights are OFF by default
@@ -80,14 +77,14 @@ export default component$(() => {
       <h1>Settings</h1>
       {areLightsOn.value ? (
         <p>
-          <em class="pointer stitchLettering textGreen" onClick$={toggleLights}>
+          <em class="pointer textGreen" onClick$={toggleLights}>
             󱨥
           </em>{" "}
           Christmas Lights are ON by default
         </p>
       ) : (
         <p>
-          <em class="pointer stitchLettering textRed" onClick$={toggleLights}>
+          <em class="pointer textRed" onClick$={toggleLights}>
             󱨦
           </em>{" "}
           Christmas Lights are OFF by default
@@ -103,7 +100,7 @@ export default component$(() => {
             return (
               <p>
                 <em
-                  class="pointer stitchLettering textGreen"
+                  class="pointer textGreen"
                   onClick$={async () => {
                     await serverFetcher(`user/username`, "PUT", userId, {
                       username: "username",
@@ -120,7 +117,7 @@ export default component$(() => {
             return (
               <p>
                 <em
-                  class="pointer stitchLettering textRed"
+                  class="pointer textRed"
                   onClick$={async () => {
                     await serverFetcher(`user/username`, "PUT", userId, {
                       username: "name",
