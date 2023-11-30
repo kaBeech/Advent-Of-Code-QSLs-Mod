@@ -308,6 +308,16 @@ strong {
   padding: 0.5rem 0;
 }
 
+.dashedBorder {
+  border-style: dashed;
+  max-width: fit-content;
+  padding: 0.5rem 1rem;
+}
+
+.borderNone {
+  border: none !important;
+}
+
 .logo {
   font-size: 6rem;
 }
