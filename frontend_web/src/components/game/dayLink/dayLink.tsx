@@ -120,7 +120,7 @@ export default component$((props: DayLinkProps) => {
         </span>
       </li>
       <li class="tabletShow flex column textCenter alignCenter maxWidthFixedContent">
-        <span class="textBright">{props.dayNumber}</span>
+        <span class="textBright">Day {props.dayNumber}</span>
         <span class="token">{renderTokens(tokensGained)}</span>
         <span class="tokenSpent">
           {tokensSpent > 9
