@@ -104,7 +104,7 @@ export default component$(() => {
         onResolved={(gameData) => {
           if (gameData.currentDay === undefined) {
             const dummyDays = [];
-            for (let i = 25; i > 0; i--) {
+            for (let i = 1; i <= 25; i++) {
               dummyDays.push({ number: i });
             }
             return (
