@@ -18,6 +18,7 @@ import DayLink from "~/components/game/dayLink/dayLink";
 import type { GameInfo } from "~/types";
 import { useLocalStorage } from "~/hooks/useLocalStorage";
 import constructUserId from "~/util/constructUserId";
+import { isNumeric } from "~/util/isNumeric";
 
 let gameInfo: GameInfo | null;
 
@@ -26,7 +27,11 @@ export const onRequest: RequestHandler = (event) => {
   if (!session || new Date(session.expires) < new Date()) {
     throw event.redirect(302, `/login`);
   }
-  event.cookie.set("gameNumber", event.params.gameNumber, {
+  let gameNumber = event.params.gameNumber;
+  if (!isNumeric(gameNumber)) {
+    gameNumber = "1";
+  }
+  event.cookie.set("gameNumber", gameNumber, {
     path: "/",
     secure: true,
   });

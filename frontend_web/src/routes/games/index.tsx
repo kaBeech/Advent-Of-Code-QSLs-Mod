@@ -5,6 +5,7 @@ import { useAuthSession } from "../plugin@auth";
 import type { Session } from "@auth/core/types";
 import type { UserData } from "~/types";
 import constructUserId from "~/util/constructUserId";
+import { isNumeric } from "~/util/isNumeric";
 
 let gameNumber = 1;
 const dayNumber = 1;
@@ -15,8 +16,11 @@ export const onRequest: RequestHandler = (event) => {
   if (!session || new Date(session.expires) < new Date()) {
     throw event.redirect(302, `/login`);
   }
-  const storedGameNumber = event.cookie.get("gameNumber") || null;
-  if (storedGameNumber) {
+
+  const storedGameNumber = event.cookie.get("gameNumber")?.value || null;
+  if (!storedGameNumber || !isNumeric(storedGameNumber)) {
+    gameNumber = 1;
+  } else {
     gameNumber = +storedGameNumber;
   }
   const userDataString = event.cookie.get("userData")?.value || null;
