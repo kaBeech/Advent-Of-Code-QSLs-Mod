@@ -18,7 +18,7 @@ export default component$(() => {
         <span class="logoRed"> Welcome! </span>
         {"<"}
       </h1>
-      <p class="textCenter fontLarger">
+      <p class="textCenter fontLarger marginTop0">
         Please <LogIn /> to play!
       </p>
       <p>
@@ -31,8 +31,6 @@ export default component$(() => {
         </a>{" "}
         XXC
       </p>
-      <br />
-      <br />
     </>
   );
 });
