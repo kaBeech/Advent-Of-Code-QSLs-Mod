@@ -229,6 +229,12 @@ export default component$((props: DayButtonsProps) => {
           °Previous Day°
         </a>
       )}{" "}
+      <a
+        href={`/game/${props.privateViewerData!.gameNumber}/`}
+        class={+props.privateViewerData.dayNumber > 1 && `textGreen`}
+      >
+        °Back to Calendar°
+      </a>
     </div>
   );
 });
