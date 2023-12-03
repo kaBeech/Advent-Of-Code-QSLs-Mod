@@ -2,10 +2,12 @@ import { component$, useStylesScoped$ } from "@builder.io/qwik";
 import constructChallengeModifierFullText from "~/util/constructChallengeModifierFullText";
 import DayButtons from "./dayButtons";
 import styles from "./dayViewer.css?inline";
+import DayNavigationButtons from "./dayNavigationButtons";
 
 export interface DayDataProps {
   dayInfoData: {
     dayNumber: number;
+    gameId: string;
     gameName: string;
     year: number;
     repositoryLink: string;
@@ -30,7 +32,6 @@ export interface DayDataProps {
   };
   privateViewerData?: {
     gameIsPublic: boolean;
-    gameId: string;
     gameNumber: string;
     dayNumber: string;
     incrementButtonPresses: Function | any;
@@ -96,7 +97,7 @@ export default component$((props: DayDataProps) => {
         props.dayInfoData.repositoryLink !== "None" && (
           <p>
             <a
-              href={`/game/public/${props.privateViewerData.gameId}/day/${props.privateViewerData.dayNumber}`}
+              href={`/game/public/${props.dayInfoData.gameId}/day/${props.privateViewerData.dayNumber}`}
               class="textGreen"
             >
               °Public Link°
@@ -272,10 +273,16 @@ export default component$((props: DayDataProps) => {
           )}{" "}
         </ul>
         <div class={`flex column gap1 marginTop1`}>
-          {props.privateViewerData && (
+          {props.privateViewerData ? (
             <DayButtons
               privateViewerData={props.privateViewerData}
               dayInfoData={props.dayInfoData}
+            />
+          ) : (
+            <DayNavigationButtons
+              dayNumber={props.dayInfoData.dayNumber}
+              currentDay={props.dayInfoData.currentDay}
+              gameId={+props.dayInfoData.gameId}
             />
           )}
         </div>

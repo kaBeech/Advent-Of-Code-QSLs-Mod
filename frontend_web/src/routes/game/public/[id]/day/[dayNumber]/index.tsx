@@ -149,6 +149,7 @@ export default component$(() => {
                 }}
                 dayInfoData={{
                   gameName: state.dayInfo.gameName,
+                  gameId: state.dayInfo.gameId,
                   dayNumber: state.dayInfo.number,
                   year: state.dayInfo.year,
                   repositoryLink: state.dayInfo.repositoryLink,
@@ -193,6 +194,7 @@ export default component$(() => {
                 }}
                 dayInfoData={{
                   gameName: "Loading...",
+                  gameId: "1",
                   dayNumber: 0,
                   year: 2015,
                   repositoryLink: "None",

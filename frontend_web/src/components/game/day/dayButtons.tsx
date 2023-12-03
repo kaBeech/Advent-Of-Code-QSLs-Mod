@@ -5,7 +5,6 @@ import DayNavigationButtons from "./dayNavigationButtons";
 export interface DayButtonsProps {
   privateViewerData: {
     gameIsPublic: boolean;
-    gameId: string;
     gameNumber: string;
     dayNumber: string;
     incrementButtonPresses: Function | any;
@@ -14,6 +13,7 @@ export interface DayButtonsProps {
     userId: string;
   };
   dayInfoData: {
+    gameId: string;
     dateFirstRolled: string | null;
     currentDay: number;
     currentDayCompleted: boolean;

@@ -14,27 +14,24 @@ export default component$((props: DayNavigationButtonsProps) => {
     );
   }
   const extension = props.gameId ? "game/public" : "game";
+  const gameSelector = props.gameId ? props.gameId : props.gameNumber;
   return (
     <>
       {props.dayNumber < props.currentDay && (
         <a
-          href={`/game/${props.gameNumber}/day/${props.dayNumber + 1}/`}
+          href={`/${extension}/${gameSelector}/day/${props.dayNumber + 1}/`}
           class="textGreen"
         >
           °Next Day°
         </a>
       )}
       {props.dayNumber > 1 && (
-        <a
-          href={`/${extension}/${props.gameNumber}/day/${
-            +props.dayNumber - 1
-          }/`}
-        >
+        <a href={`/${extension}/${gameSelector}/day/${+props.dayNumber - 1}/`}>
           °Previous Day°
         </a>
       )}{" "}
       <a
-        href={`/game/${props.gameNumber}/`}
+        href={`/${extension}/${gameSelector}/`}
         class={+props.dayNumber > 1 && `textGreen`}
       >
         °Back to Calendar°
