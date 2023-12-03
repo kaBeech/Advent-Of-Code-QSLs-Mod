@@ -274,10 +274,12 @@ export default component$((props: DayDataProps) => {
           )}{" "}
         </ul>
         {props.privateViewerData && (
-          <DayButtons
-            privateViewerData={props.privateViewerData}
-            xtremeXmasData={props.xtremeXmasData}
-          />
+          <div class={`flex column gap1 marginTop1`}>
+            <DayButtons
+              privateViewerData={props.privateViewerData}
+              xtremeXmasData={props.xtremeXmasData}
+            />
+          </div>
         )}
       </div>
       <br />

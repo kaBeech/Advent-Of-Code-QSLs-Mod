@@ -26,7 +26,7 @@ export interface DayButtonsProps {
 
 export default component$((props: DayButtonsProps) => {
   return (
-    <div class={`flex column gap1 marginTop1`}>
+    <>
       {props.xtremeXmasData.part2Completed ? (
         <></>
       ) : !props.xtremeXmasData.dateFirstRolled ? (
@@ -215,6 +215,6 @@ export default component$((props: DayButtonsProps) => {
         currentDay={props.xtremeXmasData.currentDay}
         gameNumber={+props.privateViewerData.gameNumber}
       />
-    </div>
+    </>
   );
 });
