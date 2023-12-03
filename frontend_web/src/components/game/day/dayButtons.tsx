@@ -1,5 +1,6 @@
 import { component$ } from "@builder.io/qwik";
 import { serverFetcher } from "~/util/serverFetcher";
+import DayNavigationButtons from "./dayNavigationButtons";
 
 export interface DayButtonsProps {
   privateViewerData: {
@@ -209,32 +210,11 @@ export default component$((props: DayButtonsProps) => {
           )}
         </a>
       )}
-      {+props.privateViewerData!.dayNumber <
-        props.xtremeXmasData.currentDay && (
-        <a
-          href={`/game/${props.privateViewerData!.gameNumber}/day/${
-            +props.privateViewerData!.dayNumber + 1
-          }/`}
-          class="textGreen"
-        >
-          °Next Day°
-        </a>
-      )}
-      {+props.privateViewerData.dayNumber > 1 && (
-        <a
-          href={`/game/${props.privateViewerData!.gameNumber}/day/${
-            +props.privateViewerData!.dayNumber - 1
-          }/`}
-        >
-          °Previous Day°
-        </a>
-      )}{" "}
-      <a
-        href={`/game/${props.privateViewerData!.gameNumber}/`}
-        class={+props.privateViewerData.dayNumber > 1 && `textGreen`}
-      >
-        °Back to Calendar°
-      </a>
+      <DayNavigationButtons
+        dayNumber={+props.privateViewerData.dayNumber}
+        currentDay={props.xtremeXmasData.currentDay}
+        gameNumber={+props.privateViewerData.gameNumber}
+      />
     </div>
   );
 });
