@@ -28,7 +28,7 @@ export default component$(() => {
     repositoryLink,
   });
 
-  const xtremeXmasUserDataResource = useResource$<any>(
+  const numberOfGamesResource = useResource$<any>(
     async ({ track, cleanup }) => {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const title = track(() => state.name);
@@ -47,9 +47,10 @@ export default component$(() => {
       }
       state.numberOfGames = +numberOfGames;
       state.loading = false;
-      return {
-        numberOfGames: +numberOfGames > 0 ? numberOfGames : 0,
-      };
+      +numberOfGames > 0
+        ? (numberOfGames = +numberOfGames)
+        : (numberOfGames = 0);
+      return numberOfGames;
     }
   );
 
@@ -108,7 +109,7 @@ export default component$(() => {
       </ul>
       <p>*Only required for Game to show on the Leaderboard</p>
       <Resource
-        value={xtremeXmasUserDataResource}
+        value={numberOfGamesResource}
         onPending={() => {
           state.loading = true;
           return (
@@ -120,12 +121,12 @@ export default component$(() => {
             </p>
           );
         }}
-        onResolved={(xtremeXmasData) => {
+        onResolved={(numberOfGames) => {
           state.loading = false;
           return (
             <>
               <p>
-                Number Of Games: <strong>{xtremeXmasData.numberOfGames}</strong>
+                Number Of Games: <strong>{numberOfGames}</strong>
               </p>
               <a
                 onClick$={async () => {
@@ -140,7 +141,7 @@ export default component$(() => {
                     repositoryLink = "";
                   }
                   const res = await serverFetcher(
-                    `game/${+xtremeXmasData.numberOfGames + 1}`,
+                    `game/${numberOfGames + 1}`,
                     "PUT",
                     userId,
                     {

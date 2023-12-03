@@ -52,7 +52,7 @@ export default component$(() => {
     session.value!.user!.image!
   );
 
-  const xtremeXmasUserDataResource = useResource$<any>(async ({ cleanup }) => {
+  const userSettingsDataResource = useResource$<any>(async ({ cleanup }) => {
     const abortController = new AbortController();
     cleanup(() => abortController.abort("cleanup"));
     const userData = await serverFetcher(`userdata`, "GET", userId);
@@ -92,7 +92,7 @@ export default component$(() => {
         </p>
       )}
       <Resource
-        value={xtremeXmasUserDataResource}
+        value={userSettingsDataResource}
         onPending={() => {
           return <></>;
         }}

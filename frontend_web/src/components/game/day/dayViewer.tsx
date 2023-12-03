@@ -4,7 +4,7 @@ import DayButtons from "./dayButtons";
 import styles from "./dayViewer.css?inline";
 
 export interface DayDataProps {
-  xtremeXmasData: {
+  dayInfoData: {
     dayNumber: number;
     gameName: string;
     year: number;
@@ -52,7 +52,7 @@ export default component$((props: DayDataProps) => {
       <br />
       <div class="dashedBorder textCenter fontLarger">
         {" "}
-        <h1 class="margin0">{props.xtremeXmasData.gameName}</h1>
+        <h1 class="margin0">{props.dayInfoData.gameName}</h1>
         {props.publicViewerData && (
           <p class="marginBottom1">
             <img
@@ -67,13 +67,13 @@ export default component$((props: DayDataProps) => {
             </span>
           </p>
         )}
-        <h2>Day {props.xtremeXmasData.dayNumber}</h2>
+        <h2>Day {props.dayInfoData.dayNumber}</h2>
       </div>
       <br />
       <br />
       <p>
         <a
-          href={`https://adventofcode.com/${props.xtremeXmasData.year}/day/${props.xtremeXmasData.currentDay}`}
+          href={`https://adventofcode.com/${props.dayInfoData.year}/day/${props.dayInfoData.currentDay}`}
           target="_blank"
           rel="noopener noreferrer"
           class="textGreen"
@@ -81,10 +81,10 @@ export default component$((props: DayDataProps) => {
           °Puzzle Link°
         </a>
       </p>
-      {props.xtremeXmasData.repositoryLink !== "None" && (
+      {props.dayInfoData.repositoryLink !== "None" && (
         <p>
           <a
-            href={props.xtremeXmasData.repositoryLink}
+            href={props.dayInfoData.repositoryLink}
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -93,7 +93,7 @@ export default component$((props: DayDataProps) => {
         </p>
       )}
       {props.privateViewerData?.gameIsPublic &&
-        props.xtremeXmasData.repositoryLink !== "None" && (
+        props.dayInfoData.repositoryLink !== "None" && (
           <p>
             <a
               href={`/game/public/${props.privateViewerData.gameId}/day/${props.privateViewerData.dayNumber}`}
@@ -110,64 +110,64 @@ export default component$((props: DayDataProps) => {
           <li>
             <strong>Reroll Tokens Earned</strong>:{" "}
             <strong class="token">
-              {props.xtremeXmasData.rerollTokensEarned === 0
+              {props.dayInfoData.rerollTokensEarned === 0
                 ? "0"
-                : "".repeat(props.xtremeXmasData.rerollTokensEarned)}
+                : "".repeat(props.dayInfoData.rerollTokensEarned)}
             </strong>
           </li>
           <li>
             <strong>Reroll Tokens Spent During Part 1</strong>:{" "}
             <strong class="tokenSpent">
-              {props.xtremeXmasData.rerollTokensSpentDuringPart1 === 0
+              {props.dayInfoData.rerollTokensSpentDuringPart1 === 0
                 ? "0"
-                : props.xtremeXmasData.rerollTokensSpentDuringPart1 > 9
-                ? props.xtremeXmasData.rerollTokensSpentDuringPart1 + ""
-                : "".repeat(props.xtremeXmasData.rerollTokensSpentDuringPart1)}
+                : props.dayInfoData.rerollTokensSpentDuringPart1 > 9
+                ? props.dayInfoData.rerollTokensSpentDuringPart1 + ""
+                : "".repeat(props.dayInfoData.rerollTokensSpentDuringPart1)}
             </strong>
           </li>
           <li>
             <strong>Reroll Tokens Spent During Part 2</strong>:{" "}
             <strong class="tokenSpent">
-              {props.xtremeXmasData.rerollTokensSpentDuringPart2 === 0
+              {props.dayInfoData.rerollTokensSpentDuringPart2 === 0
                 ? "0"
-                : props.xtremeXmasData.rerollTokensSpentDuringPart2 > 9
-                ? props.xtremeXmasData.rerollTokensSpentDuringPart2 + ""
-                : "".repeat(props.xtremeXmasData.rerollTokensSpentDuringPart2)}
+                : props.dayInfoData.rerollTokensSpentDuringPart2 > 9
+                ? props.dayInfoData.rerollTokensSpentDuringPart2 + ""
+                : "".repeat(props.dayInfoData.rerollTokensSpentDuringPart2)}
             </strong>
           </li>
           <li>
             <strong>Current Reroll Tokens</strong>:{" "}
             <strong class="token">
-              {props.xtremeXmasData.currentRerollTokens > 9
-                ? props.xtremeXmasData.currentRerollTokens + ""
-                : "".repeat(props.xtremeXmasData.currentRerollTokens)}
+              {props.dayInfoData.currentRerollTokens > 9
+                ? props.dayInfoData.currentRerollTokens + ""
+                : "".repeat(props.dayInfoData.currentRerollTokens)}
             </strong>
           </li>
           <li>
             <strong>Day Score</strong>:{" "}
-            {props.xtremeXmasData.score > 0 ? (
-              <strong class="token">+{props.xtremeXmasData.score}</strong>
+            {props.dayInfoData.score > 0 ? (
+              <strong class="token">+{props.dayInfoData.score}</strong>
             ) : (
-              <strong class="tokenSpent">{props.xtremeXmasData.score}</strong>
+              <strong class="tokenSpent">{props.dayInfoData.score}</strong>
             )}
           </li>
           <br />
           <li>
             <strong>Challenge Modifier</strong>:<br />
-            {props.xtremeXmasData.challengeModifier === "None"
+            {props.dayInfoData.challengeModifier === "None"
               ? "None"
               : constructChallengeModifierFullText(
-                  props.xtremeXmasData.challengeModifier +
-                    (props.xtremeXmasData.modifierOption !== "None"
-                      ? props.xtremeXmasData.modifierOption
+                  props.dayInfoData.challengeModifier +
+                    (props.dayInfoData.modifierOption !== "None"
+                      ? props.dayInfoData.modifierOption
                       : "")
                 )}
           </li>
-          {props.xtremeXmasData.challengeModifierExplanatoryUrl !== "None" && (
+          {props.dayInfoData.challengeModifierExplanatoryUrl !== "None" && (
             <li>
               Click this{" "}
               <a
-                href={props.xtremeXmasData.challengeModifierExplanatoryUrl}
+                href={props.dayInfoData.challengeModifierExplanatoryUrl}
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -176,11 +176,11 @@ export default component$((props: DayDataProps) => {
               to learn more about this Challenge Modifier
             </li>
           )}
-          {props.xtremeXmasData.modifierOptionExplanatoryUrl !== "None" && (
+          {props.dayInfoData.modifierOptionExplanatoryUrl !== "None" && (
             <li>
               Click this{" "}
               <a
-                href={props.xtremeXmasData.modifierOptionExplanatoryUrl}
+                href={props.dayInfoData.modifierOptionExplanatoryUrl}
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -189,39 +189,37 @@ export default component$((props: DayDataProps) => {
               to learn more about this Modifier Option
             </li>
           )}
-          {props.xtremeXmasData.modifierWhenPart1Completed !== "None" &&
-            (props.xtremeXmasData.modifierWhenPart1Completed !==
-              props.xtremeXmasData.challengeModifier ||
-              props.xtremeXmasData.optionWhenPart1Completed !==
-                props.xtremeXmasData.modifierOption) && (
+          {props.dayInfoData.modifierWhenPart1Completed !== "None" &&
+            (props.dayInfoData.modifierWhenPart1Completed !==
+              props.dayInfoData.challengeModifier ||
+              props.dayInfoData.optionWhenPart1Completed !==
+                props.dayInfoData.modifierOption) && (
               <>
                 <br />
                 <li>
                   <strong>Challenge Modifier During Part 1</strong>:{" "}
-                  {props.xtremeXmasData.modifierWhenPart1Completed === "None"
+                  {props.dayInfoData.modifierWhenPart1Completed === "None"
                     ? "None"
                     : constructChallengeModifierFullText(
-                        props.xtremeXmasData.modifierWhenPart1Completed +
-                          (props.xtremeXmasData.optionWhenPart1Completed !==
-                          "None"
-                            ? props.xtremeXmasData.optionWhenPart1Completed
+                        props.dayInfoData.modifierWhenPart1Completed +
+                          (props.dayInfoData.optionWhenPart1Completed !== "None"
+                            ? props.dayInfoData.optionWhenPart1Completed
                             : "")
                       )}
-                  {props.xtremeXmasData.optionWhenPart1Completed !== "None" &&
-                    props.xtremeXmasData.optionWhenPart1Completed}
+                  {props.dayInfoData.optionWhenPart1Completed !== "None" &&
+                    props.dayInfoData.optionWhenPart1Completed}
                 </li>
               </>
             )}
-          {props.xtremeXmasData.modifierWhenPart1CompletedExplanatoryUrl !==
+          {props.dayInfoData.modifierWhenPart1CompletedExplanatoryUrl !==
             "None" &&
-            props.xtremeXmasData.modifierWhenPart1Completed !==
-              props.xtremeXmasData.challengeModifier && (
+            props.dayInfoData.modifierWhenPart1Completed !==
+              props.dayInfoData.challengeModifier && (
               <li>
                 Click this{" "}
                 <a
                   href={
-                    props.xtremeXmasData
-                      .modifierWhenPart1CompletedExplanatoryUrl
+                    props.dayInfoData.modifierWhenPart1CompletedExplanatoryUrl
                   }
                   target="_blank"
                   rel="noopener noreferrer"
@@ -232,15 +230,15 @@ export default component$((props: DayDataProps) => {
                 during Part 1
               </li>
             )}
-          {props.xtremeXmasData.optionWhenPart1CompletedExplanatoryUrl !==
+          {props.dayInfoData.optionWhenPart1CompletedExplanatoryUrl !==
             "None" &&
-            props.xtremeXmasData.optionWhenPart1Completed !==
-              props.xtremeXmasData.modifierOption && (
+            props.dayInfoData.optionWhenPart1Completed !==
+              props.dayInfoData.modifierOption && (
               <li>
                 Click this{" "}
                 <a
                   href={
-                    props.xtremeXmasData.optionWhenPart1CompletedExplanatoryUrl
+                    props.dayInfoData.optionWhenPart1CompletedExplanatoryUrl
                   }
                   target="_blank"
                   rel="noopener noreferrer"
@@ -251,36 +249,36 @@ export default component$((props: DayDataProps) => {
                 during Part 1
               </li>
             )}
-          {props.xtremeXmasData.dateFirstRolled && (
+          {props.dayInfoData.dateFirstRolled && (
             <>
               <br />
               <li>
                 <strong>First Rolled On</strong>: <br />
-                {new Date(props.xtremeXmasData.dateFirstRolled).toString()}{" "}
+                {new Date(props.dayInfoData.dateFirstRolled).toString()}{" "}
               </li>
             </>
           )}
-          {props.xtremeXmasData.part1Completed && (
+          {props.dayInfoData.part1Completed && (
             <li>
               <strong>Part 1 Completed On</strong>:<br />
-              {new Date(props.xtremeXmasData.part1Completed).toString()}
+              {new Date(props.dayInfoData.part1Completed).toString()}
             </li>
           )}
-          {props.xtremeXmasData.part2Completed && (
+          {props.dayInfoData.part2Completed && (
             <li>
               <strong>Part 2 Completed On</strong>:<br />
-              {new Date(props.xtremeXmasData.part2Completed).toString()}
+              {new Date(props.dayInfoData.part2Completed).toString()}
             </li>
           )}{" "}
         </ul>
-        {props.privateViewerData && (
-          <div class={`flex column gap1 marginTop1`}>
+        <div class={`flex column gap1 marginTop1`}>
+          {props.privateViewerData && (
             <DayButtons
               privateViewerData={props.privateViewerData}
-              xtremeXmasData={props.xtremeXmasData}
+              dayInfoData={props.dayInfoData}
             />
-          </div>
-        )}
+          )}
+        </div>
       </div>
       <br />
     </>
