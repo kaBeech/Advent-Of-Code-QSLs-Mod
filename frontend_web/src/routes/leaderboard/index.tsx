@@ -252,7 +252,7 @@ export default component$(() => {
 });
 
 export const head: DocumentHead = {
-  title: "Xtreme Xmas Code - Leaderboards",
+  title: "Xtreme Xmas Code - Leaderboard",
   meta: [
     {
       name: "description",

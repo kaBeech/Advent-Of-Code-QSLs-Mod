@@ -106,7 +106,7 @@ export default component$(() => {
           />
         </li>
       </ul>
-      <p>*Only required for Game to show on Leaderboards</p>
+      <p>*Only required for Game to show on the Leaderboard</p>
       <Resource
         value={xtremeXmasUserDataResource}
         onPending={() => {
