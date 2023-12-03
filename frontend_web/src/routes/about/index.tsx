@@ -622,20 +622,7 @@ export default component$(() => {
             °Eric Wastl°
           </a>
         </p>
-        <p>XXC Beta Testing:</p>
-        <ul>
-          <li>
-            -{" "}
-            <a
-              href="mailto:contact@kabeech.com?subject=Xtreme%20Xmas%20Beta%20Testing"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="link"
-            >
-              °Your name here!°
-            </a>
-          </li>
-        </ul>
+        <p>XXC Beta Testing: Nolan Braman</p>
         <p>Playing: You!</p>
       </article>
     </>
