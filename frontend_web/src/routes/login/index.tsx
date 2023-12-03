@@ -18,11 +18,19 @@ export default component$(() => {
         <span class="logoRed"> Welcome! </span>
         {"<"}
       </h1>
-      <p class="textCenter">
-        Please <LogIn /> to play!{" "}
+      <p class="textCenter fontLarger marginTop0">
+        Please <LogIn /> to play!
       </p>
-      <br />
-      <br />
+      <p>
+        View the <a href="/leaderboard">°Leaderboard°</a>
+      </p>{" "}
+      <p>
+        Learn{" "}
+        <a href="/about" class={`textGreen`}>
+          °About°
+        </a>{" "}
+        XXC
+      </p>
     </>
   );
 });

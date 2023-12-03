@@ -46,93 +46,90 @@ export default component$(() => {
     dayInfo,
   });
 
-  const xtremeXmasUserDataResource = useResource$<any>(
-    async ({ track, cleanup }) => {
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      const buttonPresses = track(() => state.buttonPresses);
-      state.loading = true;
+  const dayInfoDataResource = useResource$<any>(async ({ track, cleanup }) => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const buttonPresses = track(() => state.buttonPresses);
+    state.loading = true;
 
-      const abortController = new AbortController();
-      cleanup(() => abortController.abort("cleanup"));
-      const gameData = await serverFetcher(`game/public/${gameId}`, "GET");
-      const dayData = gameData.Day.find(
-        (day: DayInfo) => day.number === +dayNumber
-      );
-      state.loading = false;
-      let rerollTokensEarned = 0;
-      if (dayData.modifierWhenPart1CompletedId) {
-        rerollTokensEarned += 1;
-      }
-      if (dayData.part2Completed && dayData.challengeModifierId) {
-        rerollTokensEarned += 1;
-      }
-      const dayInfoData = {
-        year: gameData.year,
-        gameName: gameData.name,
-        dayNumber: dayData.number,
-        username: gameData.User.username,
-        oauthAvatarUrl: gameData.User.oauthAvatarUrl,
-        repositoryLink: gameData.repositoryLink
-          ? gameData.repositoryLink
-          : "None",
-        challengeModifier: dayData.challengeModifierId
-          ? dayData.ChallengeModifier.text
-          : "None",
-        challengeModifierExplanatoryUrl: dayData.challengeModifierId
-          ? dayData.ChallengeModifier.explanatoryUrl
-            ? dayData.ChallengeModifier.explanatoryUrl
-            : "None"
-          : "None",
-        modifierOption: dayData.modifierOptionId
-          ? dayData.ModifierOption.text
-          : "None",
-        modifierOptionExplanatoryUrl: dayData.modifierOptionId
-          ? dayData.ModifierOption.explanatoryUrl
-            ? dayData.ModifierOption.explanatoryUrl
-            : "None"
-          : "None",
-        rerollTokensSpentDuringPart1:
-          dayData.challengeModifierRerollsUsed * 2 +
-          dayData.modifierOptionRerollsUsed -
-          dayData.rerollTokensSpentDuringPart2,
-        rerollTokensSpentDuringPart2: dayData.rerollTokensSpentDuringPart2,
-        currentRerollTokens: gameData.currentRerollTokens,
-        score: dayData.score,
-        currentDay: gameData.currentDay,
-        currentDayCompleted: gameData.currentDayCompleted,
-        part1Completed: dayData.part1Completed || null,
-        modifierWhenPart1Completed: dayData.modifierWhenPart1CompletedId
-          ? dayData.ModifierWhenPart1Completed.text
-          : "None",
-        modifierWhenPart1CompletedExplanatoryUrl:
-          dayData.modifierWhenPart1CompletedId
-            ? dayData.ModifierWhenPart1Completed.explanatoryUrl
-              ? dayData.ModifierWhenPart1Completed.explanatoryUrl
-              : "None"
-            : "None",
-        optionWhenPart1Completed: dayData.optionWhenPart1CompletedId
-          ? dayData.OptionWhenPart1Completed.text
-          : "None",
-        optionWhenPart1CompletedExplanatoryUrl:
-          dayData.optionWhenPart1CompletedId
-            ? dayData.OptionWhenPart1Completed.explanatoryUrl
-              ? dayData.OptionWhenPart1Completed.explanatoryUrl
-              : "None"
-            : "None",
-        part2Completed: dayData.part2Completed || null,
-        number: dayData.number,
-        dateFirstRolled: dayData.dateFirstRolled || null,
-        rerollTokensEarned,
-        gameIsPublic: gameData.isPublic,
-        gameId: gameData.id,
-      };
-      state.dayInfo = dayInfoData;
-      return dayInfoData;
+    const abortController = new AbortController();
+    cleanup(() => abortController.abort("cleanup"));
+    const gameData = await serverFetcher(`game/public/${gameId}`, "GET");
+    const dayData = gameData.Day.find(
+      (day: DayInfo) => day.number === +dayNumber
+    );
+    state.loading = false;
+    let rerollTokensEarned = 0;
+    if (dayData.modifierWhenPart1CompletedId) {
+      rerollTokensEarned += 1;
     }
-  );
+    if (dayData.part2Completed && dayData.challengeModifierId) {
+      rerollTokensEarned += 1;
+    }
+    const dayInfoData = {
+      year: gameData.year,
+      gameName: gameData.name,
+      dayNumber: dayData.number,
+      username: gameData.User.username,
+      oauthAvatarUrl: gameData.User.oauthAvatarUrl,
+      repositoryLink: gameData.repositoryLink
+        ? gameData.repositoryLink
+        : "None",
+      challengeModifier: dayData.challengeModifierId
+        ? dayData.ChallengeModifier.text
+        : "None",
+      challengeModifierExplanatoryUrl: dayData.challengeModifierId
+        ? dayData.ChallengeModifier.explanatoryUrl
+          ? dayData.ChallengeModifier.explanatoryUrl
+          : "None"
+        : "None",
+      modifierOption: dayData.modifierOptionId
+        ? dayData.ModifierOption.text
+        : "None",
+      modifierOptionExplanatoryUrl: dayData.modifierOptionId
+        ? dayData.ModifierOption.explanatoryUrl
+          ? dayData.ModifierOption.explanatoryUrl
+          : "None"
+        : "None",
+      rerollTokensSpentDuringPart1:
+        dayData.challengeModifierRerollsUsed * 2 +
+        dayData.modifierOptionRerollsUsed -
+        dayData.rerollTokensSpentDuringPart2,
+      rerollTokensSpentDuringPart2: dayData.rerollTokensSpentDuringPart2,
+      currentRerollTokens: gameData.currentRerollTokens,
+      score: dayData.score,
+      currentDay: gameData.currentDay,
+      currentDayCompleted: gameData.currentDayCompleted,
+      part1Completed: dayData.part1Completed || null,
+      modifierWhenPart1Completed: dayData.modifierWhenPart1CompletedId
+        ? dayData.ModifierWhenPart1Completed.text
+        : "None",
+      modifierWhenPart1CompletedExplanatoryUrl:
+        dayData.modifierWhenPart1CompletedId
+          ? dayData.ModifierWhenPart1Completed.explanatoryUrl
+            ? dayData.ModifierWhenPart1Completed.explanatoryUrl
+            : "None"
+          : "None",
+      optionWhenPart1Completed: dayData.optionWhenPart1CompletedId
+        ? dayData.OptionWhenPart1Completed.text
+        : "None",
+      optionWhenPart1CompletedExplanatoryUrl: dayData.optionWhenPart1CompletedId
+        ? dayData.OptionWhenPart1Completed.explanatoryUrl
+          ? dayData.OptionWhenPart1Completed.explanatoryUrl
+          : "None"
+        : "None",
+      part2Completed: dayData.part2Completed || null,
+      number: dayData.number,
+      dateFirstRolled: dayData.dateFirstRolled || null,
+      rerollTokensEarned,
+      gameIsPublic: gameData.isPublic,
+      gameId: gameData.id,
+    };
+    state.dayInfo = dayInfoData;
+    return dayInfoData;
+  });
 
   useVisibleTask$(async () => {
-    const dayInfoData = await xtremeXmasUserDataResource.value;
+    const dayInfoData = await dayInfoDataResource.value;
     setYear(dayInfoData.year);
   });
 
@@ -140,7 +137,7 @@ export default component$(() => {
     <article>
       <br />
       <Resource
-        value={xtremeXmasUserDataResource}
+        value={dayInfoDataResource}
         onPending={() => {
           state.loading = true;
           if (state.dayInfo) {
@@ -150,8 +147,9 @@ export default component$(() => {
                   username: state.dayInfo.username,
                   oauthAvatarUrl: state.dayInfo.oauthAvatarUrl,
                 }}
-                xtremeXmasData={{
+                dayInfoData={{
                   gameName: state.dayInfo.gameName,
+                  gameId: state.dayInfo.gameId,
                   dayNumber: state.dayInfo.number,
                   year: state.dayInfo.year,
                   repositoryLink: state.dayInfo.repositoryLink,
@@ -194,8 +192,9 @@ export default component$(() => {
                   username: "Loading...",
                   oauthAvatarUrl: "",
                 }}
-                xtremeXmasData={{
+                dayInfoData={{
                   gameName: "Loading...",
+                  gameId: "1",
                   dayNumber: 0,
                   year: 2015,
                   repositoryLink: "None",
@@ -222,9 +221,9 @@ export default component$(() => {
             );
           }
         }}
-        onResolved={(xtremeXmasData) => {
+        onResolved={(dayInfoData) => {
           state.loading = false;
-          if (+xtremeXmasData.numberOfGames < 1) {
+          if (+dayInfoData.numberOfGames < 1) {
             return (
               <p>
                 Day not found - please try again or{" "}
@@ -235,10 +234,10 @@ export default component$(() => {
 
           return (
             <DayViewer
-              xtremeXmasData={xtremeXmasData}
+              dayInfoData={dayInfoData}
               publicViewerData={{
-                oauthAvatarUrl: xtremeXmasData.oauthAvatarUrl,
-                username: xtremeXmasData.username,
+                oauthAvatarUrl: dayInfoData.oauthAvatarUrl,
+                username: dayInfoData.username,
               }}
             />
           );

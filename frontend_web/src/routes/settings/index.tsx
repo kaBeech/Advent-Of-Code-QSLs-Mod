@@ -52,7 +52,7 @@ export default component$(() => {
     session.value!.user!.image!
   );
 
-  const xtremeXmasUserDataResource = useResource$<any>(async ({ cleanup }) => {
+  const userSettingsDataResource = useResource$<any>(async ({ cleanup }) => {
     const abortController = new AbortController();
     cleanup(() => abortController.abort("cleanup"));
     const userData = await serverFetcher(`userdata`, "GET", userId);
@@ -74,7 +74,8 @@ export default component$(() => {
 
   return (
     <article>
-      <h1>Settings</h1>
+      <br />
+      <h1 class="fontLarger">Settings</h1>
       {areLightsOn.value ? (
         <p>
           <em class="pointer textGreen" onClick$={toggleLights}>
@@ -91,7 +92,7 @@ export default component$(() => {
         </p>
       )}
       <Resource
-        value={xtremeXmasUserDataResource}
+        value={userSettingsDataResource}
         onPending={() => {
           return <></>;
         }}

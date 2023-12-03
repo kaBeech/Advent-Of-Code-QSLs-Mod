@@ -161,7 +161,7 @@ export default component$(() => {
         onResolved={(gameData) => {
           if (gameData.currentDay === undefined) {
             const dummyDays = [];
-            for (let i = 25; i > 0; i--) {
+            for (let i = 1; i <= 25; i++) {
               dummyDays.push({ number: i });
             }
 
@@ -194,7 +194,7 @@ export default component$(() => {
           return (
             <>
               <br />
-              <div class="dashedBorder textCenter">
+              <div class="dashedBorder textCenter fontLarger">
                 <h1 class={``}>{gameData.name}</h1>
                 <p class={``}>
                   <img
@@ -207,6 +207,7 @@ export default component$(() => {
                   {gameData.User.username}
                 </p>
               </div>
+              <br />
               <br />
               <p>Year: {gameData.year}</p>
               <p>Score: {gameData.score}</p>

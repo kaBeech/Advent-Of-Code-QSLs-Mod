@@ -6,7 +6,7 @@ export default component$(() => {
   return (
     <>
       <article class="bigHeaders mobileDashedHeaders textCenter">
-        <h1 class="visualHide"> Xtreme Xmas Code </h1>
+        <h1 class="fontLarger"> Xtreme Xmas Code </h1>
         <p>
           Have you ever been savoring your Advent Of Code calendar, keyboard
           dusted with sugar cookie crumbles, reindeer curled at your feet, and
@@ -49,7 +49,7 @@ export default component$(() => {
         </p>
         <p>
           Additionally, the mod scores each game based on how you use your
-          reroll tokens and provides leaderboards for ranking games based on
+          reroll tokens and provides a leaderboard for ranking games based on
           this score. I hope this will provide a brain-stretching leaderboard
           experience{" "}
           <a
@@ -62,6 +62,7 @@ export default component$(() => {
           </a>
           .
         </p>
+        <br />
         <div class="desktopShow">
           ----------------------------------------------------------------------------
         </div>
@@ -69,6 +70,7 @@ export default component$(() => {
         <div class="desktopShow">
           ----------------------------------------------------------------------------
         </div>
+        <br />
         <p>
           I'm{" "}
           <a
@@ -148,6 +150,7 @@ export default component$(() => {
           </a>
           .{" "}
         </p>
+        <br />
         <div class="desktopShow">
           ----------------------------------------------------------------------------
         </div>
@@ -155,6 +158,7 @@ export default component$(() => {
         <div class="desktopShow">
           ----------------------------------------------------------------------------
         </div>{" "}
+        <br />
         <p>
           Each day you may roll a new <em>Challenge Modifier</em>. Our example
           Challenge Modifier will be{" "}
@@ -225,9 +229,10 @@ export default component$(() => {
           and you don't have enough tokens to reroll, you may remove the
           Challenge Modifier altogether and complete the puzzle vanilla style.
           You will not earn tokens for Parts 1 or 2 completed without a
-          Challenge Modifier, but your game will still show on the leaderboards
+          Challenge Modifier, but your game will still show on the leaderboard
           if applicable.
         </p>
+        <br />
         <div class="desktopShow">
           ----------------------------------------------------------------------------
         </div>{" "}
@@ -235,6 +240,7 @@ export default component$(() => {
         <div class="desktopShow">
           ----------------------------------------------------------------------------
         </div>{" "}
+        <br />
         <p>
           The <em>Scoring Formula</em> is{" "}
           <code>
@@ -283,6 +289,7 @@ export default component$(() => {
           </li>
         </ul>
         <br />
+        <br />
         <div class="desktopShow">
           ----------------------------------------------------------------------------
         </div>{" "}
@@ -290,6 +297,7 @@ export default component$(() => {
         <div class="desktopShow">
           ----------------------------------------------------------------------------
         </div>{" "}
+        <br />
         <p>
           Upon completing Day 25 of a game you will be awarded a <em>Title</em>{" "}
           based on your score. The titles are:
@@ -333,6 +341,7 @@ export default component$(() => {
           </li>
         </ul>
         <br />
+        <br />
         <div class="desktopShow">
           ----------------------------------------------------------------------------
         </div>{" "}
@@ -340,11 +349,13 @@ export default component$(() => {
         <div class="desktopShow">
           ----------------------------------------------------------------------------
         </div>{" "}
+        <br />
         <p>
           You can generate a <em>Public Link</em> to share your work with the
           world by marking your game as Public. These links can be found on the
           Calendar pages.
         </p>
+        <br />
         <div class="desktopShow">
           ----------------------------------------------------------------------------
         </div>{" "}
@@ -456,26 +467,26 @@ export default component$(() => {
           >
             °isn't convenient for all players' schedules°
           </a>
-          . I'm hoping that the score-based Xtreme Xmas Code leaderboards will
+          . I'm hoping that the score-based Xtreme Xmas Code leaderboard will
           provide an accessible alternative that rewards new learning, courage,
           and lateral thinking.
         </p>
         <p>
-          <em id="leaderboards">How do the leaderboards work?</em>
+          <em id="leaderboard">How does the leaderboard work?</em>
         </p>
         <p>
-          The leaderboards are opt-in; you must post your game manually for it
-          to show up. Games on the boards are ranked by score. There will be two
+          The leaderboard are opt-in; you must post your game manually for it to
+          show up. Games on the boards are ranked by score. There will be two
           boards for each year: In-Season and All-Time. To qualify for the
           In-Season board, your game must be completed and posted during the
           specified year. For example, to qualify for the 2023 In-Season board
           your game must be completed and posted before January 1, 2024.
         </p>
         <p>
-          <em>How can I post to the leaderboards?</em>
+          <em>How can I post to the leaderboard?</em>
         </p>
         <p>
-          To post a game to the leaderboards, you must first mark your game as
+          To post a game to the leaderboard, you must first mark your game as
           Public and add a Repository Link.
         </p>
         <p>
@@ -485,47 +496,46 @@ export default component$(() => {
         </p>
         <p>
           If you mark your game as Private or remove its Repository Link, it
-          will automatically be removed from the leaderboards.
+          will automatically be removed from the leaderboard.
         </p>
         <p>
-          <em id="ai">Can I use AI to get on the leaderboards?</em>
+          <em id="ai">Can I use AI to get on the leaderboard?</em>
         </p>
         <p>
           Please don't post games that use AI to do most or all of your puzzle
-          solving to the leaderboards. The leaderboards are built on a principle
-          of good faith and I would like them to remain useful as a way for
-          humans to interact and compete with each other. That being said, mild
-          use of AI tools is permitted and some challenge modifiers may even
-          require the use of AI. Just use your best judgement and be a good
-          sport =)
+          solving to the leaderboard. The leaderboard is built on a principle of
+          good faith and I would like them to remain useful as a way for humans
+          to interact and compete with each other. That being said, mild use of
+          AI tools is permitted and some challenge modifiers may even require
+          the use of AI. Just use your best judgement and be a good sport =)
         </p>
         <p>
           <em id="cheating">How do you deter cheating? </em>
         </p>
         <p>
           We focus on showing our work as players. Each game posted to the
-          leaderboards must include a link to a public repository showing the
+          leaderboard must include a link to a public repository showing the
           code used to solve each puzzle. If it becomes necessary, I will
           implement a community-based reputation system (similar to Reddit's
           approach) to filter out dishonest games.
         </p>
         {/* <p>
           We use a community-based reputation system and focus on showing our
-          work as players. Each game posted to the leaderboards must include a
+          work as players. Each game posted to the leaderboard must include a
           link to a public repository showing the code used to solve each
-          puzzle. Players can upvote and downvote games on the leaderboards to
+          puzzle. Players can upvote and downvote games on the leaderboard to
           either affirm or question their integrity. If a game has 5 or more
           downvotes and less upvotes than downvotes, the game will by default
-          not be shown on the leaderboards (this setting can be changed in the
+          not be shown on the leaderboard (this setting can be changed in the
           filter section). I may also review and hide or remove games manually.
         </p>
         <p>
           To downvote a game you must include the reason you consider the game
           invalid or dishonest. If your game gets hidden and you feel this is
           unjust, you may submit a petition for me to verify your game. Any
-          player who I feel is abusing the leaderboards, including the voting
+          player who I feel is abusing the leaderboard, including the voting
           and petitions process, may be subject to revocation of privileges,
-          including being banned from voting in or posting to the leaderboards.
+          including being banned from voting in or posting to the leaderboard.
         </p> */}
         <p>
           <em id="authentication">How does authentication work?</em>
@@ -581,6 +591,7 @@ export default component$(() => {
           . Xtreme Xmas Code will remember your unique ID, names, URL, and image
           from the service you use to authenticate.
         </p>
+        <br />
         <div class="desktopShow">
           ----------------------------------------------------------------------------
         </div>{" "}
@@ -588,6 +599,7 @@ export default component$(() => {
         <div class="desktopShow">
           ----------------------------------------------------------------------------
         </div>
+        <br />
         <p>
           Xtreme Xmas Code:{" "}
           <a
@@ -610,20 +622,7 @@ export default component$(() => {
             °Eric Wastl°
           </a>
         </p>
-        <p>XXC Beta Testing:</p>
-        <ul>
-          <li>
-            -{" "}
-            <a
-              href="mailto:contact@kabeech.com?subject=Xtreme%20Xmas%20Beta%20Testing"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="link"
-            >
-              °Your name here!°
-            </a>
-          </li>
-        </ul>
+        <p>XXC Beta Testing: Nolan Braman</p>
         <p>Playing: You!</p>
       </article>
     </>

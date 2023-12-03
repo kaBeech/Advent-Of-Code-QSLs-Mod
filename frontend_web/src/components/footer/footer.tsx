@@ -14,6 +14,7 @@ export default component$((props: FooterProps) => {
 
   return (
     <footer id="footer" class="sponsor flex column gap1 alignCenter">
+      <br />
       <div>
         <XmasLights
           numberOfLights={18}
@@ -37,7 +38,7 @@ export default component$((props: FooterProps) => {
           length="short"
         />
       </div>
-      <p class="sponsor textCenter">
+      <p class="sponsor textCenter margin0 marginBottom1">
         <a
           href={randomlySelectedSponsor.url}
           target="_blank"

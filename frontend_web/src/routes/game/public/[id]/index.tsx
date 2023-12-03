@@ -104,7 +104,7 @@ export default component$(() => {
         onResolved={(gameData) => {
           if (gameData.currentDay === undefined) {
             const dummyDays = [];
-            for (let i = 25; i > 0; i--) {
+            for (let i = 1; i <= 25; i++) {
               dummyDays.push({ number: i });
             }
             return (
@@ -137,7 +137,7 @@ export default component$(() => {
           return (
             <>
               <br />
-              <div class="dashedBorder textCenter">
+              <div class="dashedBorder textCenter fontLarger">
                 <h1>{gameData.name}</h1>
                 <p>
                   <img
@@ -152,6 +152,7 @@ export default component$(() => {
                   </span>
                 </p>
               </div>
+              <br />
               <br />
               <p>Year: {gameData.year}</p>
               <p>Score: {gameData.score}</p>
@@ -179,7 +180,7 @@ export default component$(() => {
               <p>
                 {" "}
                 <a
-                  href={`https://adventofcode.com/${gameData.year}/day/`}
+                  href={`https://adventofcode.com/${gameData.year}/`}
                   target="_blank"
                   rel="noopener noreferrer"
                   class="textGreen"

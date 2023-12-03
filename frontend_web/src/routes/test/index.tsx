@@ -9,20 +9,19 @@ export default component$(() => {
     buttonPresses: 0,
   });
 
-  const xtremeXmasUserDataResource = useResource$<any>(
-    async ({ track, cleanup }) => {
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      const buttonPresses = track(() => state.buttonPresses);
+  const modifiersResource = useResource$<any>(async ({ track, cleanup }) => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const buttonPresses = track(() => state.buttonPresses);
 
-      const abortController = new AbortController();
-      cleanup(() => abortController.abort("cleanup"));
-      const userData = await serverFetcher(`modifier`, "GET");
-      const modifiers = JSON.stringify(userData);
-      return {
-        modifiers: modifiers ? modifiers : "None",
-      };
+    const abortController = new AbortController();
+    cleanup(() => abortController.abort("cleanup"));
+    const userData = await serverFetcher(`modifier`, "GET");
+    let modifiers = JSON.stringify(userData);
+    if (!modifiers) {
+      modifiers = "None";
     }
-  );
+    return modifiers;
+  });
 
   return (
     <article>
@@ -33,7 +32,7 @@ export default component$(() => {
       </p>
 
       <Resource
-        value={xtremeXmasUserDataResource}
+        value={modifiersResource}
         onPending={() => {
           return (
             <p>
@@ -41,10 +40,10 @@ export default component$(() => {
             </p>
           );
         }}
-        onResolved={(xtremeXmasData) => {
+        onResolved={(modifiers) => {
           return (
             <p>
-              Modifiers: <strong>{xtremeXmasData.modifiers}</strong>
+              Modifiers: <strong>{modifiers}</strong>
             </p>
           );
         }}

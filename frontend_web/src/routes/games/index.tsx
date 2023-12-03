@@ -45,36 +45,35 @@ export default component$(() => {
     userData,
   });
 
-  const xtremeXmasUserDataResource = useResource$<any>(
-    async ({ track, cleanup }) => {
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      const gameNumber = track(() => state.gameNumber);
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      const dayNumber = track(() => state.dayNumber);
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      const buttonPresses = track(() => state.buttonPresses);
+  const userDataResource = useResource$<any>(async ({ track, cleanup }) => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const gameNumber = track(() => state.gameNumber);
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const dayNumber = track(() => state.dayNumber);
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const buttonPresses = track(() => state.buttonPresses);
 
-      const abortController = new AbortController();
-      cleanup(() => abortController.abort("cleanup"));
-      const userData = await serverFetcher(`userdata`, "GET", userId);
-      if (userData.Game.length < 1) {
-        return { numberOfGames: JSON.stringify(userData.Game.length) };
-      }
-      const numberOfGames = +JSON.stringify(userData.Game.length);
-      state.numberOfGames = numberOfGames;
-      state.userData = userData;
-      return {
-        numberOfGames,
-        userData,
-      };
+    const abortController = new AbortController();
+    cleanup(() => abortController.abort("cleanup"));
+    const userData = await serverFetcher(`userdata`, "GET", userId);
+    if (userData.Game.length < 1) {
+      return { numberOfGames: JSON.stringify(userData.Game.length) };
     }
-  );
+    const numberOfGames = +JSON.stringify(userData.Game.length);
+    state.numberOfGames = numberOfGames;
+    state.userData = userData;
+    return {
+      numberOfGames,
+      fullData: userData,
+    };
+  });
 
   return (
     <article>
       <h1 class="title fontLarger">Current Games</h1>
+      <br />
       <Resource
-        value={xtremeXmasUserDataResource}
+        value={userDataResource}
         onPending={() => {
           return (
             <p>
@@ -115,8 +114,8 @@ export default component$(() => {
             </p>
           );
         }}
-        onResolved={(xtremeXmasData) => {
-          if (+xtremeXmasData.numberOfGames < 1) {
+        onResolved={(userData) => {
+          if (+userData.numberOfGames < 1) {
             return (
               <h2>
                 Please{" "}
@@ -127,7 +126,7 @@ export default component$(() => {
             );
           }
 
-          const sortedGames = xtremeXmasData.userData.Game.sort(
+          const sortedGames = userData.fullData.Game.sort(
             (a: { number: number }, b: { number: number }) => {
               return b.number - a.number;
             }

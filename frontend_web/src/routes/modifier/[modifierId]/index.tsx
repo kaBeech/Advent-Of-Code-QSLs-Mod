@@ -34,6 +34,7 @@ export default component$(() => {
           return (
             <>
               <h1 class={`fontLarger`}>Challenge Modifier</h1>
+              <br />
               <p>{challengeModifier.name}</p>
               <p>
                 {constructChallengeModifierFullText(challengeModifier.text)}

@@ -50,8 +50,8 @@ export default component$(() => {
       <h1 class={`fontLarger`}>Leaderboard</h1>
       <div class="dashedHeaders">
         <h2 class="smallHide">
-          <span> # ¦ Year  ¦ Title      ¦ Game Link            </span> <br />
-          <span>   ¦ Score ¦ Repo Link  ¦ Player Name</span>
+          <span> # ¦ Year  ¦ Game Link            ¦ Repo Link  </span> <br />
+          <span>   ¦ Score ¦ Player Name          ¦ Title      </span>
         </h2>
         <h2 class="smallShow">
           <span> # ¦ Year</span>
@@ -114,6 +114,7 @@ export default component$(() => {
                       };
                       let gameNameString = `°${game.name}°`;
                       let scoreString = String(game.score);
+                      let usernameString = game.User.username;
                       const title = {
                         // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
                         string: game.Title
@@ -162,8 +163,12 @@ export default component$(() => {
                           ))
                         : (gameNameString =
                             gameNameString.slice(0, 16) + "...° ");
-                      scoreString.length < 7 &&
-                        (scoreString += " ".repeat(7 - scoreString.length));
+                      scoreString.length < 5 &&
+                        (scoreString += " ".repeat(5 - scoreString.length));
+                      usernameString.length < 20 &&
+                        (usernameString += " ".repeat(
+                          20 - usernameString.length
+                        ));
                       title.string.length < 13
                         ? (title.string = "  " + title.string)
                         : title.string.length < 14 &&
@@ -178,26 +183,26 @@ export default component$(() => {
                           >
                             <em>
                               <span class={rank.color}>{rank.string}</span>{" "}
-                              {game.year}
-                              {"  "}
-                              <span class={title.color}>{title.string}</span>
+                              {game.year} {"  "}
                               <a href={`/game/public/${game.id}`}>
                                 {gameNameString}
-                              </a>{" "}
-                              <br />
-                              <span class="textGold">
-                                {"     " + scoreString}
-                              </span>{" "}
+                              </a>
                               <a
                                 href={game.repositoryLink}
                                 target="_blank"
                                 rel="noopener noreferrer"
                               >
-                                {" "}
+                                {"  "}
                                 °Repo Link°
                               </a>
                               {"  "}
-                              {game.User.username}{" "}
+                              <br />
+                              <span class="textGold">
+                                {"     " + scoreString}
+                              </span>
+                              {"  "} {usernameString}{" "}
+                              <span class={title.color}>{title.string}</span>
+                              {"  "}{" "}
                             </em>
                           </li>
                           <li
@@ -242,138 +247,12 @@ export default component$(() => {
           />
         </ul>
       </div>
-      {/* <div class="desktopHide">
-        <h2>
-          Rank ¦ Year ¦ Game Link ¦ Score ¦ Title ¦ Repo Link ¦ Player Name
-        </h2>
-        <ul>
-          <Resource
-            value={leaderboardGamesResource}
-            onPending={() => {
-              return (
-                <>
-                  {" "}
-                  {!state.leaderboardGames ? (
-                    <li>Loading...</li>
-                  ) : state.leaderboardGames.length < 1 ? (
-                    <li>No games currently recorded for this leaderboard</li>
-                  ) : (
-                    <>
-                      {state.leaderboardGames.map((game: LeaderboardGame) => (
-                        <li key={`game-${game.id}`}>
-                          {game.year} - {game.name} - {game.score} -{" "}
-                          {game.Title.name} - {game.User.username} -{" "}
-                          <a
-                            href={`repositoryLink`}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            °Repo Link°
-                          </a>
-                        </li>
-                      ))}
-                    </>
-                  )}
-                </>
-              );
-            }}
-            onResolved={(leaderboardGamesData) => {
-              if (leaderboardGamesData.length < 1) {
-                return (
-                  <li>No games currently recorded for this leaderboard</li>
-                );
-              }
-              return (
-                <>
-                  {leaderboardGamesData.map(
-                    (game: LeaderboardGame, index: number) => {
-                      const rank = {
-                        string: String(index + 1),
-                        color: `xmasLight colorShift${(index % 12) + 1}`,
-                      };
-                      let gameNameString = `°${game.name}°`;
-                      const scoreString = String(game.score);
-                      const title = {
-                        // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-                        string: game.Title
-                          ? game.Title.name.split(" ")[0]
-                          : `Incomplete`,
-                        color: "textBright",
-                      };
-                      switch (title.string) {
-                        case "Champion":
-                          title.color = "fsGreen";
-                          break;
-                        case "Gnarly":
-                          title.color = "fsTurquoise";
-                          break;
-                        case "Radical":
-                          title.color = "fsCyan";
-                          break;
-                        case "Righteous":
-                          title.color = "fsCerulean";
-                          break;
-                        case "Epic":
-                          title.color = "fsBlue";
-                          break;
-                        case "Flawless":
-                          title.color = "fsPurple";
-                          break;
-                        case "Legendary":
-                          title.color = "fsRose";
-                          break;
-                        case "Santaic":
-                          title.color = "fsRed";
-                          break;
-                        case "Godlike":
-                          title.color = "fsYellow";
-                          break;
-                        default:
-                          break;
-                      }
-                      gameNameString.length > 21 &&
-                        (gameNameString = gameNameString.slice(0, 16) + "...°");
-                      return (
-                        <li key={`game-${game.id}`}>
-                          <p>
-                            <span class={rank.color}>{rank.string}</span>
-                            {" ¦ "}
-                            <em>{game.year}</em>
-                            {" ¦ "}
-                            <a href={`/game/public/${game.id}`}>
-                              {gameNameString}
-                            </a>
-                            {" ¦ "}
-                            <span class="textGold">{scoreString}</span>
-                            {" ¦ "}
-                            <span class={title.color}>{title.string}</span>
-                            <a
-                              href={game.repositoryLink}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                            >
-                              {" "}
-                              °Repo Link°
-                            </a>
-                            {" ¦ "}
-                            <em>{game.User.username}</em>
-                          </p>
-                        </li>
-                      );
-                    }
-                  )}
-                </>
-              );
-            }}
-          />
-        </ul>
-      </div> */}
     </article>
   );
 });
 
 export const head: DocumentHead = {
-  title: "Xtreme Xmas Code - Leaderboards",
+  title: "Xtreme Xmas Code - Leaderboard",
   meta: [
     {
       name: "description",

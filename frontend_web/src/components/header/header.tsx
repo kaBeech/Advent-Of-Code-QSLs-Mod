@@ -22,18 +22,6 @@ export default component$((props: HeaderProps) => {
         Xmas <span class="logoWhite">§</span> Code{" "}
         <span class="logoBrown">»</span>
       </a>
-      <br />
-      <XmasLights
-        numberOfLights={42}
-        firstLightStartingColorNumber={1}
-        alternateColors={true}
-        hasLightSwitch={true}
-        isOn={props.areLightsOn}
-        toggleLights={props.toggleLights}
-        length="long"
-      />
-      <br />
-      <br />
       <div class="flex column alignCenter mobileHide">
         <div class="flex gap1 marginVertPoint2">
           {" "}
@@ -66,7 +54,7 @@ export default component$((props: HeaderProps) => {
           </a>{" "}
           ¦ <a href="/support">°Support°</a> ¦
           <a href="/leaderboard" class="textGreen">
-            °Leaderboards°
+            °Leaderboard°
           </a>
           ¦<a href="/sponsors">°Sponsors°</a>
         </div>
@@ -78,7 +66,6 @@ export default component$((props: HeaderProps) => {
             toggleLoggedIn={props.toggleLoggedIn}
           />
         </div>
-        <br />
       </div>
       <div class="flex column alignCenter mobileShow">
         <div class="flex gap1 marginVertPoint2">
@@ -87,7 +74,7 @@ export default component$((props: HeaderProps) => {
           <a href="/calendar" class="textGreen">
             °Calendar°
           </a>{" "}
-          ¦ <a href="/leaderboard">°Leaderboards°</a>
+          ¦ <a href="/leaderboard">°Leaderboard°</a>
         </div>
         <div class="flex gap1 marginVertPoint2">
           <a href="/games" class="textGreen">
@@ -125,7 +112,6 @@ export default component$((props: HeaderProps) => {
             toggleLoggedIn={props.toggleLoggedIn}
           />
         </div>
-        <br />
       </div>
       <div class="flex column alignCenter tinyShow">
         <div class="flex gap1 marginVertPoint2">
@@ -163,7 +149,7 @@ export default component$((props: HeaderProps) => {
           </a>{" "}
         </div>
         <div class="flex gap1 marginVertPoint2">
-          <a href="/leaderboard">°Leaderboards°</a>
+          <a href="/leaderboard">°Leaderboard°</a>
         </div>
         <div class="flex gap1 marginVertPoint2">
           {" "}
@@ -173,8 +159,17 @@ export default component$((props: HeaderProps) => {
             toggleLoggedIn={props.toggleLoggedIn}
           />
         </div>
-        <br />
       </div>
+      <XmasLights
+        numberOfLights={42}
+        firstLightStartingColorNumber={1}
+        alternateColors={true}
+        hasLightSwitch={true}
+        isOn={props.areLightsOn}
+        toggleLights={props.toggleLights}
+        length="long"
+      />
+      <br />
     </header>
   );
 });
