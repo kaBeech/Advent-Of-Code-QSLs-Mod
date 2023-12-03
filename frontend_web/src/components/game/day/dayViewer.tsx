@@ -203,8 +203,9 @@ export default component$((props: DayDataProps) => {
                     : constructChallengeModifierFullText(
                         props.xtremeXmasData.modifierWhenPart1Completed +
                           (props.xtremeXmasData.optionWhenPart1Completed !==
-                            "None" &&
-                            props.xtremeXmasData.optionWhenPart1Completed)
+                          "None"
+                            ? props.xtremeXmasData.optionWhenPart1Completed
+                            : "")
                       )}
                   {props.xtremeXmasData.optionWhenPart1Completed !== "None" &&
                     props.xtremeXmasData.optionWhenPart1Completed}
