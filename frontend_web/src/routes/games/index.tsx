@@ -126,7 +126,7 @@ export default component$(() => {
             );
           }
 
-          const sortedGames = userData.Game.sort(
+          const sortedGames = userData.fullData.Game.sort(
             (a: { number: number }, b: { number: number }) => {
               return b.number - a.number;
             }
