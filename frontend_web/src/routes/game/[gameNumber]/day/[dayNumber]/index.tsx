@@ -182,7 +182,6 @@ export default component$(() => {
               <DayViewer
                 privateViewerData={{
                   gameIsPublic: state.dayInfo.gameIsPublic,
-                  gameId: state.dayInfo.gameId,
                   gameNumber,
                   dayNumber,
                   incrementButtonPresses,
@@ -192,6 +191,7 @@ export default component$(() => {
                 }}
                 dayInfoData={{
                   gameName: state.dayInfo.gameName,
+                  gameId: state.dayInfo.gameId,
                   dayNumber: state.dayInfo.number,
                   year: state.dayInfo.year,
                   repositoryLink: state.dayInfo.repositoryLink,
@@ -229,7 +229,6 @@ export default component$(() => {
               <DayViewer
                 privateViewerData={{
                   gameIsPublic: false,
-                  gameId: "Loading...",
                   gameNumber,
                   dayNumber,
                   incrementButtonPresses,
@@ -239,6 +238,7 @@ export default component$(() => {
                 }}
                 dayInfoData={{
                   gameName: "Loading...",
+                  gameId: "1",
                   dayNumber: 0,
                   year: 2015,
                   repositoryLink: "None",
@@ -288,7 +288,6 @@ export default component$(() => {
                 setLoadingStatus,
                 userId,
                 gameIsPublic: dayInfoData.gameIsPublic,
-                gameId: dayInfoData.gameId,
               }}
               dayInfoData={dayInfoData}
             />
