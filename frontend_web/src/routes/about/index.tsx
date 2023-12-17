@@ -50,8 +50,17 @@ export default component$(() => {
         <p>
           Additionally, the mod scores each game based on how you use your
           reroll tokens and provides a leaderboard for ranking games based on
-          this score. I hope this will provide a brain-stretching leaderboard
-          experience{" "}
+          this score. I hope this will provide a brain-stretching and{" "}
+          <a
+            href="https://www.reddit.com/r/adventofcode/wiki/midnight_release/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="link"
+          >
+            °accessible°
+          </a>{" "}
+          leaderboard
+          experience
           <a
             href="https://www.reddit.com/r/adventofcode/comments/e2wjhf/comment/f90ksek/"
             target="_blank"

@@ -16,7 +16,7 @@ You are awarded an additional re-roll token whenever you are awarded a gold star
 
 If you choose to make your game public, you will have access to a public link to share your game with others
 
-Additionally, the mod scores each game based on how you use your reroll tokens and provides leaderboards for ranking games based on this score. I hope this will provide a brain-stretching leaderboard experience [that isn't tied to a strict time schedule](https://www.reddit.com/r/adventofcode/comments/e2wjhf/comment/f90ksek/).
+Additionally, the mod scores each game based on how you use your reroll tokens and provides leaderboards for ranking games based on this score. I hope this will provide a brain-stretching and [accessible](https://www.reddit.com/r/adventofcode/wiki/midnight_release/) leaderboard experience [that isn't tied to a strict time schedule](https://www.reddit.com/r/adventofcode/comments/e2wjhf/comment/f90ksek/).
 
 If you're interested, [my repository for my own Advent Of Code solutions can be found here](https://github.com/kaBeech/Advent-Of-Code/)
 
