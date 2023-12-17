@@ -32,10 +32,10 @@
   --xxmas-palette-green-bright: hsl(124, 74%, 48%);
   --xxmas-palette-green-dark: hsl(105, 100%, 4%);
   --xxmas-palette-green-black: hsl(100, 100%, 2%);
-  --xxmas-palette-red-medium: hsl(0, 93%, 53%);
+  --xxmas-palette-red-medium: hsl(0, 100%, 60%);
   --xxmas-palette-red-dim: hsl(0, 86%, 41%);
   --xxmas-palette-gold-medium: hsl(52, 100%, 42%);
-  --xxmas-palette-brown-medium: rgb(132, 65, 24);
+  --xxmas-palette-brown-medium: rgb(187, 103, 51);
   --full-sat-blue: hsl(240, 100%, 50%);
   --full-sat-cerulean: hsl(210, 100%, 50%);
   --full-sat-cyan: hsl(180, 100%, 50%);
@@ -213,6 +213,14 @@ strong {
   gap: 1rem;
 }
 
+.pMargins {
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+}
+
 .margin0 {
   margin: 0;
 }
@@ -239,6 +247,10 @@ strong {
 
 .marginTop1 {
   margin-top: 1rem;
+}
+
+.marginTop2 {
+  margin-top: 2rem;
 }
 
 .marginVertPoint2 {

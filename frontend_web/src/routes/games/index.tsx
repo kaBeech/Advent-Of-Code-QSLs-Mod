@@ -107,7 +107,9 @@ export default component$(() => {
                         </li>
                       )
                     )}
-                    <a href="/new">°New Game°</a>
+                    <li>
+                      <a href="/new">°New Game°</a>
+                    </li>
                   </ul>
                 )}
               </strong>
@@ -147,8 +149,7 @@ export default component$(() => {
                   </li>
                 )
               )}
-              <br />
-              <li>
+              <li class={`marginTop2`}>
                 <a href="/new">°New Game°</a>
               </li>
             </ul>

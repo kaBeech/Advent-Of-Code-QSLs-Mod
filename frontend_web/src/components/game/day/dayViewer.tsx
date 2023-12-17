@@ -144,7 +144,7 @@ export default component$((props: DayDataProps) => {
                 : "".repeat(props.dayInfoData.currentRerollTokens)}
             </strong>
           </li>
-          <li>
+          <li class={`marginBottom2`}>
             <strong>Day Score</strong>:{" "}
             {props.dayInfoData.score > 0 ? (
               <strong class="token">+{props.dayInfoData.score}</strong>
@@ -152,7 +152,6 @@ export default component$((props: DayDataProps) => {
               <strong class="tokenSpent">{props.dayInfoData.score}</strong>
             )}
           </li>
-          <br />
           <li>
             <strong>Challenge Modifier</strong>:<br />
             {props.dayInfoData.challengeModifier === "None"
@@ -196,8 +195,7 @@ export default component$((props: DayDataProps) => {
               props.dayInfoData.optionWhenPart1Completed !==
                 props.dayInfoData.modifierOption) && (
               <>
-                <br />
-                <li>
+                <li class={`marginTop2`}>
                   <strong>Challenge Modifier During Part 1</strong>:{" "}
                   {props.dayInfoData.modifierWhenPart1Completed === "None"
                     ? "None"
@@ -252,8 +250,7 @@ export default component$((props: DayDataProps) => {
             )}
           {props.dayInfoData.dateFirstRolled && (
             <>
-              <br />
-              <li>
+              <li class={`marginTop2`}>
                 <strong>First Rolled On</strong>: <br />
                 {new Date(props.dayInfoData.dateFirstRolled).toString()}{" "}
               </li>
@@ -272,7 +269,7 @@ export default component$((props: DayDataProps) => {
             </li>
           )}{" "}
         </ul>
-        <div class={`flex column gap1 marginTop1`}>
+        <div class={`flex column gap1 marginTop2`}>
           {props.privateViewerData ? (
             <DayButtons
               privateViewerData={props.privateViewerData}
