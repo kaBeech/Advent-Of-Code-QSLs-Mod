@@ -213,6 +213,14 @@ strong {
   gap: 1rem;
 }
 
+.pMargins {
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+}
+
 .margin0 {
   margin: 0;
 }
@@ -239,6 +247,10 @@ strong {
 
 .marginTop1 {
   margin-top: 1rem;
+}
+
+.marginTop2 {
+  margin-top: 2rem;
 }
 
 .marginVertPoint2 {

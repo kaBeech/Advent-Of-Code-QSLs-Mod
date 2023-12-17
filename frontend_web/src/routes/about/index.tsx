@@ -241,7 +241,7 @@ export default component$(() => {
           ----------------------------------------------------------------------------
         </div>{" "}
         <br />
-        <p>
+        <p class={`marginBottom1`}>
           The <em>Scoring Formula</em> is{" "}
           <code>
             {"{"}10 * T + 20 * P2{"}"}
@@ -249,19 +249,18 @@ export default component$(() => {
           where:
         </p>
         <ul>
-          <li>
+          <li class={`pMargins`}>
             <em>T</em> = the number of{" "}
             <em class="bold textBright">unspent reroll Tokens</em>
           </li>
-          <br />
-          <li>
+          <li class={`pMargins`}>
             <em>P2</em> = the number of{" "}
             <em class="bold textBright">tokens spent during Part 2</em> (up to a
             maximum of 2 per day, only awarded if Part 1 was completed with a
             Challenge Modifier assigned)
           </li>
         </ul>
-        <p>
+        <p class={`marginBottom1`}>
           Each day's individual score is an estimation of that day's effect on
           the overall game score. The <em>Day Score Formula</em> is{" "}
           <code>
@@ -270,20 +269,18 @@ export default component$(() => {
           , where:
         </p>
         <ul>
-          <li>
+          <li class={`pMargins`}>
             <em>E</em> = the number of{" "}
             <em class="bold textBright">reroll tokens Earned that day</em>
           </li>
-          <br />
-          <li>
+          <li class={`pMargins`}>
             {" "}
             <em>P2</em> = the number of{" "}
             <em class="bold textBright">tokens spent during Part 2</em> (up to a
             maximum of 2 per day, only awarded if Part 1 was completed with a
             Challenge Modifier assigned),{" "}
           </li>
-          <br />
-          <li>
+          <li class={`pMargins`}>
             <em>S</em> = the number of{" "}
             <em class="bold textBright">tokens Spent that day</em>
           </li>
