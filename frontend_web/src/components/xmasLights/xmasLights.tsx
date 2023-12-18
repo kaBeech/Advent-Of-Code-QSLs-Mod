@@ -57,7 +57,7 @@ export default component$((props: XmasLightsProps) => {
       )}
       {props.hasLightSwitch && !props.isOn && (
         <>
-          <span class="dimRed fontLarger">{"󰛩"}</span>
+          <span class="textRed fontLarger">{"󰛩"}</span>
           <span
             class="logoGreen pointer"
             onClick$={() => {
