@@ -53,24 +53,26 @@ export default component$(() => {
                 </p>
               )}
               <h2>Modifier Options:</h2>
-              <ul>
-                {challengeModifier.hasOptions
-                  ? challengeModifier.ModifierOption.map(
-                      (modifierOption: ModifierOption, index: number) => {
-                        return (
-                          <li key={`option-${modifierOption.id}`}>
-                            <a
-                              href={`option/${modifierOption.id}`}
-                              class={index % 2 !== 0 && "textGreen"}
-                            >
-                              °{modifierOption.name}°
-                            </a>
-                          </li>
-                        );
-                      }
-                    )
-                  : "None"}
-              </ul>
+              {challengeModifier.hasOptions ? (
+                <ul>
+                  {challengeModifier.ModifierOption.map(
+                    (modifierOption: ModifierOption, index: number) => {
+                      return (
+                        <li key={`option-${modifierOption.id}`}>
+                          <a
+                            href={`option/${modifierOption.id}`}
+                            class={index % 2 !== 0 && "textGreen"}
+                          >
+                            °{modifierOption.name}°
+                          </a>
+                        </li>
+                      );
+                    }
+                  )}
+                </ul>
+              ) : (
+                <div>"None"</div>
+              )}
             </>
           );
         }}

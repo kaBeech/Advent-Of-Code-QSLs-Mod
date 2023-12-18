@@ -36,8 +36,8 @@
   --xxmas-palette-red-dim: hsl(0, 86%, 41%);
   --xxmas-palette-gold-medium: hsl(52, 100%, 42%);
   --xxmas-palette-brown-medium: rgb(187, 103, 51);
-  --full-sat-blue: hsl(240, 100%, 50%);
-  --full-sat-cerulean: hsl(210, 100%, 50%);
+  --full-sat-blue: hsl(240, 100%, 74%);
+  --full-sat-cerulean: hsl(210, 100%, 57%);
   --full-sat-cyan: hsl(180, 100%, 50%);
   --full-sat-turquoise: hsl(150, 100%, 50%);
   --full-sat-green: hsl(120, 100%, 50%);
@@ -47,7 +47,7 @@
   --full-sat-red: hsl(0, 100%, 50%);
   --full-sat-rose: hsl(330, 100%, 50%);
   --full-sat-magenta: hsl(300, 100%, 50%);
-  --full-sat-purple: hsl(270, 100%, 50%);
+  --full-sat-purple: hsl(270, 100%, 65%);
 }
 
 /* Color Assignments*/
