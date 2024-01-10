@@ -5,11 +5,9 @@ on:
   pull_request:
     branches: [main]
 jobs:
-  playwright:
-    name: "Playwright Tests"
+  test:
+    timeout-minutes: 60
     runs-on: ubuntu-latest
-    container:
-      image: mcr.microsoft.com/playwright:v1.36.2-jammy
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
@@ -18,8 +16,15 @@ jobs:
       - name: Install dependencies
         working-directory: ./frontend_web
         run: npm ci
-      - name: Run your tests
+      - name: Install Playwright Browsers
+        working-directory: ./frontend_web
+        run: npx playwright install --with-deps
+      - name: Run Playwright tests
         working-directory: ./frontend_web
         run: npx playwright test
-        env:
-          HOME: /root
+      - uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 30
