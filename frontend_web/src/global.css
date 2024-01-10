@@ -27,15 +27,15 @@
   --xxmas-palette-grey-medium: hsl(0, 0%, 71%);
   --xxmas-palette-grey-bright: hsl(0, 2%, 83%);
   --xxmas-palette-white-bright: hsl(0, 0%, 100%);
-  --xxmas-palette-green-medium: hsl(100, 100%, 29%);
+  --xxmas-palette-green-medium: hsl(100, 61%, 46%);
   --xxmas-palette-green-vivid: hsl(100, 82%, 39%);
   --xxmas-palette-green-bright: hsl(124, 74%, 48%);
   --xxmas-palette-green-dark: hsl(105, 100%, 4%);
   --xxmas-palette-green-black: hsl(100, 100%, 2%);
-  --xxmas-palette-red-medium: hsl(0, 100%, 60%);
+  --xxmas-palette-red-medium: hsl(0, 100%, 65%);
   --xxmas-palette-red-dim: hsl(0, 86%, 41%);
   --xxmas-palette-gold-medium: hsl(52, 100%, 42%);
-  --xxmas-palette-brown-medium: rgb(187, 103, 51);
+  --xxmas-palette-brown-medium: rgb(208, 141, 100);
   --full-sat-blue: hsl(240, 100%, 74%);
   --full-sat-cerulean: hsl(210, 100%, 57%);
   --full-sat-cyan: hsl(180, 100%, 50%);
