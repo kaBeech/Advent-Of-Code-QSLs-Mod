@@ -1,6 +1,9 @@
 /old
 /prod
 
+# Playwright
+playwright-report
+
 # Build
 /dist
 /lib
