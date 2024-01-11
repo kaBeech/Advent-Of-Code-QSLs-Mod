@@ -26,3 +26,7 @@ jobs:
           AUTH_SECRET: ${{ secrets.AUTH_SECRET }}
           TEST_USER_REDDIT: ${{ secrets.TEST_USER_REDDIT }}
           TEST_PASSWORD_REDDIT: ${{ secrets.TEST_PASSWORD_REDDIT }}
+          XTREME_XMAS_API: ${{ secrets.XTREME_XMAS_API }}
+          XMAS_SECRET: ${{ secrets.XMAS_SECRET }}
+          REDDIT_CLIENT_ID: ${{ secrets.REDDIT_CLIENT_ID }}
+          REDDIT_CLIENT_SECRET: ${{ secrets.REDDIT_CLIENT_SECRET }}
