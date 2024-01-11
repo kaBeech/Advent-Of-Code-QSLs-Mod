@@ -30,7 +30,7 @@ export default component$(() => {
         >
           °Chester The Tester°
         </a>{" "}
-        to play!
+        to test this site!
       </p>
     </>
   );
