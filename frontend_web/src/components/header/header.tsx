@@ -33,7 +33,7 @@ export default component$((props: HeaderProps) => {
             °Calendar°
           </a>{" "}
           ¦{" "}
-          <a href="/modifier" id="headerDesktopModifier" class="textRed">
+          <a href="/modifier" id="headerDesktopModifiers" class="textRed">
             °Modifiers°
           </a>
           ¦
@@ -108,7 +108,7 @@ export default component$((props: HeaderProps) => {
         </div>
         <div class="flex gap1 marginVertPoint2">
           {" "}
-          <a href="/modifier" id="headerMobileModifier" class="textRed">
+          <a href="/modifier" id="headerMobileModifiers" class="textRed">
             °Modifiers°
           </a>
           ¦{" "}
@@ -166,7 +166,7 @@ export default component$((props: HeaderProps) => {
         </div>
         <div class="flex gap1 marginVertPoint2">
           {" "}
-          <a href="/modifier" id="headerTinyModifier" class="textGreen">
+          <a href="/modifier" id="headerTinyModifiers" class="textGreen">
             °Modifiers°
           </a>
           ¦
