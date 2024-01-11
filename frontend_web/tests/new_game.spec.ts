@@ -2,7 +2,7 @@ import { expect, test } from "@playwright/test";
 
 test.describe("new game", () => {
   test("day 1 happy path", async ({ page }) => {
-    await page.goto("https://www.xtremexmascode.com/chester/");
+    await page.goto("chester");
     await page.getByText("°Chester The Tester°").click();
     await page.getByRole("link", { name: "°Games°" }).click();
     await page.getByRole("link", { name: "°Games°" }).click();
