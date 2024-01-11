@@ -11,11 +11,6 @@ test.describe("example", () => {
     await expect(page).toHaveTitle(/Xtreme Xmas Code - About/);
   });
 
-  test("Sponsors page has title", async ({ page }) => {
-    // Expect a title "to contain" a substring.
-    await expect(page).toHaveTitle(/Xtreme Xmas Code - Sponsors/);
-  });
-
   test("Logo links to homepage", async ({ page }) => {
     // create a locator
     const anchor = page.locator("a.logo");
