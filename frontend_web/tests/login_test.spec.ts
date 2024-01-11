@@ -1,7 +1,7 @@
 import { expect, test } from "@playwright/test";
 
 test("test", async ({ page }) => {
-  await page.goto("https://www.xtremexmascode.com/login/");
+  await page.goto("login");
   await page.getByRole("main").getByText("°Log In°").click();
   await page.getByRole("button", { name: "Sign in with Reddit" }).click();
   await page.getByPlaceholder("\n        Username\n      ").click();

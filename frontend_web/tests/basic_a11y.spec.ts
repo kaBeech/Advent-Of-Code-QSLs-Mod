@@ -63,7 +63,7 @@ test.describe("log in page", () => {
 
 test.describe("pages needing auth", () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto("https://www.xtremexmascode.com/login/");
+    await page.goto("login");
     await page.getByRole("main").getByText("°Log In°").click();
     await page.getByRole("button", { name: "Sign in with Reddit" }).click();
     await page.getByPlaceholder("\n        Username\n      ").click();
