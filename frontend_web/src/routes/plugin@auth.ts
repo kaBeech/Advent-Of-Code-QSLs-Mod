@@ -2,6 +2,7 @@ import { serverAuth$ } from "@builder.io/qwik-auth";
 import type { Provider } from "@auth/core/providers";
 import GitHub from "@auth/core/providers/github";
 import Reddit from "@auth/core/providers/reddit";
+import Credentials from "@auth/core/providers/credentials";
 
 export const { onRequest, useAuthSession, useAuthSignin, useAuthSignout } =
   serverAuth$(({ env }) => ({
@@ -68,6 +69,17 @@ export const { onRequest, useAuthSession, useAuthSignin, useAuthSignout } =
             image: profile.snoovatar_img ? profile.snoovatar_img : "reddit",
             // This is not email, it's a hack to get Qwik's DefaultSession to make the User's ID accessible
             email: profile.id.toString(),
+          };
+        },
+      }),
+      Credentials({
+        async authorize() {
+          return {
+            id: "1",
+            name: "Chester",
+            image: "reddit",
+            // This is not email, it's a hack to get Qwik's DefaultSession to make the User's ID accessible
+            email: "1",
           };
         },
       }),
