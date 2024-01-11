@@ -27,7 +27,6 @@ export default component$((props: LoginProps) => {
         </a>
       ) : (
         <>
-          <span>Log In: </span>
           <a
             onClick$={() => {
               logIn.submit({ providerId: "github" });
@@ -36,8 +35,9 @@ export default component$((props: LoginProps) => {
             }}
             class="textGreen"
           >
-            °GitHub°
-          </a>
+            °GitHub Login°
+          </a>{" "}
+          ¦{" "}
           <a
             onClick$={() => {
               logIn.submit({ providerId: "reddit" });
@@ -46,7 +46,7 @@ export default component$((props: LoginProps) => {
             }}
             class="textRed"
           >
-            °Reddit°
+            °Reddit Login°
           </a>
         </>
       )}
