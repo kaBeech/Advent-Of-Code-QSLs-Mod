@@ -69,7 +69,7 @@ test.describe("pages needing auth", () => {
 
   test.describe("calendar page", () => {
     test("does not have any automatically detectable accessibility issues", async ({ page }) => {
-      await page.goto("calendar");
+      await page.locator("a#headerDesktopCalendar").click();
 
       const accessibilityScanResults = await new AxeBuilder({ page }).analyze();
 
@@ -79,7 +79,7 @@ test.describe("pages needing auth", () => {
 
   test.describe("settings page", () => {
     test("does not have any automatically detectable accessibility issues", async ({ page }) => {
-      await page.goto("settings");
+      await page.locator("a#headerDesktopSettings").click();
 
       const accessibilityScanResults = await new AxeBuilder({ page }).analyze();
 
@@ -89,7 +89,7 @@ test.describe("pages needing auth", () => {
 
   test.describe("games page", () => {
     test("does not have any automatically detectable accessibility issues", async ({ page }) => {
-      await page.goto("games");
+      await page.locator("a#headerDesktopGames").click();
 
       const accessibilityScanResults = await new AxeBuilder({ page }).analyze();
 
