@@ -59,8 +59,7 @@ export default component$(() => {
           >
             °accessible°
           </a>{" "}
-          leaderboard
-          experience
+          leaderboard experience
           <a
             href="https://www.reddit.com/r/adventofcode/comments/e2wjhf/comment/f90ksek/"
             target="_blank"
@@ -140,7 +139,7 @@ export default component$(() => {
         <p>
           If you'd like to support Xtreme Xmas Code, you can do so by sharing it
           with a friend, supporting XXC's{" "}
-          <a href="/sponsors" class="link">
+          <a href="sponsors" class="link">
             °sponsors°
           </a>
           , or supporting{" "}
@@ -154,7 +153,7 @@ export default component$(() => {
           </a>
           , creator of the original Advent of Code. You can find more
           information on{" "}
-          <a href="/support" class="link">
+          <a href="support" class="link">
             °my support page°
           </a>
           .{" "}

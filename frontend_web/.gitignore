@@ -1,6 +1,10 @@
 /old
 /prod
 
+# Playwright
+playwright-report
+test-results
+
 # Build
 /dist
 /lib
