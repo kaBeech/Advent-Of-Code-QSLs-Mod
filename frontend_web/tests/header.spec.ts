@@ -26,7 +26,7 @@ test.describe("Header_navigation_standard", () => {
   test("Modifiers links to modifiers page", async ({ page }) => {
     const anchor = page.locator("a#headerDesktopModifiers");
 
-    await expect(anchor).toHaveAttribute("href", "modifiers");
+    await expect(anchor).toHaveAttribute("href", "modifier");
   });
 
   test("Settings links to settings page", async ({ page }) => {
