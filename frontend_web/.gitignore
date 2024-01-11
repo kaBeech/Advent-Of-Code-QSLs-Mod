@@ -3,6 +3,7 @@
 
 # Playwright
 playwright-report
+test-results
 
 # Build
 /dist
