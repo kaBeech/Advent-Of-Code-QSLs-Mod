@@ -150,7 +150,7 @@ export default component$(() => {
                 )
               )}
               <li class={`marginTop2`}>
-                <a href="/new">°New Game°</a>
+                <a href="/new">°Start a New Game!°</a>
               </li>
             </ul>
           );
