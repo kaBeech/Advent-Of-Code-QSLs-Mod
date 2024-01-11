@@ -65,3 +65,29 @@ test.describe("Header_navigation_standard", () => {
     await expect(anchor).toHaveAttribute("href", "/sponsors");
   });
 });
+
+test.describe("Header_lights", () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto("/about");
+  });
+
+  test("Lights start out off", async ({ page }) => {
+    const lightSwitch = page.locator("span#lightSwitch");
+    const headerLights = page.locator("span#headerLights");
+
+    await expect(lightSwitch).toContainText("󱨦");
+    await expect(headerLights).toContainText("~~~");
+    await expect(headerLights).toContainText("󰛩");
+  });
+
+  test("Lights toggle on", async ({ page }) => {
+    const lightSwitch = page.locator("span#lightSwitch");
+    const headerLights = page.locator("span#headerLights");
+
+    await lightSwitch.click();
+
+    await expect(lightSwitch).toContainText("󱨥");
+    await expect(headerLights).toContainText("");
+    await expect(headerLights).toContainText("󰛨");
+  });
+});
