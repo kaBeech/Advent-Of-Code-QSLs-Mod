@@ -51,6 +51,7 @@ export default component$((props: XmasLightsProps) => {
           <span class="logoGreen fontLarger"> {"󰛨"}</span>
           <span
             class="logoGreen pointer"
+            id="lightSwitch"
             onClick$={() => {
               props.toggleLights();
             }}
@@ -64,6 +65,7 @@ export default component$((props: XmasLightsProps) => {
           <span class="textRed fontLarger">{"󰛩"}</span>
           <span
             class="logoGreen pointer"
+            id="lightSwitch"
             onClick$={() => {
               props.toggleLights();
             }}
