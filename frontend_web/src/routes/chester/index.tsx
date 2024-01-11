@@ -1,7 +1,7 @@
 import type { Session } from "@auth/core/types";
 import { component$ } from "@builder.io/qwik";
 import type { DocumentHead, RequestHandler } from "@builder.io/qwik-city";
-import LogIn from "~/components/logIn/logIn";
+import { useAuthSignin } from "../plugin@auth";
 
 export const onRequest: RequestHandler = (event) => {
   const session: Session | null = event.sharedMap.get("session");
@@ -11,6 +11,8 @@ export const onRequest: RequestHandler = (event) => {
 };
 
 export default component$(() => {
+  const logIn = useAuthSignin();
+
   return (
     <>
       <h1 class="logo stitch logoWhite">
@@ -19,24 +21,23 @@ export default component$(() => {
         {"<"}
       </h1>
       <p class="textCenter fontLarger marginTop0">
-        Please log in with <LogIn /> to play!
-      </p>
-      <p>
-        View the <a href="/leaderboard">°Leaderboard°</a>
-      </p>{" "}
-      <p>
-        Learn{" "}
-        <a href="/about" class={`textGreen`}>
-          °About°
+        Please log in with{" "}
+        <a
+          onClick$={() => {
+            logIn.submit({ providerId: "credentials" });
+          }}
+          class="textGreen"
+        >
+          °Chester The Tester°
         </a>{" "}
-        XXC
+        to play!
       </p>
     </>
   );
 });
 
 export const head: DocumentHead = {
-  title: "Xtreme Xmas Code - Calendar",
+  title: "Xtreme Xmas Code - Cheseter The Tester",
   meta: [
     {
       name: "description",
