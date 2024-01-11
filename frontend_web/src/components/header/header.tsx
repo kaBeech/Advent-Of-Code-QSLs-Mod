@@ -25,19 +25,19 @@ export default component$((props: HeaderProps) => {
       <div class="flex column alignCenter mobileHide">
         <div class="flex gap1 marginVertPoint2">
           {" "}
-          <a href="/about" id="headerDesktopAbout">
+          <a href="about" id="headerDesktopAbout">
             °About°
           </a>{" "}
           ¦{" "}
-          <a href="/calendar" id="headerDesktopCalendar" class="textGreen">
+          <a href="calendar" id="headerDesktopCalendar" class="textGreen">
             °Calendar°
           </a>{" "}
           ¦{" "}
-          <a href="/modifier" id="headerDesktopModifiers" class="textRed">
+          <a href="modifier" id="headerDesktopModifiers" class="textRed">
             °Modifiers°
           </a>
           ¦
-          <a href="/settings" id="headerDesktopSettings" class="textGreen">
+          <a href="settings" id="headerDesktopSettings" class="textGreen">
             °Settings°
           </a>{" "}
           ¦{" "}
@@ -53,11 +53,11 @@ export default component$((props: HeaderProps) => {
         </div>
         <div class="flex gap1 marginVertPoint2">
           {" "}
-          <a href="/games" id="headerDesktopGames" class="textGreen">
+          <a href="games" id="headerDesktopGames" class="textGreen">
             °Games°
           </a>{" "}
           ¦{" "}
-          <a href="/support" id="headerDesktopSupport">
+          <a href="support" id="headerDesktopSupport">
             °Support°
           </a>{" "}
           ¦
@@ -65,7 +65,7 @@ export default component$((props: HeaderProps) => {
             °Leaderboard°
           </a>
           ¦
-          <a href="/sponsors" id="headerDesktopSponsors">
+          <a href="sponsors" id="headerDesktopSponsors">
             °Sponsors°
           </a>
         </div>
@@ -81,11 +81,11 @@ export default component$((props: HeaderProps) => {
       <div class="flex column alignCenter mobileShow">
         <div class="flex gap1 marginVertPoint2">
           {" "}
-          <a href="/about" id="headerMobileAbout">
+          <a href="about" id="headerMobileAbout">
             °About°
           </a>{" "}
           ¦{" "}
-          <a href="/calendar" id="headerMobileCalendar" class="textGreen">
+          <a href="calendar" id="headerMobileCalendar" class="textGreen">
             °Calendar°
           </a>{" "}
           ¦{" "}
@@ -94,25 +94,25 @@ export default component$((props: HeaderProps) => {
           </a>
         </div>
         <div class="flex gap1 marginVertPoint2">
-          <a href="/games" id="headerMobileGames" class="textGreen">
+          <a href="games" id="headerMobileGames" class="textGreen">
             °Games°
           </a>{" "}
           ¦
-          <a href="/settings" id="headerMobileSettings">
+          <a href="settings" id="headerMobileSettings">
             °Settings°
           </a>{" "}
           ¦
-          <a href="/sponsors" id="headerMobileSponsors" class="textGreen">
+          <a href="sponsors" id="headerMobileSponsors" class="textGreen">
             °Sponsors°
           </a>
         </div>
         <div class="flex gap1 marginVertPoint2">
           {" "}
-          <a href="/modifier" id="headerMobileModifiers" class="textRed">
+          <a href="modifier" id="headerMobileModifiers" class="textRed">
             °Modifiers°
           </a>
           ¦{" "}
-          <a href="/support" id="headerMobileSupport" class="textGreen">
+          <a href="support" id="headerMobileSupport" class="textGreen">
             °Support°
           </a>{" "}
           ¦
@@ -138,35 +138,35 @@ export default component$((props: HeaderProps) => {
       <div class="flex column alignCenter tinyShow">
         <div class="flex gap1 marginVertPoint2">
           {" "}
-          <a href="/about" id="headerTinyAbout">
+          <a href="about" id="headerTinyAbout">
             °About°
           </a>{" "}
           ¦{" "}
-          <a href="/games" id="headerTinyGames" class="textGreen">
+          <a href="games" id="headerTinyGames" class="textGreen">
             °Games°
           </a>{" "}
         </div>
         <div class="flex gap1 marginVertPoint2">
-          <a href="/calendar" id="headerTinyCalendar" class="textGreen">
+          <a href="calendar" id="headerTinyCalendar" class="textGreen">
             °Calendar°
           </a>
           ¦
-          <a href="/sponsors" id="headerTinySponsors">
+          <a href="sponsors" id="headerTinySponsors">
             °Sponsors°
           </a>
         </div>
         <div class="flex gap1 marginVertPoint2">
-          <a href="/settings" id="headerTinySettings">
+          <a href="settings" id="headerTinySettings">
             °Settings°
           </a>{" "}
           ¦{" "}
-          <a href="/support" id="headerTinySupport" class="textGreen">
+          <a href="support" id="headerTinySupport" class="textGreen">
             °Support°
           </a>{" "}
         </div>
         <div class="flex gap1 marginVertPoint2">
           {" "}
-          <a href="/modifier" id="headerTinyModifiers" class="textGreen">
+          <a href="modifier" id="headerTinyModifiers" class="textGreen">
             °Modifiers°
           </a>
           ¦
