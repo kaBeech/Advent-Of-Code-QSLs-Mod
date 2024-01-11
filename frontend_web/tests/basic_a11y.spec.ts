@@ -14,6 +14,25 @@ test.describe("about page", () => {
 test.describe("modifiers page", () => {
   test("does not have any automatically detectable accessibility issues", async ({ page }) => {
     await page.goto("modifier");
+    const accessibilityScanResults = await new AxeBuilder({ page }).analyze();
+
+    expect(accessibilityScanResults.violations).toEqual([]);
+  });
+});
+
+test.describe("challenge modifier page", () => {
+  test("does not have any automatically detectable accessibility issues", async ({ page }) => {
+    await page.goto("modifier/11");
+
+    const accessibilityScanResults = await new AxeBuilder({ page }).analyze();
+
+    expect(accessibilityScanResults.violations).toEqual([]);
+  });
+});
+
+test.describe("modifier option page", () => {
+  test("does not have any automatically detectable accessibility issues", async ({ page }) => {
+    await page.goto("modifier/11/option/202");
 
     const accessibilityScanResults = await new AxeBuilder({ page }).analyze();
 
@@ -34,6 +53,25 @@ test.describe("support page", () => {
 test.describe("leaderboard page", () => {
   test("does not have any automatically detectable accessibility issues", async ({ page }) => {
     await page.goto("leaderboard");
+    const accessibilityScanResults = await new AxeBuilder({ page }).analyze();
+
+    expect(accessibilityScanResults.violations).toEqual([]);
+  });
+});
+
+test.describe("leaderboard game viewer", () => {
+  test("does not have any automatically detectable accessibility issues", async ({ page }) => {
+    await page.goto("game/public/13");
+
+    const accessibilityScanResults = await new AxeBuilder({ page }).analyze();
+
+    expect(accessibilityScanResults.violations).toEqual([]);
+  });
+});
+
+test.describe("leaderboard day viewer", () => {
+  test("does not have any automatically detectable accessibility issues", async ({ page }) => {
+    await page.goto("game/public/13/day/1");
 
     const accessibilityScanResults = await new AxeBuilder({ page }).analyze();
 
@@ -87,9 +125,20 @@ test.describe("pages needing auth", () => {
     });
   });
 
-  test.describe("games page", () => {
+  test.describe("game viewer", () => {
     test("does not have any automatically detectable accessibility issues", async ({ page }) => {
       await page.locator("a#headerDesktopGames").click();
+
+      const accessibilityScanResults = await new AxeBuilder({ page }).analyze();
+
+      expect(accessibilityScanResults.violations).toEqual([]);
+    });
+  });
+
+  test.describe("day viewer", () => {
+    test("does not have any automatically detectable accessibility issues", async ({ page }) => {
+      await page.locator("a#headerDesktopCalendar").click();
+      await page.getByText("°Continue Current Day°").click();
 
       const accessibilityScanResults = await new AxeBuilder({ page }).analyze();
 
