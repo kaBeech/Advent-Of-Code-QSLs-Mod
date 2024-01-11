@@ -61,50 +61,50 @@ test.describe("log in page", () => {
   });
 });
 
-// test.describe("pages needing auth", () => {
-//   test.beforeEach(async ({ page }) => {
-//     await page.goto("login");
-//     await page.getByRole("main").getByText("°Log In°").click();
-//     await page.getByRole("button", { name: "Sign in with Reddit" }).click();
-//     await page.getByPlaceholder("\n        Username\n      ").click();
-//     await page.getByPlaceholder("\n        Username\n      ").fill(
-//       process.env.TEST_USER_REDDIT!,
-//     );
-//     await page.getByPlaceholder("\n        Password\n      ").click();
-//     await page.getByPlaceholder("\n        Password\n      ").fill(
-//       process.env.TEST_PASSWORD_REDDIT!,
-//     );
-//     await page.getByRole("button", { name: "Log In" }).click();
-//     await page.getByRole("button", { name: "Allow" }).click();
-//   });
+test.describe("pages needing auth", () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto("login");
+    await page.getByRole("main").getByText("°Log In°").click();
+    await page.getByRole("button", { name: "Sign in with Reddit" }).click();
+    await page.getByPlaceholder("\n        Username\n      ").click();
+    await page.getByPlaceholder("\n        Username\n      ").fill(
+      process.env.TEST_USER_REDDIT!,
+    );
+    await page.getByPlaceholder("\n        Password\n      ").click();
+    await page.getByPlaceholder("\n        Password\n      ").fill(
+      process.env.TEST_PASSWORD_REDDIT!,
+    );
+    await page.getByRole("button", { name: "Log In" }).click();
+    await page.getByRole("button", { name: "Allow" }).click();
+  });
 
-//   test.describe("calendar page", () => {
-//     test("does not have any automatically detectable accessibility issues", async ({ page }) => {
-//       await page.goto("calendar");
+  test.describe("calendar page", () => {
+    test("does not have any automatically detectable accessibility issues", async ({ page }) => {
+      await page.goto("calendar");
 
-//       const accessibilityScanResults = await new AxeBuilder({ page }).analyze();
+      const accessibilityScanResults = await new AxeBuilder({ page }).analyze();
 
-//       expect(accessibilityScanResults.violations).toEqual([]);
-//     });
-//   });
+      expect(accessibilityScanResults.violations).toEqual([]);
+    });
+  });
 
-//   test.describe("settings page", () => {
-//     test("does not have any automatically detectable accessibility issues", async ({ page }) => {
-//       await page.goto("settings");
+  test.describe("settings page", () => {
+    test("does not have any automatically detectable accessibility issues", async ({ page }) => {
+      await page.goto("settings");
 
-//       const accessibilityScanResults = await new AxeBuilder({ page }).analyze();
+      const accessibilityScanResults = await new AxeBuilder({ page }).analyze();
 
-//       expect(accessibilityScanResults.violations).toEqual([]);
-//     });
-//   });
+      expect(accessibilityScanResults.violations).toEqual([]);
+    });
+  });
 
-//   test.describe("games page", () => {
-//     test("does not have any automatically detectable accessibility issues", async ({ page }) => {
-//       await page.goto("games");
+  test.describe("games page", () => {
+    test("does not have any automatically detectable accessibility issues", async ({ page }) => {
+      await page.goto("games");
 
-//       const accessibilityScanResults = await new AxeBuilder({ page }).analyze();
+      const accessibilityScanResults = await new AxeBuilder({ page }).analyze();
 
-//       expect(accessibilityScanResults.violations).toEqual([]);
-//     });
-//   });
-// });
+      expect(accessibilityScanResults.violations).toEqual([]);
+    });
+  });
+});
