@@ -25,47 +25,46 @@ export default component$((props: HeaderProps) => {
       <div class="flex column alignCenter mobileHide">
         <div class="flex gap1 marginVertPoint2">
           {" "}
-          <a href="/about" id="headerAbout">
+          <a href="/about" class="headerAbout">
             °About°
           </a>{" "}
           ¦{" "}
-          <a href="/calendar" id="headerCalendar" class="textGreen">
+          <a href="/calendar" class="headerCalendar textGreen">
             °Calendar°
           </a>{" "}
           ¦{" "}
-          <a href="/modifier" id="headerModifier" class="textRed">
+          <a href="/modifier" class="headerModifier textRed">
             °Modifiers°
           </a>
           ¦
-          <a href="/settings" id="headerSettings" class="textGreen">
+          <a href="/settings" class="headerSettings textGreen">
             °Settings°
           </a>{" "}
           ¦{" "}
           <a
             href={props.aocLink}
-            id="headerAOC"
             target="_blank"
             rel="noopener noreferrer"
-            class="textRed"
+            class="headerAOC textRed"
           >
             °AoC°
           </a>{" "}
         </div>
         <div class="flex gap1 marginVertPoint2">
           {" "}
-          <a href="/games" id="headerGames" class="textGreen">
+          <a href="/games" class="headerGames textGreen">
             °Games°
           </a>{" "}
           ¦{" "}
-          <a href="/support" id="headerSupport">
+          <a href="/support" class="headerSupport">
             °Support°
           </a>{" "}
           ¦
-          <a href="leaderboard" id="headerLeaderboard" class="textGreen">
+          <a href="leaderboard" class="headerLeaderboard textGreen">
             °Leaderboard°
           </a>
           ¦
-          <a href="/sponsors" id="headerSponsors">
+          <a href="/sponsors" class="headerSponsors">
             °Sponsors°
           </a>
         </div>
@@ -81,47 +80,46 @@ export default component$((props: HeaderProps) => {
       <div class="flex column alignCenter mobileShow">
         <div class="flex gap1 marginVertPoint2">
           {" "}
-          <a href="/about" id="headerAbout">
+          <a href="/about" class="headerAbout">
             °About°
           </a>{" "}
           ¦{" "}
-          <a href="/calendar" id="headerCalendar" class="textGreen">
+          <a href="/calendar" class="headerCalendar textGreen">
             °Calendar°
           </a>{" "}
           ¦{" "}
-          <a href="leaderboard" id="headerLeaderboard">
+          <a href="leaderboard" class="headerLeaderboard">
             °Leaderboard°
           </a>
         </div>
         <div class="flex gap1 marginVertPoint2">
-          <a href="/games" id="headerGames" class="textGreen">
+          <a href="/games" class="headerGames textGreen">
             °Games°
           </a>{" "}
           ¦
-          <a href="/settings" id="headerSettings">
+          <a href="/settings" class="headerSettings">
             °Settings°
           </a>{" "}
           ¦
-          <a href="/sponsors" id="headerSponsors" class="textGreen">
+          <a href="/sponsors" class="headerSponsors textGreen">
             °Sponsors°
           </a>
         </div>
         <div class="flex gap1 marginVertPoint2">
           {" "}
-          <a href="/modifier" id="headerModifier" class="textRed">
+          <a href="/modifier" class="headerModifier textRed">
             °Modifiers°
           </a>
           ¦{" "}
-          <a href="/support" id="headerSupport" class="textGreen">
+          <a href="/support" class="headerSupport textGreen">
             °Support°
           </a>{" "}
           ¦
           <a
             href={props.aocLink}
-            id="headerAOC"
             target="_blank"
             rel="noopener noreferrer"
-            class="textRed"
+            class="headerAOC textRed"
           >
             °AoC°
           </a>{" "}
@@ -138,41 +136,40 @@ export default component$((props: HeaderProps) => {
       <div class="flex column alignCenter tinyShow">
         <div class="flex gap1 marginVertPoint2">
           {" "}
-          <a href="/about" id="headerAbout">
+          <a href="/about" class="headerAbout">
             °About°
           </a>{" "}
           ¦{" "}
-          <a href="/games" id="headerGames" class="textGreen">
+          <a href="/games" class="headerGames textGreen">
             °Games°
           </a>{" "}
         </div>
         <div class="flex gap1 marginVertPoint2">
-          <a href="/calendar" id="headerCalendar" class="textGreen">
+          <a href="/calendar" class="headerCalendar textGreen">
             °Calendar°
           </a>
           ¦
-          <a href="/sponsors" id="headerSponsors">
+          <a href="/sponsors" class="headerSponsors">
             °Sponsors°
           </a>
         </div>
         <div class="flex gap1 marginVertPoint2">
-          <a href="/settings" id="headerSettings">
+          <a href="/settings" class="headerSettings">
             °Settings°
           </a>{" "}
           ¦{" "}
-          <a href="/support" id="headerSupport" class="textGreen">
+          <a href="/support" class="headerSupport textGreen">
             °Support°
           </a>{" "}
         </div>
         <div class="flex gap1 marginVertPoint2">
           {" "}
-          <a href="/modifier" id="headerModifier" class="textGreen">
+          <a href="/modifier" class="headerModifier textGreen">
             °Modifiers°
           </a>
           ¦
           <a
             href={props.aocLink}
-            id="headerAOC"
             target="_blank"
             rel="noopener noreferrer"
             class="textRed"
@@ -181,7 +178,7 @@ export default component$((props: HeaderProps) => {
           </a>{" "}
         </div>
         <div class="flex gap1 marginVertPoint2">
-          <a href="leaderboard" id="headerLeaderboard">
+          <a href="leaderboard" class="headerLeaderboard">
             °Leaderboard°
           </a>
         </div>
