@@ -2,7 +2,7 @@ import { expect, test } from "@playwright/test";
 
 test.describe("Header_navigation_standard", () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto("/about");
+    await page.goto("about");
   });
 
   test("Logo links to homepage", async ({ page }) => {
@@ -12,63 +12,63 @@ test.describe("Header_navigation_standard", () => {
   });
 
   test("About links to about page", async ({ page }) => {
-    const anchor = page.locator("a#about");
+    const anchor = page.locator("a#headerDesktopAbout");
 
-    await expect(anchor).toHaveAttribute("href", "/about");
+    await expect(anchor).toHaveAttribute("href", "about");
   });
 
   test("Calendar links to calendar page", async ({ page }) => {
-    const anchor = page.locator("a#calendar");
+    const anchor = page.locator("a#headerDesktopCalendar");
 
-    await expect(anchor).toHaveAttribute("href", "/calendar");
+    await expect(anchor).toHaveAttribute("href", "calendar");
   });
 
   test("Modifiers links to modifiers page", async ({ page }) => {
-    const anchor = page.locator("a#modifiers");
+    const anchor = page.locator("a#headerDesktopModifiers");
 
-    await expect(anchor).toHaveAttribute("href", "/modifiers");
+    await expect(anchor).toHaveAttribute("href", "modifiers");
   });
 
   test("Settings links to settings page", async ({ page }) => {
-    const anchor = page.locator("a#settings");
+    const anchor = page.locator("a#headerDesktopSettings");
 
-    await expect(anchor).toHaveAttribute("href", "/settings");
+    await expect(anchor).toHaveAttribute("href", "settings");
   });
 
   test("AoC links to Advent Of Code page", async ({ page }) => {
-    const anchor = page.locator("a#aoc");
+    const anchor = page.locator("a#headerDesktopAOC");
 
     await expect(anchor).toHaveAttribute("href", "https://adventofcode.com/");
   });
 
   test("Games links to games page", async ({ page }) => {
-    const anchor = page.locator("a#games");
+    const anchor = page.locator("a#headerDesktopGames");
 
-    await expect(anchor).toHaveAttribute("href", "/games");
+    await expect(anchor).toHaveAttribute("href", "games");
   });
 
   test("Support links to support page", async ({ page }) => {
-    const anchor = page.locator("a#support");
+    const anchor = page.locator("a#headerDesktopSupport");
 
-    await expect(anchor).toHaveAttribute("href", "/support");
+    await expect(anchor).toHaveAttribute("href", "support");
   });
 
   test("Leaderboard links to leaderboard page", async ({ page }) => {
-    const anchor = page.locator("a#leaderboard");
+    const anchor = page.locator("a#headerDesktopLeaderboard");
 
-    await expect(anchor).toHaveAttribute("href", "/leaderboard");
+    await expect(anchor).toHaveAttribute("href", "leaderboard");
   });
 
   test("Sponsors links to sponsors page", async ({ page }) => {
-    const anchor = page.locator("a#sponsors");
+    const anchor = page.locator("a#headerDesktopSponsors");
 
-    await expect(anchor).toHaveAttribute("href", "/sponsors");
+    await expect(anchor).toHaveAttribute("href", "sponsors");
   });
 });
 
 test.describe("Header_lights", () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto("/about");
+    await page.goto("about");
   });
 
   test("Lights start out off", async ({ page }) => {
