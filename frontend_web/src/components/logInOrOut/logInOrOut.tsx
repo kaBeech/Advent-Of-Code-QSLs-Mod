@@ -26,16 +26,29 @@ export default component$((props: LoginProps) => {
           °Log Out°
         </a>
       ) : (
-        <a
-          onClick$={() => {
-            logIn.submit({});
-            props.toggleLoggedIn();
-            state.isLoggedIn = true;
-          }}
-          class="textGreen"
-        >
-          °Log In°
-        </a>
+        <>
+          <span>Log In: </span>
+          <a
+            onClick$={() => {
+              logIn.submit({ providerId: "github" });
+              props.toggleLoggedIn();
+              state.isLoggedIn = true;
+            }}
+            class="textGreen"
+          >
+            °GitHub°
+          </a>
+          <a
+            onClick$={() => {
+              logIn.submit({ providerId: "reddit" });
+              props.toggleLoggedIn();
+              state.isLoggedIn = true;
+            }}
+            class="textRed"
+          >
+            °Reddit°
+          </a>
+        </>
       )}
     </>
   );

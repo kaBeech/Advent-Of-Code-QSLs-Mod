@@ -19,7 +19,7 @@ export default component$(() => {
         {"<"}
       </h1>
       <p class="textCenter fontLarger marginTop0">
-        Please <LogIn /> to play!
+        Please log in with <LogIn /> to play!
       </p>
       <p>
         View the <a href="/leaderboard">°Leaderboard°</a>
