@@ -3,7 +3,7 @@ import { expect, test } from "@playwright/test";
 test.describe("Example", () => {
   test.beforeEach(async ({ page }) => {
     // Go to the starting url before each test.
-    await page.goto("/about");
+    await page.goto("about");
   });
 
   test("About page has title", async ({ page }) => {
