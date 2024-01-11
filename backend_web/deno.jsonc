@@ -8,6 +8,7 @@
     "dbpull": "deno run --allow-run --allow-read --allow-write --allow-env --allow-sys npm:prisma@^5.5.2 db pull",
     "generateprisma": "deno run --allow-run --allow-read --allow-write --allow-env --allow-sys npm:prisma@^5.5.2 generate --data-proxy",
     "seedprisma": "deno run --allow-read --allow-env --allow-net prisma/seed.ts",
+    "cleanprisma": "deno run --allow-read --allow-env --allow-net prisma/purgePlaywriteTestGames.ts",
     "migrateprisma": "deno run --allow-run --allow-read --allow-write --allow-env --allow-sys npm:prisma@^5.5.2 migrate dev --create-only"
   }
 }
