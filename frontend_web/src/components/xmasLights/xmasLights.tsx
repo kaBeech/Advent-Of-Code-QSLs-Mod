@@ -10,6 +10,7 @@ export interface XmasLightsProps {
   hasLightSwitch: boolean;
   length: "long" | "short";
   alternateColors?: boolean;
+  id: string;
 }
 
 export default component$((props: XmasLightsProps) => {
@@ -41,7 +42,10 @@ export default component$((props: XmasLightsProps) => {
     }
   }
   return (
-    <span class={`flippedSwitches rotate${direction} marginVertPoint5`}>
+    <span
+      class={`flippedSwitches rotate${direction} marginVertPoint5`}
+      id={props.id}
+    >
       {props.hasLightSwitch && props.isOn && (
         <>
           <span class="logoGreen fontLarger"> {"󰛨"}</span>

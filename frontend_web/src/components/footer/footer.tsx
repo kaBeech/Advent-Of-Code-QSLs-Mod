@@ -24,6 +24,7 @@ export default component$((props: FooterProps) => {
           isOn={props.areLightsOn}
           toggleLights={props.toggleLights}
           length="short"
+          id={"footerLights1"}
         />
         <a href="/sponsors" class="">
           °Sponsor°
@@ -36,6 +37,7 @@ export default component$((props: FooterProps) => {
           isOn={props.areLightsOn}
           toggleLights={props.toggleLights}
           length="short"
+          id={"footerLights2"}
         />
       </div>
       <p class="sponsor textCenter margin0 marginBottom1">

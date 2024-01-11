@@ -17,7 +17,7 @@ export default component$((props: HeaderProps) => {
   const session = useAuthSession();
   return (
     <header class="flex column alignCenter">
-      <a href="/" class="logo stitch marginVertPoint2">
+      <a href="/" class="logo stitch marginVertPoint2" id="logo">
         <span class="logoGold">*</span> Xtreme <span class="logoGreen">^</span>{" "}
         Xmas <span class="logoWhite">§</span> Code{" "}
         <span class="logoBrown">»</span>
@@ -168,6 +168,7 @@ export default component$((props: HeaderProps) => {
         isOn={props.areLightsOn}
         toggleLights={props.toggleLights}
         length="long"
+        id="headerLights"
       />
       <br />
     </header>
