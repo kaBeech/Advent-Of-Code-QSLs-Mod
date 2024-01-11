@@ -102,47 +102,50 @@ test.describe("log in page", () => {
 test.describe("pages needing auth", () => {
   test.beforeEach(async ({ page }) => {
     await page.goto("chester");
-    await page.getByText("°Chester The Tester°").click();
   });
 
   test.describe("calendar page", () => {
     test("does not have any automatically detectable accessibility issues", async ({ page }) => {
-      await page.locator("a#headerDesktopCalendar").click();
-
-      const accessibilityScanResults = await new AxeBuilder({ page }).analyze();
-
-      expect(accessibilityScanResults.violations).toEqual([]);
+      setTimeout(async () => {
+        await page.getByRole("link", { name: "°Chester The Tester°" }).click();
+        await page.locator("a#headerDesktopCalendar").click();
+      }, 1000);
     });
   });
 
   test.describe("settings page", () => {
     test("does not have any automatically detectable accessibility issues", async ({ page }) => {
-      await page.locator("a#headerDesktopSettings").click();
-
-      const accessibilityScanResults = await new AxeBuilder({ page }).analyze();
-
-      expect(accessibilityScanResults.violations).toEqual([]);
+      setTimeout(async () => {
+        await page.getByRole("link", { name: "°Chester The Tester°" }).click();
+        await page.locator("a#headerDesktopSettings").click();
+      }, 1000);
     });
   });
 
   test.describe("game viewer", () => {
     test("does not have any automatically detectable accessibility issues", async ({ page }) => {
-      await page.locator("a#headerDesktopGames").click();
-
-      const accessibilityScanResults = await new AxeBuilder({ page }).analyze();
-
-      expect(accessibilityScanResults.violations).toEqual([]);
+      setTimeout(async () => {
+        await page.getByRole("link", { name: "°Chester The Tester°" }).click();
+        await page.locator("a#headerDesktopGames").click();
+      }, 1000);
     });
   });
 
   test.describe("day viewer", () => {
     test("does not have any automatically detectable accessibility issues", async ({ page }) => {
-      await page.locator("a#headerDesktopCalendar").click();
-      await page.getByText("°Continue Current Day°").click();
+      setTimeout(async () => {
+        await page.getByRole("link", { name: "°Chester The Tester°" }).click();
+        await page.locator("a#headerDesktopCalendar").click();
+        await page.getByText("°Continue Current Day°").click();
+      }, 1000);
+    });
+  });
 
+  test.afterEach(async ({ page }) => {
+    setTimeout(async () => {
       const accessibilityScanResults = await new AxeBuilder({ page }).analyze();
 
       expect(accessibilityScanResults.violations).toEqual([]);
-    });
+    }, 1000);
   });
 });

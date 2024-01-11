@@ -154,60 +154,66 @@ export default component$((props: DayButtonsProps) => {
       props.dayInfoData.part1Completed ? (
         <></>
       ) : (
-        <a
-          class={"textGreen"}
-          onClick$={async () => {
-            if (props.privateViewerData!.loading) {
-              return;
-            }
-            props.privateViewerData!.setLoadingStatus(true);
-            await serverFetcher(
-              `game/${props.privateViewerData!.gameNumber}/day/${
-                props.privateViewerData!.dayNumber
-              }/complete/part1`,
-              "PUT",
-              props.privateViewerData!.userId
-            );
-            props.privateViewerData!.incrementButtonPresses();
-          }}
-        >
-          °Complete Part 1°{" "}
-          {props.dayInfoData.challengeModifier !== "None" && (
-            <>
-              <>for </>
-              <span class="token"></span>
-            </>
-          )}
-        </a>
+        <span>
+          <a
+            class={"textGreen"}
+            onClick$={async () => {
+              if (props.privateViewerData!.loading) {
+                return;
+              }
+              props.privateViewerData!.setLoadingStatus(true);
+              await serverFetcher(
+                `game/${props.privateViewerData!.gameNumber}/day/${
+                  props.privateViewerData!.dayNumber
+                }/complete/part1`,
+                "PUT",
+                props.privateViewerData!.userId
+              );
+              props.privateViewerData!.incrementButtonPresses();
+            }}
+          >
+            °Complete Part 1°
+          </a>
+          <span>
+            {" "}
+            {props.dayInfoData.challengeModifier !== "None" && (
+              <>
+                for <span class="token"></span>
+              </>
+            )}
+          </span>
+        </span>
       )}
       {!props.dayInfoData.part1Completed || props.dayInfoData.part2Completed ? (
         <></>
       ) : (
-        <a
-          class={"textGreen"}
-          onClick$={async () => {
-            if (props.privateViewerData!.loading) {
-              return;
-            }
-            props.privateViewerData!.setLoadingStatus(true);
-            await serverFetcher(
-              `game/${props.privateViewerData!.gameNumber}/day/${
-                props.privateViewerData!.dayNumber
-              }/complete/part2`,
-              "PUT",
-              props.privateViewerData!.userId
-            );
-            props.privateViewerData!.incrementButtonPresses();
-          }}
-        >
-          °Complete Part 2°{" "}
+        <span>
+          <a
+            class={"textGreen"}
+            onClick$={async () => {
+              if (props.privateViewerData!.loading) {
+                return;
+              }
+              props.privateViewerData!.setLoadingStatus(true);
+              await serverFetcher(
+                `game/${props.privateViewerData!.gameNumber}/day/${
+                  props.privateViewerData!.dayNumber
+                }/complete/part2`,
+                "PUT",
+                props.privateViewerData!.userId
+              );
+              props.privateViewerData!.incrementButtonPresses();
+            }}
+          >
+            °Complete Part 2°
+          </a>{" "}
           {props.dayInfoData.challengeModifier !== "None" && (
             <>
               <>for </>
               <span class="token"></span>
             </>
           )}
-        </a>
+        </span>
       )}
       <DayNavigationButtons
         dayNumber={+props.privateViewerData.dayNumber}
