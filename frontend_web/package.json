@@ -14,6 +14,8 @@
     "deploy": "vercel deploy",
     "dev": "vite --mode ssr",
     "dev.debug": "node --inspect-brk ./node_modules/vite/bin/vite.js --mode ssr --force",
+    "test": "npx playwright test",
+    "test.record": "npx playwright codegen https://www.xtremexmascode.com/chester/",
     "fmt": "prettier --write .",
     "fmt.check": "prettier --check .",
     "lint": "eslint \"src/**/*.ts*\"",
