@@ -340,6 +340,19 @@ export async function deleteGameById(id: number) {
   return result;
 }
 
+export async function deleteGamesByTesterId() {
+  const deletedDays = await prisma.day.deleteMany({
+    where: { Game: { User: { id: "reddit1" } } },
+  });
+
+  const deletedGames = await prisma.game.deleteMany({
+    where: { User: { id: "reddit1" } },
+  });
+
+  const result = { deletedDays, deletedGames };
+  return result;
+}
+
 /**
  * Day CRUD
  */
