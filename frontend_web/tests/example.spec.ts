@@ -1,17 +1,17 @@
 import { expect, test } from "@playwright/test";
 
-test.describe("Example", () => {
+test.describe("example", () => {
   test.beforeEach(async ({ page }) => {
     // Go to the starting url before each test.
     await page.goto("about");
   });
 
-  test("About page has title", async ({ page }) => {
+  test("about page has title", async ({ page }) => {
     // Expect a title "to contain" a substring.
     await expect(page).toHaveTitle(/Xtreme Xmas Code - About/);
   });
 
-  test("Logo links to homepage", async ({ page }) => {
+  test("logo links to homepage", async ({ page }) => {
     // create a locator
     const anchor = page.locator("a.logo");
 

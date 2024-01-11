@@ -26,7 +26,7 @@ export default component$((props: FooterProps) => {
           length="short"
           id={"footerLights1"}
         />
-        <a href="sponsors" class="">
+        <a href="/sponsors" class="">
           °Sponsor°
         </a>
         <XmasLights

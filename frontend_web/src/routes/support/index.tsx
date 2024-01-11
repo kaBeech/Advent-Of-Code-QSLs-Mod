@@ -8,7 +8,7 @@ export default component$(() => {
       <p>
         If you'd like to support Xtreme Xmas Code, you can do so by sharing it
         with a friend, supporting XXC's{" "}
-        <a href="sponsors" class="link">
+        <a href="/sponsors" class="link">
           °sponsors°
         </a>
         , or supporting{" "}
@@ -23,7 +23,7 @@ export default component$(() => {
         , creator of the original Advent of Code.
       </p>
       <p>
-        I (<a href="about#aboutMe">°Kyle Beechly°</a>) am also{" "}
+        I (<a href="/about#aboutMe">°Kyle Beechly°</a>) am also{" "}
         <em>#OpenToWork</em> and currently looking to move into a full-time
         software engineering role (right now I'm daylighting in healthcare and
         freelancing in web development). If you're looking to work with a fun

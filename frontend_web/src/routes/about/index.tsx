@@ -74,7 +74,7 @@ export default component$(() => {
         <div class="desktopShow">
           ----------------------------------------------------------------------------
         </div>
-        <h2 id="aboutMe"> About Me </h2>
+        <h2 id="/aboutMe"> About Me </h2>
         <div class="desktopShow">
           ----------------------------------------------------------------------------
         </div>
@@ -139,7 +139,7 @@ export default component$(() => {
         <p>
           If you'd like to support Xtreme Xmas Code, you can do so by sharing it
           with a friend, supporting XXC's{" "}
-          <a href="sponsors" class="link">
+          <a href="/sponsors" class="link">
             °sponsors°
           </a>
           , or supporting{" "}
@@ -153,7 +153,7 @@ export default component$(() => {
           </a>
           , creator of the original Advent of Code. You can find more
           information on{" "}
-          <a href="support" class="link">
+          <a href="/support" class="link">
             °my support page°
           </a>
           .{" "}
@@ -477,7 +477,7 @@ export default component$(() => {
           and lateral thinking.
         </p>
         <p>
-          <em id="leaderboard">How does the leaderboard work?</em>
+          <em id="/leaderboard">How does the leaderboard work?</em>
         </p>
         <p>
           The leaderboard are opt-in; you must post your game manually for it to

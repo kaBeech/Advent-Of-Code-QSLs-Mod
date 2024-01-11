@@ -26,7 +26,7 @@ export default component$(() => {
       </p>{" "}
       <p>
         Learn{" "}
-        <a href="about" class={`textGreen`}>
+        <a href="/about" class={`textGreen`}>
           °About°
         </a>{" "}
         XXC
