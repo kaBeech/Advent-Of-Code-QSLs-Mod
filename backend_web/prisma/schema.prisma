@@ -31,6 +31,8 @@ model User {
   DefaultExcludedModifierOptions          ModifierOption[]    @relation("DefaultExcludedModifierOptions")
   DefaultIncludedCustomChallengeModifiers ChallengeModifier[] @relation("DefaultIncludedCustomChallengeModifiers")
   DefaultIncludedCustomModifierOptions    ModifierOption[]    @relation("DefaultIncludedCustomModifierOptions")
+
+  @@index([id, serializedId, username], name: "username_lookup")
 }
 
 model PublicProfile {
@@ -69,6 +71,8 @@ model Game {
   Title                           Title?         @relation(fields: [titleId], references: [id])
   User                            User           @relation(fields: [userId], references: [id])
   Upvote                          Upvote[]
+
+  @@index([id, playerName, name, number, year, score, titleId, repositoryLink, userId], name: "leaderboard_games")
 }
 
 model Title {
@@ -76,6 +80,8 @@ model Title {
   name         String @unique
   minimumScore Int
   Game         Game[]
+
+  @@index([id, name, minimumScore], name: "titles_basic_info")
 }
 
 model Day {
