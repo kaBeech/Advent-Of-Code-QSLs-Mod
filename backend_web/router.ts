@@ -30,7 +30,8 @@ import { updateGamePublicStatus } from "./routes/game/updateGamePublicStatus.ts"
 import { updateGameName } from "./routes/game/updateGameName.ts";
 import { updateGameRepositoryLink } from "./routes/game/updateGameRepositoryLink.ts";
 import deleteTesterGames from "./routes/game/deleteTesterGames.ts";
-import { getUserDataSimpleById } from "./db.ts";
+import { getUserDataSimple } from "./routes/user/getUserDataSimple.ts";
+import { getUserGamesListById } from "./db.ts";
 
 type AppState = {
   session: Session;
@@ -46,7 +47,8 @@ router
   .get("/oauth2/callback", getOAuthData)
   .get("/logout", authenticate, logOut)
   .get("/userdata", authenticate, getUserData)
-  .get("/userdata/simple", authenticate, getUserDataSimpleById)
+  .get("/userdata/simple", authenticate, getUserDataSimple)
+  .get("/userdata/games/list", authenticate, getUserGamesListById)
   .get("/gamedata/:gameNumber", authenticate, getGameData)
   .get("/modifier", getChallengeModifiers)
   .get("/leaderboard", getLeaderboardGames)
