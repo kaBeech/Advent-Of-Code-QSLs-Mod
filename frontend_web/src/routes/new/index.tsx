@@ -40,7 +40,7 @@ export default component$(() => {
       state.loading = true;
       const abortController = new AbortController();
       cleanup(() => abortController.abort("cleanup"));
-      const userData = await serverFetcher(`userdata`, "GET", userId);
+      const userData = await serverFetcher(`userdata/numberofgames`, "GET", userId);
       let numberOfGames = 0;
       if (userData.Game) {
         numberOfGames = +JSON.stringify(userData.Game.length);

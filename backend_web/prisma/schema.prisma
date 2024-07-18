@@ -34,6 +34,7 @@ model User {
 
   @@index([id, serializedId, username], name: "username_lookup")
   @@index([id, username, oauthUsername, oauthName], name: "user_data_simple")
+  @@index([id, numberOfGames], name: "user_number_of_games")
 }
 
 model PublicProfile {
@@ -74,6 +75,7 @@ model Game {
   Upvote                          Upvote[]
 
   @@index([score(sort: Desc), year(sort: Desc), id, playerName, name, number, titleId, repositoryLink, userId], name: "leaderboard_games")
+  @@index(userId(sort: Asc), number(sort: Asc), id, name, year], name: "user_games_list")
 }
 
 model Title {

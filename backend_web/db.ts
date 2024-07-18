@@ -93,6 +93,25 @@ export async function getUserDataSimpleById(
   return user;
 }
 
+export async function getUserNumberOfGamesById(
+  userId: string,
+) {
+  const user = await prisma.user.findUniqueOrThrow({
+    select: {
+      numberOfGames: true,
+      Game: {
+        select: {
+          number: true,
+        },
+      },
+    },
+    where: {
+      id: userId,
+    },
+  });
+  return user;
+}
+
 export async function getUserGamesListById(
   userId: string,
 ) {
