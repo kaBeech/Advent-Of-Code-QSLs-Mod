@@ -77,6 +77,22 @@ export async function getUserBySerializedId(serializedId: string) {
   return user;
 }
 
+export async function getUserDataSimpleById(
+  userId: string,
+) {
+  const user = await prisma.user.findUniqueOrThrow({
+    select: {
+      username: true,
+      oauthUsername: true,
+      oauthName: true,
+    },
+    where: {
+      id: userId,
+    },
+  });
+  return user;
+}
+
 export async function getUserByIdWithRelations(
   userId: string,
 ) {

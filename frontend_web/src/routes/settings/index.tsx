@@ -55,7 +55,7 @@ export default component$(() => {
   const userSettingsDataResource = useResource$<any>(async ({ cleanup }) => {
     const abortController = new AbortController();
     cleanup(() => abortController.abort("cleanup"));
-    const userData = await serverFetcher(`userdata`, "GET", userId);
+    const userData = await serverFetcher(`userdata/simple`, "GET", userId);
     const userSettingsData: { displayName: "name" | "username" | undefined } = {
       displayName: undefined,
     };

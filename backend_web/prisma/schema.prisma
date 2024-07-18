@@ -33,6 +33,7 @@ model User {
   DefaultIncludedCustomModifierOptions    ModifierOption[]    @relation("DefaultIncludedCustomModifierOptions")
 
   @@index([id, serializedId, username], name: "username_lookup")
+  @@index([id, username, oauthUsername, oauthName], name: "user_data_simple")
 }
 
 model PublicProfile {
