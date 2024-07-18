@@ -204,14 +204,6 @@ export async function getLeaderboardGamesQuery() {
       year: true,
       score: true,
       repositoryLink: true,
-    },
-    where: {
-      isPublic: true,
-      repositoryLink: {
-        not: null,
-      },
-    },
-    include: {
       Title: {
         select: {
           id: true,
@@ -223,6 +215,12 @@ export async function getLeaderboardGamesQuery() {
         select: {
           username: true,
         },
+      },
+    },
+    where: {
+      isPublic: true,
+      repositoryLink: {
+        not: null,
       },
     },
     take: 20,
