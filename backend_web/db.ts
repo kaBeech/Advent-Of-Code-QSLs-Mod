@@ -194,8 +194,17 @@ export async function getAllGames() {
   return games;
 }
 
-export async function getAllPublicGamesWithRepositoryLinks() {
+export async function getLeaderboardGamesQuery() {
   const games = await prisma.game.findMany({
+    select: {
+      id: true,
+      playerName: true,
+      name: true,
+      number: true,
+      year: true,
+      score: true,
+      repositoryLink: true,
+    },
     where: {
       isPublic: true,
       repositoryLink: {
@@ -203,7 +212,13 @@ export async function getAllPublicGamesWithRepositoryLinks() {
       },
     },
     include: {
-      Title: true,
+      Title: {
+        select: {
+          id: true,
+          name: true,
+          minimumScore: true,
+        },
+      },
       User: {
         select: {
           username: true,
