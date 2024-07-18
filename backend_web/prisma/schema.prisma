@@ -72,7 +72,7 @@ model Game {
   User                            User           @relation(fields: [userId], references: [id])
   Upvote                          Upvote[]
 
-  @@index([id, playerName, name, number, year, score, titleId, repositoryLink, userId], name: "leaderboard_games")
+  @@index([score(sort: Desc), year(sort: Desc), id, playerName, name, number, titleId, repositoryLink, userId], name: "leaderboard_games")
 }
 
 model Title {

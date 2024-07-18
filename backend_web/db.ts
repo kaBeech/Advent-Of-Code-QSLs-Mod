@@ -225,6 +225,10 @@ export async function getLeaderboardGamesQuery() {
         },
       },
     },
+    take: 20,
+    orderBy: {
+      score: "desc",
+    },
   });
   return games;
 }
