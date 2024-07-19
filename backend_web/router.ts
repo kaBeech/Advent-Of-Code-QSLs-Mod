@@ -32,6 +32,7 @@ import { updateGameRepositoryLink } from "./routes/game/updateGameRepositoryLink
 import deleteTesterGames from "./routes/game/deleteTesterGames.ts";
 import { getUserDataSimple } from "./routes/user/getUserDataSimple.ts";
 import { getUserGamesListById, getUserNumberOfGamesById } from "./db.ts";
+import { getChallengeModifierNames } from "./routes/challenge_modifiers/getChallengeModifierNames.ts";
 
 type AppState = {
   session: Session;
@@ -44,25 +45,26 @@ router
   .put("/user", authenticate, getOrCreateUser) //tuned
   .put("/user/username", authenticate, updateUsername) // Tuned
   .get("/log-in/github", logInWithOAuth) // Tuned
-  .get("/oauth2/callback", getOAuthData)
-  .get("/logout", authenticate, logOut)
+  .get("/oauth2/callback", getOAuthData) // Tuned
+  .get("/logout", authenticate, logOut) // Tuned
   .get("/userdata/games", authenticate, getUserGamesData) // Tuned
   .get("/userdata/simple", authenticate, getUserDataSimple) // Tuned
   .get("/userdata/numberofgames", authenticate, getUserNumberOfGamesById) // Tuned
   .get("/userdata/games/list", authenticate, getUserGamesListById) // Tuned
   .get("/gamedata/:gameNumber", authenticate, getGameData)
   .get("/modifier", getChallengeModifiers)
+  .get("/modifier/names", getChallengeModifierNames)
   .get("/leaderboard", getLeaderboardGames) // Tuned
   .get("/game/public/:id", getPublicGame)
   .get("/game/public/:gameId/day/:dayNumber", getPublicDay)
   .get("/game", authenticate, getGames)
   .get("/game/:gameNumber", authenticate, getGame)
-  .put("/game/:gameNumber", authenticate, startNewGame)
+  .put("/game/:gameNumber", authenticate, startNewGame) // Tuned?
   .put("/game/:gameNumber/public", authenticate, updateGamePublicStatus)
   .put("/game/:gameNumber/name", authenticate, updateGameName)
   .put("/game/:gameNumber/repolink", authenticate, updateGameRepositoryLink)
   .delete("/game/:gameNumber", authenticate, deleteGame)
-  .delete("/chester", deleteTesterGames)
+  .delete("/chester", deleteTesterGames) // N/A
   .get("/game/:gameNumber/day", authenticate, getAllDays)
   .get("/game/:gameNumber/day/:dayNumber", authenticate, getDay)
   .put("/game/:gameNumber/day/:dayNumber", authenticate, startNextDay)

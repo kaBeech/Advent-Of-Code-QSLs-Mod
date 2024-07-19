@@ -140,6 +140,7 @@ model ChallengeModifier {
   ModifierPackIncluded Day[]            @relation("IncludedCustomChallengeModifiers")
 
   @@index([id(sort: Asc), text, explanatoryUrl], name: "user_game_data")
+  @@index([id(sort: Asc), name], name: "id_name")
 }
 
 model ModifierOption {

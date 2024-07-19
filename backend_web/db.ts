@@ -545,6 +545,16 @@ export async function getAllChallengeModifiers() {
   return challengeModifiers;
 }
 
+export async function getAllChallengeModifierNames() {
+  const challengeModifiers = await prisma.challengeModifier.findMany({
+    select: {
+      id: true,
+      name: true,
+    },
+  });
+  return challengeModifiers;
+}
+
 /**
  * Modifier Option CRUD
  */
