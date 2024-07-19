@@ -34,7 +34,7 @@ model User {
 
   @@index([id, serializedId, username], name: "username_lookup")
   @@index([id, username, oauthUsername, oauthName], name: "user_data_simple")
-  @@index([id, numberOfGames], name: "user_number_of_games")
+  @@index([id, numberOfGames, Game], name: "user_number_of_games")
   @@index([id, username, oauthAvatarUrl, Game], name: "user_game_data")
 }
 
