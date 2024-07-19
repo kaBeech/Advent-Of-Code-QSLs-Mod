@@ -54,7 +54,6 @@ router
   .get("/userdata/numberofgames", authenticate, getUserNumberOfGamesById) // Tuned
   .get("/userdata/games/list", authenticate, getUserGamesListById) // Tuned
   .get("/gamedata/:gameNumber", authenticate, getGameData)
-  .get("/modifier", getChallengeModifiers)
   .get("/modifier/names", getChallengeModifierNames)
   .get("/modifier/:id", getChallengeModifierData) // Tuned
   .get("/modifier-option/:id", getModifierOptionData) // Tuned
