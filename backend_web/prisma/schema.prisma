@@ -34,8 +34,7 @@ model User {
 
   @@index([id, username], name: "id_username")
   @@index([id, username, oauthUsername, oauthName], name: "user_data_simple")
-  @@index([id, numberOfGames, Game], name: "user_number_of_games")
-  @@index([id, username, oauthAvatarUrl, Game], name: "user_game_data")
+  @@index([id, numberOfGames], name: "user_number_of_games")
   @@index([id, username, oauthAvatarUrl], name: "id_username_avatar")
   @@index([id], name: "user_id")
 }
@@ -80,8 +79,8 @@ model Game {
   @@index([score(sort: Desc), year(sort: Desc), id, playerName, name, number, titleId, repositoryLink, userId], name: "leaderboard_games")
   @@index([userId(sort: Asc), number(sort: Asc), id, name, year], name: "user_games_list")
   @@index([userId(sort: Asc), number(sort: Asc), id], name: "user_number_of_games")
-  @@index([userId(sort: Asc), number(sort:Asc), id, year, name, isPublic, repositoryLink, currentRerollTokens, currentDay, currentDayCompleted, Day], name: "user_game_data")
-  @@index([id(sort: Asc), year, currentDay, currentDayCompleted, isPublic, name, score, currentRerollTokens, dateCompleted, repositoryLink, Day, titleId, userId], name: "public_info")
+  @@index([userId(sort: Asc), number(sort:Asc), id, year, name, isPublic, repositoryLink, currentRerollTokens, currentDay, currentDayCompleted], name: "user_game_data")
+  @@index([id(sort: Asc), year, currentDay, currentDayCompleted, isPublic, name, score, currentRerollTokens, dateCompleted, repositoryLink, titleId, userId], name: "public_info")
 }
 
 model Title {
