@@ -40,19 +40,19 @@ type AppState = {
 export const router = new Router<AppState>();
 
 router
-  .get("/", getHelloWorld)
-  .put("/user", authenticate, getOrCreateUser)
-  .put("/user/username", authenticate, updateUsername)
-  .get("/log-in/github", logInWithOAuth)
+  .get("/", getHelloWorld) // Tuned
+  .put("/user", authenticate, getOrCreateUser) //tuned
+  .put("/user/username", authenticate, updateUsername) // Tuned
+  .get("/log-in/github", logInWithOAuth) // Tuned
   .get("/oauth2/callback", getOAuthData)
   .get("/logout", authenticate, logOut)
-  .get("/userdata/games", authenticate, getUserGamesData)
-  .get("/userdata/simple", authenticate, getUserDataSimple)
-  .get("/userdata/numberofgames", authenticate, getUserNumberOfGamesById)
-  .get("/userdata/games/list", authenticate, getUserGamesListById)
+  .get("/userdata/games", authenticate, getUserGamesData) // Tuned
+  .get("/userdata/simple", authenticate, getUserDataSimple) // Tuned
+  .get("/userdata/numberofgames", authenticate, getUserNumberOfGamesById) // Tuned
+  .get("/userdata/games/list", authenticate, getUserGamesListById) // Tuned
   .get("/gamedata/:gameNumber", authenticate, getGameData)
   .get("/modifier", getChallengeModifiers)
-  .get("/leaderboard", getLeaderboardGames)
+  .get("/leaderboard", getLeaderboardGames) // Tuned
   .get("/game/public/:id", getPublicGame)
   .get("/game/public/:gameId/day/:dayNumber", getPublicDay)
   .get("/game", authenticate, getGames)

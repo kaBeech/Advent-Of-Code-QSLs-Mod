@@ -36,6 +36,7 @@ model User {
   @@index([id, username, oauthUsername, oauthName], name: "user_data_simple")
   @@index([id, numberOfGames, Game], name: "user_number_of_games")
   @@index([id, username, oauthAvatarUrl, Game], name: "user_game_data")
+  @@index([id], name: "user_id")
 }
 
 model PublicProfile {

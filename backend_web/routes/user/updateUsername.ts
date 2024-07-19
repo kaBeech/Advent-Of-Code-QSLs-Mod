@@ -1,6 +1,6 @@
 import { State } from "https://deno.land/x/oak@v12.6.1/application.ts";
 import { RouterContext } from "https://deno.land/x/oak@v12.6.1/router.ts";
-import { getUserById, updateUserName } from "../../db.ts";
+import { getUserDataSimpleById, updateUserName } from "../../db.ts";
 
 export const updateUsername = async (
   ctx: RouterContext<
@@ -13,7 +13,7 @@ export const updateUsername = async (
   const bodyData = await body.read();
   const username = bodyData.fields.username;
   const userId = ctx.state.session.get("userId") as string;
-  const user = await getUserById(userId);
+  const user = await getUserDataSimpleById(userId);
   if (username === "username") {
     const updatedUser = await updateUserName(userId, user.oauthName!);
     ctx.response.body = updatedUser;
