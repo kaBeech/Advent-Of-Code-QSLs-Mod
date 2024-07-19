@@ -597,6 +597,26 @@ export async function getModifierOptionsByChallengeModifierId(
   return modifierOptions;
 }
 
+export async function getModifierOptionDataById(
+  id: number,
+) {
+  const modifierOption = await prisma.modifierOption.findUniqueOrThrow({
+    select: {
+      text: true,
+      explanatoryUrl: true,
+      ChallengeModifier: {
+        select: {
+          text: true,
+        },
+      },
+    },
+    where: {
+      id
+    },
+  });
+  return modifierOption;
+}
+
 /**
  * Title CRUD
  */

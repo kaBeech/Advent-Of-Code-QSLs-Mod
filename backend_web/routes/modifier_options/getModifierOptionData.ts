@@ -1,9 +1,9 @@
 import { RouterContext, State } from "https://deno.land/x/oak@v12.6.1/mod.ts";
-import { getChallengeModifierDataById } from "../../db.ts";
+import { getModifierOptionDataById } from "../../db.ts";
 
-export const getChallengeModifierData = async (
+export const getModifierOptionData = async (
     ctx: RouterContext<
-        "/modifier/:id",
+        "/modifier-option/:id",
         {
             id: string;
         } & Record<string | number, string | undefined>,
@@ -11,5 +11,5 @@ export const getChallengeModifierData = async (
     >,
 ) => {
     const { id } = ctx.params;
-    ctx.response.body = await getChallengeModifierDataById(id);
+    ctx.response.body = await getModifierOptionDataById(id);
 };
