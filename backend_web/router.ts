@@ -13,7 +13,7 @@ import { deleteGame } from "./routes/game/deleteGame.ts";
 import { startNewGame } from "./routes/game/startNewGame.ts";
 import { getGame } from "./routes/game/getGame.ts";
 import { getGames } from "./routes/user/getGames.ts";
-import { getUserData } from "./routes/user/getUserData.ts";
+import { getUserGamesData } from "./routes/user/getUserGamesData.ts";
 import { logOut } from "./routes/user/logOut.ts";
 import { getChallengeModifiers } from "./routes/misc/getChallengeModifiers.ts";
 import { getHelloWorld } from "./routes/misc/getHelloWorld.ts";
@@ -46,7 +46,7 @@ router
   .get("/log-in/github", logInWithOAuth)
   .get("/oauth2/callback", getOAuthData)
   .get("/logout", authenticate, logOut)
-  .get("/userdata", authenticate, getUserData)
+  .get("/userdata/games", authenticate, getUserGamesData)
   .get("/userdata/simple", authenticate, getUserDataSimple)
   .get("/userdata/numberofgames", authenticate, getUserNumberOfGamesById)
   .get("/userdata/games/list", authenticate, getUserGamesListById)

@@ -133,34 +133,66 @@ export async function getUserGamesListById(
   return user;
 }
 
-export async function getUserByIdWithRelations(
+export async function getUserGameDataById(
   userId: string,
 ) {
   const user = await prisma.user.findUniqueOrThrow({
-    where: {
-      id: userId,
-    },
-    include: {
+    select: {
+      username: true,
+      oauthAvatarUrl: true,
       Game: {
-        include: {
+        select: {
+          year: true,
+          name: true,
+          id: true,
+          isPublic: true,
+          repositoryLink: true,
+          currentRerollTokens: true,
+          currentDay: true,
+          currentDayCompleted: true,
           Day: {
-            include: {
+            select: {
+              modifierWhenPart1CompletedId: true,
+              challengeModifierId: true,
+              number: true,
+              challengeModifierRerollsUsed: true,
+              modifierOptionRerollsUsed: true,
+              rerollTokensSpentDuringPart2: true,
+              score: true,
+              part1Completed: true,
+              part2Completed: true,
+              dateFirstRolled: true,
               ChallengeModifier: {
-                include: {
-                  ModifierOption: true,
+                select: {
+                  text: true,
+                  explanatoryUrl: true,
                 },
               },
-              ModifierOption: true,
+              ModifierOption: {
+                select: {
+                  text: true,
+                  explanatoryUrl: true,
+                },
+              },
               ModifierWhenPart1Completed: {
-                include: {
-                  ModifierOption: true,
+                select: {
+                  text: true,
+                  explanatoryUrl: true,
                 },
               },
-              OptionWhenPart1Completed: true,
+              OptionWhenPart1Completed: {
+                select: {
+                  text: true,
+                  explanatoryUrl: true,
+                },
+              },
             },
           },
         },
       },
+    },
+    where: {
+      id: userId,
     },
   });
   return user;

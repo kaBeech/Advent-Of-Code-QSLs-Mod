@@ -35,6 +35,7 @@ model User {
   @@index([id, serializedId, username], name: "username_lookup")
   @@index([id, username, oauthUsername, oauthName], name: "user_data_simple")
   @@index([id, numberOfGames], name: "user_number_of_games")
+  @@index([id, username, oauthAvatarUrl, Game], name: "user_game_data")
 }
 
 model PublicProfile {
@@ -75,7 +76,9 @@ model Game {
   Upvote                          Upvote[]
 
   @@index([score(sort: Desc), year(sort: Desc), id, playerName, name, number, titleId, repositoryLink, userId], name: "leaderboard_games")
-  @@index(userId(sort: Asc), number(sort: Asc), id, name, year], name: "user_games_list")
+  @@index([userId(sort: Asc), number(sort: Asc), id, name, year], name: "user_games_list")
+  @@index([userId(sort: Asc), number(sort: Asc), id], name: "user_number_of_games")
+  @@index([userId(sort: Asc), number(sort:Asc), id, year, name, isPublic, repositoryLink, currentRerollTokens, currentDay, currentDayCompleted, Day], name: "user_game_data")
 }
 
 model Title {
@@ -112,6 +115,8 @@ model Day {
   OptionWhenPart1Completed         ModifierOption?     @relation("OptionWhenPart1Completed", fields: [optionWhenPart1CompletedId], references: [id])
   ExcludedChallengeModifiers       ChallengeModifier[] @relation("ExcludedChallengeModifiers")
   EncludedCustomChallengeModifiers ChallengeModifier[] @relation("IncludedCustomChallengeModifiers")
+
+  @@index([gameId(sort: Asc), number(sort:Asc), id, modifierOptionId, challengeModifierId,modifierWhenPart1CompletedId, optionWhenPart1CompletedId,  part1Completed, part2Completed, dateFirstRolled, challengeModifierRerollsUsed, modifierOptionRerollsUsed, rerollTokensSpentDuringPart2, score], name: "user_game_data")
 }
 
 model ChallengeModifier {
@@ -132,6 +137,8 @@ model ChallengeModifier {
   UserIncluded         User[]           @relation("DefaultIncludedCustomChallengeModifiers")
   ModifierPackExcluded Day[]            @relation("ExcludedChallengeModifiers")
   ModifierPackIncluded Day[]            @relation("IncludedCustomChallengeModifiers")
+
+  @@index([id(sort: Asc), text, explanatoryUrl], name: "user_game_data")
 }
 
 model ModifierOption {
@@ -153,6 +160,8 @@ model ModifierOption {
   UserIncluded                  User[]            @relation("DefaultIncludedCustomModifierOptions")
   ExcludedModifierOptions       ModifierPack[]    @relation("ExcludedModifierOptions")
   IncludedCustomModifierOptions ModifierPack[]    @relation("IncludedCustomModifierOptions")
+  
+  @@index([id(sort: Asc), text, explanatoryUrl], name: "user_game_data")
 }
 
 model ModifierPack {

@@ -4,7 +4,7 @@ import { DayController } from "../../components/DayController.ts";
 import {
   getAllChallengeModifiers,
   getAllModifierOptions,
-  getUserByIdWithRelations,
+  getUserGameDataById,
   updateDay,
 } from "../../db.ts";
 
@@ -21,7 +21,7 @@ export const rollInitialModifier = async (
 ) => {
   const { gameNumber, dayNumber } = ctx.params;
   const userId = ctx.state.session.get("userId") as string;
-  const userData = await getUserByIdWithRelations(userId);
+  const userData = await getUserGameDataById(userId);
   const game = userData.Game.find((game) => game.number === +gameNumber);
   const day = game!.Day.find((day) => day.number === +dayNumber);
   const challengeModifiers = await getAllChallengeModifiers();
