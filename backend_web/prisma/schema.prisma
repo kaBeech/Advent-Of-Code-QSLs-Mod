@@ -81,7 +81,7 @@ model Game {
   @@index([userId(sort: Asc), number(sort: Asc), id, name, year], name: "user_games_list")
   @@index([userId(sort: Asc), number(sort: Asc), id], name: "user_number_of_games")
   @@index([userId(sort: Asc), number(sort:Asc), id, year, name, isPublic, repositoryLink, currentRerollTokens, currentDay, currentDayCompleted, Day], name: "user_game_data")
-  @@index([id(sort: Asc), year, currentDay, name, score, currentRerollTokens, dateCompleted, repositoryLink, Day, titleId, userId], name: "public_info")
+  @@index([id(sort: Asc), year, currentDay, currentDayCompleted, isPublic, name, score, currentRerollTokens, dateCompleted, repositoryLink, Day, titleId, userId], name: "public_info")
 }
 
 model Title {
@@ -167,7 +167,7 @@ model ModifierOption {
   ExcludedModifierOptions       ModifierPack[]    @relation("ExcludedModifierOptions")
   IncludedCustomModifierOptions ModifierPack[]    @relation("IncludedCustomModifierOptions")
   
-  @@index([id(sort: Asc), text, explanatoryUrl], name: "user_game_data")
+  @@index([id(sort: Asc), text, explanatoryUrl], name: "id_text_explanatory_url")
 }
 
 model ModifierPack {

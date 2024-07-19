@@ -35,6 +35,7 @@ import { getUserGamesListById, getUserNumberOfGamesById } from "./db.ts";
 import { getChallengeModifierNames } from "./routes/challenge_modifiers/getChallengeModifierNames.ts";
 import { getChallengeModifierData } from "./routes/challenge_modifiers/getChallengeModifierData.ts";
 import { getModifierOptionData } from "./routes/modifier_options/getModifierOptionData.ts";
+import { getPublicGameSimple } from "./routes/game/getPublicGameSimple.ts";
 
 type AppState = {
   session: Session;
@@ -58,7 +59,8 @@ router
   .get("/modifier/:id", getChallengeModifierData) // Tuned
   .get("/modifier-option/:id", getModifierOptionData) // Tuned
   .get("/leaderboard", getLeaderboardGames) // Tuned
-  .get("/game/public/:id", getPublicGame)
+  .get("/game/public/:id", getPublicGame) // Tuned
+  .get("/game/public/:id/simple", getPublicGameSimple) // Tuned
   .get("/game/public/:gameId/day/:dayNumber", getPublicDay)
   .get("/game", authenticate, getGames)
   .get("/game/:gameNumber", authenticate, getGame)
