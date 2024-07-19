@@ -66,8 +66,8 @@ export default component$(() => {
                 {!state.gameInfo
                   ? `Loading...`
                   : state.gameInfo.currentRerollTokens > 9
-                  ? state.gameInfo.currentRerollTokens + ""
-                  : "".repeat(state.gameInfo.currentRerollTokens)}
+                    ? state.gameInfo.currentRerollTokens + ""
+                    : "".repeat(state.gameInfo.currentRerollTokens)}
               </p>
               {state.gameInfo?.dateCompleted && (
                 <>
@@ -75,7 +75,7 @@ export default component$(() => {
                   <p>
                     Completed During Calendar Year:{" "}
                     {state.gameInfo.dateCompleted.toString().slice(0, 4) ===
-                    state.gameInfo.year.toString()
+                      state.gameInfo.year.toString()
                       ? "Yes"
                       : "No"}
                   </p>
@@ -87,8 +87,8 @@ export default component$(() => {
                   ? `Loading...`
                   : state.gameInfo.dateCompleted?.toString().slice(0, 4) ===
                     state.gameInfo.year.toString()
-                  ? "Yes"
-                  : "No"}
+                    ? "Yes"
+                    : "No"}
               </p>
               <ul>
                 {pendingDays.map((day: { number: number }) => (
@@ -166,11 +166,11 @@ export default component$(() => {
               </p>
               {gameData.dateCompleted && (
                 <>
-                  <p>Title: {gameData.title}</p>
+                  <p>Title: {gameData.Title.name}</p>
                   <p>
                     Completed During Calendar Year?{" "}
                     {gameData.dateCompleted.toString().slice(0, 4) ===
-                    gameData.year.toString()
+                      gameData.year.toString()
                       ? "Yes"
                       : "No"}
                   </p>

@@ -1,0 +1,13 @@
+Cleanup
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# On branch tune-sql
+# Changes to be committed:
+#	modified:   backend_web/prisma/schema.prisma
+#
+# Changes not staged for commit:
+#	modified:   backend_web/db.ts
+#	modified:   backend_web/prisma/schema.prisma
+#	modified:   frontend_web/src/routes/game/public/[id]/index.tsx
+#

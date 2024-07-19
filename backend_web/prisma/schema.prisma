@@ -81,6 +81,7 @@ model Game {
   @@index([userId(sort: Asc), number(sort: Asc), id, name, year], name: "user_games_list")
   @@index([userId(sort: Asc), number(sort: Asc), id], name: "user_number_of_games")
   @@index([userId(sort: Asc), number(sort:Asc), id, year, name, isPublic, repositoryLink, currentRerollTokens, currentDay, currentDayCompleted, Day], name: "user_game_data")
+  @@index([id(sort: Asc), year, currentDay, name, score, currentRerollTokens, dateCompleted, repositoryLink, Day, titleId, userId], name: "public_info")
 }
 
 model Title {
@@ -89,7 +90,8 @@ model Title {
   minimumScore Int
   Game         Game[]
 
-  @@index([id, name, minimumScore], name: "titles_basic_info")
+  @@index([id(sort: Asc), name, minimumScore], name: "titles_basic_info")
+  @@index([id(sort: Asc), name], name: "id_name")
 }
 
 model Day {
@@ -119,6 +121,7 @@ model Day {
   EncludedCustomChallengeModifiers ChallengeModifier[] @relation("IncludedCustomChallengeModifiers")
 
   @@index([gameId(sort: Asc), number(sort:Asc), id, modifierOptionId, challengeModifierId,modifierWhenPart1CompletedId, optionWhenPart1CompletedId,  part1Completed, part2Completed, dateFirstRolled, challengeModifierRerollsUsed, modifierOptionRerollsUsed, rerollTokensSpentDuringPart2, score], name: "user_game_data")
+  @@index([gameId(sort: Asc), number(sort: Asc), id], name: "game_id_nummber")
 }
 
 model ChallengeModifier {

@@ -342,25 +342,23 @@ export async function getGameById(id: number) {
 
 export async function getPublicGameById(id: number) {
   const game = await prisma.game.findFirstOrThrow({
-    where: {
-      id,
-      isPublic: true,
-    },
-    include: {
+    select: {
+      id: true,
+      year: true,
+      currentDay: true,
+      name: true,
+      score: true,
+      currentRerollTokens: true,
+      dateCompleted: true,
+      repositoryLink: true,
+      Title: {
+        select: {
+          name: true,
+        },
+      },
       Day: {
-        include: {
-          ChallengeModifier: {
-            include: {
-              ModifierOption: true,
-            },
-          },
-          ModifierOption: true,
-          ModifierWhenPart1Completed: {
-            include: {
-              ModifierOption: true,
-            },
-          },
-          OptionWhenPart1Completed: true,
+        select: {
+          number: true,
         },
       },
       User: {
@@ -369,6 +367,10 @@ export async function getPublicGameById(id: number) {
           oauthAvatarUrl: true,
         },
       },
+    },
+    where: {
+      id,
+      isPublic: true,
     },
   });
   return game;
