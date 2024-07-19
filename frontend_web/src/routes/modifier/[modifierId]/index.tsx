@@ -10,16 +10,9 @@ export default component$(() => {
   const challengeModifierResource = useResource$<any>(async ({ cleanup }) => {
     const abortController = new AbortController();
     cleanup(() => abortController.abort("cleanup"));
-    const userData = await serverFetcher(`modifier`, "GET");
-    const modifiersString = JSON.stringify(userData);
-    const modifiersData = JSON.parse(modifiersString);
-    const modifiers: ChallengeModifier[] = [];
-    modifiersData.forEach((modifier: ChallengeModifier) => {
-      modifiers.push(modifier);
-    });
-    const challengeModifier = modifiers.find(
-      (modifier) => modifier.id === modifierId
-    );
+    const userData = await serverFetcher(`modifier/${modifierId}`, "GET");
+    const modifierString = JSON.stringify(userData);
+    const challengeModifier = JSON.parse(modifierString);
     return challengeModifier ? challengeModifier : "None";
   });
 

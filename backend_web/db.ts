@@ -555,6 +555,28 @@ export async function getAllChallengeModifierNames() {
   return challengeModifiers;
 }
 
+export async function getChallengeModifierDataById(id: number) {
+  const challengeModifier = await prisma.challengeModifier.findUniqueOrThrow({
+    select: {
+      id: true,
+      name: true,
+      text: true,
+      explanatoryUrl: true,
+      hasOptions: true,
+      ModifierOption: {
+        select: {
+          id: true,
+          name: true,
+        },
+      },
+    },
+    where: {
+      id,
+    },
+  });
+  return challengeModifier;
+}
+
 /**
  * Modifier Option CRUD
  */

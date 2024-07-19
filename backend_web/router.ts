@@ -33,6 +33,7 @@ import deleteTesterGames from "./routes/game/deleteTesterGames.ts";
 import { getUserDataSimple } from "./routes/user/getUserDataSimple.ts";
 import { getUserGamesListById, getUserNumberOfGamesById } from "./db.ts";
 import { getChallengeModifierNames } from "./routes/challenge_modifiers/getChallengeModifierNames.ts";
+import { getChallengeModifierData } from "./routes/challenge_modifiers/getChallengeModifierData.ts";
 
 type AppState = {
   session: Session;
@@ -54,6 +55,7 @@ router
   .get("/gamedata/:gameNumber", authenticate, getGameData)
   .get("/modifier", getChallengeModifiers)
   .get("/modifier/names", getChallengeModifierNames)
+  .get("/modifier/:id", getChallengeModifierData) // Tuned
   .get("/leaderboard", getLeaderboardGames) // Tuned
   .get("/game/public/:id", getPublicGame)
   .get("/game/public/:gameId/day/:dayNumber", getPublicDay)
