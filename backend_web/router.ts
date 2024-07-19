@@ -55,13 +55,13 @@ router
   .get("/userdata/numberofgames", authenticate, getUserNumberOfGamesById) // Tuned
   .get("/userdata/games/list", authenticate, getUserGamesListById) // Tuned
   .get("/gamedata/:gameNumber", authenticate, getGameData)
-  .get("/modifier/names", getChallengeModifierNames)
+  .get("/modifier/names", getChallengeModifierNames) // Tuned
   .get("/modifier/:id", getChallengeModifierData) // Tuned
   .get("/modifier-option/:id", getModifierOptionData) // Tuned
   .get("/leaderboard", getLeaderboardGames) // Tuned
   .get("/game/public/:id", getPublicGame) // Tuned
   .get("/game/public/:id/simple", getPublicGameSimple) // Tuned
-  .get("/game/public/:gameId/day/:dayNumber", getPublicDay)
+  .get("/game/public/:gameId/day/:dayNumber", getPublicDay) // Tuned
   .get("/game", authenticate, getGames)
   .get("/game/:gameNumber", authenticate, getGame)
   .put("/game/:gameNumber", authenticate, startNewGame) // Tuned?
