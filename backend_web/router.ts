@@ -44,27 +44,27 @@ type AppState = {
 export const router = new Router<AppState>();
 
 router
-  .get("/", getHelloWorld) // Tuned
-  .put("/user", authenticate, getOrCreateUser) //tuned
-  .put("/user/username", authenticate, updateUsername) // Tuned
-  .get("/log-in/github", logInWithOAuth) // Tuned
-  .get("/oauth2/callback", getOAuthData) // Tuned
-  .get("/logout", authenticate, logOut) // Tuned
-  .get("/userdata/games", authenticate, getUserGamesData) // Tuned
-  .get("/userdata/simple", authenticate, getUserDataSimple) // Tuned
-  .get("/userdata/numberofgames", authenticate, getUserNumberOfGamesById) // Tuned
-  .get("/userdata/games/list", authenticate, getUserGamesListById) // Tuned
+  .get("/", getHelloWorld) // T0
+  .put("/user", authenticate, getOrCreateUser) // T0
+  .put("/user/username", authenticate, updateUsername) // T0
+  .get("/log-in/github", logInWithOAuth) // T0
+  .get("/oauth2/callback", getOAuthData) // T0
+  .get("/logout", authenticate, logOut) // T0
+  .get("/userdata/games", authenticate, getUserGamesData) // T0
+  .get("/userdata/simple", authenticate, getUserDataSimple) // T0
+  .get("/userdata/numberofgames", authenticate, getUserNumberOfGamesById) // T0
+  .get("/userdata/games/list", authenticate, getUserGamesListById) // T0
   .get("/gamedata/:gameNumber", authenticate, getGameData)
-  .get("/modifier/names", getChallengeModifierNames) // Tuned
-  .get("/modifier/:id", getChallengeModifierData) // Tuned
-  .get("/modifier-option/:id", getModifierOptionData) // Tuned
-  .get("/leaderboard", getLeaderboardGames) // Tuned
-  .get("/game/public/:id", getPublicGame) // Tuned
-  .get("/game/public/:id/simple", getPublicGameSimple) // Tuned
-  .get("/game/public/:gameId/day/:dayNumber", getPublicDay) // Tuned
+  .get("/modifier/names", getChallengeModifierNames) // T0
+  .get("/modifier/:id", getChallengeModifierData) // T0
+  .get("/modifier-option/:id", getModifierOptionData) // T0
+  .get("/leaderboard", getLeaderboardGames) // T0
+  .get("/game/public/:id", getPublicGame) // T0
+  .get("/game/public/:id/simple", getPublicGameSimple) // T0
+  .get("/game/public/:gameId/day/:dayNumber", getPublicDay) // T0
   .get("/game", authenticate, getGames)
   .get("/game/:gameNumber", authenticate, getGame)
-  .put("/game/:gameNumber", authenticate, startNewGame) // Tuned?
+  .put("/game/:gameNumber", authenticate, startNewGame) // T0
   .put("/game/:gameNumber/public", authenticate, updateGamePublicStatus)
   .put("/game/:gameNumber/name", authenticate, updateGameName)
   .put("/game/:gameNumber/repolink", authenticate, updateGameRepositoryLink)
