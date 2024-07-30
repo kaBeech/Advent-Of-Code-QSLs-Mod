@@ -537,7 +537,7 @@ export async function getDaysByGameId(
   return days;
 }
 
-export async function getPublicDayByNumberAndGameId(number: number, gameId: number) {
+export async function getPublicDayByGameIdAndNumber(gameId: number, number: number) {
   const day = await prisma.day.findUniqueOrThrow({
     select: {
       number: true,

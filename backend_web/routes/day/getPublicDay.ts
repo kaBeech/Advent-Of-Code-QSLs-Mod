@@ -1,6 +1,6 @@
 import { State } from "https://deno.land/x/oak@v12.6.1/application.ts";
 import { RouterContext } from "https://deno.land/x/oak@v12.6.1/router.ts";
-import { getPublicDayByNumberAndGameId } from "../../db.ts";
+import { getPublicDayByGameIdAndNumber } from "../../db.ts";
 
 export const getPublicDay = async (
   ctx: RouterContext<
@@ -14,6 +14,6 @@ export const getPublicDay = async (
   >,
 ) => {
   const { gameId, dayNumber } = ctx.params;
-  const day = await getPublicDayByNumberAndGameId(+dayNumber, +gameId);
+  const day = await getPublicDayByGameIdAndNumber(+gameId, +dayNumber);
   ctx.response.body = day;
 };
