@@ -441,6 +441,21 @@ export async function getGamesByUserId(
   userId: string,
 ) {
   const games = await prisma.game.findMany({
+    select: {
+      id: true,
+      year: true,
+      currentDay: true,
+      name: true,
+      score: true,
+      currentRerollTokens: true,
+      dateCompleted: true,
+      repositoryLink: true,
+      Title: {
+        select: {
+          name: true,
+        },
+      },
+    },
     where: {
       userId,
     },
