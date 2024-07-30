@@ -463,6 +463,39 @@ export async function getGamesByUserId(
   return games;
 }
 
+export async function getGameByUserIdAndGameNumber(
+  userId: string,
+  gameNumber: number,
+) {
+  const game = await prisma.game.findFirstOrThrow({
+    select: {
+      id: true,
+      year: true,
+      currentDay: true,
+      name: true,
+      score: true,
+      currentRerollTokens: true,
+      dateCompleted: true,
+      repositoryLink: true,
+      Day: {
+        select: {
+          number: true,
+        },
+      },
+      Title: {
+        select: {
+          name: true,
+        },
+      },
+    },
+    where: {
+      userId,
+      number: gameNumber,
+    },
+  });
+  return game;
+}
+
 export async function updateGame(game: Game) {
   const result = await prisma.game.update({
     where: {

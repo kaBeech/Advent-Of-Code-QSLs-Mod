@@ -1,5 +1,5 @@
 import { RouterContext, State } from "https://deno.land/x/oak@v12.6.1/mod.ts";
-import { getGamesByUserId } from "../../db.ts";
+import { getGameByUserIdAndGameNumber } from "../../db.ts";
 
 export const getGame = async (
   ctx: RouterContext<
@@ -12,6 +12,6 @@ export const getGame = async (
 ) => {
   const { gameNumber } = ctx.params;
   const userId = ctx.state.session.get("userId") as string;
-  const games = await getGamesByUserId(userId);
+  const games = await getGameByUserIdAndGameNumber(userId, gameNumber);
   ctx.response.body = games.find((game) => game.number === +gameNumber);
 };

@@ -77,8 +77,8 @@ model Game {
   Upvote                          Upvote[]
 
   @@index([score(sort: Desc), year(sort: Desc), id, playerName, name, number, titleId, repositoryLink, userId], name: "leaderboard_games")
-  @@index([userId(sort: Asc), number(sort: Asc), id, name, year], name: "user_games_list")
-  @@index([userId(sort: Asc), number(sort: Asc), id], name: "user_number_of_games")
+  @@index([userId(sort: Asc), number(sort: Asc), id, name, year], name: "user_number_name_year")
+  @@index([userId(sort: Asc), number(sort: Asc), id, titleId, publicProfileId], name: "user_number_title_publicprofile")
   @@index([userId(sort: Asc), number(sort:Asc), id, year, name, isPublic, repositoryLink, currentRerollTokens, currentDay, currentDayCompleted], name: "user_game_data")
   @@index([id(sort: Asc), year, currentDay, currentDayCompleted, isPublic, name, score, currentRerollTokens, dateCompleted, repositoryLink, titleId, userId], name: "public_info")
 }
@@ -89,7 +89,7 @@ model Title {
   minimumScore Int
   Game         Game[]
 
-  @@index([id(sort: Asc), name, minimumScore], name: "titles_basic_info")
+  @@index([id(sort: Asc), name, minimumScore], name: "id_name_minscore")
   @@index([id(sort: Asc), name], name: "id_name")
 }
 

@@ -63,7 +63,7 @@ router
   .get("/game/public/:id/simple", getPublicGameSimple) // T0
   .get("/game/public/:gameId/day/:dayNumber", getPublicDay) // T0
   .get("/game", authenticate, getGames) // T0
-  .get("/game/:gameNumber", authenticate, getGame)
+  .get("/game/:gameNumber", authenticate, getGame) // T0
   .put("/game/:gameNumber", authenticate, startNewGame) // T0
   .put("/game/:gameNumber/public", authenticate, updateGamePublicStatus)
   .put("/game/:gameNumber/name", authenticate, updateGameName)
