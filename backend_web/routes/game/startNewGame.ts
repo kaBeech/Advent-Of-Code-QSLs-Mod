@@ -10,7 +10,7 @@ import {
   getUserById,
   updateGame,
   updateUser,
-} from "../../db.ts";
+} from "../../db/db.ts";
 
 export const startNewGame = async (
   ctx: RouterContext<

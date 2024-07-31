@@ -3,7 +3,7 @@ import {
   getUserIdById,
   updateUserName,
   updateUserOAuthInfo,
-} from "../../db.ts";
+} from "../../db/db.ts";
 import { Context, Next } from "https://deno.land/x/oak@v12.6.1/mod.ts";
 
 export const getOrCreateUser = async (ctx: Context, next: Next) => {

@@ -1,6 +1,6 @@
 import { State } from "https://deno.land/x/oak@v12.6.1/application.ts";
 import { RouterContext } from "https://deno.land/x/oak@v12.6.1/router.ts";
-import { getUserGameDataById } from "../../db.ts";
+import { getUserGameDataById } from "../../db/db.ts";
 
 export const getAllDays = async (
   ctx: RouterContext<

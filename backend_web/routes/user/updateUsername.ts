@@ -1,6 +1,6 @@
 import { State } from "https://deno.land/x/oak@v12.6.1/application.ts";
 import { RouterContext } from "https://deno.land/x/oak@v12.6.1/router.ts";
-import { getUserDataSimpleById, updateUserName } from "../../db.ts";
+import { getUserDataSimpleById, updateUserName } from "../../db/db.ts";
 
 export const updateUsername = async (
   ctx: RouterContext<

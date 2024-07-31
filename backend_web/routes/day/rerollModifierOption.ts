@@ -8,7 +8,7 @@ import {
   getModifierOptionsByChallengeModifierId,
   updateDay,
   updateGame,
-} from "../../db.ts";
+} from "../../db/db.ts";
 
 export const rerollModifierOption = async (
   ctx: RouterContext<
