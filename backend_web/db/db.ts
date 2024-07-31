@@ -47,7 +47,9 @@ import {
 import {
   getAllTitles
 } from "./titles/title.ts";
+
 import { getUserGameDataById, getUserGameDayDataByIdGameNumberAndDayNumber, getUserGamesListById, getUserNumberOfGamesById } from "./users/gameData.ts";
+
 import { getLeaderboardGames, getPublicGameById, getPublicGameSimpleById } from "./games/public.ts";
 
 export {
