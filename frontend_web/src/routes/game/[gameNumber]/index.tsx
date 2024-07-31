@@ -128,7 +128,7 @@ export default component$(() => {
               </p>
               {state.gameInfo?.dateCompleted && (
                 <>
-                  <p>Title: {state.gameInfo.title}</p>
+                  <p>Title: {state.gameInfo.Title.name}</p>
                   <p>
                     Completed During Calendar Year:{" "}
                     {state.gameInfo.dateCompleted.toString().slice(0, 4) ===
