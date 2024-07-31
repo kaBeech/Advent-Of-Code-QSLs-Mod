@@ -251,8 +251,6 @@ export default component$(() => {
                       key={`unlockedDay-${day.number}`}
                       dayNumber={day.number}
                       dayLinkData={{
-                        challengeModifierId: day.challengeModifierId,
-                        modifierOptionId: day.modifierOptionId,
                         part1Completed: day.part1Completed,
                         part2Completed: day.part2Completed,
                         challengeModifierRerollsUsed:
