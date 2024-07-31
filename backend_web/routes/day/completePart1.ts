@@ -2,7 +2,7 @@ import { State } from "https://deno.land/x/oak@v12.6.1/application.ts";
 import { RouterContext } from "https://deno.land/x/oak@v12.6.1/router.ts";
 import { DayController } from "../../components/DayController.ts";
 import { GameController } from "../../components/GameController.ts";
-import { getGameByUserIdAndGameNumber, getUserGameDataById, updateDay, updateGame } from "../../db.ts";
+import { getDayByUserIdGameNumberAndDayNumber, getGameByUserIdAndGameNumber, getUserGameDataById, updateDay, updateGame } from "../../db.ts";
 
 export const completePart1 = async (
   ctx: RouterContext<
@@ -17,8 +17,8 @@ export const completePart1 = async (
 ) => {
   const { gameNumber, dayNumber } = ctx.params;
   const userId = ctx.state.session.get("userId") as string;
-  const game = getGameByUserIdAndGameNumber(userId, +gameNumber);
-  const day = game!.Day.find((day) => day.number === +dayNumber);
+  const game = await getGameByUserIdAndGameNumber(userId, +gameNumber);
+  const day = await getDayByUserIdGameNumberAndDayNumber(userId, +gameNumber, +dayNumber);
   const updatedDay = DayController(day!).completePart1(game!.currentDay);
   let rerollTokensEarned = 0;
   if (day!.ChallengeModifier) {

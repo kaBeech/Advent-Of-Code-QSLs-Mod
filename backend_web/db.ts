@@ -694,6 +694,17 @@ export async function getDayById(id: number) {
   return day;
 }
 
+export async function getDayByUserIdGameNumberAndDayNumber(userId: string, gameNumber: number, dayNumber: number): Day {
+  const day = await prisma.day.findFirstOrThrow({
+    where: {
+      userId,
+      gameNumber,
+      number: dayNumber,
+    },
+  });
+  return day;
+}
+
 export async function getDayIdByGameIdAndDayNumber(
   gameId: number,
   dayNumber: number,
