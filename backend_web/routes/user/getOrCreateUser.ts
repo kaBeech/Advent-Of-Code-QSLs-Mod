@@ -1,6 +1,6 @@
 import {
   createUser,
-  getUserById,
+  getUserIdById,
   updateUserName,
   updateUserOAuthInfo,
 } from "../../db.ts";
@@ -17,7 +17,7 @@ export const getOrCreateUser = async (ctx: Context, next: Next) => {
     ) as string;
     let user;
     try {
-      user = await getUserById(userId);
+      user = await getUserIdById(userId);
     } catch (errorFromGet) {
       try {
         user = await createUser(userId);

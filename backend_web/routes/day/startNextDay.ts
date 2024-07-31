@@ -3,8 +3,8 @@ import { RouterContext } from "https://deno.land/x/oak@v12.6.1/router.ts";
 import { GameController } from "../../components/GameController.ts";
 import {
   createDay,
-  getDaysByGameId,
-  getGamesByUserId,
+  getDayIdByGameIdAndDayNumber,
+  getGameByUserIdAndGameNumber,
   updateGame,
 } from "../../db.ts";
 
@@ -21,17 +21,22 @@ export const startNextDay = async (
 ) => {
   const { gameNumber, dayNumber } = ctx.params;
   const userId = ctx.state.session.get("userId") as string;
-  const games = await getGamesByUserId(userId);
-  const game = games.find((game) => game.number === +gameNumber);
+  const game = await getGameByUserIdAndGameNumber(userId, +gameNumber);
   if (game!.currentDay !== +dayNumber - 1) {
     throw new Error(
-      `Requested to start Day ${dayNumber}, but current Day is ${
-        game!.currentDay
+      `Requested to start Day ${dayNumber}, but current Day is ${game!.currentDay
       }`,
     );
   }
-  const days = await getDaysByGameId(game!.id);
-  const dayExists = days.find((day) => day.number === +dayNumber);
+  let dayExists = true;
+  try {
+    const dayId = await getDayIdByGameIdAndDayNumber(game!.id, +dayNumber);
+    if (!dayId) {
+      dayExists = false;
+    }
+  } catch (_error) {
+    dayExists = false;
+  }
   if (dayExists) {
     ctx.response.status = 409;
     ctx.response.body = {

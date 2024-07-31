@@ -4,7 +4,8 @@ import { DayController } from "../../components/DayController.ts";
 import { GameController } from "../../components/GameController.ts";
 import {
   getAllTitles,
-  getUserByIdWithRelations,
+  getDayByUserIdGameNumberAndDayNumber,
+  getGameByUserIdAndGameNumber,
   updateDay,
   updateGame,
 } from "../../db.ts";
@@ -22,9 +23,8 @@ export const completePart2 = async (
 ) => {
   const { gameNumber, dayNumber } = ctx.params;
   const userId = ctx.state.session.get("userId") as string;
-  const userData = await getUserByIdWithRelations(userId);
-  const game = userData.Game.find((game) => game.number === +gameNumber);
-  const day = game!.Day.find((day) => day.number === +dayNumber);
+  const game = await getGameByUserIdAndGameNumber(userId, +gameNumber);
+  const day = await getDayByUserIdGameNumberAndDayNumber(userId, +gameNumber, +dayNumber);
   const updatedDay = DayController(day!).completePart2(game!.currentDay);
   let rerollTokensEarned = 0;
   if (day!.ChallengeModifier) {

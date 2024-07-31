@@ -7,7 +7,7 @@ export default component$(() => {
   const challengeModifiersResource = useResource$<any>(async ({ cleanup }) => {
     const abortController = new AbortController();
     cleanup(() => abortController.abort("cleanup"));
-    const userData = await serverFetcher(`modifier`, "GET");
+    const userData = await serverFetcher(`modifier/names`, "GET");
     const modifiersString = JSON.stringify(userData);
     const modifiersData = JSON.parse(modifiersString);
     const modifiers: ModifierOption[] = [];

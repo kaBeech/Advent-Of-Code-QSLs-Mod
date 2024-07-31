@@ -8,9 +8,9 @@ import {
   useStylesScoped$,
 } from "@builder.io/qwik";
 import styles from "./leaderboard.css?inline";
-import type { DocumentHead, RequestHandler } from "@builder.io/qwik-city";
-import type { LeaderboardGame } from "~/types";
 import { serverFetcher } from "~/util/serverFetcher";
+import type { LeaderboardGame } from "~/types";
+import type { DocumentHead, RequestHandler } from "@builder.io/qwik-city";
 
 let leaderboardGames: LeaderboardGame[] | null = null;
 
@@ -159,10 +159,10 @@ export default component$(() => {
                           " ".repeat(4 - rank.string.length) + rank.string);
                       gameNameString.length <= 21
                         ? (gameNameString += " ".repeat(
-                            21 - gameNameString.length
-                          ))
+                          21 - gameNameString.length
+                        ))
                         : (gameNameString =
-                            gameNameString.slice(0, 16) + "...° ");
+                          gameNameString.slice(0, 16) + "...° ");
                       scoreString.length < 5 &&
                         (scoreString += " ".repeat(5 - scoreString.length));
                       usernameString.length < 20 &&
@@ -172,7 +172,7 @@ export default component$(() => {
                       title.string.length < 13
                         ? (title.string = "  " + title.string)
                         : title.string.length < 14 &&
-                          (title.string = " " + title.string);
+                        (title.string = " " + title.string);
                       title.string.length < 14 &&
                         (title.string += " ".repeat(14 - title.string.length));
                       return (

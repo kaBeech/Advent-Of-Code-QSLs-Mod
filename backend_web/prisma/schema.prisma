@@ -31,6 +31,13 @@ model User {
   DefaultExcludedModifierOptions          ModifierOption[]    @relation("DefaultExcludedModifierOptions")
   DefaultIncludedCustomChallengeModifiers ChallengeModifier[] @relation("DefaultIncludedCustomChallengeModifiers")
   DefaultIncludedCustomModifierOptions    ModifierOption[]    @relation("DefaultIncludedCustomModifierOptions")
+
+  @@index([serializedId(sort: Asc), id], name: "serializedid_id")
+  @@index([id(sort: Asc), serializedId], name: "id_serializedid")
+  @@index([id(sort: Asc), username, oauthAvatarUrl], name: "id_username_avatar")
+  @@index([id(sort: Asc), username, oauthUsername, oauthName], name: "id_username_oauthusername_oauthname")
+  @@index([id(sort: Asc), numberOfGames], name: "id_numberofgames")
+  @@index([username(sort: Asc), id], name: "username_id")
 }
 
 model PublicProfile {
@@ -40,6 +47,9 @@ model PublicProfile {
   userId      String
   Game        Game[]
   User        User     @relation(fields: [userId], references: [id])
+
+  // @@index([id(sort: Asc), name, userId], name: "id_name_userid")
+  @@index([userId(sort: Asc), id], name: "user_id_name")
 }
 
 model Game {
@@ -69,6 +79,13 @@ model Game {
   Title                           Title?         @relation(fields: [titleId], references: [id])
   User                            User           @relation(fields: [userId], references: [id])
   Upvote                          Upvote[]
+
+  @@index([publicProfileId(sort: Asc), id], name: "publicprofile_id")
+  @@index([titleId(sort: Asc), id], name: "title_id")
+  @@index([userId(sort: Asc), number(sort: Asc), id, name, year], name: "user_number_name_year")
+  @@index([userId(sort: Asc), number(sort: Asc), id, titleId, publicProfileId], name: "user_number_title_publicprofile")
+  @@index([score(sort: Desc), year(sort: Desc), id, titleId, userId, playerName, name, number, repositoryLink], name: "leaderboard_games")
+  // @@index([id(sort: Asc), titleId, userId, year, currentDay, currentDayCompleted, isPublic, name, score, currentRerollTokens, dateCompleted, repositoryLink], name: "public_info")
 }
 
 model Title {
@@ -76,6 +93,8 @@ model Title {
   name         String @unique
   minimumScore Int
   Game         Game[]
+
+  @@index([minimumScore(sort: Asc), name, id], name: "minimumscore_name_id")
 }
 
 model Day {
@@ -103,6 +122,9 @@ model Day {
   OptionWhenPart1Completed         ModifierOption?     @relation("OptionWhenPart1Completed", fields: [optionWhenPart1CompletedId], references: [id])
   ExcludedChallengeModifiers       ChallengeModifier[] @relation("ExcludedChallengeModifiers")
   EncludedCustomChallengeModifiers ChallengeModifier[] @relation("IncludedCustomChallengeModifiers")
+
+  @@index([userId(sort: Asc), gameId(sort: Asc), number(sort: Asc), id], name: "user_game_number_id")
+  @@index([gameId(sort: Asc), number(sort: Asc), id], name: "game_number_id")
 }
 
 model ChallengeModifier {
@@ -123,6 +145,10 @@ model ChallengeModifier {
   UserIncluded         User[]           @relation("DefaultIncludedCustomChallengeModifiers")
   ModifierPackExcluded Day[]            @relation("ExcludedChallengeModifiers")
   ModifierPackIncluded Day[]            @relation("IncludedCustomChallengeModifiers")
+
+  @@index([createdById(sort: Asc), id], name: "createdby_id")
+  @@index([id(sort: Asc), text, explanatoryUrl], name: "user_game_data")
+  @@index([id(sort: Asc), name], name: "id_name")
 }
 
 model ModifierOption {
@@ -144,6 +170,10 @@ model ModifierOption {
   UserIncluded                  User[]            @relation("DefaultIncludedCustomModifierOptions")
   ExcludedModifierOptions       ModifierPack[]    @relation("ExcludedModifierOptions")
   IncludedCustomModifierOptions ModifierPack[]    @relation("IncludedCustomModifierOptions")
+  
+  @@index([challengeModifierId(sort: Asc), id], name: "challengemodifier_id")
+  @@index([createdById(sort: Asc), id], name: "createdby_id")
+  @@index([id(sort: Asc), text, explanatoryUrl], name: "id_text_explanatory_url")
 }
 
 model ModifierPack {
@@ -154,6 +184,8 @@ model ModifierPack {
   CreatedBy       User?            @relation(fields: [createdById], references: [id])
   ExcludedFromDay ModifierOption[] @relation("ExcludedModifierOptions")
   IncludedInDay   ModifierOption[] @relation("IncludedCustomModifierOptions")
+
+  @@index([createdById(sort: Asc), id], name: "createdby_id")
 }
 
 model Upvote {
@@ -164,6 +196,9 @@ model Upvote {
   createdById String
   CreatedBy   User     @relation(fields: [createdById], references: [id])
   Game        Game     @relation(fields: [gameId], references: [id])
+
+  @@index([gameId(sort: Asc), id], name: "game_id")
+  @@index([createdById(sort: Asc), id], name: "createdby_id")
 }
 
 model Downvote {
@@ -174,4 +209,7 @@ model Downvote {
   createdById String
   CreatedBy   User     @relation(fields: [createdById], references: [id])
   Game        Game     @relation(fields: [gameId], references: [id])
+
+  @@index([gameId(sort: Asc), id], name: "game_id")
+  @@index([createdById(sort: Asc), id], name: "createdby_id")
 }

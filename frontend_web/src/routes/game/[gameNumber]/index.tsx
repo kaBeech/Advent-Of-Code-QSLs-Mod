@@ -95,20 +95,20 @@ export default component$(() => {
                 {!state.gameInfo
                   ? `Loading...`
                   : (
-                      <img
-                        src={session.value!.user!.image!}
-                        alt="user avatar"
-                        style={{ height: "1.5rem", width: "1.5rem" }}
-                        width="24"
-                        height="24"
-                      />
-                    ) +
-                    " " +
-                    (
-                      <span style={`vertical-align: text-top`}>
-                        session.value!.user!.name!
-                      </span>
-                    )}
+                    <img
+                      src={session.value!.user!.image!}
+                      alt="user avatar"
+                      style={{ height: "1.5rem", width: "1.5rem" }}
+                      width="24"
+                      height="24"
+                    />
+                  ) +
+                  " " +
+                  (
+                    <span style={`vertical-align: text-top`}>
+                      session.value!.user!.name!
+                    </span>
+                  )}
               </p>
               <p>
                 Year: {!state.gameInfo ? `Loading...` : state.gameInfo.year}
@@ -122,17 +122,17 @@ export default component$(() => {
                   {!state.gameInfo
                     ? `Loading...`
                     : state.gameInfo.currentRerollTokens > 9
-                    ? state.gameInfo.currentRerollTokens + ""
-                    : "".repeat(state.gameInfo.currentRerollTokens)}
+                      ? state.gameInfo.currentRerollTokens + ""
+                      : "".repeat(state.gameInfo.currentRerollTokens)}
                 </strong>
               </p>
               {state.gameInfo?.dateCompleted && (
                 <>
-                  <p>Title: {state.gameInfo.title}</p>
+                  <p>Title: {state.gameInfo.Title.name}</p>
                   <p>
                     Completed During Calendar Year:{" "}
                     {state.gameInfo.dateCompleted.toString().slice(0, 4) ===
-                    state.gameInfo.year.toString()
+                      state.gameInfo.year.toString()
                       ? "Yes"
                       : "No"}
                   </p>
@@ -144,8 +144,8 @@ export default component$(() => {
                   ? `Loading...`
                   : state.gameInfo.dateCompleted?.toString().slice(0, 4) ===
                     state.gameInfo.year.toString()
-                  ? "Yes"
-                  : "No"}
+                    ? "Yes"
+                    : "No"}
               </p>
               <ul>
                 {pendingDays.map((day: { number: number }) => (
@@ -222,11 +222,11 @@ export default component$(() => {
               <br />
               {gameData.dateCompleted && (
                 <>
-                  <p>Title: {gameData.title}</p>
+                  <p>Title: {gameData.Title.name}</p>
                   <p>
                     Completed During Calendar Year?{" "}
                     {gameData.dateCompleted.toString().slice(0, 4) ===
-                    gameData.year.toString()
+                      gameData.year.toString()
                       ? "Yes"
                       : "No"}
                   </p>
@@ -312,8 +312,6 @@ export default component$(() => {
                 {sortedDays.map(
                   (day: {
                     number: number;
-                    challengeModifierId: string;
-                    modifierOptionId: string;
                     part1Completed: string | null;
                     part2Completed: string | null;
                     challengeModifierRerollsUsed: number;
@@ -331,8 +329,6 @@ export default component$(() => {
                       key={`unlockedDay-${day.number}`}
                       dayNumber={day.number}
                       dayLinkData={{
-                        challengeModifierId: day.challengeModifierId,
-                        modifierOptionId: day.modifierOptionId,
                         part1Completed: day.part1Completed,
                         part2Completed: day.part2Completed,
                         challengeModifierRerollsUsed:

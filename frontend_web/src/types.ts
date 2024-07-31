@@ -34,7 +34,7 @@ export interface GameInfo {
   score: number;
   currentRerollTokens: number;
   dateCompleted: string | null;
-  title: number | null;
+  Title: { id: string; name: string; minimumScore: number };
   isPublic: boolean;
   repositoryLink: string;
 }

@@ -3,8 +3,6 @@ import { renderSpentTokens } from "~/util/renderSpentTokens";
 import { renderTokens } from "~/util/renderTokens";
 
 export interface DayLinkData {
-  challengeModifierId: string;
-  modifierOptionId: string;
   part1Completed: string | null;
   part2Completed: string | null;
   challengeModifierRerollsUsed: number;
@@ -73,23 +71,20 @@ export default component$((props: DayLinkProps) => {
 
   const challengeModifierString = `°${challengeModifier}°`;
 
-  const challengeModifierPadding = `${
-    challengeModifier.length < 22
+  const challengeModifierPadding = `${challengeModifier.length < 22
       ? " ".repeat(22 - challengeModifier.length)
       : ""
-  }`;
+    }`;
 
   const modifierOptionString = `°${modifierOption}°`;
 
-  const modifierOptionPadding = `${
-    modifierOption.length < 16 ? " ".repeat(16 - modifierOption.length) : ""
-  }`;
+  const modifierOptionPadding = `${modifierOption.length < 16 ? " ".repeat(16 - modifierOption.length) : ""
+    }`;
 
   const scoreString = `${score} points`;
 
-  const scorePadding = `${
-    score.length < 8 ? " ".repeat(8 - score.length) : ""
-  }`;
+  const scorePadding = `${score.length < 8 ? " ".repeat(8 - score.length) : ""
+    }`;
 
   return (
     <>
@@ -119,8 +114,8 @@ export default component$((props: DayLinkProps) => {
           {tokensSpent > 9
             ? renderSpentTokens(1) + "x" + tokensSpent
             : tokensSpent > 4
-            ? renderSpentTokens(1) + "x" + tokensSpent + " "
-            : renderSpentTokens(tokensSpent) + " ".repeat(4 - tokensSpent)}
+              ? renderSpentTokens(1) + "x" + tokensSpent + " "
+              : renderSpentTokens(tokensSpent) + " ".repeat(4 - tokensSpent)}
         </span>
       </li>
       <li class="desktopHide flex column textCenter alignCenter maxWidthFixedContent">

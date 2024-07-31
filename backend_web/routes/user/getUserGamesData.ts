@@ -1,8 +1,8 @@
 import { Context } from "https://deno.land/x/oak@v12.6.1/mod.ts";
-import { getUserByIdWithRelations } from "../../db.ts";
+import { getUserGameDataById } from "../../db.ts";
 
-export const getUserData = async (ctx: Context) => {
+export const getUserGamesData = async (ctx: Context) => {
   const userId = await ctx.state.session.get("userId") as string;
-  const userData = await getUserByIdWithRelations(userId);
+  const userData = await getUserGameDataById(userId);
   ctx.response.body = userData;
 };

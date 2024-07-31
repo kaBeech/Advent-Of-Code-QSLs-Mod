@@ -59,6 +59,18 @@ export async function getUserByUsername(username: string) {
   return user;
 }
 
+export async function getUserIdById(id: string) {
+  const user = await prisma.user.findUniqueOrThrow({
+    select: {
+      id: true,
+    },
+    where: {
+      id,
+    },
+  });
+  return user;
+}
+
 export async function getUserById(id: string) {
   const user = await prisma.user.findUniqueOrThrow({
     where: {
@@ -77,37 +89,208 @@ export async function getUserBySerializedId(serializedId: string) {
   return user;
 }
 
-export async function getUserByIdWithRelations(
+export async function getUserDataSimpleById(
   userId: string,
 ) {
   const user = await prisma.user.findUniqueOrThrow({
+    select: {
+      username: true,
+      oauthUsername: true,
+      oauthName: true,
+    },
     where: {
       id: userId,
     },
-    include: {
+  });
+  return user;
+}
+
+export async function getUserNumberOfGamesById(
+  userId: string,
+) {
+  const user = await prisma.user.findUniqueOrThrow({
+    select: {
+      numberOfGames: true,
       Game: {
-        include: {
+        select: {
+          number: true,
+        },
+      },
+    },
+    where: {
+      id: userId,
+    },
+  });
+  return user;
+}
+
+export async function getUserGamesListById(
+  userId: string,
+) {
+  const user = await prisma.user.findUniqueOrThrow({
+    select: {
+      numberOfGames: true,
+      Game: {
+        select: {
+          name: true,
+          number: true,
+          year: true,
+        },
+        orderBy: [
+          {
+            number: "asc",
+          },
+        ],
+      },
+    },
+    where: {
+      id: userId,
+    },
+  });
+  return user;
+}
+
+export async function getUserGameDataById(
+  userId: string,
+) {
+  const user = await prisma.user.findUniqueOrThrow({
+    select: {
+      username: true,
+      oauthAvatarUrl: true,
+      Game: {
+        select: {
+          year: true,
+          name: true,
+          id: true,
+          isPublic: true,
+          repositoryLink: true,
+          currentRerollTokens: true,
+          currentDay: true,
+          currentDayCompleted: true,
           Day: {
-            include: {
+            select: {
+              modifierWhenPart1CompletedId: true,
+              challengeModifierId: true,
+              number: true,
+              challengeModifierRerollsUsed: true,
+              modifierOptionRerollsUsed: true,
+              rerollTokensSpentDuringPart2: true,
+              score: true,
+              part1Completed: true,
+              part2Completed: true,
+              dateFirstRolled: true,
               ChallengeModifier: {
-                include: {
-                  ModifierOption: true,
+                select: {
+                  text: true,
+                  explanatoryUrl: true,
                 },
               },
-              ModifierOption: true,
+              ModifierOption: {
+                select: {
+                  text: true,
+                  explanatoryUrl: true,
+                },
+              },
               ModifierWhenPart1Completed: {
-                include: {
-                  ModifierOption: true,
+                select: {
+                  text: true,
+                  explanatoryUrl: true,
                 },
               },
-              OptionWhenPart1Completed: true,
+              OptionWhenPart1Completed: {
+                select: {
+                  text: true,
+                  explanatoryUrl: true,
+                },
+              },
             },
           },
         },
       },
     },
+    where: {
+      id: userId,
+    },
   });
   return user;
+}
+
+export async function getUserGameDayDataByIdGameNumberAndDayNumber(
+  userId: string,
+  gameNumber: number,
+  dayNumber: number,
+) {
+  const user = await prisma.user.findUniqueOrThrow({
+    select: {
+      username: true,
+      oauthAvatarUrl: true,
+    },
+    where: {
+      id: userId,
+    },
+  });
+  const game = await prisma.game.findFirstOrThrow({
+    select: {
+      year: true,
+      name: true,
+      id: true,
+      isPublic: true,
+      repositoryLink: true,
+      currentRerollTokens: true,
+      currentDay: true,
+      currentDayCompleted: true,
+    },
+    where: {
+      userId: userId,
+      number: gameNumber,
+    },
+  });
+  const day = await prisma.day.findFirstOrThrow({
+    select: {
+      modifierWhenPart1CompletedId: true,
+      challengeModifierId: true,
+      modifierOptionId: true,
+      number: true,
+      challengeModifierRerollsUsed: true,
+      modifierOptionRerollsUsed: true,
+      rerollTokensSpentDuringPart2: true,
+      score: true,
+      part1Completed: true,
+      part2Completed: true,
+      dateFirstRolled: true,
+      ChallengeModifier: {
+        select: {
+          text: true,
+          explanatoryUrl: true,
+        },
+      },
+      ModifierOption: {
+        select: {
+          text: true,
+          explanatoryUrl: true,
+        },
+      },
+      ModifierWhenPart1Completed: {
+        select: {
+          text: true,
+          explanatoryUrl: true,
+        },
+      },
+      OptionWhenPart1Completed: {
+        select: {
+          text: true,
+          explanatoryUrl: true,
+        },
+      },
+    },
+    where: {
+      userId: userId,
+      gameNumber: gameNumber,
+      number: dayNumber,
+    },
+  });
+  const userGameDayData = { user, game, day };
+  return userGameDayData;
 }
 
 export async function updateUser(user: User) {
@@ -189,26 +372,43 @@ export async function createGame(
   return result;
 }
 
-export async function getAllGames() {
-  const games = await prisma.game.findMany();
-  return games;
-}
+// export async function getAllGames() {
+//   const games = await prisma.game.findMany();
+//   return games;
+// }
 
-export async function getAllPublicGamesWithRepositoryLinks() {
+export async function getLeaderboardGamesQuery() {
   const games = await prisma.game.findMany({
+    select: {
+      id: true,
+      playerName: true,
+      name: true,
+      number: true,
+      year: true,
+      score: true,
+      repositoryLink: true,
+      Title: {
+        select: {
+          id: true,
+          name: true,
+          minimumScore: true,
+        },
+      },
+      User: {
+        select: {
+          username: true,
+        },
+      },
+    },
     where: {
       isPublic: true,
       repositoryLink: {
         not: null,
       },
     },
-    include: {
-      Title: true,
-      User: {
-        select: {
-          username: true,
-        },
-      },
+    take: 20,
+    orderBy: {
+      score: "desc",
     },
   });
   return games;
@@ -223,64 +423,69 @@ export async function getGameById(id: number) {
   return game;
 }
 
-export async function getPublicGameById(id: number) {
-  const game = await prisma.game.findFirstOrThrow({
-    where: {
-      id,
+export async function getPublicGameSimpleById(id: number) {
+  const game = await prisma.game.findUniqueOrThrow({
+    select: {
+      year: true,
+      name: true,
+      repositoryLink: true,
+      currentRerollTokens: true,
+      currentDay: true,
+      currentDayCompleted: true,
       isPublic: true,
-    },
-    include: {
-      Day: {
-        include: {
-          ChallengeModifier: {
-            include: {
-              ModifierOption: true,
-            },
-          },
-          ModifierOption: true,
-          ModifierWhenPart1Completed: {
-            include: {
-              ModifierOption: true,
-            },
-          },
-          OptionWhenPart1Completed: true,
-        },
-      },
+      id: true,
       User: {
         select: {
           username: true,
           oauthAvatarUrl: true,
         },
       },
+    },
+    where: {
+      id,
     },
   });
   return game;
 }
 
-export async function getGameByNumberAndUserIdWithRelations(
-  userId: string,
-  gameNumber: number,
-) {
+
+export async function getPublicGameById(id: number) {
   const game = await prisma.game.findFirstOrThrow({
-    where: {
-      userId,
-      number: gameNumber,
-    },
-    include: {
+    select: {
+      id: true,
+      year: true,
+      currentDay: true,
+      name: true,
+      score: true,
+      currentRerollTokens: true,
+      dateCompleted: true,
+      repositoryLink: true,
+      Title: {
+        select: {
+          name: true,
+        },
+      },
       Day: {
-        include: {
+        select: {
+          number: true,
+          challengeModifierId: true,
+          modifierOptionId: true,
+          part1Completed: true,
+          part2Completed: true,
+          challengeModifierRerollsUsed: true,
+          modifierOptionRerollsUsed: true,
+          score: true,
           ChallengeModifier: {
-            include: {
-              ModifierOption: true,
+            select: {
+              name: true,
             },
           },
-          ModifierOption: true,
-          ModifierWhenPart1Completed: {
-            include: {
-              ModifierOption: true,
+          ModifierOption: {
+            select: {
+              name: true,
+              text: true,
             },
           },
-          OptionWhenPart1Completed: true,
         },
       },
       User: {
@@ -289,6 +494,65 @@ export async function getGameByNumberAndUserIdWithRelations(
           oauthAvatarUrl: true,
         },
       },
+    },
+    where: {
+      id,
+      isPublic: true,
+    },
+  });
+  return game;
+}
+
+export async function getGameDataByUserIdAndGameNumber(
+  userId: string,
+  number: number,
+) {
+  const game = await prisma.game.findFirstOrThrow({
+    select: {
+      id: true,
+      year: true,
+      name: true,
+      repositoryLink: true,
+      isPublic: true,
+      currentDay: true,
+      currentRerollTokens: true,
+      dateCompleted: true,
+      Title: {
+        select: {
+          name: true,
+        },
+      },
+      score: true,
+      Day: {
+        select: {
+          number: true,
+          part1Completed: true,
+          part2Completed: true,
+          challengeModifierRerollsUsed: true,
+          modifierOptionRerollsUsed: true,
+          score: true,
+          ChallengeModifier: {
+            select: {
+              name: true,
+            },
+          },
+          ModifierOption: {
+            select: {
+              name: true,
+              text: true,
+            },
+          },
+        },
+      },
+      User: {
+        select: {
+          username: true,
+        },
+      },
+    },
+    where: {
+      userId,
+      number,
     },
   });
   return game;
@@ -298,11 +562,59 @@ export async function getGamesByUserId(
   userId: string,
 ) {
   const games = await prisma.game.findMany({
+    // select: {
+    //   id: true,
+    //   year: true,
+    //   currentDay: true,
+    //   name: true,
+    //   score: true,
+    //   currentRerollTokens: true,
+    //   dateCompleted: true,
+    //   repositoryLink: true,
+    //   Title: {
+    //     select: {
+    //       name: true,
+    //     },
+    //   },
+    // },
     where: {
       userId,
     },
   });
   return games;
+}
+
+export async function getGameByUserIdAndGameNumber(
+  userId: string,
+  gameNumber: number,
+): Game {
+  const game = await prisma.game.findFirstOrThrow({
+    // select: {
+    //   id: true,
+    //   year: true,
+    //   currentDay: true,
+    //   name: true,
+    //   score: true,
+    //   currentRerollTokens: true,
+    //   dateCompleted: true,
+    //   repositoryLink: true,
+    //   Day: {
+    //     select: {
+    //       number: true,
+    //     },
+    //   },
+    //   Title: {
+    //     select: {
+    //       name: true,
+    //     },
+    //   },
+    // },
+    where: {
+      userId,
+      number: gameNumber,
+    },
+  });
+  return game;
 }
 
 export async function updateGame(game: Game) {
@@ -383,15 +695,79 @@ export async function getDayById(id: number) {
   return day;
 }
 
-export async function getDaysByGameId(
-  gameId: number,
-) {
-  const days = await prisma.day.findMany({
+export async function getDayByUserIdGameNumberAndDayNumber(userId: string, gameNumber: number, dayNumber: number): Day {
+  const day = await prisma.day.findFirstOrThrow({
     where: {
-      gameId,
+      userId,
+      gameNumber,
+      number: dayNumber,
     },
   });
-  return days;
+  return day;
+}
+
+export async function getDayIdByGameIdAndDayNumber(
+  gameId: number,
+  dayNumber: number,
+) {
+  const day = await prisma.day.findFirstOrThrow({
+    select: {
+      id: true,
+    },
+    where: {
+      gameId,
+      number: dayNumber,
+    },
+  });
+  return day;
+}
+
+export async function getPublicDayByGameIdAndNumber(gameId: number, number: number) {
+  const day = await prisma.day.findFirstOrThrow({
+    select: {
+      number: true,
+      score: true,
+      dateFirstRolled: true,
+      challengeModifierRerollsUsed: true,
+      modifierOptionRerollsUsed: true,
+      rerollTokensSpentDuringPart2: true,
+      modifierWhenPart1CompletedId: true,
+      optionWhenPart1CompletedId: true,
+      part1Completed: true,
+      part2Completed: true,
+      challengeModifierId: true,
+      modifierOptionId: true,
+      ChallengeModifier: {
+        select: {
+          text: true,
+          explanatoryUrl: true,
+        },
+      },
+      ModifierOption: {
+        select: {
+          text: true,
+          explanatoryUrl: true,
+        },
+      },
+      ModifierWhenPart1Completed: {
+        select: {
+          text: true,
+          explanatoryUrl: true,
+        },
+      },
+      OptionWhenPart1Completed: {
+        select: {
+          text: true,
+          explanatoryUrl: true,
+        },
+      },
+    },
+    where: {
+      gameId,
+      number,
+    },
+  });
+  return day;
 }
 
 export async function updateDay(day: Day) {
@@ -422,10 +798,41 @@ export async function updateDay(day: Day) {
  */
 
 export async function getAllChallengeModifiers() {
+  const challengeModifiers = await prisma.challengeModifier.findMany();
+  return challengeModifiers;
+}
+
+
+export async function getAllChallengeModifierNames() {
   const challengeModifiers = await prisma.challengeModifier.findMany({
-    include: { ModifierOption: true },
+    select: {
+      id: true,
+      name: true,
+    },
   });
   return challengeModifiers;
+}
+
+export async function getChallengeModifierDataById(id: number) {
+  const challengeModifier = await prisma.challengeModifier.findUniqueOrThrow({
+    select: {
+      id: true,
+      name: true,
+      text: true,
+      explanatoryUrl: true,
+      hasOptions: true,
+      ModifierOption: {
+        select: {
+          id: true,
+          name: true,
+        },
+      },
+    },
+    where: {
+      id,
+    },
+  });
+  return challengeModifier;
 }
 
 /**
@@ -446,6 +853,26 @@ export async function getModifierOptionsByChallengeModifierId(
     },
   });
   return modifierOptions;
+}
+
+export async function getModifierOptionDataById(
+  id: number,
+) {
+  const modifierOption = await prisma.modifierOption.findUniqueOrThrow({
+    select: {
+      text: true,
+      explanatoryUrl: true,
+      ChallengeModifier: {
+        select: {
+          text: true,
+        },
+      },
+    },
+    where: {
+      id
+    },
+  });
+  return modifierOption;
 }
 
 /**
