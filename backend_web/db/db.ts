@@ -1,4 +1,5 @@
 import { Day, Game, User } from "../generated/client/deno/edge.ts";
+import { getAllChallengeModifierNames, getAllChallengeModifiers, getChallengeModifierDataById } from "./challengeModifiers/challengeModifier.ts";
 import { getAllModifierOptions, getModifierOptionDataById, getModifierOptionsByChallengeModifierId } from "./modifierOptions/modifierOption.ts";
 import { prisma } from "./prisma.ts";
 import { getAllTitles } from "./titles/title.ts";
@@ -785,49 +786,10 @@ export async function updateDay(day: Day) {
   return result;
 }
 
-/**
- * Challenge Modifier CRUD
- */
-
-export async function getAllChallengeModifiers() {
-  const challengeModifiers = await prisma.challengeModifier.findMany();
-  return challengeModifiers;
-}
-
-
-export async function getAllChallengeModifierNames() {
-  const challengeModifiers = await prisma.challengeModifier.findMany({
-    select: {
-      id: true,
-      name: true,
-    },
-  });
-  return challengeModifiers;
-}
-
-export async function getChallengeModifierDataById(id: number) {
-  const challengeModifier = await prisma.challengeModifier.findUniqueOrThrow({
-    select: {
-      id: true,
-      name: true,
-      text: true,
-      explanatoryUrl: true,
-      hasOptions: true,
-      ModifierOption: {
-        select: {
-          id: true,
-          name: true,
-        },
-      },
-    },
-    where: {
-      id,
-    },
-  });
-  return challengeModifier;
-}
-
 export {
+  getAllChallengeModifiers,
+  getAllChallengeModifierNames,
+  getChallengeModifierDataById,
   getAllModifierOptions,
   getModifierOptionsByChallengeModifierId,
   getModifierOptionDataById,
