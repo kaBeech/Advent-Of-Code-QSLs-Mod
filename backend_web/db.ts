@@ -385,6 +385,24 @@ export async function getPublicGameById(id: number) {
       Day: {
         select: {
           number: true,
+          challengeModifierId: true,
+          modifierOptionId: true,
+          part1Completed: true,
+          part2Completed: true,
+          challengeModifierRerollsUsed: true,
+          modifierOptionRerollsUsed: true,
+          score: true,
+          ChallengeModifier: {
+            select: {
+              name: true,
+            },
+          },
+          ModifierOption: {
+            select: {
+              name: true,
+              text: true,
+            },
+          },
         },
       },
       User: {
