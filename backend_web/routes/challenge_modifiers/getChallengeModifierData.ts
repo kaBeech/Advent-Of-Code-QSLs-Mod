@@ -11,5 +11,5 @@ export const getChallengeModifierData = async (
     >,
 ) => {
     const { id } = ctx.params;
-    ctx.response.body = await getChallengeModifierDataById(id);
+    ctx.response.body = await getChallengeModifierDataById(+id);
 };
