@@ -11,11 +11,11 @@ import { getDay } from "./routes/day/getDay.ts";
 import { getAllDays } from "./routes/game/getAllDays.ts";
 import { deleteGame } from "./routes/game/deleteGame.ts";
 import { startNewGame } from "./routes/game/startNewGame.ts";
-import { getGame } from "./routes/game/getGame.ts";
-import { getGames } from "./routes/user/getGames.ts";
+// import { getGame } from "./routes/game/getGame.ts";
+// import { getGames } from "./routes/user/getGames.ts";
 import { getUserGamesData } from "./routes/user/getUserGamesData.ts";
 import { logOut } from "./routes/user/logOut.ts";
-import { getChallengeModifiers } from "./routes/misc/getChallengeModifiers.ts";
+// import { getChallengeModifiers } from "./routes/misc/getChallengeModifiers.ts";
 import { getHelloWorld } from "./routes/misc/getHelloWorld.ts";
 import { logInWithOAuth } from "./routes/user/logInWithOAuth.ts";
 import { getOAuthData } from "./routes/user/getOAuthData.ts";
@@ -62,8 +62,8 @@ router
   .get("/game/public/:id", getPublicGame) // T0
   .get("/game/public/:id/simple", getPublicGameSimple) // T0
   .get("/game/public/:gameId/day/:dayNumber", getPublicDay) // T0
-  .get("/game", authenticate, getGames) // T0
-  .get("/game/:gameNumber", authenticate, getGame) // T0
+  // .get("/game", authenticate, getGames) // T0
+  // .get("/game/:gameNumber", authenticate, getGame) // T0
   .put("/game/:gameNumber", authenticate, startNewGame) // T0
   .put("/game/:gameNumber/public", authenticate, updateGamePublicStatus)
   .put("/game/:gameNumber/name", authenticate, updateGameName)

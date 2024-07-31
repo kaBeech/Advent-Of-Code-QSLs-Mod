@@ -441,21 +441,21 @@ export async function getGamesByUserId(
   userId: string,
 ) {
   const games = await prisma.game.findMany({
-    select: {
-      id: true,
-      year: true,
-      currentDay: true,
-      name: true,
-      score: true,
-      currentRerollTokens: true,
-      dateCompleted: true,
-      repositoryLink: true,
-      Title: {
-        select: {
-          name: true,
-        },
-      },
-    },
+    // select: {
+    //   id: true,
+    //   year: true,
+    //   currentDay: true,
+    //   name: true,
+    //   score: true,
+    //   currentRerollTokens: true,
+    //   dateCompleted: true,
+    //   repositoryLink: true,
+    //   Title: {
+    //     select: {
+    //       name: true,
+    //     },
+    //   },
+    // },
     where: {
       userId,
     },
@@ -468,26 +468,26 @@ export async function getGameByUserIdAndGameNumber(
   gameNumber: number,
 ) {
   const game = await prisma.game.findFirstOrThrow({
-    select: {
-      id: true,
-      year: true,
-      currentDay: true,
-      name: true,
-      score: true,
-      currentRerollTokens: true,
-      dateCompleted: true,
-      repositoryLink: true,
-      Day: {
-        select: {
-          number: true,
-        },
-      },
-      Title: {
-        select: {
-          name: true,
-        },
-      },
-    },
+    // select: {
+    //   id: true,
+    //   year: true,
+    //   currentDay: true,
+    //   name: true,
+    //   score: true,
+    //   currentRerollTokens: true,
+    //   dateCompleted: true,
+    //   repositoryLink: true,
+    //   Day: {
+    //     select: {
+    //       number: true,
+    //     },
+    //   },
+    //   Title: {
+    //     select: {
+    //       name: true,
+    //     },
+    //   },
+    // },
     where: {
       userId,
       number: gameNumber,
