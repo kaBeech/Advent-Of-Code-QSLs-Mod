@@ -21,7 +21,7 @@ import {
   getGameDataByUserIdAndGameNumber,
   getGamesByUserId,
   updateGame
-} from "./games/games.ts";
+} from "./games/game.ts";
 
 import {
   createDay,
