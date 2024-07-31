@@ -1,6 +1,6 @@
 import { State } from "https://deno.land/x/oak@v12.6.1/application.ts";
 import { RouterContext } from "https://deno.land/x/oak@v12.6.1/router.ts";
-import { getGameByUserIdAndGameNumber, updateGame } from "../../db.ts";
+import { getGameByUserIdAndGameNumber, updateGame } from "../../db/db.ts";
 import { GameController } from "../../components/GameController.ts";
 
 export const updateGamePublicStatus = async (

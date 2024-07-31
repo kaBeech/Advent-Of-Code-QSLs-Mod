@@ -1,5 +1,5 @@
 import { RouterContext, State } from "https://deno.land/x/oak@v12.6.1/mod.ts";
-import { getGameDataByUserIdAndGameNumber } from "../../db.ts";
+import { getGameDataByUserIdAndGameNumber } from "../../db/db.ts";
 
 export const getGameData = async (
   ctx: RouterContext<

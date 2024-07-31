@@ -1,7 +1,7 @@
 import { State } from "https://deno.land/x/oak@v12.6.1/application.ts";
 import { RouterContext } from "https://deno.land/x/oak@v12.6.1/router.ts";
 import { DayController } from "../../components/DayController.ts";
-import { getDayByUserIdGameNumberAndDayNumber, getGameByUserIdAndGameNumber, updateDay } from "../../db.ts";
+import { getDayByUserIdGameNumberAndDayNumber, getGameByUserIdAndGameNumber, updateDay } from "../../db/db.ts";
 
 export const removeChallengeModifier = async (
   ctx: RouterContext<

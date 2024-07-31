@@ -6,7 +6,7 @@ import {
   getDayIdByGameIdAndDayNumber,
   getGameByUserIdAndGameNumber,
   updateGame,
-} from "../../db.ts";
+} from "../../db/db.ts";
 
 export const startNextDay = async (
   ctx: RouterContext<

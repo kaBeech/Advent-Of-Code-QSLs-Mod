@@ -1,5 +1,5 @@
 import { RouterContext, State } from "https://deno.land/x/oak@v12.6.1/mod.ts";
-import { getModifierOptionDataById } from "../../db.ts";
+import { getModifierOptionDataById } from "../../db/db.ts";
 
 export const getModifierOptionData = async (
     ctx: RouterContext<

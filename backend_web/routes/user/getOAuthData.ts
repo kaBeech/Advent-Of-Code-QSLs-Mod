@@ -1,5 +1,5 @@
 import { create } from "https://deno.land/x/djwt@v2.4/mod.ts";
-import { upsertUser } from "../../db.ts";
+import { upsertUser } from "../../db/db.ts";
 import { key } from "../../util/apiKey.ts";
 import { oauth2Client } from "../../util/oauth2Client.ts";
 import { State } from "https://deno.land/x/oak@v12.6.1/application.ts";

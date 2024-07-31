@@ -1,5 +1,5 @@
 import { RouterContext, State } from "https://deno.land/x/oak@v12.6.1/mod.ts";
-import { getChallengeModifierDataById } from "../../db.ts";
+import { getChallengeModifierDataById } from "../../db/db.ts";
 
 export const getChallengeModifierData = async (
     ctx: RouterContext<

@@ -9,7 +9,7 @@ import {
   getGameByUserIdAndGameNumber,
   updateDay,
   updateGame,
-} from "../../db.ts";
+} from "../../db/db.ts";
 
 export const rerollChallengeModifier = async (
   ctx: RouterContext<

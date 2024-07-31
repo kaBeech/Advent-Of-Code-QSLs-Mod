@@ -7,7 +7,7 @@ import {
   getDayByUserIdGameNumberAndDayNumber,
   getGameByUserIdAndGameNumber,
   updateDay,
-} from "../../db.ts";
+} from "../../db/db.ts";
 
 export const rollInitialModifier = async (
   ctx: RouterContext<
