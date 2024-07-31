@@ -65,14 +65,14 @@ router
   // .get("/game", authenticate, getGames) // T0
   // .get("/game/:gameNumber", authenticate, getGame) // T0
   .put("/game/:gameNumber", authenticate, startNewGame) // T0
-  .put("/game/:gameNumber/public", authenticate, updateGamePublicStatus)
-  .put("/game/:gameNumber/name", authenticate, updateGameName)
-  .put("/game/:gameNumber/repolink", authenticate, updateGameRepositoryLink)
-  .delete("/game/:gameNumber", authenticate, deleteGame)
+  .put("/game/:gameNumber/public", authenticate, updateGamePublicStatus) // T0
+  .put("/game/:gameNumber/name", authenticate, updateGameName) // T0
+  .put("/game/:gameNumber/repolink", authenticate, updateGameRepositoryLink) // T0
+  .delete("/game/:gameNumber", authenticate, deleteGame) // T0
   .delete("/chester", deleteTesterGames) // N/A
   .get("/game/:gameNumber/day", authenticate, getAllDays)
   .get("/game/:gameNumber/day/:dayNumber", authenticate, getDay)
-  .put("/game/:gameNumber/day/:dayNumber", authenticate, startNextDay)
+  .put("/game/:gameNumber/day/:dayNumber", authenticate, startNextDay) // T0
   .put(
     "/game/:gameNumber/day/:dayNumber/roll",
     authenticate,
