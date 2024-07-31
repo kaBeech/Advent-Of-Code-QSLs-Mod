@@ -289,10 +289,10 @@ export async function createGame(
   return result;
 }
 
-export async function getAllGames() {
-  const games = await prisma.game.findMany();
-  return games;
-}
+// export async function getAllGames() {
+//   const games = await prisma.game.findMany();
+//   return games;
+// }
 
 export async function getLeaderboardGamesQuery() {
   const games = await prisma.game.findMany({
