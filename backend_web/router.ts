@@ -54,7 +54,7 @@ router
   .get("/userdata/simple", authenticate, getUserDataSimple) // T0
   .get("/userdata/numberofgames", authenticate, getUserNumberOfGamesById) // T0
   .get("/userdata/games/list", authenticate, getUserGamesListById) // T0
-  .get("/gamedata/:gameNumber", authenticate, getGameData)
+  .get("/gamedata/:gameNumber", authenticate, getGameData) // T0
   .get("/modifier/names", getChallengeModifierNames) // T0
   .get("/modifier/:id", getChallengeModifierData) // T0
   .get("/modifier-option/:id", getModifierOptionData) // T0

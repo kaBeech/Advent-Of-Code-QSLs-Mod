@@ -400,38 +400,53 @@ export async function getPublicGameById(id: number) {
   return game;
 }
 
-export async function getGameByNumberAndUserIdWithRelations(
+export async function getGameDataByUserIdAndGameNumber(
   userId: string,
   gameNumber: number,
 ) {
   const game = await prisma.game.findFirstOrThrow({
-    where: {
-      userId,
-      number: gameNumber,
-    },
-    include: {
+    select: {
+      id: true,
+      year: true,
+      name: true,
+      repositoryLink: true,
+      isPublic: true,
+      currentDay: true,
+      currentRerollTokens: true,
+      dateCompleted: true,
+      Title: {
+        select: {
+          name: true,
+        },
+      },
+      score: true,
       Day: {
-        include: {
+        select: {
+          number: true,
+          part1Completed: true,
+          part2Completed: true,
+          challengeModifierRerollsUsed: true,
+          modifierOptionRerollsUsed: true,
           ChallengeModifier: {
-            include: {
-              ModifierOption: true,
+            select: {
+              name: true,
             },
           },
-          ModifierOption: true,
-          ModifierWhenPart1Completed: {
-            include: {
-              ModifierOption: true,
+          ModifierOption: {
+            select: {
+              name: true,
+              text: true,
             },
           },
-          OptionWhenPart1Completed: true,
         },
       },
       User: {
-        select: {
-          username: true,
-          oauthAvatarUrl: true,
-        },
+        username: true,
       },
+    },
+    where: {
+      userId,
+      number: gameNumber,
     },
   });
   return game;
