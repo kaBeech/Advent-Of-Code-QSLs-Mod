@@ -530,6 +530,7 @@ export async function getGameDataByUserIdAndGameNumber(
           part2Completed: true,
           challengeModifierRerollsUsed: true,
           modifierOptionRerollsUsed: true,
+          score: true,
           ChallengeModifier: {
             select: {
               name: true,
