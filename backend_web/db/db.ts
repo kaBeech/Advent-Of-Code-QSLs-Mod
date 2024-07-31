@@ -1,5 +1,6 @@
 import { Day, Game, User } from "../generated/client/deno/edge.ts";
 import { prisma } from "./prisma.ts";
+import { getAllTitles } from "./titles/title.ts";
 
 /**
  * User CRUD
@@ -865,11 +866,4 @@ export async function getModifierOptionDataById(
   return modifierOption;
 }
 
-/**
- * Title CRUD
- */
-
-export async function getAllTitles() {
-  const titles = await prisma.title.findMany();
-  return titles;
-}
+export { getAllTitles }
