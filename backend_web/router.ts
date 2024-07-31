@@ -77,7 +77,7 @@ router
     "/game/:gameNumber/day/:dayNumber/roll",
     authenticate,
     rollInitialModifier,
-  )
+  ) // T0
   .put(
     "/game/:gameNumber/day/:dayNumber/reroll/modifier",
     authenticate,

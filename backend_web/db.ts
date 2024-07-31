@@ -466,7 +466,7 @@ export async function getGamesByUserId(
 export async function getGameByUserIdAndGameNumber(
   userId: string,
   gameNumber: number,
-) {
+): Game {
   const game = await prisma.game.findFirstOrThrow({
     // select: {
     //   id: true,
@@ -664,6 +664,12 @@ export async function updateDay(day: Day) {
 /**
  * Challenge Modifier CRUD
  */
+
+export async function getAllChallengeModifiers() {
+  const challengeModifiers = await prisma.challengeModifier.findMany();
+  return challengeModifiers;
+}
+
 
 export async function getAllChallengeModifierNames() {
   const challengeModifiers = await prisma.challengeModifier.findMany({
