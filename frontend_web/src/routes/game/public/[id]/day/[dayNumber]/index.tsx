@@ -54,7 +54,7 @@ export default component$(() => {
     const abortController = new AbortController();
     cleanup(() => abortController.abort("cleanup"));
     const gameData = await serverFetcher(`game/public/${gameId}/simple`, "GET");
-    const dayData = await serverFetcher(`day/public/${gameId}/day/${dayNumber}`, "GET");
+    const dayData = await serverFetcher(`game/public/${gameId}/day/${dayNumber}`, "GET");
     state.loading = false;
     let rerollTokensEarned = 0;
     if (dayData.modifierWhenPart1CompletedId) {
