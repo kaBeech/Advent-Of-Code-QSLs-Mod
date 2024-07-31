@@ -5,11 +5,7 @@ import {
   getUserBySerializedId,
   getUserByUsername,
   getUserDataSimpleById,
-  getUserGameDataById,
-  getUserGameDayDataByIdGameNumberAndDayNumber,
-  getUserGamesListById,
   getUserIdById,
-  getUserNumberOfGamesById,
   updateUser,
   updateUserName,
   updateUserOAuthInfo,
@@ -24,9 +20,6 @@ import {
   getGameByUserIdAndGameNumber,
   getGameDataByUserIdAndGameNumber,
   getGamesByUserId,
-  getLeaderboardGamesQuery,
-  getPublicGameById,
-  getPublicGameSimpleById,
   updateGame
 } from "./games/games.ts";
 
@@ -54,6 +47,8 @@ import {
 import {
   getAllTitles
 } from "./titles/title.ts";
+import { getUserGameDataById, getUserGameDayDataByIdGameNumberAndDayNumber, getUserGamesListById, getUserNumberOfGamesById } from "./users/gameData.ts";
+import { getLeaderboardGames, getPublicGameById, getPublicGameSimpleById } from "./games/public.ts";
 
 export {
   // User CRUD
@@ -75,7 +70,7 @@ export {
 
   // Game CRUD
   createGame,
-  getLeaderboardGamesQuery,
+  getLeaderboardGames,
   getGameById,
   getPublicGameSimpleById,
   getPublicGameById,
