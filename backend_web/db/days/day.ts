@@ -1,5 +1,5 @@
 import { Day } from "../generated/client/deno/edge.ts";
-import { prisma } from "../prisma";
+import { prisma } from "../prisma.ts";
 
 
 export async function createDay(
