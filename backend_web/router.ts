@@ -82,7 +82,7 @@ router
     "/game/:gameNumber/day/:dayNumber/reroll/modifier",
     authenticate,
     rerollChallengeModifier,
-  )
+  ) // T0
   .put(
     "/game/:gameNumber/day/:dayNumber/reroll/option",
     authenticate,

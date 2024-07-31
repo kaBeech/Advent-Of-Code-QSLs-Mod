@@ -5,7 +5,7 @@ import { GameController } from "../../components/GameController.ts";
 import {
   getAllChallengeModifiers,
   getAllModifierOptions,
-  getUserGameDataById,
+  getGameByUserIdAndGameNumber,
   updateDay,
   updateGame,
 } from "../../db.ts";
@@ -23,8 +23,7 @@ export const rerollChallengeModifier = async (
 ) => {
   const { gameNumber, dayNumber } = ctx.params;
   const userId = ctx.state.session.get("userId") as string;
-  const userData = await getUserGameDataById(userId);
-  const game = userData.Game.find((game) => game.number === +gameNumber);
+  const game = getGameByUserIdAndGameNumber(userId, +gameNumber);
   const day = game!.Day.find((day) => day.number === +dayNumber);
   const challengeModifiers = await getAllChallengeModifiers();
   const modifierOptions = await getAllModifierOptions();
