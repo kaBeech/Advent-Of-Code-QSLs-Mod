@@ -11,5 +11,5 @@ export const getModifierOptionData = async (
     >,
 ) => {
     const { id } = ctx.params;
-    ctx.response.body = await getModifierOptionDataById(id);
+    ctx.response.body = await getModifierOptionDataById(+id);
 };

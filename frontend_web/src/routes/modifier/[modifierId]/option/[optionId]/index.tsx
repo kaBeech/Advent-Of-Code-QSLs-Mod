@@ -31,7 +31,7 @@ export default component$(() => {
               <p>
                 <em>Full Challenge Modifier Text:</em> "
                 {constructChallengeModifierFullText(
-                  modifierOption.challengeModifier.text +
+                  modifierOption.ChallengeModifier.text +
                   modifierOption.text
                 )}
                 "
