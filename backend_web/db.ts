@@ -352,8 +352,10 @@ export async function getPublicGameSimpleById(id: number) {
       isPublic: true,
       id: true,
       User: {
-        username: true,
-        oauthAvatarUrl: true,
+        select: {
+          username: true,
+          oauthAvatarUrl: true,
+        },
       },
     },
     where: {
@@ -402,7 +404,7 @@ export async function getPublicGameById(id: number) {
 
 export async function getGameDataByUserIdAndGameNumber(
   userId: string,
-  gameNumber: number,
+  number: number,
 ) {
   const game = await prisma.game.findFirstOrThrow({
     select: {
@@ -441,12 +443,14 @@ export async function getGameDataByUserIdAndGameNumber(
         },
       },
       User: {
-        username: true,
+        select: {
+          username: true,
+        },
       },
     },
     where: {
       userId,
-      number: gameNumber,
+      number,
     },
   });
   return game;
