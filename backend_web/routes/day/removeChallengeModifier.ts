@@ -1,7 +1,7 @@
 import { State } from "https://deno.land/x/oak@v12.6.1/application.ts";
 import { RouterContext } from "https://deno.land/x/oak@v12.6.1/router.ts";
 import { DayController } from "../../components/DayController.ts";
-import { getUserGameDataById, updateDay } from "../../db.ts";
+import { getGameByUserIdAndGameNumber, updateDay } from "../../db.ts";
 
 export const removeChallengeModifier = async (
   ctx: RouterContext<
@@ -16,8 +16,7 @@ export const removeChallengeModifier = async (
 ) => {
   const { gameNumber, dayNumber } = ctx.params;
   const userId = ctx.state.session.get("userId") as string;
-  const userData = await getUserGameDataById(userId);
-  const game = userData.Game.find((game) => game.number === +gameNumber);
+  const game = getGameByUserIdAndGameNumber(userId, +gameNumber);
   const day = game!.Day.find((day) => day.number === +dayNumber);
   const updatedDay = DayController(day!).removeChallengeModifier(game!);
   await updateDay(updatedDay);

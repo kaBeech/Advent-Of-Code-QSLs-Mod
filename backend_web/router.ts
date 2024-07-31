@@ -92,12 +92,12 @@ router
     "/game/:gameNumber/day/:dayNumber/removeChallengeModifier",
     authenticate,
     removeChallengeModifier,
-  )
+  ) // T0
   .put(
     "/game/:gameNumber/day/:dayNumber/complete/part1",
     authenticate,
     completePart1,
-  )
+  ) // T0
   .put(
     "/game/:gameNumber/day/:dayNumber/complete/part2",
     authenticate,
