@@ -83,16 +83,13 @@ export default component$(() => {
 
     const abortController = new AbortController();
     cleanup(() => abortController.abort("cleanup"));
-    const userData = await serverFetcher(`userdata/games`, "GET", userId);
-    if (userData.Game.length < 1) {
-      return { numberOfGames: JSON.stringify(userData.Game.length) };
+    const data = await serverFetcher(`game/${gameNumber}/day/${dayNumber}`, "GET", userId);
+    if (!data) {
+      return { dayFound: false };
     }
-    const gameData = userData.Game.find(
-      (game: { number: number }) => game.number === +gameNumber
-    );
-    const dayData = gameData.Day.find(
-      (day: { number: number }) => day.number === +dayNumber
-    );
+    const userData = data.user;
+    const gameData = data.game;
+    const dayData = data.day;
     state.loading = false;
     let rerollTokensEarned = 0;
     if (dayData.modifierWhenPart1CompletedId) {
@@ -102,7 +99,7 @@ export default component$(() => {
       rerollTokensEarned += 1;
     }
     const dayInfoData = {
-      numberOfGames: JSON.stringify(userData.Game.length),
+      dayFound: true,
       year: gameData.year,
       dayNumber: dayData.number,
       gameName: gameData.name,
@@ -267,7 +264,7 @@ export default component$(() => {
         }}
         onResolved={(dayInfoData) => {
           state.loading = false;
-          if (+dayInfoData.numberOfGames < 1) {
+          if (!dayInfoData.dayFound) {
             return (
               <p>
                 Day not found - please try again or{" "}
