@@ -1,6 +1,6 @@
 import { State } from "https://deno.land/x/oak@v12.6.1/application.ts";
 import { RouterContext } from "https://deno.land/x/oak@v12.6.1/router.ts";
-import { deleteGameById, getGamesByUserId } from "../../db.ts";
+import { deleteGameById, getGameByUserIdAndGameNumber } from "../../db.ts";
 
 export const deleteGame = async (
   ctx: RouterContext<
@@ -13,7 +13,6 @@ export const deleteGame = async (
 ) => {
   const { gameNumber } = ctx.params;
   const userId = ctx.state.session.get("userId") as string;
-  const games = await getGamesByUserId(userId);
-  const game = games.find((game) => game.number === +gameNumber);
+  const game = await getGameByUserIdAndGameNumber(userId, +gameNumber);
   ctx.response.body = await deleteGameById(game!.id);
 };
