@@ -6,14 +6,14 @@ import {
   useStylesScoped$,
   useVisibleTask$,
 } from "@builder.io/qwik";
+import styles from "./day.css?inline";
+import { serverFetcher } from "~/util/serverFetcher";
+import type { DayInfo } from "~/types";
 import {
   useLocation,
   type DocumentHead,
   type RequestHandler,
 } from "@builder.io/qwik-city";
-import { serverFetcher } from "~/util/serverFetcher";
-import styles from "./day.css?inline";
-import type { DayInfo } from "~/types";
 import { useLocalStorage } from "~/hooks/useLocalStorage";
 import DayViewer from "~/components/game/day/dayViewer";
 
@@ -41,21 +41,15 @@ export default component$(() => {
   const state = useStore({
     gameId,
     dayNumber,
-    buttonPresses: 0,
-    loading: false,
     dayInfo,
   });
 
-  const dayInfoDataResource = useResource$<any>(async ({ track, cleanup }) => {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const buttonPresses = track(() => state.buttonPresses);
-    state.loading = true;
+  const dayInfoDataResource = useResource$<any>(async ({ cleanup }) => {
 
     const abortController = new AbortController();
     cleanup(() => abortController.abort("cleanup"));
     const gameData = await serverFetcher(`game/public/${gameId}/simple`, "GET");
     const dayData = await serverFetcher(`game/public/${gameId}/day/${dayNumber}`, "GET");
-    state.loading = false;
     let rerollTokensEarned = 0;
     if (dayData.modifierWhenPart1CompletedId) {
       rerollTokensEarned += 1;
@@ -137,7 +131,6 @@ export default component$(() => {
       <Resource
         value={dayInfoDataResource}
         onPending={() => {
-          state.loading = true;
           if (state.dayInfo) {
             return (
               <DayViewer
@@ -220,7 +213,6 @@ export default component$(() => {
           }
         }}
         onResolved={(dayInfoData) => {
-          state.loading = false;
           if (+dayInfoData.numberOfGames < 1) {
             return (
               <p>

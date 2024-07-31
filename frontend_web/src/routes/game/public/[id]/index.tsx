@@ -8,22 +8,24 @@ import {
   useVisibleTask$,
 } from "@builder.io/qwik";
 import styles from "../../[gameNumber]/game.css?inline";
-import { useLocation, type DocumentHead } from "@builder.io/qwik-city";
 import { serverFetcher } from "~/util/serverFetcher";
-import DayLink from "~/components/game/dayLink/dayLink";
 import type { GameInfo } from "~/types";
+import { useLocation, type DocumentHead } from "@builder.io/qwik-city";
 import { useLocalStorage } from "~/hooks/useLocalStorage";
+import DayLink from "~/components/game/dayLink/dayLink";
 
 let gameInfo: GameInfo | null;
 
 export default component$(() => {
   useStylesScoped$(styles);
-  const state = useStore({
-    gameInfo,
-  });
+
   const gameId = useLocation().params.id;
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [getYear, setYear] = useLocalStorage("year", 2014);
+
+  const state = useStore({
+    gameInfo,
+  });
 
   const gameDataResource = useResource$<any>(async ({ cleanup }) => {
     const abortController = new AbortController();
