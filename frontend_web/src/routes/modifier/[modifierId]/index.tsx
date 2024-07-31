@@ -1,6 +1,6 @@
 import { Resource, component$, useResource$ } from "@builder.io/qwik";
 import { useLocation, type DocumentHead } from "@builder.io/qwik-city";
-import type { ChallengeModifier, ModifierOption } from "~/types";
+import type { ModifierOption } from "~/types";
 import constructChallengeModifierFullText from "~/util/constructChallengeModifierFullText";
 import { serverFetcher } from "~/util/serverFetcher";
 
