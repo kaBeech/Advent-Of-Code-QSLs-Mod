@@ -1,6 +1,7 @@
 import { Day, Game, User } from "../generated/client/deno/edge.ts";
 import { getAllChallengeModifierNames, getAllChallengeModifiers, getChallengeModifierDataById } from "./challengeModifiers/challengeModifier.ts";
 import { createDay, getDayById, getDayByUserIdGameNumberAndDayNumber, getDayIdByGameIdAndDayNumber, getPublicDayByGameIdAndNumber, updateDay } from "./days/day.ts";
+import { createGame, deleteGameById, deleteGamesByTesterId, getGameById, getGameByUserIdAndGameNumber, getGameDataByUserIdAndGameNumber, getGamesByUserId, getLeaderboardGamesQuery, getPublicGameById, getPublicGameSimpleById, updateGame } from "./games/games.ts";
 import { getAllModifierOptions, getModifierOptionDataById, getModifierOptionsByChallengeModifierId } from "./modifierOptions/modifierOption.ts";
 import { prisma } from "./prisma.ts";
 import { getAllTitles } from "./titles/title.ts";
@@ -341,336 +342,39 @@ export async function deleteUser(id: string) {
   return result;
 }
 
-/**
- * Game CRUD
- */
-
-export async function createGame(
-  userId: string,
-  number: number,
-  name: string,
-  year: number,
-  isPublic: boolean,
-  repositoryLink?: string,
-) {
-  const result = await prisma.game.create({
-    data: {
-      userId,
-      number,
-      name,
-      isPublic,
-      year,
-      repositoryLink,
-    },
-  });
-  return result;
-}
-
-// export async function getAllGames() {
-//   const games = await prisma.game.findMany();
-//   return games;
-// }
-
-export async function getLeaderboardGamesQuery() {
-  const games = await prisma.game.findMany({
-    select: {
-      id: true,
-      playerName: true,
-      name: true,
-      number: true,
-      year: true,
-      score: true,
-      repositoryLink: true,
-      Title: {
-        select: {
-          id: true,
-          name: true,
-          minimumScore: true,
-        },
-      },
-      User: {
-        select: {
-          username: true,
-        },
-      },
-    },
-    where: {
-      isPublic: true,
-      repositoryLink: {
-        not: null,
-      },
-    },
-    take: 20,
-    orderBy: {
-      score: "desc",
-    },
-  });
-  return games;
-}
-
-export async function getGameById(id: number) {
-  const game = await prisma.game.findUniqueOrThrow({
-    where: {
-      id,
-    },
-  });
-  return game;
-}
-
-export async function getPublicGameSimpleById(id: number) {
-  const game = await prisma.game.findUniqueOrThrow({
-    select: {
-      year: true,
-      name: true,
-      repositoryLink: true,
-      currentRerollTokens: true,
-      currentDay: true,
-      currentDayCompleted: true,
-      isPublic: true,
-      id: true,
-      User: {
-        select: {
-          username: true,
-          oauthAvatarUrl: true,
-        },
-      },
-    },
-    where: {
-      id,
-    },
-  });
-  return game;
-}
-
-
-export async function getPublicGameById(id: number) {
-  const game = await prisma.game.findFirstOrThrow({
-    select: {
-      id: true,
-      year: true,
-      currentDay: true,
-      name: true,
-      score: true,
-      currentRerollTokens: true,
-      dateCompleted: true,
-      repositoryLink: true,
-      Title: {
-        select: {
-          name: true,
-        },
-      },
-      Day: {
-        select: {
-          number: true,
-          challengeModifierId: true,
-          modifierOptionId: true,
-          part1Completed: true,
-          part2Completed: true,
-          challengeModifierRerollsUsed: true,
-          modifierOptionRerollsUsed: true,
-          score: true,
-          ChallengeModifier: {
-            select: {
-              name: true,
-            },
-          },
-          ModifierOption: {
-            select: {
-              name: true,
-              text: true,
-            },
-          },
-        },
-      },
-      User: {
-        select: {
-          username: true,
-          oauthAvatarUrl: true,
-        },
-      },
-    },
-    where: {
-      id,
-      isPublic: true,
-    },
-  });
-  return game;
-}
-
-export async function getGameDataByUserIdAndGameNumber(
-  userId: string,
-  number: number,
-) {
-  const game = await prisma.game.findFirstOrThrow({
-    select: {
-      id: true,
-      year: true,
-      name: true,
-      repositoryLink: true,
-      isPublic: true,
-      currentDay: true,
-      currentRerollTokens: true,
-      dateCompleted: true,
-      Title: {
-        select: {
-          name: true,
-        },
-      },
-      score: true,
-      Day: {
-        select: {
-          number: true,
-          part1Completed: true,
-          part2Completed: true,
-          challengeModifierRerollsUsed: true,
-          modifierOptionRerollsUsed: true,
-          score: true,
-          ChallengeModifier: {
-            select: {
-              name: true,
-            },
-          },
-          ModifierOption: {
-            select: {
-              name: true,
-              text: true,
-            },
-          },
-        },
-      },
-      User: {
-        select: {
-          username: true,
-        },
-      },
-    },
-    where: {
-      userId,
-      number,
-    },
-  });
-  return game;
-}
-
-export async function getGamesByUserId(
-  userId: string,
-) {
-  const games = await prisma.game.findMany({
-    // select: {
-    //   id: true,
-    //   year: true,
-    //   currentDay: true,
-    //   name: true,
-    //   score: true,
-    //   currentRerollTokens: true,
-    //   dateCompleted: true,
-    //   repositoryLink: true,
-    //   Title: {
-    //     select: {
-    //       name: true,
-    //     },
-    //   },
-    // },
-    where: {
-      userId,
-    },
-  });
-  return games;
-}
-
-export async function getGameByUserIdAndGameNumber(
-  userId: string,
-  gameNumber: number,
-): Game {
-  const game = await prisma.game.findFirstOrThrow({
-    // select: {
-    //   id: true,
-    //   year: true,
-    //   currentDay: true,
-    //   name: true,
-    //   score: true,
-    //   currentRerollTokens: true,
-    //   dateCompleted: true,
-    //   repositoryLink: true,
-    //   Day: {
-    //     select: {
-    //       number: true,
-    //     },
-    //   },
-    //   Title: {
-    //     select: {
-    //       name: true,
-    //     },
-    //   },
-    // },
-    where: {
-      userId,
-      number: gameNumber,
-    },
-  });
-  return game;
-}
-
-export async function updateGame(game: Game) {
-  const result = await prisma.game.update({
-    where: {
-      id: game.id,
-    },
-    data: {
-      name: game.name,
-      playerName: game.playerName,
-      currentDay: game.currentDay,
-      currentDayCompleted: game.currentDayCompleted,
-      currentRerollTokens: game.currentRerollTokens,
-      rerollTokensSpent: game.rerollTokensSpent,
-      rerollTokensSpentDuringPart2Raw: game.rerollTokensSpentDuringPart2Raw,
-      part2RerollBonus: game.part2RerollBonus,
-      repositoryLink: game.repositoryLink,
-      progressSheetLink: game.progressSheetLink,
-      isPublic: game.isPublic,
-      publicProfileId: game.publicProfileId,
-      score: game.score,
-      titleId: game.titleId,
-      dateCompleted: game.dateCompleted,
-    },
-  });
-  return result;
-}
-
-export async function deleteGameById(id: number) {
-  const result = await prisma.game.delete({
-    where: {
-      id,
-    },
-  });
-  return result;
-}
-
-export async function deleteGamesByTesterId() {
-  const deletedDays = await prisma.day.deleteMany({
-    where: { Game: { User: { id: "reddit1" } } },
-  });
-
-  const deletedGames = await prisma.game.deleteMany({
-    where: { User: { id: "reddit1" } },
-  });
-
-  const result = { deletedDays, deletedGames };
-  return result;
-}
-
 export {
+
+  // Game CRUD
+  createGame,
+  getLeaderboardGamesQuery,
+  getGameById,
+  getPublicGameSimpleById,
+  getPublicGameById,
+  getGameDataByUserIdAndGameNumber,
+  getGamesByUserId,
+  getGameByUserIdAndGameNumber,
+  updateGame,
+  deleteGameById,
+  deleteGamesByTesterId,
+
+  // Day CRUD
   createDay,
   getDayById,
   getDayByUserIdGameNumberAndDayNumber,
   getDayIdByGameIdAndDayNumber,
   getPublicDayByGameIdAndNumber,
   updateDay,
+
+  // Challenge Modifier CRUD
   getAllChallengeModifiers,
   getAllChallengeModifierNames,
   getChallengeModifierDataById,
+
+  //Modifier Options CRUD
   getAllModifierOptions,
   getModifierOptionsByChallengeModifierId,
   getModifierOptionDataById,
+
+  // Title CRUD
   getAllTitles
 }
