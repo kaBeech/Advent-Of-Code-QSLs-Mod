@@ -574,15 +574,20 @@ export async function getDayById(id: number) {
   return day;
 }
 
-export async function getDaysByGameId(
+export async function getDayIdByGameIdAndDayNumber(
   gameId: number,
+  dayNumber: number,
 ) {
-  const days = await prisma.day.findMany({
+  const day = await prisma.day.findFirstOrThrow({
+    select: {
+      id: true,
+    },
     where: {
       gameId,
+      number: dayNumber,
     },
   });
-  return days;
+  return day;
 }
 
 export async function getPublicDayByGameIdAndNumber(gameId: number, number: number) {
