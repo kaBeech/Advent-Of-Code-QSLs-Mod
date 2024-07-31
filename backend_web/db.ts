@@ -606,7 +606,7 @@ export async function getDayIdByGameIdAndDayNumber(
 }
 
 export async function getPublicDayByGameIdAndNumber(gameId: number, number: number) {
-  const day = await prisma.day.findUniqueOrThrow({
+  const day = await prisma.day.findFirstOrThrow({
     select: {
       number: true,
       score: true,
