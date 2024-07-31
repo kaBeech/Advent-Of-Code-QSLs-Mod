@@ -14,6 +14,7 @@ import { startNewGame } from "./routes/game/startNewGame.ts";
 // import { getGame } from "./routes/game/getGame.ts";
 // import { getGames } from "./routes/user/getGames.ts";
 import { getUserGamesData } from "./routes/user/getUserGamesData.ts";
+import { getUserGamesList } from "./routes/user/getUserGamesList.ts";
 import { logOut } from "./routes/user/logOut.ts";
 // import { getChallengeModifiers } from "./routes/misc/getChallengeModifiers.ts";
 import { getHelloWorld } from "./routes/misc/getHelloWorld.ts";
@@ -31,11 +32,11 @@ import { updateGameName } from "./routes/game/updateGameName.ts";
 import { updateGameRepositoryLink } from "./routes/game/updateGameRepositoryLink.ts";
 import deleteTesterGames from "./routes/game/deleteTesterGames.ts";
 import { getUserDataSimple } from "./routes/user/getUserDataSimple.ts";
-import { getUserGamesListById, getUserNumberOfGamesById } from "./db.ts";
 import { getChallengeModifierNames } from "./routes/challenge_modifiers/getChallengeModifierNames.ts";
 import { getChallengeModifierData } from "./routes/challenge_modifiers/getChallengeModifierData.ts";
 import { getModifierOptionData } from "./routes/modifier_options/getModifierOptionData.ts";
 import { getPublicGameSimple } from "./routes/game/getPublicGameSimple.ts";
+import { getUserNumberOfGames } from "./routes/user/getUserNumberOfGames.ts";
 
 type AppState = {
   session: Session;
@@ -52,8 +53,8 @@ router
   .get("/logout", authenticate, logOut) // T0
   .get("/userdata/games", authenticate, getUserGamesData) // T0
   .get("/userdata/simple", authenticate, getUserDataSimple) // T0
-  .get("/userdata/numberofgames", authenticate, getUserNumberOfGamesById) // T0
-  .get("/userdata/games/list", authenticate, getUserGamesListById) // T0
+  .get("/userdata/numberofgames", authenticate, getUserNumberOfGames) // T0
+  .get("/userdata/games/list", authenticate, getUserGamesList) // T0
   .get("/gamedata/:gameNumber", authenticate, getGameData) // T0
   .get("/modifier/names", getChallengeModifierNames) // T0
   .get("/modifier/:id", getChallengeModifierData) // T0

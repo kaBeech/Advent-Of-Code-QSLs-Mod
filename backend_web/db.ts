@@ -136,6 +136,11 @@ export async function getUserGamesListById(
           number: true,
           year: true,
         },
+        orderBy: [
+          {
+            number: "asc",
+          },
+        ],
       },
     },
     where: {
