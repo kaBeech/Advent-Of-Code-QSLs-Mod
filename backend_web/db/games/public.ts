@@ -1,6 +1,6 @@
 import { prisma } from "../prisma.ts";
 
-export async function getLeaderboardGames() {
+export async function getLeaderboardGamesAll() {
   const games = await prisma.game.findMany({
     select: {
       id: true,

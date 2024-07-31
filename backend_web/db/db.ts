@@ -50,7 +50,7 @@ import {
 
 import { getUserGameDataById, getUserGameDayDataByIdGameNumberAndDayNumber, getUserGamesListById, getUserNumberOfGamesById } from "./users/gameData.ts";
 
-import { getLeaderboardGames, getPublicGameById, getPublicGameSimpleById } from "./games/public.ts";
+import { getLeaderboardGamesAll, getPublicGameById, getPublicGameSimpleById } from "./games/public.ts";
 
 export {
   // User CRUD
@@ -72,7 +72,7 @@ export {
 
   // Game CRUD
   createGame,
-  getLeaderboardGames,
+  getLeaderboardGamesAll,
   getGameById,
   getPublicGameSimpleById,
   getPublicGameById,
