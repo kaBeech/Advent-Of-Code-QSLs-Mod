@@ -34,7 +34,7 @@ export const startNextDay = async (
     if (!dayId) {
       dayExists = false;
     }
-  } catch (error) {
+  } catch (_error) {
     dayExists = false;
   }
   if (dayExists) {
