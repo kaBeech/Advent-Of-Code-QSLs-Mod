@@ -10,8 +10,8 @@ export default [
   {
     name: `FarReachCo.com`,
     url: `https://www.farreachco.com/`,
-    textLine1: `Ready for a new millenium of roleplaying games?`,
-    textLine2: `Visit Far Reach Co. for original D&D content, remote tools, and more!`,
+    textLine1: `Ready for a new experience in Tabletop RPG's?`,
+    textLine2: `Visit Far Reach Co. for original D&D content, web tools, and more!`,
   },
   {
     name: `Thomas Johnston`,
