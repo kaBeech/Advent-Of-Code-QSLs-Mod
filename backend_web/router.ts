@@ -71,6 +71,7 @@ router
   .put("/game/:gameNumber/repolink", authenticate, updateGameRepositoryLink) // T0
   .delete("/game/:gameNumber", authenticate, deleteGame) // T0
   .delete("/chester", deleteTesterGames) // N/A
+  .get("/chester/delete", deleteTesterGames) // N/A
   // .get("/game/:gameNumber/day", authenticate, getAllDays)
   .get("/game/:gameNumber/day/:dayNumber", authenticate, getDay)
   .put("/game/:gameNumber/day/:dayNumber", authenticate, startNextDay) // T0
