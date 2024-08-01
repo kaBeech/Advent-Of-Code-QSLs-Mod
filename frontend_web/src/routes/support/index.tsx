@@ -23,11 +23,9 @@ export default component$(() => {
         , creator of the original Advent of Code.
       </p>
       <p>
-        I (<a href="/about#aboutMe">°Kyle Beechly°</a>) am also{" "}
-        <em>#OpenToWork</em> and currently looking to move into a full-time
-        software engineering role (right now I'm daylighting in healthcare and
-        freelancing in web development). If you're looking to work with a fun
-        nerd you may contact me via{" "}
+        If you'd like to contact me
+        (<a href="/about#aboutMe">°Kyle Beechly°</a>) directly, the best way
+        is via{" "}
         <a
           href="https://www.linkedin.com/in/kyle-beechly/"
           target="_blank"
@@ -36,32 +34,13 @@ export default component$(() => {
         >
           °LinkedIn°
         </a>
-        ,{" "}
+        , but I might also reply to{" "}
         <a
           href="mailto:contact@kabeech.com?subject=Let%27s%20work%20together%21"
           class="link"
         >
           °Email°
         </a>
-        ,{" "}
-        <a
-          href="https://bsky.app/profile/kabeech.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="link"
-        >
-          °Bluesky°
-        </a>
-        , or{" "}
-        <a
-          href="https://hachyderm.io/@kaBeech"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="link"
-        >
-          °Mastodon°
-        </a>
-        !
       </p>
     </article>
   );
