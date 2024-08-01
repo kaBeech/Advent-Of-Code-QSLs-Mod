@@ -89,8 +89,8 @@ export default component$(() => {
           >
             °Kyle Beechly°
           </a>{" "}
-          - web developer, language lover, and maker of Xtreme Xmas Code. I hope
-          you like it! You can find me on{" "}
+          - functional programming advocate, curry lover, and maker of Xtreme
+          Xmas Code. I hope you like it! You can find me on{" "}
           <a
             href="https://github.com/kaBeech"
             target="_blank"
