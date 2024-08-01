@@ -89,8 +89,8 @@ export default component$(() => {
           >
             °Kyle Beechly°
           </a>{" "}
-          - web developer, language lover, and maker of Xtreme Xmas Code. I hope
-          you like it! You can find me on{" "}
+          - functional programming advocate, curry lover, and maker of Xtreme
+          Xmas Code. I hope you like it! You can find me on{" "}
           <a
             href="https://github.com/kaBeech"
             target="_blank"
@@ -99,7 +99,7 @@ export default component$(() => {
           >
             °GitHub°
           </a>
-          ,{" "}
+          {" "}and{" "}
           <a
             href="https://www.linkedin.com/in/kyle-beechly/"
             target="_blank"
@@ -108,7 +108,7 @@ export default component$(() => {
           >
             °LinkedIn°
           </a>
-          ,{" "}
+          , occasionally on{" "}
           <a
             href="https://bsky.app/profile/kabeech.com"
             target="_blank"
@@ -117,7 +117,7 @@ export default component$(() => {
           >
             °Bluesky°
           </a>
-          , and{" "}
+          {" "}and{" "}
           <a
             href="https://hachyderm.io/@kaBeech"
             target="_blank"
@@ -126,15 +126,10 @@ export default component$(() => {
           >
             °Mastodon°
           </a>
-          .
-        </p>
-        <p>
-          I'm also <em>#OpenToWork</em>, so if you're looking to work with a fun
-          nerd you may contact me via one of the above options or{" "}
+          , and can sometimes be reached at my public {" "}
           <a href="mailto:contact@kabeech.com" class="link">
             °Email°
           </a>
-          !
         </p>
         <p>
           If you'd like to support Xtreme Xmas Code, you can do so by sharing it
