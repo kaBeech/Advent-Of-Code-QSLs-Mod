@@ -20,6 +20,10 @@ export default component$(() => {
     <QwikCityProvider>
       <head>
         <meta charSet="utf-8" />
+        <meta property="og:title" content="Xtreme Xmas Code" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://ia.media-imdb.com/images/rock.jpg" />
+        <meta property="og:image" content={"https://media.licdn.com/dms/image/v2/D5622AQHx-8imOhNRdg/feedshare-shrink_800/feedshare-shrink_800/0/1701397778386?e=1732147200&v=beta&t=7Wt9UWWlagSUtuCUDliVHokCZlKVIZC58K0Tx_1sf0A"} />
         <link rel="manifest" href="/manifest.json" />
         <RouterHead />
         <ServiceWorkerRegister />
