@@ -80,7 +80,7 @@ export default component$(() => {
             onInput$={(ev: any) => (state.year = ev.target.value)}
             value={year}
             min="2014"
-            max="2023"
+            max="2024"
             aria-labelledby="Year"
           />
         </li>
